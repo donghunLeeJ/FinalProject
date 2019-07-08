@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 	<!-- Preloader -->
 	<div id="preloader">
@@ -19,7 +21,17 @@
 				</div>
 				<div class="col-7">
 					<div class="top-header-content text-right">
-						<button class="btn btn-primary">LogIN</button>
+					<c:choose>
+					<c:when test="${id eq null}">
+					
+						<button class="btn btn-primary" id="LogIN">LogIN</button>
+					</c:when>
+					
+					<c:otherwise>
+						<button id=logout>logout</button><button id=mypage>mypage</button>
+					</c:otherwise>
+					</c:choose>
+					
 					</div>
 				</div>
 			</div>
@@ -89,4 +101,22 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	
+	<script>
+		$("#LogIN").on("click",function(){
+			location.href="member/loginForm";
+			
+		})
+	
+		$("#logout").on("click",function(){
+			location.href="member/logOutProc";
+		})
+	
+	</script>
+	
 	</header>
