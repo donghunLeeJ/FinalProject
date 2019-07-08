@@ -19,7 +19,7 @@
 				</div>
 				<div class="col-7">
 					<div class="top-header-content text-right">
-						<button class="btn btn-primary">LogIN</button>
+						<a href="member/"></a><button class="btn btn-primary">LogIN</button>
 					</div>
 				</div>
 			</div>
