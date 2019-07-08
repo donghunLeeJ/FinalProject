@@ -19,4 +19,7 @@ public class MemberService {
 		int result = mdao.insert(mdto);
 		return result;
 	}
+	public MemberDTO select_member(String id) {
+		return mdao.selectById(id);
+	}
 }

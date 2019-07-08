@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -32,6 +34,10 @@ public class MemberDAO {
 	
 	public int insert(MemberDTO dto) {
 		return sst.insert("member.insert",dto);
+	}
+	
+	public MemberDTO selectById(String id){
+		return sst.selectOne("member.selectById",id);
 	}
 	
 }

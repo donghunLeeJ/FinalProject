@@ -12,13 +12,16 @@ import com.project.service.MemberService;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	
+
 	@Autowired
 	private HttpSession session;
 	@Autowired
 	private MemberService mservice;
 	
-	
+//	@RequestMapping("/goMyPage")
+//	public String goMyPage() {
+//		return "/member/myPage.jsp";
+//	}
 	@RequestMapping("loginForm")
 	public String goLogin() {
 		return "member/login";
@@ -28,7 +31,7 @@ public class MemberController {
 		System.out.println(mdto.getMember_id());
 		int result = mservice.login(mdto);
 		if(result == 1) {
-			session.setAttribute("id", mdto.getMember_id());
+			session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 			return "redirect:/home";
 		}else {
 			return "notLogin";
@@ -51,6 +54,12 @@ public class MemberController {
 	public String logout() {
 		session.invalidate();
 		return "redirect:/home";
+	}
+	
+	@RequestMapping("myPage")
+	public String myPage() {
+		
+		return "member/myPage";
 	}
 	
 }
