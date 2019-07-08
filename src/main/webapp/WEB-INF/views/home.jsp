@@ -79,7 +79,8 @@
 		</div>
 	</div>
 
- <a href="shopboard/ShopBoard_write">잠시 샵으로 이동</a>
+ <a href="/shopboard/ShopBoard_write">잠시 샵으로 이동</a><br>
+ <a href="/shopboard/ShopBoardSelectProc">잠시 전체검색창 이동</a>
 
 	<script>
 		

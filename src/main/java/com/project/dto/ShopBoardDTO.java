@@ -16,7 +16,7 @@ private String shop_expiration; //유통기한
 private int shop_price;        //가격(1개당)
 private int shop_quantity;  //수량
 private MultipartFile shop_image; //이미지 파일임
-private String shop_imagepath;	//음식 이미지가 들어가는 경로 
+private String shop_imagepath;	//음식 이미지 주소가 들어가는 경로 
 
 public ShopBoardDTO(){}
 
