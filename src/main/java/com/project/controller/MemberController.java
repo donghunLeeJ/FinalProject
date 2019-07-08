@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	public String goLogin() {
-		return "member/login";
+	@RequestMapping("/goMyPage")
+	public String goMyPage() {
+		return "/member/myPage.jsp";
 	}
 }

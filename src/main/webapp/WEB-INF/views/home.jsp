@@ -10,6 +10,9 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	
+
+
 	<!-- Header Area End -->
 
 	<!-- Welcome Area Start -->
