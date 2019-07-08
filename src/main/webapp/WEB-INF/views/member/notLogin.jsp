@@ -4,11 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-	alert("회원정보가 없습니다");
-	</script>
-	</body>
+	<form action="member/loginProc">
+	<input type=text name=id>아이디<br>
+	<input type=text name=pw>패스워드
+		<button type="submit">로그인</button>
+	</form>
+</body>
 </html>

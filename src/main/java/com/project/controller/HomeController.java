@@ -16,9 +16,6 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
-	@RequestMapping("ee")
-	public String eee() {
-		return "timeLine/timeLine";
-	}
+	
 	
 }

@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="stylesheet" href="../css/style2.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
@@ -109,41 +111,51 @@
                     </table>
                 </div>
                 <div class="tab-pane" id="edit">
+                       <div class="col-lg-4 order-lg-1 text-center">
+            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+<!--             <label class="custom-file"> -->
+<!--                 <input type="file" id="file" class="custom-file-input"> -->
+<!--                 <span class="custom-file-control">Choose file</span> -->
+						<input type=file id="file"><br>
+                      <input type="button" id="change"class="btn btn-primary " value="사진 변경"><br>
+<!--             </label> -->
+        </div>
                     <form role="form">
-                        <div class="form-group row">
+                        <div class="form-group row"  >
                             <label class="col-lg-3 col-form-label form-control-label">아이디</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Jane">
+                                <input class="form-control" type="text" value="${id.member_id }" readonly>
+                                
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">이름</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Bishop">
+                                <input class="form-control" type="text" value="${id.member_name }"  readonly>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">생일</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="email" >
+                                <input class="form-control" type="text" value="${id.member_birth}"  readonly >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">성별</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="">
+                                <input class="form-control" type="text" value="${id.member_gender }"  readonly>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">주소</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="url" value="">
+                                <input class="form-control" type="text" value="${id.member_add}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">핸드폰 번호</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" >
+                                <input class="form-control" type="text" value="${id.member_phone}" >
                             </div>
                         </div>
                         <div class="form-group row">
@@ -154,40 +166,61 @@
                         </div>
                        
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                            <label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
+                                <input class="form-control" type="password"  id="pw1">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                            <label class="col-lg-3 col-form-label form-control-label">비밀번호 확인</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
+                                <input class="form-control" type="password" id="pw2">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="초기화">
-                                <input type="button" class="btn btn-primary" value="정보 수정">
-                                <input type="button" class="btn btn-primary" value="회원 탈퇴">
+<!--                                 <input type="reset" class="btn btn-secondary" value="초기화"> -->
+                                <input type="button" id="edit_info" class="btn btn-primary" value="정보 수정">
+                                <input type="button" id="delId" class="btn btn-primary" value="회원 탈퇴">
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
-        </div>
+<!--         <div class="col-lg-4 order-lg-1 text-center"> -->
+<!--             <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar"> -->
+<!--             <label class="custom-file"> -->
+<!--                 <input type="file" id="file" class="custom-file-input"> -->
+<!--                <span class="custom-file-control">Choose file</span> -->
+<!--                       <input type="button"  class="btn btn-primary custom-file-control" value="사진 변경"> -->
+<!--             </label> -->
+<!--         </div> -->
     </div>
 </div>
-	
+
+<script>
+$("#file").hide();
+$("#change").on("click",function(){
+    $("#file").click();//사진변경 버튼 누르면 file버튼 클릭됨
+})
+
+$("#edit_info").on("click",function(){
+	if($("#pw1").val()==""||$("#pw2").val()==""){
+		alert("비밀번호를 입력해주세요");
+		return;
+	}
+	else if($("#pw1").val()!=$("#pw2").val()){
+		alert("비밀번호 값이 같아야 합니다");
+		return;
+	}else{
+		alert("정보가 변경되었습니다");
+		location.href="/member/myPage";
+	}
+})
+
+</script>
 	
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>  
 </body>
