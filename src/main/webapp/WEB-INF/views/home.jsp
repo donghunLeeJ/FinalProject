@@ -79,11 +79,7 @@
 		</div>
 	</div>
 
-
-
-
-
-
+ <a href="shopboard/ShopBoard_write">잠시 샵으로 이동</a>
 
 	<script>
 		
