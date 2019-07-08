@@ -55,7 +55,7 @@
 									<li><a href="./index.html">- Home</a></li>
 									<li><a href="./about.html">- About Us</a></li>
 									<li><a href="./service.html">- 서비스 소개</a></li>
-									<li><a href="./portfolio.html">- 상품보기</a></li>
+									<li><a href="shopboard/shopBoardGo">- 상품보기</a></li>
 									<li><a href="./blog.html">- sns</a></li>
 									<li><a href="./single-blog.html">- Blog Details</a></li>
 									<li><a href="./contact.html">- Contact</a></li>
@@ -68,7 +68,7 @@
 										</ul></li>
 								</ul></li>
 							<li><a href="/home/ee">서비스 소개</a></li>
-							<li><a href="./service.html">상품보기</a></li>
+							<li><a href="shopboard/shopBoardGo">상품보기</a></li>
 							<li><a href="./about.html">우리만에 sns</a></li>
 
 						</ul>

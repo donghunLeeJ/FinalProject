@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ShopBoardDAO">
+
+	<select id="boardList" resultType="com.project.dto.ShopBoardDTO">
+		select * from (select
+		row_number()over(order by seq
+		desc) as
+		rown, shop_board.*
+		from
+		shop_board) where
+		rown between #{value}*12-11 and
+		#{value}*12
+	</select>
+	<select id="totalCount" resultType="Integer">
+	 select count(*) from Shop_board
+	</select>
+</mapper>
