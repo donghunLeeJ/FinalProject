@@ -51,6 +51,7 @@
 	</section>
 
 	<script>
+		var count = 2;
 		$(window).scroll(
 				function() {
 					// 최하단일 경우를 체크하기 위해 최하단 위치값을 지정
@@ -67,20 +68,18 @@
 							url : "/shopboard/shopBoardScroll",
 							type : "post",
 							data : {
-								page : "1"
+								page : count
 							}
 						}).done(function(resp) {
+							count++
 							var result = JSON.parse(resp);
 							console.log(result);
-							var path = result[0].shop_imagepath;
-							var title = result[0].shop_title;
-							var contents = result[0].shop_contetns;
-							console.log(path);
+							
 							for(var i = 0 ; i < result.length; i ++){
 							$("#extendList").append(`<div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
 										data-wow-delay='500ms'>
 										<div class='akame-portfolio-single-item'>
-											<img src=`+path+` >
+											<img src=`+ result[i].shop_imagepath+` >
 
 											<!-- Overlay Content -->
 											<div
@@ -97,8 +96,8 @@
 
 										</div>
 										<div class='team-member-info border'>
-											<h5>`title`</h5>
-											<p>`contents`</p>
+											<h5>`+result[i].shop_title+`</h5>
+											<p>`+result[i].shop_contents+`</p>
 										</div>
 									</div>`);
 							};

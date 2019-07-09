@@ -49,7 +49,7 @@ public class ShopBoardController {
 	@ResponseBody
 	public String ShopBoard_ScrollList(String page) {
 		int currentPage = Integer.parseInt(page);
-		currentPage += 1;
+	
 		int lastPage = currentPage * 12;
 		sPaging.sPaging(currentPage);
 		List<ShopBoardDTO> boardList = sService.ShopBoardList(lastPage);
@@ -81,7 +81,7 @@ public class ShopBoardController {
 		int result = sService.ShopBoardInsert(dto);
 
 		if (result > 0) {
-			System.out.println("�젙�긽�쟻�쑝濡� �궫�엯 �셿猷뚮맖"); // ?
+			System.out.println("占쎌젟占쎄맒占쎌읅占쎌몵嚥∽옙 占쎄땜占쎌뿯 占쎌끏�뙴�슢留�"); // ?
 		}
 		return "redirect:../home";
 	}
@@ -93,7 +93,7 @@ public class ShopBoardController {
 		ShopBoardDTO targetList = sService.ShopBoardIdSelect(4);
 
 
-		System.out.println("��寃웙d: " + targetList.getShop_id());
+		System.out.println("占쏙옙野껋썦d: " + targetList.getShop_id());
 
 		return "/shopBoard/shopBoard_view";
 	}
