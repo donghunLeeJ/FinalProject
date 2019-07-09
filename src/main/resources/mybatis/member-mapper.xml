@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.member-mapper">
+<mapper namespace="member">
 
+	<select id="login" resultType="Integer">
+		select count(*) from member where member_id=#{member_id} and member_pw=#{member_pw}
+	</select>
+
+	<insert id="insert">
+		insert into member values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_add},#{member_phone})
+	</insert>
+	
+	<select id="selectById" resultType="com.project.dto.MemberDTO">
+	select * from member where member_id=#{member_id}
+	</select>
 </mapper>

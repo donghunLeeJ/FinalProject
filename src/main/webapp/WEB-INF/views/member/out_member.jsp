@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-</body>
+<script>
+	alert("회원정보가 없습니다");
+	</script>
+	</body>
 </html>
