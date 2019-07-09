@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
@@ -8,7 +8,6 @@
 	<div class="loader"></div>
 </div>
 <!-- /Preloader -->
-
 <!-- Header Area Start -->
 <header class="header-area">
 	<!-- Top Header Area Start -->
@@ -22,6 +21,7 @@
 				</div>
 				<div class="col-7">
 					<div class="top-header-content text-right">
+
 						<c:choose>
 							<c:when test="${id eq null}">
 
@@ -33,7 +33,6 @@
 								<button id=mypage>mypage</button>
 							</c:otherwise>
 						</c:choose>
-
 					</div>
 				</div>
 			</div>
@@ -66,13 +65,13 @@
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul id="nav">
-								<li class="active"><a href="./index.html">Home</a></li>
+								<li ><a href="./index.html">Home</a></li>
 								<li><a href="#">Pages</a>
 									<ul class="dropdown">
 										<li><a href="./index.html">- Home</a></li>
 										<li><a href="./about.html">- About Us</a></li>
-										<li><a href="./service.html">- º≠∫ÒΩ∫ º“∞≥</a></li>
-										<li><a href="shopboard/shopBoardGo?page=1">- ªÛ«∞∫∏±‚</a></li>
+										<li><a href="./service.html">- ÏÑúÎπÑÏä§ ÏÜåÍ∞ú</a></li>
+										<li><a href="shopboard/shopBoardGo?page=1">- Í∏Ä Î≥¥Í∏∞</a></li>
 										<li><a href="./blog.html">- sns</a></li>
 										<li><a href="./single-blog.html">- Blog Details</a></li>
 										<li><a href="./contact.html">- Contact</a></li>
@@ -84,11 +83,17 @@
 												<li><a href="#">- Dropdown Item</a></li>
 											</ul></li>
 									</ul></li>
-								<li><a href="/home/ee">º≠∫ÒΩ∫ º“∞≥</a></li>
-								<li><a href="shopboard/shopBoardGo?page=1">ªÛ«∞∫∏±‚</a></li>
-								<li><a href="./about.html">øÏ∏Æ∏∏ø° sns</a></li>
+								<li><a href="/home/ee">ÏÑúÎπÑÏä§ ÏÜåÍ∞ú</a></li>
+								<li><a href="#">ÌåêÎß§ Í≤åÏãúÌåê</a>
+									<ul class="dropdown">
+										<li><a href="/shopboard/shopBoardGo?page=1">- Íµ¨Îß§ÌïòÍ∏∞</a></li>
+										<li><a href="shopboard/ShopBoard_write">- ÌåêÎß§ÌïòÍ∏∞</a></li>
+									</ul></li>
+								<li><a href="./about.html">sns</a></li>
 
 							</ul>
+
+							
 
 							<!-- Cart Icon -->
 							<div class="cart-icon ml-5 mt-4 mt-lg-0">
@@ -113,13 +118,20 @@
 
 
 	<script>
-		$("#LogIN").on("click", function() {
-			location.href = "member/loginForm";
 
+		$("#LogIN").on("click",function(){
+			location.href="/member/loginForm";
+			
 		})
+	
+		$("#logout").on("click",function(){
+			location.href="/member/logOutProc";
+		})
+		
+		$("#mypage").on("click",function(){
 
-		$("#logout").on("click", function() {
-			location.href = "member/logOutProc";
+			location.href="/member/myPage";
+
 		})
 	</script>
 

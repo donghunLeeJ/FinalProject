@@ -35,12 +35,12 @@
 						</div>
 
 						<!-- Thumbnail Zoom -->
-						<a href="img/bg-img/19.jpg" class="thumbnail-zoom"><i
+						<a href="${i.shop_imagepath }" class="thumbnail-zoom"><i
 							class="icon_search"></i></a>
 
 					</div>
 					<div class="team-member-info border">
-						<h5>${i.shop_title }</h5>
+						<a href="/shopboard/ShopBoardViewProc"><h5>${i.shop_title }</h5></a>
 						<p>${i.shop_contents }</p>
 					</div>
 				</div>

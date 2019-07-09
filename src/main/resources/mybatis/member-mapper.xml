@@ -9,4 +9,8 @@
 	<insert id="insert">
 		insert into member values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_add},#{member_phone})
 	</insert>
+	
+	<select id="selectById" resultType="com.project.dto.MemberDTO">
+	select * from member where member_id=#{member_id}
+	</select>
 </mapper>
