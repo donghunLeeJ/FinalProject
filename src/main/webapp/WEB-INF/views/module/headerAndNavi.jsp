@@ -109,12 +109,17 @@
 	
 	<script>
 		$("#LogIN").on("click",function(){
-			location.href="member/loginForm";
+			location.href="/member/loginForm";
 			
 		})
 	
 		$("#logout").on("click",function(){
-			location.href="member/logOutProc";
+			location.href="/member/logOutProc";
+		})
+		
+		$("#mypage").on("click",function(){
+
+			location.href="/member/myPage";
 		})
 	
 	</script>

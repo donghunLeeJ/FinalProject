@@ -10,6 +10,9 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	
+
+
 	<!-- Header Area End -->
 
 	<!-- Welcome Area Start -->
@@ -28,10 +31,10 @@
 								<h2 data-animation="fadeInUp" data-delay="100ms">
 									We Care About <br> Your Hair
 								</h2>
-								<p data-animation="fadeInUp" data-delay="400ms">¡°Discover
+								<p data-animation="fadeInUp" data-delay="400ms">Â¡Â°Discover
 									your own style. Don't try to repeat what has already been
 									written - have the courage to do your own thing and don't be
-									afraid to do something different.¡±</p>
+									afraid to do something different.Â¡Â±</p>
 								<a href="#" class="btn akame-btn" data-animation="fadeInUp"
 									data-delay="700ms">About Us</a>
 							</div>
@@ -54,10 +57,10 @@
 								<h2 data-animation="fadeInUp" data-delay="100ms">
 									We Care About <br> Your Hair
 								</h2>
-								<p data-animation="fadeInUp" data-delay="400ms">¡°Discover
+								<p data-animation="fadeInUp" data-delay="400ms">Â¡Â°Discover
 									your own style. Don't try to repeat what has already been
 									written - have the courage to do your own thing and don't be
-									afraid to do something different.¡±</p>
+									afraid to do something different.Â¡Â±</p>
 								<a href="#" class="btn akame-btn active"
 									data-animation="fadeInUp" data-delay="700ms">About Us</a>
 							</div>
@@ -79,8 +82,10 @@
 		</div>
 	</div>
 
- <a href="/shopboard/ShopBoard_write">Àá½Ã ¼¥À¸·Î ÀÌµ¿</a><br>
- <a href="/shopboard/ShopBoardSelectProc">Àá½Ã ÀüÃ¼°Ë»öÃ¢ ÀÌµ¿</a>
+
+ <a href="/shopboard/ShopBoard_write">Ã€Ã¡Â½Ãƒ Â¼Â¥Ã€Â¸Â·ÃŽ Ã€ÃŒÂµÂ¿</a><br>
+ <a href="/shopboard/ShopBoardSelectProc">Ã€Ã¡Â½Ãƒ Ã€Ã¼ÃƒÂ¼Â°Ã‹Â»Ã¶ÃƒÂ¢ Ã€ÃŒÂµÂ¿</a>
+
 
 	<script>
 		
