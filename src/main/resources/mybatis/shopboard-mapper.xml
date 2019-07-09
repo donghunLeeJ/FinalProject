@@ -3,16 +3,10 @@
 <mapper namespace="ShopBoardDAO">
 
 	<select id="boardList" resultType="com.project.dto.ShopBoardDTO">
-		select * from (select
-		row_number()over(order by seq
-		desc) as
-		rown, shop_board.*
-		from
-		shop_board) where
-		rown between #{value}*12-11 and
-		#{value}*12
+	 select * from (select shop_seq,shop_id,shop_title,shop_contents, shop_writedate, shop_location, shop_expiration, shop_price, shop_quantity, shop_imagepath, 
+      rank() over(order by shop_seq desc) rank from shopboard ) where rank between #{lastPage}-11 and #{lastPage}
 	</select>
 	<select id="totalCount" resultType="Integer">
-	 select count(*) from Shop_board
+		select count(*) from shopboard
 	</select>
 </mapper>
