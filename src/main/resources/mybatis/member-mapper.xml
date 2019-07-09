@@ -13,4 +13,8 @@
 	<select id="selectById" resultType="com.project.dto.MemberDTO">
 	select * from member where member_id=#{member_id}
 	</select>
+	
+	<select id="edit_mypage" resultType="com.project.dto.MemberDTO">
+	update mypage set mypage=#{member_add}, #{member_pw}, #{member_phone} where id=#{id}
+	</select>
 </mapper>

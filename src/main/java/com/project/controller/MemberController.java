@@ -17,8 +17,7 @@ public class MemberController {
 	private HttpSession session;
 	@Autowired
 	private MemberService mservice;
-	@Autowired
-	private MemberDTO mdto;
+
 	
 //	@RequestMapping("/goMyPage")
 //	public String goMyPage() {
@@ -59,7 +58,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("myPage")
-	public String myPage() {
+	public String myPage(MemberDTO mdto) {
 		mservice.edit_mypage(mdto.getMember_id());
 		return "member/myPage";
 	}

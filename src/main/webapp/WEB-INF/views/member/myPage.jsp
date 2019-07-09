@@ -149,13 +149,13 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">주소</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="${id.member_add}">
+                                <input class="form-control" name=add type="text" value="${id.member_add}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">핸드폰 번호</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="${id.member_phone}" >
+                                <input class="form-control" name=phone type="text" value="${id.member_phone}" >
                             </div>
                         </div>
                         <div class="form-group row">

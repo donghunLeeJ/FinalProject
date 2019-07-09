@@ -31,10 +31,10 @@
 								<h2 data-animation="fadeInUp" data-delay="100ms">
 									We Care About <br> Your Hair
 								</h2>
-								<p data-animation="fadeInUp" data-delay="400ms">¡°Discover
+								<p data-animation="fadeInUp" data-delay="400ms">Â¡Â°Discover
 									your own style. Don't try to repeat what has already been
 									written - have the courage to do your own thing and don't be
-									afraid to do something different.¡±</p>
+									afraid to do something different.Â¡Â±</p>
 								<a href="#" class="btn akame-btn" data-animation="fadeInUp"
 									data-delay="700ms">About Us</a>
 							</div>
@@ -57,10 +57,10 @@
 								<h2 data-animation="fadeInUp" data-delay="100ms">
 									We Care About <br> Your Hair
 								</h2>
-								<p data-animation="fadeInUp" data-delay="400ms">¡°Discover
+								<p data-animation="fadeInUp" data-delay="400ms">Â¡Â°Discover
 									your own style. Don't try to repeat what has already been
 									written - have the courage to do your own thing and don't be
-									afraid to do something different.¡±</p>
+									afraid to do something different.Â¡Â±</p>
 								<a href="#" class="btn akame-btn active"
 									data-animation="fadeInUp" data-delay="700ms">About Us</a>
 							</div>
@@ -70,23 +70,9 @@
 			</div>
 		</div>
 	</div>
-	</section>
-	<!-- Welcome Area End -->
 
-	<!-- About Area Start -->
-	<section class="akame-about-area section-padding-80-0"> <!--        --------------------------------------------------------------------------------------------------- -->
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12"></div>
+	
 
-		</div>
-	</div>
-
-
-	<script>
-		
-	</script> <!--        ====================================================================================================== -->
-	</section>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>

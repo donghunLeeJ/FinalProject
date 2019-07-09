@@ -22,7 +22,7 @@ public class MemberService {
 	public MemberDTO select_member(String id) {
 		return mdao.selectById(id);
 	}
-	public MemberDTO edit_mypage(String id) {
+	public int edit_mypage(String id) {
 		return mdao.edit_mypage(id);
 	}
 }
