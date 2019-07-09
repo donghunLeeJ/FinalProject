@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ShopBoardDTO {
+
 	
 private int shop_seq;     //글번호
 private String shop_id;   //판매자의 로그인 id 
@@ -124,4 +125,5 @@ public void setShop_imagepath(String shop_imagepath) {
 
 
 }
+
 
