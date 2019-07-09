@@ -71,8 +71,8 @@
 									<ul class="dropdown">
 										<li><a href="./index.html">- Home</a></li>
 										<li><a href="./about.html">- About Us</a></li>
-										<li><a href="./service.html">- ¼­ºñ½º ¼Ò°³</a></li>
-										<li><a href="shopboard/shopBoardGo?page=1">- »óÇ°º¸±â</a></li>
+										<li><a href="./service.html">- ì„œë¹„ìŠ¤ ì†Œê°œ</a></li>
+										<li><a href="shopboard/shopBoardGo?page=1">- ìƒí’ˆë³´ê¸°</a></li>
 										<li><a href="./blog.html">- sns</a></li>
 										<li><a href="./single-blog.html">- Blog Details</a></li>
 										<li><a href="./contact.html">- Contact</a></li>
@@ -84,9 +84,9 @@
 												<li><a href="#">- Dropdown Item</a></li>
 											</ul></li>
 									</ul></li>
-								<li><a href="/home/ee">¼­ºñ½º ¼Ò°³</a></li>
-								<li><a href="shopboard/shopBoardGo?page=1">»óÇ°º¸±â</a></li>
-								<li><a href="./about.html">¿ì¸®¸¸¿¡ sns</a></li>
+								<li><a href="/home/ee">ì„œë¹„ìŠ¤ ì†Œê°œ</a></li>
+								<li><a href="shopboard/shopBoardGo?page=1">ìƒí’ˆë³´ê¸°</a></li>
+								<li><a href="./about.html">ìš°ë¦¬ë§Œì— sns</a></li>
 
 							</ul>
 
@@ -113,13 +113,20 @@
 
 
 	<script>
-		$("#LogIN").on("click", function() {
-			location.href = "member/loginForm";
 
+		$("#LogIN").on("click",function(){
+			location.href="/member/loginForm";
+			
 		})
+	
+		$("#logout").on("click",function(){
+			location.href="/member/logOutProc";
+		})
+		
+		$("#mypage").on("click",function(){
 
-		$("#logout").on("click", function() {
-			location.href = "member/logOutProc";
+			location.href="/member/myPage";
+
 		})
 	</script>
 
