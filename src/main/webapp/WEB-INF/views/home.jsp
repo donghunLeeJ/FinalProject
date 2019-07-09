@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
-<link rel="stylesheet" href="../css/style2.css">
+<link rel="stylesheet" href="/css/style2.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>

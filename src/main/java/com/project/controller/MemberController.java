@@ -25,7 +25,7 @@ public class MemberController {
 	}
 	@RequestMapping("loginProc")
 	public String login(MemberDTO mdto) {
-		System.out.println(mdto.getMember_id());
+		System.out.println("로그인 프록  "+mdto.getMember_id());
 		int result = mservice.login(mdto);
 		if(result == 1) {
 			session.setAttribute("id", mdto.getMember_id());
