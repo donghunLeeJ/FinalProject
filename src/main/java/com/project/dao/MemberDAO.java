@@ -40,4 +40,5 @@ public class MemberDAO {
 		return sst.selectOne("member.selectById",id);
 	}
 	
+	
 }

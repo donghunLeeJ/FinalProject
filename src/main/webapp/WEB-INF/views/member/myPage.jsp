@@ -206,7 +206,7 @@ $("#change").on("click",function(){
     $("#file").click();//사진변경 버튼 누르면 file버튼 클릭됨
 })
 
-$("#edit_info").on("click",function(){
+$("#edit_info").on("click",function(){//정보수정 버튼 클릭시
 	if($("#pw1").val()==""||$("#pw2").val()==""){
 		alert("비밀번호를 입력해주세요");
 		return;
@@ -215,6 +215,7 @@ $("#edit_info").on("click",function(){
 		alert("비밀번호 값이 같아야 합니다");
 		return;
 	}else{
+		
 		alert("정보가 변경되었습니다");
 		location.href="/member/myPage";
 	}

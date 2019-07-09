@@ -17,6 +17,8 @@ public class MemberController {
 	private HttpSession session;
 	@Autowired
 	private MemberService mservice;
+	@Autowired
+	private MemberDTO mdto;
 	
 //	@RequestMapping("/goMyPage")
 //	public String goMyPage() {
@@ -44,7 +46,7 @@ public class MemberController {
 	}
 	@RequestMapping("joinProc")
 	public String joinInsert(MemberDTO mdto) {
-		System.out.println("조인 프록           "+mdto.getMember_id());
+		System.out.println(mdto.getMember_id());
 		int result = mservice.joinInsert(mdto);
 		System.out.println(result);
 		return "/home";
@@ -58,7 +60,7 @@ public class MemberController {
 	
 	@RequestMapping("myPage")
 	public String myPage() {
-		
+		mservice.edit_mypage(mdto.getMember_id());
 		return "member/myPage";
 	}
 	
