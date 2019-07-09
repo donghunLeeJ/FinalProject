@@ -58,7 +58,7 @@
 				
 				console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
 
-					  if($(document).height() <= $(window).scrollTop() + $(window).height() ){
+					  if($(document).height() <= $(window).scrollTop() + $(window).height()+100 ){
 						// 최하단으로 도달했을 경우
 						
 					
@@ -73,6 +73,8 @@
 							var result = JSON.parse(resp);
 							console.log(result);
 							var path = result[0].shop_imagepath;
+							var title = result[0].shop_title;
+							var contents = result[0].shop_contetns;
 							console.log(path);
 							for(var i = 0 ; i < result.length; i ++){
 							$("#extendList").append(`<div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
@@ -95,8 +97,8 @@
 
 										</div>
 										<div class='team-member-info border'>
-											<h5></h5>
-											<p></p>
+											<h5>`title`</h5>
+											<p>`contents`</p>
 										</div>
 									</div>`);
 							};
