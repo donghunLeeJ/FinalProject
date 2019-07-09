@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.io.File;
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -92,6 +93,11 @@ public class ShopBoardController {
 		List<ShopBoardDTO> list = sService.ShopBoardSelect();
 		ShopBoardDTO targetList = sService.ShopBoardIdSelect(4);
 
+		
+		
+				
+		
+		
 
 		System.out.println("��寃웙d: " + targetList.getShop_id());
 
