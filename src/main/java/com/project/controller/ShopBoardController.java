@@ -50,7 +50,7 @@ public class ShopBoardController {
 	@ResponseBody
 	public String ShopBoard_ScrollList(String page) {
 		int currentPage = Integer.parseInt(page);
-	
+
 		int lastPage = currentPage * 12;
 		sPaging.sPaging(currentPage);
 		List<ShopBoardDTO> boardList = sService.ShopBoardList(lastPage);
@@ -72,6 +72,7 @@ public class ShopBoardController {
 		System.out.println(resourcePath);
 		File targetFile = new File(resourcePath + "/" + System.currentTimeMillis() + "_foodimage.png");
 		System.out.println(targetFile.getAbsolutePath());
+
 		try {
 			dto.getShop_image().transferTo(targetFile);
 		} catch (Exception e) {
@@ -88,18 +89,10 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/ShopBoardViewProc")
-	public String ShopBoardSelectProc() {
-
-		List<ShopBoardDTO> list = sService.ShopBoardSelect();
-		ShopBoardDTO targetList = sService.ShopBoardIdSelect(4);
-
-		
-		
-				
-		
-		
-
-		System.out.println("占쏙옙野껋썦d: " + targetList.getShop_id());
+	public String ShopBoardSelectProc(String seq) {
+		int shop_seq = Integer.parseInt(seq);
+		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
+		request.setAttribute("dto", dto);
 
 		return "/shopBoard/shopBoard_view";
 	}
