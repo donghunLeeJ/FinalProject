@@ -50,7 +50,6 @@ public class ShopBoardController {
 	@ResponseBody
 	public String ShopBoard_ScrollList(String page) {
 		int currentPage = Integer.parseInt(page);
-		currentPage += 1;
 		int lastPage = currentPage * 12;
 		sPaging.sPaging(currentPage);
 		List<ShopBoardDTO> boardList = sService.ShopBoardList(lastPage);
@@ -69,15 +68,13 @@ public class ShopBoardController {
 	
 	
 	@RequestMapping("/ShopBoardViewProc")
-	public String ShopBoardSelectProc(HttpServletRequest request){
+	public String ShopBoardSelectProc(String seq){
+		 int shop_seq = Integer.parseInt(seq);
+	      ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
+	      request.setAttribute("dto", dto);
 
-		List<ShopBoardDTO> list = sService.ShopBoardSelect();
-		ShopBoardDTO target = sService.ShopBoardIdSelect(8);
+	      return "/shopBoard/shopBoard_view";
 
-		System.out.println("아이디: " + target.getShop_id());
-
-		request.setAttribute("ShopBoardView", target);	
-		return "/shopBoard/shopBoard_view";
 	}
 
 
