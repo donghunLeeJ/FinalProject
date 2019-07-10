@@ -36,7 +36,7 @@
 								<div class="col-12">
 									<strong>[${dto.shop_id}] ${dto.shop_title }</strong>
 								</div>
-dssdsdsdsdsdsdsdsdsdsdsdsd
+
 							</div>
 
 							<div class="row pb-3 mt-4">
@@ -95,7 +95,8 @@ dssdsdsdsdsdsdsdsdsdsdsdsd
 							</div>
 
 							<div class="row pb-3 mt-4">
-								<div class="col-12" style="text-align: center" style="font-wight:600">
+								<div class="col-12" style="text-align: center"
+									style="font-wight:600">
 
 									<a href="#" class="btn akame-btn">구 매 하 기</a> <a href="#"
 										class="btn akame-btn"><i class="icon_cart"></i>장 바 구 니</a>
