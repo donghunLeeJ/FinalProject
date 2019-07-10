@@ -23,6 +23,13 @@ public class MemberService {
 	public MemberDTO select_member(String id) {
 		return mdao.selectById(id);
 	}
+
+	public int confirmId(String id) {
+		return mdao.confirmId(id);
+	}
+	public String checkConfirm(String id) {
+		return mdao.checkConfirm(id);
+
 	public int edit_mypage(MemberDTO mdto) {
 		System.out.println("2");
 		return mdao.edit_mypage(mdto);
@@ -31,5 +38,6 @@ public class MemberService {
 	public int uploadImg(String filePath, String id) {
 		
 		return mdao.uploadImg(filePath, id);
+
 	}
 }

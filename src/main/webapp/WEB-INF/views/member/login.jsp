@@ -6,10 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="icon" href="/img/core-img/favicon.ico">
-<link rel="stylesheet" href="../css/style2.css">
+<link rel="stylesheet" href="/css/style2.css">
 <title>Insert title here</title>
+
 </head>
 <body>
+
 	<section class="akame-contact-area bg-gray section-padding-80">
         <div class="container">
             <div class="row">
@@ -56,17 +58,14 @@
             </div>
         </div>
     </section>
-	
-	
-
-
-
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+
 		$("#joinmem").on("click", function() {
 			location.href = "/member/joinForm"
 
 		})
+
 	</script>
 </body>
 </html>
