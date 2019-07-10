@@ -28,7 +28,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-5">
-                     <img src=${dto.shop_imagepath } alt="안뜸">
+                     <img src=# alt="안뜸">
                   </div>
                   <div class="col-7">
 

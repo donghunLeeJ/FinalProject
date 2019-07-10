@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.project.dto.MemberDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.ShopBoardService;
@@ -63,9 +64,6 @@ public class ShopBoardController {
 
 		return "/shopBoard/shopBoard_write";
 	}
-
-	
-	
 	
 	@RequestMapping("/ShopBoardViewProc")
 	public String ShopBoardSelectProc(String seq){
@@ -74,12 +72,7 @@ public class ShopBoardController {
 	      request.setAttribute("dto", dto);
 
 	      return "/shopBoard/shopBoard_view";
-
 	}
-
-
-	
-	
 	
 	@RequestMapping("/ShopBoardInsertProc")
 	public String filetest(ShopBoardDTO dto , List<MultipartFile> shop_image){
@@ -99,9 +92,9 @@ public class ShopBoardController {
 			System.out.println(resourcePath);
 			String targetFile = resourcePath + "/" + System.currentTimeMillis() + "_foodimage.png";
 			try {
-
-				image.transferTo(new File(targetFile));
-				fileArrayPath.add("/img/shopfoodimg/" + System.currentTimeMillis() + "_foodimage.png");
+				File f = new File(targetFile);
+				image.transferTo(f);
+				fileArrayPath.add("/img/shopfoodimg/" +f.getName());
 				
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -115,20 +108,11 @@ public class ShopBoardController {
 		dto.setShop_imagepath1(fileArrayPath.get(0));
 		dto.setShop_imagepath2(fileArrayPath.get(1));
 		dto.setShop_imagepath3(fileArrayPath.get(2));
-			
-		dto.setShop_id("kkjangel");	
+		MemberDTO mdto = (MemberDTO)session.getAttribute("id");	
+		dto.setShop_id(mdto.getMember_id());	
 		int result = sService.ShopBoardInsert(dto);	
 		return "redirect:../home";        
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
