@@ -87,7 +87,7 @@
 								<li><a href="#">판매 게시판</a>
 									<ul class="dropdown">
 										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
-										<li><a href="shopboard/ShopBoard_write">- 판매하기</a></li>
+										<li><a href="/shopboard/ShopBoard_write">- 판매하기</a></li>
 									</ul></li>
 								<li><a href="./about.html">sns</a></li>
 
