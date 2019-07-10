@@ -107,24 +107,19 @@
                 </div>
                 <div class="tab-pane" id="edit">
                        <div id="preview"class="col-lg-4 order-lg-1 text-center">
-<!--                        <form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data"> -->
-<%--        				 <img src="${id.member_imgpath }"  class="mx-auto img-circle" alt="avatar"> --%>
- <!--             <label class="custom-file"> --> -->
- <!--                 <input type="file" id="file" class="custom-file-input"> --> 
-<<!--                 <span class="custom-file-control">Choose file</span> --> 
-<!-- 						<input type=file id="file" name="file"> -->
-<!--                       <input type="button" id="change"class="btn btn-primary " value="사진 변경"> -->
-<!--                        <input type="submit" id="uploadImg"class="btn btn-primary " value="사진 업로드"> -->
-                       
-<!-- <!--             </label> --> -->
-<!-- </form> -->
+                       <form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data">
+       				 <img src="${id.member_imgpath }"  class="mx-auto img-circle" alt="avatar">
+						<input type=file id="file" name="file">
+                      <input type="button" id="change"class="btn btn-primary " value="사진 변경">
+                       <input type="submit" id="uploadImg"class="btn btn-primary " value="사진 업로드">
+</form>
         </div>
         <br>
                     <form id="edit_mypage" action="/member/edit_mypage" method="post">
                         <div class="form-group row"  >
                             <label class="col-lg-3 col-form-label form-control-label">아이디</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="${id.member_id }" readonly>
+                                <input class="form-control" name="member_id" type="text" value="${id.member_id }" readonly>
                                 
                             </div>
                         </div>
@@ -161,7 +156,7 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">자기 소개</label>
                             <div class="col-lg-9">
-                                <input class="form-control" name="member_intro" type="text" value="" >
+                                <input class="form-control" name="member_intro" type="text" value="${id.member_intro" >
                             </div>
                         </div>
                        
@@ -181,7 +176,7 @@
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
 <!--                                 <input type="reset" class="btn btn-secondary" value="초기화"> -->
-                                <input type="submit" id="edit_info" class="btn btn-primary" value="정보 수정">
+                                <input type="button" id="edit_info" class="btn btn-primary" value="정보 수정">
                                 <input type="button" id="delId" class="btn btn-primary" value="회원 탈퇴">
                             </div>
                         </div>
@@ -189,14 +184,7 @@
                 </div>
             </div>
         </div>
-<!--         <div class="col-lg-4 order-lg-1 text-center"> -->
-<!--             <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar"> -->
-<!--             <label class="custom-file"> -->
-<!--                 <input type="file" id="file" class="custom-file-input"> -->
-<!--                <span class="custom-file-control">Choose file</span> -->
-<!--                       <input type="button"  class="btn btn-primary custom-file-control" value="사진 변경"> -->
-<!--             </label> -->
-<!--         </div> -->
+    
     </div>
 </div>
 
@@ -214,19 +202,19 @@ $("#file").on("change",function(){
 	$("#preview").show();
 })
 
-// $("#edit_info").on("click",function(){//정보수정 버튼 클릭시
-// 	if($("#pw1").val()==""||$("#pw2").val()==""){
-// 		alert("비밀번호를 입력해주세요");
-// 		return;
-// 	}
-// 	else if($("#pw1").val()!=$("#pw2").val()){
-// 		alert("비밀번호 값이 같아야 합니다");
-// 		return;
-// 	}else{	
-// 		$("#edit_mypage").submit();
+$("#edit_info").on("click",function(){//정보수정 버튼 클릭시
+	if($("#pw1").val()==""||$("#pw2").val()==""){
+		alert("비밀번호를 입력해주세요");
+		return;
+	}
+	else if($("#pw1").val()!=$("#pw2").val()){
+		alert("비밀번호 값이 같아야 합니다");
+		return;
+	}else{	
+		$("#edit_mypage").submit();
 		
-// 	}
-// })
+	}
+});
 
 </script>
 	

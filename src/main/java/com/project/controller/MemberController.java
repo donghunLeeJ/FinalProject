@@ -69,17 +69,11 @@ public class MemberController {
 	}
 	@RequestMapping("edit_mypage")
 	public String edit_mypage(MemberDTO mdto) {//마이페이지에서 글 정보수정 버튼 누르기
-		System.out.println(mdto.getMember_phone()+mdto.getMember_add()+mdto.getMember_intro());
-		
+		System.out.println("마이페이지 맵핑 출력 : " +mdto.getMember_phone()+" : " +mdto.getMember_add()+" : " +mdto.getMember_intro());
 		System.out.println("정보수정 맵핑");
 		System.out.println("1");
-		mdto= (MemberDTO)session.getAttribute("id");
-		String id =mdto.getMember_id();
-		mdto.setMember_id(id);
-	//	mservice.edit_mypage(mdto,id);
 		System.out.println(mservice.edit_mypage(mdto));
-		
-		session.setAttribute("id",mservice.select_member(id));
+		session.setAttribute("id",mservice.select_member(mdto.getMember_id()));
 		return "member/edit_OK";
 	}
 	
@@ -91,10 +85,7 @@ public class MemberController {
 		String uploadPath = session.getServletContext().getRealPath("/resources/img/profile-img/"+time+"/");//파일 저장 위치
 		File makeFile = new File(uploadPath);
 		if(!makeFile.exists()) makeFile.mkdir();
-		
-//		String  realPath = uploadPath + "/" + time;
 		System.out.println(uploadPath);
-	//	System.out.println("realPath : " + realPath);
 		File f = new File(uploadPath+"/"+savedName+"__.jpg");
 		try {
 		file.transferTo(f);//여기까지 사진 저장되는지 확인	
