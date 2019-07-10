@@ -24,7 +24,7 @@ public class MemberService {
 		return mdao.selectById(id);
 	}
 	public int edit_mypage(MemberDTO mdto) {
-		System.out.println("2");
+		System.out.println(mdto);
 		return mdao.edit_mypage(mdto);
 	}
 	

@@ -7,9 +7,21 @@ public class MemberDTO {
 	private String member_birth;
 	private String member_gender;
 	private String member_add;
-	private int member_phone;
+	private String member_phone;
 	private String member_imgpath;
 	private String member_intro;
+	
+	
+	
+	@Override
+	public String toString() {
+		return "MemberDTO [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
+				+ ", member_birth=" + member_birth + ", member_gender=" + member_gender + ", member_add=" + member_add
+				+ ", member_phone=" + member_phone + ", member_imgpath=" + member_imgpath + ", member_intro="
+				+ member_intro + "]";
+	}
+	
+	
 	public String getMember_id() {
 		return member_id;
 	}
@@ -46,10 +58,10 @@ public class MemberDTO {
 	public void setMember_add(String member_add) {
 		this.member_add = member_add;
 	}
-	public int getMember_phone() {
+	public String getMember_phone() {
 		return member_phone;
 	}
-	public void setMember_phone(int member_phone) {
+	public void setMember_phone(String member_phone) {
 		this.member_phone = member_phone;
 	}
 	public String getMember_imgpath() {
@@ -65,7 +77,7 @@ public class MemberDTO {
 		this.member_intro = member_intro;
 	}
 	public MemberDTO(String member_id, String member_pw, String member_name, String member_birth, String member_gender,
-			String member_add, int member_phone, String member_imgpath, String member_intro) {
+			String member_add, String member_phone, String member_imgpath, String member_intro) {
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_name = member_name;
@@ -76,13 +88,7 @@ public class MemberDTO {
 		this.member_imgpath = member_imgpath;
 		this.member_intro = member_intro;
 	}
-	public MemberDTO(String member_id, String member_pw, String member_add, int member_phone, String member_intro) {
-		this.member_id = member_id;
-		this.member_pw = member_pw;
-		this.member_add = member_add;
-		this.member_phone = member_phone;
-		this.member_intro = member_intro;
-	}
+	
 	public MemberDTO() {
 		super();
 	}

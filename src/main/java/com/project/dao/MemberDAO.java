@@ -42,9 +42,9 @@ public class MemberDAO {
 	}
 	
 	public int edit_mypage(MemberDTO dto) {
-		System.out.println("3");
+		System.out.println(dto);
 		try {
-		  return sst.update("member.edit_mypage", dto);
+		  return sst.update("member.editmypage", dto);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

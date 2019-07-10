@@ -65,22 +65,19 @@ public class MemberController {
 	
 	@RequestMapping("myPage")//메인에서 마이페이지로 가기
 	public String myPage() {
-		return "member/myPage";
+		return "/member/myPage";
 	}
 	@RequestMapping("edit_mypage")
 	public String edit_mypage(MemberDTO mdto) {//마이페이지에서 글 정보수정 버튼 누르기
-		System.out.println(mdto.getMember_phone()+mdto.getMember_add()+mdto.getMember_intro());
-		
+		System.out.println(mdto.getMember_phone()+mdto.getMember_add()+mdto.getMember_intro()+mdto.getMember_id());
 		System.out.println("정보수정 맵핑");
-		System.out.println("1");
-		mdto= (MemberDTO)session.getAttribute("id");
-		String id =mdto.getMember_id();
-		mdto.setMember_id(id);
-	//	mservice.edit_mypage(mdto,id);
-		System.out.println(mservice.edit_mypage(mdto));
 		
+		String id =mdto.getMember_id();
+		System.out.println(id);
+		mdto.setMember_id(id);
+		System.out.println(mservice.edit_mypage(mdto));
 		session.setAttribute("id",mservice.select_member(id));
-		return "member/edit_OK";
+		return "/home";
 	}
 	
 	@RequestMapping("uploadImg")

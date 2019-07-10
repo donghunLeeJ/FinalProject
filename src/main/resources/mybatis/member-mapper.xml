@@ -3,21 +3,20 @@
 <mapper namespace="member">
 
 	<select id="login" resultType="Integer">
-		select count(*) from member where member_id=#{member_id} and member_pw=#{member_pw}
+		select count(*) from member where
+		member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
 
 	<insert id="insert">
-		insert into member values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_add},#{member_phone},default,'')
+		insert into member
+		values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_add},#{member_phone},default,'')
 	</insert>
-	
+
 	<select id="selectById" resultType="com.project.dto.MemberDTO">
-	select * from member where member_id=#{member_id}
+		select * from member where member_id=#{member_id}
 	</select>
-	
-	<update id="edit_mypage">
-	update member set member_add=#{member_add} where member_id=#{member_id}
-	</update>
-	<update id="uploadImg">
-	update member set member_imgpath = #{path}  where member_id = #{id}
+
+	<update id="editmypage">
+		update member set member_add = #{member_add} where member_id = #{member_id}
 	</update>
 </mapper>
