@@ -16,14 +16,13 @@ private String shop_location;  //지역
 private String shop_expiration; //유통기한
 private int shop_price;        //가격(1개당)
 private int shop_quantity;  //수량
-private MultipartFile shop_image; //이미지 파일임
-private String shop_imagepath;	//음식 이미지 주소가 들어가는 경로 
 
-public ShopBoardDTO(){}
-
+private String shop_imagepath1;
+private String shop_imagepath2;
+private String shop_imagepath3;//음식 이미지 주소가 들어가는 경로 
 public ShopBoardDTO(int shop_seq, String shop_id, String shop_title, String shop_contents, Timestamp shop_writedate,
-		String shop_location, String shop_expiration, int shop_price, int shop_quantity, MultipartFile shop_image,
-		String shop_imagepath) {
+		String shop_location, String shop_expiration, int shop_price, int shop_quantity, String shop_imagepath1,
+		String shop_imagepath2, String shop_imagepath3) {
 	super();
 	this.shop_seq = shop_seq;
 	this.shop_id = shop_id;
@@ -34,25 +33,13 @@ public ShopBoardDTO(int shop_seq, String shop_id, String shop_title, String shop
 	this.shop_expiration = shop_expiration;
 	this.shop_price = shop_price;
 	this.shop_quantity = shop_quantity;
-	this.shop_image = shop_image;
-	this.shop_imagepath = shop_imagepath;
+	this.shop_imagepath1 = shop_imagepath1;
+	this.shop_imagepath2 = shop_imagepath2;
+	this.shop_imagepath3 = shop_imagepath3;
 }
-
-public ShopBoardDTO(int shop_seq, String shop_id, String shop_title, String shop_contents, Timestamp shop_writedate,
-		String shop_location, String shop_expiration, int shop_price, int shop_quantity, String shop_imagepath) {
+public ShopBoardDTO() {
 	super();
-	this.shop_seq = shop_seq;
-	this.shop_id = shop_id;
-	this.shop_title = shop_title;
-	this.shop_contents = shop_contents;
-	this.shop_writedate = shop_writedate;
-	this.shop_location = shop_location;
-	this.shop_expiration = shop_expiration;
-	this.shop_price = shop_price;
-	this.shop_quantity = shop_quantity;
-	this.shop_imagepath = shop_imagepath;
 }
-
 public int getShop_seq() {
 	return shop_seq;
 }
@@ -107,23 +94,26 @@ public int getShop_quantity() {
 public void setShop_quantity(int shop_quantity) {
 	this.shop_quantity = shop_quantity;
 }
-public MultipartFile getShop_image() {
-	return shop_image;
+public String getShop_imagepath1() {
+	return shop_imagepath1;
 }
-public void setShop_image(MultipartFile shop_image) {
-	this.shop_image = shop_image;
+public void setShop_imagepath1(String shop_imagepath1) {
+	this.shop_imagepath1 = shop_imagepath1;
 }
-public String getShop_imagepath() {
-	return shop_imagepath;
+public String getShop_imagepath2() {
+	return shop_imagepath2;
 }
-public void setShop_imagepath(String shop_imagepath) {
-	this.shop_imagepath = shop_imagepath;
+public void setShop_imagepath2(String shop_imagepath2) {
+	this.shop_imagepath2 = shop_imagepath2;
 }
-	
-	
+public String getShop_imagepath3() {
+	return shop_imagepath3;
+}
+public void setShop_imagepath3(String shop_imagepath3) {
+	this.shop_imagepath3 = shop_imagepath3;
+}
 
 
 
 }
-
 
