@@ -7,6 +7,18 @@
 	</select>
 
 	<insert id="insert">
-		insert into member values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_add},#{member_phone})
+		insert into member values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_postcode},#{member_address1},#{member_address2},#{member_phone},default)
 	</insert>
+	
+	<select id="selectById" resultType="com.project.dto.MemberDTO">
+	select * from member where member_id=#{member_id}
+	</select>
+	
+	<update id="confirmId">
+		update member set member_confirm='y' where member_id=#{member_id}
+	</update>
+	
+	<select id="checkConfirm" resultType="String">
+		select member_confirm from member where member_id=#{member_id}
+	</select>
 </mapper>

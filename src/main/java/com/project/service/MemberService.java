@@ -19,4 +19,13 @@ public class MemberService {
 		int result = mdao.insert(mdto);
 		return result;
 	}
+	public MemberDTO select_member(String id) {
+		return mdao.selectById(id);
+	}
+	public int confirmId(String id) {
+		return mdao.confirmId(id);
+	}
+	public String checkConfirm(String id) {
+		return mdao.checkConfirm(id);
+	}
 }

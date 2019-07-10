@@ -36,6 +36,22 @@
 			<artifactId>spring-messaging</artifactId>
 			<version>5.0.6.RELEASE</version>
 		</dependency>
+		
+		<!-- JAVA SMTP -->
+      <dependency>
+         <groupId>javax.mail</groupId>
+         <artifactId>mail</artifactId>
+         <version>1.4.7</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-email</artifactId>
+         <version>1.5</version>
+      </dependency>
+		
+		
+		
 
 		<!-- Jackson : 동적 바인딩이 가능하다. DTO를 리턴하면 알아서 JSon으로 바꿔줌 -->
 		<dependency>
@@ -47,6 +63,12 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.9</version>
+		</dependency>
+		<!-- GSON -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
 		</dependency>
 
 		<!-- JAVA SMTP -->
@@ -130,8 +152,8 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
-		
-		<!-- 		aop사용을 위한 거 -->
+
+		<!-- aop사용을 위한 거 -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>

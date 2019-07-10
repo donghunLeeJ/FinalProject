@@ -6,51 +6,82 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.dao.HtmlEmailDAO;
 import com.project.dto.MemberDTO;
 import com.project.service.MemberService;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	
+
 	@Autowired
 	private HttpSession session;
 	@Autowired
 	private MemberService mservice;
-	
-	
+	@Autowired
+	private HtmlEmailDAO edao;
+
+	// @RequestMapping("/goMyPage")
+	// public String goMyPage() {
+	// return "/member/myPage.jsp";
+	// }
 	@RequestMapping("loginForm")
 	public String goLogin() {
 		return "member/login";
 	}
+
 	@RequestMapping("loginProc")
 	public String login(MemberDTO mdto) {
-		System.out.println("∑Œ±◊¿Œ «¡∑œ  "+mdto.getMember_id());
+		System.out.println("Î°úÍ∑∏Ïù∏ÌîÑÎ°ù  " + mdto.getMember_id());
 		int result = mservice.login(mdto);
-		if(result == 1) {
-			session.setAttribute("id", mdto.getMember_id());
+		if (result == 1) {
+			String confirm=mservice.checkConfirm(mdto.getMember_id());
+			if(confirm.equals("y")) {
+			session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 			return "redirect:/home";
-		}else {
+			}else {
+				return "notLogin";
+			}
+			
+		} else {
 			return "notLogin";
 		}
 	}
-	
+
 	@RequestMapping("joinForm")
 	public String goJoin() {
 		return "member/joinMem";
 	}
+
 	@RequestMapping("joinProc")
 	public String joinInsert(MemberDTO mdto) {
-		System.out.println("¡∂¿Œ «¡∑œ           "+mdto.getMember_id());
+		String id = mdto.getMember_id();
+		System.out.println("Ï°∞Ïù∏ÌîÑÎ°ù         " + id);
+		try {
+			edao.sendMail(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		int result = mservice.joinInsert(mdto);
 		System.out.println(result);
-		return "/home";
+		return "redirect:/home";
 	}
-	
+
 	@RequestMapping("logOutProc")
 	public String logout() {
 		session.invalidate();
 		return "redirect:/home";
 	}
-	
+
+	@RequestMapping("myPage")
+	public String myPage() {
+
+		return "member/myPage";
+	}
+	@RequestMapping("verifiedId")
+	public String verifiedId(String id) {
+		mservice.confirmId(id);
+		return "member/myPage";
+	}
+
 }

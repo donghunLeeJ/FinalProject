@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <footer class="footer-area section-padding-80-0">
 	<div class="container">
 		<div class="row justify-content-between">
@@ -9,7 +9,7 @@
 				<div class="single-footer-widget mb-80">
 					<!-- Footer Logo -->
 					<a href="#" class="footer-logo"><img
-						src="img/core-img/logo.png" alt=""></a>
+						src="/img/core-img/logo.png" alt=""></a>
 
 					<p class="mb-30">We would love to serve you and let you enjoy
 						your culinary experience. Excepteur sint occaecat cupidatat non
