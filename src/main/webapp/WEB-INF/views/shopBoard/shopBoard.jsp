@@ -9,6 +9,12 @@
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<style>
+#img1 {
+	width: 100%;
+	height: 100%;
+}
+</style>
 </head>
 <body>
 	<!-- header -->
@@ -16,41 +22,55 @@
 
 	<!-- /header -->
 	<section class="akame-about-area section-padding-80-0">
-	<div class="container">
+
+
+	<div class="container-fluid">
 		<div class="row">
-			<c:forEach var="i" items="${boardList }">
-				<div
-					class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp"
-					data-wow-delay="500ms">
-					<div class="akame-portfolio-single-item">
-						<img src="${i.shop_imagepath }" alt="">
+			<div class="col-lg-2">asdasd</div>
+			<div class="col-lg-8">
+				<div class="container">
+					<div class="row">
+						<c:forEach var="i" items="${boardList }">
+							<div
+								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
+								data-wow-delay="500ms">
+								<div class="akame-portfolio-single-item" style="height: 250px">
+									<img src="${i.shop_imagepath }" id="img1" alt="">
 
-						<!-- Overlay Content -->
-						<div
-							class="overlay-content d-flex align-items-center justify-content-center">
-							<div class="overlay-text text-center">
-								<h4>Hairstyle</h4>
-								<p>Consectetur adipisicing elit sed doe</p>
+									<!-- Overlay Content -->
+									<div
+										class="overlay-content d-flex align-items-center justify-content-center">
+										<div class="overlay-text text-center">
+											<h4 class="pb-3">${i.shop_contents }</h4>
+											<p class="pt-3">${ i.shop_price}</p>
+										</div>
+									</div>
+
+									<!-- Thumbnail Zoom -->
+									<a href="${i.shop_imagepath }" class="thumbnail-zoom"><i
+										class="icon_search"></i></a>
+
+								</div>
+								<div class="team-member-info border">
+									<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }"><h5>${i.shop_title }</h5></a>
+									<p>${i.shop_contents }</p>
+								</div>
 							</div>
-						</div>
+						</c:forEach>
 
-						<!-- Thumbnail Zoom -->
-						<a href="${i.shop_imagepath }" class="thumbnail-zoom"><i
-							class="icon_search"></i></a>
 
 					</div>
-					<div class="team-member-info border">
-						<a href="/shopboard/ShopBoardViewProc"><h5>${i.shop_title }</h5></a>
-						<p>${i.shop_contents }</p>
-					</div>
+					<div class="row" id="extendList"></div>
 				</div>
-			</c:forEach>
+			</div>
+			<div class="col-lg-2">asdasd</div>
 		</div>
-		<div class="row" id="extendList"></div>
 	</div>
+
 	</section>
 
 	<script>
+		var count = 2;
 		$(window).scroll(
 				function() {
 					// 최하단일 경우를 체크하기 위해 최하단 위치값을 지정
@@ -58,7 +78,7 @@
 				
 				console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
 
-					  if($(document).height() <= $(window).scrollTop() + $(window).height() ){
+					  if($(document).height() <= $(window).scrollTop() + $(window).height()+100 ){
 						// 최하단으로 도달했을 경우
 						
 					
@@ -67,18 +87,18 @@
 							url : "/shopboard/shopBoardScroll",
 							type : "post",
 							data : {
-								page : "1"
+								page : count
 							}
 						}).done(function(resp) {
+							count++
 							var result = JSON.parse(resp);
 							console.log(result);
-							var path = result[0].shop_imagepath;
-							console.log(path);
+							
 							for(var i = 0 ; i < result.length; i ++){
 							$("#extendList").append(`<div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
 										data-wow-delay='500ms'>
-										<div class='akame-portfolio-single-item'>
-											<img src=`+path+` >
+										<div class='akame-portfolio-single-item' style="height: 250px">
+											<img id='img1' src=`+ result[i].shop_imagepath+` >
 
 											<!-- Overlay Content -->
 											<div
@@ -90,13 +110,13 @@
 											</div>
 
 											<!-- Thumbnail Zoom -->
-											<a href='/img/bg-img/19.jpg' class='thumbnail-zoom'><i
+											<a href=`+ result[i].shop_imagepath+` class='thumbnail-zoom'><i
 												class='icon_search'></i></a>
 
 										</div>
 										<div class='team-member-info border'>
-											<h5></h5>
-											<p></p>
+										<a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`' <h5> `+result[i].shop_title+` </h5></a>
+											<p>`+ result[i].shop_contents+` </p>
 										</div>
 									</div>`);
 							};

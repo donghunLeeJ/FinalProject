@@ -30,7 +30,7 @@ select * from shopboard
 <select id="ShopBoardIdSelect" resultType="com.project.dto.ShopBoardDTO">
 select * from shopboard where shop_seq=#{value}
 </select>
- 
+
  
   
 
