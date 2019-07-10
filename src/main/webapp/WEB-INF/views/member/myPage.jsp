@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
+<style>
+.float{
+float:left;
+}
+#findAdd{
+padding:5px;
+}
+.no{
+padding:0px;
+margin:0px;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
@@ -28,43 +40,56 @@
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
-                    <div class="col-lg-12"><p>소 개</p></div>
                     <div class="row">
-                        <div class="col-md-6">
-                            
-                            <p>
-                                Indie music, skiing and hiking. I love the great outdoors.
-                            </p>
+                <div><img src="${id.member_imgpath }"  class="mx-auto img-circle" alt="avatar"></div>
+                        <div class="col-lg-6 col-md-6">
+                        <div class="float col-lg-12 col-mf-12">
+                             <div class=" form-group row"  >
+                            <label class="col-lg-3 col-form-label form-control-label">아이디</label>
+                            <div class=" col-lg-9">
+                               <div class=" form-control"  type="text" >${id.member_id } </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">이름</label>
+                            <div class="col-lg-9">
+                                <div class="form-control" type="text"> ${id.member_name } </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">생일</label>
+                            <div class="col-lg-9">
+                                <div class="form-control" type="text">${id.member_birth}</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">성별</label>
+                            <div class="col-lg-9">
+                                <div class="form-control" type="text">${id.member_gender }</div>
+                            </div>
+                        </div>
+                        </div>
                         </div>
                         <div class="col-md-12 mt-5">
-                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>최근 나의 활동</h5>
                             <table class="table table-sm table-hover table-striped">
                                 <tbody>                                    
                                     <tr>
                                         <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                            <strong>김동현</strong>님의 판매 활동 <strong>`상추튀김`</strong>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                            <strong>김동현</strong>님의 판매 활동 <strong>`마늘주스`</strong>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                            <strong>김동현</strong>님의 구매 활동 <strong>`공룡고기`</strong>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
+                                
                                 </tbody>
                             </table>
                         </div>
@@ -110,11 +135,14 @@
                        <form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data">
        				 <img src="${id.member_imgpath }"  class="mx-auto img-circle" alt="avatar">
 						<input type=file id="file" name="file">
+						
                       <input type="button" id="change"class="btn btn-primary " value="사진 변경">
                        <input type="submit" id="uploadImg"class="btn btn-primary " value="사진 업로드">
-</form>
-        </div>
+                    
+						</form>
+      				  </div>
         <br>
+        		<div>
                     <form id="edit_mypage" action="/member/edit_mypage" method="post">
                         <div class="form-group row"  >
                             <label class="col-lg-3 col-form-label form-control-label">아이디</label>
@@ -142,21 +170,24 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">주소</label>
+                            <label class="col-lg-3 col-form-label form-control-label">주소
+                             <input type="button" id="findAdd" class="btn btn-primary" value="변경">
+                            </label>
                             <div class="col-lg-9">
-                                <input class="form-control" name="member_add" type="text" value="${id.member_add}">
+                                <input class="form-control" id="add"name="member_add" type="text" value="${id.member_add}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">핸드폰 번호</label>
                             <div class="col-lg-9">
-                                <input class="form-control" name="member_phone" type="text" value="${id.member_phone}" >
+                                <input class="form-control" id="phone" name="member_phone" type="text" value="${id.member_phone}"
+                                placeholder=" '-' 제외하고 입력" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">자기 소개</label>
                             <div class="col-lg-9">
-                                <input class="form-control" name="member_intro" type="text" value="${id.member_intro" >
+                                <input class="form-control"id="intro" name="member_intro" type="text" value="${id.member_intro}" >
                             </div>
                         </div>
                        
@@ -181,6 +212,7 @@
                             </div>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
