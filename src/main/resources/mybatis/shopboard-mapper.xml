@@ -16,7 +16,7 @@
 
 
 <insert id="ShopBoardInsert">
- insert into shopboard values(SHOP_SEQ.NEXTVAL,#{shop_id},#{shop_title},#{shop_contents},default,#{shop_location},#{shop_expiration},#{shop_price},#{shop_quantity},#{shop_imagepath})
+ insert into shopboard values(SHOP_SEQ.NEXTVAL,#{shop_id},#{shop_title},#{shop_contents},default,#{shop_location},#{shop_expiration},#{shop_price},#{shop_quantity},#{shop_imagepath1},#{shop_imagepath2},#{shop_imagepath3})
 </insert>
 
 

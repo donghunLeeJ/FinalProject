@@ -8,25 +8,65 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<style>
+
+
+</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-     
+ <!-- /shopboard/filetest
+ /shopboard/ShopBoardInsertProc
+  -->    
 <div class="container">          
-<form action="/shopboard/ShopBoardInsertProc" method="post" enctype="multipart/form-data">
 
 <div class="row">
 
    <div class="col-lg-4">
-         
-            <div class="row card" style="width: 20rem; ">             
-               <img id="food" src="#" class="card-img-top" alt="..." style="height: 12rem">            
-               <div class="card-body">         
+        
+        <div class="row">
+         <div class="card col-lg-12">             
+                <div id="mainimg" class="card-body">         
+            <img src="/img/default.jpg">
+               </div>                       
+         </div>         
+        </div>
+        
+ <form action="/shopboard/ShopBoardInsertProc" method="post" enctype="multipart/form-data">
+        
+        <div class="row">
+        
+            <div class="col-lg-4" style="width: 5rem; ">  
+                       
+               <img id="food1" class="img">            
+                      
                <label class="custom-file">
-               <input type="file" id="shop_image" name="shop_image" class="custom-file-input">
-               <span class="custom-file-control">Choose file</span></label>
-               </div>                                         
-            </div>                
+               <input  multiple="multiple" type="file" id="shop_image1" name="shop_image" class="custom-file-input">
+               <span class="custom-file-control">이미지 선택</span></label>
+                                                                 
+            </div>    
+           
+           
+            <div class="col-lg-4" style="width: 5rem; ">             
+               <img id="food2" class="img">            
+                      
+               <label class="custom-file">
+               <input  multiple="multiple" type="file" id="shop_image2" name="shop_image" class="custom-file-input">
+               <span class="custom-file-control">이미지 선택</span></label>                                                
+            </div>    
+            
+            
+             <div class="col-lg-4" style="width: 5rem; ">                         
+               <img id="food3" class="img">                          
+               <label class="custom-file">
+               <input  multiple="multiple" type="file" id="shop_image3" name="shop_image" class="custom-file-input">
+               <span class="custom-file-control">이미지 선택</span></label>                                                  
+            </div>    
+           
+           </div>
+           
+               
+                        
        </div>
          
            <div class="col-lg-6">
@@ -39,34 +79,97 @@
            
            </div>
                 
-  <div class="col-10">
+  <div class="col-12">
             <textarea name="shop_contents" class="form-control mb-30" placeholder="내용"></textarea>
          </div>
          
+                   
          <div class="col-10 text-center">
-            <input type="submit" value="제출" class="btn akame-btn btn-3 mt-15 active" >
+            <input type="submit" value="제출이야" class="btn akame-btn btn-3 mt-15 active" >
          </div>
+
 
     </div>
 </form> 
 <div>
 
 
+<!--  
+ <form name="fileForm" action="/shopboard/filetest" method="post" enctype="multipart/form-data">
+ 
+        <input multiple="multiple" type="file" name="shop_image" />
+        <input multiple="multiple" type="file" name="shop_image" />
+        <input multiple="multiple" type="file" name="shop_image" />
+        <input type="text" name="shop_title" />
+        <input type="submit" value="전송임ㅇ" />
+        
+   </form> -->
 <script>
 //이미지 미리보기 기능
-function readURL(input) {
+
+
+
+
+
+
+
+function readURL1(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            $('#food').attr('src', e.target.result);
+            $('#food1').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-$("#shop_image").change(function() {
-    readURL(this);
+$("#shop_image1").change(function() {
+    readURL1(this);
 });
+
+
+function readURL2(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#food2').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#shop_image2").change(function() {
+    readURL2(this);
+});
+
+
+function readURL3(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#food3').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#shop_image3").change(function() {
+    readURL3(this);
+});
+
+
+
+$(".img").each(function(i,item){
+    
+     $(item).on("click",function(){	
+    	
+    	$("#mainimg").html($(item).clone());
+      	
+    })    
+});  
+
+
+
 </script>
 
 

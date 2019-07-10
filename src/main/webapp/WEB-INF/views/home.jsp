@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	
+
 
 
 	<!-- Header Area End -->
@@ -71,7 +71,42 @@
 		</div>
 	</div>
 
-	
+
+
+	<div class="container ">
+		<div class="row mt-4">
+			<div class="col-lg-7 border" style="margin: 0 auto">
+				<div class="row py-3">
+					<div class="col-lg-1">
+						<img class="rounded-circle" alt=""
+							src="/img/core-img/empty_profile.png">
+					</div>
+					<div class="col-lg-10 py-2">여기 아이디 넣고</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="single-post-area">
+							<div class="post-thumbnail" style="text-align: center">
+								<img src="/img/bg-img/33.jpg"
+									alt="">
+							</div>
+							<div class="post-content">
+
+								<div class="post-meta">
+									<a href="#" class="post-date"><i class="icon_clock_alt"></i>
+										September 27, 2018</a> <a href="#" class="post-comments"><i
+										class="icon_chat_alt"></i> 10</a>
+								</div>
+								<p>여기 내용 뜨게</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
 
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
