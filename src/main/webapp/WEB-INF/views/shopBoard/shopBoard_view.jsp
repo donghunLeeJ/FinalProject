@@ -36,7 +36,7 @@
 								<div class="col-12">
 									<strong>[${dto.shop_id}] ${dto.shop_title }</strong>
 								</div>
-
+dssdsdsdsdsdsdsdsdsdsdsdsd
 							</div>
 
 							<div class="row pb-3 mt-4">
