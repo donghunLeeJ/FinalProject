@@ -10,6 +10,9 @@ public class MemberDTO {
 	private String member_address1;
 	private String member_address2;
 	private int member_phone;
+  	private String member_imgpath;
+	private String member_intro;
+
 	private String member_confirm;
 	
 	
@@ -33,6 +36,7 @@ public class MemberDTO {
 		this.member_phone = member_phone;
 		this.member_confirm = member_confirm;
 	}
+
 	public String getMember_id() {
 		return member_id;
 	}
@@ -87,14 +91,7 @@ public class MemberDTO {
 	public void setMember_phone(int member_phone) {
 		this.member_phone = member_phone;
 	}
-	public String getMember_confirm() {
-		return member_confirm;
-	}
-	public void setMember_confirm(String member_confirm) {
-		this.member_confirm = member_confirm;
-	}
-	
-	
+
 	
 	
 	
