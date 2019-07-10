@@ -72,7 +72,7 @@
 	</div>
 
 	
-
+<a href="/shopboard/ShopBoardViewProc">테스트용 상품상세게시판 이동</a>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
