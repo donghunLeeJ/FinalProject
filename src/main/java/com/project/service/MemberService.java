@@ -2,6 +2,7 @@ package com.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.dao.MemberDAO;
 import com.project.dto.MemberDTO;
@@ -22,7 +23,13 @@ public class MemberService {
 	public MemberDTO select_member(String id) {
 		return mdao.selectById(id);
 	}
-	public int edit_mypage(String id) {
-		return mdao.edit_mypage(id);
+	public int edit_mypage(MemberDTO mdto) {
+		System.out.println("2");
+		return mdao.edit_mypage(mdto);
+	}
+	
+	public int uploadImg(String filePath, String id) {
+		
+		return mdao.uploadImg(filePath, id);
 	}
 }

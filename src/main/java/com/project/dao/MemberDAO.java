@@ -1,6 +1,7 @@
 package com.project.dao;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -40,8 +41,23 @@ public class MemberDAO {
 		return sst.selectOne("member.selectById",id);
 	}
 	
-	public int edit_mypage(String id) {
-		return sst.update("member.edit_mypage", id);
+	public int edit_mypage(MemberDTO dto) {
+		System.out.println("3");
+		try {
+		  return sst.update("member.edit_mypage", dto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+		
+		
+	}
+	public int uploadImg(String filePath, String id) {
+		Map<String,String> map = new HashMap();
+		map.put("path", filePath);
+		map.put("id", id);
+		return sst.update("member.uploadImg",map);
+		
 	}
 
 }

@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
@@ -23,7 +23,7 @@
                     <a href="" data-target="#messages" data-toggle="tab" class="nav-link">쪽지함</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">정보수정</a>
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">정보 수정</a>
                 </li>
             </ul>
             <div class="tab-content py-4">
@@ -35,11 +35,6 @@
                             <p>
                                 Indie music, skiing and hiking. I love the great outdoors.
                             </p>
-                        </div>
-                        <div class="col-md-6">
-                            <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
-                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
-                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
                         </div>
                         <div class="col-md-12 mt-5">
                             <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
@@ -78,7 +73,7 @@
                 </div>
                 <div class="tab-pane" id="messages">
                     <div class="alert alert-info alert-dismissable">
-                        <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                        <a class="panel-close close" data-dismiss="alert">×</a> 최근 받은 쪽지 목록입니다
                     </div>
                     <table class="table table-hover table-striped">
                         <tbody>                                    
@@ -111,16 +106,21 @@
                     </table>
                 </div>
                 <div class="tab-pane" id="edit">
-                       <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-<!--             <label class="custom-file"> -->
-<!--                 <input type="file" id="file" class="custom-file-input"> -->
-<!--                 <span class="custom-file-control">Choose file</span> -->
-						<input type=file id="file"><br>
-                      <input type="button" id="change"class="btn btn-primary " value="사진 변경"><br>
-<!--             </label> -->
+                       <div id="preview"class="col-lg-4 order-lg-1 text-center">
+<!--                        <form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data"> -->
+<%--        				 <img src="${id.member_imgpath }"  class="mx-auto img-circle" alt="avatar"> --%>
+ <!--             <label class="custom-file"> --> -->
+ <!--                 <input type="file" id="file" class="custom-file-input"> --> 
+<<!--                 <span class="custom-file-control">Choose file</span> --> 
+<!-- 						<input type=file id="file" name="file"> -->
+<!--                       <input type="button" id="change"class="btn btn-primary " value="사진 변경"> -->
+<!--                        <input type="submit" id="uploadImg"class="btn btn-primary " value="사진 업로드"> -->
+                       
+<!-- <!--             </label> --> -->
+<!-- </form> -->
         </div>
-                    <form role="form">
+        <br>
+                    <form id="edit_mypage" action="/member/edit_mypage" method="post">
                         <div class="form-group row"  >
                             <label class="col-lg-3 col-form-label form-control-label">아이디</label>
                             <div class="col-lg-9">
@@ -149,39 +149,39 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">주소</label>
                             <div class="col-lg-9">
-                                <input class="form-control" name=add type="text" value="${id.member_add}">
+                                <input class="form-control" name="member_add" type="text" value="${id.member_add}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">핸드폰 번호</label>
                             <div class="col-lg-9">
-                                <input class="form-control" name=phone type="text" value="${id.member_phone}" >
+                                <input class="form-control" name="member_phone" type="text" value="${id.member_phone}" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">자기 소개</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" >
+                                <input class="form-control" name="member_intro" type="text" value="" >
                             </div>
                         </div>
                        
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password"  id="pw1">
+                                <input class="form-control" type="password" name="member_pw" id="pw1">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">비밀번호 확인</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" id="pw2">
+                                <input class="form-control" type="password"  id="pw2">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
 <!--                                 <input type="reset" class="btn btn-secondary" value="초기화"> -->
-                                <input type="button" id="edit_info" class="btn btn-primary" value="정보 수정">
+                                <input type="submit" id="edit_info" class="btn btn-primary" value="정보 수정">
                                 <input type="button" id="delId" class="btn btn-primary" value="회원 탈퇴">
                             </div>
                         </div>
@@ -204,22 +204,29 @@
 $("#file").hide();
 $("#change").on("click",function(){
     $("#file").click();//사진변경 버튼 누르면 file버튼 클릭됨
+
+});
+
+$("#file").on("change",function(){
+	file=$("#file").prop("files")[0];
+	ImgURL=window.URL.createObjectURL(file);
+	$("#preview img").attr('src',ImgURL);
+	$("#preview").show();
 })
 
-$("#edit_info").on("click",function(){//정보수정 버튼 클릭시
-	if($("#pw1").val()==""||$("#pw2").val()==""){
-		alert("비밀번호를 입력해주세요");
-		return;
-	}
-	else if($("#pw1").val()!=$("#pw2").val()){
-		alert("비밀번호 값이 같아야 합니다");
-		return;
-	}else{
+// $("#edit_info").on("click",function(){//정보수정 버튼 클릭시
+// 	if($("#pw1").val()==""||$("#pw2").val()==""){
+// 		alert("비밀번호를 입력해주세요");
+// 		return;
+// 	}
+// 	else if($("#pw1").val()!=$("#pw2").val()){
+// 		alert("비밀번호 값이 같아야 합니다");
+// 		return;
+// 	}else{	
+// 		$("#edit_mypage").submit();
 		
-		alert("정보가 변경되었습니다");
-		location.href="/member/myPage";
-	}
-})
+// 	}
+// })
 
 </script>
 	
