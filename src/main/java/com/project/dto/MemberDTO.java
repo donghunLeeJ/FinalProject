@@ -8,22 +8,8 @@ public class MemberDTO {
 	private String member_gender;
 	private String member_add;
 	private int member_phone;
-	
-	
-	public MemberDTO() {};
-	
-	
-	public MemberDTO(String member_id, String member_pw, String member_name, String member_birth, String member_gender,
-			String member_add, int member_phone) {
-		super();
-		this.member_id = member_id;
-		this.member_pw = member_pw;
-		this.member_name = member_name;
-		this.member_birth = member_birth;
-		this.member_gender = member_gender;
-		this.member_add = member_add;
-		this.member_phone = member_phone;
-	}
+	private String member_imgpath;
+	private String member_intro;
 	public String getMember_id() {
 		return member_id;
 	}
@@ -66,6 +52,42 @@ public class MemberDTO {
 	public void setMember_phone(int member_phone) {
 		this.member_phone = member_phone;
 	}
+	public String getMember_imgpath() {
+		return member_imgpath;
+	}
+	public void setMember_imgpath(String member_imgpath) {
+		this.member_imgpath = member_imgpath;
+	}
+	public String getMember_intro() {
+		return member_intro;
+	}
+	public void setMember_intro(String member_intro) {
+		this.member_intro = member_intro;
+	}
+	public MemberDTO(String member_id, String member_pw, String member_name, String member_birth, String member_gender,
+			String member_add, int member_phone, String member_imgpath, String member_intro) {
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_birth = member_birth;
+		this.member_gender = member_gender;
+		this.member_add = member_add;
+		this.member_phone = member_phone;
+		this.member_imgpath = member_imgpath;
+		this.member_intro = member_intro;
+	}
+	public MemberDTO(String member_id, String member_pw, String member_add, int member_phone, String member_intro) {
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_add = member_add;
+		this.member_phone = member_phone;
+		this.member_intro = member_intro;
+	}
+	public MemberDTO() {
+		super();
+	}
+
+	
 	
 
 	
