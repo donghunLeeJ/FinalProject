@@ -10,102 +10,48 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	
+	
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">나의 정보</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">쪽지함</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">정보수정</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <div class="col-lg-12"><p>소 개</p></div>
+                   
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="messages">
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                    </div>
+                    
+                </div>
+                <div class="tab-pane" id="edit">
+                       <div class="col-lg-4 order-lg-1 text-center">
+            
+                </div>
+            </div>
+        </div>
 
+    </div>
+</div>
+</div>
 
 
 	<!-- Header Area End -->
 
-	<!-- Welcome Area Start -->
-	<section class="welcome-area">
-	<div class="welcome-slides owl-carousel">
-		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img"
-			style="background-image: url(img/bg-img/background.jpg);">
-			<!-- Welcome Content -->
-			<div class="welcome-content h-100">
-				<div class="container h-100">
-					<div class="row h-100 align-items-center">
-						<!-- Welcome Text -->
-						<div class="col-12 col-md-9 col-lg-6">
-							<div class="welcome-text">
-								<h2 data-animation="fadeInUp" data-delay="100ms">
-									We Care About <br> Your Hair
-								</h2>
-								<p data-animation="fadeInUp" data-delay="400ms">Discover
-									your own style. Don't try to repeat what has already been
-									written - have the courage to do your own thing and don't be
-									afraid to do something different.</p>
-								<a href="#" class="btn akame-btn" data-animation="fadeInUp"
-									data-delay="700ms">About Us</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Single Welcome Slide -->
-		<div class="single-welcome-slide bg-img"
-			style="background-image: url(img/bg-img/background.jpg);">
-			<!-- Welcome Content -->
-			<div class="welcome-content h-100">
-				<div class="container h-100">
-					<div class="row h-100 align-items-center">
-						<!-- Welcome Text -->
-						<div class="col-12 col-md-9 col-lg-6">
-							<div class="welcome-text">
-								<h2 data-animation="fadeInUp" data-delay="100ms">
-									We Care About <br> Your Hair
-								</h2>
-								<p data-animation="fadeInUp" data-delay="400ms">징째Discover
-									your own style. Don't try to repeat what has already been
-									written - have the courage to do your own thing and don't be
-									afraid to do something different.징짹</p>
-								<a href="#" class="btn akame-btn active"
-									data-animation="fadeInUp" data-delay="700ms">About Us</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<div class="container ">
-		<div class="row mt-4">
-			<div class="col-lg-7 border" style="margin: 0 auto">
-				<div class="row py-3">
-					<div class="col-lg-1">
-						<img class="rounded-circle" alt=""
-							src="/img/core-img/empty_profile.png">
-					</div>
-					<div class="col-lg-10 py-2">여기 아이디 넣고</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="single-post-area">
-							<div class="post-thumbnail" style="text-align: center">
-								<img src="/img/bg-img/33.jpg"
-									alt="">
-							</div>
-							<div class="post-content">
-
-								<div class="post-meta">
-									<a href="#" class="post-date"><i class="icon_clock_alt"></i>
-										September 27, 2018</a> <a href="#" class="post-comments"><i
-										class="icon_chat_alt"></i> 10</a>
-								</div>
-								<p>여기 내용 뜨게</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
 
 
 
