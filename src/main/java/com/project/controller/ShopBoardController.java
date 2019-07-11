@@ -4,6 +4,7 @@ package com.project.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -84,12 +85,16 @@ public class ShopBoardController {
 		for (MultipartFile image : shop_image) {
 
 			if (image.getSize() != 0) {
+
 				String originFileName = image.getOriginalFilename();
 				long fileSize = image.getSize();
 				System.out.println("originFileName : " + originFileName);
 				System.out.println("fileSize : " + fileSize);
 				String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
 				System.out.println(resourcePath);
+
+
+
 				String targetFile = resourcePath + "/" + System.currentTimeMillis() + "_foodimage.png";
 				try {
 					File f = new File(targetFile);
@@ -113,6 +118,7 @@ public class ShopBoardController {
 		int result = sService.ShopBoardInsert(dto);
 		return "redirect:../home";
 	}
+
 
 	@RequestMapping("/shopBoard_buyProc")
 	public String buyProc() {
