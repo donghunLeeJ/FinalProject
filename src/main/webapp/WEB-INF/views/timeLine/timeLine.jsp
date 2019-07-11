@@ -47,10 +47,15 @@
                <div class="post-content">
                
                   <div class="post-meta">
-                     <a href="#" class="post-date"><i class="icon_clock_alt"></i>
+                     <a href="#" class="post-date"><i class="icon_clock_alt">작성일</i>
                         <fmt:formatDate var="resultRegDt" value="${i.tl_writedate}" pattern="yyyy-MM-dd"/>
                   ${resultRegDt}</a> <a href="#" class="post-comments"><i
-                        class="icon_chat_alt"></i> ${i.tl_likecount }</a>
+                        class="icon_chat_alt">조회수</i> ${i.tl_likecount }</a>
+                        <c:choose>
+                        <c:when test="${i.tl_writer == id}">
+                        <button>수정</button>    <button>삭제</button>
+                        </c:when>
+                        </c:choose>
                   </div>
                   <p>${i.tl_contents } </p>
                </div>
