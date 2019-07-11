@@ -2,21 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
+	<insert id="insert">
+		insert into member
+		values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default)
+	</insert>
+
 	<select id="login" resultType="Integer">
 		select count(*) from member where
 		member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
 
-	<insert id="insert">
-		insert into member
-		values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_add},#{member_phone},default,'')
-	</insert>
+	<update id="edit_mypage">
+		update member set member_add=#{member_add}, member_phone=#{member_phone},
+		member_intro=#{member_intro}, member_pw=#{member_pw} where
+		member_id=#{member_id}
+	</update>
 
 	<select id="selectById" resultType="com.project.dto.MemberDTO">
-		select * from member where member_id=#{member_id}
+		select * from member where
+		member_id=#{member_id}
 	</select>
 
-	<update id="editmypage">
-		update member set member_add = #{member_add} where member_id = #{member_id}
+	<update id="confirmId">
+		update member set member_confirm='y' where
+		member_id=#{member_id}
 	</update>
+
+	<select id="checkConfirm" resultType="String">
+		select member_confirm from
+		member where member_id=#{member_id}
+	</select>
+
+	<update id="uploadImg">
+		update member set member_imgpath = #{path} where member_id = #{id}
+	</update>
+
 </mapper>

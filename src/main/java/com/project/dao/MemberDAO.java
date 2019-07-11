@@ -40,6 +40,14 @@ public class MemberDAO {
 	public MemberDTO selectById(String id){
 		return sst.selectOne("member.selectById",id);
 	}
+
+	public int confirmId(String id) {
+		return sst.update("member.confirmId",id);
+	}
+	public String checkConfirm(String id) {
+		return sst.selectOne("member.checkConfirm",id);
+	}
+
 	
 	public int edit_mypage(MemberDTO dto) {
 		System.out.println(dto);
@@ -59,5 +67,6 @@ public class MemberDAO {
 		return sst.update("member.uploadImg",map);
 		
 	}
+
 
 }
