@@ -1,21 +1,16 @@
 package com.project.controller;
 
-
-
-
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
 	@RequestMapping("")
-	//@RequestMapping("/home/join") : jsp¿¡¼­ ÄÁÆ®·Ñ·¯·Î º¸³¾ ¶§
+	// @RequestMapping("/home/join") : jspï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public String home() {
 		return "home";
 	}
-	
-	
+
 }
