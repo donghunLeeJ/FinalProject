@@ -36,6 +36,22 @@
 			<artifactId>spring-messaging</artifactId>
 			<version>5.0.6.RELEASE</version>
 		</dependency>
+		
+		<!-- JAVA SMTP -->
+      <dependency>
+         <groupId>javax.mail</groupId>
+         <artifactId>mail</artifactId>
+         <version>1.4.7</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-email</artifactId>
+         <version>1.5</version>
+      </dependency>
+		
+		
+		
 
 		<!-- Jackson : 동적 바인딩이 가능하다. DTO를 리턴하면 알아서 JSon으로 바꿔줌 -->
 		<dependency>
