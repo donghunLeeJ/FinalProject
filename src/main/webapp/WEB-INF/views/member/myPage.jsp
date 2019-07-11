@@ -31,154 +31,40 @@ margin:0px;
 	
 	
 <div class="container">
-    <div class="row my-2">
-        <div class="col-lg-8 order-lg-2">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">³ªÀÇ Á¤º¸</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">ÂÊÁöÇÔ</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Á¤º¸ ¼öÁ¤</a>
-                </li>
-            </ul>
-            <div class="tab-content py-4">
-                <div class="tab-pane active" id="profile">
-                    <div class="row">
-                <div><img src="${id.member_imgpath }"  class="mx-auto img-circle" id=myinfo alt="avatar"></div>
-                        <div class="col-lg-6 col-md-6">
-                        <div class="float col-lg-12 col-mf-12">
-                             <div class=" form-group row"  >
-                            <label class="col-lg-3 col-form-label form-control-label">¾ÆÀÌµğ</label>
-                            <div class=" col-lg-9">
-                               <div class=" form-control"  type="text" >${id.member_id } </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">ÀÌ¸§</label>
-                            <div class="col-lg-9">
-                                <div class="form-control" type="text"> ${id.member_name } </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">»ıÀÏ</label>
-                            <div class="col-lg-9">
-                                <div class="form-control" type="text">${id.member_birth}</div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">¼ºº°</label>
-                            <div class="col-lg-9">
-                                <div class="form-control" type="text">${id.member_gender }</div>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="col-md-12 mt-5">
-                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>ÃÖ±Ù ³ªÀÇ È°µ¿</h5>
-                            <table class="table table-sm table-hover table-striped">
-                                <tbody>                                    
-                                    <tr>
-                                        <td>
-                                            <strong>±èµ¿Çö</strong>´ÔÀÇ ÆÇ¸Å È°µ¿ <strong>`»óÃßÆ¢±è`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>±èµ¿Çö</strong>´ÔÀÇ ÆÇ¸Å È°µ¿ <strong>`¸¶´ÃÁÖ½º`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>±èµ¿Çö</strong>´ÔÀÇ ±¸¸Å È°µ¿ <strong>`°ø·æ°í±â`</strong>
-                                        </td>
-                                    </tr>
-                                
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!--/row-->
-                </div>
-                <div class="tab-pane" id="messages">
-                    <div class="alert alert-info alert-dismissable">
-                        <a class="panel-close close" data-dismiss="alert">¡¿</a> ÃÖ±Ù ¹ŞÀº ÂÊÁö ¸ñ·ÏÀÔ´Ï´Ù
-                    </div>
-                    <table class="table table-hover table-striped">
-                        <tbody>                                    
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus. 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus. 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros. 
-                                </td>
-                            </tr>
-                        </tbody> 
-                    </table>
-                </div>
-                <div class="tab-pane" id="edit">
-                       <div id="preview"class="col-lg-4 order-lg-1 text-center">
-                       <form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data">
-       				 <img src="${id.member_imgpath }"  class="mx-auto img-circle" alt="avatar">
-						<input type=file id="file" name="file">
-						
-                      <input type="button" id="change"class="btn btn-primary " value="»çÁø º¯°æ">
-                       <input type="submit" id="uploadImg"class="btn btn-primary " value="»çÁø ¾÷·Îµå">
-                    
-						</form>
-      				  </div>
-        <br>
-        		<div>
-                    <form id="edit_mypage" action="/member/edit_mypage" method="post">
+
+ 
+   
+                    <form  action="/member/edit_mypage" method="post">
                         <div class="form-group row"  >
-                            <label class="col-lg-3 col-form-label form-control-label">¾ÆÀÌµğ</label>
+                            <label class="col-lg-3 col-form-label form-control-label">ì•„ì´ë””</label>
                             <div class="col-lg-9">
-                                <input class="form-control" name="member_id" type="text" value="${id.member_id }" readonly>
+                                <input class="form-control" type="text" name="member_name" value="${id.member_id }" readonly>
+
                                 
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">ÀÌ¸§</label>
+                            <label class="col-lg-3 col-form-label form-control-label">ì´ë¦„</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="text" value="${id.member_name }"  readonly>
+                                <input class="form-control" name="member_id" type="text" value="${id.member_name }"  readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">»ıÀÏ</label>
+                            <label class="col-lg-3 col-form-label form-control-label">ìƒì¼</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value="${id.member_birth}"  readonly >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">¼ºº°</label>
+                            <label class="col-lg-3 col-form-label form-control-label">ì„±ë³„</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value="${id.member_gender }"  readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">¿ìÆí¹øÈ£
+                            <label class="col-lg-3 col-form-label form-control-label">ìš°í¸ë²ˆí˜¸
 <!--                             <button type="button" onclick="sample4_execDaumPostcode()" -->
-<!--                            class="btn btn-primary p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">º¯°æ</button>       -->
+<!--                            class="btn btn-primary p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">ë³€ê²½</button>       -->
                            <img src="/img/core-img/find_addr.png"onclick="sample4_execDaumPostcode()" 
                            class=  "mx-auto img-circle"  data-aria-haspopup="true"aria-expanded="false" id="findAdd" >                     
                             </label>
@@ -187,39 +73,39 @@ margin:0px;
                             </div>
                         </div>
                           <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">µµ·Î¸í ÁÖ¼Ò </label>
+                            <label class="col-lg-3 col-form-label form-control-label">ë„ë¡œëª… ì£¼ì†Œ </label>
                             <div class="col-lg-9">
                                 <input class="form-control" id="add1"name="member_address1" type="text" value="${id.member_address1}" readonly>
                             </div>
                         </div>
                           <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">»ó¼¼ÁÖ¼Ò  </label>
+                            <label class="col-lg-3 col-form-label form-control-label">ìƒì„¸ì£¼ì†Œ  </label>
                             <div class="col-lg-9">
                                 <input class="form-control" id="add2"name="member_address2" type="text" value="${id.member_address2}">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">ÇÚµåÆù ¹øÈ£</label>
+                            <label class="col-lg-3 col-form-label form-control-label">í•¸ë“œí° ë²ˆí˜¸</label>
                             <div class="col-lg-9">
                                 <input class="form-control" id="phone" name="member_phone" type="text" value="${id.member_phone}"
-                                placeholder=" '-' Á¦¿ÜÇÏ°í ÀÔ·Â" >
+                                placeholder=" '-' ì œì™¸í•˜ê³  ì…ë ¥" >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">ÀÚ±â ¼Ò°³</label>
+                            <label class="col-lg-3 col-form-label form-control-label">ìê¸° ì†Œê°œ</label>
                             <div class="col-lg-9">
                                 <input class="form-control"id="intro" name="member_intro" type="text" value="${id.member_intro}" >
                             </div>
                         </div>
                        
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">ºñ¹Ğ¹øÈ£</label>
+                            <label class="col-lg-3 col-form-label form-control-label">ë¹„ë°€ë²ˆí˜¸</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" name="member_pw" id="pw1">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">ºñ¹Ğ¹øÈ£ È®ÀÎ</label>
+                            <label class="col-lg-3 col-form-label form-control-label">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password"  id="pw2">
                             </div>
@@ -227,24 +113,21 @@ margin:0px;
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-<!--                                 <input type="reset" class="btn btn-secondary" value="ÃÊ±âÈ­"> -->
-                                <input type="button" id="edit_info" class="btn btn-primary" value="Á¤º¸ ¼öÁ¤">
-                                <input type="button" id="delId" class="btn btn-primary" value="È¸¿ø Å»Åğ">
+
+                                <input type="submit" id="edit_info" class="btn btn-primary" value="ì •ë³´ ìˆ˜ì •">
+
+                                <input type="button" id="delId" class="btn btn-primary" value="íšŒì› íƒˆí‡´">
                             </div>
                         </div>
                     </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    
-    </div>
-</div>
+
 
 <script>
 $("#file").hide();
 $("#change").on("click",function(){
-    $("#file").click();//»çÁøº¯°æ ¹öÆ° ´©¸£¸é file¹öÆ° Å¬¸¯µÊ
+    $("#file").click();//ì‚¬ì§„ë³€ê²½ ë²„íŠ¼ ëˆ„ë¥´ë©´ fileë²„íŠ¼ í´ë¦­ë¨
 
 });
 
@@ -255,32 +138,32 @@ $("#file").on("change",function(){
 	$("#preview").show();
 })
 
-$("#edit_info").on("click",function(){//Á¤º¸¼öÁ¤ ¹öÆ° Å¬¸¯½Ã
+$("#edit_info").on("click",function(){//ì •ë³´ìˆ˜ì • ë²„íŠ¼ í´ë¦­ì‹œ
 	
 	var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 	
 	
 	
 	if ($("#postcode").val() == "") {
-		alert("ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		alert("ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 	}else if ($("#phone").val() == "") {
-		alert("ÇÚµåÆù ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		alert("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		$("#phone").focus();
 	}else if(!regnum.test($("#phone").val())){
-		alert("ÇÚµåÆù ¹øÈ£°¡ Çü½Ä¿¡ ¸ÂÁö ¾Ê½À´Ï´Ù");
+		alert("í•¸ë“œí° ë²ˆí˜¸ê°€ í˜•ì‹ì— ë§ì§€ ì•ŠìŠµë‹ˆë‹¤");
 		$("#phone").focus();
   	}else if($("#pw1").val()==""){
-		alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+		alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 		$("#pw1").focus();
   	}else if($("#pw2").val()==""){
-  		alert("ºñ¹Ğ¹øÈ£ È®ÀÎÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä");
+  		alert("ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
 		$("#pw2").focus();
   	}
   	else if($("#pw1").val()!=$("#pw2").val()){
-		alert("ºñ¹Ğ¹øÈ£°¡ °°¾Æ¾ß ÇÕ´Ï´Ù");
+		alert("ë¹„ë°€ë²ˆí˜¸ê°€ ê°™ì•„ì•¼ í•©ë‹ˆë‹¤");
 		$("#pw2").focus();
 	}else if($("#add2").val()==""){
-			var result =confirm("»ó¼¼ÁÖ¼Ò°¡ ¾ø½À´Ï´Ù.\nº¯°æÇÏ½Ã°Ú½À´Ï±î?");
+			var result =confirm("ìƒì„¸ì£¼ì†Œê°€ ì—†ìŠµë‹ˆë‹¤.\në³€ê²½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 			if(result) $("#edit_mypage").submit();
 			else return;
 	}
@@ -288,42 +171,42 @@ $("#edit_info").on("click",function(){//Á¤º¸¼öÁ¤ ¹öÆ° Å¬¸¯½Ã
 });
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>  
-<script>  <!--ÁÖ¼Òµî·Ï-->
-                              //º» ¿¹Á¦¿¡¼­´Â µµ·Î¸í ÁÖ¼Ò Ç¥±â ¹æ½Ä¿¡ ´ëÇÑ ¹ı·É¿¡ µû¶ó, ³»·Á¿À´Â µ¥ÀÌÅÍ¸¦ Á¶ÇÕÇÏ¿© ¿Ã¹Ù¸¥ ÁÖ¼Ò¸¦ ±¸¼ºÇÏ´Â ¹æ¹ıÀ» ¼³¸íÇÕ´Ï´Ù.
+<script>  <!--ì£¼ì†Œë“±ë¡-->
+                              //ë³¸ ì˜ˆì œì—ì„œëŠ” ë„ë¡œëª… ì£¼ì†Œ í‘œê¸° ë°©ì‹ì— ëŒ€í•œ ë²•ë ¹ì— ë”°ë¼, ë‚´ë ¤ì˜¤ëŠ” ë°ì´í„°ë¥¼ ì¡°í•©í•˜ì—¬ ì˜¬ë°”ë¥¸ ì£¼ì†Œë¥¼ êµ¬ì„±í•˜ëŠ” ë°©ë²•ì„ ì„¤ëª…í•©ë‹ˆë‹¤.
                               function sample4_execDaumPostcode() {
                                  new daum.Postcode(
                                        {
                                           oncomplete : function(
                                                 data) {
-                                             // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+                                             // íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-                                             // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Ç¥½ÃÇÑ´Ù.
-                                             // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-                                             var roadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
-                                             var extraRoadAddr = ''; // Âü°í Ç×¸ñ º¯¼ö
+                                             // ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ í‘œì‹œí•œë‹¤.
+                                             // ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+                                             var roadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+                                             var extraRoadAddr = ''; // ì°¸ê³  í•­ëª© ë³€ìˆ˜
 
-                                             // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-                                             // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+                                             // ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+                                             // ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
                                              if (data.bname !== ''
-                                                   && /[µ¿|·Î|°¡]$/g
+                                                   && /[ë™|ë¡œ|ê°€]$/g
                                                          .test(data.bname)) {
                                                 extraRoadAddr += data.bname;
                                              }
-                                             // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                                             // ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
                                              if (data.buildingName !== ''
                                                    && data.apartment === 'Y') {
                                                 extraRoadAddr += (extraRoadAddr !== '' ? ', '
                                                       + data.buildingName
                                                       : data.buildingName);
                                              }
-                                             // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                                             // í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
                                              if (extraRoadAddr !== '') {
                                                 extraRoadAddr = ' ('
                                                       + extraRoadAddr
                                                       + ')';
                                              }
 
-                                             // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                                             // ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
                                              document
                                                    .getElementById('postcode').value = data.zonecode;
                                              document
@@ -331,7 +214,7 @@ $("#edit_info").on("click",function(){//Á¤º¸¼öÁ¤ ¹öÆ° Å¬¸¯½Ã
 //                                              document
 //                                                    .getElementById("add2").value = data.jibunAddress;
                                              document
-                                             .getElementById("add2").value ="";//µµ·Î¸í¸¸ ¹Ş±â
+                                             .getElementById("add2").value ="";//ë„ë¡œëª…ë§Œ ë°›ê¸°
 
                                           }
                                        }).open();

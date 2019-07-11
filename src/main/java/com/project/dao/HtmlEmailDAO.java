@@ -28,7 +28,7 @@ public class HtmlEmailDAO {
 				"</head>\r\n" + 
 				"<body>\r\n" + 
 				"	<h1>회원가입 인증</h1>\r\n" + 
-				"	<a href=\"localhost/member/verifiedId?id="+id+"\"><button>인증버튼</button></a>\r\n" + 
+				"	<a href=\"http://localhost/member/verifiedId?id="+id+"\"><button>인증버튼</button></a>\r\n" + 
 				"</body>\r\n" + 
 				"</html>";
 

@@ -29,15 +29,14 @@ public class MemberService {
 	}
 	public String checkConfirm(String id) {
 		return mdao.checkConfirm(id);
+
 		}
+
 	public int edit_mypage(MemberDTO mdto) {
-		System.out.println("2");
+		System.out.println(mdto);
 		return mdao.edit_mypage(mdto);
 	}
-	
 	public int uploadImg(String filePath, String id) {
-		
 		return mdao.uploadImg(filePath, id);
-
 	}
 }

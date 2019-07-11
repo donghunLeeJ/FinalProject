@@ -12,6 +12,7 @@ public class MemberDTO {
 	private int member_phone;
   	private String member_imgpath;
 	private String member_intro;
+
 	private String member_confirm;
 	
 	
@@ -76,6 +77,7 @@ public class MemberDTO {
 	public MemberDTO() {
 		super();
 	}
+
 	public String getMember_id() {
 		return member_id;
 	}
@@ -148,9 +150,29 @@ public class MemberDTO {
 	public void setMember_confirm(String member_confirm) {
 		this.member_confirm = member_confirm;
 	}
+
+	public MemberDTO() {
+		super();
+	}
+	public MemberDTO(String member_id, String member_pw, String member_name, String member_birth, String member_gender,
+			String member_postcode, String member_address1, String member_address2, int member_phone,
+			String member_imgpath, String member_intro, String member_confirm) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_birth = member_birth;
+		this.member_gender = member_gender;
+		this.member_postcode = member_postcode;
+		this.member_address1 = member_address1;
+		this.member_address2 = member_address2;
+		this.member_phone = member_phone;
+		this.member_imgpath = member_imgpath;
+		this.member_intro = member_intro;
+		this.member_confirm = member_confirm;
+	}
+	private String member_confirm;
+
 	
-	
-	
-	
-	
+		
 }
