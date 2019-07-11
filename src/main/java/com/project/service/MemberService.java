@@ -29,7 +29,9 @@ public class MemberService {
 	}
 	public String checkConfirm(String id) {
 		return mdao.checkConfirm(id);
+
 	}
+
 	public int edit_mypage(MemberDTO mdto) {
 		System.out.println(mdto);
 		return mdao.edit_mypage(mdto);
