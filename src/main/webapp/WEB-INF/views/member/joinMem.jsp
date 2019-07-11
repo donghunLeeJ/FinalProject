@@ -70,6 +70,98 @@ transform:translate(30px);
 <body>
 
 
+<section class="akame-contact-area bg-gray section-padding-80">
+        <div class="container">
+            <div class="row">
+                <!-- Section Heading -->
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <img alt="" src="/img/core-img/fakelogo.png" style="width: 30%">
+                      
+                    </div>
+                </div>
+                
+                
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>ȸ����</h2>
+                      
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- Form -->
+                    <form id=form action="/member/joinProc" method=post class="akame-contact-form border-0 p-0">
+                    
+                        <div class="row" >
+                            <div class="col-lg-12 text-center">
+                          	  <div class=title>���̵�</div>
+                                <input type="text" style="width: 50%;margin: auto;" id=id name="member_id" class="form-control mb-30" placeholder="id">
+                            </div>
+                            <div class="col-lg-12 text-center" >
+                                <div class=title>��й�ȣ</div>
+                    
+                                <input type="password" style="width: 50%; margin: auto;" id=pw name="member_pw" class="form-control mb-30" placeholder="password">
+                            </div>
+                            <div class="col-lg-12 text-center" >
+                                <div class=title>��й�ȣ Ȯ��</div>
+                    
+                                <input type="password" id=pwCheck style="width: 50%; margin: auto;"  class="form-control mb-30" placeholder="passwordCheck">
+                            </div>
+                           
+                           <div class="col-lg-12 text-center" >
+                                <div class=title>�̸�</div>
+                    
+                                <input type="text" id=name style="width: 50%; margin: auto;" name="member_name" class="form-control mb-30" placeholder="name">
+                            </div>
+                           
+                           <div class="col-lg-12 text-center" >
+                                <div class=title>������</div>
+                    
+                                <input type="text" id="birth" style="width: 50%; margin: auto;" name="member_birth" class="form-control mb-30" placeholder="birth">
+                            </div>
+                           
+                           
+                                <div class=title id=addinput>�ּ� �Է�</div><input style="height:30px; margin:0px; width:10%; line-height:50%;"" id=addbtn type="button" class="btn akame-btn btn-3 mt-15 active" value="�����ȣ ã��" id="search">
+                                <div class="col-lg-12 text-center" >
+                    			 <div class="col-lg-12">
+                    			 <input type="text" id="postcode" style="width: 51.2%; margin: auto;" name="member_postcode" class="form-control mb-30" placeholder=""><br>
+                    			 <input type="text" id="address1" style="width: 51.2%; margin: auto;" name="member_address1" class="form-control mb-30" placeholder=""><br>
+                    			 <input type="text" id="address2" style="width: 51.2%; margin: auto;" name="member_address2" class="form-control mb-30" placeholder="">
+                        <br>
+                        
+                    </div>
+                            </div>
+                            
+                            <div class="col-lg-12 text-center" >
+                                <div class=title>����</div>
+                    			<input type="radio" id="man" name=member_gender value="M" checked="checked" >����
+            <input type="radio" id="woman" name=member_gender value="W">����
+                                
+                            </div><br>
+                           
+                           <div class="col-lg-12 text-center" >
+                                <div class=title>��ȭ��ȣ</div>
+                    
+                                <input type="text" name=member_phone id=phone style="width: 50%; margin: auto;"  class="form-control mb-30" placeholder="phone">
+                            </div>
+                           
+                           
+                            <div class="col-12 text-center">
+                            <br><br>
+                                <button type="button" class="btn akame-btn btn-3 mt-15 active" id=send>�����ϱ�</button>
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 	<section class="akame-contact-area bg-gray section-padding-80">
 	<div class="container">
 		<div class="row">
@@ -242,6 +334,7 @@ transform:translate(30px);
 		</div>
 	</div>
 	</section>
+
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 
 
