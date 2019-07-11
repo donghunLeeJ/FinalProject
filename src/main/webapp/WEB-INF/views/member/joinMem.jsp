@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,13 +8,16 @@
 <title>Insert title here</title>
 
 
-<!-- //ÁÖ¼Ò script -->
- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<!-- //ì£¼ì†Œ script -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
-<!-- // µ¥ÀÌÅÍ ÇÇÄ¿ »ç¿ë½Ã ÇÊ¿äÇÑ°Í----------------------------------------------------- -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<!-- // ë°ì´í„° í”¼ì»¤ ì‚¬ìš©ì‹œ í•„ìš”í•œê²ƒ----------------------------------------------------- -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
+	type="text/css" />
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 
 <!-- //------------------------------------------------------------------------------ -->
@@ -22,260 +25,370 @@
 <link rel="stylesheet" href="/css/style2.css">
 
 <style>
-.title{
- text-align: left;
- margin-left:26%;
+.title {
+	text-align: left;
+	margin-left: 26%;
 }
 
-#addinput{
-	float:left;
-	padding-right:10px;
+#addinput {
+	float: left;
+	padding-right: 10px;
+}
+
+#findAdd{
+padding:5px;
+width:30px;
+height:30px;
+margin:0px;
+}
+*[@id="findAdd"]{
+margin:0px;
+}
+.float{
+float:left;
+}
+#gen{
+transform:translate(30px);
 }
 </style>
 
 </head>
 <body>
 
-<section class="akame-contact-area bg-gray section-padding-80">
-        <div class="container">
-            <div class="row">
-                <!-- Section Heading -->
-                <div class="col-12">
-                    <div class="section-heading text-center">
-                        <img alt="" src="/img/core-img/fakelogo.png" style="width: 30%">
-                      
-                    </div>
-                </div>
-                
-                
-                <div class="col-12">
-                    <div class="section-heading text-center">
-                        <h2>È¸¿ø°¡ÀÔ</h2>
-                      
-                    </div>
-                </div>
-            </div>
+	<section class="akame-contact-area bg-gray section-padding-80">
+	<div class="container">
+		<div class="row">
+			<!-- Section Heading -->
+			<div class="col-12">
+				<div class="section-heading text-center">
+					<img alt="" src="/img/core-img/fakelogo.png" style="width: 30%">
 
-            <div class="row">
-                <div class="col-12">
-                    <!-- Form -->
-                    <form id=form action="/member/joinProc" method=post class="akame-contact-form border-0 p-0">
-                    
-                        <div class="row" >
-                            <div class="col-lg-12 text-center">
-                          	  <div class=title>¾ÆÀÌµğ</div>
-                                <input type="text" style="width: 50%;margin: auto;" id=id name="member_id" class="form-control mb-30" placeholder="id">
-                            </div>
-                            <div class="col-lg-12 text-center" >
-                                <div class=title>ºñ¹Ğ¹øÈ£</div>
-                    
-                                <input type="password" style="width: 50%; margin: auto;" id=pw name="member_pw" class="form-control mb-30" placeholder="password">
-                            </div>
-                            <div class="col-lg-12 text-center" >
-                                <div class=title>ºñ¹Ğ¹øÈ£ È®ÀÎ</div>
-                    
-                                <input type="password" id=pwCheck style="width: 50%; margin: auto;"  class="form-control mb-30" placeholder="passwordCheck">
-                            </div>
-                           
-                           <div class="col-lg-12 text-center" >
-                                <div class=title>ÀÌ¸§</div>
-                    
-                                <input type="text" id=name style="width: 50%; margin: auto;" name="member_name" class="form-control mb-30" placeholder="name">
-                            </div>
-                           
-                           <div class="col-lg-12 text-center" >
-                                <div class=title>»ı³â¿ùÀÏ</div>
-                    
-                                <input type="text" id="birth" style="width: 50%; margin: auto;" name="member_birth" class="form-control mb-30" placeholder="birth">
-                            </div>
-                           
-                           
-                                <div class=title id=addinput>ÁÖ¼Ò ÀÔ·Â</div><input id=addbtn type="button" class="mb-12 mb-2" value="¿ìÆí¹øÈ£ Ã£±â" id="search">
-                                <div class="col-lg-12 text-center" >
-                    			 <div class="col-lg-12">
-                    			 <input type="text" id="postcode" style="width: 51.2%; margin: auto;" name="member_postcode" class="form-control mb-30" placeholder=""><br>
-                    			 <input type="text" id="address1" style="width: 51.2%; margin: auto;" name="member_address1" class="form-control mb-30" placeholder=""><br>
-                    			 <input type="text" id="address2" style="width: 51.2%; margin: auto;" name="member_address2" class="form-control mb-30" placeholder="">
-                        <br>
-                        
-                    </div>
-                            </div>
-                            
-                            <div class="col-lg-12 text-center" >
-                                <div class=title>¼ºº°</div>
-                    			<input type="radio" id="man" name=member_gender value="M" checked="checked" >³²ÀÚ
-            <input type="radio" id="woman" name=member_gender value="W">¿©ÀÚ
-                                
-                            </div><br>
-                           
-                           <div class="col-lg-12 text-center" >
-                                <div class=title>ÀüÈ­¹øÈ£</div>
-                    
-                                <input type="text" name=member_phone id=phone style="width: 50%; margin: auto;"  class="form-control mb-30" placeholder="phone">
-                            </div>
-                           
-                           
-                            <div class="col-12 text-center">
-                            <br><br>
-                                <button type="button" class="btn akame-btn btn-3 mt-15 active" id=send>°¡ÀÔÇÏ±â</button>
-                                
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+				</div>
+			</div>
+
+
+			<div class="col-12">
+				<div class="section-heading text-center">
+					<h2>íšŒì›ê°€ì…</h2>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<!-- Form -->
+				<form id=form action="/member/joinProc" method=post
+					class="akame-contact-form border-0 p-0">
+
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<div class=title>ì•„ì´ë””</div>
+							<input type="text" style="width: 50%; margin: auto;" id=id
+								name="member_id" class="form-control mb-30"
+								placeholder="ì¸ì¦ë°›ì„ ì´ë©”ì¼ í˜•ì‹ìœ¼ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”">
+						</div>
+						<div class="col-lg-12 text-center">
+							<div class=title>ë¹„ë°€ë²ˆí˜¸</div>
+
+							<input type="password" style="width: 50%; margin: auto;" id=pw
+								name="member_pw" class="form-control mb-30"
+								placeholder="ëŒ€,ì†Œë¬¸ì,ìˆ«ì í¬í•¨ ìµœì†Œ 8ìë¦¬">
+						</div>
+						<div class="col-lg-12 text-center">
+							<div class=title>ë¹„ë°€ë²ˆí˜¸ í™•ì¸</div>
+
+							<input type="password" id=pwCheck
+								style="width: 50%; margin: auto;" class="form-control mb-30"
+								placeholder="">
+						</div>
+
+						<div class="col-lg-12 text-center">
+							<div class=title>ì´ë¦„</div>
+
+							<input type="text" id=name style="width: 50%; margin: auto;"
+								name="member_name" class="form-control mb-30" placeholder="í•œê¸€ 2ì ì´ìƒ, 4ì ì´í•˜">
+						</div>
+
+						<div class="col-lg-12 text-center">
+							<div class=title>ìƒë…„ì›”ì¼</div>
+
+							<input type="text" id="birth" style="width: 50%; margin: auto;"
+								name="member_birth" class="form-control mb-30"
+								placeholder="">
+						</div>
+
+						<div class="col-lg-12 text-center">
+							<div class=title>í•¸ë“œí° ë²ˆí˜¸</div>
+							<input type="text" name=member_phone id=phone style="width: 50%; margin: auto;" class="form-control mb-30"
+								placeholder=" '-'ë¥¼ ì œì™¸í•˜ê³  ì…ë ¥í•´ì£¼ì„¸ìš”">
+						</div>
+						
+							<div class="col-lg-12 ">
+						<div class=title id=addinput>ì£¼ì†Œ ì…ë ¥</div>
+<!-- 						<input id=addbtn type="button" class="mb-12 mb-2" value="ìš°í¸ë²ˆí˜¸ ì°¾ê¸°" -->
+<!-- 							id="search"> -->
+							   <img src="/img/core-img/find_addr.png"onclick="sample4_execDaumPostcode()" 
+                           class=  " img-circle"  data-aria-haspopup="true"aria-expanded="false" id="findAdd" >  
+						</div>
+						<div class="col-lg-12 text-center">
+						
+						<input type="text" id="postcode"style="width: 50%; margin: auto;" name="member_postcode"class="form-control mb-30" placeholder="ìš°í¸ë²ˆí˜¸" readonly><br> 
+						<input type="text" id="add1" style="width: 50%; margin: auto;"name="member_address1" class="form-control mb-30"placeholder="ë„ë¡œëª… ì£¼ì†Œ" readonly><br> 
+						<input type="text"	id="add2" style="width: 50%; margin: auto;"name="member_address2" class="form-control mb-30"placeholder="ìƒì„¸ ì£¼ì†Œ"> <br>
+
+							
+						</div>
+					
+
+						<div class="col-lg-12 ">
+							<div class="title float">ì„±ë³„</div>
+							<div class="float" id="gen">
+							<input type="radio" id="man" name=member_gender value="M"checked="checked">ë‚¨ì 
+							<input type="radio" id="woman"name=member_gender value="W">ì—¬ì
+							</div>
+						</div>
+						<br>
+
+						<div class="col-12 text-center">
+							<br> <br>
+							<button type="button" class="btn akame-btn btn-3 mt-15 active"
+								id=send>ê°€ì…í•˜ê¸°</button>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 
 
-<!-- <form id=form action="/member/joinProc" method=post> -->
+	<!-- <form id=form action="/member/joinProc" method=post> -->
 
-<!-- 	<tr> -->
-<!--         <th>»ıÀÏ</th> -->
-<!--         <td> -->
-<!--         <input type="text" name=member_birth id="birth" size="8" maxlength="8" /> -->
-<!--         </td> -->
+	<!-- 	<tr> -->
+	<!--         <th>ìƒì¼</th> -->
+	<!--         <td> -->
+	<!--         <input type="text" name=member_birth id="birth" size="8" maxlength="8" /> -->
+	<!--         </td> -->
 
-<!-- 	<tr> -->
-       
-	
-	
+	<!-- 	<tr> -->
+
+
+
 	<script>
-		
-		//¿©±â¼­ ºÎÅÍ °¡ÀÔ¹öÆ° ´­·¶À»¶§ ½ÇÇà
-		$("#send").on("click",function(){
+		//ì—¬ê¸°ì„œ ë¶€í„° ê°€ì…ë²„íŠ¼ ëˆŒë €ì„ë•Œ ì‹¤í–‰
+		$("#send").on("click",function() {
 			
-		if($("#id").val() == ""){
-		   alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
-			$("#id").focus();
-		   }else if($("#pw").val()== ""){
-			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
-			$("#pw").focus();
-		}else if($("#pwCheck").val() == ""){
-			alert("ºñ¹Ğ¹øÈ£È®ÀÎÀ» ÀÔ·ÂÇÏ¼¼¿ä");
-			$("#pwCheck").focus();
-		}else if($("#pw").val() != $("#pwCheck").val()){
-			 $("#pw").val("");
-                $("#pwCheck").val("");
-			alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù");
-                $("#pw").focus();
+			var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+			var regPw2=/(\w)\1\1/g;
+			var regname = /^[ê°€-í£]{2,4}$/;
+			var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+			var reg = /\s/g;
 
-		}else if($("#name").val() == ""){
-			alert("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä");
-			$("#name").focus();
-		}else if($("#birth").val() =="" ){
-			alert("»ı³â¿ùÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä");
-		}else if($("#add").val() == ""){
-			alert("ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
-		}else if($("#phone").val() == ""){
-			alert("¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
-		}else if ($("#man").is(':checked') == false && $("#woman").is(':checked') == false) {
-                alert("³²ÀÚ¶Ç´Â ¿©ÀÚ¸¦  ²À ¼±ÅÃÇÏ¼¼¿ä!");
-            }else{
-            	$("#form").submit();
-            }
+					if ($("#id").val() == "") {//ì•„ì´ë””ê°€ ê³µë°±ì´ë©´
+						alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+						$("#id").focus();
+					} else if(!regId.test($("#id").val())){
+						alert("ì´ë©”ì¼ í˜•ì‹ì— ë§ì§€ ì•ŠìŠµë‹ˆë‹¤");
+						$("#id").focus();	
+					}else if(reg.test($("#id").val())){
+						alert("ê³µë°±ì€ ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
+						$("#id").focus();
+					}
+					
+					
+					else if ($("#pw").val() == "") {
+						alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+						$("#pw").focus();
+					}else if(!regPw.test($("#pw").val())){
+						alert("ë¹„ë°€ë²ˆí˜¸ í˜•ì‹ì— ë§ì§€ ì•ŠìŠµë‹ˆë‹¤");
+						$("#pw").focus();
+					}else if(regPw2.test($("#pw").val())){
+						alert('ì—°ì†ìœ¼ë¡œ ê°™ì€ ë¬¸ìë¥¼ 3ë²ˆ ì´ìƒ ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.');
+						$("#pw").focus();
+					}else if(reg.test($("#pw").val())){
+						alert("ê³µë°±ì€ ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
+						$("#pw").focus();
+					}else if ($("#pwCheck").val() == "") {
+						alert("ë¹„ë°€ë²ˆí˜¸í™•ì¸ì„ ì…ë ¥í•˜ì„¸ìš”");
+						$("#pwCheck").focus();
+					} else if ($("#pw").val() != $("#pwCheck").val()) {
+						$("#pw").val("");
+						$("#pwCheck").val("");
+						alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤");
+						$("#pw").focus();
+					}
+						
+					 else if ($("#name").val() == "") {
+						alert("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”");
+						$("#name").focus();
+					}else if(!regname.test($("#name").val())){
+						alert("ì´ë¦„ í˜•ì‹ì— ë§ì§€ ì•ŠìŠµë‹ˆë‹¤");
+						$("#name").focus();
+					}else if(reg.test($("#name").val())){
+						alert("ê³µë°±ì€ ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
+						$("#name").focus();
+					}
+					
+					
+					else if ($("#birth").val() == "") {
+						alert("ìƒë…„ì›”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”");
+					}
+					
+					else if ($("#phone").val() == "") {
+						alert("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+						$("#phone").focus();
+					}else if(!regnum.test($("#phone").val())){
+						alert("í•¸ë“œí° ë²ˆí˜¸ê°€ í˜•ì‹ì— ë§ì§€ ì•ŠìŠµë‹ˆë‹¤");
+						$("#phone").focus();
+					}else if(reg.test($("#phone").val())){
+						alert("ê³µë°±ì€ ì…ë ¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
+						$("#phone").focus();
+					}
+					else if ($("#postcode").val() == "") {
+						alert("ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+					}
+					else if ($("#man").is(':checked') == false
+							&& $("#woman").is(':checked') == false) {
+						alert("ì„±ë³„ì„ ì„ íƒí•˜ì„¸ìš”!");
+					} else if($("#add2").val()==""){
+						var result =confirm("ìƒì„¸ì£¼ì†Œê°€ ì—†ìŠµë‹ˆë‹¤.\nê°€ì…í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+						if(result) $("#form").submit();
+						else return;
+					}
 
-		
+				})
+		// ì—¬ê¸°ê¹Œì§€ê°€ ê°€ì…ë²„íŠ¼ì„ ëˆŒë €ì„ë•Œ
 
-		
- 		
-		
-		})
-		// ¿©±â±îÁö°¡ °¡ÀÔ¹öÆ°À» ´­·¶À»¶§
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		$("#pwCheck").on("focus",function(){
-			if($("#pw").val().length==0){
-				alert("ºñ¹Ğ¹øÈ£ ¸ÕÀú ÀÔ·ÂÇÏ¼¼¿ä");
+		$("#pwCheck").on("focus", function() {
+			if ($("#pw").val().length == 0) {
+				alert("ë¹„ë°€ë²ˆí˜¸ ë¨¼ì € ì…ë ¥í•˜ì„¸ìš”");
 				$("#pw").focus();
-			} 
-		})
-		$("#pwCheck").on("focusOut",function(){
-			if($("#pw").val() == $("#pwCheck").val()){
-				alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÕ´Ï´Ù");
 			}
 		})
-	
-		
-		
-		
-		//µ¥ÀÌÅÍÇÇÄ¿ -----------------------------------------------------------
-		 $("#birth").datepicker({
-		  showOn: "both", // ¹öÆ°°ú ÅØ½ºÆ® ÇÊµå ¸ğµÎ Ä¶¸°´õ¸¦ º¸¿©ÁØ´Ù.
-		  buttonImage: "/application/db/jquery/images/calendar.gif", // ¹öÆ° ÀÌ¹ÌÁö
-		  buttonImageOnly: true, // ¹öÆ°¿¡ ÀÖ´Â ÀÌ¹ÌÁö¸¸ Ç¥½ÃÇÑ´Ù.
-		  changeMonth: true, // ¿ùÀ» ¹Ù²Ü¼ö ÀÖ´Â ¼¿·ºÆ® ¹Ú½º¸¦ Ç¥½ÃÇÑ´Ù.
-		  changeYear: true, // ³âÀ» ¹Ù²Ü ¼ö ÀÖ´Â ¼¿·ºÆ® ¹Ú½º¸¦ Ç¥½ÃÇÑ´Ù.
-		  minDate: '-100y', // ÇöÀç³¯Â¥·ÎºÎÅÍ 100³âÀÌÀü±îÁö ³âÀ» Ç¥½ÃÇÑ´Ù.
-		  nextText: '´ÙÀ½ ´Ş', // next ¾ÆÀÌÄÜÀÇ ÅøÆÁ.
-		  prevText: 'ÀÌÀü ´Ş', // prev ¾ÆÀÌÄÜÀÇ ÅøÆÁ.
-		  numberOfMonths: [1,1], // ÇÑ¹ø¿¡ ¾ó¸¶³ª ¸¹Àº ¿ùÀ» Ç¥½ÃÇÒ°ÍÀÎ°¡. [2,3] ÀÏ °æ¿ì, 2(Çà) x 3(¿­) = 6°³ÀÇ ¿ùÀ» Ç¥½ÃÇÑ´Ù.
-		  //stepMonths: 3, // next, prev ¹öÆ°À» Å¬¸¯ÇßÀ»¶§ ¾ó¸¶³ª ¸¹Àº ¿ùÀ» ÀÌµ¿ÇÏ¿© Ç¥½ÃÇÏ´Â°¡. 
-		  yearRange: 'c-100:c+10', // ³âµµ ¼±ÅÃ ¼¿·ºÆ®¹Ú½º¸¦ ÇöÀç ³âµµ¿¡¼­ ÀÌÀü, ÀÌÈÄ·Î ¾ó¸¶ÀÇ ¹üÀ§¸¦ Ç¥½ÃÇÒ°ÍÀÎ°¡.
-		  showButtonPanel: true, // Ä¶¸°´õ ÇÏ´Ü¿¡ ¹öÆ° ÆĞ³ÎÀ» Ç¥½ÃÇÑ´Ù. 
-		  currentText: '¿À´Ã ³¯Â¥' , // ¿À´Ã ³¯Â¥·Î ÀÌµ¿ÇÏ´Â ¹öÆ° ÆĞ³Î
-		  closeText: '´İ±â',  // ´İ±â ¹öÆ° ÆĞ³Î
-		  dateFormat: "yymmdd", // ÅØ½ºÆ® ÇÊµå¿¡ ÀÔ·ÂµÇ´Â ³¯Â¥ Çü½Ä.
-		  showAnim: "slide", //¾Ö´Ï¸ŞÀÌ¼ÇÀ» Àû¿ëÇÑ´Ù.
-		  showMonthAfterYear: true , // ¿ù, ³â¼øÀÇ ¼¿·ºÆ® ¹Ú½º¸¦ ³â,¿ù ¼øÀ¸·Î ¹Ù²ãÁØ´Ù. 
-		  dayNamesMin: ['¿ù', 'È­', '¼ö', '¸ñ', '±İ', 'Åä', 'ÀÏ'], // ¿äÀÏÀÇ ÇÑ±Û Çü½Ä.
-		  monthNamesShort: ['1¿ù','2¿ù','3¿ù','4¿ù','5¿ù','6¿ù','7¿ù','8¿ù','9¿ù','10¿ù','11¿ù','12¿ù'] // ¿ùÀÇ ÇÑ±Û Çü½Ä.
-		                    
-		 });
-		
+		$("#pwCheck").on("focusOut", function() {
+			if ($("#pw").val() == $("#pwCheck").val()) {
+				alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•©ë‹ˆë‹¤");
+			}
+		})
+
+		//ë°ì´í„°í”¼ì»¤ -----------------------------------------------------------
+		$("#birth").datepicker(
+				{
+					showOn : "both", // ë²„íŠ¼ê³¼ í…ìŠ¤íŠ¸ í•„ë“œ ëª¨ë‘ ìº˜ë¦°ë”ë¥¼ ë³´ì—¬ì¤€ë‹¤.
+					buttonImage : "/application/db/jquery/images/calendar.gif", // ë²„íŠ¼ ì´ë¯¸ì§€
+					buttonImageOnly : true, // ë²„íŠ¼ì— ìˆëŠ” ì´ë¯¸ì§€ë§Œ í‘œì‹œí•œë‹¤.
+					changeMonth : true, // ì›”ì„ ë°”ê¿€ìˆ˜ ìˆëŠ” ì…€ë ‰íŠ¸ ë°•ìŠ¤ë¥¼ í‘œì‹œí•œë‹¤.
+					changeYear : true, // ë…„ì„ ë°”ê¿€ ìˆ˜ ìˆëŠ” ì…€ë ‰íŠ¸ ë°•ìŠ¤ë¥¼ í‘œì‹œí•œë‹¤.
+					minDate : '-100y', // í˜„ì¬ë‚ ì§œë¡œë¶€í„° 100ë…„ì´ì „ê¹Œì§€ ë…„ì„ í‘œì‹œí•œë‹¤.
+					nextText : 'ë‹¤ìŒ ë‹¬', // next ì•„ì´ì½˜ì˜ íˆ´íŒ.
+					prevText : 'ì´ì „ ë‹¬', // prev ì•„ì´ì½˜ì˜ íˆ´íŒ.
+					numberOfMonths : [ 1, 1 ], // í•œë²ˆì— ì–¼ë§ˆë‚˜ ë§ì€ ì›”ì„ í‘œì‹œí• ê²ƒì¸ê°€. [2,3] ì¼ ê²½ìš°, 2(í–‰) x 3(ì—´) = 6ê°œì˜ ì›”ì„ í‘œì‹œí•œë‹¤.
+					//stepMonths: 3, // next, prev ë²„íŠ¼ì„ í´ë¦­í–ˆì„ë•Œ ì–¼ë§ˆë‚˜ ë§ì€ ì›”ì„ ì´ë™í•˜ì—¬ í‘œì‹œí•˜ëŠ”ê°€. 
+					yearRange : 'c-100:c+10', // ë…„ë„ ì„ íƒ ì…€ë ‰íŠ¸ë°•ìŠ¤ë¥¼ í˜„ì¬ ë…„ë„ì—ì„œ ì´ì „, ì´í›„ë¡œ ì–¼ë§ˆì˜ ë²”ìœ„ë¥¼ í‘œì‹œí• ê²ƒì¸ê°€.
+					showButtonPanel : true, // ìº˜ë¦°ë” í•˜ë‹¨ì— ë²„íŠ¼ íŒ¨ë„ì„ í‘œì‹œí•œë‹¤. 
+					currentText : 'ì˜¤ëŠ˜ ë‚ ì§œ', // ì˜¤ëŠ˜ ë‚ ì§œë¡œ ì´ë™í•˜ëŠ” ë²„íŠ¼ íŒ¨ë„
+					closeText : 'ë‹«ê¸°', // ë‹«ê¸° ë²„íŠ¼ íŒ¨ë„
+					dateFormat : "yymmdd", // í…ìŠ¤íŠ¸ í•„ë“œì— ì…ë ¥ë˜ëŠ” ë‚ ì§œ í˜•ì‹.
+					showAnim : "slide", //ì• ë‹ˆë©”ì´ì…˜ì„ ì ìš©í•œë‹¤.
+					showMonthAfterYear : true, // ì›”, ë…„ìˆœì˜ ì…€ë ‰íŠ¸ ë°•ìŠ¤ë¥¼ ë…„,ì›” ìˆœìœ¼ë¡œ ë°”ê¿”ì¤€ë‹¤. 
+					dayNamesMin : [ 'ì›”', 'í™”', 'ìˆ˜', 'ëª©', 'ê¸ˆ', 'í† ', 'ì¼' ], // ìš”ì¼ì˜ í•œê¸€ í˜•ì‹.
+					monthNamesShort : [ '1ì›”', '2ì›”', '3ì›”', '4ì›”', '5ì›”', '6ì›”',
+							'7ì›”', '8ì›”', '9ì›”', '10ì›”', '11ì›”', '12ì›”' ]
+				// ì›”ì˜ í•œê¸€ í˜•ì‹.
+
+				});
+
 		//----------------------------------------------------------------------------
-		
-		
-		//µ¥ÀÌÅÍÇÇÄ¿ ÀÌ¹ÌÁö Áö¿ì±â
+
+		//ë°ì´í„°í”¼ì»¤ ì´ë¯¸ì§€ ì§€ìš°ê¸°
 		$("img.ui-datepicker-trigger").remove();
-		
-		
-		
-		
-		 document.getElementById("search").onclick = searchAddress;
-                
-                function searchAddress() {
-                    new daum.Postcode({
-                        oncomplete: function(data) {
-                            // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
-                            // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Ç¥½ÃÇÑ´Ù.
-                            // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-                            var roadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
-                            var extraRoadAddr = ''; // Âü°í Ç×¸ñ º¯¼ö
-                            // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-                            // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
-                            if(data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)){
-                                extraRoadAddr += data.bname;
-                            }
-                            // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
-                            if(data.buildingName !== '' && data.apartment === 'Y'){
-                                extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                            }
-                            // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
-                            if(extraRoadAddr !== ''){
-                                extraRoadAddr = ' (' + extraRoadAddr + ')';
-                            }
-                            // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-                            document.getElementById('postcode').value = data.zonecode;
-                            document.getElementById("Address1").value = roadAddr;
-                        }
-                    }).open();
-                }
-		
-		
-		
-		
+
+		document.getElementById("search").onclick = searchAddress;
+
+		function searchAddress() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					// íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
+					// ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ í‘œì‹œí•œë‹¤.
+					// ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+					var roadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+					var extraRoadAddr = ''; // ì°¸ê³  í•­ëª© ë³€ìˆ˜
+					// ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+					// ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
+					if (data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.test(data.bname)) {
+						extraRoadAddr += data.bname;
+					}
+					// ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
+					if (data.buildingName !== '' && data.apartment === 'Y') {
+						extraRoadAddr += (extraRoadAddr !== '' ? ', '
+								+ data.buildingName : data.buildingName);
+					}
+					// í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
+					if (extraRoadAddr !== '') {
+						extraRoadAddr = ' (' + extraRoadAddr + ')';
+					}
+					// ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
+					document.getElementById('postcode').value = data.zonecode;
+					document.getElementById("Address1").value = roadAddr;
+				}
+			}).open();
+		}
 	</script>
-	
-	
-	
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>  
+<script>  <!--ì£¼ì†Œë“±ë¡-->
+                              //ë³¸ ì˜ˆì œì—ì„œëŠ” ë„ë¡œëª… ì£¼ì†Œ í‘œê¸° ë°©ì‹ì— ëŒ€í•œ ë²•ë ¹ì— ë”°ë¼, ë‚´ë ¤ì˜¤ëŠ” ë°ì´í„°ë¥¼ ì¡°í•©í•˜ì—¬ ì˜¬ë°”ë¥¸ ì£¼ì†Œë¥¼ êµ¬ì„±í•˜ëŠ” ë°©ë²•ì„ ì„¤ëª…í•©ë‹ˆë‹¤.
+                              function sample4_execDaumPostcode() {
+                                 new daum.Postcode(
+                                       {
+                                          oncomplete : function(
+                                                data) {
+                                             // íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
+
+                                             // ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ í‘œì‹œí•œë‹¤.
+                                             // ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+                                             var roadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+                                             var extraRoadAddr = ''; // ì°¸ê³  í•­ëª© ë³€ìˆ˜
+
+                                             // ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+                                             // ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
+                                             if (data.bname !== ''
+                                                   && /[ë™|ë¡œ|ê°€]$/g
+                                                         .test(data.bname)) {
+                                                extraRoadAddr += data.bname;
+                                             }
+                                             // ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
+                                             if (data.buildingName !== ''
+                                                   && data.apartment === 'Y') {
+                                                extraRoadAddr += (extraRoadAddr !== '' ? ', '
+                                                      + data.buildingName
+                                                      : data.buildingName);
+                                             }
+                                             // í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
+                                             if (extraRoadAddr !== '') {
+                                                extraRoadAddr = ' ('
+                                                      + extraRoadAddr
+                                                      + ')';
+                                             }
+
+                                             // ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
+                                             document
+                                                   .getElementById('postcode').value = data.zonecode;
+                                             document
+                                                   .getElementById("add1").value = roadAddr;
+//                                              document
+//                                                    .getElementById("add2").value = data.jibunAddress;
+                                             document
+                                             .getElementById("add2").value ="";//ë„ë¡œëª…ë§Œ ë°›ê¸°
+
+                                          }
+                                       }).open();
+                              }
+                           </script>
+
+
 </body>
 </html>

@@ -13,6 +13,12 @@ float:left;
 }
 #findAdd{
 padding:5px;
+width:50px;
+height:50px;
+}
+#myinfo{
+width:200px;
+height:200px;
 }
 .no{
 padding:0px;
@@ -20,7 +26,7 @@ margin:0px;
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	
 	
@@ -41,7 +47,7 @@ margin:0px;
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
                     <div class="row">
-                <div><img src="${id.member_imgpath }"  class="mx-auto img-circle" alt="avatar"></div>
+                <div><img src="${id.member_imgpath }"  class="mx-auto img-circle" id=myinfo alt="avatar"></div>
                         <div class="col-lg-6 col-md-6">
                         <div class="float col-lg-12 col-mf-12">
                              <div class=" form-group row"  >
@@ -170,11 +176,26 @@ margin:0px;
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">주소
-                             <input type="button" id="findAdd" class="btn btn-primary" value="변경">
+                            <label class="col-lg-3 col-form-label form-control-label">우편번호
+<!--                             <button type="button" onclick="sample4_execDaumPostcode()" -->
+<!--                            class="btn btn-primary p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
+                           <img src="/img/core-img/find_addr.png"onclick="sample4_execDaumPostcode()" 
+                           class=  "mx-auto img-circle"  data-aria-haspopup="true"aria-expanded="false" id="findAdd" >                     
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control" id="add"name="member_add" type="text" value="${id.member_add}">
+                                <input class="form-control" id="postcode"name="member_postcode" type="text" value="${id.member_postcode}" readonly>
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">도로명 주소 </label>
+                            <div class="col-lg-9">
+                                <input class="form-control" id="add1"name="member_address1" type="text" value="${id.member_address1}" readonly>
+                            </div>
+                        </div>
+                          <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">상세주소  </label>
+                            <div class="col-lg-9">
+                                <input class="form-control" id="add2"name="member_address2" type="text" value="${id.member_address2}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -235,20 +256,88 @@ $("#file").on("change",function(){
 })
 
 $("#edit_info").on("click",function(){//정보수정 버튼 클릭시
-	if($("#pw1").val()==""||$("#pw2").val()==""){
+	
+	var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+	
+	
+	
+	if ($("#postcode").val() == "") {
+		alert("주소를 입력하세요");
+	}else if ($("#phone").val() == "") {
+		alert("핸드폰 번호를 입력하세요");
+		$("#phone").focus();
+	}else if(!regnum.test($("#phone").val())){
+		alert("핸드폰 번호가 형식에 맞지 않습니다");
+		$("#phone").focus();
+  	}else if($("#pw1").val()==""){
 		alert("비밀번호를 입력해주세요");
-		return;
+		$("#pw1").focus();
+  	}else if($("#pw2").val()==""){
+  		alert("비밀번호 확인을 입력해주세요");
+		$("#pw2").focus();
+  	}
+  	else if($("#pw1").val()!=$("#pw2").val()){
+		alert("비밀번호가 같아야 합니다");
+		$("#pw2").focus();
+	}else if($("#add2").val()==""){
+			var result =confirm("상세주소가 없습니다.\n변경하시겠습니까?");
+			if(result) $("#edit_mypage").submit();
+			else return;
 	}
-	else if($("#pw1").val()!=$("#pw2").val()){
-		alert("비밀번호 값이 같아야 합니다");
-		return;
-	}else{	
-		$("#edit_mypage").submit();
-		
-	}
+	
 });
-
 </script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>  
+<script>  <!--주소등록-->
+                              //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+                              function sample4_execDaumPostcode() {
+                                 new daum.Postcode(
+                                       {
+                                          oncomplete : function(
+                                                data) {
+                                             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                                             // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                                             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                             var roadAddr = data.roadAddress; // 도로명 주소 변수
+                                             var extraRoadAddr = ''; // 참고 항목 변수
+
+                                             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                                             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                                             if (data.bname !== ''
+                                                   && /[동|로|가]$/g
+                                                         .test(data.bname)) {
+                                                extraRoadAddr += data.bname;
+                                             }
+                                             // 건물명이 있고, 공동주택일 경우 추가한다.
+                                             if (data.buildingName !== ''
+                                                   && data.apartment === 'Y') {
+                                                extraRoadAddr += (extraRoadAddr !== '' ? ', '
+                                                      + data.buildingName
+                                                      : data.buildingName);
+                                             }
+                                             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                                             if (extraRoadAddr !== '') {
+                                                extraRoadAddr = ' ('
+                                                      + extraRoadAddr
+                                                      + ')';
+                                             }
+
+                                             // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                             document
+                                                   .getElementById('postcode').value = data.zonecode;
+                                             document
+                                                   .getElementById("add1").value = roadAddr;
+//                                              document
+//                                                    .getElementById("add2").value = data.jibunAddress;
+                                             document
+                                             .getElementById("add2").value ="";//도로명만 받기
+
+                                          }
+                                       }).open();
+                              }
+                           </script>
+
 	
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>  
 </body>

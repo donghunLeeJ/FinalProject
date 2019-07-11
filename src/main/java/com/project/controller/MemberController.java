@@ -96,7 +96,6 @@ public class MemberController {
 	}
 	@RequestMapping("edit_mypage")
 	public String edit_mypage(MemberDTO mdto) {//마이페이지에서 글 정보수정 버튼 누르기
-		System.out.println("마이페이지 맵핑 출력 : " +mdto.getMember_phone()+" : " +mdto.getMember_add()+" : " +mdto.getMember_intro());
 		System.out.println("정보수정 맵핑");
 		System.out.println("1");
 		System.out.println(mservice.edit_mypage(mdto));
