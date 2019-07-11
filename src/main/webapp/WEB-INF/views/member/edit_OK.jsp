@@ -9,7 +9,7 @@
 <body>
 <script>
 alert("정보가 변경되었습니다");
-location.href="/home";
+location.href="/member/myPage";
 
 </script>
 </body>

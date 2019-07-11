@@ -88,13 +88,11 @@ public class MemberController {
 	public String edit_mypage(MemberDTO mdto) {//마이페이지에서 글 정보수정 버튼 누르기
 
 		System.out.println("정보수정 맵핑");
-		
-		String id =mdto.getMember_id();
-		System.out.println(id);
-		mdto.setMember_id(id);
+		System.out.println("1");
 		System.out.println(mservice.edit_mypage(mdto));
-		session.setAttribute("id",mservice.select_member(id));
-		return "/home";
+		session.setAttribute("id",mservice.select_member(mdto.getMember_id()));
+		return "member/edit_OK";
+
 	}
 	
 	@RequestMapping("uploadImg")
@@ -105,10 +103,7 @@ public class MemberController {
 		String uploadPath = session.getServletContext().getRealPath("/resources/img/profile-img/"+time+"/");//파일 저장 위치
 		File makeFile = new File(uploadPath);
 		if(!makeFile.exists()) makeFile.mkdir();
-		
-//		String  realPath = uploadPath + "/" + time;
 		System.out.println(uploadPath);
-	//	System.out.println("realPath : " + realPath);
 		File f = new File(uploadPath+"/"+savedName+"__.jpg");
 		try {
 		file.transferTo(f);//여기까지 사진 저장되는지 확인	

@@ -12,12 +12,6 @@
 		member_id=#{member_id} and member_pw=#{member_pw}
 	</select>
 
-	<update id="edit_mypage">
-		update member set member_add=#{member_add}, member_phone=#{member_phone},
-		member_intro=#{member_intro}, member_pw=#{member_pw} where
-		member_id=#{member_id}
-	</update>
-
 	<select id="selectById" resultType="com.project.dto.MemberDTO">
 		select * from member where
 		member_id=#{member_id}
@@ -32,6 +26,12 @@
 		select member_confirm from
 		member where member_id=#{member_id}
 	</select>
+
+
+	<update id="edit_mypage">
+	update member set member_postcode=#{member_postcode}, member_address1=#{member_address1}, member_address2=#{member_address2}, 
+	member_phone=#{member_phone},member_pw=#{member_pw},member_intro=#{member_intro} where member_id=#{member_id}
+	</update>
 
 	<update id="uploadImg">
 		update member set member_imgpath = #{path} where member_id = #{id}

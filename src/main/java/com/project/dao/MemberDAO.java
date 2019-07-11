@@ -50,18 +50,15 @@ public class MemberDAO {
 
 	
 	public int edit_mypage(MemberDTO dto) {
-		System.out.println(dto);
-		try {
-		  return sst.update("member.editmypage", dto);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
-		
-		
+
+			System.out.println(dto);
+		  return sst.update("member.edit_mypage", dto);
+
+	
+
 	}
 	public int uploadImg(String filePath, String id) {
-		Map<String,String> map = new HashMap();
+		Map<String,String> map = new HashMap<String, String>();
 		map.put("path", filePath);
 		map.put("id", id);
 		return sst.update("member.uploadImg",map);
