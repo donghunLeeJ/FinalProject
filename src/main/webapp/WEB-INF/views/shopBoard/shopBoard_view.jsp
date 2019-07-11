@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
@@ -34,7 +34,7 @@
 }
 
 .star_rating a.on {
-	color: #777;
+	color: #FE2E2E;
 }
 
 .seller-info {
@@ -129,7 +129,7 @@
 							</div>
 
 							<div class="row pb-3 mt-4 border-bottom">
-								<div class="col-4">지역</div>
+								<div class="col-4">판매 지역</div>
 								<div class="col-8">
 									<p>
 										<strong>${dto.shop_location }</strong>
@@ -149,6 +149,33 @@
 								</div>
 							</div>
 
+							<div class="row pt-2 pb-4">
+								<div class="col-12 text-right " style="color: red">
+									<strong>(최소 주문량 1개 이상) </strong>
+								</div>
+							</div>
+
+							<div class="row pt-2 border-top border-bottom bg-gray">
+
+								<div class="col-12 text-left py-2">
+									<strong>${dto.shop_title }</strong>
+								</div>
+								<div class="col-8 text-left py-2">
+									수량 : <input type="number" name="tentacles" value="1" min="1"
+										max="99">
+								</div>
+								<div class="col-4 text-right py-2">${dto.shop_price }원</div>
+							</div>
+							<div class="row border-top border-bottom py-3">
+								<div class="col-4 text-left" style="line-height: 2.5em">
+									<strong>총 상품금액</strong>(수량):
+								</div>
+
+								<div class="col-8 text-right" style="line-height: 2.5em; color:">
+									<span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+									(?개)
+								</div>
+							</div>
 							<div class="row pb-3 mt-4 border-bottom-0">
 								<div class="col-12" style="text-align: center"
 									style="font-wight:600">
@@ -188,21 +215,37 @@
 						data-toggle="tab" class="nav-link font-weight-bold">판매자 정보</a></li>
 				</ul>
 				<div class="tab-content py-4">
+					<!--상품 정보 -->
 					<div class="tab-pane active" id="profile">
 						<div class="col-lg-12">
 							<p>소 개</p>
 						</div>
 
-						<!--/row-->
 					</div>
-					<div class="tab-pane" id="messages">
-						<div class="alert alert-info alert-dismissable">
-							<a class="panel-close close" data-dismiss="alert">×</a> This is
-							an <strong>.alert</strong>. Use this to show important messages
-							to the user.
-						</div>
 
+					<!-- 리뷰 작성 -->
+					<div class="tab-pane" id="messages">
+						<div class="row border-bottom py-3 ">
+							<div class="col-12">
+								<h2>프리미엄 상품평</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<span class="star_rating"><a href="#" class="on">★</a> <a
+									href="#" class="on">★</a> <a href="#" class="on">★</a> <a
+									href="#">★</a> <a href="#">★</a> </span> <small
+									style="color: gray; margin-left: 1em"> cwg94님 | [브랜드] |
+									2019.06.24</small>
+								<p class="py-2">
+									<strong>이가격대에서는 이 제품이 최고인듯.</strong>
+								</p>
+								<p class="py-2">완전 싼마이 중소기업 제품보다 어느정도 보증되는 가전 회사가 나은 것 같습니다.</p>
+							</div>
+
+						</div>
 					</div>
+					<!-- 판매자 정보 -->
 					<div class="tab-pane " id="edit">
 
 						<div class="row border p-2">
@@ -263,11 +306,13 @@
 									<p>부용로 236 11773 번지 금오주공 9단지 903동 902호</p>
 								</div>
 							</div>
-
 						</div>
 					</div>
+
 				</div>
 			</div>
+		</div>
+	</div>
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
@@ -313,7 +358,6 @@
 		// 				alert(msg);
 		// 			});
 		// 		})
-		
 	</script>
 </body>
 </html>
