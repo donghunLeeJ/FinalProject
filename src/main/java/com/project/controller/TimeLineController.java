@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.dto.MemberDTO;
 import com.project.dto.Tl_BoardDTO;
 import com.project.service.TimeLineService;
 
@@ -26,13 +27,7 @@ public class TimeLineController {
    
    @RequestMapping("/accessTimeLine")//Timeline ùȭ��
    public String accessTimeline(HttpServletRequest request,Tl_BoardDTO dto) {
-      
-      
-      
       request.setAttribute("result", tls.showAll());
-      
-      
-      
       return "/timeLine/timeLine";
    }
    
@@ -61,9 +56,8 @@ public class TimeLineController {
       } catch (IOException e) {
          e.printStackTrace();
       }
-      
-      String id = (String)session.getAttribute("id");
-      dto.setTl_writer("acesang");//�ӽ� id�� �Է�
+      MemberDTO id = (MemberDTO)session.getAttribute("id");
+      dto.setTl_writer(id.getMember_id());//�ӽ� id�� �Է�
       tls.write(dto);
       
       return "/timeLine/writecompl";
