@@ -4,6 +4,7 @@ package com.project.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -75,45 +76,68 @@ public class ShopBoardController {
 	      return "/shopBoard/shopBoard_view";
 	}
 	
-	@RequestMapping("/ShopBoardInsertProc")
-	public String filetest(ShopBoardDTO dto , List<MultipartFile> shop_image){
-		List<String> fileArrayPath = new ArrayList();
-		
-		System.out.println("여기로 옴");
-		System.out.println(dto.getShop_price());
+
 	
-		for (MultipartFile image : shop_image){
-			
+	@RequestMapping("/ShopBoardInsertProc")
+	public String filetest(ShopBoardDTO dto , List<MultipartFile> shop_images){
+		List<String> fileArrayPath = new ArrayList();
+
+		int fileCount = 0;	
+		for (MultipartFile image : shop_images){
+
+			if(fileCount>2){System.out.println("이미지는 최대 3개까지만 업로드 가능.");break;}
+
 			if(image.getSize() != 0 ) {	
-			String originFileName = image.getOriginalFilename();
-			long fileSize = image.getSize();
-			System.out.println("originFileName : " + originFileName);
-			System.out.println("fileSize : " + fileSize);
-			String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
-			System.out.println(resourcePath);
-			String targetFile = resourcePath + "/" + System.currentTimeMillis() + "_foodimage.png";
-			try {
-				File f = new File(targetFile);
-				image.transferTo(f);
-				fileArrayPath.add("/img/shopfoodimg/" +f.getName());
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			} 
-			
-			}else {
-				fileArrayPath.add("/img/default.jpg");
-			}
+				String originFileName = image.getOriginalFilename();
+				long fileSize = image.getSize();
+				System.out.println("originFileName : " + originFileName);
+				System.out.println("fileSize : " + fileSize);
+				String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
+				System.out.println(resourcePath);
+				String targetFile = resourcePath + "/" + UUID.randomUUID().toString().replace("-","").substring(0,8) + "_foodimage.png";
+				try {
+					
+					File f = new File(targetFile);
+					image.transferTo(f);
+					fileArrayPath.add("/img/shopfoodimg/" +f.getName());
+					fileCount++;
+
+				}catch (Exception e) {
+					e.printStackTrace();
+				} 
+			}			
 		}
 		
-		dto.setShop_imagepath1(fileArrayPath.get(0));
-		dto.setShop_imagepath2(fileArrayPath.get(1));
-		dto.setShop_imagepath3(fileArrayPath.get(2));
+		if(fileCount==1){
+			System.out.println("이미지가 하나만 들어왔을 경우");
+			fileArrayPath.add("/img/default.jpg");
+			fileArrayPath.add("/img/default.jpg");
+			dto.setShop_imagepath1(fileArrayPath.get(0));
+			dto.setShop_imagepath2(fileArrayPath.get(1));
+			dto.setShop_imagepath3(fileArrayPath.get(2));
+
+		}else if(fileCount==2) {
+			System.out.println("이미지가 2개가 들어왔을 경우");
+			fileArrayPath.add("/img/default.jpg");
+			dto.setShop_imagepath1(fileArrayPath.get(0));
+			dto.setShop_imagepath2(fileArrayPath.get(1));
+			dto.setShop_imagepath3(fileArrayPath.get(2));
+
+		}else if(fileCount > 2){
+			System.out.println("이미지가 3개가 들어왔을 경우");
+			dto.setShop_imagepath1(fileArrayPath.get(0));
+			dto.setShop_imagepath2(fileArrayPath.get(1));
+			dto.setShop_imagepath3(fileArrayPath.get(2));		
+		}
+
 		MemberDTO mdto = (MemberDTO)session.getAttribute("id");	
 		dto.setShop_id(mdto.getMember_id());	
 		int result = sService.ShopBoardInsert(dto);	
 		return "redirect:../home";        
 	}
+	
+	
+	
 	
 	
 }
