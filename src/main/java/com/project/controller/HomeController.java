@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class HomeController {
 	@RequestMapping("")
-	// @RequestMapping("/home/join") : jsp���� ��Ʈ�ѷ��� ���� ��
 	public String home() {
 		return "home";
 	}
