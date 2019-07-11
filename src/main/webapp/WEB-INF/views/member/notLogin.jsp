@@ -8,10 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="member/loginProc">
-	<input type=text name=id>아이디<br>
-	<input type=text name=pw>패스워드
-		<button type="submit">로그인</button>
-	</form>
+	<script>
+		alert("아이디 또는 비밀번호가 틀렸습니다");
+		location.href="/home";
+	</script>
 </body>
 </html>

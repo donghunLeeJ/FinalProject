@@ -49,13 +49,14 @@ public class MemberController {
 			if(confirm.equals("y")) {
 			session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 			return "redirect:/home";
-			}else {
-				return "notLogin";
+			}else if(confirm.equals("n")){
+				return "member/confirm";
 			}
 			
 		} else {
-			return "notLogin";
+			return "member/notLogin";
 		}
+		return "member/home";
 	}
 
 	@RequestMapping("joinForm")
@@ -87,16 +88,13 @@ public class MemberController {
 	}
 
 
-
-
-	
 	@RequestMapping("myPage")//메인에서 마이페이지로 가기
 	public String myPage() {
 		return "member/myPage";
 	}
 	@RequestMapping("edit_mypage")
 	public String edit_mypage(MemberDTO mdto) {//마이페이지에서 글 정보수정 버튼 누르기
-		System.out.println(mdto.getMember_phone()+mdto.getMember_add()+mdto.getMember_intro());
+		
 		
 		System.out.println("정보수정 맵핑");
 		System.out.println("1");

@@ -90,7 +90,7 @@
                             </div>
                            
                            
-                                <div class=title id=addinput>주소 입력</div><input id=addbtn type="button" class="mb-12 mb-2" value="우편번호 찾기" id="search">
+                                <div class=title id=addinput>주소 입력</div><input style="height:30px; margin:0px; width:10%; line-height:50%;"" id=addbtn type="button" class="btn akame-btn btn-3 mt-15 active" value="우편번호 찾기" id="search">
                                 <div class="col-lg-12 text-center" >
                     			 <div class="col-lg-12">
                     			 <input type="text" id="postcode" style="width: 51.2%; margin: auto;" name="member_postcode" class="form-control mb-30" placeholder=""><br>

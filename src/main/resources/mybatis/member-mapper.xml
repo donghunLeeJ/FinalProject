@@ -7,9 +7,8 @@
 	</select>
 
 	<insert id="insert">
-
-		insert into member values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_postcode},#{member_address1},#{member_address2},#{member_phone},default)
-
+		insert into member values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default)
+		
 	</insert>
 	
 	<select id="selectById" resultType="com.project.dto.MemberDTO">
@@ -26,8 +25,8 @@
 	</select>
 
 	<update id="edit_mypage">
-	update member set member_add=#{member_add} where member_id=#{member_id}
-	</update>
+   update member set member_add=#{member_add}, member_phone=#{member_phone}, member_intro=#{member_intro}, member_pw=#{member_pw} where member_id=#{member_id}
+   </update>
 	<update id="uploadImg">
 	update member set member_imgpath = #{path}  where member_id = #{id}
 	</update>
