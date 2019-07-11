@@ -36,6 +36,7 @@ public class HtmlEmailDAO {
 				"</style>\r\n" + 
 				"</head>\r\n" + 
 				"<body>\r\n" + 
+
 				"   <div class=\"wrapper\">\r\n" + 
 				"      <div style=\"text-align: center; padding-bottom: 30px\">\r\n" + 
 				"         <h1 style=\"color: blue\">회원가입 인증 절차 입니다.</h1>\r\n" + 
@@ -59,6 +60,10 @@ public class HtmlEmailDAO {
 				"      </div>\r\n" + 
 				"   </div>\r\n" + 
 				"   \r\n" + 
+
+				"	<h1>회원가입 인증</h1>\r\n" + 
+				"	<a href=\"http://localhost/member/verifiedId?id="+id+"\"><button>인증버튼</button></a>\r\n" + 
+
 				"</body>\r\n" + 
 				"</html>";
 
