@@ -16,7 +16,7 @@
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<!-- header -->
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
@@ -70,6 +70,7 @@
 	</section>
 
 	<script>
+	
       var count = 2;
       $(window).scroll(
             function() {

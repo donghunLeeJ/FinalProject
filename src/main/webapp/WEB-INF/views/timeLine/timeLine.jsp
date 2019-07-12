@@ -23,10 +23,11 @@
 </style>
 </head>
 
-<body>
-	<!-- Preloader -->
-	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<!-- Header Area End -->
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+   <!-- Preloader -->
+    <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+   <!-- Header Area End -->
+
 
 	<!-- Welcome Area Start -->
 

@@ -13,7 +13,7 @@
 <!-- <link rel="stylesheet" href="style.css"> -->
 
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 	<section class="akame-contact-area bg-gray section-padding-80">
