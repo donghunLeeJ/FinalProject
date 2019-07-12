@@ -150,25 +150,44 @@
 							</div>
 
 							<div class="row pt-2 pb-4">
-								<div class="col-12 text-right " style="color: red">
-									<strong>(최소 주문량 1개 이상) </strong>
+								<div class="col-12 text-right ">
+									<span style="margin-right: 1em">총 수량 : <strong>${dto.shop_quantity }(개)</strong>
+									</span><strong style="color: red">(최소 주문량 1개 이상) </strong>
 								</div>
 							</div>
 
 							<div class="row pt-2 border-top border-bottom bg-gray">
 
-								<div class="col-12 text-left py-2">
+								<div class="col-12 py-3 border-bottom">
 									<strong>${dto.shop_title }</strong>
 								</div>
-								<div class="col-8 text-left py-2">
-									수량 : <input type="number" name="tentacles" value="1" min="1"
-										max="99">
+
+								<div class="col-4  py-3 text-right">
+									수량 : <input type="text" value="1" max="1" min="99"
+										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+										style="width: 5em; text-align: right">
 								</div>
-								<div class="col-4 text-right py-2">${dto.shop_price }원</div>
+								<div class="col-1"
+									style="padding-left: 0; padding-right: 0; margin-top: 0.2em">
+									<div class="row">
+										<div class="col-12">
+											<input type="button" value="▲" id="up_btn"
+												style="margin-right: 1em">
+										</div>
+										<div class="col-12">
+											<input type="button" value="▼" id="up_btn"
+												style="margin-right: 3em">
+										</div>
+
+									</div>
+								</div>
+								<div class="col-7 py-3 text-right">
+									<strong>${dto.shop_price }원</strong>
+								</div>
 							</div>
 							<div class="row border-top border-bottom py-3">
 								<div class="col-4 text-left" style="line-height: 2.5em">
-									<strong>총 상품금액</strong>(수량):
+									<strong>총 상품금액 </strong>(수량):
 								</div>
 
 								<div class="col-8 text-right" style="line-height: 2.5em; color:">

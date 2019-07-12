@@ -26,7 +26,7 @@ input[type="text"] {
 			</div>
 		</div>
 
-		<div class="row border-bottom border-top py-2">
+		<div class="row border-bottom border-top py-2 bg-gray">
 			<div class="col-6">
 				<h3>주문결제</h3>
 			</div>
@@ -36,8 +36,10 @@ input[type="text"] {
 		</div>
 
 		<div class="row py-3">
-			<div class="col-6 font-weight-bold">주문상품 확인</div>
-			<div class="col-6" style="text-align: right">
+			<div class="col-6 font-weight-bold text-bottom">
+				<span class="">주문상품 확인</span>
+			</div>
+			<div class="col-6 text-bottom" style="text-align: right">
 				<p>*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p>
 			</div>
 
@@ -110,20 +112,27 @@ input[type="text"] {
 		<div class="row border rounded">
 			<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
 			<div class="col-9 py-2">
-				기존 배송지 <input type="checkbox" value="">
+				<span>기존 배송지 <input type="radio" checked name="origin_radio"
+					id="origin"></span> <span>신규 배송지 <input type="radio"
+					name="origin_radio" id="new">
+				</span>
 			</div>
 			<div class="col-3 font-weight-bold py-2">받으시는 분</div>
 			<div class="col-9 py-2">
-				<input type="text" style="width: 8em">
+				<input type="text" style="width: 8em" value="${id.member_name}"
+					id="geter_name">
 			</div>
 			<div class="col-3 font-weight-bold py-2">배송지선택</div>
 			<div class="col-9 py-2">
-				<input type="text" id="sample6_postcode" placeholder="우편번호">
-				<input type="button" onclick="sample6_execDaumPostcode()"
-					value="우편번호 찾기" style="margin-left: 0.5em"><br> <br>
-				<input type="text" id="sample6_address" placeholder="주소"><br>
+				<input type="text" id="sample6_postcode" placeholder="우편번호"
+					value="${id.member_postcode }"> <input type="button"
+					onclick="sample6_execDaumPostcode()" value="우편번호 찾기"
+					style="margin-left: 0.5em"><br> <br> <input
+					type="text" id="sample6_address" placeholder="주소"
+					value="${id.member_address1 }" style="width: 20em"><br>
 				<br> <input type="text" id="sample6_detailAddress"
-					placeholder="상세주소" style="width: 20em"> <input type="text"
+					placeholder="상세주소" style="width: 25em"
+					value="${id.member_address2 }"> <input type="text"
 					id="sample6_extraAddress" placeholder="참고항목">
 
 			</div>
@@ -166,6 +175,20 @@ input[type="text"] {
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
+		// 	배송지 radio reset 
+		var reset = function() {
+			$("#geter_name").val("");
+			$("#sample6_postcode").val("");
+			$("#sample6_address").val("");
+			$("#sample6_detailAddress").val("");
+		}
+		var origin = function() {
+			$("#geter_name").val("${id.member_name}");
+			$("#sample6_postcode").val("${id.member_postcode}");
+			$("#sample6_address").val("${id.member_address1}");
+			$("#sample6_detailAddress").val("${id.member_address2}");
+		}
+		// 다음 주소 API
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{
@@ -219,6 +242,15 @@ input[type="text"] {
 						}
 					}).open();
 		}
+		// 신규 배송지 radio
+		$("#new").on("click", function() {
+			reset();
+		})
+		// 기존 배송지 radio
+		$("#origin").on("click", function() {
+
+			origin();
+		})
 	</script>
 </body>
 </html>

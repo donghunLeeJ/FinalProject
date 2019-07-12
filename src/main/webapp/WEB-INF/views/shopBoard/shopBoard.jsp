@@ -70,6 +70,7 @@
 	</section>
 
 	<script>
+	
       var count = 2;
       $(window).scroll(
             function() {

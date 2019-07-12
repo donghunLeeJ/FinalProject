@@ -93,8 +93,6 @@ public class ShopBoardController {
 				String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
 				System.out.println(resourcePath);
 
-
-
 				String targetFile = resourcePath + "/" + System.currentTimeMillis() + "_foodimage.png";
 				try {
 					File f = new File(targetFile);
@@ -119,12 +117,12 @@ public class ShopBoardController {
 		return "redirect:../home";
 	}
 
-
 	@RequestMapping("/shopBoard_buyProc")
 	public String buyProc() {
 
 		return "/shopBoard/shopBoard_buy";
 	}
+
 
 	// 아임포트 api
 	// @RequestMapping("/ShopBoard_import")
