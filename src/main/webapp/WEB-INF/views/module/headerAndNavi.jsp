@@ -113,7 +113,7 @@
 										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
 										<li><a href="/shopboard/ShopBoard_write">- 판매하기</a></li>
 									</ul></li>
-								<li><a href="/timeline/accessTimeLine">sns</a></li>
+								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
 
 							</ul>
 

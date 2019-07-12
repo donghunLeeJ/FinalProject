@@ -18,7 +18,7 @@ public class TimeLineService {
       return dao.write(dto);
    }
    
-   public List<Tl_BoardDTO> showAll() {
-      return dao.showAll();
+   public List<Tl_BoardDTO> showAll(int page) {
+      return dao.showAll(page);
    }
 }
