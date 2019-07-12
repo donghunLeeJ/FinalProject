@@ -150,9 +150,13 @@
 							</div>
 
 							<div class="row pt-2 pb-4">
-								<div class="col-12 text-right ">
-									<span style="margin-right: 1em">총 수량 : <strong>${dto.shop_quantity }(개)</strong>
-									</span><strong style="color: red">(최소 주문량 1개 이상) </strong>
+								<div class="col-6  text-left">
+									<span style="margin-right: 1em; text-align: left">총 수량 :
+										<strong>${dto.shop_quantity }(개)</strong>
+									</span>
+								</div>
+								<div class="col-6  text-right">
+									<strong style="color: red">(최소 주문량 1개 이상) </strong>
 								</div>
 							</div>
 
@@ -163,7 +167,7 @@
 								</div>
 
 								<div class="col-4  py-3 text-right">
-									수량 : <input type="text" value="1" max="1" min="99"
+									수량 : <input type="text" value="1" id="quantity_one"
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
 										style="width: 5em; text-align: right">
 								</div>
@@ -175,24 +179,23 @@
 												style="margin-right: 1em">
 										</div>
 										<div class="col-12">
-											<input type="button" value="▼" id="up_btn"
+											<input type="button" value="▼" id="down_btn"
 												style="margin-right: 3em">
 										</div>
 
 									</div>
 								</div>
 								<div class="col-7 py-3 text-right">
-									<strong>${dto.shop_price }원</strong>
+									<small>${dto.shop_price }원</small>
 								</div>
 							</div>
 							<div class="row border-top border-bottom py-3">
-								<div class="col-4 text-left" style="line-height: 2.5em">
-									<strong>총 상품금액 </strong>(수량):
-								</div>
 
-								<div class="col-8 text-right" style="line-height: 2.5em; color:">
-									<span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
-									(?개)
+
+								<div class="col-12 text-right" style="line-height: 2.5em;">
+									<span style="margin-right: 2em"><strong>총 상품금액
+											:</strong></span><span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+
 								</div>
 							</div>
 							<div class="row pb-3 mt-4 border-bottom-0">
@@ -335,6 +338,22 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+		//수량
+		var upCount = function() {
+			var quantity = Number($("#quantity_one").val());
+			var price = "${dto.shop_price}";
+
+			$("#quantity_one").val(quantity + 1);
+			$("#quantity_one").val() * price
+		}
+
+		var downCount = function() {
+			var quantity = Number($("#quantity_one").val());
+
+			$("#quantity_one").val("#quantity_one").val(quantity - 1);
+		}
+		//---------------------------
+
 		// 	이미지 클릭시 이미지 확대	
 		$(".imgCa").on("click", function() {
 			var imgSrc = $(this).attr("src");
@@ -377,6 +396,15 @@
 		// 				alert(msg);
 		// 			});
 		// 		})
+
+		$("#up_btn").on("click", function() {
+			upCount();
+
+		})
+
+		$("#down_btn").on("click", function() {
+			downCount();
+		})
 	</script>
 </body>
 </html>
