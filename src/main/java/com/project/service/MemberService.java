@@ -17,7 +17,9 @@ public class MemberService {
 		return result;
 	}
 	public int joinInsert(MemberDTO mdto) {
+		System.out.println("가입2");
 		int result = mdao.insert(mdto);
+		System.out.println("조인insert 서비스 리턴값 : "+result);
 		return result;
 	}
 	public MemberDTO select_member(String id) {

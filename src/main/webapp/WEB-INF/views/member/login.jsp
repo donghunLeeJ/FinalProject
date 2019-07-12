@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
 	<section class="akame-contact-area bg-gray section-padding-80">
         <div class="container">

@@ -18,7 +18,10 @@ public class Tl_BoardDAO {
       return sst.insert("Tl_BoardDAO.tl_board_insert",dto);
    }
    
-   public List<Tl_BoardDTO> showAll(){
-      return sst.selectList("Tl_BoardDAO.tl_board_showAll");
+   public List<Tl_BoardDTO> showAll(int page){
+      return sst.selectList("Tl_BoardDAO.tl_board_showAll",page);
    }
+   public int showAll_count(){
+	      return sst.selectOne("Tl_BoardDAO.tl_board_all_count");
+	   }
 }

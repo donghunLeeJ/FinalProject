@@ -6,13 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-<script>
-alert("정보가 변경되었습니다");
-location.href="/member/myPage";
-
-</script>
+<body>
+	<script>
+		alert("인증되었습니다")
+		location.href="/home";
+	</script>
 </body>
-
-
 </html>
