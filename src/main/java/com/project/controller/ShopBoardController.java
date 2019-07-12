@@ -130,6 +130,7 @@ public class ShopBoardController {
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));		
+
 		}
 				
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
@@ -139,12 +140,12 @@ public class ShopBoardController {
 		return "redirect:../home";
 	}
 
-
 	@RequestMapping("/shopBoard_buyProc")
 	public String buyProc() {
 
 		return "/shopBoard/shopBoard_buy";
 	}
+
 
 	// 아임포트 api
 	// @RequestMapping("/ShopBoard_import")

@@ -26,11 +26,13 @@
 .no {
 	padding: 0px;
 	margin: 0px;
+
 }
 
 #area {
 	width: 100%;
 	height: 100px;
+
 }
 </style>
 </head>
@@ -437,12 +439,14 @@ return 1;
 // 				removeXSS($("#pw1").val());
 // 				removeXSS($("#pw2").val());
 				$("#edit_mypage").submit();
+
 			}
 
 		});
 	</script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
+
 	<!--주소등록-->
 		//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 		function sample4_execDaumPostcode() {
@@ -461,26 +465,35 @@ return 1;
 						extraRoadAddr += data.bname;
 					}
 					// 건물명이 있고, 공동주택일 경우 추가한다.
+
 					if (data.buildingName !== '' && data.apartment === 'Y') {
 						extraRoadAddr += (extraRoadAddr !== '' ? ', '
 								+ data.buildingName : data.buildingName);
 					}
+
 					// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+
 					if (extraRoadAddr !== '') {
 						extraRoadAddr = ' (' + extraRoadAddr + ')';
 					}
 
+
 					// 우편번호와 주소 정보를 해당 필드에 넣는다.
+
 					document.getElementById('postcode').value = data.zonecode;
 					document.getElementById("add1").value = roadAddr;
 					//                                              document
 					//                                                    .getElementById("add2").value = data.jibunAddress;
+
 					document.getElementById("add2").value = "";//도로명만 받기
+
 
 				}
 			}).open();
 		}
 	</script>
+
+
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
