@@ -1,264 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <title>Insert title here</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
+<style>
+</style>
 </head>
 
-<body>
-  <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+   <!-- Preloader -->
+    <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+   <!-- Header Area End -->
 
-    <!-- Header Area Start -->
-    <header class="header-area">
-        <!-- Top Header Area Start -->
-        <div class="top-header-area">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-5">
-                        <div class="top-header-content">
-                            <p>Welcome to hair salon!</p>
-                        </div>
-                    </div>
-                    <div class="col-7">
-                        <div class="top-header-content text-right">
-                            <p><i class="fa fa-clock-o" aria-hidden="true"></i>  <span class="mx-2"></span> | <span class="mx-2"></span> <i class="fa fa-phone" aria-hidden="true"></i> </p>
-                        </div>
-                    </div>
-                </div>
+   <!-- Welcome Area Start -->
+
+
+   <!-- About Area Start -->
+   <section class="akame-about-area section-padding-80-0"> 
+   <!--        --------------------------------------------------------------------------------------------------- -->
+   <button id="writebtn">湲��벐湲�</button>
+   <script>
+      $("#writebtn").on("click",function(){
+         $(location).attr("href", "/timeline/tl_boardWrite")
+      })
+   </script>
+   <div class="container ">
+      <c:forEach var="i" items="${result}">
+      <div class="row mt-4">
+         <div class="col-lg-6 border" style="margin: 0 auto">
+            <div class="row py-3">
+               <div class="col-lg-2"><img class="rounded-circle" alt="" src="/img/core-img/empty_profile.png">${i.tl_writer }</div>
+               <div class="col-lg-10 py-2">${i.tl_title }</div>
             </div>
-        </div>
-        <!-- Top Header Area End -->
-
-        <!-- Main Header Start -->
-        <div class="main-header-area">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <!-- Classy Menu -->
-                    <nav class="classy-navbar justify-content-between" id="akameNav">
-
-                        <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="/img/core-img/logo.png" alt=""></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-                            <!-- Menu Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul id="nav">
-                                    <li class="active"><a href="./index.html">Home</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./index.html">- Home</a></li>
-                                            <li><a href="./about.html">- About Us</a></li>
-                                            <li><a href="./service.html">- 서비스 소개</a></li>
-                                            <li><a href="./portfolio.html">- 상품보기</a></li>
-                                            <li><a href="./blog.html">- sns</a></li>
-                                            <li><a href="./single-blog.html">- Blog Details</a></li>
-                                            <li><a href="./contact.html">- Contact</a></li>
-                                            <li><a href="#">- Dropdown</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">- Dropdown Item</a></li>
-                                                    <li><a href="#">- Dropdown Item</a></li>
-                                                    <li><a href="#">- Dropdown Item</a></li>
-                                                    <li><a href="#">- Dropdown Item</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="./portfolio.html">서비스 소개</a></li>
-                                    <li><a href="./service.html">상품보기</a></li>
-                                    <li><a href="./about.html">우리만에 sns</a></li>
-                                   
-                                </ul>
-
-                                <!-- Cart Icon -->
-                                <div class="cart-icon ml-5 mt-4 mt-lg-0">
-                                    <a href="#"><i class="icon_cart"></i></a>
-                                </div>
-
-                                <!-- Book Icon -->
-                                <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
-                                    <a href="#" class="btn akame-btn">Book Now</a>
-                                </div>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-                    </nav>
-                </div>
+            <div class="single-post-area">
+               <div class="post-thumbnail" style="text-align: center" >
+                  <img src="${i.tl_imgaddr}" alt="">
+               </div>
+               <div class="post-content">
+               
+                  <div class="post-meta">
+                     <a href="#" class="post-date"><i class="icon_clock_alt"></i>
+                        <fmt:formatDate var="resultRegDt" value="${i.tl_writedate}" pattern="yyyy-MM-dd"/>
+                  ${resultRegDt}</a> <a href="#" class="post-comments"><i
+                        class="icon_chat_alt"></i> ${i.tl_likecount }</a>
+                  </div>
+                  <p>${i.tl_contents } </p>
+               </div>
             </div>
-        </div>
-    </header>
-    <!-- Header Area End -->
-
-    <!-- Welcome Area Start -->
-    <section class="welcome-area">
-        <div class="welcome-slides owl-carousel">
-            <!-- Single Welcome Slide -->
-            <div class="single-welcome-slide bg-img" style="background-image: url(img/bg-img/background.jpg);">
-                <!-- Welcome Content -->
-                <div class="welcome-content h-100">
-                    <div class="container h-100">
-                        <div class="row h-100 align-items-center">
-                            <!-- Welcome Text -->
-                            <div class="col-12 col-md-9 col-lg-6">
-                                <div class="welcome-text">
-                                    <h2 data-animation="fadeInUp" data-delay="100ms">We Care About <br> Your Hair</h2>
-                                    <p data-animation="fadeInUp" data-delay="400ms">“Discover your own style. Don't try to repeat what has already been written - have the courage to do your own thing and don't be afraid to do something different.”</p>
-                                    <a href="#" class="btn akame-btn" data-animation="fadeInUp" data-delay="700ms">About Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Welcome Slide -->
-            <div class="single-welcome-slide bg-img" style="background-image: url(img/bg-img/background.jpg);">
-                <!-- Welcome Content -->
-                <div class="welcome-content h-100">
-                    <div class="container h-100">
-                        <div class="row h-100 align-items-center">
-                            <!-- Welcome Text -->
-                            <div class="col-12 col-md-9 col-lg-6">
-                                <div class="welcome-text">
-                                    <h2 data-animation="fadeInUp" data-delay="100ms">We Care About <br> Your Hair</h2>
-                                    <p data-animation="fadeInUp" data-delay="400ms">“Discover your own style. Don't try to repeat what has already been written - have the courage to do your own thing and don't be afraid to do something different.”</p>
-                                    <a href="#" class="btn akame-btn active" data-animation="fadeInUp" data-delay="700ms">About Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Welcome Area End -->
-
-    <!-- About Area Start -->
-    <section class="akame-about-area section-padding-80-0">
-       
-<!--        --------------------------------------------------------------------------------------------------- -->
-       <div class="container">
-       	<div class="row">
-       		<div class="col-lg-12">
-       			
-       		
-       		
-       		</div>	
-       	
-       	</div>
-        
-       
-       
-       </div>
-       
-           
-       
-       
-       
-       <script>
-       
-       
-       </script>
-       
-       
-<!--        ====================================================================================================== -->
-       
-       
-       
-    </section>
-    
-    <footer class="footer-area section-padding-80-0">
-        <div class="container">
-            <div class="row justify-content-between">
-
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single-footer-widget mb-80">
-                        <!-- Footer Logo -->
-                        <a href="#" class="footer-logo"><img src="img/core-img/logo.png" alt=""></a>
-
-                        <p class="mb-30">We would love to serve you and let you enjoy your culinary experience. Excepteur sint occaecat cupidatat non proident.</p>
-
-                        <!-- Copywrite Text -->
-                        <div class="copywrite-text">
-                            <p> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                    <div class="single-footer-widget mb-80">
-                        <!-- Widget Title -->
-                        <h4 class="widget-title">Opening times</h4>
-
-                        <!-- Open Times -->
-                        <div class="open-time">
-                            <p>Monday: Friday: 10.00 - 23.00</p>
-                            <p>Saturday: 10.00 - 19.00</p>
-                        </div>
-
-                        <!-- Social Info -->
-                        <div class="social-info">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-md-4 col-xl-3">
-                    <div class="single-footer-widget mb-80">
-
-                        <!-- Widget Title -->
-                        <h4 class="widget-title">Contact Us</h4>
-
-                        <!-- Contact Address -->
-                        <div class="contact-address">
-                            <p>Tel: (+12) 345 678 910</p>
-                            <p>E-mail: Hello.colorlib@gmail.com</p>
-                            <p>Address: Iris Watson, P.O. Box 283 8562 Fusce Rd, NY</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Area End -->
-
-    <!-- All JS Files -->
-    <!-- jQuery -->
-    <script src="/js/jquery.min.js"></script>
-    <!-- Popper -->
-    <script src="/js/popper.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/js/bootstrap.min.js"></script>
-    <!-- All Plugins -->
-    <script src="/js/akame.bundle.js"></script>
-    <!-- Active -->
-    <script src="/js/default-assets/active.js"></script>
-
+         </div>
+      </div>
+      </c:forEach>
+   </div>
+   </section>
+   <jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
 </html>

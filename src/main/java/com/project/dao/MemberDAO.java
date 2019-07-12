@@ -34,6 +34,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberDTO dto) {
+		System.out.println("멤버DAO : " +  sst.insert("member.insert",dto));
 		return sst.insert("member.insert",dto);
 	}
 
@@ -50,8 +51,12 @@ public class MemberDAO {
 
 	
 	public int edit_mypage(MemberDTO dto) {
-			System.out.println(dto);
+
+			//System.out.println(dto);
 		  return sst.update("member.edit_mypage", dto);
+
+	
+
 	}
 	public int uploadImg(String filePath, String id) {
 		Map<String,String> map = new HashMap<String, String>();

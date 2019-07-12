@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-<script>
-alert("정보가 변경되었습니다");
-location.href="/member/myPage";
-
-</script>
+   <script>
+   alert("글이 등록되었습니다.")
+   location.href = "/timeline/accessTimeLine"
+   </script>
 </body>
-
-
 </html>

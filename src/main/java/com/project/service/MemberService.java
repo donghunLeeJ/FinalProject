@@ -17,7 +17,9 @@ public class MemberService {
 		return result;
 	}
 	public int joinInsert(MemberDTO mdto) {
+		System.out.println("가입2");
 		int result = mdao.insert(mdto);
+		System.out.println("조인insert 서비스 리턴값 : "+result);
 		return result;
 	}
 	public MemberDTO select_member(String id) {
@@ -29,15 +31,14 @@ public class MemberService {
 	}
 	public String checkConfirm(String id) {
 		return mdao.checkConfirm(id);
-		}
+
+	}
+
 	public int edit_mypage(MemberDTO mdto) {
-		System.out.println("2");
+		System.out.println(mdto);
 		return mdao.edit_mypage(mdto);
 	}
-	
 	public int uploadImg(String filePath, String id) {
-		
 		return mdao.uploadImg(filePath, id);
-
 	}
 }

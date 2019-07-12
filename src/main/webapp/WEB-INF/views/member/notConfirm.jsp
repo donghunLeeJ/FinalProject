@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-<script>
-alert("정보가 변경되었습니다");
-location.href="/member/myPage";
-
-</script>
+	<script>
+		alert("인증후 로그인 해주세요");
+		location.href="/home";
+	</script>
 </body>
-
-
 </html>

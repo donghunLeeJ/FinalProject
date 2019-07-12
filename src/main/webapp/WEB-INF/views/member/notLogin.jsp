@@ -7,11 +7,10 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
-	<form action="member/loginProc">
-	<input type=text name=id>아이디<br>
-	<input type=text name=pw>패스워드
-		<button type="submit">로그인</button>
-	</form>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+	<script>
+		alert("아이디 또는 비밀번호가 틀렸습니다");
+		location.href="/home";
+	</script>
 </body>
 </html>

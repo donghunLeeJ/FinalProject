@@ -1,21 +1,19 @@
 package com.project.controller;
 
-
-
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
+	//private static final Logger Logger = LoggerFactory.getLogger(HomeController.class);//sysoutëŒ€ì‹ ì— ì‚¬ìš©í•¨
+	
 	@RequestMapping("")
-	//@RequestMapping("/home/join") : jsp¿¡¼­ ÄÁÆ®·Ñ·¯·Î º¸³¾ ¶§
-	public String home() {
+	public String home(String id) {
+	//	Logger.info("message is {}.",id);
 		return "home";
 	}
-	
-	
+
 }
