@@ -42,7 +42,8 @@
 }
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container-fluid mt-5">
 		<div class="row pt-5 ">
@@ -202,9 +203,10 @@
 								<div class="col-12" style="text-align: center"
 									style="font-wight:600">
 
-									<a href="/shopboard/shopBoard_buyProc" class="btn akame-btn">구
-										매 하 기 </a> <a href="#" class="btn akame-btn"><i
-										class="icon_cart"></i>장 바 구 니</a>
+									<a
+										href="/shopboard/shopBoard_buyProc?quantity=1&shop_seq=${dto.shop_seq }"
+										class="btn akame-btn">구 매 하 기 </a> <a href="#"
+										class="btn akame-btn"><i class="icon_cart"></i>장 바 구 니</a>
 
 								</div>
 							</div>
@@ -397,11 +399,12 @@
 		// 			});
 		// 		})
 
+		//버튼클릭시 수량 추가
 		$("#up_btn").on("click", function() {
 			upCount();
 
 		})
-
+		//버튼클릭시 수량 감소
 		$("#down_btn").on("click", function() {
 			downCount();
 		})

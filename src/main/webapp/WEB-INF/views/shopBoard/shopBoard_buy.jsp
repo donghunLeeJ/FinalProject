@@ -16,12 +16,13 @@ input[type="text"] {
 }
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
-	<div class="container mt-3">
+	<div class="container mt-5">
 		<div class="row  pb-3 border-bottom">
-			<div class="col-12" style="text-align: right">
+			<div class="col-12 text-right">
 				<a href="#" class="btn akame-btn">이전 페이지 </a>
 			</div>
 		</div>

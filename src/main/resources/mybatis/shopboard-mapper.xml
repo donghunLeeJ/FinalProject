@@ -29,7 +29,5 @@ select * from shopboard
 select * from shopboard where shop_seq=#{value}
 </select>
 
- 
-  
 
 </mapper>
