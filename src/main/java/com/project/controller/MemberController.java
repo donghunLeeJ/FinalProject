@@ -121,8 +121,19 @@ System.out.println("조인프록");
 	}
 	@RequestMapping("verifiedId")
 	public String verifiedId(String id) {
-		mservice.confirmId(id);
-		return "member/myPage";
+		System.out.println("아이디                                "+id);
+		
+		String confirm=mservice.checkConfirm(id);
+		
+		if(confirm.equals("n")) {
+			mservice.confirmId(id);
+			return "member/emailConfirm";
+			
+			}else if(confirm.equals("y")){
+				
+				return "member/reConfirm";
+			}	
+		return null;
 	}
 
 }
