@@ -76,45 +76,65 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/ShopBoardInsertProc")
-	public String filetest(ShopBoardDTO dto, List<MultipartFile> shop_image) {
+	public String filetest(ShopBoardDTO dto, List<MultipartFile> shop_images , String shop_expiration) {
 		List<String> fileArrayPath = new ArrayList();
 
-		System.out.println("여기로 옴");
-		System.out.println(dto.getShop_price());
+		System.out.println("내용: " +dto.getShop_contents());
+		System.out.println("브랜드: " +dto.getShop_brand());
+		System.out.println("타이틀: " +dto.getShop_title());
+		System.out.println("지역: " +dto.getShop_location());
+		System.out.println("유통기한: " +dto.getShop_expiration());
+			System.out.println("test"+shop_expiration);
+		int fileCount = 0;	
+		for (MultipartFile image : shop_images){
 
-		for (MultipartFile image : shop_image) {
+			//if(fileCount>2){System.out.println("이미지는 최대 3개까지만 업로드 가능.");break;}
 
-			if (image.getSize() != 0) {
+			if(image.getSize() != 0 ) {			String originFileName = image.getOriginalFilename();
+			long fileSize = image.getSize();
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+			String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
+			System.out.println(resourcePath);
+			String targetFile = resourcePath + "/" + UUID.randomUUID().toString().replace("-","").substring(0,8) + "_foodimage.png";
+			try {
 
-				String originFileName = image.getOriginalFilename();
-				long fileSize = image.getSize();
-				System.out.println("originFileName : " + originFileName);
-				System.out.println("fileSize : " + fileSize);
-				String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
-				System.out.println(resourcePath);
+				File f = new File(targetFile);
+				image.transferTo(f);
+				fileArrayPath.add("/img/shopfoodimg/" +f.getName());
+				fileCount++;
 
+			}catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}			
+	}
+				
+		if(fileCount==1){
+			System.out.println("이미지가 하나만 들어왔을 경우");
+			fileArrayPath.add("/img/default.jpg");
+			fileArrayPath.add("/img/default.jpg");
+			dto.setShop_imagepath1(fileArrayPath.get(0));
+			dto.setShop_imagepath2(fileArrayPath.get(1));
+			dto.setShop_imagepath3(fileArrayPath.get(2));
 
+		}else if(fileCount==2) {
+			System.out.println("이미지가 2개가 들어왔을 경우");
+			fileArrayPath.add("/img/default.jpg");
+			dto.setShop_imagepath1(fileArrayPath.get(0));
+			dto.setShop_imagepath2(fileArrayPath.get(1));
+			dto.setShop_imagepath3(fileArrayPath.get(2));
 
-				String targetFile = resourcePath + "/" + System.currentTimeMillis() + "_foodimage.png";
-				try {
-					File f = new File(targetFile);
-					image.transferTo(f);
-					fileArrayPath.add("/img/shopfoodimg/" + f.getName());
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			} else {
-				fileArrayPath.add("/img/default.jpg");
-			}
+		}else if(fileCount > 2){
+			System.out.println("이미지가 3개가 들어왔을 경우");
+			dto.setShop_imagepath1(fileArrayPath.get(0));
+			dto.setShop_imagepath2(fileArrayPath.get(1));
+			dto.setShop_imagepath3(fileArrayPath.get(2));		
 		}
-
-		dto.setShop_imagepath1(fileArrayPath.get(0));
-		dto.setShop_imagepath2(fileArrayPath.get(1));
-		dto.setShop_imagepath3(fileArrayPath.get(2));
+				
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		dto.setShop_id(mdto.getMember_id());
+		//dto.setShop_id(mdto.getMember_id());
+		dto.setShop_id("kkjangel");
 		int result = sService.ShopBoardInsert(dto);
 		return "redirect:../home";
 	}
