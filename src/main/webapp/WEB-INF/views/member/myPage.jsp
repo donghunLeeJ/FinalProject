@@ -241,7 +241,7 @@
 									<label class="col-lg-3 col-form-label form-control-label">자기
 										소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area></textarea>
+										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
 									</div>
 									<input name="member_intro" type="hidden">
 									<%--                                 <div class=" ">${id.member_intro}</div> --%>
@@ -281,16 +281,16 @@
 	</div>
 
 	<script>
-	
-	 function removeXSS (str1) {
+	function removeXSS (str, id) {
+	//	console.log(str);
+	//	console.log(id);
+	//	alert("XSS");
 		var str_low = "";
-		var str = str1;
-
+		//var str = str1;
 		// HTML tag를 사용하게 할 경우 부분 허용
 		// HTML tag를 모두 제거
-		str = str.replace("<", "&lt;");
-		str = str.replace(">", "&gt;");
-
+		str = str.replace("<", "&");
+		str = str.replace(">", "&");
 		// 특수 문자 제거
 		str = str.replace("\"", "&gt;");
 		str = str.replace("&", "&amp;");
@@ -370,8 +370,9 @@
 			str = str.replace("onscroll", "x-onscroll");
 			str = str.replace("onsubmit", "x-onsubmit");
 			str = str.replace("onunload", "x-onunload");
+			//console.log("함수"+str);
+			$("#"+id).val(str);
 		}
-return 1;
 	}
 	
 		$("#file").hide();
@@ -390,8 +391,8 @@ return 1;
 		$("#edit_info").on("click", function() {//정보수정 버튼 클릭시
 
 			var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-			 var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
-			 var regPw2=/(\w)\1\1/g;
+			// var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+			// var regPw2=/(\w)\1\1/g;
 
 			if ($("#postcode").val() == "") {
 				alert("주소를 입력하세요");
@@ -409,15 +410,18 @@ return 1;
 			}else if ($("#pw1").val() == "") {
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
-			}else if(!regPw.test($("#pw1").val())){
-				alert("비밀번호 형식에 맞지 않습니다");
-				$("#pw1").focus();
-				$("#pw1").focus("");
-			}else if(regPw2.test($("#pw1").val())){
-	            alert('연속으로 같은 문자를 3번 이상 사용하실 수 없습니다.');
-	            $("#pw1").focus();
-				$("#pw1").focus("");
-	        }else if ($("#pw2").val() == "") {
+			}
+// 			else if(!regPw.test($("#pw1").val())){
+// 				alert("비밀번호 형식에 맞지 않습니다");
+// 				$("#pw1").focus();
+// 				$("#pw1").focus("");
+// 			}
+// 			else if(regPw2.test($("#pw1").val())){
+// 	            alert('연속으로 같은 문자를 3번 이상 사용하실 수 없습니다.');
+// 	            $("#pw1").focus();
+// 				$("#pw1").focus("");
+// 	        }
+			else if ($("#pw2").val() == "") {
 				alert("비밀번호 확인을 입력해주세요");
 				$("#pw2").focus();
 			} else if ($("#pw1").val() != $("#pw2").val()) {
@@ -429,13 +433,13 @@ return 1;
 				if(result)	$("#edit_mypage").submit();
 				else $("#add2").focus();
 			} else {//정보수정을 완벽히 입력했다면
-// 				removeXSS($("#postcode").val());
-// 				removeXSS($("#add1").val());
-// 				removeXSS($("#add2").val());
-// 				removeXSS($("#phone").val());
-// 				removeXSS($("#area").val());
-// 				removeXSS($("#pw1").val());
-// 				removeXSS($("#pw2").val());
+				removeXSS($("#postcode").val(),$("#postcode").attr("id"));
+				removeXSS($("#add1").val(),$("#add1").attr("id"));
+				removeXSS($("#add2").val(),$("#add2").attr("id"));
+				removeXSS($("#phone").val(),$("#phone").attr("id"));
+				removeXSS($("#area").val(),$("#area").attr("id"));
+				removeXSS($("#pw1").val(),$("#pw1").attr("id"));
+				removeXSS($("#pw2").val(),$("#pw2").attr("id"));
 				$("#edit_mypage").submit();
 			}
 

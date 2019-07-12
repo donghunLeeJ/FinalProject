@@ -4,7 +4,7 @@
 
 	<insert id="insert" >
 		insert into member
-		values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default)
+		values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,#{member_intro},default)
 	</insert>
 
 	<select id="login" resultType="Integer">
