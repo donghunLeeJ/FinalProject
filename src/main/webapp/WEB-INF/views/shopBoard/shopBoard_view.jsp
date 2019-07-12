@@ -42,7 +42,8 @@
 }
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container-fluid mt-5">
 		<div class="row pt-5 ">
@@ -97,6 +98,7 @@
 							<div class="row pb-3 mt-4 border-bottom">
 								<div class="col-4">판매가</div>
 								<div class="col-8">
+								<input type="hidden" value="${dto.shop_price }" id="price">
 									<p>
 										<strong>${dto.shop_price }</strong>
 									</p>
@@ -163,7 +165,7 @@
 								</div>
 
 								<div class="col-4  py-3 text-right">
-									수량 : <input type="text" value="1" max="1" min="99"
+									수량 : <input id="quantity_one" type="text" value="1" max="1" min="99"
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
 										style="width: 5em; text-align: right">
 								</div>
@@ -175,14 +177,14 @@
 												style="margin-right: 1em">
 										</div>
 										<div class="col-12">
-											<input type="button" value="▼" id="up_btn"
+											<input type="button" value="▼" id="down_btn"
 												style="margin-right: 3em">
 										</div>
 
 									</div>
 								</div>
 								<div class="col-7 py-3 text-right">
-									<strong>${dto.shop_price }원</strong>
+									<strong id="resultPrice1">${dto.shop_price }원</strong>
 								</div>
 							</div>
 							<div class="row border-top border-bottom py-3">
@@ -191,7 +193,7 @@
 								</div>
 
 								<div class="col-8 text-right" style="line-height: 2.5em; color:">
-									<span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+									<span id="resultPrice" style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
 									(?개)
 								</div>
 							</div>
@@ -335,6 +337,43 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+		var upCount = function() {
+			var quantity = Number($("#quantity_one").val());
+
+			$("#quantity_one").val(quantity + 1);
+			
+		}
+
+		var downCount = function() {
+			var quantity = Number($("#quantity_one").val());
+			if(quantity<2){
+				alert("수량은 최소 1개입니다");
+				$("#quantity_one").val("1");
+			}else{
+			$("#quantity_one").val("#quantity_one").val(quantity - 1);
+			}
+		}
+
+		$("#up_btn").on("click", function() {
+			upCount();
+			var quantity = Number($("#quantity_one").val());
+			var price = Number($("#price").val());
+			var result = quantity * price;
+			$("#resultPrice").text(result+"원");
+			$("#resultPrice1").text(result+"원");
+			
+
+		})
+		//버튼클릭시 수량 감소
+		$("#down_btn").on("click", function() {
+			downCount();
+			var quantity = Number($("#quantity_one").val());
+			var price = Number($("#price").val());
+			var result = quantity * price;
+			$("#resultPrice").text(result);
+			$("#resultPrice1").text(result);
+		})
+
 		// 	이미지 클릭시 이미지 확대	
 		$(".imgCa").on("click", function() {
 			var imgSrc = $(this).attr("src");
