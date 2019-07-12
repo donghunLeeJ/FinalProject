@@ -18,9 +18,12 @@ img {
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 </head>
-<body>
-	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<!-- /shopboard/filetest
+
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+ <!-- /shopboard/filetest
+
+
  /shopboard/ShopBoardInsertProc
   -->
 	<link rel="stylesheet"

@@ -58,18 +58,18 @@ public class MemberController {
 
 	@RequestMapping("joinProc")
 	public String joinInsert(MemberDTO mdto) {
-
+System.out.println("조인프록");
 		String id = mdto.getMember_id();
-		System.out.println("조인프록         " + id);
+	//	System.out.println("조인프록         " + id);
 		try {
 			edao.sendMail(id);
+			System.out.println("가입1");
+			int result = mservice.joinInsert(mdto);
+			System.out.println("조인프록 서비스 리턴값 : " + result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
-		int result = mservice.joinInsert(mdto);
-		System.out.println(result);
+		//System.out.println(result);
 		return "redirect:/home";
 	}
 
@@ -87,7 +87,6 @@ public class MemberController {
 	}
 	@RequestMapping("edit_mypage")
 	public String edit_mypage(MemberDTO mdto) {//마이페이지에서 글 정보수정 버튼 누르기
-
 		System.out.println("정보수정 맵핑");
 		System.out.println("1");
 		System.out.println(mservice.edit_mypage(mdto));

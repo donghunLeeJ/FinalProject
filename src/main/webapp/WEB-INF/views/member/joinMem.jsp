@@ -42,7 +42,10 @@ transform:translate(20px);
 </style>
 
 </head>
-<body>
+
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+ 
+
 
    <section class="akame-contact-area bg-gray section-padding-80">
    <div class="container">
@@ -72,16 +75,20 @@ transform:translate(20px);
                <div class="row">
                   <div class="col-lg-12 text-center">
                      <div class=title>아이디</div>
-                     <input type="text" style="width: 50%; margin: auto;" id=id
-                        name="member_id" class="form-control mb-30"
-                        placeholder="인증받을 이메일 형식으로 입력해주세요">
+
+                     <input type="text" style="width: 48%; margin: auto;" id=id
+                        name="member_id" class="form-control mb-30" placeholder="인증 받을 이메일 형식으로 입력해주세요">
+
+
                   </div>
                   <div class="col-lg-12 text-center">
                      <div class=title>비밀번호</div>
 
                      <input type="password" style="width: 50%; margin: auto;" id=pw
                         name="member_pw" class="form-control mb-30"
+
                         placeholder="대,소문자,숫자 포함 최소 8자리">
+
                   </div>
                   <div class="col-lg-12 text-center">
                      <div class=title>비밀번호 확인</div>
@@ -93,7 +100,10 @@ transform:translate(20px);
 
                   <div class="col-lg-12 text-center">
                      <div class=title>이름</div>
-                     <input type="text" id=name style="width: 50%; margin: auto;"name="member_name" class="form-control mb-30" placeholder="한글 2자 이상, 4자 이하">
+
+
+                     <input type="text" id="name" name="member_name" style="width: 48%; margin: auto;" class="form-control mb-30" placeholder="한글 2자 이상, 4자 이하">
+
                   </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="margin: auto">
@@ -211,49 +221,59 @@ transform:translate(20px);
                   $("#name").focus();
                }
                
-               
-               else if ($("#datepicker").val() == "") {
-                  alert("생년월일을 입력하세요");
-               }
-               
-               else if ($("#phone").val() == "") {
-                  alert("핸드폰 번호를 입력하세요");
-                  $("#phone").focus();
-               }else if(!regnum.test($("#phone").val())){
-                  alert("핸드폰 번호가 형식에 맞지 않습니다");
-                  $("#phone").focus();
-               }else if(reg.test($("#phone").val())){
-                  alert("공백은 입력할 수 없습니다");
-                  $("#phone").focus();
-               }
-               else if ($("#postcode").val() == "") {
-                  alert("주소를 입력하세요");
-               }
-               else if ($("#man").is(':checked') == false
-                     && $("#woman").is(':checked') == false) {
-                  alert("성별을 선택하세요!");
-               } else if($("#add2").val()==""){
-                  var result =confirm("상세주소가 없습니다.\n가입하시겠습니까?");
-                  if(result) $("form").submit();
-                  else return;
-               }else{
-                  $("form").submit();
-               }
+ 
+             else if ($("#name").val() == "") {
+               alert("이름을 입력하세요");
+               $("#name").focus();
+            }else if(!regname.test($("#name").val())){
+               alert("이름 형식에 맞지 않습니다");
+               $("#name").focus();
+            }else if(reg.test($("#name").val())){
+               alert("공백은 입력할 수 없습니다");
+               $("#name").focus();
+            }
+            else if ($("#birth").val() == "") {
+               alert("생년월일을 입력하세요");
+            }
+            
+            else if ($("#phone").val() == "") {
+               alert("핸드폰 번호를 입력하세요");
+               $("#phone").focus();
+            }else if(!regnum.test($("#phone").val())){
+               alert("핸드폰 번호가 형식에 맞지 않습니다");
+               $("#phone").focus();
+            }else if(reg.test($("#phone").val())){
+               alert("공백은 입력할 수 없습니다");
+               $("#phone").focus();
+            }
+            else if ($("#postcode").val() == "") {
+               alert("주소를 입력하세요");
+            }
+            else if ($("#man").is(':checked') == false
+                  && $("#woman").is(':checked') == false) {
+               alert("성별을 선택하세요!");
+            }else if($("#add2").val()==""){
+               var result =confirm("상세주소가 없습니다.\n가입하시겠습니까?");
+               if(result) $("#formproc").submit();
+              
+            }else{
+               $("#formproc").submit();
+            }
 
-            })
-      // 여기까지가 가입버튼을 눌렀을때
+         })
+   // 여기까지가 가입버튼을 눌렀을때
 
-      $("#pwCheck").on("focus", function() {
-         if ($("#pw").val().length == 0) {
-            alert("비밀번호 먼저 입력하세요");
-            $("#pw").focus();
-         }
-      })
-      $("#pwCheck").on("focusOut", function() {
-         if ($("#pw").val() == $("#pwCheck").val()) {
-            alert("비밀번호가 일치합니다");
-         }
-      })
+   $("#pwCheck").on("focus", function() {
+      if ($("#pw").val().length == 0) {
+         alert("비밀번호 먼저 입력하세요");
+         $("#pw").focus();
+      }
+   })
+   $("#pwCheck").on("focusOut", function() {
+      if ($("#pw").val() == $("#pwCheck").val()) {
+         alert("비밀번호가 일치합니다");
+      }
+   })
 
 
    

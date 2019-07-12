@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<footer class="footer-area section-padding-80-0">
+<footer class="footer-area section-padding-80-0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<div class="container">
 		<div class="row justify-content-between">
 

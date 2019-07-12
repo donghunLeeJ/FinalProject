@@ -33,7 +33,7 @@
 </div>
 <!-- /Preloader -->
 <!-- Header Area Start -->
-<header class="header-area">
+<header class="header-area" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
 	<div class="top-header-area">
 		<div class="container h-100">
