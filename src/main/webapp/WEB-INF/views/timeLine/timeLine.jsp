@@ -15,7 +15,7 @@
 </style>
 </head>
 
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
    <!-- Preloader -->
     <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
    <!-- Header Area End -->

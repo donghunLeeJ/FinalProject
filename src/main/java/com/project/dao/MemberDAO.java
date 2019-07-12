@@ -34,6 +34,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberDTO dto) {
+		System.out.println("멤버DAO : " +  sst.insert("member.insert",dto));
 		return sst.insert("member.insert",dto);
 	}
 
@@ -41,7 +42,7 @@ public class MemberDAO {
 		return sst.selectOne("member.selectById",id);
 	}
 
-	public int confirmId(String id) {
+	public int confirmId(String id) {//멤버 컨펌을 n에서 y로 바꿔주는 메서드
 		return sst.update("member.confirmId",id);
 	}
 	public String checkConfirm(String id) {
@@ -51,7 +52,7 @@ public class MemberDAO {
 	
 	public int edit_mypage(MemberDTO dto) {
 
-			System.out.println(dto);
+			//System.out.println(dto);
 		  return sst.update("member.edit_mypage", dto);
 
 	
@@ -64,6 +65,6 @@ public class MemberDAO {
 		return sst.update("member.uploadImg",map);
 		
 	}
-
+	
 
 }

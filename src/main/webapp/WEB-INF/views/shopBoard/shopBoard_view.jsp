@@ -42,7 +42,7 @@
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container-fluid mt-5">
 		<div class="row pt-5 ">
