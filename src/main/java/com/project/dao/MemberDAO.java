@@ -42,7 +42,7 @@ public class MemberDAO {
 		return sst.selectOne("member.selectById",id);
 	}
 
-	public int confirmId(String id) {
+	public int confirmId(String id) {//멤버 컨펌을 n에서 y로 바꿔주는 메서드
 		return sst.update("member.confirmId",id);
 	}
 	public String checkConfirm(String id) {
@@ -65,6 +65,6 @@ public class MemberDAO {
 		return sst.update("member.uploadImg",map);
 		
 	}
-
+	
 
 }

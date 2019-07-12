@@ -27,6 +27,7 @@ public class HtmlEmailDAO {
 				"<title>이메일 인증번호</title>\r\n" + 
 				"\r\n" + 
 				"<!-- jQuery library -->\r\n" + 
+				"<link rel=\"stylesheet\" href=\"/css/style2.css\">"+
 				"<script\r\n" + 
 				"   src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\r\n" + 
 				"<style>\r\n" + 
@@ -49,7 +50,7 @@ public class HtmlEmailDAO {
 				"         </div>\r\n" + 
 				"         <div style=\"text-align: center\">\r\n" + 
 				"            <div style=\"padding-bottom: 30px; margin-top: 40px\">\r\n" + 
-				"               <a href=\"localhost/member/verifiedId?id="+id+"\"><input type=\"button\" id=\"btn\" value=\"가  입  하  기\"\r\n" + 
+				"               <a href=\"localhost/member/verifiedId?id="+id+"\"><input class=\"btn akame-btn btn-3 mt-15 active\" type=\"button\" id=\"btn\" value=\"가  입  하  기\"\r\n" + 
 				"                  style=\"width: 100px; height: 60px; border-radius: 3px;\"></a>\r\n" + 
 				"            </div>\r\n" + 
 				"         </div>\r\n" + 
@@ -59,11 +60,7 @@ public class HtmlEmailDAO {
 				"\r\n" + 
 				"      </div>\r\n" + 
 				"   </div>\r\n" + 
-				"   \r\n" + 
-
-				"	<h1>회원가입 인증</h1>\r\n" + 
-				"	<a href=\"http://localhost/member/verifiedId?id="+id+"\"><button>인증버튼</button></a>\r\n" + 
-
+				"   \r\n" +
 				"</body>\r\n" + 
 				"</html>";
 

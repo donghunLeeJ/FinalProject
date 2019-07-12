@@ -2,7 +2,31 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<style>
+	.headerbtn{
+		border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding: 5px;
+            
+	}
+	
+	.headerbtn:hover{
+		color:white;
+            background-color: skyblue;
+	}
+	#logout{
+	border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+	}
+	
+	#mypage{
+	border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+	}
 
+
+</style>
 <!-- Preloader -->
 <div id="preloader">
 	<div class="loader"></div>
@@ -25,12 +49,12 @@
 						<c:choose>
 							<c:when test="${id eq null}">
 
-								<button class="btn btn-primary" id="LogIN">LogIN</button>
+								<button  id="LogIN" class="headerbtn">LogIN</button>
 							</c:when>
 
 							<c:otherwise>
-								<button id=logout>logout</button>
-								<button id=mypage>mypage</button>
+								<button id=logout class="headerbtn">logout</button>
+								<button id=mypage  class="headerbtn"></button>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -89,7 +113,7 @@
 										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
 										<li><a href="/shopboard/ShopBoard_write">- 판매하기</a></li>
 									</ul></li>
-								<li><a href="/timeline/accessTimeLine">sns</a></li>
+								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
 
 							</ul>
 
