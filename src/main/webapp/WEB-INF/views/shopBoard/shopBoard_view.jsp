@@ -10,10 +10,7 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <style>
 .star_rating {
 	font-size: 0;
@@ -39,6 +36,11 @@
 
 .seller-info {
 	margin-top: 1.2em;
+}
+
+.quantity_btn {
+	width: 1.5em;
+	height: 1.5em;
 }
 </style>
 </head>
@@ -170,23 +172,20 @@
 								<div class="col-4  py-3 text-right">
 									수량 : <input type="text" value="1" id="quantity_one"
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-										style="width: 5em; text-align: right">
+										style="width: 3em; text-align: right">
 								</div>
-								<div class="col-1"
-									style="padding-left: 0; padding-right: 0; margin-top: 0.2em">
+								<div class="col-2"
+									style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
 									<div class="row">
 										<div class="col-12">
-											<input type="button" value="▲" id="up_btn"
-												style="margin-right: 1em">
-										</div>
-										<div class="col-12">
-											<input type="button" value="▼" id="down_btn"
-												style="margin-right: 3em">
+											<input type="button" value="+" id="up_btn"
+												class="quantity_btn"> <input type="button" value="-"
+												id="down_btn" class="quantity_btn">
 										</div>
 
 									</div>
 								</div>
-								<div class="col-7 py-3 text-right">
+								<div class="col-6 py-3 text-right">
 									<small>${dto.shop_price }원</small>
 								</div>
 							</div>
@@ -204,7 +203,7 @@
 									style="font-wight:600">
 
 									<a
-										href="/shopboard/shopBoard_buyProc?quantity=1&shop_seq=${dto.shop_seq }"
+										href="/shopboard/shopBoard_buyProc?quantity=1&seq=${dto.shop_seq }"
 										class="btn akame-btn">구 매 하 기 </a> <a href="#"
 										class="btn akame-btn"><i class="icon_cart"></i>장 바 구 니</a>
 
@@ -368,36 +367,6 @@
 			$(this).addClass("on").prevAll("a").addClass("on");
 			return false;
 		});
-		// 		//아임포트 API
-		// 		$("buy_btn").on("click", function() {
-
-		// 			IMP.init('imp50043848'); // 가맹점 식별 코드
-		// 			IMP.request_pay({
-		// 				pg : 'cacaopay', // version 1.1.0부터 지원.
-		// 				pay_method : 'card',
-		// 				merchant_uid : '가맹점에서 관리하는 고유번호' + new Date().getTime(),
-		// 				name : '주문명:결제테스트',
-		// 				amount : '${shop_price}',
-		// 				buyer_email : '${id.member_id}',
-		// 				buyer_name : '${id.member_name}',
-		// 				buyer_tel : '${id.member_phone}',
-		// 				buyer_addr : '서울특별시 강남구 삼성동',
-		// 				buyer_postcode : '123-456',
-		// 				m_redirect_url : '/board/shopBoard_import'
-		// 			}, function(rsp) {
-		// 				if (rsp.success) {
-		// 					var msg = '결제가 완료되었습니다.';
-		// 					msg += '고유ID : ' + rsp.imp_uid;
-		// 					msg += '상점 거래ID : ' + rsp.merchant_uid;
-		// 					msg += '결제 금액 : ' + rsp.paid_amount;
-		// 					msg += '카드 승인번호 : ' + rsp.apply_num;
-		// 				} else {
-		// 					var msg = '결제에 실패하였습니다.';
-		// 					msg += '에러내용 : ' + rsp.error_msg;
-		// 				}
-		// 				alert(msg);
-		// 			});
-		// 		})
 
 		//버튼클릭시 수량 추가
 		$("#up_btn").on("click", function() {

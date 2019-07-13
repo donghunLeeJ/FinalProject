@@ -148,29 +148,17 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/shopBoard_buyProc")
-	public String buyProc(String quantity, int shop_seq) {
-		int quantity1 = Integer.parseInt(quantity);
-
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-
+	public String buyProc(String quantity, String seq) {
+		int quantity1 = Integer.parseInt(quantity);// 수량
+		int shop_seq = Integer.parseInt(seq);
+		System.out.println(quantity1);
+		// 상품정보 테이블의 값을 꺼내오는 query필요.
 		ShopBoardDTO sdto = sService.ShopBoardIdSelect(shop_seq);
-		OrderDTO dto = new OrderDTO();
-		sdto.setShop_quantity(quantity1);
-		// 임의로 값 더해놓게함 바꿔야댐
 		int price = sdto.getShop_price();
-		int result = quantity1 * price;
-
-		dto.setProducts_seq(shop_seq); // 주문정보 seq
-		dto.setSeller_id(sdto.getShop_id()); // 판매자 id
-		dto.setBuyer_id(mdto.getMember_id()); // 구매자 id	
-		dto.setProducts_title(sdto.getShop_title()); // 상품제목
-		dto.setProducts_location(sdto.getShop_location()); // 상품내용
-		dto.setProducts_price(result); // 총 구매가격
-		dto.setProducts_quantity(quantity1); // 총 수량
-		dto.setProducts_imagepath(sdto.getShop_imagepath1()); // 상품 이미지
-		int result1 = oService.orderInsert(dto);
-
-		System.out.println(result1);
+		int result = quantity1 * price;// 총액 서버에서 계산하는게맞는거같음. 프론트에서하면 수량은 많은데 총액을 장난칠수있을듯.
+		request.setAttribute("dto", sdto);// 상품정보
+		request.setAttribute("quantity", quantity1); // 상품수량
+		request.setAttribute("price", result);// 수량에따른 금액
 		return "/shopBoard/shopBoard_buy";
 	}
 
