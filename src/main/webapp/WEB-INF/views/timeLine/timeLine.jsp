@@ -49,7 +49,7 @@
 							<img class="rounded-circle" alt=""
 								src="/img/core-img/empty_profile.png">${i.tl_writer }</div>
 						<div class="col-lg-8 py-2 text-center">${i.tl_title }</div>
-						<div class="col-lg-2 text-right"><button id="optionbtn" style="background-color:white; border:none;"><i class="xi-bars"></i></button></div>
+						<div class="col-lg-2 text-right"><button id="optionbtn${i.tl_board_seq}" style="background-color:white; border:none;"><i class="xi-bars"></i></button></div>
 					</div>
 					<div class="single-post-area">
 						<div class="post-thumbnail" style="text-align: center">
@@ -68,10 +68,20 @@
 					</div>
 				</div>
 			</div>
+			<script>
+			$('#optionbtn${i.tl_board_seq}').on('click',function(){
+				alert('gd');
+			})
+			
+			</script>
 		</c:forEach>
 		</div>
 		<div class="row mt-4"></div>
 	</section>
+			
+			
+	
+	
 	<script>
       var count = 2;
       $(window).scroll(
@@ -99,7 +109,9 @@
 					<div class='col-lg-2'>
 						<img class='rounded-circle'
 							src='/img/core-img/empty_profile.png'>`+result[i].tl_writer+` </div>
-					<div class='col-lg-10 py-2'>`+result[i].tl_title +`</div>
+					<div class='col-lg-8 py-2'>`+result[i].tl_title +`</div>
+					<div class='col-lg-2 text-right'><button id='optionbtn`+result[i].tl_board_seq+`' style='background-color:white; border:none;'><i class='xi-bars'></i></button></div>
+					
 				</div>
 				<div class='single-post-area'>
 					<div class='post-thumbnail' style='text-align: center'>
@@ -116,10 +128,8 @@
 						<p>`+result[i].tl_contents+`</p>
 					</div>
 				</div>
-			</div></div>`)
-                     }
-                  
-                     })
+			</div></div>
+			    })
                   
                   console.log('바닥입니다!');
                } else if ($(window).scrollTop() == 0) {
