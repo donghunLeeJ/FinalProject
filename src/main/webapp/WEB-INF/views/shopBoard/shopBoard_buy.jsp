@@ -9,19 +9,28 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <style>
 input[type="text"] {
 	box-shadow: 4px 4px 5px #gray inset;
 	border-radius: 5px;
 }
+
+a {
+	cursor: pointer;
+}
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
-	<div class="container mt-3">
+	<div class="container mt-5">
 		<div class="row  pb-3 border-bottom">
-			<div class="col-12" style="text-align: right">
+			<div class="col-12 text-right">
 				<a href="#" class="btn akame-btn">이전 페이지 </a>
 			</div>
 		</div>
@@ -45,30 +54,32 @@ input[type="text"] {
 
 		</div>
 		<div class="row border-bottom border-top bg-gray text-center py-2">
-			<div class="col-3">상품/옵션정보</div>
-			<div class="col-4">유통기한</div>
+			<div class="col-5">상품/옵션정보</div>
+
 			<div class="col-1">수량(개)</div>
 			<div class="col-1">상품금액</div>
 			<div class="col-1">지역</div>
-
+			<div class="col-2">유통 기한</div>
 			<div class="col-2">배송비/판매자</div>
 		</div>
 		<div class="row border-bottom border-top text-center py-4">
-			<div class="col-3 " style="line-height: 4em;">
+			<div class="col-5 " style="margin-top: 1.4em">
 				<div class="row">
-					<div class="col-4">이미지</div>
-					<div class="col-8">제목</div>
+					<div class="col-3">${dto.shop_imagepath1 }</div>
+					<div class="col-9" style="text-overflow: ellipsis;">
+						<span>${dto.shop_title }</span>
+					</div>
 
 				</div>
 			</div>
-			<div class="col-4" style="line-height: 4em;">2019.07.11~2019.07~</div>
-			<div class="col-1" style="line-height: 4em;">1</div>
-			<div class="col-1" style="line-height: 4em;">24,440(원)</div>
-			<div class="col-1" style="line-height: 4em;">서울</div>
 
-			<div class="col-2" style="line-height: 1.4em;">
-				선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
-					브랜드</small>
+			<div class="col-1" style="margin-top: 1.4em">${quantity }</div>
+			<div class="col-1" style="margin-top: 1.4em">${price }(원)</div>
+			<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
+			<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
+			<div class="col-2">
+				선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.shop_id }
+					${dto.shop_brand }</small>
 			</div>
 		</div>
 		<div class="row pt-5 pb-1">
@@ -79,18 +90,18 @@ input[type="text"] {
 		<div class="row border rounded">
 			<div class="col-3 py-2 font-weight-bold">주문자 이름</div>
 			<div class="col-9 py-2">
-				<input type="text" name="order_name">
+				<input type="text" name="order_name" id="order_name">
 			</div>
 			<div class="col-3 py-2 font-weight-bold">휴대전화</div>
 			<div class="col-9 py-2">
-				<input type="text" name="phone1" style="width: 8em"> - <input
-					type="text" name="phone2" style="width: 8em"> - <input
-					type="text" name="phone3" style="width: 8em">
+				<input type="text" name="phone1" id="phone1" style="width: 8em">
+				- <input type="text" name="phone2" id="phone2" style="width: 8em">
+				- <input type="text" name="phone3" id="phone3" style="width: 8em">
 			</div>
 			<div class="col-3 py-2 font-weight-bold">이메일</div>
 			<div class="col-9 py-2">
-				<input type="text" name="email1"> @ <input type="text"
-					name="email2">
+				<input type="text" name="email1" id="email1"> @ <input
+					type="text" name="email2" id="email2">
 			</div>
 
 		</div>
@@ -112,35 +123,32 @@ input[type="text"] {
 		<div class="row border rounded">
 			<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
 			<div class="col-9 py-2">
-				<span>기존 배송지 <input type="radio" checked name="origin_radio"
+				<span>기존 배송지 <input type="radio" name="origin_radio"
 					id="origin"></span> <span>신규 배송지 <input type="radio"
 					name="origin_radio" id="new">
 				</span>
 			</div>
 			<div class="col-3 font-weight-bold py-2">받으시는 분</div>
 			<div class="col-9 py-2">
-				<input type="text" style="width: 8em" value="${id.member_name}"
-					id="geter_name">
+				<input type="text" style="width: 8em" id="geter_name">
 			</div>
 			<div class="col-3 font-weight-bold py-2">배송지선택</div>
 			<div class="col-9 py-2">
-				<input type="text" id="sample6_postcode" placeholder="우편번호"
-					value="${id.member_postcode }"> <input type="button"
-					onclick="sample6_execDaumPostcode()" value="우편번호 찾기"
-					style="margin-left: 0.5em"><br> <br> <input
-					type="text" id="sample6_address" placeholder="주소"
-					value="${id.member_address1 }" style="width: 20em"><br>
-				<br> <input type="text" id="sample6_detailAddress"
-					placeholder="상세주소" style="width: 25em"
-					value="${id.member_address2 }"> <input type="text"
-					id="sample6_extraAddress" placeholder="참고항목">
+				<input type="text" id="sample6_postcode" placeholder="우편번호">
+				<input type="button" onclick="sample6_execDaumPostcode()"
+					value="우편번호 찾기" style="margin-left: 0.5em"><br> <br>
+				<input type="text" id="sample6_address" placeholder="주소"
+					style="width: 20em"><br> <br> <input type="text"
+					id="sample6_detailAddress" placeholder="상세주소" style="width: 25em">
+				<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 
 			</div>
 			<div class="col-3 font-weight-bold py-2">휴대전화</div>
 			<div class="col-9 py-2">
-				<input type="text" name="phone1" style="width: 8em"> - <input
-					type="text" name="phone2" style="width: 8em"> - <input
-					type="text" name="phone3" style="width: 8em">
+				<input type="text" name="phone1" style="width: 8em" id="phone1"
+					value=""> - <input type="text" name="phone2"
+					style="width: 8em" id="phone2"> - <input type="text"
+					name="phone3" style="width: 8em" id="phone3">
 			</div>
 			<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
 			<div class="col-9">
@@ -163,8 +171,9 @@ input[type="text"] {
 
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
-				<a href="/shopboard/shopBoard_buyProc" class="btn akame-btn mr-3">결
-					제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
+				<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a href="#"
+					class="btn akame-btn ml-3">결 제 취 소</a>
+
 			</div>
 		</div>
 	</div>
@@ -181,14 +190,23 @@ input[type="text"] {
 			$("#sample6_postcode").val("");
 			$("#sample6_address").val("");
 			$("#sample6_detailAddress").val("");
+			$("#phone1").val("");
+			$("#phone2").val("");
+			$("#phone3").val("");
 		}
+		var phone = '${id.member_phone}';
+		console.log(phone);
 		var origin = function() {
+
 			$("#geter_name").val("${id.member_name}");
 			$("#sample6_postcode").val("${id.member_postcode}");
 			$("#sample6_address").val("${id.member_address1}");
 			$("#sample6_detailAddress").val("${id.member_address2}");
+			$("#phone1").val(phone.substr(0, 2));
+			$("#phone2").val(phone.substr(2, 4));
+			$("#phone3").val(phone.substr(4, 4));
 		}
-		// 다음 주소 API
+		// 다음 주소 API	
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{
@@ -237,11 +255,46 @@ input[type="text"] {
 							document.getElementById('sample6_postcode').value = data.zonecode;
 							document.getElementById("sample6_address").value = addr;
 							// 커서를 상세주소 필드로 이동한다.
+							document.getElementById("sample6_detailAddress").value = "";//상세주소 입력하고 추가하면 삭제되게함
 							document.getElementById("sample6_detailAddress")
 									.focus();
 						}
 					}).open();
 		}
+		//아임포트 API
+
+		$("#buy_aTag").on("click", function() {
+			var IMP = window.IMP; // 생략가능
+			IMP.init('imp00502224'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+
+			IMP.request_pay({
+				pg : 'kakao', // version 1.1.0부터 지원.
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : '${dto.shop_title}', //주문자 이름
+				amount : '${dto.shop_price}', //주문금액  서버단에서 실제 판매금액이랑 비교해야함 스크립트 공격가능
+				buyer_email : $("#email1").val()+"@"+$("#email2").val(), //구매자 이메일 
+				buyer_name : $("#order_name").val(), //실 구매자 이름
+				buyer_tel : $("#phone1").val()+$("#phone2").val()+$("#phone3").val(), //구매자 번호
+				buyer_addr : $("#sample6_address").val()+" "+$("#sample6_detailAddress").val(), //실제 배송지주소?
+				buyer_postcode : $("#sample6_postcode").val(), //구매자 우편주소
+				m_redirect_url : '/board/shopBoard_import'//이게 mapping임?
+			}, function(rsp) {
+				if (rsp.success) {
+					console.log(resp);
+					var msg = '결제가 완료되었습니다.';
+					msg += '고유ID : ' + rsp.imp_uid;
+					msg += '상점 거래ID : ' + rsp.merchant_uid;
+					msg += '결제 금액 : ' + rsp.paid_amount;
+					msg += '카드 승인번호 : ' + rsp.apply_num;
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+				}
+				alert(msg);
+			});
+		})
+
 		// 신규 배송지 radio
 		$("#new").on("click", function() {
 			reset();
