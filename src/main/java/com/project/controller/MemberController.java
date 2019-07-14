@@ -39,8 +39,17 @@ public class MemberController {
 		if (result == 1) {
 			String confirm=mservice.checkConfirm(mdto.getMember_id());
 			if(confirm.equals("y")) {
-			session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
-			return "redirect:/home";
+				
+				if(mdto.getMember_id().equals("admin")){//만일 로그인한 id가 관리자 아이디일 경우
+
+					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
+					return "redirect:/admin/adminHome"; //관리자 컨트롤러로 이동시킴
+					
+				}else{
+					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
+					return "redirect:/home";
+				}
+
 			}else if(confirm.equals("n")){
 				return "member/confirm";
 			}

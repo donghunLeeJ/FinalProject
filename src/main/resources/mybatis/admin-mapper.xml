@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminDAO">
+
+<select id="MemberSelectAll" resultType="com.project.dto.MemberDTO">
+    select * from member
+</select>
+
+
+<!--게시글의 총 갯수를 뽑아오는 쿼리 -->
+<select id="MemberCount" resultType="Integer">
+ select count(*) as membercount from member
+</select>
+
+<!-- 
+
+create table member(
+    member_id varchar(30) PRIMARY key,
+    member_pw varchar(30) not null,
+    member_name varchar(30) not null,
+    member_birth varchar(30) not null,
+    member_gender varchar(30) not null,
+    member_phone number not null,
+    member_postcode varchar(100) not null,
+    member_address1 varchar(100) not null,
+    member_address2 varchar(100) not null,
+    member_imgpath varchar(100) default('/img/core-img/emptyuser.jpg'),
+    member_intro varchar(100),
+    member_confirm varchar(100) DEFAULT 'n'
+);
+-->
+
+
+<!--  <![CDATA[<]]>
+order by X.boardwritetime -->
+<!--페이지의 어떤 번호를 클릭시 해당 페이지의 글 10개를 보여주는 함수입니다.-->
+<select id="PageMemberselect" resultType="com.project.dto.MemberDTO">
+select X.rnum, X.member_id, X.member_pw, X.member_name, X.member_birth, X.member_gender, X.member_phone , X.member_postcode , X.member_address1 , X.member_address2 , X.member_imgpath , X.member_intro , X.member_confirm
+from( 
+  select rownum as rnum, A.member_id, A.member_pw, A.member_name, A.member_birth, A.member_gender, A.member_phone , A.member_postcode , A.member_address1 , A.member_address2 , A.member_imgpath , A.member_intro , A.member_confirm
+   from(
+        select *
+        from member
+        order by member_id desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+
+
+</mapper>
