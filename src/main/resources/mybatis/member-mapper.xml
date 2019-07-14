@@ -4,8 +4,8 @@
 
 	<insert id="insert">
 		insert into member
-		values(#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default)
-	</insert>
+		values(memberSell_seq.nextval,#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default)
+	</insert>	
 
 	<select id="login" resultType="Integer">
 		select count(*) from member where
@@ -43,6 +43,6 @@
 		member_id = #{id}
 	</update>
 	<insert id="orderInsert">
- insert into products_order values()
+		insert into products_order values()
 	</insert>
 </mapper>

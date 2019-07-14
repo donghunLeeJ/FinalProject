@@ -92,7 +92,8 @@
 
 							<div class="row pb-4 border-bottom">
 								<div class="col-12">
-									<strong>[판매자 브랜드 ] ${dto.shop_title }</strong>
+									<strong>[${dto.shop_brand}] &nbsp;
+										&nbsp;${dto.shop_title }</strong>
 								</div>
 
 							</div>
@@ -272,41 +273,42 @@
 					<div class="tab-pane " id="edit">
 
 						<div class="row border p-2">
-							<div class="col-2 font-weight-bold seller-info">상호 / 대표자</div>
+							<div class="col-2 font-weight-bold seller-info">대표자(성함)</div>
 							<div class="col-4 border-right seller-info">
-								<p>최정현</p>
+								<p>${mdto.member_name}</p>
 							</div>
 							<div class="col-2 font-weight-bold seller-info">브랜드</div>
 							<div class="col-4 seller-info">
-								<p>마이페이지에서 추가하자 멤버테이블에 칼럼추</p>
+								<p>${dto.shop_brand }</p>
 							</div>
 						</div>
 						<div class="row border p-2 ">
 							<div class="col-2 font-weight-bold seller-info">사업자번호</div>
 							<div class="col-4 border-right seller-info">
-								<p>하드코딩</p>
+								<p>${mdto.memberSell_seq }</p>
 							</div>
-							<div class="col-2 font-weight-bold seller-info">통신사판매신고번호</div>
+							<div class="col-2 font-weight-bold seller-info">판매자고유번호</div>
 							<div class="col-4  seller-info">
-								<p>하드코딩</p>
+								<p>2013-서울강남-02629</p>
 							</div>
 
 						</div>
 						<div class="row border p-2">
 							<div class="col-2 font-weight-bold seller-info">연락처</div>
 							<div class="col-4 border-right seller-info">
-								<p>010-6471-3589</p>
+								<p>${mdto.member_phone}</p>
 							</div>
 							<div class="col-2 font-weight-bold seller-info">E-mail</div>
 							<div class="col-4 seller-info">
-								<p>cwg94@naver.com</p>
+								<p>${mdto.member_id }</p>
 							</div>
 
 						</div>
 						<div class="row border p-2">
 							<div class="col-2 font-weight-bold seller-info">영업 소재지</div>
 							<div class="col-10 seller-info">
-								<p>부용로 236 11773 번지 금오주공 9단지 903동 902호</p>
+								<p>${mdto.member_address1 }&nbsp;
+									&nbsp;${mdto.member_address2  } &nbsp; (${mdto.member_postcode })</p>
 							</div>
 						</div>
 
@@ -326,7 +328,8 @@
 
 							<div class="col-10 h-50" style="margin-top: 0.3em">
 								<div class=" mt-4">
-									<p>부용로 236 11773 번지 금오주공 9단지 903동 902호</p>
+									<p>${mdto.member_address1 },&nbsp;
+										&nbsp;${mdto.member_address2  } &nbsp; (${mdto.member_postcode })</p>
 								</div>
 							</div>
 						</div>
