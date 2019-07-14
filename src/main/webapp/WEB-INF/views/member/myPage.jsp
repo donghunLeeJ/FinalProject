@@ -19,21 +19,26 @@
 }
 
 #myinfo {
-	width: 200px;
-	height: 200px;
+	width: 280px;
+	height: 280px;
 }
 
 .no {
 	padding: 0px;
 	margin: 0px;
-
 }
 
 #area {
 	width: 100%;
 	height: 100px;
-
 }
+.empty{
+height:10px;
+}
+/* div{ */
+/* border:1px solid black; */
+/* } */
+
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -44,7 +49,7 @@
 	<div class="container">
 
 		<div class="row my-2">
-			<div class="col-lg-8 order-lg-2">
+			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a href="" data-target="#profile"
 						data-toggle="tab" class="nav-link active">나의 정보</a></li>
@@ -52,8 +57,10 @@
 						data-toggle="tab" class="nav-link">쪽지함</a></li>
 					<li class="nav-item"><a href="" data-target="#edit"
 						data-toggle="tab" class="nav-link">정보 수정</a></li>
+					<li class="nav-item"><a href="" data-target="#delacc"
+						data-toggle="tab" class="nav-link ">회원 탈퇴</a></li>
 				</ul>
-				<div class="tab-content py-4">
+				<div class="tab-content py-4 col-12">
 					<div class="tab-pane active" id="profile">
 						<div class="row">
 							<div>
@@ -77,17 +84,25 @@
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">생일</label>
+										<label class="col-lg-3 col-form-label form-control-label">기본 주소</label>
 										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_birth}</div>
+											<div class="form-control" type="text">${id.member_address1}</div>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">성별</label>
+										<label class="col-lg-3 col-form-label form-control-label">상세 주소</label>
 										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_gender }</div>
+											<div class="form-control" type="text">${id.member_address2 }</div>
 										</div>
 									</div>
+									<div class="form-group row">
+										<label class="col-lg-3 col-form-label form-control-label">핸드폰 번호</label>
+										<div class="col-lg-9">
+											<div class="form-control" type="text">${id.member_phone }</div>
+										</div>
+									</div>
+									
+									
 								</div>
 							</div>
 							<div class="col-md-12 mt-5">
@@ -150,50 +165,45 @@
 						</table>
 					</div>
 					<div class="tab-pane" id="edit">
-						<div id="preview" class="col-lg-4 order-lg-1 text-center">
+						<div id="preview" class="col-lg-4 order-lg-1 text-center float m-0">
 							<form id=mypage_Img action="/member/uploadImg" method="post"
 								enctype="multipart/form-data">
 								<img src="${id.member_imgpath }" class="mx-auto img-circle"
 									alt="avatar"> <input type=file id="file" name="file">
 
-								<input type="button" id="change" class="btn btn-primary "
-									value="사진 변경"> <input type="submit" id="uploadImg"
-									class="btn btn-primary " value="사진 업로드">
-
+								<input type="button" id="change" class="btn btn-success "
+									value="사진 변경"> 
+									<div class="empty"></div>
+									<input type="submit" id="uploadImg"
+									class="btn btn-success " value="사진 업로드">
 							</form>
 						</div>
-						<br>
-						<div>
+					
+						<div class="float col-7">						
 							<form id="edit_mypage"action="/member/edit_mypage" method="post">
 								<div class="form-group row">
-
-									<label class="col-lg-3 col-form-label form-control-label">아이디(수정
-										불가)</label>
+									<label class="col-lg-3 col-form-label form-control-label">아이디</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="text" name="member_name"
 											value="${id.member_id }" readonly>
-
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">이름(수정
-										불가)</label>
+									<label class="col-lg-3 col-form-label form-control-label">이름</label>
 									<div class="col-lg-9">
 										<input class="form-control" name="member_id" type="text"
 											value="${id.member_name }" readonly>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">생일(수정
-										불가)</label>
+									<label class="col-lg-3 col-form-label form-control-label">생일</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="text"
 											value="${id.member_birth}" readonly>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">성별(수정
-										불가)</label>
+									<label class="col-lg-3 col-form-label form-control-label">성별</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="text"
 											value="${id.member_gender }" readonly>
@@ -202,13 +212,13 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">우편번호
 										<!--                             <button type="button" onclick="sample4_execDaumPostcode()" -->
-										<!--                            class="btn btn-primary p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
+										<!--                            class="btn btn-success p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
 										<img src="/img/core-img/find_addr.png"
 										onclick="sample4_execDaumPostcode()"
 										class="mx-auto img-circle" data-aria-haspopup="true"
 										aria-expanded="false" id="findAdd">
 									</label>
-									<div class="col-lg-9">
+									<div class="col-lg-9 ">
 										<input class="form-control" id="postcode"
 											name="member_postcode" type="text"
 											value="${id.member_postcode}" readonly>
@@ -217,7 +227,7 @@
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">도로명
 										주소 </label>
-									<div class="col-lg-9">
+									<div class="col-lg-9 ">
 										<input class="form-control" id="add1" name="member_address1"
 											type="text" value="${id.member_address1}" readonly>
 									</div>
@@ -243,9 +253,9 @@
 									<label class="col-lg-3 col-form-label form-control-label">자기
 										소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area></textarea>
+										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
 									</div>
-									<input name="member_intro" type="hidden">
+									<input name="member_intro" type="hidden" value="${id.member_intro}">
 									<%--                                 <div class=" ">${id.member_intro}</div> --%>
 								</div>
 
@@ -269,9 +279,10 @@
 
 										<!--                                 <input type="reset" class="btn btn-secondary" value="초기화"> -->
 
-										<input type="button" id="edit_info" class="btn btn-primary"
-											value="정보 수정"> <input type="button" id="delId"
-											class="btn btn-primary" value="회원 탈퇴">
+										<input type="button" id="edit_info" class="btn btn-success"
+											value="정보 수정">
+												 <input type="button" id="goHome"
+											class="btn btn-success" value="홈으로">
 									</div>
 								</div>
 							</form>
@@ -284,6 +295,10 @@
 
 	<script>
 	
+	$("#goHome").on("click", function() {
+	 location.href="/home";
+	});
+	
 	 function removeXSS (str1) {
 		var str_low = "";
 		var str = str1;
@@ -291,6 +306,12 @@
 		// HTML tag를 사용하게 할 경우 부분 허용
 		// HTML tag를 모두 제거
 		str = str.replace("<", "&lt;");
+		str = str.replace("<", "&lt;");
+		str = str.replace("<", "&lt;");
+		str = str.replace("<", "&lt;");
+		str = str.replace("<", "&lt;");
+		str = str.replace("<", "&lt;");
+		
 		str = str.replace(">", "&gt;");
 
 		// 특수 문자 제거
@@ -337,16 +358,20 @@
 				|| str_low.includes("onunload")) 
 		{
 			str = str_low;
-			str = str.replace("url", "1212");
-			str = str.replace("img", null);
-			str = str.replace("ajax", "Hello");
+			str = str.replace("url", "---");
+			str = str.replace("sc", "---");
+			str = str.replace("ci", "---");
+			str = str.replace("ri", "---");
+			str = str.replace("it", "---");
+			str = str.replace("img", "---");
+			str = str.replace("ajax", "----");
 			str = str.replace("href", "-----");
-			str = str.replace("div", "x-div");
+			str = str.replace("div", "----");
 			str = str.replace("json", "14dd2");
 			str = str.replace("for", "world");
-			str = str.replace("ript", "xyxyxy");
+			str = str.replace("ript", "------");
 			str = str.replace("code", "x-code");
-			str = str.replace("src", "x-src");
+			str = str.replace("src", "---");
 			str = str.replace("href", "x-href");
 			str = str.replace("javascript", "x-javascript");
 			str = str.replace("script", "x-script");
