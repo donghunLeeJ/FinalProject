@@ -50,7 +50,6 @@ public class ShopBoardController {
 		sPaging.sPaging(currentPage);
 		List<ShopBoardDTO> boardList = sService.ShopBoardList(lastPage);
 		request.setAttribute("boardList", boardList);
-		System.out.println(boardList.get(0).getShop_imagepath1());
 		return "shopBoard/shopBoard";
 	}
 
@@ -75,13 +74,16 @@ public class ShopBoardController {
 	public String ShopBoardSelectProc(String seq) {
 		int shop_seq = Integer.parseInt(seq);
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
+		System.out.println(dto.getMemberSell_seq());
+		int memberSell_seq = dto.getMemberSell_seq();
+		MemberDTO mdto = sService.shopSellerSelect(memberSell_seq);
 		request.setAttribute("dto", dto);
-
+		request.setAttribute("mdto", mdto);
 		return "/shopBoard/shopBoard_view";
 	}
 
 	@RequestMapping("/ShopBoardInsertProc")
-	public String filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration) {
+	public String filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
 		List<String> fileArrayPath = new ArrayList();
 		System.out.println(dto.getShop_seq());
 		System.out.println("내용: " + dto.getShop_contents());
@@ -90,6 +92,8 @@ public class ShopBoardController {
 		System.out.println("지역: " + dto.getShop_location());
 		System.out.println("유통기한: " + dto.getShop_expiration());
 		System.out.println("test" + shop_expiration);
+		int memberSell_seq = Integer.parseInt(sell_seq);
+		System.out.println("sell_seq" + sell_seq);
 		int fileCount = 0;
 		for (MultipartFile image : shop_images) {
 
@@ -141,8 +145,9 @@ public class ShopBoardController {
 		}
 
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		// dto.setShop_id(mdto.getMember_id());
-		dto.setShop_id("kkjangel");
+		dto.setShop_id(mdto.getMember_id());
+		dto.setMemberSell_seq(memberSell_seq);
+		// dto.setShop_id("kkjangel");
 		int result = sService.ShopBoardInsert(dto);
 		return "redirect:../home";
 	}
@@ -162,9 +167,8 @@ public class ShopBoardController {
 		return "/shopBoard/shopBoard_buy";
 	}
 
-	// 아임포트 api
-	// @RequestMapping("/ShopBoard_import")
-	// public String importAPI() {
-	//
-	// }
+	@RequestMapping("/shopChargeOk")
+	public String chargeOk() {
+		return "/shopBoard/shopChargeOk";
+	}
 }
