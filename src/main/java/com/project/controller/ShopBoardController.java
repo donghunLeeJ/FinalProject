@@ -161,6 +161,13 @@ public class ShopBoardController {
 		request.setAttribute("price", result);// 수량에따른 금액
 		return "/shopBoard/shopBoard_buy";
 	}
+	@RequestMapping(value= "/completePay", produces = "application/text; charset=utf8")
+	public String completePay(String order_id , String order_demend) {
+		System.out.println(order_demend);
+		System.out.println("ddd : "+order_id);
+		
+		return "";
+	}
 
 	// 아임포트 api
 	// @RequestMapping("/ShopBoard_import")

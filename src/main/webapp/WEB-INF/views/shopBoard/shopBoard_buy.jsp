@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/style2.css">
 
@@ -31,41 +31,43 @@ a {
 	<div class="container mt-5">
 		<div class="row  pb-3 border-bottom">
 			<div class="col-12 text-right">
-				<a href="#" class="btn akame-btn">ÀÌÀü ÆäÀÌÁö </a>
+				<a href="#" class="btn akame-btn">ì´ì „ í˜ì´ì§€ </a>
 			</div>
 		</div>
 
 		<div class="row border-bottom border-top py-2 bg-gray">
 			<div class="col-6">
-				<h3>ÁÖ¹®°áÁ¦</h3>
+				<h3>ì£¼ë¬¸ê²°ì œ</h3>
 			</div>
 			<div class="col-6 " style="text-align: right">
-				<h3>Àå¹Ù±¸´Ï ÁÖ¹®/°áÁ¦ ÁÖ¹®¿Ï·á</h3>
+				<h3>ì¥ë°”êµ¬ë‹ˆ ì£¼ë¬¸/ê²°ì œ ì£¼ë¬¸ì™„ë£Œ</h3>
 			</div>
 		</div>
 
 		<div class="row py-3">
 			<div class="col-6 font-weight-bold text-bottom">
-				<span class="">ÁÖ¹®»óÇ° È®ÀÎ</span>
+				<span class="">ì£¼ë¬¸ìƒí’ˆ í™•ì¸</span>
 			</div>
 			<div class="col-6 text-bottom" style="text-align: right">
-				<p>*»óÇ°¼ö·® ¹× ¿É¼Çº¯°æÀº »óÇ°»ó¼¼ ¶Ç´Â Àå¹Ù±¸´Ï¿¡¼­ °¡´ÉÇÕ´Ï´Ù.</p>
+				<p>*ìƒí’ˆìˆ˜ëŸ‰ ë° ì˜µì…˜ë³€ê²½ì€ ìƒí’ˆìƒì„¸ ë˜ëŠ” ì¥ë°”êµ¬ë‹ˆì—ì„œ ê°€ëŠ¥í•©ë‹ˆë‹¤.</p>
 			</div>
 
 		</div>
 		<div class="row border-bottom border-top bg-gray text-center py-2">
-			<div class="col-5">»óÇ°/¿É¼ÇÁ¤º¸</div>
+			<div class="col-5">ìƒí’ˆ/ì˜µì…˜ì •ë³´</div>
 
-			<div class="col-1">¼ö·®(°³)</div>
-			<div class="col-1">»óÇ°±İ¾×</div>
-			<div class="col-1">Áö¿ª</div>
-			<div class="col-2">À¯Åë ±âÇÑ</div>
-			<div class="col-2">¹è¼Ûºñ/ÆÇ¸ÅÀÚ</div>
+			<div class="col-1">ìˆ˜ëŸ‰(ê°œ)</div>
+			<div class="col-1">ìƒí’ˆê¸ˆì•¡</div>
+			<div class="col-1">ì§€ì—­</div>
+			<div class="col-2">ìœ í†µ ê¸°í•œ</div>
+			<div class="col-2">ë°°ì†¡ë¹„/íŒë§¤ì</div>
 		</div>
 		<div class="row border-bottom border-top text-center py-4">
 			<div class="col-5 " style="margin-top: 1.4em">
 				<div class="row">
-					<div class="col-3">${dto.shop_imagepath1 }</div>
+					<div class="col-3">
+						<img src="${dto.shop_imagepath1 }">
+					</div>
 					<div class="col-9" style="text-overflow: ellipsis;">
 						<span>${dto.shop_title }</span>
 					</div>
@@ -74,31 +76,31 @@ a {
 			</div>
 
 			<div class="col-1" style="margin-top: 1.4em">${quantity }</div>
-			<div class="col-1" style="margin-top: 1.4em">${price }(¿ø)</div>
+			<div class="col-1" style="margin-top: 1.4em">${price }(ì›)</div>
 			<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
 			<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
 			<div class="col-2">
-				¼±°áÁ¦ <br> <strong>(2,500¿ø)</strong> <br> <small>${dto.shop_id }
+				ì„ ê²°ì œ <br> <strong>(2,500ì›)</strong> <br> <small>${dto.shop_id }
 					${dto.shop_brand }</small>
 			</div>
 		</div>
 		<div class="row pt-5 pb-1">
 			<div class="col-12 ">
-				<h3>ÁÖ¹®ÀÚ Á¤º¸ ÀÔ·Â</h3>
+				<h3>ì£¼ë¬¸ì ì •ë³´ ì…ë ¥</h3>
 			</div>
 		</div>
 		<div class="row border rounded">
-			<div class="col-3 py-2 font-weight-bold">ÁÖ¹®ÀÚ ÀÌ¸§</div>
+			<div class="col-3 py-2 font-weight-bold">ì£¼ë¬¸ì ì´ë¦„</div>
 			<div class="col-9 py-2">
 				<input type="text" name="order_name" id="order_name">
 			</div>
-			<div class="col-3 py-2 font-weight-bold">ÈŞ´ëÀüÈ­</div>
+			<div class="col-3 py-2 font-weight-bold">íœ´ëŒ€ì „í™”</div>
 			<div class="col-9 py-2">
 				<input type="text" name="phone1" id="phone1" style="width: 8em">
 				- <input type="text" name="phone2" id="phone2" style="width: 8em">
 				- <input type="text" name="phone3" id="phone3" style="width: 8em">
 			</div>
-			<div class="col-3 py-2 font-weight-bold">ÀÌ¸ŞÀÏ</div>
+			<div class="col-3 py-2 font-weight-bold">ì´ë©”ì¼</div>
 			<div class="col-9 py-2">
 				<input type="text" name="email1" id="email1"> @ <input
 					type="text" name="email2" id="email2">
@@ -108,62 +110,65 @@ a {
 		<div class="row">
 			<div class="col-12 pt-2">
 				<p>
-					<small>11¹ø°¡¢ß´Â Åë½ÅÆÇ¸ÅÁß°³ÀÚ·Î¼­ Åë½ÅÆÇ¸ÅÀÇ ´ç»çÀÚ°¡ ¾Æ´Ï¸ç, °³º°ÆÇ¸ÅÀÚ°¡ µî·ÏÇÑ »óÇ°Á¤º¸ ¹×
-						°Å·¡¿¡ ´ëÇØ 11¹ø°¡¢ß´Â ÀÏÃ¼ÀÇ Ã¥ÀÓÀ» ÁöÁö ¾Ê½À´Ï´Ù.</small>
+					<small>11ë²ˆê°€ãˆœëŠ” í†µì‹ íŒë§¤ì¤‘ê°œìë¡œì„œ í†µì‹ íŒë§¤ì˜ ë‹¹ì‚¬ìê°€ ì•„ë‹ˆë©°, ê°œë³„íŒë§¤ìê°€ ë“±ë¡í•œ ìƒí’ˆì •ë³´ ë°
+						ê±°ë˜ì— ëŒ€í•´ 11ë²ˆê°€ãˆœëŠ” ì¼ì²´ì˜ ì±…ì„ì„ ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.</small>
 				</p>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-12 pt-2 font-weight-bold">
-				<h3>¹è¼ÛÁö Á¤º¸ ÀÔ·Â</h3>
+				<h3>ë°°ì†¡ì§€ ì •ë³´ ì…ë ¥</h3>
 			</div>
 		</div>
 
+		<form id="completeForm" method="post" action="/shopboard/completePay">
+
 		<div class="row border rounded">
-			<div class="col-3 font-weight-bold py-2" style="line-height: 2em">¹è¼ÛÁö¼±ÅÃ</div>
+			<div class="col-3 font-weight-bold py-2" style="line-height: 2em">ë°°ì†¡ì§€ì„ íƒ</div>
 			<div class="col-9 py-2">
-				<span>±âÁ¸ ¹è¼ÛÁö <input type="radio" name="origin_radio"
-					id="origin"></span> <span>½Å±Ô ¹è¼ÛÁö <input type="radio"
+				<span>ê¸°ì¡´ ë°°ì†¡ì§€ <input type="radio" name="origin_radio"
+					id="origin"></span> <span>ì‹ ê·œ ë°°ì†¡ì§€ <input type="radio"
 					name="origin_radio" id="new">
 				</span>
 			</div>
-			<div class="col-3 font-weight-bold py-2">¹ŞÀ¸½Ã´Â ºĞ</div>
+			<div class="col-3 font-weight-bold py-2">ë°›ìœ¼ì‹œëŠ” ë¶„</div>
 			<div class="col-9 py-2">
-				<input type="text" style="width: 8em" id="geter_name">
+				<input type="text" name="order_id" style="width: 8em" id="geter_name">
 			</div>
-			<div class="col-3 font-weight-bold py-2">¹è¼ÛÁö¼±ÅÃ</div>
+			<div class="col-3 font-weight-bold py-2">ë°°ì†¡ì§€ì„ íƒ</div>
 			<div class="col-9 py-2">
-				<input type="text" id="sample6_postcode" placeholder="¿ìÆí¹øÈ£">
+				<input type="text" id="sample6_postcode" placeholder="ìš°í¸ë²ˆí˜¸">
 				<input type="button" onclick="sample6_execDaumPostcode()"
-					value="¿ìÆí¹øÈ£ Ã£±â" style="margin-left: 0.5em"><br> <br>
-				<input type="text" id="sample6_address" placeholder="ÁÖ¼Ò"
+					value="ìš°í¸ë²ˆí˜¸ ì°¾ê¸°" style="margin-left: 0.5em"><br> <br>
+				<input type="text" id="sample6_address" placeholder="ì£¼ì†Œ"
 					style="width: 20em"><br> <br> <input type="text"
-					id="sample6_detailAddress" placeholder="»ó¼¼ÁÖ¼Ò" style="width: 25em">
-				<input type="text" id="sample6_extraAddress" placeholder="Âü°íÇ×¸ñ">
+					id="sample6_detailAddress" placeholder="ìƒì„¸ì£¼ì†Œ" style="width: 25em">
+				<input type="text" id="sample6_extraAddress" placeholder="ì°¸ê³ í•­ëª©">
 
 			</div>
-			<div class="col-3 font-weight-bold py-2">ÈŞ´ëÀüÈ­</div>
+			<div class="col-3 font-weight-bold py-2">íœ´ëŒ€ì „í™”</div>
 			<div class="col-9 py-2">
 				<input type="text" name="phone1" style="width: 8em" id="phone1"
 					value=""> - <input type="text" name="phone2"
 					style="width: 8em" id="phone2"> - <input type="text"
 					name="phone3" style="width: 8em" id="phone3">
 			</div>
-			<div class="col-3 font-weight-bold py-2">¹è¼Û½Ã¿ä±¸»çÇ×</div>
+			<div class="col-3 font-weight-bold py-2">ë°°ì†¡ì‹œìš”êµ¬ì‚¬í•­</div>
 			<div class="col-9">
-				<input type="text" style="width: 35em">
+				<input type="text" name="order_demend" style="width: 35em">
 				<p style="color: blue;">
-					<small>*Æ¯Á¤ÇÑ ¹è¼ÛÀÏÀ» ÁöÁ¤ÇÏ°íÀÚ ÇÒ °æ¿ì ÆÇ¸ÅÀÚ¿Í ¿¬¶ôÇÏ¿© ¹è¼ÛÀÏÀ» È®ÀÎÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.</small>
+					<small>*íŠ¹ì •í•œ ë°°ì†¡ì¼ì„ ì§€ì •í•˜ê³ ì í•  ê²½ìš° íŒë§¤ìì™€ ì—°ë½í•˜ì—¬ ë°°ì†¡ì¼ì„ í™•ì¸í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.</small>
 				</p>
 
 			</div>
 		</div>
+		</form>
 		<div class="row py-2">
 			<div class="col-12">
 				<p>
-					<small>ÀüÀÚ»ó°Å·¡ ¼ÒºñÀÚº¸È£ ¹ı·ü¿¡ µû¸¥ ±¸¸Å ¾ÈÀü ¼­ºñ½º ¾È³»: º» ÆÇ¸ÅÀÚ´Â 11¹ø°¡¢ß°ú °è¾àÀ»
-						ÅëÇØ ±¸¸Å ¾ÈÀü ¼­ºñ½º¸¦ ÀÚµ¿À¸·Î Á¦°øÁßÀÔ´Ï´Ù. (°áÁ¦´ë±İ¿¹Ä¡¾÷ µî·Ï¹øÈ£ 02-006-000022) </small>
+					<small>ì „ììƒê±°ë˜ ì†Œë¹„ìë³´í˜¸ ë²•ë¥ ì— ë”°ë¥¸ êµ¬ë§¤ ì•ˆì „ ì„œë¹„ìŠ¤ ì•ˆë‚´: ë³¸ íŒë§¤ìëŠ” 11ë²ˆê°€ãˆœê³¼ ê³„ì•½ì„
+						í†µí•´ êµ¬ë§¤ ì•ˆì „ ì„œë¹„ìŠ¤ë¥¼ ìë™ìœ¼ë¡œ ì œê³µì¤‘ì…ë‹ˆë‹¤. (ê²°ì œëŒ€ê¸ˆì˜ˆì¹˜ì—… ë“±ë¡ë²ˆí˜¸ 02-006-000022) </small>
 				</p>
 
 			</div>
@@ -171,8 +176,8 @@ a {
 
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
-				<a class="btn akame-btn mr-3" id="buy_aTag">°á Á¦ ÇÏ ±â </a> <a href="#"
-					class="btn akame-btn ml-3">°á Á¦ Ãë ¼Ò</a>
+				<a class="btn akame-btn mr-3" id="buy_aTag">ê²° ì œ í•˜ ê¸° </a> <a href="#"
+					class="btn akame-btn ml-3">ê²° ì œ ì·¨ ì†Œ</a>
 
 			</div>
 		</div>
@@ -184,7 +189,35 @@ a {
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
-		// 	¹è¼ÛÁö radio reset 
+		var IMP = window.IMP; // ìƒëµê°€ëŠ¥
+		IMP.init('imp96545220'); // 'iamport' ëŒ€ì‹  ë¶€ì—¬ë°›ì€ "ê°€ë§¹ì  ì‹ë³„ì½”ë“œ"ë¥¼ ì‚¬ìš©
+		$("#buy_aTag").on("click", function() {
+
+			IMP.request_pay({
+				pg : 'inicis', // version 1.1.0ë¶€í„° ì§€ì›.
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : 'ì£¼ë¬¸ëª…:ê²°ì œí…ŒìŠ¤íŠ¸',
+				amount : 14000,
+				buyer_email : 'iamport@siot.do',
+				buyer_name : 'êµ¬ë§¤ìì´ë¦„',
+				buyer_tel : '010-1234-5678',
+				buyer_addr : 'ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ ì‚¼ì„±ë™',
+				buyer_postcode : '123-456',
+				m_redirect_url : 'localhost/home'
+			}, function(rsp) {
+				if (rsp.success) {
+					var msg = 'ê²°ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.';
+					$("#completeForm").submit();	
+				} else {
+					var msg = 'ê²°ì œì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.';
+					msg += 'ì—ëŸ¬ë‚´ìš© : ' + rsp.error_msg;
+				}
+				alert(msg);
+			});
+		})
+
+		// 	ë°°ì†¡ì§€ radio reset 
 		var reset = function() {
 			$("#geter_name").val("");
 			$("#sample6_postcode").val("");
@@ -206,100 +239,68 @@ a {
 			$("#phone2").val(phone.substr(2, 4));
 			$("#phone3").val(phone.substr(4, 4));
 		}
-		// ´ÙÀ½ ÁÖ¼Ò API	
+		// ë‹¤ìŒ ì£¼ì†Œ API	
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{
 						oncomplete : function(data) {
-							// ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+							// íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-							// °¢ ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-							// ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-							var addr = ''; // ÁÖ¼Ò º¯¼ö
-							var extraAddr = ''; // Âü°íÇ×¸ñ º¯¼ö
+							// ê° ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ ì¡°í•©í•œë‹¤.
+							// ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+							var addr = ''; // ì£¼ì†Œ ë³€ìˆ˜
+							var extraAddr = ''; // ì°¸ê³ í•­ëª© ë³€ìˆ˜
 
-							//»ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò Å¸ÀÔ¿¡ µû¶ó ÇØ´ç ÁÖ¼Ò °ªÀ» °¡Á®¿Â´Ù.
-							if (data.userSelectedType === 'R') { // »ç¿ëÀÚ°¡ µµ·Î¸í ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì
+							//ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œ íƒ€ì…ì— ë”°ë¼ í•´ë‹¹ ì£¼ì†Œ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
+							if (data.userSelectedType === 'R') { // ì‚¬ìš©ìê°€ ë„ë¡œëª… ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°
 								addr = data.roadAddress;
-							} else { // »ç¿ëÀÚ°¡ Áö¹ø ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì(J)
+							} else { // ì‚¬ìš©ìê°€ ì§€ë²ˆ ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°(J)
 								addr = data.jibunAddress;
 							}
 
-							// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò°¡ µµ·Î¸í Å¸ÀÔÀÏ¶§ Âü°íÇ×¸ñÀ» Á¶ÇÕÇÑ´Ù.
+							// ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œê°€ ë„ë¡œëª… íƒ€ì…ì¼ë•Œ ì°¸ê³ í•­ëª©ì„ ì¡°í•©í•œë‹¤.
 							if (data.userSelectedType === 'R') {
-								// ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-								// ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+								// ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+								// ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
 								if (data.bname !== ''
-										&& /[µ¿|·Î|°¡]$/g.test(data.bname)) {
+										&& /[ë™|ë¡œ|ê°€]$/g.test(data.bname)) {
 									extraAddr += data.bname;
 								}
-								// °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+								// ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
 								if (data.buildingName !== ''
 										&& data.apartment === 'Y') {
 									extraAddr += (extraAddr !== '' ? ', '
 											+ data.buildingName
 											: data.buildingName);
 								}
-								// Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+								// í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
 								if (extraAddr !== '') {
 									extraAddr = ' (' + extraAddr + ')';
 								}
-								// Á¶ÇÕµÈ Âü°íÇ×¸ñÀ» ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+								// ì¡°í•©ëœ ì°¸ê³ í•­ëª©ì„ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
 								document.getElementById("sample6_extraAddress").value = extraAddr;
 
 							} else {
 								document.getElementById("sample6_extraAddress").value = '';
 							}
 
-							// ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+							// ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
 							document.getElementById('sample6_postcode').value = data.zonecode;
 							document.getElementById("sample6_address").value = addr;
-							// Ä¿¼­¸¦ »ó¼¼ÁÖ¼Ò ÇÊµå·Î ÀÌµ¿ÇÑ´Ù.
-							document.getElementById("sample6_detailAddress").value = "";//»ó¼¼ÁÖ¼Ò ÀÔ·ÂÇÏ°í Ãß°¡ÇÏ¸é »èÁ¦µÇ°ÔÇÔ
+							// ì»¤ì„œë¥¼ ìƒì„¸ì£¼ì†Œ í•„ë“œë¡œ ì´ë™í•œë‹¤.
+							document.getElementById("sample6_detailAddress").value = "";//ìƒì„¸ì£¼ì†Œ ì…ë ¥í•˜ê³  ì¶”ê°€í•˜ë©´ ì‚­ì œë˜ê²Œí•¨
 							document.getElementById("sample6_detailAddress")
 									.focus();
 						}
 					}).open();
 		}
-		//¾ÆÀÓÆ÷Æ® API
+		//ì•„ì„í¬íŠ¸ API
 
-		$("#buy_aTag").on("click", function() {
-			var IMP = window.IMP; // »ı·«°¡´É
-			IMP.init('imp00502224'); // 'iamport' ´ë½Å ºÎ¿©¹ŞÀº "°¡¸ÍÁ¡ ½Äº°ÄÚµå"¸¦ »ç¿ë
-
-			IMP.request_pay({
-				pg : 'kakao', // version 1.1.0ºÎÅÍ Áö¿ø.
-				pay_method : 'card',
-				merchant_uid : 'merchant_' + new Date().getTime(),
-				name : '${dto.shop_title}', //ÁÖ¹®ÀÚ ÀÌ¸§
-				amount : '${dto.shop_price}', //ÁÖ¹®±İ¾×  ¼­¹ö´Ü¿¡¼­ ½ÇÁ¦ ÆÇ¸Å±İ¾×ÀÌ¶û ºñ±³ÇØ¾ßÇÔ ½ºÅ©¸³Æ® °ø°İ°¡´É
-				buyer_email : $("#email1").val()+"@"+$("#email2").val(), //±¸¸ÅÀÚ ÀÌ¸ŞÀÏ 
-				buyer_name : $("#order_name").val(), //½Ç ±¸¸ÅÀÚ ÀÌ¸§
-				buyer_tel : $("#phone1").val()+$("#phone2").val()+$("#phone3").val(), //±¸¸ÅÀÚ ¹øÈ£
-				buyer_addr : $("#sample6_address").val()+" "+$("#sample6_detailAddress").val(), //½ÇÁ¦ ¹è¼ÛÁöÁÖ¼Ò?
-				buyer_postcode : $("#sample6_postcode").val(), //±¸¸ÅÀÚ ¿ìÆíÁÖ¼Ò
-				m_redirect_url : '/board/shopBoard_import'//ÀÌ°Ô mappingÀÓ?
-			}, function(rsp) {
-				if (rsp.success) {
-					console.log(resp);
-					var msg = '°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.';
-					msg += '°íÀ¯ID : ' + rsp.imp_uid;
-					msg += '»óÁ¡ °Å·¡ID : ' + rsp.merchant_uid;
-					msg += '°áÁ¦ ±İ¾× : ' + rsp.paid_amount;
-					msg += 'Ä«µå ½ÂÀÎ¹øÈ£ : ' + rsp.apply_num;
-				} else {
-					var msg = '°áÁ¦¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.';
-					msg += '¿¡·¯³»¿ë : ' + rsp.error_msg;
-				}
-				alert(msg);
-			});
-		})
-
-		// ½Å±Ô ¹è¼ÛÁö radio
+		// ì‹ ê·œ ë°°ì†¡ì§€ radio
 		$("#new").on("click", function() {
 			reset();
 		})
-		// ±âÁ¸ ¹è¼ÛÁö radio
+		// ê¸°ì¡´ ë°°ì†¡ì§€ radio
 		$("#origin").on("click", function() {
 
 			origin();

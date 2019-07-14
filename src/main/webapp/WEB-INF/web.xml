@@ -8,9 +8,6 @@
 
 	<!-- The front controller of this Spring Web application, responsible for handling all application requests -->
 	<filter>
-
-
-
       <filter-name>encodingFilter</filter-name>
       <filter-class>
          org.springframework.web.filter.CharacterEncodingFilter
