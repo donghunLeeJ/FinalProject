@@ -31,7 +31,11 @@ a {
 	<div class="container mt-5">
 		<div class="row  pb-3 border-bottom">
 			<div class="col-12 text-right">
-				<a href="#" class="btn akame-btn">이전 페이지 </a>
+
+				<a href="/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }"
+					class="btn akame-btn">이전 페이지 </a>
+				<button id="chargeOk_btn">결제완료</button>
+
 			</div>
 		</div>
 
@@ -81,7 +85,9 @@ a {
 			<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
 			<div class="col-2">
 				선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.shop_id }
-					${dto.shop_brand }</small>
+
+					<br>${dto.shop_brand }</small>
+
 			</div>
 		</div>
 		<div class="row pt-5 pb-1">
@@ -96,9 +102,10 @@ a {
 			</div>
 			<div class="col-3 py-2 font-weight-bold">휴대전화</div>
 			<div class="col-9 py-2">
-				<input type="text" name="phone1" id="phone1" style="width: 8em">
-				- <input type="text" name="phone2" id="phone2" style="width: 8em">
-				- <input type="text" name="phone3" id="phone3" style="width: 8em">
+				<input type="text" name="phone1" id="order_phone1"
+					style="width: 8em"> - <input type="text" name="phone2"
+					id="order_phone2" style="width: 8em"> - <input type="text"
+					name="phone3" id="order_phone3" style="width: 8em">
 			</div>
 			<div class="col-3 py-2 font-weight-bold">이메일</div>
 			<div class="col-9 py-2">
@@ -124,45 +131,46 @@ a {
 
 		<form id="completeForm" method="post" action="/shopboard/completePay">
 
-		<div class="row border rounded">
-			<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
-			<div class="col-9 py-2">
-				<span>기존 배송지 <input type="radio" name="origin_radio"
-					id="origin"></span> <span>신규 배송지 <input type="radio"
-					name="origin_radio" id="new">
-				</span>
-			</div>
-			<div class="col-3 font-weight-bold py-2">받으시는 분</div>
-			<div class="col-9 py-2">
-				<input type="text" name="order_id" style="width: 8em" id="geter_name">
-			</div>
-			<div class="col-3 font-weight-bold py-2">배송지선택</div>
-			<div class="col-9 py-2">
-				<input type="text" id="sample6_postcode" placeholder="우편번호">
-				<input type="button" onclick="sample6_execDaumPostcode()"
-					value="우편번호 찾기" style="margin-left: 0.5em"><br> <br>
-				<input type="text" id="sample6_address" placeholder="주소"
-					style="width: 20em"><br> <br> <input type="text"
-					id="sample6_detailAddress" placeholder="상세주소" style="width: 25em">
-				<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+			<div class="row border rounded">
+				<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
+				<div class="col-9 py-2">
+					<span>기존 배송지 <input type="radio" name="origin_radio"
+						id="origin"></span> <span>신규 배송지 <input type="radio"
+						name="origin_radio" id="new">
+					</span>
+				</div>
+				<div class="col-3 font-weight-bold py-2">받으시는 분</div>
+				<div class="col-9 py-2">
+					<input type="text" name="order_id" style="width: 8em"
+						id="geter_name">
+				</div>
+				<div class="col-3 font-weight-bold py-2">배송지선택</div>
+				<div class="col-9 py-2">
+					<input type="text" id="sample6_postcode" placeholder="우편번호">
+					<input type="button" onclick="sample6_execDaumPostcode()"
+						value="우편번호 찾기" style="margin-left: 0.5em"><br> <br>
+					<input type="text" id="sample6_address" placeholder="주소"
+						style="width: 20em"><br> <br> <input type="text"
+						id="sample6_detailAddress" placeholder="상세주소" style="width: 25em">
+					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 
-			</div>
-			<div class="col-3 font-weight-bold py-2">휴대전화</div>
-			<div class="col-9 py-2">
-				<input type="text" name="phone1" style="width: 8em" id="phone1"
-					value=""> - <input type="text" name="phone2"
-					style="width: 8em" id="phone2"> - <input type="text"
-					name="phone3" style="width: 8em" id="phone3">
-			</div>
-			<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
-			<div class="col-9">
-				<input type="text" name="order_demend" style="width: 35em">
-				<p style="color: blue;">
-					<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
-				</p>
+				</div>
+				<div class="col-3 font-weight-bold py-2">휴대전화</div>
+				<div class="col-9 py-2">
+					<input type="text" name="phone1" style="width: 8em" id="phone1"
+						value=""> - <input type="text" name="phone2"
+						style="width: 8em" id="phone2"> - <input type="text"
+						name="phone3" style="width: 8em" id="phone3">
+				</div>
+				<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
+				<div class="col-9">
+					<input type="text" name="order_demend" style="width: 35em">
+					<p style="color: blue;">
+						<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
+					</p>
 
+				</div>
 			</div>
-		</div>
 		</form>
 		<div class="row py-2">
 			<div class="col-12">
@@ -177,7 +185,8 @@ a {
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
 				<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a href="#"
-					class="btn akame-btn ml-3">결 제 취 소</a>
+					class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a>
+
 
 			</div>
 		</div>
@@ -208,7 +217,7 @@ a {
 			}, function(rsp) {
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
-					$("#completeForm").submit();	
+					$("#completeForm").submit();
 				} else {
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;
@@ -294,7 +303,6 @@ a {
 						}
 					}).open();
 		}
-		//아임포트 API
 
 		// 신규 배송지 radio
 		$("#new").on("click", function() {
@@ -304,6 +312,19 @@ a {
 		$("#origin").on("click", function() {
 
 			origin();
+		})
+		$("#back_aTag")
+				.on(
+						"click",
+						function() {
+							if (confirm("결제를 취소 하시겠습니까? 입력하신 정보는 저장되지 않습니다.")) {
+								$(location)
+										.attr("href",
+												"/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }");
+							}
+						})
+		$("#chargeOk_btn").on("click", function() {
+			$(location).attr("href", "/shopboard/shopChargeOk");
 		})
 	</script>
 </body>
