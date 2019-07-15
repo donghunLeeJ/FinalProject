@@ -49,7 +49,7 @@
 		</div>
 		<div class="row text-center pt-5">
 			<div class="col-12">
-				<small>주문번호 </small>&nbsp; <a href="#" class="border-bottom"><small>201907141657548618</small></a>
+				<small>주문번호 </small>&nbsp; <a href="#" class="border-bottom"><small>${ldto.order_number }</small></a>
 			</div>
 			<div class="col-12 py-2">
 				<h4>
@@ -92,22 +92,24 @@
 			<div class="col-1" style="margin-top: 3.2em">1</div>
 			<div class="col-6">
 				<div class="row">
-					<div class="col-4" style="margin-top: 3.2em">이미지</div>
-					<div class="col-8 text-left" style="margin-top: 1.3em">
-						<strong>[브랜드]</strong><br> <br>상품명<br> <small>옵션
-							: L</small>
+					<div class="col-4" style="margin-top: 0.8em">
+						<img src="${ldto.sell_imagepath }">
+					</div>
+					<div class="col-8 text-left" style="margin-top: 1.5em">
+						<strong>[${ldto.sell_brand }]</strong><br> ${ldto.sell_title }<br>
+						<br> <small>주문번호 : ${ldto.order_number }</small>
 					</div>
 				</div>
 			</div>
-			<div class="col-1" style="margin-top: 3.2em">2</div>
-			<div class="col-2" style="margin-top: 3.2em">10,000</div>
+			<div class="col-1" style="margin-top: 3em">${ldto.buy_quantity }</div>
+			<div class="col-2" style="margin-top: 3em">${ldto.buy_price }</div>
 			<div class="col-2" style="margin-top: 1em">
 				<small>입점 업체</small><br> <small>(그룹1)</small><br> <br>
 				<small>예상 발송일</small><br> <small>(1.8일 후 발송)</small>
 
 			</div>
 		</div>
-		<div class="row py-2">
+		<div class="row pt-5 pb-2">
 			<div class="col-12">
 				<h3>
 					<strong>결제 정보</strong>
@@ -123,7 +125,7 @@
 			<div class="col-2 border text-center ">
 				<strong>승인 번호</strong>
 			</div>
-			<div class="col-10 border bg-gray">35373975(카드승인번호인듯 )</div>
+			<div class="col-10 border bg-gray">35373975</div>
 
 			<div class="col-2 border text-center">
 				<strong>할부 개월</strong>
@@ -134,10 +136,11 @@
 				<strong>결제 금액</strong>
 			</div>
 			<div class="col-10 border bg-gray">
-				<span>1,000,000,000 원</span>
+				<span>${ldto.buy_price } 원</span>
 			</div>
 		</div>
-		<div class="row py-5">
+
+		<div class="row py-5 border-bottom">
 			<div class="col-12 py-2">
 				<h3>
 					<strong>배송 정보</strong>
@@ -148,24 +151,30 @@
 				<div class="col-1 border">
 					<strong>수령인</strong>
 				</div>
-				<div class="col-6 border bg-gray">최정현</div>
+				<div class="col-6 border bg-gray">${odto.getter_name }</div>
 				<div class="col-2 border text-center">
 					<strong>휴대전화</strong>
 				</div>
-				<div class="col-3 border bg-gray">010-6471-3589</div>
+				<div class="col-3 border bg-gray">${odto.getter_phone }</div>
 
 				<div class="col-1 border">
 					<strong>배송지</strong>
 				</div>
-				<div class="col-6 border bg-gray">(480-909) 경기도 의정부시 부용로 236-0
-					금오주공9단지</div>
+				<div class="col-6 border bg-gray">${odto.getter_address1 }&nbsp;
+					${odto.getter_address2 } &nbsp; (${odto.getter_postcode })</div>
 				<div class="col-2 border text-center">
 					<strong>전화번호</strong>
 				</div>
-				<div class="col-3 border bg-gray">010-6471-3589</div>
+				<div class="col-3 border bg-gray">${odto.getter_phone }</div>
 			</div>
 		</div>
 	</div>
+	<div class="row pb-5"></div>
+	<script>
+		$("#homeGo_btn").on("click", function() {
+			$(location).attr("href", "/home/")
+		})
+	</script>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>

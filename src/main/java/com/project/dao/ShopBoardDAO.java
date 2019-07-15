@@ -40,8 +40,10 @@ public class ShopBoardDAO {
 		return sst.selectOne("ShopBoardDAO.ShopBoardIdSelect", shop_seq);
 	}
 
-	public MemberDTO shopSellerSelect(int memberSell_seq) {
-		return sst.selectOne("ShopBoardDAO.shopSellerSelect", memberSell_seq);
+//특정 seq번호를 기준으로 해당 글의 정보를 뽑아옴
+//여기선 번호를 받아왔다고 가정하고 넣어본다.
+public ShopBoardDTO ShopBoardIdSelect(int shop_seq){	
+		return sst.selectOne("ShopBoardDAO.ShopBoardIdSelect" , shop_seq); 
 	}
 	
 	public List<ShopBoardDTO> ShopBoardList(String shop_id) {

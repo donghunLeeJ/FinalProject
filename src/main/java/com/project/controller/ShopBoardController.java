@@ -2,6 +2,7 @@
 package com.project.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.project.dto.BasketDTO;
 import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
+import com.project.dto.OrderListDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.OrderService;
@@ -41,6 +44,8 @@ public class ShopBoardController {
 
 	@Autowired
 	private ShopPaging sPaging;
+	
+	
 
 	@RequestMapping("/shopBoardGo")
 	public String ShopBoardGo(String page) {
@@ -74,6 +79,7 @@ public class ShopBoardController {
 
 	@RequestMapping("/ShopBoardViewProc")
 	public String ShopBoardSelectProc(String seq) {
+		
 		int shop_seq = Integer.parseInt(seq);
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
 		System.out.println(dto.getMemberSell_seq());
@@ -123,23 +129,51 @@ public class ShopBoardController {
 			}
 		}
 
-		if (fileCount == 1) {
-			System.out.println("이미지가 하나만 들어왔을 경우");
+		int fileCount = 0;	
+		for (MultipartFile image : shop_images){
+
+			//if(fileCount>2){System.out.println("이미지는 최대 3개까지만 업로드 가능.");break;}
+
+			if(image.getSize() != 0 ) {			String originFileName = image.getOriginalFilename();
+			long fileSize = image.getSize();
+			
+			String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
+			
+			String targetFile = resourcePath + "/" + UUID.randomUUID().toString().replace("-","").substring(0,8) + "_foodimage.png";
+			try {
+
+				File f = new File(targetFile);
+				image.transferTo(f);
+				fileArrayPath.add("/img/shopfoodimg/" +f.getName());
+				fileCount++;
+
+			}catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}			
+	}
+				
+		if(fileCount==1){
+			
+
+
 			fileArrayPath.add("/img/default.jpg");
 			fileArrayPath.add("/img/default.jpg");
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));
 
-		} else if (fileCount == 2) {
-			System.out.println("이미지가 2개가 들어왔을 경우");
+
+		}else if(fileCount==2) {
+
 			fileArrayPath.add("/img/default.jpg");
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));
 
-		} else if (fileCount > 2) {
-			System.out.println("이미지가 3개가 들어왔을 경우");
+
+		}else if(fileCount > 2){
+
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));
@@ -162,24 +196,65 @@ public class ShopBoardController {
 		// 상품정보 테이블의 값을 꺼내오는 query필요.
 		ShopBoardDTO sdto = sService.ShopBoardIdSelect(shop_seq);
 		int price = sdto.getShop_price();
-		int result = quantity1 * price;// 총액 서버에서 계산하는게맞는거같음. 프론트에서하면 수량은 많은데 총액을 장난칠수있을듯.
+		int resultDB = quantity1 * sdto.getShop_price();
+		int resultPage = quantity1 * price;// DB에 저장된 개당 가격 == 홈페이지에서뜬 개당 가격 비교해야함.
+
 		request.setAttribute("dto", sdto);// 상품정보
 		request.setAttribute("quantity", quantity1); // 상품수량
-		request.setAttribute("price", result);// 수량에따른 금액
-		return "/shopBoard/shopBoard_buy";
-	}
-	@RequestMapping(value= "/completePay", produces = "application/text; charset=utf8")
-	public String completePay(String order_id , String order_demend) {
-		System.out.println(order_demend);
-		System.out.println("ddd : "+order_id);
-		
-		return "";
+		if (resultDB == resultPage) {
+			request.setAttribute("price", resultDB);// 수량에따른 금액
+			System.out.println("일치함");
+			return "/shopBoard/shopBoard_buy";
+
+		} else {
+			System.out.println("금액오류");
+			return "/error";
+		}
+
 	}
 
-	@RequestMapping("/shopChargeOk")
-	public String chargeOk() {
+	
+
+
+	@RequestMapping("/shopOrder")
+	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
+			String getter_phone1, String getter_phone2, String getter_phone3, String quantity, String price) {
+
+		ShopBoardDTO sdto = sService.ShopBoardIdSelect(odto.getProducts_seq());
+
+		// order테이블에 들어가는정보 배달정보
+		String phone = phone1 + phone2 + phone3;
+		String email = email1 + "@" + email2;
+		String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
+		MemberDTO id = (MemberDTO) session.getAttribute("id");
+		String buyId = id.getMember_id();
+		odto.setBuyer_id(buyId);
+		odto.setOrder_phone(phone);
+		odto.setOrder_email(email);
+		odto.setGetter_phone(getter_phone);
+		String savedName = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
+
+		// orderList테이블에 들어가는정보 주문자+판매자정보
+		int quantity1 = Integer.parseInt(quantity);// orderList 테이블에넣는값
+		int price1 = Integer.parseInt(price);// orderList 테이블에넣는값
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yy-MM-dd");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMddhhmmss");
+		OrderListDTO ldto = new OrderListDTO();
+		ldto.setProducts_seq(sdto.getShop_seq());
+		ldto.setSell_id(sdto.getShop_id());
+		ldto.setBuyer_id(buyId);
+		ldto.setSell_brand(sdto.getShop_brand());
+		ldto.setSell_title(sdto.getShop_title());
+		ldto.setSell_imagepath(sdto.getShop_imagepath1());
+		ldto.setBuy_quantity(quantity1);
+		ldto.setBuy_price(price1);
+		ldto.setBuy_date(sdf1.format(System.currentTimeMillis()));
+		ldto.setOrder_number(sdf2.format(System.currentTimeMillis()) + savedName);
+		oService.orderInsert(odto, ldto);
+		request.setAttribute("odto", odto);
+		request.setAttribute("ldto", ldto);
+
 		return "/shopBoard/shopChargeOk";
 	}
-	
-	
+
 }

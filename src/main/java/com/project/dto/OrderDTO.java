@@ -5,33 +5,38 @@ import java.sql.Timestamp;
 public class OrderDTO {
 	private int order_seq;// 주문정보
 	private int products_seq; // 글정보seq
-	private String seller_id; // 판매자 ID
-	private String buyer_id; // 구매자ID
-	private Timestamp buyDate; // 상품 구매시간
-	private String products_title; // 상품 제목
-	private String products_location; // 판매지역
-	private int products_price; // 상품가격
-	private int products_quantity; // 판매 수량
-	private String products_imagepath; // 상품이미지
+	private String buyer_id; // 구매자 로그인시 아이디
+	private String order_name; // 주문자 이름
+	private String order_phone; // 주문자 폰번호
+	private String order_email; // 주문자 이메일 (로그인시가 아닐수있음.)
+	private String getter_name; // 받는사람이름
+	private String getter_postcode; // 받는사람 우편번호
+	private String getter_address1; // 받는사람 주소
+	private String getter_address2; // 받는사람 상세주소
+	private String getter_phone; // 받는사람 폰번호
+	private String getter_command; // 요청사항
 
 	public OrderDTO() {
 		super();
 	}
 
-	public OrderDTO(int order_seq, int products_seq, String seller_id, String buyer_id, Timestamp buyDate,
-			String products_title, String products_location, int products_price, int products_quantity,
-			String products_imagepath) {
+	public OrderDTO(int order_seq, int products_seq, String buyer_id, String order_name, String order_phone,
+			String order_email, String getter_name, String getter_postcode, String getter_address1,
+			String getter_address2, String getter_phone, String getter_command) {
 		super();
 		this.order_seq = order_seq;
 		this.products_seq = products_seq;
-		this.seller_id = seller_id;
 		this.buyer_id = buyer_id;
-		this.buyDate = buyDate;
-		this.products_title = products_title;
-		this.products_location = products_location;
-		this.products_price = products_price;
-		this.products_quantity = products_quantity;
-		this.products_imagepath = products_imagepath;
+		this.order_name = order_name;
+		this.order_phone = order_phone;
+		this.order_email = order_email;
+		this.getter_name = getter_name;
+		this.getter_postcode = getter_postcode;
+		this.getter_address1 = getter_address1;
+		this.getter_address2 = getter_address2;
+		this.getter_phone = getter_phone;
+		this.getter_command = getter_command;
+
 	}
 
 	public int getOrder_seq() {
@@ -50,14 +55,6 @@ public class OrderDTO {
 		this.products_seq = products_seq;
 	}
 
-	public String getSeller_id() {
-		return seller_id;
-	}
-
-	public void setSeller_id(String seller_id) {
-		this.seller_id = seller_id;
-	}
-
 	public String getBuyer_id() {
 		return buyer_id;
 	}
@@ -66,52 +63,76 @@ public class OrderDTO {
 		this.buyer_id = buyer_id;
 	}
 
-	public Timestamp getBuyDate() {
-		return buyDate;
+	public String getOrder_name() {
+		return order_name;
 	}
 
-	public void setBuyDate(Timestamp buyDate) {
-		this.buyDate = buyDate;
+	public void setOrder_name(String order_name) {
+		this.order_name = order_name;
 	}
 
-	public String getProducts_title() {
-		return products_title;
+	public String getOrder_phone() {
+		return order_phone;
 	}
 
-	public void setProducts_title(String products_title) {
-		this.products_title = products_title;
+	public void setOrder_phone(String order_phone) {
+		this.order_phone = order_phone;
 	}
 
-	public String getProducts_location() {
-		return products_location;
+	public String getOrder_email() {
+		return order_email;
 	}
 
-	public void setProducts_location(String products_location) {
-		this.products_location = products_location;
+	public void setOrder_email(String order_email) {
+		this.order_email = order_email;
 	}
 
-	public int getProducts_price() {
-		return products_price;
+	public String getGetter_name() {
+		return getter_name;
 	}
 
-	public void setProducts_price(int products_price) {
-		this.products_price = products_price;
+	public void setGetter_name(String getter_name) {
+		this.getter_name = getter_name;
 	}
 
-	public int getProducts_quantity() {
-		return products_quantity;
+	public String getGetter_postcode() {
+		return getter_postcode;
 	}
 
-	public void setProducts_quantity(int products_quantity) {
-		this.products_quantity = products_quantity;
+	public void setGetter_postcode(String getter_postcode) {
+		this.getter_postcode = getter_postcode;
 	}
 
-	public String getProducts_imagepath() {
-		return products_imagepath;
+	public String getGetter_address1() {
+		return getter_address1;
 	}
 
-	public void setProducts_imagepath(String products_imagepath) {
-		this.products_imagepath = products_imagepath;
+	public void setGetter_address1(String getter_address1) {
+		this.getter_address1 = getter_address1;
+	}
+
+	public String getGetter_address2() {
+		return getter_address2;
+	}
+
+	public void setGetter_address2(String getter_address2) {
+		this.getter_address2 = getter_address2;
+	}
+
+	public String getGetter_phone() {
+		return getter_phone;
+	}
+
+	public void setGetter_phone(String getter_phone) {
+		this.getter_phone = getter_phone;
+	}
+
+	public String getGetter_command() {
+		return getter_command;
+	}
+
+	public void setGetter_command(String getter_command) {
+		this.getter_command = getter_command;
 	}
 
 }
