@@ -22,7 +22,11 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sst;
 
-
+	public int totalCount() {
+		return sst.selectOne("ShopBoardDAO.totalCount");
+	}
+	
+	
 	public int login(MemberDTO dto) {
 		int result=0;
 		try {
@@ -63,5 +67,11 @@ public class MemberDAO {
 		
 	}
 	
+	public int delOK(String id, String pw) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pw", pw);
+		return sst.delete("member.delOK",map);
+	}
 
 }

@@ -13,7 +13,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-<<<<<<< HEAD
+
 	<input type="button" id="test" value="gg">
 	<script type="text/javascript">
 	document.getElementById("test").onclick = function(){

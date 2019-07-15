@@ -7,7 +7,12 @@
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
-
+<style>
+#contents{
+width:100%;
+height:250px;
+}
+</style>
 </head>
 
 
@@ -68,11 +73,11 @@
 				</div>
 				<div class="col-lg-7 mt-2">
 					<div class="mt-2">
-						제목<input type="text" name="shop_title" class="form-control input">
+						제목<input type="text" name="shop_title" class="form-control input" id=title>
 					</div>
 					<br>
 					<div class="mt-2">
-						판매자 브랜드<input type="text" name="shop_brand"
+						판매자 브랜드<input type="text" name="shop_brand" id=brand
 							class="form-control input">
 					</div>
 					<br>
@@ -99,7 +104,7 @@
 
 
 					<div class="mt-2">
-						유통기한이야!<input id="datepicker" name="shop_expiration"
+						유통기한이야!<input id="datepicker" name="shop_expiration" 
 							class="form-control">
 					</div>
 					<script>
@@ -112,19 +117,19 @@
 					</script>
 					<br>
 					<div class="mt-2">
-						가격<input type="number" name="shop_price"
+						가격<input type="number" name="shop_price" id=price
 							class="form-control input">
 					</div>
 					<br>
 					<div class="mt-2">
-						수량 <input type="number" name="shop_quantity"
+						수량 <input type="number" name="shop_quantity" id=quantity
 							class="form-control input">
 					</div>
 					<br>
 				</div>
 				<div class="col-lg-4 custom-file"></div>
 				<div class="col-lg-12 mt-2">
-					<textarea name="shop_contents" class="form-control mb-30 input"
+					<textarea style="resize: none;"  name="shop_contents" class="form-control mb-30 input" id=contents 
 						placeholder="내용" style="height: 15rem;"></textarea>
 				</div>
 
@@ -142,11 +147,120 @@
 
 	</section>
 	<!-- Header Area End -->
+	
+	<script>
+	function removeXSS (str, id) {
+		//	console.log(str);
+		//	console.log(id);
+		//	alert("XSS");
+			var str_low = "";
+			//var str = str1;
+			// HTML tag를 사용하게 할 경우 부분 허용
+			// HTML tag를 모두 제거
+			str = str.replace("<", "");
+			str = str.replace("<", "");
+			str = str.replace("<", "");
+			str = str.replace("<", "");
+			str = str.replace(">", "");
+			str = str.replace(">", "");
+			str = str.replace(">", "");
+			str = str.replace(">", "");
+			// 특수 문자 제거
+			str = str.replace("\"", "&gt;");
+			str = str.replace("&", "&amp;");
+			str = str.replace("%00", null);
+			str = str.replace("\"", "&#34;");
+			str = str.replace("\'", "&#39;");
+			str = str.replace("%", "&#37;");
+			str = str.replace("../", "");
+			str = str.replace("..\\\\", "");
+			str = str.replace("./", "");
+			str = str.replace("%2F", "");
+			// 허용할 HTML tag만 변경
+			str = str.replace("&lt;p&gt;", "<p>");
+			str = str.replace("&lt;P&gt;", "<P>");
+			str = str.replace("&lt;br&gt;", "<br>");
+			str = str.replace("&lt;BR&gt;", "<BR>");
+			// 스크립트 문자열 필터링 (선별함 - 필요한 경우 보안가이드에 첨부된 구문 추가)
+			str_low = str.toLowerCase();
+			if (str_low.includes("javascript") || str_low.includes("script")
+					|| str_low.includes("div") || str_low.includes("iframe")
+					|| str_low.includes("src") || str_low.includes("href")
+					|| str_low.includes("url") || str_low.includes("ajax")
+					|| str_low.includes("data") || str_low.includes("img")
+					|| str_low.includes("code") || str_low.includes("ript")
+					|| str_low.includes("for") || str_low.includes("json")
+					|| str_low.includes("document")
+					|| str_low.includes("vbscript")
+					|| str_low.includes("applet") || str_low.includes("embed")
+					|| str_low.includes("object") || str_low.includes("frame")
+					|| str_low.includes("grameset")
+					|| str_low.includes("layer") || str_low.includes("bgsound")
+					|| str_low.includes("alert") || str_low.includes("onblur")
+					|| str_low.includes("onchange")
+					|| str_low.includes("onclick")
+					|| str_low.includes("ondblclick")
+					|| str_low.includes("enerror")
+					|| str_low.includes("onfocus")
+					|| str_low.includes("onload")
+					|| str_low.includes("onmouse")
+					|| str_low.includes("onscroll")
+					|| str_low.includes("onsubmit")
+					|| str_low.includes("onunload")) 
+			{
+				str = str_low;
+				str = str.replace("url", "1212");
+				str = str.replace("<sc", "---");
+				str = str.replace("cr", "---");
+				str = str.replace("ri", "---");
+				str = str.replace("it", "---");
+				str = str.replace("ip", "");
+				str = str.replace("img", "");
+				str = str.replace("im", "---");
+				str = str.replace("al", "---");
+				str = str.replace("er", "---");
+				str = str.replace("rt>", "---");
+				str = str.replace("ajax", "Hello");
+				str = str.replace("href", "-----");
+				str = str.replace("div", "x-div");
+				str = str.replace("json", "14dd2");
+				str = str.replace("for", "world");
+				str = str.replace("ript", "");
+				str = str.replace("code", "x-code");
+				str = str.replace("src", "x-src");
+				str = str.replace("href", "x-href");
+				str = str.replace("javascript", "x-javascript");
+				str = str.replace("script", "x-script");
+				str = str.replace("iframe", "x-iframe");
+				str = str.replace("document", "x-document");
+				str = str.replace("vbscript", "x-vbscript");
+				str = str.replace("applet", "x-applet");
+				str = str.replace("embed", "x-embed");
+				str = str.replace("object", "x-object");
+				str = str.replace("frame", "x-frame");
+				str = str.replace("grameset", "x-grameset");
+				str = str.replace("layer", "x-layer");
+				str = str.replace("bgsound", "x-bgsound");
+				str = str.replace("alert", "x-alert");
+				str = str.replace("onblur", "x-onblur");
+				str = str.replace("onchange", "x-onchange");
+				str = str.replace("onclick", "x-onclick");
+				str = str.replace("ondblclick", "x-ondblclick");
+				str = str.replace("enerror", "x-enerror");
+				str = str.replace("onfocus", "x-onfocus");
+				str = str.replace("onload", "x-onload");
+				str = str.replace("onmouse", "x-onmouse");
+				str = str.replace("onscroll", "x-onscroll");
+				str = str.replace("onsubmit", "x-onsubmit");
+				str = str.replace("onunload", "x-onunload");
+				//console.log("함수"+str);
+				$("#"+id).val(str);
+			}
+		}
+	</script>
 
 	<script>
-		$('#files')
-				.change(
-						function() {
+		$('#files').change(function() {
 
 							var FileCount = 0;
 							//이미지 업로드 버튼을 누를 때마다 미리보기 이미지들을 초기화시킴
@@ -155,30 +269,15 @@
 								$('#food' + i + '').attr('src', "");
 							}
 
-							const target = document
-									.getElementsByName('shop_images');
+							const target = document.getElementsByName('shop_images');
 							//const fileLength = target[0].files.length;
 
 							if (target[0].files.length > 3) {
-
-								alert("이미지는 최대 3개까지만 업로드가 가능합니다.");
-
-							} else {
-
-								$
-										.each(
-												target[0].files,
-												function(index, file) {
-
+							alert("이미지는 최대 3개까지만 업로드가 가능합니다.");
+								} else {$.each(target[0].files,function(index, file) {
 													const fileName = file.name;
-
-													const fileEx = fileName
-															.slice(
-																	fileName
-																			.indexOf(".") + 1)
-															.toLowerCase();
-
-													if (fileEx != "jpg"
+													const fileEx = fileName.slice(fileName	.indexOf(".") + 1).toLowerCase();
+															if (fileEx != "jpg"
 															&& fileEx != "png"
 															&& fileEx != "gif"
 															&& fileEx != "bmp"
@@ -241,17 +340,19 @@
 			});
 
 			if (inputcount > 0) {
-
 				alert("모든 항목을 반드시 입력하셔야 합니다.");
 				return false;
-
 			} else if ($('#food0').attr('src') == '') { //이미지가 하나도 업로드되지 않은 경우
-
 				alert("상품 이미지는 적어도 1개 이상 들어가야 합니다.");
 				return false;
-
 			} else {
-
+				removeXSS($("#files").val(),$("#files").attr("id"));
+				removeXSS($("#title").val(),$("#title").attr("id"));
+				removeXSS($("#brand").val(),$("#brand").attr("id"));
+				removeXSS($("#datepicker").val(),$("#datepicker").attr("id"));
+				removeXSS($("#price").val(),$("#price").attr("id"));
+				removeXSS($("#quantity").val(),$("#quantity").attr("id"));
+				removeXSS($("#contents").val(),$("#contents").attr("id"));
 				alert("정상적으로 등록되었습니다.");
 				return true;
 			}
