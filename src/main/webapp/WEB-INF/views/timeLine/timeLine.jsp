@@ -48,8 +48,8 @@
 						<div class="col-lg-2 text-center">
 							<img class="rounded-circle" alt=""
 								src="/img/core-img/empty_profile.png">${i.tl_writer }</div>
-						<div class="col-lg-8 py-2 text-center">${i.tl_title }</div>
-						<div class="col-lg-2 text-right"><button id="optionbtn" style="background-color:white; border:none;"><i class="xi-bars"></i></button></div>
+						<div class="col-lg-8 py-2 text-center">${i.tl_title }<input type="hidden" value="${i.tl_board_seq }"></div>
+						<div class="col-lg-2 text-right"><button id="optionbtn" data-toggle="modal" data-target="#tlboardInfo${i.tl_board_seq }" style="background-color:white; border:none;"><i class="xi-bars"></i></button></div>
 					</div>
 					<div class="single-post-area">
 						<div class="post-thumbnail" style="text-align: center">
@@ -60,7 +60,7 @@
 							<div class="post-meta">
 								<a href="#" class="post-date"><i class="icon_clock_alt">작성일</i>
 									${i.tl_writedate}</a> <a href="#"
-									class="post-comments"><i class="icon_chat_alt">조회수</i>
+									class="post-comments"><i class="xi-star-o">좋아요</i>
 									${i.tl_likecount }</a>
 							</div>
 							<p>${i.tl_contents }</p>
@@ -68,10 +68,73 @@
 					</div>
 				</div>
 			</div>
+	
+	<div class="modal fade" id="tlboardInfo${i.tl_board_seq }" tabindex="-1"
+               role="dialog" aria-labelledby="exampleModalLabel1"
+               aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-body1">
+                        <form>
+                           <div class="form-group m-0 p-0">
+                              <div class="card">
+                                 <div class="card-header">
+                                    <i class="fa fa-user"></i><strong class="card-title pl-2">옵션 </strong>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                       aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </div>
+                                 <div class="card-body text-center">
+                                    <div class="mx-auto d-block">
+                                       <h5 class="text-center mt-2 mb-1">
+                                          <b id="member_id"> </b>
+                                       </h5>
+                                    </div>
+                                    <hr>
+                                    <div class="card-text">
+                                       <div>
+                                          <a href="/timeline/reportProc?seq=${i.tl_board_seq }"><b style="color:red;">신고하기</b></a>
+                                       </div>
+                                       <div>
+                                          <a href="/timeline/boardModify?seq=${i.tl_board_seq }&writer=${i.tl_writer}&title=${i.tl_title}&imgaddr=${i.tl_imgaddr }&contents=${i.tl_contents}"><b>글 수정 </b></a>
+                                       </div>
+                                       <div>
+                                          <a href="/timeline/boardDelete?seq=${i.tl_board_seq }&writer=${i.tl_writer}"><b>글 삭제</b></a>
+                                       </div>
+                                       <div>
+                                          <b>쪽지보내기</b>
+                                          <p id="tl_board"></p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary"
+                                 data-dismiss="modal">닫기</button>
+                           </div>
+                        </form>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+	
+	
+	
+	
+	
+	
+		
+		
+		
 		</c:forEach>
 		</div>
 		<div class="row mt-4"></div>
 	</section>
+	<!--모달 -->
+	
 	<script>
       var count = 2;
       $(window).scroll(
@@ -99,7 +162,8 @@
 					<div class='col-lg-2'>
 						<img class='rounded-circle'
 							src='/img/core-img/empty_profile.png'>`+result[i].tl_writer+` </div>
-					<div class='col-lg-10 py-2'>`+result[i].tl_title +`</div>
+					<div class='col-lg-8 py-2'>`+result[i].tl_title +`<input type='hidden' value='`+result[i].tl_board_seq +`'></div>
+					<div class='col-lg-2 text-right'><button id='optionbtn' data-toggle='modal' data-target='#tlboardInfo`+result[i].tl_board_seq +`' style='background-color:white; border:none;'><i class='xi-bars'></i></button></div>
 				</div>
 				<div class='single-post-area'>
 					<div class='post-thumbnail' style='text-align: center'>
@@ -116,7 +180,58 @@
 						<p>`+result[i].tl_contents+`</p>
 					</div>
 				</div>
-			</div></div>`)
+			</div></div>
+			<div class='modal fade' id='tlboardInfo`+result[i].tl_board_seq+`' tabindex='-1'
+		          role='dialog' aria-labelledby='exampleModalLabel1'
+		          aria-hidden='true'>
+		          <div class='modal-dialog' role='document'>
+		             <div class='modal-content'>
+		                <div class='modal-body1'>
+		                   <form>
+		                      <div class='form-group m-0 p-0'>
+		                         <div class='card'>
+		                            <div class='card-header'>
+		                               <i class='fa fa-user'></i><strong class='card-title pl-2'>옵션 </strong>
+		                               <button type='button' class='close' data-dismiss='modal'
+		                                  aria-label='Close'>
+		                                  <span aria-hidden='true'>&times;</span>
+		                               </button>
+		                            </div>
+		                            <div class='card-body text-center'>
+		                               <div class='mx-auto d-block'>
+		                                  <h5 class='text-center mt-2 mb-1'>
+		                                     <b id='member_id'> </b>
+		                                  </h5>
+		                               </div>
+		                               <hr>
+		                               <div class='card-text'>
+		                                  <div>
+		                                     <a href='/timeline/reportProc?seq=`+result[i].tl_board_seq+`'><b style='color:red;'>신고하기</b></a>
+		                                     
+		                                  </div>
+		                                  <div>
+		                                     <a href='/timeline/boardModify?seq=`+result[i].tl_board_seq+`&writer=`+result[i].tl_writer+`&title=`+result[i].tl_title+`&imgaddr=`+result[i].tl_imgaddr+`&contents=`+result[i].tl_contents+`'><b>글 수정 </b></a>
+		                                  </div>
+		                                  <div>
+		                                     <a href='/timeline/boardDelete?seq=`+result[i].tl_board_seq+`&writer=`+result[i].tl_writer+`'><b>글 삭제</b></a>
+		                                  </div>
+		                                  <div>
+		                                     <a href='/timeline/boardNote'><b>쪽지보내기</b></a>
+		                                  </div>
+		                               </div>
+		                            </div>
+		                         </div>
+		                      </div>
+		                      <div class='modal-footer'>
+		                         <button type='button' class='btn btn-secondary'
+		                            data-dismiss='modal'>닫기</button>
+		                      </div>
+		                   </form>
+
+		                </div>
+		             </div>
+		          </div>
+		       </div>`)
                      }
                   
                      })
@@ -127,6 +242,7 @@
                   console.log('꼭대기입니다!');
                }
             });
+      
    </script>
 
 

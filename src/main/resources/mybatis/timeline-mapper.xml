@@ -10,8 +10,16 @@
       select * from (select tl_board_seq , tl_title , tl_contents , tl_writer , tl_writedate , tl_viewcount , tl_likecount , tl_likestatus , tl_imgaddr , 
       rank() over(order by tl_board_seq desc) rank from tl_board ) where rank between (#{page}*3-2) and #{page}*3
    </select>
+   
    <select id="tl_board_all_count" resultType="Integer">
       select count(*) from tl_board 
    </select>
    
+   <delete id="tl_board_delete">
+   		delete from tl_board where tl_board_seq=#{tl_board_seq}
+   </delete>
+   
+   <update id="tl_board_update">
+   		update tl_board set tl_title=#{tl_title}, tl_contents=#{tl_contents}, tl_imgaddr=#{tl_imgaddr}, tl_writedate=default where tl_board_seq=#{tl_board_seq}
+   </update>
 </mapper>
