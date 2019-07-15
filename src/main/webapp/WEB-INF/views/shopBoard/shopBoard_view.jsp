@@ -101,7 +101,7 @@
 							<div class="row pb-3 mt-4 border-bottom">
 								<div class="col-4">판매가</div>
 								<div class="col-8">
-								<input type="hidden" value="${dto.shop_price }" id="price">
+									<input type="hidden" value="${dto.shop_price }" id="price">
 									<p>
 										<strong>${dto.shop_price }</strong>
 									</p>
@@ -174,8 +174,6 @@
 								<div class="col-4  py-3 text-right">
 
 									수량 : <input type="text" value="1" id="quantity_one"
-
-
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
 										style="width: 3em; text-align: right">
 								</div>
@@ -351,7 +349,6 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
-
 		//수량
 		var upCount = function() {
 			var quantity = Number($("#quantity_one").val());
@@ -360,27 +357,25 @@
 			$("#quantity_one").val(quantity + 1);
 			$("#quantity_one").val() * price
 
-		var upCount = function() {
-			var quantity = Number($("#quantity_one").val());
+			var upCount = function() {
+				var quantity = Number($("#quantity_one").val());
 
-			$("#quantity_one").val(quantity + 1);
-			
+				$("#quantity_one").val(quantity + 1);
 
-		}
+			}
 
-		var downCount = function() {
-			var quantity = Number($("#quantity_one").val());
+			var downCount = function() {
+				var quantity = Number($("#quantity_one").val());
 
+				$("#quantity_one").val("#quantity_one").val(quantity - 1);
+			}
+			//---------------------------
 
-			$("#quantity_one").val("#quantity_one").val(quantity - 1);
-		}
-		//---------------------------
-
-			if(quantity<2){
+			if (quantity < 2) {
 				alert("수량은 최소 1개입니다");
 				$("#quantity_one").val("1");
-			}else{
-			$("#quantity_one").val("#quantity_one").val(quantity - 1);
+			} else {
+				$("#quantity_one").val("#quantity_one").val(quantity - 1);
 			}
 		}
 
@@ -389,9 +384,8 @@
 			var quantity = Number($("#quantity_one").val());
 			var price = Number($("#price").val());
 			var result = quantity * price;
-			$("#resultPrice").text(result+"원");
-			$("#resultPrice1").text(result+"원");
-			
+			$("#resultPrice").text(result + "원");
+			$("#resultPrice1").text(result + "원");
 
 		})
 		//버튼클릭시 수량 감소
@@ -403,7 +397,6 @@
 			$("#resultPrice").text(result);
 			$("#resultPrice1").text(result);
 		})
-
 
 		// 	이미지 클릭시 이미지 확대	
 		$(".imgCa").on("click", function() {
