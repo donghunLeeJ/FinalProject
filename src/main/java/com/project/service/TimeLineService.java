@@ -21,4 +21,12 @@ public class TimeLineService {
    public List<Tl_BoardDTO> showAll(int page) {
       return dao.showAll(page);
    }
+   
+   public int delete(String seq) {
+	   return dao.delete(seq);
+   }
+   
+   public int update(Tl_BoardDTO dto) {
+	   return dao.update(dto);
+   }
 }
