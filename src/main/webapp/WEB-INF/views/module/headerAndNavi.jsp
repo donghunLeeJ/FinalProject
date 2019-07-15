@@ -3,29 +3,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
-	.headerbtn{
-		border: 1px solid skyblue;
-            background-color: rgba(0,0,0,0);
-            color: skyblue;
-            padding: 5px;
-            
-	}
-	
-	.headerbtn:hover{
-		color:white;
-            background-color: skyblue;
-	}
-	#logout{
+.headerbtn {
+	border: 1px solid skyblue;
+	background-color: rgba(0, 0, 0, 0);
+	color: skyblue;
+	padding: 5px;
+}
+
+.headerbtn:hover {
+	color: white;
+	background-color: skyblue;
+}
+
+#logout {
 	border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-	}
-	
-	#mypage{
+	border-bottom-left-radius: 5px;
+}
+
+#mypage {
 	border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-	}
-
-
+	border-bottom-right-radius: 5px;
+}
 </style>
 <!-- Preloader -->
 <div id="preloader">
@@ -33,7 +31,8 @@
 </div>
 <!-- /Preloader -->
 <!-- Header Area Start -->
-<header class="header-area" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<header class="header-area" oncontextmenu="return false"
+	ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
 	<div class="top-header-area">
 		<div class="container h-100">
@@ -49,12 +48,12 @@
 						<c:choose>
 							<c:when test="${id eq null}">
 
-								<button  id="LogIN" class="headerbtn">LogIN</button>
+								<button id="LogIN" class="headerbtn">LogIN</button>
 							</c:when>
 
 							<c:otherwise>
 								<button id=logout class="headerbtn">logout</button>
-								<button id=mypage  class="headerbtn"></button>
+								<button id=mypage class="headerbtn"></button>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -64,14 +63,14 @@
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
-	<div class="main-header-area">
+	<div class="main-header-area border" id="fixedNav" style="background-color: white">
 		<div class="classy-nav-container breakpoint-off">
 			<div class="container">
 				<!-- Classy Menu -->
-				<nav class="classy-navbar justify-content-between" id="akameNav">
+				<nav class="classy-navbar justify-content-between  " id="akameNav" style="background-color: white">
 
 					<!-- Logo -->
-					<a class="nav-brand" href="index.html"><img
+					<a class="nav-brand" href="/home"><img
 						src="/img/core-img/logo.png" alt=""></a>
 					<!-- Navbar Toggler -->
 					<div class="classy-navbar-toggler">
@@ -89,10 +88,10 @@
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul id="nav">
-								<li ><a href="./index.html">Home</a></li>
+								<li><a href="/home">Home</a></li>
 								<li><a href="#">Pages</a>
 									<ul class="dropdown">
-										<li><a href="./index.html">- Home</a></li>
+										<li><a href="/home">- Home</a></li>
 										<li><a href="./about.html">- About Us</a></li>
 										<li><a href="./service.html">- 서비스 소개</a></li>
 										<li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li>
@@ -107,7 +106,7 @@
 												<li><a href="#">- Dropdown Item</a></li>
 											</ul></li>
 									</ul></li>
-								<li><a href="/home/ee">서비스 소개</a></li>
+								<li><a href="#">서비스 소개</a></li>
 								<li><a href="#">판매 게시판</a>
 									<ul class="dropdown">
 										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
@@ -116,8 +115,6 @@
 								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
 
 							</ul>
-
-							
 
 							<!-- Cart Icon -->
 							<div class="cart-icon ml-5 mt-4 mt-lg-0">
@@ -135,26 +132,40 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-	<script>
-
-		$("#LogIN").on("click",function(){
-			location.href="/member/loginForm";
-			
-		})
+	<script >
 	
-		$("#logout").on("click",function(){
-			location.href="/member/logOutProc";
-		})
-		
-		$("#mypage").on("click",function(){
+	 $(window).scroll(function(){
+	        
+	        var docScrollY = $(document).scrollTop()
+	        var barThis = $("#fixedNav")
+	       
+	 		console.log(docScrollY);
+	        if( docScrollY > 200 ) {
+	        	barThis.fadeIn();
+	        	barThis.addClass("fixed-top");
+	            
+	        }else{
+	            barThis.removeClass("fixed-top");
+	        }
+	 
+	    });
 
-			location.href="/member/myPage";
+	</script>
+	
+	
+	<script>
+		$("#LogIN").on("click", function() {
+			location.href = "/member/loginForm";
+
+		})
+
+		$("#logout").on("click", function() {
+			location.href = "/member/logOutProc";
+		})
+
+		$("#mypage").on("click", function() {
+
+			location.href = "/member/myPage";
 
 		})
 	</script>
