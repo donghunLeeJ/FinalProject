@@ -48,8 +48,10 @@
 						<div class="col-lg-2 text-center">
 							<img class="rounded-circle" alt=""
 								src="/img/core-img/empty_profile.png">${i.tl_writer }</div>
+
 						<div class="col-lg-8 py-2 text-center">${i.tl_title }<input type="hidden" value="${i.tl_board_seq }"></div>
 						<div class="col-lg-2 text-right"><button id="optionbtn" data-toggle="modal" data-target="#tlboardInfo${i.tl_board_seq }" style="background-color:white; border:none;"><i class="xi-bars"></i></button></div>
+
 					</div>
 					<div class="single-post-area">
 						<div class="post-thumbnail" style="text-align: center">
@@ -68,6 +70,7 @@
 					</div>
 				</div>
 			</div>
+
 	
 	<div class="modal fade" id="tlboardInfo${i.tl_board_seq }" tabindex="-1"
                role="dialog" aria-labelledby="exampleModalLabel1"
@@ -129,11 +132,13 @@
 		
 		
 		
+
+
 		</c:forEach>
 		</div>
 		<div class="row mt-4"></div>
 	</section>
-	<!--모달 -->
+
 	
 	<script>
       var count = 2;
@@ -162,8 +167,10 @@
 					<div class='col-lg-2'>
 						<img class='rounded-circle'
 							src='/img/core-img/empty_profile.png'>`+result[i].tl_writer+` </div>
+
 					<div class='col-lg-8 py-2'>`+result[i].tl_title +`<input type='hidden' value='`+result[i].tl_board_seq +`'></div>
 					<div class='col-lg-2 text-right'><button id='optionbtn' data-toggle='modal' data-target='#tlboardInfo`+result[i].tl_board_seq +`' style='background-color:white; border:none;'><i class='xi-bars'></i></button></div>
+
 				</div>
 				<div class='single-post-area'>
 					<div class='post-thumbnail' style='text-align: center'>
@@ -181,6 +188,7 @@
 					</div>
 				</div>
 			</div></div>
+
 			<div class='modal fade' id='tlboardInfo`+result[i].tl_board_seq+`' tabindex='-1'
 		          role='dialog' aria-labelledby='exampleModalLabel1'
 		          aria-hidden='true'>
@@ -235,6 +243,7 @@
                      }
                   
                      })
+
                   
                   console.log('바닥입니다!');
                } else if ($(window).scrollTop() == 0) {
