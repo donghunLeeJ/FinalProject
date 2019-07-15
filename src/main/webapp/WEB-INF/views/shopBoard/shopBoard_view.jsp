@@ -47,11 +47,13 @@
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<form id="form"action="/Basket/basketInsert" method="post">
 	<div class="container-fluid mt-5">
 		<div class="row pt-5 ">
 			<div class="col-2">왼쪽</div>
 			<div class="col-8">
 				<!-- 상품정보 전체내용 -->
+				
 				<div class="container">
 					<div class="row">
 
@@ -63,8 +65,10 @@
 
 									<div>
 										<div class=" py-4">
-											<img class="d-block w-100 view" src="${dto.shop_imagepath1 }"
-												alt="First slide" style="height: 20em">
+											<img  class="d-block w-100 view" src="${dto.shop_imagepath1 }"
+												alt="First slide"  style="height: 20em">
+												<input type="hidden" name="shop_imagepath1" value="${dto.shop_imagepath1 }">
+												
 										</div>
 
 									</div>
@@ -92,8 +96,10 @@
 
 							<div class="row pb-4 border-bottom">
 								<div class="col-12">
+
 									<strong>[${dto.shop_brand}] &nbsp;
 										&nbsp;${dto.shop_title }</strong>
+
 								</div>
 
 							</div>
@@ -101,9 +107,11 @@
 							<div class="row pb-3 mt-4 border-bottom">
 								<div class="col-4">판매가</div>
 								<div class="col-8">
-								<input type="hidden" value="${dto.shop_price }" id="price">
+
+									<input type="hidden" value="${dto.shop_price }" id="price">
+
 									<p>
-										<strong>${dto.shop_price }</strong>
+										<strong >${dto.shop_price }</strong>
 									</p>
 
 								</div>
@@ -115,6 +123,7 @@
 								<div class="col-8">
 									<p>
 										${dto.shop_quantity } <strong> (개)</strong>
+										<input type="hidden" name=basket_quantity value="${dto.shop_quantity }" >
 									</p>
 
 								</div>
@@ -127,7 +136,8 @@
 								<div class="col-4">유통기한</div>
 								<div class="col-8">
 									<p>
-										<strong>${dto.shop_expiration }</strong>
+										<strong >${dto.shop_expiration }</strong>
+										<input type="hidden" name=basket_expiration value="${dto.shop_expiration }" >
 									</p>
 
 								</div>
@@ -137,7 +147,8 @@
 								<div class="col-4">판매 지역</div>
 								<div class="col-8">
 									<p>
-										<strong>${dto.shop_location }</strong>
+										<strong >${dto.shop_location }</strong>
+										<input type="hidden" name="basket_location" value="${dto.shop_location }" >
 									</p>
 
 								</div>
@@ -173,8 +184,10 @@
 
 								<div class="col-4  py-3 text-right">
 
-									수량 : <input type="text" value="1" id="quantity_one"
 
+							
+
+									수량 : <input type="text" name="shop_quantity" value="1" id="quantity_one"
 
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
 										style="width: 3em; text-align: right">
@@ -184,7 +197,7 @@
 									<div class="row">
 										<div class="col-12">
 
-											<input type="button" value="+" id="up_btn"
+											<input type="button" value="+" id="up_btn" 
 												class="quantity_btn"> <input type="button" value="-"
 												id="down_btn" class="quantity_btn">
 
@@ -194,7 +207,7 @@
 								</div>
 
 								<div class="col-6 py-3 text-right">
-									<small>${dto.shop_price }원</small>
+									<small id="resultPrice1" name="shop_price" value="${dto.shop_price }">${dto.shop_price }원</small>
 
 								</div>
 							</div>
@@ -204,7 +217,7 @@
 
 								<div class="col-12 text-right" style="line-height: 2.5em;">
 									<span style="margin-right: 2em"><strong>총 상품금액
-											:</strong></span><span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+											:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
 
 								</div>
 							</div>
@@ -212,10 +225,10 @@
 								<div class="col-12" style="text-align: center"
 									style="font-wight:600">
 
-									<a
-										href="/shopboard/shopBoard_buyProc?quantity=1&seq=${dto.shop_seq }"
-										class="btn akame-btn">구 매 하 기 </a> <a href="#"
+
+									<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> <a href="#"
 										class="btn akame-btn"><i class="icon_cart"></i>장 바 구 니</a>
+
 
 								</div>
 							</div>
@@ -228,6 +241,7 @@
 
 
 			</div>
+			</form>
 			<div class="col-2">오른쪽</div>
 		</div>
 		<div class=" pb-5">
@@ -352,48 +366,42 @@
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
 
+		
+	$("#chargeItem").on("click",function(){
+		var quantity = $("#quantity_one").val();
+		location.href="/shopboard/shopBoard_buyProc?quantity="+quantity+"&seq=${dto.shop_seq }"
+	})	
 		//수량
+
 		var upCount = function() {
 			var quantity = Number($("#quantity_one").val());
 			var price = "${dto.shop_price}";
-
 			$("#quantity_one").val(quantity + 1);
 			$("#quantity_one").val() * price
 
-		var upCount = function() {
-			var quantity = Number($("#quantity_one").val());
-
-			$("#quantity_one").val(quantity + 1);
-			
-
 		}
-
 		var downCount = function() {
 			var quantity = Number($("#quantity_one").val());
-
-
 			$("#quantity_one").val("#quantity_one").val(quantity - 1);
-		}
-		//---------------------------
 
-			if(quantity<2){
+			if (quantity < 2) {
 				alert("수량은 최소 1개입니다");
 				$("#quantity_one").val("1");
-			}else{
-			$("#quantity_one").val("#quantity_one").val(quantity - 1);
+			} else {
+				$("#quantity_one").val("#quantity_one").val(quantity - 1);
 			}
 		}
-
+		//버튼클릭시 수량 추가
 		$("#up_btn").on("click", function() {
 			upCount();
 			var quantity = Number($("#quantity_one").val());
 			var price = Number($("#price").val());
 			var result = quantity * price;
-			$("#resultPrice").text(result+"원");
-			$("#resultPrice1").text(result+"원");
-			
+			$("#resultPrice").text(result + "원");
+			$("#resultPrice1").text(result + "원");
 
 		})
+
 		//버튼클릭시 수량 감소
 		$("#down_btn").on("click", function() {
 			downCount();
@@ -403,7 +411,6 @@
 			$("#resultPrice").text(result);
 			$("#resultPrice1").text(result);
 		})
-
 
 		// 	이미지 클릭시 이미지 확대	
 		$(".imgCa").on("click", function() {
@@ -417,16 +424,6 @@
 			$(this).addClass("on").prevAll("a").addClass("on");
 			return false;
 		});
-
-		//버튼클릭시 수량 추가
-		$("#up_btn").on("click", function() {
-			upCount();
-
-		})
-		//버튼클릭시 수량 감소
-		$("#down_btn").on("click", function() {
-			downCount();
-		})
 	</script>
 </body>
 </html>

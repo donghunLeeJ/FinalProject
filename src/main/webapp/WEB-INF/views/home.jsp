@@ -8,21 +8,76 @@
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
-
+<style>
+.carousel-caption {
+	top: auto;
+	bottom: auto;
+}
+</style>
 
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-<<<<<<< HEAD
-	<input type="button" id="test" value="gg">
-	<script type="text/javascript">
-	document.getElementById("test").onclick = function(){
-		location.href = "home/admin";
-	}
-	</script>
 
 
-	<!-- Header Area End -->
+	<section class="welcome-area">
+	<div id="carouselExampleInterval" class="carousel slide"
+		data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<div class="carousel-caption d-none d-sm-block">
+					<h1 class="display-1 mt-5 text-left">Second slide label</h1>
+					<h1 class="mt-5 text-left">Lorem ipsum dolor sit amet,
+						consectetur adipiscing elit.</h1>
+				</div>
+				<img src="/img/bg-img/888.jpg" class="d-block w-80" alt="...">
+			</div>
+			<div class="carousel-item">
+				<div class="carousel-caption d-none d-md-block">
+					<h1 class="display-1 mt-5 text-left">Second slide label</h1>
+					<h1 class="mt-5 text-left">Lorem ipsum dolor sit amet,
+						consectetur adipiscing elit.</h1>
+				</div>
+				<img src="/img/bg-img/resultBack.jpg" class="d-block w-80" alt="...">
+			</div>
+			<div class="carousel-item">
+				<div class="carousel-caption d-none d-md-block">
+					<h1 class="display-1 mt-5 text-left">Second slide label</h1>
+					<h1 class="mt-5 text-left">Lorem ipsum dolor sit amet,
+						consectetur adipiscing elit.</h1>
+				</div>
+				<img src="/img/bg-img/resultBack2.png" class="d-block w-80"
+					alt="...">
+			</div>
+
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleInterval"
+			role="button" data-slide="prev"> <span
+			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="carousel-control-next" href="#carouselExampleInterval"
+			role="button" data-slide="next"> <span
+			class="carousel-control-next-icon" aria-hidden="true"></span> <span
+			class="sr-only">Next</span>
+		</a>
+	</div>
+	</section>
+	<section class="why-choose-us-area bg-gray section-padding-80-0">
+
+
+
+
+
+
+	</section>
+	<section class="why-choose-us-area  section-padding-80-0">
+		
+	
+	
+	
+	
+	 </section>
+
 
 
 

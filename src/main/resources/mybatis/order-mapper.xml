@@ -2,8 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderDAO">
 
-	<insert id="insert">
+	<insert id="orderInsert">
 		insert into products_order
-		values(order_seq.nextval,#{products_seq},#{seller_id},#{buyer_id},default,#{products_title},#{products_location},#{products_price},#{products_quantity},#{products_imagepath})
+		values(order_seq.nextval,#{products_seq},#{buyer_id},#{order_name},#{order_phone},#{order_email},#{getter_name},#{getter_postcode},#{getter_address1},#{getter_address2},#{getter_phone},#{getter_command})
+
 	</insert>
+	<insert id="orderListInsert">
+		insert into orderList
+		values(orderList_seq.nextval,#{products_seq},#{sell_id},#{buyer_id},#{sell_brand},#{sell_title},#{sell_imagepath},#{buy_quantity},#{buy_price},#{buy_date},#{order_number})
+
+	</insert>
+	<select id="orderListSelect" resultType="com.project.dto.OrderListDTO">
+		select * from
+	</select>
 </mapper>

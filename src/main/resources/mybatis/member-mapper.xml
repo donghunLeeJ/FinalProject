@@ -7,6 +7,7 @@
 		values(memberSell_seq.nextval,#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default)
 	</insert>	
 
+
 	<select id="login" resultType="Integer">
 		select count(*) from member where
 		member_id=#{member_id} and member_pw=#{member_pw}
@@ -27,16 +28,14 @@
 		member where member_id=#{member_id}
 	</select>
 
-
 	<update id="edit_mypage">
-
 		update member set member_postcode=#{member_postcode},
 		member_address1=#{member_address1},
 		member_address2=#{member_address2},
 		member_phone=#{member_phone},member_pw=#{member_pw},member_intro=#{member_intro}
 		where member_id=#{member_id}
 	</update>
-
+	
 
 	<update id="uploadImg">
 		update member set member_imgpath = #{path} where
@@ -45,4 +44,14 @@
 	<insert id="orderInsert">
 		insert into products_order values()
 	</insert>
+	
+	<select id="totalCount" resultType="Integer">
+		select count(*) from	shopboard
+	</select>
+	
+	<delete id="delOK">
+	delete from member where member_id=#{id}and member_pw=#{pw}
+	</delete>
+	
+	
 </mapper>

@@ -35,10 +35,15 @@ public class MemberService {
 	}
 
 	public int edit_mypage(MemberDTO mdto) {
+		System.out.println("멤버서비스 edit_mypage");
 		System.out.println(mdto);
 		return mdao.edit_mypage(mdto);
 	}
 	public int uploadImg(String filePath, String id) {
 		return mdao.uploadImg(filePath, id);
+	}
+	
+	public int delOK(String del_id, String del_pw) {
+		return mdao.delOK(del_id, del_pw);
 	}
 }

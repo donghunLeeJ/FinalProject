@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.project.dto.OrderDTO;
+import com.project.dto.OrderListDTO;
 
 @Component
 public class OrderDAO {
@@ -14,6 +15,11 @@ public class OrderDAO {
 
 	public int orderInsert(OrderDTO dto) {
 
-		return sst.insert("OrderDAO.insert", dto);
+		return sst.insert("OrderDAO.orderInsert", dto);
+	}
+
+	public int orderListInsert(OrderListDTO dto) {
+
+		return sst.insert("OrderDAO.orderListInsert", dto);
 	}
 }

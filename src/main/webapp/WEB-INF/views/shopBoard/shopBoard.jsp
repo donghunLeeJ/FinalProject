@@ -26,7 +26,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-2">asdasd</div>
+			<div class="col-lg-2">판매게시판 -> 구매하기 페이지</div>
 			<div class="col-lg-8">
 				<div class="container">
 					<div class="row">
@@ -63,7 +63,7 @@
 					<div class="row" id="extendList"></div>
 				</div>
 			</div>
-			<div class="col-lg-2">asdasd</div>
+			<div class="col-lg-2">ShopBoard.jsp</div>
 		</div>
 	</div>
 
@@ -97,7 +97,7 @@
                      
                      for(var i = 0 ; i < result.length; i ++){
                      $("#extendList").append(`<div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
-                              data-wow-delay='500ms'>
+                              data-wow-delay='500ms'`>
                               <div class='akame-portfolio-single-item' style="height: 250px">
                                  <img id='img1' src=`+ result[i].shop_imagepath1+` >
 
