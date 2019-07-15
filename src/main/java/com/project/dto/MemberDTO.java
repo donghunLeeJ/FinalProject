@@ -14,7 +14,9 @@ public class MemberDTO {
 	private String member_imgpath;
 	private String member_intro;
 	private String member_confirm;
+	private String member_blackcheck;
 
+	
 	public int getMemberSell_seq() {
 		return memberSell_seq;
 	}
@@ -122,9 +124,23 @@ public class MemberDTO {
 	}
 
 
+	public String getMember_blackcheck() {
+		return member_blackcheck;
+	}
+
+	public void setMember_blackcheck(String member_blackcheck) {
+		this.member_blackcheck = member_blackcheck;
+	}
+
+	public void setMemberSell_seq(int memberSell_seq) {
+		this.memberSell_seq = memberSell_seq;
+	}
+
 	public MemberDTO(int memberSell_seq, String member_id, String member_pw, String member_name, String member_birth,
 			String member_gender, String member_phone, String member_postcode, String member_address1,
-			String member_address2, String member_imgpath, String member_intro, String member_confirm) {
+			String member_address2, String member_imgpath, String member_intro, String member_confirm,
+			String member_blackcheck) {
+		super();
 		this.memberSell_seq = memberSell_seq;
 
 		this.member_id = member_id;
@@ -139,10 +155,21 @@ public class MemberDTO {
 		this.member_imgpath = member_imgpath;
 		this.member_intro = member_intro;
 		this.member_confirm = member_confirm;
+		this.member_blackcheck = member_blackcheck;
+	}
+
+
+	@Override
+	public String toString() {
+		return "MemberDTO [memberSell_seq=" + memberSell_seq + ", member_id=" + member_id + ", member_pw=" + member_pw
+				+ ", member_name=" + member_name + ", member_birth=" + member_birth + ", member_gender=" + member_gender
+				+ ", member_phone=" + member_phone + ", member_postcode=" + member_postcode + ", member_address1="
+				+ member_address1 + ", member_address2=" + member_address2 + ", member_imgpath=" + member_imgpath
+				+ ", member_intro=" + member_intro + ", member_confirm=" + member_confirm + ", member_blackcheck="
+				+ member_blackcheck + "]";
 	}
 
 	public MemberDTO() {
 		super();
 	}
-
 }
