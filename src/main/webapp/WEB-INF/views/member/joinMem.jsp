@@ -70,7 +70,7 @@ transform:translate(20px);
       <div class="row">
          <div class="col-12">
             <!-- Form -->
-            <form id=form action="/member/joinProc" method=postclass="akame-contact-form border-0 p-0">
+            <form id="formproc" action="/member/joinProc" method=postclass="akame-contact-form border-0 p-0">
 
                <div class="row">
                   <div class="col-lg-12 text-center">
@@ -232,7 +232,7 @@ transform:translate(20px);
                alert("공백은 입력할 수 없습니다");
                $("#name").focus();
             }
-            else if ($("#birth").val() == "") {
+            else if ($("#datepicker").val() == "") {//#datepicker 이게 최신꺼 // 07-12 오후 5시 24분
                alert("생년월일을 입력하세요");
             }
             

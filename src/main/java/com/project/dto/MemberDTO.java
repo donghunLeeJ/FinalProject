@@ -6,7 +6,7 @@ public class MemberDTO {
 	private String member_name;
 	private String member_birth;
 	private String member_gender;
-	private int member_phone;
+	private String member_phone;
 	private String member_postcode;
 	private String member_address1;
 	private String member_address2;
@@ -43,10 +43,10 @@ public class MemberDTO {
 	public void setMember_gender(String member_gender) {
 		this.member_gender = member_gender;
 	}
-	public int getMember_phone() {
+	public String getMember_phone() {
 		return member_phone;
 	}
-	public void setMember_phone(int member_phone) {
+	public void setMember_phone(String member_phone) {
 		this.member_phone = member_phone;
 	}
 	public String getMember_postcode() {
@@ -86,7 +86,7 @@ public class MemberDTO {
 		this.member_confirm = member_confirm;
 	}
 	public MemberDTO(String member_id, String member_pw, String member_name, String member_birth, String member_gender,
-			int member_phone, String member_postcode, String member_address1, String member_address2,
+			String member_phone, String member_postcode, String member_address1, String member_address2,
 			String member_imgpath, String member_intro, String member_confirm) {
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -103,14 +103,14 @@ public class MemberDTO {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "MemberDTO [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
-				+ ", member_birth=" + member_birth + ", member_gender=" + member_gender + ", member_phone="
-				+ member_phone + ", member_postcode=" + member_postcode + ", member_address1=" + member_address1
-				+ ", member_address2=" + member_address2 + ", member_imgpath=" + member_imgpath + ", member_intro="
-				+ member_intro + ", member_confirm=" + member_confirm + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "MemberDTO [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
+//				+ ", member_birth=" + member_birth + ", member_gender=" + member_gender + ", member_phone="
+//				+ member_phone + ", member_postcode=" + member_postcode + ", member_address1=" + member_address1
+//				+ ", member_address2=" + member_address2 + ", member_imgpath=" + member_imgpath + ", member_intro="
+//				+ member_intro + " member_confirm=" + member_confirm + "]";
+//	}
 	public MemberDTO() {
 		super();
 	}

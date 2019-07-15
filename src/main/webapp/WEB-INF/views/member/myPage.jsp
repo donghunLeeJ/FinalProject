@@ -19,21 +19,26 @@
 }
 
 #myinfo {
-	width: 200px;
-	height: 200px;
+	width: 260px;
+	height: 260px;
 }
 
 .no {
 	padding: 0px;
 	margin: 0px;
-
 }
 
 #area {
 	width: 100%;
 	height: 100px;
-
 }
+/* div{ */
+/* border:1px solid black; */
+/* } */
+#delId{
+ text-align: center;
+}
+
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -44,23 +49,29 @@
 	<div class="container">
 
 		<div class="row my-2">
-			<div class="col-lg-8 order-lg-2">
+			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a href="" data-target="#profile"
 						data-toggle="tab" class="nav-link active">나의 정보</a></li>
 					<li class="nav-item"><a href="" data-target="#messages"
 						data-toggle="tab" class="nav-link">쪽지함</a></li>
+								<li class="nav-item"><a href="" data-target="#sell"
+						data-toggle="tab" class="nav-link">판매 내역</a></li>
+								<li class="nav-item"><a href="" data-target="#buy"
+						data-toggle="tab" class="nav-link">구매 내역</a></li>
 					<li class="nav-item"><a href="" data-target="#edit"
 						data-toggle="tab" class="nav-link">정보 수정</a></li>
+						<li class="nav-item"><a href="" data-target="#delId"
+						data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
 				</ul>
-				<div class="tab-content py-4">
+				<div class="tab-content py-4 ">
 					<div class="tab-pane active" id="profile">
 						<div class="row">
-							<div>
+							<div class="col-lg-3">
 								<img src="${id.member_imgpath }" class="mx-auto img-circle"
 									id=myinfo alt="avatar">
 							</div>
-							<div class="col-lg-6 col-md-6">
+							<div class="col-lg-6">
 								<div class="float col-lg-12 col-mf-12">
 									<div class=" form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">아이디</label>
@@ -83,9 +94,21 @@
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">성별</label>
+										<label class="col-lg-3 col-form-label form-control-label">핸드폰 번호</label>
 										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_gender }</div>
+											<div class="form-control" type="text">${id.member_phone}</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-lg-3 col-form-label form-control-label">기본 주소</label>
+										<div class="col-lg-9">
+											<div class="form-control" type="text">${id.member_address1 }</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-lg-3 col-form-label form-control-label">상세 주소</label>
+										<div class="col-lg-9">
+											<div class="form-control" type="text">${id.member_address2 }</div>
 										</div>
 									</div>
 								</div>
@@ -149,28 +172,34 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="tab-pane" id="edit">
-						<div id="preview" class="col-lg-4 order-lg-1 text-center">
+					<div class="tab-pane" id="sell"><!-- 판매 내역 -->
+					판매 내역
+					</div>
+					<div class="tab-pane" id="buy"><!-- 구매 내역 -->
+					구매 내역
+					</div>
+					<div class="tab-pane col-lg-12" id="edit">
+						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
 							<form id=mypage_Img action="/member/uploadImg" method="post"
 								enctype="multipart/form-data">
 								<img src="${id.member_imgpath }" class="mx-auto img-circle"
 									alt="avatar"> <input type=file id="file" name="file">
 
-								<input type="button" id="change" class="btn btn-primary "
+								<input type="button" id="change" class="btn btn-success "
 									value="사진 변경"> <input type="submit" id="uploadImg"
-									class="btn btn-primary " value="사진 업로드">
+									class="btn btn-success " value="사진 업로드">
 
 							</form>
 						</div>
-						<br>
-						<div>
+					
+						<div class="float col-lg-8">
 							<form id="edit_mypage"action="/member/edit_mypage" method="post">
 								<div class="form-group row">
 
 									<label class="col-lg-3 col-form-label form-control-label">아이디(수정
 										불가)</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text" name="member_name"
+										<input class="form-control" type="text" name="member_id"
 											value="${id.member_id }" readonly>
 
 									</div>
@@ -179,7 +208,7 @@
 									<label class="col-lg-3 col-form-label form-control-label">이름(수정
 										불가)</label>
 									<div class="col-lg-9">
-										<input class="form-control" name="member_id" type="text"
+										<input class="form-control" name="member_name" type="text"
 											value="${id.member_name }" readonly>
 									</div>
 								</div>
@@ -187,7 +216,7 @@
 									<label class="col-lg-3 col-form-label form-control-label">생일(수정
 										불가)</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text"
+										<input class="form-control" type="text" name="member_birth"
 											value="${id.member_birth}" readonly>
 									</div>
 								</div>
@@ -195,14 +224,14 @@
 									<label class="col-lg-3 col-form-label form-control-label">성별(수정
 										불가)</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="text"
+										<input class="form-control" type="text" name="member_gender"
 											value="${id.member_gender }" readonly>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">우편번호
 										<!--                             <button type="button" onclick="sample4_execDaumPostcode()" -->
-										<!--                            class="btn btn-primary p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
+										<!--                            class="btn btn-success p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
 										<img src="/img/core-img/find_addr.png"
 										onclick="sample4_execDaumPostcode()"
 										class="mx-auto img-circle" data-aria-haspopup="true"
@@ -269,20 +298,58 @@
 
 										<!--                                 <input type="reset" class="btn btn-secondary" value="초기화"> -->
 
-										<input type="button" id="edit_info" class="btn btn-primary"
-											value="정보 수정"> <input type="button" id="delId"
-											class="btn btn-primary" value="회원 탈퇴">
+										<input type="button" id="edit_info" class="btn btn-success"value="정보 수정"> 
+										<input type="button" id="goHome"class="btn btn-success" value="홈으로">
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
+					<div class="tab-pane" id="delId">
+					<h1>그동안 저희 사이트를 이용해 주셔서 감사합니다</h1>
+					<p>
+					<h3>본인확인을 위해 정보를 입력해주세요</h3>
+							<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">아이디</label>
+									<div class="col-lg-6">
+										<input class="form-control" id="del_id" name="del_id"type="text">
+									</div>
+								</div>
+								<P>
+										<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
+									<div class="col-lg-6">
+										<input class="form-control" id="del_pw" name="del_pw"type="text" >
+									</div>
+									<p>
+								</div>
+										<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">비밀번호 확인</label>
+									<div class="col-lg-6">
+										<input class="form-control" id="del_pw2" name="del_pw2"type="text" >
+									</div>
+								</div>
+								<p>
+												<input type="button" id="delOK"class="btn btn-success" value="회원탈퇴">
+					</div>
+					
+					
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<script>
+	$("#goHome").on("click",function(){
+		 location.href="/home";
+	})
+	
+	$("#delOK").on("click",function(){
+		if($("#del_pw").val()==$("#del_pw2").val())
+		location.href="/member/delOK";
+		else alert("비밀번호가 다릅니다");
+	})
+	
 	function removeXSS (str, id) {
 	//	console.log(str);
 	//	console.log(id);
@@ -291,8 +358,14 @@
 		//var str = str1;
 		// HTML tag를 사용하게 할 경우 부분 허용
 		// HTML tag를 모두 제거
-		str = str.replace("<", "&");
-		str = str.replace(">", "&");
+		str = str.replace("<", "");
+		str = str.replace("<", "");
+		str = str.replace("<", "");
+		str = str.replace("<", "");
+		str = str.replace(">", "");
+		str = str.replace(">", "");
+		str = str.replace(">", "");
+		str = str.replace(">", "");
 		// 특수 문자 제거
 		str = str.replace("\"", "&gt;");
 		str = str.replace("&", "&amp;");
@@ -338,13 +411,22 @@
 		{
 			str = str_low;
 			str = str.replace("url", "1212");
-			str = str.replace("img", null);
+			str = str.replace("<sc", "---");
+			str = str.replace("cr", "---");
+			str = str.replace("ri", "---");
+			str = str.replace("it", "---");
+			str = str.replace("ip", "");
+			str = str.replace("img", "");
+			str = str.replace("im", "---");
+			str = str.replace("al", "---");
+			str = str.replace("er", "---");
+			str = str.replace("rt>", "---");
 			str = str.replace("ajax", "Hello");
 			str = str.replace("href", "-----");
 			str = str.replace("div", "x-div");
 			str = str.replace("json", "14dd2");
 			str = str.replace("for", "world");
-			str = str.replace("ript", "xyxyxy");
+			str = str.replace("ript", "");
 			str = str.replace("code", "x-code");
 			str = str.replace("src", "x-src");
 			str = str.replace("href", "x-href");
@@ -443,14 +525,12 @@
 				removeXSS($("#pw1").val(),$("#pw1").attr("id"));
 				removeXSS($("#pw2").val(),$("#pw2").attr("id"));
 				$("#edit_mypage").submit();
-
 			}
 
 		});
 	</script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
-
 	<!--주소등록-->
 		//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 		function sample4_execDaumPostcode() {
@@ -469,35 +549,26 @@
 						extraRoadAddr += data.bname;
 					}
 					// 건물명이 있고, 공동주택일 경우 추가한다.
-
 					if (data.buildingName !== '' && data.apartment === 'Y') {
 						extraRoadAddr += (extraRoadAddr !== '' ? ', '
 								+ data.buildingName : data.buildingName);
 					}
-
 					// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-
 					if (extraRoadAddr !== '') {
 						extraRoadAddr = ' (' + extraRoadAddr + ')';
 					}
 
-
 					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-
 					document.getElementById('postcode').value = data.zonecode;
 					document.getElementById("add1").value = roadAddr;
 					//                                              document
 					//                                                    .getElementById("add2").value = data.jibunAddress;
-
 					document.getElementById("add2").value = "";//도로명만 받기
-
 
 				}
 			}).open();
 		}
 	</script>
-
-
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>

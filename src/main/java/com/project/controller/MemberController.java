@@ -119,21 +119,15 @@ System.out.println("조인프록");
 
 		return "member/myPage";
 	}
+	
+//	@RequestMapping("delOK")
+//	public String delOK(String del_id, String del_pw) {
+//		
+//	}
 	@RequestMapping("verifiedId")
 	public String verifiedId(String id) {
-		System.out.println("아이디                                "+id);
-		
-		String confirm=mservice.checkConfirm(id);
-		
-		if(confirm.equals("n")) {
-			mservice.confirmId(id);
-			return "member/emailConfirm";
-			
-			}else if(confirm.equals("y")){
-				
-				return "member/reConfirm";
-			}	
-		return null;
+		mservice.confirmId(id);
+		return "member/myPage";
 	}
 
 }

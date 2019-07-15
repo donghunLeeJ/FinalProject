@@ -35,6 +35,7 @@ public class MemberService {
 	}
 
 	public int edit_mypage(MemberDTO mdto) {
+		System.out.println("멤버서비스 edit_mypage");
 		System.out.println(mdto);
 		return mdao.edit_mypage(mdto);
 	}
