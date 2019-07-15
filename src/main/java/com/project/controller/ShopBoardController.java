@@ -70,7 +70,7 @@ public class ShopBoardController {
 
 	@RequestMapping("/ShopBoardViewProc")
 	public String ShopBoardSelectProc(String seq) {
-		System.out.println("멍데데데머데얻멍먼데      "+seq);
+		
 		int shop_seq = Integer.parseInt(seq);
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
 		request.setAttribute("dto", dto);

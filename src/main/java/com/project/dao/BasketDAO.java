@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.project.dto.BasketDTO;
+import com.project.dto.ShopBoardDTO;
+
 @Component
 public class BasketDAO {
 
@@ -18,11 +22,16 @@ public class BasketDAO {
 	@Autowired
 	private SqlSessionTemplate sst;
 	
-	public int basketInsert(BasketDTO dto) {
+	public int basketInsert(ShopBoardDTO dto) {
 		return sst.insert("basket.basketInsert",dto);
 	}
 	
-	public BasketDTO basketIdSelect(int basket_seq) {
-		return sst.selectOne("basket.basketIdSelect",basket_seq);
+	public List<BasketDTO> basketIdSelect(String id) {
+		return sst.selectList("basket.basketIdSelect",id);
 	}
+	
+	public int basketDelete(int seq) {
+		return sst.delete("basket.basketDelete",seq);
+	}
+	
 }

@@ -65,7 +65,7 @@
 										<div class=" py-4">
 											<img  class="d-block w-100 view" src="${dto.shop_imagepath1 }"
 												alt="First slide"  style="height: 20em">
-												<input type="hidden" name="basket_imagepath" value="${dto.shop_imagepath1 }">
+												<input type="hidden" name="shop_imagepath1" value="${dto.shop_imagepath1 }">
 												
 										</div>
 
@@ -211,7 +211,7 @@
 
 									<a href="/shopboard/shopBoard_buyProc" class="btn akame-btn">구
 										매 하 기 </a> 
-										<a id=basket class="btn akame-btn"><i
+										<a id=basket href="/Basket/basketInsert?seq=${dto.shop_seq }" class="btn akame-btn"><i
 										class="icon_cart"></i>장 바 구 니에 담기</a>
 
 								</div>

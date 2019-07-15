@@ -13,11 +13,6 @@ public class BasketDTO {
 	
 	
 	public BasketDTO() {}
-
-	
-	
-
-
 	public BasketDTO(int basket_seq, String basket_id, String basket_imagepath, String basket_title,
 			String basket_expiration, int basket_price, int basket_quantity, String basket_location) {
 		super();

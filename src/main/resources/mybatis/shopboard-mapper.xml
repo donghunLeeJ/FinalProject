@@ -29,9 +29,7 @@ select * from shopboard
 select * from shopboard where shop_seq=#{value}
 </select>
 
-<insert id="basketInsert">
-	insert into basket values(basket_seq.nextval.#{})
-</insert>
+
 
  
   

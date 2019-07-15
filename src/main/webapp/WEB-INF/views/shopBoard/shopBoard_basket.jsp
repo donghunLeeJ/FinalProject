@@ -1,10 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <link rel="stylesheet" href="../css/style2.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -16,89 +19,105 @@ input[type="text"] {
 }
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 	<div class="container mt-3">
 		<div class="row  pb-3 border-bottom">
 			<div class="col-12" style="text-align: right">
-				<a href="#" class="btn akame-btn">ÀÌÀü ÆäÀÌÁö </a>
+				<a href="#" class="btn akame-btn">ì´ì „ í˜ì´ì§€ </a>
 			</div>
 		</div>
 
 		<div class="row border-bottom border-top py-2 bg-gray">
 			<div class="col-6">
-				<h3>ÁÖ¹®°áÁ¦</h3>
+				<h3>ì£¼ë¬¸ê²°ì œ</h3>
 			</div>
 			<div class="col-6 " style="text-align: right">
-				<h3>Àå¹Ù±¸´Ï ÁÖ¹®/°áÁ¦ ÁÖ¹®¿Ï·á</h3>
+				<h3>ì¥ë°”êµ¬ë‹ˆ ì£¼ë¬¸/ê²°ì œ ì£¼ë¬¸ì™„ë£Œ</h3>
 			</div>
 		</div>
 
 		<div class="row py-3">
 			<div class="col-6 font-weight-bold text-bottom">
-				<span class="">ÁÖ¹®»óÇ° È®ÀÎ</span>
+				<span class="">ì£¼ë¬¸ìƒí’ˆ í™•ì¸</span>
 			</div>
 			<div class="col-6 text-bottom" style="text-align: right">
-				<p>*»óÇ°¼ö·® ¹× ¿É¼Çº¯°æÀº »óÇ°»ó¼¼ ¶Ç´Â Àå¹Ù±¸´Ï¿¡¼­ °¡´ÉÇÕ´Ï´Ù.</p>
+				<p>*ìƒí’ˆìˆ˜ëŸ‰ ë° ì˜µì…˜ë³€ê²½ì€ ìƒí’ˆìƒì„¸ ë˜ëŠ” ì¥ë°”êµ¬ë‹ˆì—ì„œ ê°€ëŠ¥í•©ë‹ˆë‹¤.</p>
 			</div>
 
 		</div>
-		<div class="row border-bottom border-top bg-gray text-center py-2">
-			<div class="col-3">»óÇ°/¿É¼ÇÁ¤º¸</div>
-			<div class="col-4">À¯Åë±âÇÑ</div>
-			<div class="col-1">¼ö·®(°³)</div>
-			<div class="col-1">»óÇ°±İ¾×</div>
-			<div class="col-1">Áö¿ª</div>
-
-			<div class="col-2">¹è¼Ûºñ/ÆÇ¸ÅÀÚ</div>
-		</div>
-		<div class="row border-bottom border-top text-center py-4">
-			<div class="col-3 " style="line-height: 4em;">
-				<div class="row">
-					<div class="col-4">ÀÌ¹ÌÁö</div>
-					<div class="col-8">Á¦¸ñ</div>
-
+		<form>
+			<div class="row border-bottom border-top bg-gray text-center py-2">
+				<div class="col-3">
+					<input type="checkbox" onclick="checkAll();" />ìƒí’ˆ/ì˜µì…˜ì •ë³´
 				</div>
+				<div class="col-2">ìœ í†µê¸°í•œ</div>
+				<div class="col-1">ìˆ˜ëŸ‰(ê°œ)</div>
+				<div class="col-1">ìƒí’ˆê¸ˆì•¡</div>
+				<div class="col-1">ì§€ì—­</div>
+				<div class="col-2">ë°°ì†¡ë¹„/íŒë§¤ì</div>
+				<div class="col-2">ì£¼ë¬¸</div>
 			</div>
-			<div class="col-4" style="line-height: 4em;">2019.07.11~2019.07~</div>
-			<div class="col-1" style="line-height: 4em;">1</div>
-			<div class="col-1" style="line-height: 4em;">24,440(¿ø)</div>
-			<div class="col-1" style="line-height: 4em;">¼­¿ï</div>
 
-			<div class="col-2" style="line-height: 1.4em;">
-				¼±°áÁ¦ <br> <strong>(2,500¿ø)</strong> <br> <small>ÆÇ¸ÅÀÚ
-					ºê·£µå ${dto.basket_title}</small>
-			</div>
-		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			<c:forEach var="list" items="${list }">
 
-		
+
+				<div class="row border-bottom border-top text-center py-4">
+					<div class="col-3 " style="line-height: 4em;">
+						<div class="row">
+							<input type="hidden" id="seq" value="${list.basket_seq }">
+							<div class="col-4">
+								<input type="checkbox" name="check" class="check" /><img
+									src="${list.basket_imagepath }">
+							</div>
+							<div class="col-8">${list.basket_title}</div>
+
+						</div>
+					</div>
+					<div class="col-2" style="line-height: 4em;">${list.basket_expiration}</div>
+					<div class="col-1" style="line-height: 4em;">${list.basket_quantity}</div>
+					<div class="col-1" style="line-height: 4em;">${list.basket_price}</div>
+					<div class="col-1" style="line-height: 4em;">${list.basket_location}</div>
+
+					<div class="col-2" style="line-height: 1.4em;">
+						ì„ ê²°ì œ <br> <strong>(2,500ì›)</strong> <br> <small>íŒë§¤ì
+							ë¸Œëœë“œ ${dto.basket_title}</small>
+					</div>
+					<div class="col-2" style="line-height: 1.4em;">
+						<button style="background-color: red;">ì£¼ë¬¸í•˜ê¸°</button>
+						<br>
+						<button type="button" id="delete">ì‚­ì œí•˜ê¸°</button>
+					</div>
+				</div>
+			</c:forEach>
+		</form>
 
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
-				<a href="/shopboard/shopBoard_buyProc" class="btn akame-btn mr-3">°á
-					Á¦ ÇÏ ±â </a> <a href="#" class="btn akame-btn ml-3">°á Á¦ Ãë ¼Ò</a>
+				<a href="/shopboard/shopBoard_buyProc" class="btn akame-btn mr-3">ê²°
+					ì œ í•˜ ê¸° </a> <a href="#" class="btn akame-btn ml-3">ê²° ì œ ì·¨ ì†Œ</a>
 			</div>
 		</div>
 	</div>
 
 
+ 	<script>
+		var checkAll = function() {
+			$(".check").click();
+		}
+		$("#delete").on("click", function() {
+			
+			if(confirm("ì •ë§ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?")==true){
+			var basket_seq = $("#seq").val();
+			location.href = "/Basket/basketDelete?basket_seq="+basket_seq;
+			}else{
+				null;
+			}
+		})
 
-	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
-
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script>
-		// 	¹è¼ÛÁö radio reset 
+		// 	ë°°ì†¡ì§€ radio reset 
 		var reset = function() {
 			$("#geter_name").val("");
 			$("#sample6_postcode").val("");
@@ -111,69 +130,79 @@ input[type="text"] {
 			$("#sample6_address").val("${id.member_address1}");
 			$("#sample6_detailAddress").val("${id.member_address2}");
 		}
-		// ´ÙÀ½ ÁÖ¼Ò API
+		// ë‹¤ìŒ ì£¼ì†Œ API
 		function sample6_execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							// ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+			new daum.Postcode({
+				oncomplete : function(data) {
+							// íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-							// °¢ ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-							// ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-							var addr = ''; // ÁÖ¼Ò º¯¼ö
-							var extraAddr = ''; // Âü°íÇ×¸ñ º¯¼ö
+							// ê° ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ ì¡°í•©í•œë‹¤.
+							// ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+							var addr = ''; // ì£¼ì†Œ ë³€ìˆ˜
+							var extraAddr = ''; // ì°¸ê³ í•­ëª© ë³€ìˆ˜
 
-							//»ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò Å¸ÀÔ¿¡ µû¶ó ÇØ´ç ÁÖ¼Ò °ªÀ» °¡Á®¿Â´Ù.
-							if (data.userSelectedType === 'R') { // »ç¿ëÀÚ°¡ µµ·Î¸í ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì
+							//ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œ íƒ€ì…ì— ë”°ë¼ í•´ë‹¹ ì£¼ì†Œ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
+							if (data.userSelectedType === 'R') { // ì‚¬ìš©ìê°€ ë„ë¡œëª… ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°
 								addr = data.roadAddress;
-							} else { // »ç¿ëÀÚ°¡ Áö¹ø ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì(J)
+							} else { // ì‚¬ìš©ìê°€ ì§€ë²ˆ ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°(J)
 								addr = data.jibunAddress;
 							}
 
-							// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò°¡ µµ·Î¸í Å¸ÀÔÀÏ¶§ Âü°íÇ×¸ñÀ» Á¶ÇÕÇÑ´Ù.
+							// ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œê°€ ë„ë¡œëª… íƒ€ì…ì¼ë•Œ ì°¸ê³ í•­ëª©ì„ ì¡°í•©í•œë‹¤.
 							if (data.userSelectedType === 'R') {
-								// ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-								// ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+								// ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+								// ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
 								if (data.bname !== ''
-										&& /[µ¿|·Î|°¡]$/g.test(data.bname)) {
+										&& /[ë™|ë¡œ|ê°€]$/g.test(data.bname)) {
 									extraAddr += data.bname;
 								}
-								// °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+								// ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
 								if (data.buildingName !== ''
 										&& data.apartment === 'Y') {
 									extraAddr += (extraAddr !== '' ? ', '
 											+ data.buildingName
 											: data.buildingName);
 								}
-								// Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+								// í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
 								if (extraAddr !== '') {
 									extraAddr = ' (' + extraAddr + ')';
 								}
-								// Á¶ÇÕµÈ Âü°íÇ×¸ñÀ» ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+								// ì¡°í•©ëœ ì°¸ê³ í•­ëª©ì„ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
 								document.getElementById("sample6_extraAddress").value = extraAddr;
 
 							} else {
 								document.getElementById("sample6_extraAddress").value = '';
 							}
 
-							// ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+							// ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
 							document.getElementById('sample6_postcode').value = data.zonecode;
 							document.getElementById("sample6_address").value = addr;
-							// Ä¿¼­¸¦ »ó¼¼ÁÖ¼Ò ÇÊµå·Î ÀÌµ¿ÇÑ´Ù.
+							// ì»¤ì„œë¥¼ ìƒì„¸ì£¼ì†Œ í•„ë“œë¡œ ì´ë™í•œë‹¤.
 							document.getElementById("sample6_detailAddress")
 									.focus();
 						}
 					}).open();
 		}
-		// ½Å±Ô ¹è¼ÛÁö radio
+		// ì‹ ê·œ ë°°ì†¡ì§€ radio
 		$("#new").on("click", function() {
 			reset();
 		})
-		// ±âÁ¸ ¹è¼ÛÁö radio
+		// ê¸°ì¡´ ë°°ì†¡ì§€ radio
 		$("#origin").on("click", function() {
-
 			origin();
 		})
 	</script>
+
+
+
+
+	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	
+	
+	
+	
+	
 </body>
 </html>

@@ -48,7 +48,7 @@ public class MemberController {
 		} else {
 			return "member/notLogin";
 		}
-		return "member/home";
+		return "/home";
 	}
 
 	@RequestMapping("joinForm")

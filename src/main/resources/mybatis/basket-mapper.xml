@@ -9,15 +9,15 @@
 
 
 <insert id="basketInsert">
- insert into basket values(basket_seq.nextval,'asd',#{basket_imagepath},#{basket_title},#{basket_expiration},#{basket_quantity},#{basket_price},#{basket_location})
+ insert into basket values(basket_seq.nextval,#{shop_id},#{shop_imagepath1},#{shop_title},#{shop_expiration},#{shop_quantity},#{shop_price},#{shop_location})
 </insert>
 
 <select id="basketIdSelect" resultType="com.project.dto.BasketDTO">
-	select * from basket where basket_seq=#{basket_seq}
+	select * from basket where basket_id=#{value}
 </select>
 
-
- 
-  
+<delete id="basketDelete">
+	delete from basket where basket_seq=#{value}
+</delete>
 
 </mapper>
