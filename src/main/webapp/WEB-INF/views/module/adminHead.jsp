@@ -40,7 +40,7 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p>Welcome to hair salon!</p>
+						<p>관리자 페이지 입니다</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -90,15 +90,12 @@
 						<div class="classynav">
 							<ul id="nav">
 								<li ><a href="./index.html">Home</a></li>
-								<li><a href="/admin/MemberManagement">회원관리</a></li>
-								<li><a href="/home/ee">구매내역관리</a></li>
-								<li><a href="#">게시판 관리</a></li>
+								<li><a href="/admin/MemberManagementMove">회원 관리 </a>
+								<li><a href="/home/ee">판매 글 관리</a></li>
+								<li><a href="/home/ee">게시판 관리</a></li>
+								<li><a href="#">결제 통계</a>
 								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
-
 							</ul>
-
-							
-
 							<!-- Cart Icon -->
 							<div class="cart-icon ml-5 mt-4 mt-lg-0">
 								<a href="#"><i class="icon_cart"></i></a>

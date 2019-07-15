@@ -15,5 +15,9 @@ public class HomeController {
 	//	Logger.info("message is {}.",id);
 		return "home";
 	}
+	@RequestMapping("/admin")
+	public String adhome() {
+		return "admin/adminhome";
+	}
 
 }

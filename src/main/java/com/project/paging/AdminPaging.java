@@ -19,7 +19,7 @@ public class AdminPaging {
 	
 	//페이징 알고리즘 관련 메소드
 	//여기서 받을 매개변수는 클라이언트에서 입력받은 페이지의 값이다.
-	public List<String> sPaging(int page, int totalCount) {
+	public List<String> aPaging(int page, int totalCount) {
 	
 	
 		//데이터베이스에서 검색된 게시물의 갯수(이건 데이터베이스의 select문에 따라 변해야 함)	
@@ -45,6 +45,7 @@ public class AdminPaging {
 		int startPage = ((page-1)/10) * 10 + 1;
 		int endPage = startPage + countPage -1;
 		
+		System.out.println("엔트페이지: " + endPage);
 	/*	
 		//각 페이지당 데이터베이스의 글을 보여줄 수 있음
 		int startCount = (page - 1) * countPage + 1;
@@ -54,6 +55,7 @@ public class AdminPaging {
 		//위와 같은 로직으로 짤 경우 맨 마지막 페이지를 보정해줘야 함
 		if(endPage > totalPage){endPage = totalPage;}
 		
+		System.out.println("엔트페이지: " + endPage);
 		
 		List<String> pageList = new ArrayList();
 		
@@ -78,7 +80,7 @@ public class AdminPaging {
 		return pageList;	}
 
 	
-	//각 페이지에 해당하는 게시글 10개를 출력시키는 메소드(검색없이)
+	   //각 페이지에 해당하는 게시글 10개를 출력시키는 메소드(검색없이)
 		public List<MemberDTO> SelectPageList(int page){ 
 			
 			int countPage = 10;
@@ -90,8 +92,17 @@ public class AdminPaging {
 			return BoardContentList;}
 		
 		
-		
 	
+		 //각 페이지에 해당하는 게시글 10개를 출력시키는 메소드(검색 키워드로 이동했을 경우)
+		public List<MemberDTO>SelectPageKeywordList(int page ,String keyword){ 
+			
+			int countPage = 10;
+			int startCount = (page - 1) * countPage + 1;
+			int endCount = page * countPage;
+		
+			List<MemberDTO>BoardContentList = 
+			sst.selectList("AdminDAO.PageMemberIdselect", new PageDTO(startCount,endCount,keyword));			
+			return BoardContentList;}
 	
 	
 	

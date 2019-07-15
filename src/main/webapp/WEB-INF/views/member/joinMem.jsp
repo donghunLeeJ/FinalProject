@@ -70,7 +70,8 @@ transform:translate(20px);
       <div class="row">
          <div class="col-12">
             <!-- Form -->
-            <form id=form action="/member/joinProc" method=postclass="akame-contact-form border-0 p-0">
+
+            <form id=formproc action="/member/joinProc" method=postclass="akame-contact-form border-0 p-0">
 
                <div class="row">
                   <div class="col-lg-12 text-center">
@@ -232,7 +233,7 @@ transform:translate(20px);
                alert("공백은 입력할 수 없습니다");
                $("#name").focus();
             }
-            else if ($("#birth").val() == "") {
+            else if ($("#datepicker").val() == "") {
                alert("생년월일을 입력하세요");
             }
             
@@ -254,10 +255,10 @@ transform:translate(20px);
                alert("성별을 선택하세요!");
             }else if($("#add2").val()==""){
                var result =confirm("상세주소가 없습니다.\n가입하시겠습니까?");
-               if(result) $("#formproc").submit();
+               if(result) $("form").submit();
               
             }else{
-               $("#formproc").submit();
+               $("form").submit();
             }
 
          })
