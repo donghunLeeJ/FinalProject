@@ -41,6 +41,7 @@
 		select * from shopboard where shop_seq=#{value}
 	</select>
 
+
 	<select id="shopSellerSelect"
 		resultType="com.project.dto.MemberDTO">
 		select * from member where memberSell_seq =

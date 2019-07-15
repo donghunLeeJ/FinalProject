@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.project.dto.BasketDTO;
 import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
 import com.project.dto.OrderListDTO;
@@ -43,6 +44,8 @@ public class ShopBoardController {
 
 	@Autowired
 	private ShopPaging sPaging;
+	
+	
 
 	@RequestMapping("/shopBoardGo")
 	public String ShopBoardGo(String page) {
@@ -74,6 +77,7 @@ public class ShopBoardController {
 
 	@RequestMapping("/ShopBoardViewProc")
 	public String ShopBoardSelectProc(String seq) {
+		
 		int shop_seq = Integer.parseInt(seq);
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
 		System.out.println(dto.getMemberSell_seq());
@@ -123,23 +127,51 @@ public class ShopBoardController {
 			}
 		}
 
-		if (fileCount == 1) {
-			System.out.println("이미지가 하나만 들어왔을 경우");
+		int fileCount = 0;	
+		for (MultipartFile image : shop_images){
+
+			//if(fileCount>2){System.out.println("이미지는 최대 3개까지만 업로드 가능.");break;}
+
+			if(image.getSize() != 0 ) {			String originFileName = image.getOriginalFilename();
+			long fileSize = image.getSize();
+			
+			String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
+			
+			String targetFile = resourcePath + "/" + UUID.randomUUID().toString().replace("-","").substring(0,8) + "_foodimage.png";
+			try {
+
+				File f = new File(targetFile);
+				image.transferTo(f);
+				fileArrayPath.add("/img/shopfoodimg/" +f.getName());
+				fileCount++;
+
+			}catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}			
+	}
+				
+		if(fileCount==1){
+			
+
+
 			fileArrayPath.add("/img/default.jpg");
 			fileArrayPath.add("/img/default.jpg");
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));
 
-		} else if (fileCount == 2) {
-			System.out.println("이미지가 2개가 들어왔을 경우");
+
+		}else if(fileCount==2) {
+
 			fileArrayPath.add("/img/default.jpg");
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));
 
-		} else if (fileCount > 2) {
-			System.out.println("이미지가 3개가 들어왔을 경우");
+
+		}else if(fileCount > 2){
+
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));
@@ -178,6 +210,9 @@ public class ShopBoardController {
 		}
 
 	}
+
+	
+
 
 	@RequestMapping("/shopOrder")
 	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
@@ -219,4 +254,5 @@ public class ShopBoardController {
 
 		return "/shopBoard/shopChargeOk";
 	}
+
 }
