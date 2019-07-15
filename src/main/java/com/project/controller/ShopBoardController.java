@@ -57,6 +57,8 @@ public class ShopBoardController {
 		request.setAttribute("boardList", boardList);
 		return "shopBoard/shopBoard";
 	}
+	
+	
 
 	@RequestMapping(value = "/shopBoardScroll", produces = "application/text; charset=utf8")
 	@ResponseBody

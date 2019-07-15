@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,17 @@
 .float {
 	float: left;
 }
-
+.over{
+		overflow:hidden;
+        box-sizing: border-box;
+}
+.skip {
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  word-wrap:normal;
+  width:100%;
+  overflow:hidden;
+}
 #findAdd {
 	padding: 5px;
 	width: 50px;
@@ -32,13 +43,28 @@
 	width: 100%;
 	height: 100px;
 }
-/* div{ */
-/* border:1px solid black; */
-/* } */
+/*    div{     */
+/*     border:1px solid black;     */
+/*    }     */
 #delId{
  text-align: center;
 }
-
+hr{
+margin:5px;
+}
+.center{
+text-align: center;
+}
+.listimg{
+width:50px;
+height:50px;
+}
+#clickList{
+height:70px;
+}
+#sellTitle{
+hirght:80px;
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -51,18 +77,12 @@
 		<div class="row my-2">
 			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a href="" data-target="#profile"
-						data-toggle="tab" class="nav-link active">나의 정보</a></li>
-					<li class="nav-item"><a href="" data-target="#messages"
-						data-toggle="tab" class="nav-link">쪽지함</a></li>
-								<li class="nav-item"><a href="" data-target="#sell"
-						data-toggle="tab" class="nav-link">판매 내역</a></li>
-								<li class="nav-item"><a href="" data-target="#buy"
-						data-toggle="tab" class="nav-link">구매 내역</a></li>
-					<li class="nav-item"><a href="" data-target="#edit"
-						data-toggle="tab" class="nav-link">정보 수정</a></li>
-						<li class="nav-item"><a href="" data-target="#delId"
-						data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
+					<li class="nav-item"><a href="" data-target="#profile"data-toggle="tab" class="nav-link active">나의 정보</a></li>
+					<li class="nav-item"><a href="" data-target="#messages"	data-toggle="tab" class="nav-link">쪽지함</a></li>
+					<li class="nav-item"><a href="" data-target="#sell"data-toggle="tab" class="nav-link">판매 내역</a></li>
+					<li class="nav-item"><a href="" data-target="#buy"data-toggle="tab" class="nav-link">구매 내역</a></li>
+					<li class="nav-item"><a href="" data-target="#edit"data-toggle="tab" class="nav-link">정보 수정</a></li>
+					<li class="nav-item"><a href="" data-target="#delId"data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
 				</ul>
 				<div class="tab-content py-4 ">
 					<div class="tab-pane active" id="profile">
@@ -172,20 +192,58 @@
 							</tbody>
 						</table>
 					</div>
+				
 					<div class="tab-pane" id="sell"><!-- 판매 내역 -->
-					판매 내역
+					<h4>판매 내역 확인</h4>
+					<hr>
+					<div class="col-12 over center"id="sellTitle">
+					<div class="col-2 float">요청</div>
+					<div class="col-1 float">이미지</div> 
+				    <div class="float col-4">제목</div>
+					<div class="col-2 float"> 판매 금액</div> 
+					<div class="col-1 float "> 수량</div>
+					<div class="col-2 float "> 기한</div>
+					</div>
+					<hr>
+					
+					<c:forEach var="i" items="${mylist }">
+					<div class="col-12 over center "id="clickList">
+					<div class="col-2 float center ">
+					<input type=button class="btn-success del_list" value="삭제요청">
+					<input type=button class="btn-danger del_list2" value="요청중"></div>
+<!-- 					<div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
+					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
+					<div class="col-1 float "><img src="${i.shop_imagepath1 }" class="listimg"></div>
+					<div class="col-4 float skip ">${i.shop_title }</div>
+					<div class="col-2 float">${i.shop_price }원</div>
+					<div class="col-1 float">${i.shop_quantity }개</div>
+					<div class="col-2 float">${i.shop_expiration }</div>
+					</a>
+					</div>
+						</c:forEach>
+<!-- 						<ul class="btn-group pagination"> -->
+<%-- 							<c:if test="${mpdto.toPrev }"> --%>
+<%-- 								<li><a href='<c:url value="/board/boardList?page=${mpdto.startNavi-1 }"/>'><i class="fa fa-chevron-left"></i></a></li> --%>
+<%-- 							</c:if> --%>
+<%-- 							<c:forEach begin="${mpdto.startNavi }"end="${mpdto.endNavi }" var="idx"> --%>
+<%-- 								<li><a href='<c:url value="/board/boardList?page=${idx }"/>'><i class="fa">${idx }</i></a></li> --%>
+<%-- 							</c:forEach> --%>
+<%-- 							<c:if test="${mpdto.toNext && mpdto.endNavi >0 }"> --%>
+<%-- 								<li><a href='<c:url value="/board/boardList?page=${mpdto.endNavi+1 }"/>'><i class="fa fa-chevron-right"></i></a></li> --%>
+<%-- 							</c:if> --%>
+<!-- 						</ul> -->
 					</div>
 					<div class="tab-pane" id="buy"><!-- 구매 내역 -->
 					구매 내역
 					</div>
+					
 					<div class="tab-pane col-lg-12" id="edit">
 						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
-							<form id=mypage_Img action="/member/uploadImg" method="post"
-								enctype="multipart/form-data">
+							<form id=mypage_Img action="/member/uploadImg" method="post"enctype="multipart/form-data">
 								<img src="${id.member_imgpath }" class="mx-auto img-circle"
 									alt="avatar"> <input type=file id="file" name="file">
 
-								<input type="button" id="change" class="btn btn-success "
+								<input type="button" id="change" class="btn btn-success " name="my_images"
 									value="사진 변경"> <input type="submit" id="uploadImg"
 									class="btn btn-success " value="사진 업로드">
 
@@ -309,6 +367,7 @@
 					<h1>그동안 저희 사이트를 이용해 주셔서 감사합니다</h1>
 					<p>
 					<h3>본인확인을 위해 정보를 입력해주세요</h3>
+								<form id="delform" action="/member/delOK" >
 							<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">아이디</label>
 									<div class="col-lg-6">
@@ -319,16 +378,17 @@
 										<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
 									<div class="col-lg-6">
-										<input class="form-control" id="del_pw" name="del_pw"type="text" >
+										<input class="form-control" id="del_pw" name="del_pw"type="password" >
 									</div>
 									<p>
 								</div>
 										<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호 확인</label>
 									<div class="col-lg-6">
-										<input class="form-control" id="del_pw2" name="del_pw2"type="text" >
+										<input class="form-control" id="del_pw2" type="password" >
 									</div>
 								</div>
+								</form>
 								<p>
 												<input type="button" id="delOK"class="btn btn-success" value="회원탈퇴">
 					</div>
@@ -340,16 +400,7 @@
 	</div>
 
 	<script>
-	$("#goHome").on("click",function(){
-		 location.href="/home";
-	})
-	
-	$("#delOK").on("click",function(){
-		if($("#del_pw").val()==$("#del_pw2").val())
-		location.href="/member/delOK";
-		else alert("비밀번호가 다릅니다");
-	})
-	
+
 	function removeXSS (str, id) {
 	//	console.log(str);
 	//	console.log(id);
@@ -459,7 +510,39 @@
 		}
 	}
 	
+	</script>
+	
+	<script>
+
+	$("#goHome").on("click",function(){
+		 location.href="/home";
+	})
+	
+	$("#delOK").on("click",function(){
+		if($("#del_id").val()==""){
+			alert("아이디를 입력해주세요");
+		}else if($("#del_pw").val()==""){
+			alert("비밀번호를 입력해주세요");
+		}else if($("#del_pw2").val()==""){
+			alert("비밀번호 확인을 입력해주세요");
+		}else if($("#del_pw").val()!=$("#del_pw2").val()){
+			alert("비밀번호가 일치하지 않습니다");
+		}
+		else{
+		var result=confirm("정말 탈퇴하시겠습니까?");
+		if(result){	
+			removeXSS($("#del_id").val(),$("#del_id").attr("id"));
+			removeXSS($("#del_pw").val(),$("#del_pw").attr("id"));
+			removeXSS($("#del_pw2").val(),$("#del_pw2").attr("id"));
+			$("#delform").submit();
+		}
+			else return;
+		}
+	});
+	
+	
 		$("#file").hide();
+
 
 		$("#change").on("click", function() {
 			$("#file").click();//사진변경 버튼 누르면 file버튼 클릭됨
@@ -475,8 +558,8 @@
 		$("#edit_info").on("click", function() {//정보수정 버튼 클릭시
 
 			var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-			// var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
-			// var regPw2=/(\w)\1\1/g;
+		    var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+			var regPw2=/(\w)\1\1/g;
 
 			if ($("#postcode").val() == "") {
 				alert("주소를 입력하세요");
@@ -495,16 +578,16 @@
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
 			}
-// 			else if(!regPw.test($("#pw1").val())){
-// 				alert("비밀번호 형식에 맞지 않습니다");
-// 				$("#pw1").focus();
-// 				$("#pw1").focus("");
-// 			}
-// 			else if(regPw2.test($("#pw1").val())){
-// 	            alert('연속으로 같은 문자를 3번 이상 사용하실 수 없습니다.');
-// 	            $("#pw1").focus();
-// 				$("#pw1").focus("");
-// 	        }
+			else if(!regPw.test($("#pw1").val())){
+				alert("비밀번호 형식에 맞지 않습니다");
+				$("#pw1").focus();
+				$("#pw1").focus("");
+			}
+			else if(regPw2.test($("#pw1").val())){
+	            alert('연속으로 같은 문자를 3번 이상 사용하실 수 없습니다.');
+	            $("#pw1").focus();
+				$("#pw1").focus("");
+	        }
 			else if ($("#pw2").val() == "") {
 				alert("비밀번호 확인을 입력해주세요");
 				$("#pw2").focus();
@@ -528,6 +611,14 @@
 			}
 
 		});
+		
+		$(".del_list2").hide();
+		
+		$(".del_list").on("click",function(){
+			alert("삭제 요청되었습니다");
+			$(".del_list").hide();
+			$(".del_list2").show();
+		})
 	</script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
@@ -573,3 +664,6 @@
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
 </html>
+
+
+

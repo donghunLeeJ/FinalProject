@@ -34,7 +34,10 @@
 		select * from shopboard
 	</select>
 
-
+<select id="ShopBoardList"
+		resultType="com.project.dto.ShopBoardDTO"> <!-- 마이페이지에서 판매목록 조회 -->
+		select * from shopboard where shop_id=#{value}
+	</select>
 
 	<select id="ShopBoardIdSelect"
 		resultType="com.project.dto.ShopBoardDTO">

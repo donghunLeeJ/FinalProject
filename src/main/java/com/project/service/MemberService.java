@@ -42,4 +42,8 @@ public class MemberService {
 	public int uploadImg(String filePath, String id) {
 		return mdao.uploadImg(filePath, id);
 	}
+	
+	public int delOK(String del_id, String del_pw) {
+		return mdao.delOK(del_id, del_pw);
+	}
 }

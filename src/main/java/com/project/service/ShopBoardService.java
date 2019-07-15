@@ -37,4 +37,9 @@ public class ShopBoardService {
 	public MemberDTO shopSellerSelect(int memberSell_seq) {
 		return sdao.shopSellerSelect(memberSell_seq);
 	}
+	
+	public List<ShopBoardDTO>  ShopBoardList(String shop_id) {
+		//System.out.println("2");
+		return sdao.ShopBoardList(shop_id);
+	}
 }

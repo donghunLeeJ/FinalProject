@@ -19,6 +19,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
+
 	<section class="welcome-area">
 	<div id="carouselExampleInterval" class="carousel slide"
 		data-ride="carousel">

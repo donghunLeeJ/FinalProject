@@ -45,5 +45,10 @@ public class ShopBoardDAO {
 public ShopBoardDTO ShopBoardIdSelect(int shop_seq){	
 		return sst.selectOne("ShopBoardDAO.ShopBoardIdSelect" , shop_seq); 
 	}
+	
+	public List<ShopBoardDTO> ShopBoardList(String shop_id) {
+	//	System.out.println("3");
+		return sst.selectList("ShopBoardDAO.ShopBoardList", shop_id);
+	}
 
 }
