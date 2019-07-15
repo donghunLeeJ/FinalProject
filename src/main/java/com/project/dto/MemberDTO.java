@@ -63,9 +63,11 @@ public class MemberDTO {
 		this.member_gender = member_gender;
 	}
 
+
 	public String getMember_phone() {
 		return member_phone;
 	}
+
 
 	public void setMember_phone(String member_phone) {
 		this.member_phone = member_phone;
@@ -119,10 +121,12 @@ public class MemberDTO {
 		this.member_confirm = member_confirm;
 	}
 
+
 	public MemberDTO(int memberSell_seq, String member_id, String member_pw, String member_name, String member_birth,
 			String member_gender, String member_phone, String member_postcode, String member_address1,
 			String member_address2, String member_imgpath, String member_intro, String member_confirm) {
 		this.memberSell_seq = memberSell_seq;
+
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_name = member_name;
@@ -135,15 +139,6 @@ public class MemberDTO {
 		this.member_imgpath = member_imgpath;
 		this.member_intro = member_intro;
 		this.member_confirm = member_confirm;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberDTO [ +member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
-				+ ", member_birth=" + member_birth + ", member_gender=" + member_gender + ", member_phone="
-				+ member_phone + ", member_postcode=" + member_postcode + ", member_address1=" + member_address1
-				+ ", member_address2=" + member_address2 + ", member_imgpath=" + member_imgpath + ", member_intro="
-				+ member_intro + ", member_confirm=" + member_confirm + "]";
 	}
 
 	public MemberDTO() {

@@ -121,6 +121,14 @@ public class MemberController {
 		return "member/myPage";
 	}
 
+	
+//	@RequestMapping("delOK")
+//	public String delOK(String del_id, String del_pw) {
+//		
+//	}
+
+
+
 	@RequestMapping("verifiedId")
 	public String verifiedId(String id) {
 		System.out.println("아이디                                " + id);
@@ -136,6 +144,7 @@ public class MemberController {
 			return "member/reConfirm";
 		}
 		return null;
+
 	}
 
 }
