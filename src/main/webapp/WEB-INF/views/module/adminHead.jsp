@@ -3,27 +3,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
-.headerbtn {
-	border: 1px solid skyblue;
-	background-color: rgba(0, 0, 0, 0);
-	color: skyblue;
-	padding: 5px;
-}
-
-.headerbtn:hover {
-	color: white;
-	background-color: skyblue;
-}
-
-#logout {
+	.headerbtn{
+		border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding: 5px;
+            
+	}
+	
+	.headerbtn:hover{
+		color:white;
+            background-color: skyblue;
+	}
+	#logout{
 	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-}
-
-#mypage {
+            border-bottom-left-radius: 5px;
+	}
+	
+	#mypage{
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
+            border-bottom-right-radius: 5px;
+	}
+
+
 </style>
 <!-- Preloader -->
 <div id="preloader">
@@ -31,15 +33,14 @@
 </div>
 <!-- /Preloader -->
 <!-- Header Area Start -->
-<header class="header-area" oncontextmenu="return false"
-	ondragstart="return false" onselectstart="return false">
+<header class="header-area" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
 	<div class="top-header-area">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p>Welcome to hair salon!</p>
+						<p>관리자 페이지 입니다</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -48,12 +49,12 @@
 						<c:choose>
 							<c:when test="${id eq null}">
 
-								<button id="LogIN" class="headerbtn">LogIN</button>
+								<button  id="LogIN" class="headerbtn">LogIN</button>
 							</c:when>
 
 							<c:otherwise>
 								<button id=logout class="headerbtn">logout</button>
-								<button id=mypage class="headerbtn"></button>
+								<button id=mypage  class="headerbtn"></button>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -70,7 +71,7 @@
 				<nav class="classy-navbar justify-content-between" id="akameNav">
 
 					<!-- Logo -->
-					<a class="nav-brand" href="/home/"><img
+					<a class="nav-brand" href="index.html"><img
 						src="/img/core-img/logo.png" alt=""></a>
 					<!-- Navbar Toggler -->
 					<div class="classy-navbar-toggler">
@@ -88,36 +89,13 @@
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul id="nav">
-								<li><a href="./index.html">Home</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="dropdown">
-										<li><a href="./index.html">- Home</a></li>
-										<li><a href="./about.html">- About Us</a></li>
-										<li><a href="./service.html">- 서비스 소개</a></li>
-										<li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li>
-										<li><a href="./blog.html">- sns</a></li>
-										<li><a href="./single-blog.html">- Blog Details</a></li>
-										<li><a href="./contact.html">- Contact</a></li>
-										<li><a href="#">- Dropdown</a>
-											<ul class="dropdown">
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-											</ul></li>
-									</ul></li>
-								<li><a href="/home/ee">서비스 소개</a></li>
-								<li><a href="#">판매 게시판</a>
-									<ul class="dropdown">
-										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
-										<li><a href="/shopboard/ShopBoard_write">- 판매하기</a></li>
-									</ul></li>
+								<li ><a href="./index.html">Home</a></li>
+								<li><a href="#">회원 관리 </a>
+								<li><a href="/home/ee">판매 글 관리</a></li>
+								<li><a href="/home/ee">게시판 관리</a></li>
+								<li><a href="#">결제 통계</a>
 								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
-
 							</ul>
-
-
-
 							<!-- Cart Icon -->
 							<div class="cart-icon ml-5 mt-4 mt-lg-0">
 								<a href="#"><i class="icon_cart"></i></a>
@@ -141,18 +119,19 @@
 
 
 	<script>
-		$("#LogIN").on("click", function() {
-			location.href = "/member/loginForm";
 
+		$("#LogIN").on("click",function(){
+			location.href="/member/loginForm";
+			
 		})
-
-		$("#logout").on("click", function() {
-			location.href = "/member/logOutProc";
+	
+		$("#logout").on("click",function(){
+			location.href="/member/logOutProc";
 		})
+		
+		$("#mypage").on("click",function(){
 
-		$("#mypage").on("click", function() {
-
-			location.href = "/member/myPage";
+			location.href="/member/myPage";
 
 		})
 	</script>

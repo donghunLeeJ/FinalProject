@@ -10,10 +10,7 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <style>
 .star_rating {
 	font-size: 0;
@@ -40,9 +37,15 @@
 .seller-info {
 	margin-top: 1.2em;
 }
+
+.quantity_btn {
+	width: 1.5em;
+	height: 1.5em;
+}
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container-fluid mt-5">
 		<div class="row pt-5 ">
@@ -89,7 +92,8 @@
 
 							<div class="row pb-4 border-bottom">
 								<div class="col-12">
-									<strong>[판매자 브랜드 ] ${dto.shop_title }</strong>
+									<strong>[${dto.shop_brand}] &nbsp;
+										&nbsp;${dto.shop_title }</strong>
 								</div>
 
 							</div>
@@ -97,6 +101,7 @@
 							<div class="row pb-3 mt-4 border-bottom">
 								<div class="col-4">판매가</div>
 								<div class="col-8">
+								<input type="hidden" value="${dto.shop_price }" id="price">
 									<p>
 										<strong>${dto.shop_price }</strong>
 									</p>
@@ -150,9 +155,13 @@
 							</div>
 
 							<div class="row pt-2 pb-4">
-								<div class="col-12 text-right ">
-									<span style="margin-right: 1em">총 수량 : <strong>${dto.shop_quantity }(개)</strong>
-									</span><strong style="color: red">(최소 주문량 1개 이상) </strong>
+								<div class="col-6  text-left">
+									<span style="margin-right: 1em; text-align: left">총 수량 :
+										<strong>${dto.shop_quantity }(개)</strong>
+									</span>
+								</div>
+								<div class="col-6  text-right">
+									<strong style="color: red">(최소 주문량 1개 이상) </strong>
 								</div>
 							</div>
 
@@ -163,45 +172,50 @@
 								</div>
 
 								<div class="col-4  py-3 text-right">
-									수량 : <input type="text" value="1" max="1" min="99"
+
+									수량 : <input type="text" value="1" id="quantity_one"
+
+
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-										style="width: 5em; text-align: right">
+										style="width: 3em; text-align: right">
 								</div>
-								<div class="col-1"
-									style="padding-left: 0; padding-right: 0; margin-top: 0.2em">
+								<div class="col-2"
+									style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
 									<div class="row">
 										<div class="col-12">
-											<input type="button" value="▲" id="up_btn"
-												style="margin-right: 1em">
-										</div>
-										<div class="col-12">
-											<input type="button" value="▼" id="up_btn"
-												style="margin-right: 3em">
+
+											<input type="button" value="+" id="up_btn"
+												class="quantity_btn"> <input type="button" value="-"
+												id="down_btn" class="quantity_btn">
+
 										</div>
 
 									</div>
 								</div>
-								<div class="col-7 py-3 text-right">
-									<strong>${dto.shop_price }원</strong>
+
+								<div class="col-6 py-3 text-right">
+									<small>${dto.shop_price }원</small>
+
 								</div>
 							</div>
 							<div class="row border-top border-bottom py-3">
-								<div class="col-4 text-left" style="line-height: 2.5em">
-									<strong>총 상품금액 </strong>(수량):
-								</div>
 
-								<div class="col-8 text-right" style="line-height: 2.5em; color:">
-									<span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
-									(?개)
+
+
+								<div class="col-12 text-right" style="line-height: 2.5em;">
+									<span style="margin-right: 2em"><strong>총 상품금액
+											:</strong></span><span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+
 								</div>
 							</div>
 							<div class="row pb-3 mt-4 border-bottom-0">
 								<div class="col-12" style="text-align: center"
 									style="font-wight:600">
 
-									<a href="/shopboard/shopBoard_buyProc" class="btn akame-btn">구
-										매 하 기 </a> <a href="#" class="btn akame-btn"><i
-										class="icon_cart"></i>장 바 구 니</a>
+									<a
+										href="/shopboard/shopBoard_buyProc?quantity=1&seq=${dto.shop_seq }"
+										class="btn akame-btn">구 매 하 기 </a> <a href="#"
+										class="btn akame-btn"><i class="icon_cart"></i>장 바 구 니</a>
 
 								</div>
 							</div>
@@ -268,41 +282,42 @@
 					<div class="tab-pane " id="edit">
 
 						<div class="row border p-2">
-							<div class="col-2 font-weight-bold seller-info">상호 / 대표자</div>
+							<div class="col-2 font-weight-bold seller-info">대표자(성함)</div>
 							<div class="col-4 border-right seller-info">
-								<p>최정현</p>
+								<p>${mdto.member_name}</p>
 							</div>
 							<div class="col-2 font-weight-bold seller-info">브랜드</div>
 							<div class="col-4 seller-info">
-								<p>마이페이지에서 추가하자 멤버테이블에 칼럼추</p>
+								<p>${dto.shop_brand }</p>
 							</div>
 						</div>
 						<div class="row border p-2 ">
 							<div class="col-2 font-weight-bold seller-info">사업자번호</div>
 							<div class="col-4 border-right seller-info">
-								<p>하드코딩</p>
+								<p>${mdto.memberSell_seq }</p>
 							</div>
-							<div class="col-2 font-weight-bold seller-info">통신사판매신고번호</div>
+							<div class="col-2 font-weight-bold seller-info">판매자고유번호</div>
 							<div class="col-4  seller-info">
-								<p>하드코딩</p>
+								<p>2013-서울강남-02629</p>
 							</div>
 
 						</div>
 						<div class="row border p-2">
 							<div class="col-2 font-weight-bold seller-info">연락처</div>
 							<div class="col-4 border-right seller-info">
-								<p>010-6471-3589</p>
+								<p>${mdto.member_phone}</p>
 							</div>
 							<div class="col-2 font-weight-bold seller-info">E-mail</div>
 							<div class="col-4 seller-info">
-								<p>cwg94@naver.com</p>
+								<p>${mdto.member_id }</p>
 							</div>
 
 						</div>
 						<div class="row border p-2">
 							<div class="col-2 font-weight-bold seller-info">영업 소재지</div>
 							<div class="col-10 seller-info">
-								<p>부용로 236 11773 번지 금오주공 9단지 903동 902호</p>
+								<p>${mdto.member_address1 }&nbsp;
+									&nbsp;${mdto.member_address2  } &nbsp; (${mdto.member_postcode })</p>
 							</div>
 						</div>
 
@@ -322,7 +337,8 @@
 
 							<div class="col-10 h-50" style="margin-top: 0.3em">
 								<div class=" mt-4">
-									<p>부용로 236 11773 번지 금오주공 9단지 903동 902호</p>
+									<p>${mdto.member_address1 },&nbsp;
+										&nbsp;${mdto.member_address2  } &nbsp; (${mdto.member_postcode })</p>
 								</div>
 							</div>
 						</div>
@@ -335,6 +351,60 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+
+		//수량
+		var upCount = function() {
+			var quantity = Number($("#quantity_one").val());
+			var price = "${dto.shop_price}";
+
+			$("#quantity_one").val(quantity + 1);
+			$("#quantity_one").val() * price
+
+		var upCount = function() {
+			var quantity = Number($("#quantity_one").val());
+
+			$("#quantity_one").val(quantity + 1);
+			
+
+		}
+
+		var downCount = function() {
+			var quantity = Number($("#quantity_one").val());
+
+
+			$("#quantity_one").val("#quantity_one").val(quantity - 1);
+		}
+		//---------------------------
+
+			if(quantity<2){
+				alert("수량은 최소 1개입니다");
+				$("#quantity_one").val("1");
+			}else{
+			$("#quantity_one").val("#quantity_one").val(quantity - 1);
+			}
+		}
+
+		$("#up_btn").on("click", function() {
+			upCount();
+			var quantity = Number($("#quantity_one").val());
+			var price = Number($("#price").val());
+			var result = quantity * price;
+			$("#resultPrice").text(result+"원");
+			$("#resultPrice1").text(result+"원");
+			
+
+		})
+		//버튼클릭시 수량 감소
+		$("#down_btn").on("click", function() {
+			downCount();
+			var quantity = Number($("#quantity_one").val());
+			var price = Number($("#price").val());
+			var result = quantity * price;
+			$("#resultPrice").text(result);
+			$("#resultPrice1").text(result);
+		})
+
+
 		// 	이미지 클릭시 이미지 확대	
 		$(".imgCa").on("click", function() {
 			var imgSrc = $(this).attr("src");
@@ -347,36 +417,16 @@
 			$(this).addClass("on").prevAll("a").addClass("on");
 			return false;
 		});
-		// 		//아임포트 API
-		// 		$("buy_btn").on("click", function() {
 
-		// 			IMP.init('imp50043848'); // 가맹점 식별 코드
-		// 			IMP.request_pay({
-		// 				pg : 'cacaopay', // version 1.1.0부터 지원.
-		// 				pay_method : 'card',
-		// 				merchant_uid : '가맹점에서 관리하는 고유번호' + new Date().getTime(),
-		// 				name : '주문명:결제테스트',
-		// 				amount : '${shop_price}',
-		// 				buyer_email : '${id.member_id}',
-		// 				buyer_name : '${id.member_name}',
-		// 				buyer_tel : '${id.member_phone}',
-		// 				buyer_addr : '서울특별시 강남구 삼성동',
-		// 				buyer_postcode : '123-456',
-		// 				m_redirect_url : '/board/shopBoard_import'
-		// 			}, function(rsp) {
-		// 				if (rsp.success) {
-		// 					var msg = '결제가 완료되었습니다.';
-		// 					msg += '고유ID : ' + rsp.imp_uid;
-		// 					msg += '상점 거래ID : ' + rsp.merchant_uid;
-		// 					msg += '결제 금액 : ' + rsp.paid_amount;
-		// 					msg += '카드 승인번호 : ' + rsp.apply_num;
-		// 				} else {
-		// 					var msg = '결제에 실패하였습니다.';
-		// 					msg += '에러내용 : ' + rsp.error_msg;
-		// 				}
-		// 				alert(msg);
-		// 			});
-		// 		})
+		//버튼클릭시 수량 추가
+		$("#up_btn").on("click", function() {
+			upCount();
+
+		})
+		//버튼클릭시 수량 감소
+		$("#down_btn").on("click", function() {
+			downCount();
+		})
 	</script>
 </body>
 </html>

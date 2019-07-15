@@ -11,9 +11,10 @@
 </head>
 
 
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
- <!-- /shopboard/filetest
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
+	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<!-- /shopboard/filetest
 
 
  /shopboard/ShopBoardInsertProc
@@ -88,7 +89,8 @@
 					<br>
 
 					<!--<input type="hidden">-->
-
+					<!-- 	-정현 추가 사업자번호  -->
+					<input type="hidden" value="${id.memberSell_seq }" name="sell_seq">
 
 					<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
 						type="text/javascript"></script>
