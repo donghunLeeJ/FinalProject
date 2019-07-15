@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.project.dto.BasketDTO;
 import com.project.dto.MemberDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.paging.ShopPaging;
@@ -36,6 +37,8 @@ public class ShopBoardController {
 
 	@Autowired
 	private ShopPaging sPaging;
+	
+	
 
 	@RequestMapping("/shopBoardGo")
 	public String ShopBoardGo(String page) {
@@ -45,7 +48,6 @@ public class ShopBoardController {
 		sPaging.sPaging(currentPage);
 		List<ShopBoardDTO> boardList = sService.ShopBoardList(lastPage);
 		request.setAttribute("boardList", boardList);
-		System.out.println(boardList.get(0).getShop_imagepath1());
 		return "shopBoard/shopBoard";
 	}
 
@@ -68,6 +70,7 @@ public class ShopBoardController {
 
 	@RequestMapping("/ShopBoardViewProc")
 	public String ShopBoardSelectProc(String seq) {
+		System.out.println("멍데데데머데얻멍먼데      "+seq);
 		int shop_seq = Integer.parseInt(seq);
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
 		request.setAttribute("dto", dto);
@@ -79,12 +82,6 @@ public class ShopBoardController {
 	public String filetest(ShopBoardDTO dto, List<MultipartFile> shop_images , String shop_expiration) {
 		List<String> fileArrayPath = new ArrayList();
 
-		System.out.println("내용: " +dto.getShop_contents());
-		System.out.println("브랜드: " +dto.getShop_brand());
-		System.out.println("타이틀: " +dto.getShop_title());
-		System.out.println("지역: " +dto.getShop_location());
-		System.out.println("유통기한: " +dto.getShop_expiration());
-			System.out.println("test"+shop_expiration);
 		int fileCount = 0;	
 		for (MultipartFile image : shop_images){
 
@@ -92,10 +89,9 @@ public class ShopBoardController {
 
 			if(image.getSize() != 0 ) {			String originFileName = image.getOriginalFilename();
 			long fileSize = image.getSize();
-			System.out.println("originFileName : " + originFileName);
-			System.out.println("fileSize : " + fileSize);
+			
 			String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
-			System.out.println(resourcePath);
+			
 			String targetFile = resourcePath + "/" + UUID.randomUUID().toString().replace("-","").substring(0,8) + "_foodimage.png";
 			try {
 
@@ -111,7 +107,7 @@ public class ShopBoardController {
 	}
 				
 		if(fileCount==1){
-			System.out.println("이미지가 하나만 들어왔을 경우");
+			
 			fileArrayPath.add("/img/default.jpg");
 			fileArrayPath.add("/img/default.jpg");
 			dto.setShop_imagepath1(fileArrayPath.get(0));
@@ -119,14 +115,14 @@ public class ShopBoardController {
 			dto.setShop_imagepath3(fileArrayPath.get(2));
 
 		}else if(fileCount==2) {
-			System.out.println("이미지가 2개가 들어왔을 경우");
+			
 			fileArrayPath.add("/img/default.jpg");
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));
 
 		}else if(fileCount > 2){
-			System.out.println("이미지가 3개가 들어왔을 경우");
+			
 			dto.setShop_imagepath1(fileArrayPath.get(0));
 			dto.setShop_imagepath2(fileArrayPath.get(1));
 			dto.setShop_imagepath3(fileArrayPath.get(2));		
@@ -145,7 +141,7 @@ public class ShopBoardController {
 
 		return "/shopBoard/shopBoard_buy";
 	}
-
+	
 
 	// 아임포트 api
 	// @RequestMapping("/ShopBoard_import")

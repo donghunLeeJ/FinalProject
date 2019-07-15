@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="basket">
+
+	
+
+
+
+
+<insert id="basketInsert">
+ insert into basket values(basket_seq.nextval,'asd',#{basket_imagepath},#{basket_title},#{basket_expiration},#{basket_quantity},#{basket_price},#{basket_location})
+</insert>
+
+<select id="basketIdSelect" resultType="com.project.dto.BasketDTO">
+	select * from basket where basket_seq=#{basket_seq}
+</select>
+
+
+ 
+  
+
+</mapper>
