@@ -173,7 +173,11 @@
 
 								<div class="col-4  py-3 text-right">
 
-									수량 : <input type="text" value="1" id="quantity_one"
+
+							
+
+									수량 : <input type="text" name="shop_quantity" value="1" id="quantity_one"
+
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
 										style="width: 3em; text-align: right">
 								</div>
@@ -182,7 +186,7 @@
 									<div class="row">
 										<div class="col-12">
 
-											<input type="button" value="+" id="up_btn"
+											<input type="button" value="+" id="up_btn" 
 												class="quantity_btn"> <input type="button" value="-"
 												id="down_btn" class="quantity_btn">
 
@@ -192,7 +196,7 @@
 								</div>
 
 								<div class="col-6 py-3 text-right">
-									<small>${dto.shop_price }원</small>
+									<small id="resultPrice1" name="shop_price" value="${dto.shop_price }">${dto.shop_price }원</small>
 
 								</div>
 							</div>
@@ -202,7 +206,7 @@
 
 								<div class="col-12 text-right" style="line-height: 2.5em;">
 									<span style="margin-right: 2em"><strong>총 상품금액
-											:</strong></span><span style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+											:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
 
 								</div>
 							</div>
@@ -210,9 +214,7 @@
 								<div class="col-12" style="text-align: center"
 									style="font-wight:600">
 
-									<a
-										href="/shopboard/shopBoard_buyProc?quantity=1&seq=${dto.shop_seq }"
-										class="btn akame-btn">구 매 하 기 </a> <a href="#"
+									<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> <a href="#"
 										class="btn akame-btn"><i class="icon_cart"></i>장 바 구 니</a>
 
 								</div>
@@ -349,27 +351,25 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+
+		
+	$("#chargeItem").on("click",function(){
+		var quantity = $("#quantity_one").val();
+		location.href="/shopboard/shopBoard_buyProc?quantity="+quantity+"&seq=${dto.shop_seq }"
+	})	
+
+
 		//수량
 		var upCount = function() {
 			var quantity = Number($("#quantity_one").val());
 			var price = "${dto.shop_price}";
-
 			$("#quantity_one").val(quantity + 1);
 			$("#quantity_one").val() * price
 
-			var upCount = function() {
-				var quantity = Number($("#quantity_one").val());
-
-				$("#quantity_one").val(quantity + 1);
-
-			}
-
-			var downCount = function() {
-				var quantity = Number($("#quantity_one").val());
-
-				$("#quantity_one").val("#quantity_one").val(quantity - 1);
-			}
-			//---------------------------
+		}
+		var downCount = function() {
+			var quantity = Number($("#quantity_one").val());
+			$("#quantity_one").val("#quantity_one").val(quantity - 1);
 
 			if (quantity < 2) {
 				alert("수량은 최소 1개입니다");
@@ -378,7 +378,7 @@
 				$("#quantity_one").val("#quantity_one").val(quantity - 1);
 			}
 		}
-
+		//버튼클릭시 수량 추가
 		$("#up_btn").on("click", function() {
 			upCount();
 			var quantity = Number($("#quantity_one").val());
@@ -388,6 +388,7 @@
 			$("#resultPrice1").text(result + "원");
 
 		})
+
 		//버튼클릭시 수량 감소
 		$("#down_btn").on("click", function() {
 			downCount();
@@ -410,16 +411,6 @@
 			$(this).addClass("on").prevAll("a").addClass("on");
 			return false;
 		});
-
-		//버튼클릭시 수량 추가
-		$("#up_btn").on("click", function() {
-			upCount();
-
-		})
-		//버튼클릭시 수량 감소
-		$("#down_btn").on("click", function() {
-			downCount();
-		})
 	</script>
 </body>
 </html>

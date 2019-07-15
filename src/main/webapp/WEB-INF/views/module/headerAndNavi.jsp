@@ -63,14 +63,14 @@
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
-	<div class="main-header-area">
+	<div class="main-header-area border" id="fixedNav" style="background-color: white">
 		<div class="classy-nav-container breakpoint-off">
 			<div class="container">
 				<!-- Classy Menu -->
-				<nav class="classy-navbar justify-content-between" id="akameNav">
+				<nav class="classy-navbar justify-content-between  " id="akameNav" style="background-color: white">
 
 					<!-- Logo -->
-					<a class="nav-brand" href="/home/"><img
+					<a class="nav-brand" href="/home"><img
 						src="/img/core-img/logo.png" alt=""></a>
 					<!-- Navbar Toggler -->
 					<div class="classy-navbar-toggler">
@@ -88,10 +88,10 @@
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul id="nav">
-								<li><a href="./index.html">Home</a></li>
+								<li><a href="/home">Home</a></li>
 								<li><a href="#">Pages</a>
 									<ul class="dropdown">
-										<li><a href="./index.html">- Home</a></li>
+										<li><a href="/home">- Home</a></li>
 										<li><a href="./about.html">- About Us</a></li>
 										<li><a href="./service.html">- 서비스 소개</a></li>
 										<li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li>
@@ -106,7 +106,7 @@
 												<li><a href="#">- Dropdown Item</a></li>
 											</ul></li>
 									</ul></li>
-								<li><a href="/home/ee">서비스 소개</a></li>
+								<li><a href="#">서비스 소개</a></li>
 								<li><a href="#">판매 게시판</a>
 									<ul class="dropdown">
 										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
@@ -115,8 +115,6 @@
 								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
 
 							</ul>
-
-
 
 							<!-- Cart Icon -->
 							<div class="cart-icon ml-5 mt-4 mt-lg-0">
@@ -134,12 +132,27 @@
 			</div>
 		</div>
 	</div>
+	<script >
+	
+	 $(window).scroll(function(){
+	        
+	        var docScrollY = $(document).scrollTop()
+	        var barThis = $("#fixedNav")
+	       
+	 		console.log(docScrollY);
+	        if( docScrollY > 200 ) {
+	        	barThis.fadeIn();
+	        	barThis.addClass("fixed-top");
+	            
+	        }else{
+	            barThis.removeClass("fixed-top");
+	        }
+	 
+	    });
 
-
-
-
-
-
+	</script>
+	
+	
 	<script>
 		$("#LogIN").on("click", function() {
 			location.href = "/member/loginForm";
