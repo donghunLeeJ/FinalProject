@@ -173,7 +173,11 @@
 
 								<div class="col-4  py-3 text-right">
 
+
+							
+
 									수량 : <input type="text" name="shop_quantity" value="1" id="quantity_one"
+
 										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
 										style="width: 3em; text-align: right">
 								</div>
@@ -347,6 +351,7 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+
 		
 	$("#chargeItem").on("click",function(){
 		var quantity = $("#quantity_one").val();
@@ -354,17 +359,18 @@
 	})	
 
 
-	
 		//수량
 		var upCount = function() {
 			var quantity = Number($("#quantity_one").val());
 			var price = "${dto.shop_price}";
 			$("#quantity_one").val(quantity + 1);
 			$("#quantity_one").val() * price
+
 		}
 		var downCount = function() {
 			var quantity = Number($("#quantity_one").val());
 			$("#quantity_one").val("#quantity_one").val(quantity - 1);
+
 			if (quantity < 2) {
 				alert("수량은 최소 1개입니다");
 				$("#quantity_one").val("1");
