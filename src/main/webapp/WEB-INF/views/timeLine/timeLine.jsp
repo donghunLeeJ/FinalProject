@@ -66,11 +66,20 @@
 									${i.tl_likecount }</a>
 							</div>
 							<p>${i.tl_contents }</p>
-						</div>
+							<hr>
+							<div class="post-meta">
+								<c:forEach var="j" items="result2">
+									
+								</c:forEach>
+							</div>
+							<form action="/timeline/boardReply" method="post">
+							<div><input type="text" name="tl_repl_contents" class="mb-3" style="width:25em; border-radius:4px;"><button class="commentbtn btn btn-outline-success btn-sm ml-2 mb-2">댓글 입력</button></div>
+							<input type="hidden" name="tl_board_seq" value="${i.tl_board_seq }">
+							</form>
+						</div>	
 					</div>
 				</div>
 			</div>
-
 	
 	<div class="modal fade" id="tlboardInfo${i.tl_board_seq }" tabindex="-1"
                role="dialog" aria-labelledby="exampleModalLabel1"

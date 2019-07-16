@@ -9,6 +9,7 @@ import com.project.dao.MemberDAO;
 import com.project.dao.Tl_BoardDAO;
 import com.project.dto.ProfileImageDTO;
 import com.project.dto.Tl_BoardDTO;
+import com.project.dto.Tl_ReplyDTO;
 
 @Component
 public class TimeLineService {
@@ -35,9 +36,15 @@ public class TimeLineService {
 	   return dao.update(dto);
    }
    
+
    public List<ProfileImageDTO> profile_image() {
 		 return mdao.profile_image();
 	}
-   
-   
+   public int Reply_write(Tl_ReplyDTO dto) {
+	   return dao.reply_write(dto);
+   }
+   public List<Tl_ReplyDTO> show(int boardSeq){
+	   return dao.show(boardSeq);
+   }
+
 }
