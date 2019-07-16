@@ -16,6 +16,7 @@
 		width:2em;
 		height:2em;
 	}
+
 </style>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
@@ -133,16 +134,6 @@
                </div>
             </div>
 	
-	
-	
-	
-	
-	
-		
-		
-		
-
-
 		</c:forEach>
 		</div>
 		<div class="row mt-4"></div>
