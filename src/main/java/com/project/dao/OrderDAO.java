@@ -17,9 +17,4 @@ public class OrderDAO {
 
 		return sst.insert("OrderDAO.orderInsert", dto);
 	}
-
-	public int orderListInsert(OrderListDTO dto) {
-
-		return sst.insert("OrderDAO.orderListInsert", dto);
-	}
 }
