@@ -3,6 +3,7 @@ package com.project.dao;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.project.dto.MemberDTO;
+import com.project.dto.ProfileImageDTO;
 
 @Component
 public class MemberDAO {
@@ -96,5 +98,17 @@ public class MemberDAO {
 		map.put("pw", pw);
 		return sst.delete("member.delOK",map);
 	}
+	public List<ProfileImageDTO> profile_image() {
+		 return sst.selectList("member.selectProfile");
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

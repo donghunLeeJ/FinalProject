@@ -53,7 +53,6 @@
 				<div class="col-2">왼쪽</div>
 				<div class="col-8">
 					<!-- 상품정보 전체내용 -->
-
 					<div class="container">
 						<div class="row">
 
@@ -62,18 +61,14 @@
 								<div class="row ml-3 border">
 									<!-- 캐러셀 -->
 									<div class="col-12 ">
-
 										<div>
 											<div class=" py-4">
 												<img class="d-block w-100 view"
 													src="${dto.shop_imagepath1 }" alt="First slide"
 													style="height: 20em"> <input type="hidden"
 													name="shop_imagepath1" value="${dto.shop_imagepath1 }">
-
 											</div>
-
 										</div>
-
 										<!-- 	밑에 이미지 3개 -->
 										<div class="row pb-3 pt-4 ">
 											<div class="col-4 border pt-2 pb-2">
@@ -94,7 +89,6 @@
 							</div>
 							<div class="col-1 "></div>
 							<div class="col-6">
-
 								<div class="row pb-4 border-bottom">
 									<div class="col-12">
 
@@ -104,7 +98,6 @@
 									</div>
 
 								</div>
-
 								<div class="row pb-3 mt-4 border-bottom">
 									<div class="col-4">판매가</div>
 									<div class="col-8">
@@ -117,8 +110,6 @@
 
 									</div>
 								</div>
-
-
 								<div class="row pb-3 mt-4  border-bottom">
 									<div class="col-4">판매 단위</div>
 									<div class="col-8">
@@ -130,17 +121,12 @@
 
 									</div>
 								</div>
-
-
-
-
 								<div class="row pb-3 mt-4 border-bottom">
 									<div class="col-4">유통기한</div>
 									<div class="col-8">
 										<p>
-											<strong>${dto.shop_expiration }</strong> <input
-												type="hidden" name=basket_expiration
-												value="${dto.shop_expiration }">
+											<strong>${dto.shop_expiration }</strong> <input type="hidden"
+												name=basket_expiration value="${dto.shop_expiration }">
 										</p>
 
 									</div>
@@ -222,26 +208,25 @@
 								<div class="row pb-3 mt-4 border-bottom-0">
 									<div class="col-12" style="text-align: center"
 										style="font-wight:600">
-										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> 
-										<a id=basket href="/Basket/basketInsert?seq=${dto.shop_seq }" class="btn akame-btn">
-										<i class="icon_cart"></i>장 바 구 니에 담기</a>
+										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> <a
+											id=basket href="/Basket/basketInsert?seq=${dto.shop_seq }"
+											class="btn akame-btn"> <i class="icon_cart"></i>장 바 구 니에
+											담기
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 	</form>
 	<div class="col-2">오른쪽</div>
-	
+
 	<div class=" pb-5">
 		<div class=" col-12"></div>
 	</div>
-	
-
-
-
-
 	<section class=" bg-gray">
 	<div class="container">
 		<div class="row my-2">
@@ -359,6 +344,13 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+		$("#quantity_one").on("input", function() {
+			var quantity = Number($("#quantity_one").val());
+			var price = Number($("#price").val());
+			var result = quantity * price;
+			$("#resultPrice").text(result + "원");
+			$("#resultPrice1").text(result + "원");
+		})
 		$("#chargeItem").on(
 				"click",
 				function() {
@@ -367,7 +359,6 @@
 							+ quantity + "&seq=${dto.shop_seq }"
 				})
 		//수량
-
 		var upCount = function() {
 			var quantity = Number($("#quantity_one").val());
 			var price = "${dto.shop_price}";
@@ -403,8 +394,8 @@
 			var quantity = Number($("#quantity_one").val());
 			var price = Number($("#price").val());
 			var result = quantity * price;
-			$("#resultPrice").text(result);
-			$("#resultPrice1").text(result);
+			$("#resultPrice").text(result + "원");
+			$("#resultPrice1").text(result + "원");
 		})
 
 		// 	이미지 클릭시 이미지 확대	

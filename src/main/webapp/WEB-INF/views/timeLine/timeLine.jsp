@@ -47,7 +47,7 @@
 					<div class="row py-3">
 						<div class="col-lg-2 text-center">
 							<img class="rounded-circle" alt=""
-								src="/img/core-img/empty_profile.png">${i.tl_writer }</div>
+								src="${profile[${${i.tl_writer }]">${i.tl_writer }</div>
 
 						<div class="col-lg-8 py-2 text-center">${i.tl_title }<input type="hidden" value="${i.tl_board_seq }"></div>
 						<div class="col-lg-2 text-right"><button id="optionbtn" data-toggle="modal" data-target="#tlboardInfo${i.tl_board_seq }" style="background-color:white; border:none;"><i class="xi-bars"></i></button></div>

@@ -2,6 +2,8 @@ package com.project.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.project.dto.MemberDTO;
+import com.project.dto.ProfileImageDTO;
 import com.project.dto.Tl_BoardDTO;
 import com.project.service.TimeLineService;
 
@@ -28,8 +31,13 @@ public class TimeLineController {
 
 	@RequestMapping("/accessTimeLine")
 	public String accessTimeline(HttpServletRequest request, Tl_BoardDTO dto, String seq) {
+		Map<String,String> profile = new HashMap();
+		for(ProfileImageDTO img : tls.profile_image()) {
+			profile.put(img.getId(), img.getImagePath());
+		}
 		int page = Integer.parseInt(seq);
 		request.setAttribute("result", tls.showAll(page));
+		request.setAttribute("profile", profile);
 		return "/timeLine/timeLine";
 	}
 
