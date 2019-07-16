@@ -1,8 +1,9 @@
 package com.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.project.dao.OrderDAO;
 import com.project.dto.OrderDTO;
@@ -13,11 +14,12 @@ public class OrderService {
 
 	@Autowired
 	private OrderDAO dao;
-
-	@Transactional("transactionManager")
-	public void orderInsert(OrderDTO odto, OrderListDTO ldto) {
-		dao.orderListInsert(ldto);
+	
+	public void orderInsert(OrderDTO odto) {
 		dao.orderInsert(odto);
-
+	}
+	
+	public List<OrderDTO> myOrderList(String id){
+		return dao.myOrderList(id);
 	}
 }

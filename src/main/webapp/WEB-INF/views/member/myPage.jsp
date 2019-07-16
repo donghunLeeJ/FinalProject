@@ -66,6 +66,7 @@ height:70px;
 hirght:80px;
 }
 </style>
+	<script type="text/javascript" src="/js/cross.js"></script>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -233,8 +234,33 @@ hirght:80px;
 <%-- 							</c:if> --%>
 <!-- 						</ul> -->
 					</div>
+					
 					<div class="tab-pane" id="buy"><!-- 구매 내역 -->
-					구매 내역
+					<h4>구매 내역 확인</h4>
+					<hr>
+					<div class="col-12 over center">
+					<div class="col-2 float">번호</div>
+					<div class="col-1 float">이미지</div> 
+				    <div class="float col-4">제목</div>
+					<div class="col-2 float"> 구매 금액</div> 
+					<div class="col-1 float "> 수량</div>
+					<div class="col-2 float "> 구매 날짜</div>
+					</div>
+					<hr>
+					
+					<c:forEach var="i" items="${order }">
+					<div class="col-12 over center "id="clickList">
+				<div class="col-2 float">${i.order_seq }</div>
+<!-- 					<div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
+<%-- 					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"> --%>
+					<div class="col-1 float "><img src="${i.order_image }" class="listimg"></div>
+					<div class="col-4 float skip ">${i.order_title }</div>
+					<div class="col-2 float">${i.order_price }원</div>
+					<div class="col-1 float">${i.order_quantity }개</div>
+					<div class="col-2 float">${i.order_time }</div>
+<!-- 					</a> -->
+					</div>
+						</c:forEach>
 					</div>
 					
 					<div class="tab-pane col-lg-12" id="edit">
@@ -313,7 +339,7 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">상세주소
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add2" name="member_address2"
+										<input class="form-control" id="add2" name="member_address2" placeholder="최대 20자"
 											type="text" value="${id.member_address2}">
 									</div>
 								</div>
@@ -330,7 +356,7 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">자기
 										소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
+										<textarea style="resize: none;" id=area name="member_intro" placeholder="최대 100자">${id.member_intro}</textarea>
 									</div>
 									<input name="member_intro" type="hidden">
 									<%--                                 <div class=" ">${id.member_intro}</div> --%>
@@ -340,14 +366,14 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="password" name="member_pw"
-											id="pw1"    placeholder="대/소문자, 숫자 포함 최소 8자리">
+											id="pw1"    placeholder="대,소문자,숫자 포함 8~13자리">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호
 										확인</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="password" id="pw2"    placeholder="대/소문자, 숫자 포함 최소 8자리">
+										<input class="form-control" type="password" id="pw2"    placeholder="대,소문자,숫자 포함 8~13자리">
 									</div>
 								</div>
 								<div class="form-group row">

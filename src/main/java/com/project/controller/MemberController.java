@@ -17,9 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.dao.HtmlEmailDAO;
 import com.project.dto.MemberDTO;
 import com.project.dto.MemberPagingDTO;
+import com.project.dto.OrderDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.paging.Mylist_Paging;
 import com.project.service.MemberService;
+import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
 
 @Controller
@@ -38,6 +40,8 @@ public class MemberController {
 	private HttpServletRequest request;
 	@Autowired
 	private Mylist_Paging mp;
+	@Autowired
+	private OrderService os;
 
 	@RequestMapping("loginForm")
 	public String goLogin() {
@@ -107,10 +111,12 @@ public class MemberController {
 		//System.out.println("1");
 		MemberDTO mdto = (MemberDTO)session.getAttribute("id");
 		List<ShopBoardDTO> mylist = SBservice.ShopBoardList(mdto.getMember_id());
+		List<OrderDTO> order = os.myOrderList(mdto.getMember_id());
 	//	System.out.println("4");
 		MemberPagingDTO mpdto = mp.MemberPaging(1);
 	request.setAttribute("mylist", mylist);
 	request.setAttribute("mpdto", mpdto);
+	request.setAttribute("order", order);
 		return "/member/myPage";
 	}
 
@@ -169,9 +175,7 @@ public class MemberController {
 	@RequestMapping("verifiedId")
 	public String verifiedId(String id) {
 		System.out.println("아이디                                " + id);
-
 		String confirm = mservice.checkConfirm(id);
-
 		if (confirm.equals("n")) {
 			mservice.confirmId(id);
 			return "member/emailConfirm";

@@ -17,7 +17,7 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <!-- <link rel="stylesheet" href="style.css"> -->
-
+	<script type="text/javascript" src="/js/cross.js"></script>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
@@ -93,8 +93,8 @@
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	
-	<script src="resources/WEB-INF/views/XSS/XSS.jsp"></script>
-	<script> removeXSS (str, id)</script>
+
+	
 	<script>
 	
 	function checkFile(f){
