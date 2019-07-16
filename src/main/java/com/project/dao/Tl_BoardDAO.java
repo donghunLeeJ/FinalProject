@@ -21,7 +21,16 @@ public class Tl_BoardDAO {
    public List<Tl_BoardDTO> showAll(int page){
       return sst.selectList("Tl_BoardDAO.tl_board_showAll",page);
    }
+   
    public int showAll_count(){
 	      return sst.selectOne("Tl_BoardDAO.tl_board_all_count");
 	   }
+   
+   public int delete(String seq) {
+	   return sst.delete("Tl_BoardDAO.tl_board_delete",seq);
+   }
+   
+   public int update(Tl_BoardDTO dto) {
+	   return sst.update("Tl_BoardDAO.tl_board_update",dto);
+   }
 }

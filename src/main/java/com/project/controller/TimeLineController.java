@@ -2,7 +2,6 @@ package com.project.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,20 +26,24 @@ public class TimeLineController {
 	@Autowired
 	private TimeLineService tls;
 
-	@RequestMapping("/accessTimeLine") // Timeline ùȭ��
+	@RequestMapping("/accessTimeLine")
 	public String accessTimeline(HttpServletRequest request, Tl_BoardDTO dto, String seq) {
 		int page = Integer.parseInt(seq);
 		request.setAttribute("result", tls.showAll(page));
 		return "/timeLine/timeLine";
 	}
 
-	@RequestMapping("/tl_boardWrite") // Timeline �۾��� ȭ������ ������ ����
+	@RequestMapping("/tl_boardWrite")
 	public String tl_boardWrite() {
-
-		return "/timeLine/timeLine_Write";
+		if(session.getAttribute("id") == null) {
+			return "/timeLine/writereject";
+		}
+		else{
+			return "/timeLine/timeLine_Write";
+		}
 	}
 
-	@RequestMapping("/writedProc") // �۾� ����� ������� ����
+	@RequestMapping("/writedProc")
 	public String writedProc(Tl_BoardDTO dto) {
 
 		String resourcePath = session.getServletContext().getRealPath("/resources/img/tl-img/");
@@ -48,7 +51,6 @@ public class TimeLineController {
 		try {
 
 			String fileName = System.currentTimeMillis() + dto.getTl_image().getOriginalFilename();
-			System.out.println("�����̸�: " + fileName);
 			File savedFile = new File(resourcePath + "/" + fileName);
 			dto.setTl_imgaddr("/img/tl-img/" + savedFile.getName());
 
@@ -59,7 +61,8 @@ public class TimeLineController {
 			e.printStackTrace();
 		}
 		MemberDTO id = (MemberDTO) session.getAttribute("id");
-		dto.setTl_writer(id.getMember_id());// �ӽ� id�� �Է�
+		dto.setTl_writer(id.getMember_id());
+		
 		tls.write(dto);
 		return "redirect:/timeline/accessTimeLine?seq=1";
 
@@ -72,5 +75,93 @@ public class TimeLineController {
 		System.out.println(seq);
 		Gson g = new Gson();
 		return g.toJson(tls.showAll(seq));
+	}
+	
+	@RequestMapping("/reportProc")
+	public String reportProc(HttpServletRequest request) {
+		
+		String seq = request.getParameter("seq");
+		if(session.getAttribute("id") == null) {
+			return "/timeLine/reportreject";
+		}else {
+			
+			return "/timeLine/reportcompl";
+		}
+		
+	}
+	
+	@RequestMapping("/boardModify")
+	public String boardModify(HttpServletRequest request) {
+		
+		if(session.getAttribute("id") == null) {
+			return "/timeLine/modi_del_reject2";
+		}else {
+		
+			String seq = request.getParameter("seq");
+			System.out.println(seq);
+			String writer = request.getParameter("writer");
+			String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
+			String title = request.getParameter("title");
+			String contents = request.getParameter("contents");
+			String imgaddr = request.getParameter("imgaddr");
+			
+			if(writer.equals(id)) {
+				request.setAttribute("seq", seq);
+				request.setAttribute("title", title);
+				request.setAttribute("contents", contents);
+				request.setAttribute("imgaddr", imgaddr);
+				return "/timeLine/modifywrite";
+			}
+			else {
+				return "/timeLine/modi_del_reject";
+			}
+		}
+		
+	}
+	
+	@RequestMapping("/boardModified")
+	public String boardModified(Tl_BoardDTO dto) {
+		int seq = dto.getTl_board_seq();
+		String title = dto.getTl_title();
+		String contents = dto.getTl_contents();
+		String resourcePath = session.getServletContext().getRealPath("/resources/img/tl-img/");
+		System.out.println(resourcePath);
+		try {
+
+			String fileName = System.currentTimeMillis() + dto.getTl_image().getOriginalFilename();
+			File savedFile = new File(resourcePath + "/" + fileName);
+			dto.setTl_imgaddr("/img/tl-img/" + savedFile.getName());
+
+			dto.getTl_image().transferTo(savedFile);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		MemberDTO id = (MemberDTO) session.getAttribute("id");
+		dto.setTl_writer(id.getMember_id());
+		
+		tls.update(dto);
+		
+		return "/timeLine/modifycompl";
+	}
+	
+	@RequestMapping("/boardDelete")
+	public String boardDelete(HttpServletRequest request) {
+		
+		if(session.getAttribute("id") == null) {
+			return "/timeLine/modi_del_reject2";
+		}else {
+			String writer = request.getParameter("writer");
+			String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
+			String seq = request.getParameter("seq");
+			if(writer.equals(id)) {
+				tls.delete(seq);
+				return "/timeLine/boarddelete";
+			}else {
+				return "/timeLine/modi_del_reject";
+			}
+		}
+		
 	}
 }

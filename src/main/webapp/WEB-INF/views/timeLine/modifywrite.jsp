@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TimeLine Write Page</title>
+<title>Modify Page</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
@@ -25,8 +25,7 @@
 					<!-- Section Heading -->
 					<div class="col-12">
 						<div class="section-heading text-center">
-							<h2>Leave your Opinion</h2>
-							<p>We have open Mind!</p>
+							<h2>글 수정</h2>
 						</div>
 					</div>
 				</div>
@@ -34,7 +33,7 @@
 				<div class="row">
 					<div class="col-12">
 						<!-- Form -->
-						<form action="/timeline/writedProc" method="post"
+						<form action="/timeline/boardModified" method="post"
 							enctype="multipart/form-data"
 							class="akame-contact-form border-0 p-0">
 							<div class="row">
@@ -43,13 +42,13 @@
 								</div>
 								<div class="col-lg-12">
 									<input type="text" name="tl_title" class="form-control mb-30"
-										placeholder="제목을 입력해주세요">
+										placeholder="제목을 입력해주세요" value="${title }">
 								</div>
-
+								<input type="hidden" name="tl_board_seq" value="${seq }">
 								<div class="col-lg-12 ">
 									<h3>- contents -</h3>
-									<div id="img_field" class="border" style="height: 23em;text-align: center">
-										<img class="border" id="image_section" src="/img/defaultee.jpg" alt=""
+									<div id="img_field" class="border" style="height: 23em; text-align: center">
+										<img class="border" id="image_section" src="${imgaddr}" alt=""
 											style="height: 100%;margin: auto">
 									</div>
 									<div class="custom-file">
@@ -62,7 +61,7 @@
 								</div>
 								<div class="col-lg-12 ">
 									<textarea name="tl_contents" class="form-control mb-30"
-										placeholder="내용을 입력해주세요"></textarea>
+										placeholder="내용을 입력해주세요">${contents }</textarea>
 								</div>
 								<div class="col-lg-6 text-right">
 									<button type="submit" class="btn akame-btn btn-3 mt-15 active">작성
