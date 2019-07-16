@@ -38,7 +38,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberDTO dto) {
-		System.out.println("멤버DAO : " +  sst.insert("member.insert",dto));
+		
 		return sst.insert("member.insert",dto);
 	}
 
