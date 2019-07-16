@@ -17,7 +17,7 @@ public class HomeController {
 	}
 	@RequestMapping("/admin")
 	public String adhome() {
-		return "/admin/adminhome";
+		return "admin/adminhome";
 	}
 
 }

@@ -86,7 +86,7 @@
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
 		$("#tolistbtn").on("click", function() {
-			$(location).attr("href", "/timeline/accessTimeLine")
+			$(location).attr("href", "/timeline/accessTimeLine?seq=1")
 		})
 		function readURL(input) {
 

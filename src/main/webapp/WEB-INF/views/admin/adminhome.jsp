@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/style2.css">
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
 <section class="akame-contact-area bg-gray section-padding-50">
 	<div class="container bg-color-grey">
 		<div class="row mx-auto">

@@ -40,13 +40,13 @@ public class ShopBoardDAO {
 		return sst.selectOne("ShopBoardDAO.ShopBoardIdSelect", shop_seq);
 	}
 
+	public List<ShopBoardDTO> ShopBoardList(String shop_id) {
+		// System.out.println("3");
+		return sst.selectList("ShopBoardDAO.ShopBoardList", shop_id);
+	}
+
 	public MemberDTO shopSellerSelect(int memberSell_seq) {
 		return sst.selectOne("ShopBoardDAO.shopSellerSelect", memberSell_seq);
-	}
-	
-	public List<ShopBoardDTO> ShopBoardList(String shop_id) {
-	//	System.out.println("3");
-		return sst.selectList("ShopBoardDAO.ShopBoardList", shop_id);
 	}
 
 }
