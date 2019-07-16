@@ -1,6 +1,8 @@
 package com.project.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +43,11 @@ public class Tl_BoardDAO {
    
    public List<Tl_ReplyDTO> show(int boardSeq){
 	   return sst.selectList("Tl_BoardDAO.tl_reply_show",boardSeq);
+   }
+   public int updateProfile(String path ,String id){
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("path", path);
+		map.put("id", id);
+	   return sst.update("Tl_BoardDAO.updateProfile",map);
    }
 }

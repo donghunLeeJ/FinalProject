@@ -46,5 +46,8 @@ public class TimeLineService {
    public List<Tl_ReplyDTO> show(int boardSeq){
 	   return dao.show(boardSeq);
    }
+   public int updateProfile(String path , String id){
+	   return dao.updateProfile(path , id);
+   }
 
 }

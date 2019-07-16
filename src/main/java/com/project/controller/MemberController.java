@@ -24,6 +24,7 @@ import com.project.paging.Mylist_Paging;
 import com.project.service.MemberService;
 import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
+import com.project.service.TimeLineService;
 
 @Controller
 @RequestMapping("/member")
@@ -45,7 +46,10 @@ public class MemberController {
 	private Mylist_Paging mp;
 	@Autowired
 	private OrderService os;
-
+	@Autowired
+	private TimeLineService tservice;
+	
+	
 	@RequestMapping("loginForm")
 	public String goLogin() {
 		return "member/login";
@@ -156,6 +160,7 @@ public class MemberController {
 			String id = mdto.getMember_id();
 			String path = "/img/profile-img/" + time + "/" + f.getName();// 저장된 이름 뽑아옴
 			// id랑 path를 서비스에 보내야지
+			tservice.updateProfile(path, id);
 			mservice.uploadImg(path, id);
 			session.setAttribute("id", mservice.select_member(id));// 바뀐 세션값 초기화
 		} catch (Exception e) {
