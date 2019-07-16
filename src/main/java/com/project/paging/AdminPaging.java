@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.project.dto.MemberDTO;
 import com.project.dto.PageDTO;
+import com.project.dto.ShopBoardDTO;
 import com.project.dto.ShopPagingDTO;
 
 @Component
@@ -80,7 +81,7 @@ public class AdminPaging {
 		return pageList;	}
 
 	
-	   //각 페이지에 해당하는 게시글 10개를 출력시키는 메소드(검색없이)
+	   //각 페이지에 해당하는 게시글(멤버) 10개를 출력시키는 메소드(검색없이)
 		public List<MemberDTO> SelectPageList(int page){ 
 			
 			int countPage = 10;
@@ -105,6 +106,18 @@ public class AdminPaging {
 			return BoardContentList;}
 	
 	
+		
+		   //각 페이지에 해당하는 게시글(샵보드) 10개를 출력시키는 메소드(검색없이)
+			public List<ShopBoardDTO> ShopBoardSelectPageList(int page){ 
+				
+				int countPage = 10;
+				int startCount = (page - 1) * countPage + 1;
+				int endCount = page * countPage;
+			
+				List<ShopBoardDTO>ShopBoardContentList = 
+				sst.selectList("AdminDAO.PageShopBoardSelect", new PageDTO(startCount , endCount));	
+				return ShopBoardContentList;}
+			
 	
 	
 	

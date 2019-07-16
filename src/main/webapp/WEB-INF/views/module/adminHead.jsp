@@ -91,7 +91,7 @@
 							<ul id="nav">
 								<li ><a href="./index.html">Home</a></li>
 								<li><a href="/admin/MemberManagementMove">회원 관리 </a>
-								<li><a href="/home/ee">판매 글 관리</a></li>
+								<li><a href="/admin/ShopBoardManagementMove">판매 글 관리</a></li>
 								<li><a href="/home/ee">게시판 관리</a></li>
 								<li><a href="#">결제 통계</a>
 								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>

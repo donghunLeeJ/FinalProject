@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.dao.AdminDAO;
 import com.project.dto.MemberDTO;
+import com.project.dto.ShopBoardDTO;
 import com.project.paging.AdminPaging;
 
 @Service
@@ -24,11 +25,20 @@ public class AdminService {
 	public int MemberCount(){return adao.MemberCount();}
 	public int SelectMemberCount(String keyword){return adao.SelectMemberCount(keyword);}
 	
+	public int ShopBoardCount(){return adao.ShopBoardCount();}
+	
+	
+	
 	public List<String>Page(int page, int totalcount){return apag.aPaging(page, totalcount);}
 	
 	public List<MemberDTO> SelectPageList(int page){return apag.SelectPageList(page);}
 	
 	public List<MemberDTO> SelectPageKeywordList(int page , String keyword){return apag.SelectPageKeywordList(page, keyword);}
+	
+	
+	public List<ShopBoardDTO> ShopBoardSelectPageList(int page){return apag.ShopBoardSelectPageList(page);}
+	
+	
 	
 	public int BlackListUpdate(String member_id){return adao.BlackListUpdate(member_id);}
 	

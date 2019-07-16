@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.dto.MemberDTO;
+import com.project.dto.ShopBoardDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.AdminService;
 
@@ -43,17 +44,23 @@ public class AdminController {
 	return "redirect:MemberManagementProc?page=1";}
 	
 	
+	//관리자 메인페이지에서 판매글 관리 페이지로 이동
+	@RequestMapping("ShopBoardManagementMove")
+	public String ShopBoardManagementMove(){
+	return "redirect:ShopBoardManagementProc?page=1";}
+	
+	
 	//id로 검색을 할시 이동하는 곳
 	@RequestMapping("MemberManagementIDMove")
 	public String MemberManagementIDMove(String keyword){
 	return "redirect:MemberManagementIDProc?page=1&keyword="+keyword+"";}
 
+	
 
 	//회원관리 페이지로 이동(이동하기 전에 먼저 모든 회원을 검색하고 시작)
 	@RequestMapping("MemberManagementProc")
 	public String MemberManagement(int page){
 
-	//List<MemberDTO>memberList = aservice.MemberSelectAll();
 	int totalcount = aservice.MemberCount();
 		
     List<String>pageList = aservice.Page(page, totalcount);
@@ -67,7 +74,7 @@ public class AdminController {
 
 	return "admin/MemberManagement";}
 	
-
+	
 	//검색기능 알고리즘
 	//반복상황을 board페이지에서 구별을 확실히 해야 함
 	@RequestMapping("MemberManagementIDProc")
@@ -89,6 +96,34 @@ public class AdminController {
 	}
 	
 
+		
+	    //상품관리 페이지로 이동(이동하기 전에 먼저 모든 상품을 검색하고 시작)
+		@RequestMapping("ShopBoardManagementProc")
+		public String ShopBoardManagement(int page){
+
+		int totalcount = aservice.ShopBoardCount();
+			
+	    List<String>pageList = aservice.Page(page, totalcount);
+	    request.setAttribute("ShopBoardList", aservice.ShopBoardSelectPageList(page));
+	    
+	    
+	    for(ShopBoardDTO m : aservice.ShopBoardSelectPageList(page) ) {	
+	    	System.out.println(m.getShop_price());}
+	    
+		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
+		request.setAttribute("page", page);//현재 페이지임
+
+		return "admin/ShopBoardManagement";}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//관리자가 어떤 유저id를 클릭하는 순간 이동한다.
 	//이때 해당 회원의 모든 정보를 가져오는 메소드
 	@RequestMapping("targetMember")

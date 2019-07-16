@@ -23,10 +23,15 @@ public class AdminDAO {
 	public int MemberCount(){
 		return sst.selectOne("AdminDAO.MemberCount");}
 
-	
 	public int SelectMemberCount(String keyword){
 		return sst.selectOne("AdminDAO.SelectMemberCount",keyword);}
 		
+	
+	public int ShopBoardCount(){
+		return sst.selectOne("AdminDAO.ShopBoardCount");}
+	
+	
+	
 	
 	public int BlackListUpdate(String member_id){
 		return sst.update("AdminDAO.BlackListUpdate", member_id);}
