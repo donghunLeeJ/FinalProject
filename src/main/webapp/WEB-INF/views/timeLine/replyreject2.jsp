@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Reply Rejected Page</title>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-   <script>
-   alert("글이 등록되었습니다.")
-   location.href = "/timeLine/accessTimeLine?seq=1"
-   </script>
+<body>
+	<script>
+   	alert("먼저 로그인 해주세요.")
+   	location.href = "/timeline/accessTimeLine?seq=1"
+  	</script>
 </body>
 </html>

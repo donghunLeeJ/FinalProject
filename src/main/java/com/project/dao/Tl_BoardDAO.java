@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.project.dto.Tl_BoardDTO;
+import com.project.dto.Tl_ReplyDTO;
 
 @Component
 public class Tl_BoardDAO {
@@ -32,5 +33,13 @@ public class Tl_BoardDAO {
    
    public int update(Tl_BoardDTO dto) {
 	   return sst.update("Tl_BoardDAO.tl_board_update",dto);
+   }
+   
+   public int reply_write(Tl_ReplyDTO dto) {
+	   return sst.insert("Tl_BoardDAO.tl_reply_insert",dto);
+   }
+   
+   public List<Tl_ReplyDTO> show(int boardSeq){
+	   return sst.selectList("Tl_BoardDAO.tl_reply_show",boardSeq);
    }
 }

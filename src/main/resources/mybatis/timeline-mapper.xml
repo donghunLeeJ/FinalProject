@@ -22,4 +22,12 @@
    <update id="tl_board_update">
    		update tl_board set tl_title=#{tl_title}, tl_contents=#{tl_contents}, tl_imgaddr=#{tl_imgaddr}, tl_writedate=default where tl_board_seq=#{tl_board_seq}
    </update>
+   
+   <insert id="tl_reply_insert">
+   		insert into tl_board_reply values(tl_repl_seq.nextval,#{tl_board_seq},#{tl_repl_writer},#{tl_repl_contents},default)
+   </insert>
+   
+   <select id="tl_reply_show" resultType="com.project.dto.Tl_ReplyDTO">
+   		select * from tl_board_reply where tl_board_seq=#{tl_board_seq}
+   </select>
 </mapper>
