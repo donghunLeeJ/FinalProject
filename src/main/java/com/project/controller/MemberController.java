@@ -169,9 +169,7 @@ public class MemberController {
 	@RequestMapping("verifiedId")
 	public String verifiedId(String id) {
 		System.out.println("아이디                                " + id);
-
 		String confirm = mservice.checkConfirm(id);
-
 		if (confirm.equals("n")) {
 			mservice.confirmId(id);
 			return "member/emailConfirm";

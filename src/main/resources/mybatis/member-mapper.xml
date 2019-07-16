@@ -4,7 +4,7 @@
 
 	<insert id="insert">
 		insert into member
-		values(memberSell_seq.nextval,#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default)
+		values(memberSell_seq.nextval,#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default,default)
 	</insert>	
 
 

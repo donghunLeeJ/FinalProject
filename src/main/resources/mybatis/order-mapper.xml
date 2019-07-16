@@ -4,15 +4,12 @@
 
 	<insert id="orderInsert">
 		insert into products_order
-		values(order_seq.nextval,#{products_seq},#{buyer_id},#{order_name},#{order_phone},#{order_email},#{getter_name},#{getter_postcode},#{getter_address1},#{getter_address2},#{getter_phone},#{getter_command})
+		values(order_seq.nextval,#{order_number},default,#{order_title}
+		,#{order_quantity},#{order_price},#{order_image},#{order_seller},#{order_buyer}
+		,#{order_buyer_phone},#{order_buyer_email},#{order_receipt},#{order_receipt_postcode}
+		,#{order_receipt_address1},#{order_receipt_address2},#{order_receipt_phone}
+		,#{order_receipt_demend})
 
 	</insert>
-	<insert id="orderListInsert">
-		insert into orderList
-		values(orderList_seq.nextval,#{products_seq},#{sell_id},#{buyer_id},#{sell_brand},#{sell_title},#{sell_imagepath},#{buy_quantity},#{buy_price},#{buy_date},#{order_number})
-
-	</insert>
-	<select id="orderListSelect" resultType="com.project.dto.OrderListDTO">
-		select * from
-	</select>
+	
 </mapper>
