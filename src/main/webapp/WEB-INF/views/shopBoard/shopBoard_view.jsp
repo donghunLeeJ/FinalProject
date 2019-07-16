@@ -47,207 +47,201 @@
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<form id="form"action="/Basket/basketInsert" method="post">
-	<div class="container-fluid mt-5">
-		<div class="row pt-5 ">
-			<div class="col-2">왼쪽</div>
-			<div class="col-8">
-				<!-- 상품정보 전체내용 -->
-				
-				<div class="container">
-					<div class="row">
+	<form id="form" action="/Basket/basketInsert" method="post">
+		<div class="container-fluid mt-5">
+			<div class="row pt-5 ">
+				<div class="col-2">왼쪽</div>
+				<div class="col-8">
+					<!-- 상품정보 전체내용 -->
 
-						<!-- 이미지 칼럼 -->
-						<div class="col-5 ">
-							<div class="row ml-3 border">
-								<!-- 캐러셀 -->
-								<div class="col-12 ">
+					<div class="container">
+						<div class="row">
 
-									<div>
-										<div class=" py-4">
-											<img  class="d-block w-100 view" src="${dto.shop_imagepath1 }"
-												alt="First slide"  style="height: 20em">
-												<input type="hidden" name="shop_imagepath1" value="${dto.shop_imagepath1 }">
-												
+							<!-- 이미지 칼럼 -->
+							<div class="col-5 ">
+								<div class="row ml-3 border">
+									<!-- 캐러셀 -->
+									<div class="col-12 ">
+
+										<div>
+											<div class=" py-4">
+												<img class="d-block w-100 view"
+													src="${dto.shop_imagepath1 }" alt="First slide"
+													style="height: 20em"> <input type="hidden"
+													name="shop_imagepath1" value="${dto.shop_imagepath1 }">
+
+											</div>
+
 										</div>
+
+										<!-- 	밑에 이미지 3개 -->
+										<div class="row pb-3 pt-4 ">
+											<div class="col-4 border pt-2 pb-2">
+												<img class="imgCa" src="${dto.shop_imagepath1 }" alt="또안됌"
+													style="height: 6em">
+											</div>
+											<div class="col-4 border pt-2 pb-2">
+												<img class="imgCa" src="${dto.shop_imagepath2 }" alt="또안됌"
+													style="height: 6em">
+											</div>
+											<div class="col-4 border pt-2 pb-2">
+												<img class="imgCa" src="${dto.shop_imagepath3 }" alt="또안됌"
+													style="height: 6em">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-1 "></div>
+							<div class="col-6">
+
+								<div class="row pb-4 border-bottom">
+									<div class="col-12">
+
+										<strong>[${dto.shop_brand}] &nbsp;
+											&nbsp;${dto.shop_title }</strong>
 
 									</div>
 
-									<!-- 	밑에 이미지 3개 -->
-									<div class="row pb-3 pt-4 ">
-										<div class="col-4 border pt-2 pb-2">
-											<img class="imgCa" src="${dto.shop_imagepath1 }" alt="또안됌"
-												style="height: 6em">
-										</div>
-										<div class="col-4 border pt-2 pb-2">
-											<img class="imgCa" src="${dto.shop_imagepath2 }" alt="또안됌"
-												style="height: 6em">
-										</div>
-										<div class="col-4 border pt-2 pb-2">
-											<img class="imgCa" src="${dto.shop_imagepath3 }" alt="또안됌"
-												style="height: 6em">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-1 "></div>
-						<div class="col-6">
-
-							<div class="row pb-4 border-bottom">
-								<div class="col-12">
-
-									<strong>[${dto.shop_brand}] &nbsp;
-										&nbsp;${dto.shop_title }</strong>
-
 								</div>
 
-							</div>
+								<div class="row pb-3 mt-4 border-bottom">
+									<div class="col-4">판매가</div>
+									<div class="col-8">
 
-							<div class="row pb-3 mt-4 border-bottom">
-								<div class="col-4">판매가</div>
-								<div class="col-8">
+										<input type="hidden" value="${dto.shop_price }" id="price">
 
-									<input type="hidden" value="${dto.shop_price }" id="price">
-
-									<p>
-										<strong >${dto.shop_price }</strong>
-									</p>
-
-								</div>
-							</div>
-
-
-							<div class="row pb-3 mt-4  border-bottom">
-								<div class="col-4">판매 단위</div>
-								<div class="col-8">
-									<p>
-										${dto.shop_quantity } <strong> (개)</strong>
-										<input type="hidden" name=basket_quantity value="${dto.shop_quantity }" >
-									</p>
-
-								</div>
-							</div>
-
-
-
-
-							<div class="row pb-3 mt-4 border-bottom">
-								<div class="col-4">유통기한</div>
-								<div class="col-8">
-									<p>
-										<strong >${dto.shop_expiration }</strong>
-										<input type="hidden" name=basket_expiration value="${dto.shop_expiration }" >
-									</p>
-
-								</div>
-							</div>
-
-							<div class="row pb-3 mt-4 border-bottom">
-								<div class="col-4">판매 지역</div>
-								<div class="col-8">
-									<p>
-										<strong >${dto.shop_location }</strong>
-										<input type="hidden" name="basket_location" value="${dto.shop_location }" >
-									</p>
-
-								</div>
-							</div>
-
-							<!-- 테이블 추가요망 -->
-							<div class="row pb-3 mt-4  border-bottom">
-								<div class="col-4">알레르기 정보</div>
-								<div class="col-8">
-									<p>
-										<strong>-밀,계란,우유,밤,함유(공주밤 몽블랑)</strong>
-									</p>
-
-								</div>
-							</div>
-
-							<div class="row pt-2 pb-4">
-								<div class="col-6  text-left">
-									<span style="margin-right: 1em; text-align: left">총 수량 :
-										<strong>${dto.shop_quantity }(개)</strong>
-									</span>
-								</div>
-								<div class="col-6  text-right">
-									<strong style="color: red">(최소 주문량 1개 이상) </strong>
-								</div>
-							</div>
-
-							<div class="row pt-2 border-top border-bottom bg-gray">
-
-								<div class="col-12 py-3 border-bottom">
-									<strong>${dto.shop_title }</strong>
-								</div>
-
-								<div class="col-4  py-3 text-right">
-
-
-							
-
-									수량 : <input type="text" name="shop_quantity" value="1" id="quantity_one"
-
-										oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-										style="width: 3em; text-align: right">
-								</div>
-								<div class="col-2"
-									style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
-									<div class="row">
-										<div class="col-12">
-
-											<input type="button" value="+" id="up_btn" 
-												class="quantity_btn"> <input type="button" value="-"
-												id="down_btn" class="quantity_btn">
-
-										</div>
+										<p>
+											<strong>${dto.shop_price }</strong>
+										</p>
 
 									</div>
 								</div>
 
-								<div class="col-6 py-3 text-right">
-									<small id="resultPrice1" name="shop_price" value="${dto.shop_price }">${dto.shop_price }원</small>
 
+								<div class="row pb-3 mt-4  border-bottom">
+									<div class="col-4">판매 단위</div>
+									<div class="col-8">
+										<p>
+											${dto.shop_quantity } <strong> (개)</strong> <input
+												type="hidden" name=basket_quantity
+												value="${dto.shop_quantity }">
+										</p>
+
+									</div>
+								</div>
+
+
+
+
+								<div class="row pb-3 mt-4 border-bottom">
+									<div class="col-4">유통기한</div>
+									<div class="col-8">
+										<p>
+											<strong>${dto.shop_expiration }</strong> <input
+												type="hidden" name=basket_expiration
+												value="${dto.shop_expiration }">
+										</p>
+
+									</div>
+								</div>
+
+								<div class="row pb-3 mt-4 border-bottom">
+									<div class="col-4">판매 지역</div>
+									<div class="col-8">
+										<p>
+											<strong>${dto.shop_location }</strong> <input type="hidden"
+												name="basket_location" value="${dto.shop_location }">
+										</p>
+
+									</div>
+								</div>
+
+								<!-- 테이블 추가요망 -->
+								<div class="row pb-3 mt-4  border-bottom">
+									<div class="col-4">알레르기 정보</div>
+									<div class="col-8">
+										<p>
+											<strong>-밀,계란,우유,밤,함유(공주밤 몽블랑)</strong>
+										</p>
+
+									</div>
+								</div>
+
+								<div class="row pt-2 pb-4">
+									<div class="col-6  text-left">
+										<span style="margin-right: 1em; text-align: left">총 수량
+											: <strong>${dto.shop_quantity }(개)</strong>
+										</span>
+									</div>
+									<div class="col-6  text-right">
+										<strong style="color: red">(최소 주문량 1개 이상) </strong>
+									</div>
+								</div>
+
+								<div class="row pt-2 border-top border-bottom bg-gray">
+
+									<div class="col-12 py-3 border-bottom">
+										<strong>${dto.shop_title }</strong>
+									</div>
+
+									<div class="col-4  py-3 text-right">
+
+
+
+
+										수량 : <input type="text" name="shop_quantity" value="1"
+											id="quantity_one"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+											style="width: 3em; text-align: right">
+									</div>
+									<div class="col-2"
+										style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
+										<div class="row">
+											<div class="col-12">
+
+												<input type="button" value="+" id="up_btn"
+													class="quantity_btn"> <input type="button"
+													value="-" id="down_btn" class="quantity_btn">
+
+											</div>
+										</div>
+									</div>
+									<div class="col-6 py-3 text-right">
+										<small id="resultPrice1" name="shop_price"
+											value="${dto.shop_price }">${dto.shop_price }원</small>
+
+									</div>
+								</div>
+								<div class="row border-top border-bottom py-3">
+									<div class="col-12 text-right" style="line-height: 2.5em;">
+										<span style="margin-right: 2em"><strong>총 상품금액
+												:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+									</div>
+								</div>
+								<div class="row pb-3 mt-4 border-bottom-0">
+									<div class="col-12" style="text-align: center"
+										style="font-wight:600">
+										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> 
+										<a id=basket href="/Basket/basketInsert?seq=${dto.shop_seq }" class="btn akame-btn">
+										<i class="icon_cart"></i>장 바 구 니에 담기</a>
+									</div>
 								</div>
 							</div>
-							<div class="row border-top border-bottom py-3">
-
-
-
-								<div class="col-12 text-right" style="line-height: 2.5em;">
-									<span style="margin-right: 2em"><strong>총 상품금액
-											:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
-
-								</div>
-							</div>
-							<div class="row pb-3 mt-4 border-bottom-0">
-								<div class="col-12" style="text-align: center"
-									style="font-wight:600">
-
-
-									<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> <a href="#"
-										class="btn akame-btn"><i class="icon_cart"></i>장 바 구 니</a>
-
-
-								</div>
-							</div>
-
 						</div>
 					</div>
-
-
 				</div>
-
-
-			</div>
-			</form>
-			<div class="col-2">오른쪽</div>
-		</div>
-		<div class=" pb-5">
-			<div class=" col-12"></div>
-		</div>
+	</form>
+	<div class="col-2">오른쪽</div>
+	
+	<div class=" pb-5">
+		<div class=" col-12"></div>
 	</div>
+	
+
+
+
+
 	<section class=" bg-gray">
 	<div class="container">
 		<div class="row my-2">
@@ -365,12 +359,13 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
-
-		
-	$("#chargeItem").on("click",function(){
-		var quantity = $("#quantity_one").val();
-		location.href="/shopboard/shopBoard_buyProc?quantity="+quantity+"&seq=${dto.shop_seq }"
-	})	
+		$("#chargeItem").on(
+				"click",
+				function() {
+					var quantity = $("#quantity_one").val();
+					location.href = "/shopboard/shopBoard_buyProc?quantity="
+							+ quantity + "&seq=${dto.shop_seq }"
+				})
 		//수량
 
 		var upCount = function() {
