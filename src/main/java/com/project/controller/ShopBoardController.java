@@ -183,41 +183,18 @@ public class ShopBoardController {
 
 	@RequestMapping("/shopOrder")
 	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3, String quantity, String price) {
-
-		ShopBoardDTO sdto = sService.ShopBoardIdSelect(odto.getProducts_seq());
-
+			String getter_phone1, String getter_phone2, String getter_phone3) {
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
 		String email = email1 + "@" + email2;
 		String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
-		MemberDTO id = (MemberDTO) session.getAttribute("id");
-		String buyId = id.getMember_id();
-		odto.setBuyer_id(buyId);
-		odto.setOrder_phone(phone);
-		odto.setOrder_email(email);
-		odto.setGetter_phone(getter_phone);
-		String savedName = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
-
-		// orderList테이블에 들어가는정보 주문자+판매자정보
-		int quantity1 = Integer.parseInt(quantity);// orderList 테이블에넣는값
-		int price1 = Integer.parseInt(price);// orderList 테이블에넣는값
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yy-MM-dd");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMddhhmmss");
-		OrderListDTO ldto = new OrderListDTO();
-		ldto.setProducts_seq(sdto.getShop_seq());
-		ldto.setSell_id(sdto.getShop_id());
-		ldto.setBuyer_id(buyId);
-		ldto.setSell_brand(sdto.getShop_brand());
-		ldto.setSell_title(sdto.getShop_title());
-		ldto.setSell_imagepath(sdto.getShop_imagepath1());
-		ldto.setBuy_quantity(quantity1);
-		ldto.setBuy_price(price1);
-		ldto.setBuy_date(sdf1.format(System.currentTimeMillis()));
-		ldto.setOrder_number(sdf2.format(System.currentTimeMillis()) + savedName);
-		oService.orderInsert(odto, ldto);
-		request.setAttribute("odto", odto);
-		request.setAttribute("ldto", ldto);
+		odto.setOrder_buyer_phone(phone);
+		odto.setOrder_receipt_phone(getter_phone);
+		odto.setOrder_buyer_email(email);
+		String order_number = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
+		odto.setOrder_number(order_number);
+		oService.orderInsert(odto);
+		request.setAttribute("ldto", odto);
 
 		return "/shopBoard/shopChargeOk";
 	}

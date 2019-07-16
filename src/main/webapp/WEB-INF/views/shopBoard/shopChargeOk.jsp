@@ -93,16 +93,16 @@
 			<div class="col-6">
 				<div class="row">
 					<div class="col-4" style="margin-top: 0.8em">
-						<img src="${ldto.sell_imagepath }">
+						<img src="${ldto.order_image }">
 					</div>
 					<div class="col-8 text-left" style="margin-top: 1.5em">
-						<strong>[${ldto.sell_brand }]</strong><br> ${ldto.sell_title }<br>
+						<br> ${ldto.order_title }<br>
 						<br> <small>주문번호 : ${ldto.order_number }</small>
 					</div>
 				</div>
 			</div>
-			<div class="col-1" style="margin-top: 3em">${ldto.buy_quantity }</div>
-			<div class="col-2" style="margin-top: 3em">${ldto.buy_price }</div>
+			<div class="col-1" style="margin-top: 3em">${ldto.order_quantity }</div>
+			<div class="col-2" style="margin-top: 3em">${ldto.order_price }</div>
 			<div class="col-2" style="margin-top: 1em">
 				<small>입점 업체</small><br> <small>(그룹1)</small><br> <br>
 				<small>예상 발송일</small><br> <small>(1.8일 후 발송)</small>
@@ -136,7 +136,7 @@
 				<strong>결제 금액</strong>
 			</div>
 			<div class="col-10 border bg-gray">
-				<span>${ldto.buy_price } 원</span>
+				<span>${ldto.order_price } 원</span>
 			</div>
 		</div>
 
@@ -151,21 +151,21 @@
 				<div class="col-1 border">
 					<strong>수령인</strong>
 				</div>
-				<div class="col-6 border bg-gray">${odto.getter_name }</div>
+				<div class="col-6 border bg-gray">${ldto.order_receipt }</div>
 				<div class="col-2 border text-center">
 					<strong>휴대전화</strong>
 				</div>
-				<div class="col-3 border bg-gray">${odto.getter_phone }</div>
+				<div class="col-3 border bg-gray">${ldto.order_receipt_phone }</div>
 
 				<div class="col-1 border">
 					<strong>배송지</strong>
 				</div>
-				<div class="col-6 border bg-gray">${odto.getter_address1 }&nbsp;
-					${odto.getter_address2 } &nbsp; (${odto.getter_postcode })</div>
+				<div class="col-6 border bg-gray">${ldto.order_receipt_address1 }&nbsp;
+					${ldto.order_receipt_address2 } &nbsp; (${ldto.order_receipt_postcode })</div>
 				<div class="col-2 border text-center">
 					<strong>전화번호</strong>
 				</div>
-				<div class="col-3 border bg-gray">${odto.getter_phone }</div>
+				<div class="col-3 border bg-gray">${ldto.order_receipt_phone }</div>
 			</div>
 		</div>
 	</div>

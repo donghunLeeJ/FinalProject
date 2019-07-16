@@ -75,18 +75,27 @@ img {
 				<div class="col-5 ">
 					<div class="row"">
 						<div class="col-3  pt-2 pb-2 ">
-							<img class="ml-3" src="${dto.shop_imagepath1 }">
+							<img class="ml-3" src="${dto.shop_imagepath1 }"> <input
+								type="hidden" value="${dto.shop_imagepath1 }" name="order_image">
 						</div>
 						<div class="col-9"
 							style="text-overflow: ellipsis; margin-top: 1.4em">
-							<span>${dto.shop_title }</span>
+							<span>${dto.shop_title } <input type="hidden"
+								value="${dto.shop_title }" name="order_title"> <input
+								type="hidden" value="${dto.shop_id } " name="order_seller">
+							</span>
+
 						</div>
 
 					</div>
 				</div>
 
-				<div class="col-1" style="margin-top: 1.4em">${quantity }</div>
-				<div class="col-1" id="price" style="margin-top: 1.4em">${price }(원)</div>
+				<div class="col-1" style="margin-top: 1.4em">${quantity }
+					<input type="hidden" value="${quantity }" name="order_quantity">
+				</div>
+				<div class="col-1" id="price" style="margin-top: 1.4em">${price }(원)
+					<input type="hidden" value="${price }" name="order_price">
+				</div>
 				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
 				<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
 				<div class="col-2">
@@ -106,7 +115,7 @@ img {
 			<div class="row border rounded">
 				<div class="col-3 py-2 font-weight-bold">주문자 이름</div>
 				<div class="col-9 py-2">
-					<input type="text" name="order_name" id="order_name">
+					<input type="text" name="order_buyer" id="order_buyer">
 				</div>
 				<div class="col-3 py-2 font-weight-bold">휴대전화</div>
 				<div class="col-9 py-2">
@@ -149,20 +158,22 @@ img {
 					</div>
 					<div class="col-3 font-weight-bold py-2">받으시는 분</div>
 					<div class="col-9 py-2">
-						<input type="text" name="getter_name" style="width: 8em"
+						<input type="text" name="order_receipt" style="width: 8em"
 							id="geter_name">
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송지선택</div>
 					<div class="col-9 py-2">
-						<input type="text" id="sample6_postcode" name="getter_postcode"
-							placeholder="우편번호"> <input type="button"
-							onclick="sample6_execDaumPostcode()" value="우편번호 찾기"
-							style="margin-left: 0.5em"><br> <br> <input
-							type="text" id="sample6_address" name="getter_address1"
-							placeholder="주소" style="width: 20em"><br> <br>
-						<input type="text" id="sample6_detailAddress"
-							name="getter_address2" placeholder="상세주소" style="width: 25em">
-						<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+						<input type="text" id="sample6_postcode"
+							name="order_receipt_postcode" placeholder="우편번호"> <input
+							type="button" onclick="sample6_execDaumPostcode()"
+							value="우편번호 찾기" style="margin-left: 0.5em"><br> <br>
+						<input type="text" id="sample6_address"
+							name="order_receipt_address1" placeholder="주소"
+							style="width: 20em"><br> <br> <input
+							type="text" id="sample6_detailAddress"
+							name="order_receipt_address2" placeholder="상세주소"
+							style="width: 25em"> <input type="text"
+							id="sample6_extraAddress" placeholder="참고항목">
 
 					</div>
 					<div class="col-3 font-weight-bold py-2">휴대전화</div>
@@ -174,7 +185,7 @@ img {
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
 					<div class="col-9">
-						<input type="text" name="getter_command" style="width: 35em">
+						<input type="text" name="order_receipt_demend" style="width: 35em">
 						<p style="color: blue;">
 							<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
 						</p>
@@ -201,9 +212,7 @@ img {
 					</div>
 				</div>
 		</div>
-		<input type="hidden" name="quantity" value="${quantity}"> <input
-			type="hidden" name="price" value="${price }"> <input
-			type="hidden" name="products_seq" value="${dto.shop_seq }">
+
 
 	</form>
 
@@ -213,30 +222,31 @@ img {
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 		$("#buy_aTag").on("click", function() {
-			var price = $("#price").text();
-			IMP.request_pay({
-				pg : 'inicis', // version 1.1.0부터 지원.
-				pay_method : 'card',
-				merchant_uid : 'merchant_' + new Date().getTime(),
-				name : '주문명:결제테스트',
-				amount : price,
-				buyer_email : 'iamport@siot.do',
-				buyer_name : '구매자이름',
-				buyer_tel : '010-1234-5678',
-				buyer_addr : '서울특별시 강남구 삼성동',
-				buyer_postcode : '123-456',
-				m_redirect_url : 'localhost/home'
-			}, function(rsp) {
-				if (rsp.success) {
-					var msg = '결제가 완료되었습니다.';
-					alert(msg);
-					$("#completeForm").submit();
-				} else {
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
-				}
-				alert(msg);
-			});
+			// 			var price = $("#price").text();
+			// 			IMP.request_pay({
+			// 				pg : 'inicis', // version 1.1.0부터 지원.
+			// 				pay_method : 'card',
+			// 				merchant_uid : 'merchant_' + new Date().getTime(),
+			// 				name : '주문명:결제테스트',
+			// 				amount : price,
+			// 				buyer_email : 'iamport@siot.do',
+			// 				buyer_name : '구매자이름',
+			// 				buyer_tel : '010-1234-5678',
+			// 				buyer_addr : '서울특별시 강남구 삼성동',
+			// 				buyer_postcode : '123-456',
+			// 				m_redirect_url : 'localhost/home'
+			// 			}, function(rsp) {
+			// 				if (rsp.success) {
+			// 					var msg = '결제가 완료되었습니다.';
+			// 					alert(msg);
+			// 					$("#completeForm").submit();
+			// 				} else {
+			// 					var msg = '결제에 실패하였습니다.';
+			// 					msg += '에러내용 : ' + rsp.error_msg;
+			// 				}
+			// 				alert(msg);
+			// 			});
+			$("#completeForm").submit();
 		})
 
 		// 	배송지 radio reset 

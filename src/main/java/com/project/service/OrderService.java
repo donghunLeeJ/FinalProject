@@ -13,11 +13,8 @@ public class OrderService {
 
 	@Autowired
 	private OrderDAO dao;
-
-	@Transactional("transactionManager")
-	public void orderInsert(OrderDTO odto, OrderListDTO ldto) {
-		dao.orderListInsert(ldto);
+	
+	public void orderInsert(OrderDTO odto) {
 		dao.orderInsert(odto);
-
 	}
 }
