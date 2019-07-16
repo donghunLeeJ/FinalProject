@@ -61,7 +61,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberDTO dto) {
-		
+
 		return sst.insert("member.insert",dto);
 	}
 
