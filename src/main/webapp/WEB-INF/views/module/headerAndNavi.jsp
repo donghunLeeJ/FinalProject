@@ -4,15 +4,16 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 .headerbtn {
-	border: 1px solid skyblue;
+	border: 0px solid skyblue;
 	background-color: rgba(0, 0, 0, 0);
 	color: skyblue;
 	padding: 5px;
+	padding-top: 0px;
 }
 
 .headerbtn:hover {
 	color: white;
-	background-color: skyblue;
+	
 }
 
 #logout {
@@ -23,6 +24,7 @@
 #mypage {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
+	width: 10%;
 }
 </style>
 <!-- Preloader -->
@@ -52,8 +54,13 @@
 							</c:when>
 
 							<c:otherwise>
-								<button id=logout class="headerbtn">logout</button>
-								<button id=mypage class="headerbtn"></button>
+
+								<button id=mypage class="headerbtn">
+									<img src="/img/button-img/m_iconM.png">
+								</button>
+								<button id=logout style="width: 8%;" class="headerbtn ">
+									<img src="/img/button-img/logout-icon.png">
+								</button>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -63,11 +70,13 @@
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
-	<div class="main-header-area border" id="fixedNav" style="background-color: white">
+	<div class="main-header-area border" id="fixedNav"
+		style="background-color: white">
 		<div class="classy-nav-container breakpoint-off">
 			<div class="container">
 				<!-- Classy Menu -->
-				<nav class="classy-navbar justify-content-between  " id="akameNav" style="background-color: white">
+				<nav class="classy-navbar justify-content-between  " id="akameNav"
+					style="background-color: white">
 
 					<!-- Logo -->
 					<a class="nav-brand" href="/home"><img
@@ -132,27 +141,25 @@
 			</div>
 		</div>
 	</div>
-	<script >
-	
-	 $(window).scroll(function(){
-	        
-	        var docScrollY = $(document).scrollTop()
-	        var barThis = $("#fixedNav")
-	       
-	 		console.log(docScrollY);
-	        if( docScrollY > 200 ) {
-	        	barThis.fadeIn();
-	        	barThis.addClass("fixed-top");
-	            
-	        }else{
-	            barThis.removeClass("fixed-top");
-	        }
-	 
-	    });
+	<script>
+		$(window).scroll(function() {
 
+			var docScrollY = $(document).scrollTop()
+			var barThis = $("#fixedNav")
+
+			console.log(docScrollY);
+			if (docScrollY > 200) {
+				barThis.fadeIn();
+				barThis.addClass("fixed-top");
+
+			} else {
+				barThis.removeClass("fixed-top");
+			}
+
+		});
 	</script>
-	
-	
+
+
 	<script>
 		$("#LogIN").on("click", function() {
 			location.href = "/member/loginForm";

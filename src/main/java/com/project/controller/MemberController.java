@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.dao.HtmlEmailDAO;
+import com.project.dao.MemberDAO;
 import com.project.dto.MemberDTO;
 import com.project.dto.MemberPagingDTO;
 import com.project.dto.ShopBoardDTO;
@@ -25,7 +26,9 @@ import com.project.service.ShopBoardService;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-
+	
+	@Autowired
+	private MemberDAO mdao;
 	@Autowired
 	private HttpSession session;
 	@Autowired
@@ -47,6 +50,7 @@ public class MemberController {
 	@RequestMapping("loginProc")
 	public String login(MemberDTO mdto) {
 		System.out.println("로그인프록  " + mdto.getMember_id());
+		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
 		int result = mservice.login(mdto);
 		if (result == 1) {
 
@@ -83,6 +87,10 @@ public class MemberController {
 	public String joinInsert(MemberDTO mdto) {
 		System.out.println("조인프록");
 		String id = mdto.getMember_id();
+		
+		
+		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
+	
 		// System.out.println("조인프록 " + id);
 		try {
 			edao.sendMail(id);
@@ -93,7 +101,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		// System.out.println(result);
-		return "redirect:/home";
+		return "member/emailsend";
 	}
 
 	@RequestMapping("logOutProc")

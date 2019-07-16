@@ -1,5 +1,7 @@
 package com.project.dao;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,27 @@ public class MemberDAO {
 		return sst.selectOne("ShopBoardDAO.totalCount");
 	}
 	
+	 public static String SHA256(String str){
+		  String SHA = ""; 
+		  try{
+		   MessageDigest sh = MessageDigest.getInstance("SHA-256"); 
+		   sh.update(str.getBytes()); 
+		   byte byteData[] = sh.digest();
+		   StringBuffer sb = new StringBuffer(); 
+		   for(int i = 0 ; i < byteData.length ; i++){
+		    sb.append(Integer.toString((byteData[i]&0xff) + 0x100, 16).substring(1));
+		   }
+		   SHA = sb.toString();
+		   
+		  }catch(NoSuchAlgorithmException e){
+		   e.printStackTrace(); 
+		   SHA = null; 
+		  }
+		  return SHA;
+		 }
+	
+	
+	
 	
 	public int login(MemberDTO dto) {
 		int result=0;
@@ -38,6 +61,7 @@ public class MemberDAO {
 	}
 
 	public int insert(MemberDTO dto) {
+
 		return sst.insert("member.insert",dto);
 	}
 
