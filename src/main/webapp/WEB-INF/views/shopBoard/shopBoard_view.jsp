@@ -138,9 +138,8 @@
 									<div class="col-4">유통기한</div>
 									<div class="col-8">
 										<p>
-											<strong>${dto.shop_expiration }</strong> <input
-												type="hidden" name=basket_expiration
-												value="${dto.shop_expiration }">
+											<strong>${dto.shop_expiration }</strong> <input type="hidden"
+												name=basket_expiration value="${dto.shop_expiration }">
 										</p>
 
 									</div>
@@ -222,22 +221,28 @@
 								<div class="row pb-3 mt-4 border-bottom-0">
 									<div class="col-12" style="text-align: center"
 										style="font-wight:600">
-										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> 
-										<a id=basket href="/Basket/basketInsert?seq=${dto.shop_seq }" class="btn akame-btn">
-										<i class="icon_cart"></i>장 바 구 니에 담기</a>
+										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> <a
+											id=basket href="/Basket/basketInsert?seq=${dto.shop_seq }"
+											class="btn akame-btn"> <i class="icon_cart"></i>장 바 구 니에
+											담기
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+
+
 	</form>
 	<div class="col-2">오른쪽</div>
-	
+
 	<div class=" pb-5">
 		<div class=" col-12"></div>
 	</div>
-	
+
 
 
 

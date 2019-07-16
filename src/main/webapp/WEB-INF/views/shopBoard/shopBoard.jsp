@@ -14,9 +14,14 @@
 	width: 100%;
 	height: 100%;
 }
+
+select {
+	color: red;
+}
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<!-- header -->
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
@@ -29,7 +34,67 @@
 			<div class="col-lg-2">판매게시판 -> 구매하기 페이지</div>
 			<div class="col-lg-8">
 				<div class="container">
+
 					<div class="row">
+						<!-- Button to Open the Modal -->
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#myModal">Open modal</button>
+
+						<!-- The Modal -->
+						<form action="/shopboard/buyReview" method="POST">
+							<div class="modal modal-xl fade" id="myModal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+
+										<!-- Modal Header -->
+										<div class="modal-header">
+											<h3 class="modal-title">댓글 작성</h3>
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+										</div>
+
+										<!-- Modal body -->
+										<div class="modal-body ">
+
+											<div class="row py-5  border-bottom">
+												<div class="col-3">이미지</div>
+												<div class="col-9">
+													[brnad]<br>LMC EARTH LOGO TEE teal<br>
+												</div>
+											</div>
+
+											<div class="row py-3">
+												<div class="col-3">
+													<select style="height: 2em" name="star_review">
+														<option value="5">★★★★★</option>
+														<option value="4">★★★★</option>
+														<option value="3">★★★</option>
+														<option value="2">★★</option>
+														<option value="1">★</option>
+													</select>
+												</div>
+												<div class="col-9">
+													<input type="text" name="title" placeholder="제목"
+														style="width: 21em; height: 2em">
+												</div>
+												<div class="col-12 py-3">
+													<textarea name="contents" cols="50" rows="7"></textarea>
+												</div>
+											</div>
+
+										</div>
+
+
+										<!-- Modal footer -->
+										<div class="modal-footer">
+											<input type="submit" class="btn btn-primary" value="댓글 작성">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">댓글 취소</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</form>
 						<c:forEach var="i" items="${boardList }">
 							<div
 								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"

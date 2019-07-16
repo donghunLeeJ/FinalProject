@@ -50,6 +50,7 @@
 					alt="...">
 			</div>
 
+
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleInterval"
 			role="button" data-slide="prev"> <span

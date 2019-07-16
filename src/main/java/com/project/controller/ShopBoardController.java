@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
-import com.project.dto.BasketDTO;
 import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
 import com.project.dto.OrderListDTO;
 import com.project.dto.ShopBoardDTO;
+import com.project.dto.ShopReviewDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
@@ -124,7 +124,7 @@ public class ShopBoardController {
 				}
 			}
 		}
-	
+
 		if (fileCount == 1) {
 
 			fileArrayPath.add("/img/default.jpg");
@@ -220,6 +220,14 @@ public class ShopBoardController {
 		request.setAttribute("ldto", ldto);
 
 		return "/shopBoard/shopChargeOk";
+	}
+
+	@RequestMapping("/buyReview")
+	public String shopReview(ShopReviewDTO dto) {
+		System.out.println(dto.getStar_review());
+		System.out.println(dto.getTitle());
+		System.out.println(dto.getContents());
+		return "redirect:/home/";
 	}
 
 }
