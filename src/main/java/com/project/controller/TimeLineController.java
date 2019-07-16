@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.project.dto.MemberDTO;
 import com.project.dto.Tl_BoardDTO;
+import com.project.dto.Tl_ReplyDTO;
 import com.project.service.TimeLineService;
 
 @Controller
@@ -30,6 +31,7 @@ public class TimeLineController {
 	public String accessTimeline(HttpServletRequest request, Tl_BoardDTO dto, String seq) {
 		int page = Integer.parseInt(seq);
 		request.setAttribute("result", tls.showAll(page));
+//		request.setAttribute("result2", tls.show(boardSeq));
 		return "/timeLine/timeLine";
 	}
 
@@ -121,9 +123,6 @@ public class TimeLineController {
 	
 	@RequestMapping("/boardModified")
 	public String boardModified(Tl_BoardDTO dto) {
-		int seq = dto.getTl_board_seq();
-		String title = dto.getTl_title();
-		String contents = dto.getTl_contents();
 		String resourcePath = session.getServletContext().getRealPath("/resources/img/tl-img/");
 		System.out.println(resourcePath);
 		try {
@@ -161,6 +160,26 @@ public class TimeLineController {
 			}else {
 				return "/timeLine/modi_del_reject";
 			}
+		}
+	}
+	
+	@RequestMapping("/boardReply")
+	public String boardReply(Tl_ReplyDTO dto) {
+		
+		if(dto.getTl_repl_contents() != ""){
+			if(session.getAttribute("id") != null) {
+				String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
+				int seq = (int)dto.getTl_board_seq();
+				dto.setTl_board_seq(seq);
+				dto.setTl_repl_writer(id);
+				tls.Reply_write(dto);
+				return "redirect:/timeline/accessTimeLine?seq=1";
+			}else {
+				return "/timeLine/replyreject2";
+			}
+			
+		}else {
+			return "/timeLine/replyreject";
 		}
 		
 	}

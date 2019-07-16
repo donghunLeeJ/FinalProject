@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.project.dao.Tl_BoardDAO;
 import com.project.dto.Tl_BoardDTO;
+import com.project.dto.Tl_ReplyDTO;
 
 @Component
 public class TimeLineService {
@@ -28,5 +29,13 @@ public class TimeLineService {
    
    public int update(Tl_BoardDTO dto) {
 	   return dao.update(dto);
+   }
+   
+   public int Reply_write(Tl_ReplyDTO dto) {
+	   return dao.reply_write(dto);
+   }
+   
+   public List<Tl_ReplyDTO> show(int boardSeq){
+	   return dao.show(boardSeq);
    }
 }
