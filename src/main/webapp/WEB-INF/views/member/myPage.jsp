@@ -461,18 +461,19 @@ hirght:80px;
 				|| str_low.includes("onunload")) 
 		{
 			str = str_low;
-			str = str.replace("url", "1212");
+			str = str.replace("url", "----");
 			str = str.replace("<sc", "---");
 			str = str.replace("cr", "---");
 			str = str.replace("ri", "---");
 			str = str.replace("it", "---");
-			str = str.replace("ip", "");
-			str = str.replace("img", "");
+			str = str.replace("ip", "----");
+			str = str.replace("img", "---");
 			str = str.replace("im", "---");
 			str = str.replace("al", "---");
 			str = str.replace("er", "---");
 			str = str.replace("rt>", "---");
-			str = str.replace("ajax", "Hello");
+			str = str.replace("ajax", "---");
+			str = str.replace("aj", "---");
 			str = str.replace("href", "-----");
 			str = str.replace("div", "x-div");
 			str = str.replace("json", "14dd2");
@@ -518,6 +519,7 @@ hirght:80px;
 		 location.href="/home";
 	})
 	
+	//-----------------------------회원탈퇴
 	$("#delOK").on("click",function(){
 		if($("#del_id").val()==""){
 			alert("아이디를 입력해주세요");
@@ -539,7 +541,7 @@ hirght:80px;
 			else return;
 		}
 	});
-	
+	//-----------------------------회원탈퇴 끝
 	
 		$("#file").hide();
 
