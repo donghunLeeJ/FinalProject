@@ -32,13 +32,10 @@ public class TimeLineController {
 
 	@RequestMapping("/accessTimeLine")
 	public String accessTimeline(HttpServletRequest request, Tl_BoardDTO dto, String seq) {
-		Map<String,String> profile = new HashMap();
-		for(ProfileImageDTO img : tls.profile_image()) {
-			profile.put(img.getId(), img.getImagePath());
-		}
+	
 		int page = Integer.parseInt(seq);
 		request.setAttribute("result", tls.showAll(page));
-		request.setAttribute("profile", profile);
+	
 		return "/timeLine/timeLine";
 	}
 
