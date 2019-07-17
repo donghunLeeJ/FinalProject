@@ -34,7 +34,7 @@
 		select * from shopboard
 	</select>
 
-<select id="ShopBoardList"
+	<select id="ShopBoardList"
 		resultType="com.project.dto.ShopBoardDTO"> <!-- 마이페이지에서 판매목록 조회 -->
 		select * from shopboard where shop_id=#{value}
 	</select>
@@ -49,5 +49,13 @@
 		resultType="com.project.dto.MemberDTO">
 		select * from member where memberSell_seq =
 		#{memberSell_seq}
+	</select>
+	<insert id="shopReviewInsert">
+		insert into shopReview
+		values(shop_review.nextval,#{products_seq},#{user_id},#{star_review},#{get_star},#{title},#{contents},#{writeDate})
+	</insert>
+	<select id="shopReviewList"
+		resultType="com.project.dto.ShopReviewDTO">
+		select * from shopreview where products_seq=#{shop_seq}
 	</select>
 </mapper>

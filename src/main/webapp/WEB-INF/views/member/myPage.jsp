@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,17 +12,20 @@
 .float {
 	float: left;
 }
-.over{
-		overflow:hidden;
-        box-sizing: border-box;
+
+.over {
+	overflow: hidden;
+	box-sizing: border-box;
 }
+
 .skip {
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  word-wrap:normal;
-  width:100%;
-  overflow:hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	width: 100%;
+	overflow: hidden;
 }
+
 #findAdd {
 	padding: 5px;
 	width: 50px;
@@ -46,24 +49,47 @@
 /*    div{     */
 /*     border:1px solid black;     */
 /*    }     */
-#delId{
- text-align: center;
+#delId {
+	text-align: center;
 }
-hr{
-margin:5px;
+
+hr {
+	margin: 5px;
 }
-.center{
-text-align: center;
+
+.center {
+	text-align: center;
 }
-.listimg{
-width:50px;
-height:50px;
+
+.listimg {
+	width: 8em;
+	height: 6em;
 }
-#clickList{
-height:70px;
+
+#sellTitle {
+	hirght: 80px;
 }
-#sellTitle{
-hirght:80px;
+
+.mypage_btn1 {
+	width: 5em;
+	height: 2em;
+	background-color: white;
+	border: 1px solid black;
+	margin-bottom: 0.1em;
+	cursor: pointer;
+}
+
+.mypage_btn2 {
+	width: 5em;
+	height: 2em;
+	background-color: white;
+	border: 1px solid black;
+	margin-top: 0.1em;
+	cursor: pointer;
+}
+
+select {
+	color: red;
 }
 </style>
 </head>
@@ -77,12 +103,18 @@ hirght:80px;
 		<div class="row my-2">
 			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a href="" data-target="#profile"data-toggle="tab" class="nav-link active">나의 정보</a></li>
-					<li class="nav-item"><a href="" data-target="#messages"	data-toggle="tab" class="nav-link">쪽지함</a></li>
-					<li class="nav-item"><a href="" data-target="#sell"data-toggle="tab" class="nav-link">판매 내역</a></li>
-					<li class="nav-item"><a href="" data-target="#buy"data-toggle="tab" class="nav-link">구매 내역</a></li>
-					<li class="nav-item"><a href="" data-target="#edit"data-toggle="tab" class="nav-link">정보 수정</a></li>
-					<li class="nav-item"><a href="" data-target="#delId"data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
+					<li class="nav-item"><a href="" data-target="#profile"
+						data-toggle="tab" class="nav-link active">나의 정보</a></li>
+					<li class="nav-item"><a href="" data-target="#messages"
+						data-toggle="tab" class="nav-link">쪽지함</a></li>
+					<li class="nav-item"><a href="" data-target="#sell"
+						data-toggle="tab" class="nav-link">판매 내역</a></li>
+					<li class="nav-item"><a href="" data-target="#buy"
+						data-toggle="tab" class="nav-link">구매 내역</a></li>
+					<li class="nav-item"><a href="" data-target="#edit"
+						data-toggle="tab" class="nav-link">정보 수정</a></li>
+					<li class="nav-item"><a href="" data-target="#delId"
+						data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
 				</ul>
 				<div class="tab-content py-4 ">
 					<div class="tab-pane active" id="profile">
@@ -114,19 +146,22 @@ hirght:80px;
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">핸드폰 번호</label>
+										<label class="col-lg-3 col-form-label form-control-label">핸드폰
+											번호</label>
 										<div class="col-lg-9">
 											<div class="form-control" type="text">${id.member_phone}</div>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">기본 주소</label>
+										<label class="col-lg-3 col-form-label form-control-label">기본
+											주소</label>
 										<div class="col-lg-9">
 											<div class="form-control" type="text">${id.member_address1 }</div>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">상세 주소</label>
+										<label class="col-lg-3 col-form-label form-control-label">상세
+											주소</label>
 										<div class="col-lg-9">
 											<div class="form-control" type="text">${id.member_address2 }</div>
 										</div>
@@ -192,66 +227,165 @@ hirght:80px;
 							</tbody>
 						</table>
 					</div>
-				
-					<div class="tab-pane" id="sell"><!-- 판매 내역 -->
-					<h4>판매 내역 확인</h4>
-					<hr>
-					<div class="col-12 over center"id="sellTitle">
-					<div class="col-2 float">요청</div>
-					<div class="col-1 float">이미지</div> 
-				    <div class="float col-4">제목</div>
-					<div class="col-2 float"> 판매 금액</div> 
-					<div class="col-1 float "> 수량</div>
-					<div class="col-2 float "> 기한</div>
-					</div>
-					<hr>
-					
-					<c:forEach var="i" items="${mylist }">
-					<div class="col-12 over center "id="clickList">
-					<div class="col-2 float center ">
-					<input type=button class="btn-success del_list" value="삭제요청">
-					<input type=button class="btn-danger del_list2" value="요청중"></div>
-<!-- 					<div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
-					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
-					<div class="col-1 float "><img src="${i.shop_imagepath1 }" class="listimg"></div>
-					<div class="col-4 float skip ">${i.shop_title }</div>
-					<div class="col-2 float">${i.shop_price }원</div>
-					<div class="col-1 float">${i.shop_quantity }개</div>
-					<div class="col-2 float">${i.shop_expiration }</div>
-					</a>
-					</div>
+
+					<div class="tab-pane" id="sell">
+						<!-- 판매 내역 -->
+						<h4>판매 내역 확인</h4>
+						<hr>
+						<div class="col-12 over center" id="sellTitle">
+							<div class="col-2 float">요청</div>
+							<div class="col-1 float">이미지</div>
+							<div class="float col-4">제목</div>
+							<div class="col-2 float">판매 금액</div>
+							<div class="col-1 float ">수량</div>
+							<div class="col-2 float ">기한</div>
+						</div>
+						<hr>
+
+						<c:forEach var="i" items="${mylist }">
+							<div class="col-12 over center " id="clickList">
+								<div class="col-2 float center ">
+									<input type=button class="btn-success del_list" value="삭제요청">
+									<input type=button class="btn-danger del_list2" value="요청중">
+								</div>
+								<!--                <div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
+								<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
+									<div class="col-1 float ">
+										<img src="${i.shop_imagepath1 }" class="listimg">
+									</div>
+									<div class="col-4 float skip ">${i.shop_title }</div>
+									<div class="col-2 float">${i.shop_price }원</div>
+									<div class="col-1 float">${i.shop_quantity }개</div>
+									<div class="col-2 float">${i.shop_expiration }</div>
+								</a>
+							</div>
 						</c:forEach>
-<!-- 						<ul class="btn-group pagination"> -->
-<%-- 							<c:if test="${mpdto.toPrev }"> --%>
-<%-- 								<li><a href='<c:url value="/board/boardList?page=${mpdto.startNavi-1 }"/>'><i class="fa fa-chevron-left"></i></a></li> --%>
-<%-- 							</c:if> --%>
-<%-- 							<c:forEach begin="${mpdto.startNavi }"end="${mpdto.endNavi }" var="idx"> --%>
-<%-- 								<li><a href='<c:url value="/board/boardList?page=${idx }"/>'><i class="fa">${idx }</i></a></li> --%>
-<%-- 							</c:forEach> --%>
-<%-- 							<c:if test="${mpdto.toNext && mpdto.endNavi >0 }"> --%>
-<%-- 								<li><a href='<c:url value="/board/boardList?page=${mpdto.endNavi+1 }"/>'><i class="fa fa-chevron-right"></i></a></li> --%>
-<%-- 							</c:if> --%>
-<!-- 						</ul> -->
+						<!--                   <ul class="btn-group pagination"> -->
+						<%--                      <c:if test="${mpdto.toPrev }"> --%>
+						<%--                         <li><a href='<c:url value="/board/boardList?page=${mpdto.startNavi-1 }"/>'><i class="fa fa-chevron-left"></i></a></li> --%>
+						<%--                      </c:if> --%>
+						<%--                      <c:forEach begin="${mpdto.startNavi }"end="${mpdto.endNavi }" var="idx"> --%>
+						<%--                         <li><a href='<c:url value="/board/boardList?page=${idx }"/>'><i class="fa">${idx }</i></a></li> --%>
+						<%--                      </c:forEach> --%>
+						<%--                      <c:if test="${mpdto.toNext && mpdto.endNavi >0 }"> --%>
+						<%--                         <li><a href='<c:url value="/board/boardList?page=${mpdto.endNavi+1 }"/>'><i class="fa fa-chevron-right"></i></a></li> --%>
+						<%--                      </c:if> --%>
+						<!--                   </ul> -->
 					</div>
-					<div class="tab-pane" id="buy"><!-- 구매 내역 -->
-					구매 내역
+
+					<div class="tab-pane" id="buy">
+						<!-- 구매 내역 -->
+						<h4>구매 내역 확인</h4>
+
+						<div class="row center border-top border-bottom py-2 bg-gray">
+							<div class="col-1 ">번호</div>
+							<div class="col-2 ">이미지</div>
+							<div class="col-3">제목</div>
+							<div class="col-2 ">구매 금액</div>
+							<div class="col-1 ">수량</div>
+							<div class="col-2 ">구매 날짜</div>
+							<div class="col-1"></div>
+						</div>
+
+
+						<c:forEach var="i" items="${order }">
+							<div class="row  center border-bottom py-3 " id="clickList">
+								<div class="col-1 " style="margin-top: 2.2em">${i.order_seq }</div>
+								<!--                <div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
+								<%--                <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"> --%>
+								<div class="col-2 ">
+									<img src="${i.order_image }" class="listimg">
+								</div>
+								<div class="col-3  skip" style="margin-top: 2.2em">${i.order_title }</div>
+								<div class="col-2 " style="margin-top: 2.2em">${i.order_price }원</div>
+								<div class="col-1 " style="margin-top: 2.2em">${i.order_quantity }개</div>
+								<div class="col-2 " style="margin-top: 2.2em">${i.order_time }</div>
+								<div class="col-1" style="margin-top: 1.0em; padding: 0">
+									<!-- Button to Open the Modal -->
+									<button type="button" class=" mypage_btn1" data-toggle="modal"
+										data-target="#myModal">댓글 작성</button>
+									<button class="mypage_btn2">환불 요청</button>
+									<!-- The Modal -->
+									<form
+										action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}"
+										method="POST">
+										<div class="modal modal-xl fade" id="myModal">
+											<div class="modal-dialog">
+												<div class="modal-content">
+
+													<!-- Modal Header -->
+													<div class="modal-header">
+														<h3 class="modal-title">댓글 작성</h3>
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
+													</div>
+
+													<!-- Modal body -->
+													<div class="modal-body ">
+
+														<div class="row py-5  border-bottom">
+															<div class="col-3">이미지</div>
+															<div class="col-9">
+																[brnad]<br>LMC EARTH LOGO TEE teal<br>
+															</div>
+														</div>
+
+														<div class="row py-3">
+															<div class="col-3">
+																<select style="height: 2em" name="star_review">
+																	<option value="5">★★★★★</option>
+																	<option value="4">★★★★</option>
+																	<option value="3">★★★</option>
+																	<option value="2">★★</option>
+																	<option value="1">★</option>
+																</select>
+															</div>
+															<div class="col-9">
+																<input type="text" name="title" placeholder="제목"
+																	style="width: 21em; height: 2em">
+															</div>
+															<div class="col-12 py-3">
+																<textarea name="contents" cols="56" rows="10"></textarea>
+															</div>
+														</div>
+
+													</div>
+
+
+													<!-- Modal footer -->
+													<div class="modal-footer">
+														<input type="submit" class="btn btn-primary" value="댓글 작성">
+														<button type="button" class="btn btn-danger"
+															data-dismiss="modal">댓글 취소</button>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<!--                </a> -->
+							</div>
+
+						</c:forEach>
 					</div>
-					
+
 					<div class="tab-pane col-lg-12" id="edit">
 						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
-							<form id=mypage_Img action="/member/uploadImg" method="post"enctype="multipart/form-data">
+							<form id=mypage_Img action="/member/uploadImg" method="post"
+								enctype="multipart/form-data">
 								<img src="${id.member_imgpath }" class="mx-auto img-circle"
-									alt="avatar"> <input type=file id="file" name="file">
+									alt="avatar"> <input type=file id="file" name="file"
+									accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)">
 
-								<input type="button" id="change" class="btn btn-success " name="my_images"
-									value="사진 변경"> <input type="submit" id="uploadImg"
-									class="btn btn-success " value="사진 업로드">
+								<input type="button" id="change" class="btn btn-success "
+									name="my_images" value="사진 변경"> <input type="submit"
+									id="uploadImg" class="btn btn-success " value="사진 업로드">
 
 							</form>
 						</div>
-					
+
 						<div class="float col-lg-8">
-							<form id="edit_mypage"action="/member/edit_mypage" method="post">
+							<form id="edit_mypage" action="/member/edit_mypage" method="post">
 								<div class="form-group row">
 
 									<label class="col-lg-3 col-form-label form-control-label">아이디(수정
@@ -323,7 +457,7 @@ hirght:80px;
 									<div class="col-lg-9">
 										<input class="form-control" id="phone" name="member_phone"
 											type="text" value="${id.member_phone}"
-											 placeholder=" '-'를 제외하고 입력해주세요">
+											placeholder=" '-'를 제외하고 입력해주세요">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -340,14 +474,15 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="password" name="member_pw"
-											id="pw1"    placeholder="대/소문자, 숫자 포함 최소 8자리">
+											id="pw1" placeholder="대/소문자, 숫자 포함 최소 8자리">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호
 										확인</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="password" id="pw2"    placeholder="대/소문자, 숫자 포함 최소 8자리">
+										<input class="form-control" type="password" id="pw2"
+											placeholder="대/소문자, 숫자 포함 최소 8자리">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -356,215 +491,129 @@ hirght:80px;
 
 										<!--                                 <input type="reset" class="btn btn-secondary" value="초기화"> -->
 
-										<input type="button" id="edit_info" class="btn btn-success"value="정보 수정"> 
-										<input type="button" id="goHome"class="btn btn-success" value="홈으로">
+										<input type="button" id="edit_info" class="btn btn-success"
+											value="정보 수정"> <input type="button" id="goHome"
+											class="btn btn-success" value="홈으로">
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="tab-pane" id="delId">
-					<h1>그동안 저희 사이트를 이용해 주셔서 감사합니다</h1>
-					<p>
-					<h3>본인확인을 위해 정보를 입력해주세요</h3>
-								<form id="delform" action="/member/delOK" >
+						<h1>그동안 저희 사이트를 이용해 주셔서 감사합니다</h1>
+						<p>
+						<h3>본인확인을 위해 정보를 입력해주세요</h3>
+						<form id="delform" action="/member/delOK">
 							<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">아이디</label>
-									<div class="col-lg-6">
-										<input class="form-control" id="del_id" name="del_id"type="text">
-									</div>
+								<label class="col-lg-3 col-form-label form-control-label">아이디</label>
+								<div class="col-lg-6">
+									<input class="form-control" id="del_id" name="del_id"
+										type="text">
 								</div>
-								<P>
-										<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
-									<div class="col-lg-6">
-										<input class="form-control" id="del_pw" name="del_pw"type="password" >
-									</div>
-									<p>
+							</div>
+							<P>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
+								<div class="col-lg-6">
+									<input class="form-control" id="del_pw" name="del_pw"
+										type="password">
 								</div>
-										<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label">비밀번호 확인</label>
-									<div class="col-lg-6">
-										<input class="form-control" id="del_pw2" type="password" >
-									</div>
-								</div>
-								</form>
 								<p>
-												<input type="button" id="delOK"class="btn btn-success" value="회원탈퇴">
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">비밀번호
+									확인</label>
+								<div class="col-lg-6">
+									<input class="form-control" id="del_pw2" type="password">
+								</div>
+							</div>
+						</form>
+						<p>
+							<input type="button" id="delOK" class="btn btn-success"
+								value="회원탈퇴">
 					</div>
-					
-					
+
+
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<script src="resources/WEB-INF/views/XSS/XSS.jsp"></script>
 	<script>
+		$("#goHome").on("click", function() {
+			location.href = "/home";
+		})
 
-	function removeXSS (str, id) {
-	//	console.log(str);
-	//	console.log(id);
-	//	alert("XSS");
-		var str_low = "";
-		//var str = str1;
-		// HTML tag를 사용하게 할 경우 부분 허용
-		// HTML tag를 모두 제거
-		str = str.replace("<", "");
-		str = str.replace("<", "");
-		str = str.replace("<", "");
-		str = str.replace("<", "");
-		str = str.replace(">", "");
-		str = str.replace(">", "");
-		str = str.replace(">", "");
-		str = str.replace(">", "");
-		// 특수 문자 제거
-		str = str.replace("\"", "&gt;");
-		str = str.replace("&", "&amp;");
-		str = str.replace("%00", null);
-		str = str.replace("\"", "&#34;");
-		str = str.replace("\'", "&#39;");
-		str = str.replace("%", "&#37;");
-		str = str.replace("../", "");
-		str = str.replace("..\\\\", "");
-		str = str.replace("./", "");
-		str = str.replace("%2F", "");
-		// 허용할 HTML tag만 변경
-		str = str.replace("&lt;p&gt;", "<p>");
-		str = str.replace("&lt;P&gt;", "<P>");
-		str = str.replace("&lt;br&gt;", "<br>");
-		str = str.replace("&lt;BR&gt;", "<BR>");
-		// 스크립트 문자열 필터링 (선별함 - 필요한 경우 보안가이드에 첨부된 구문 추가)
-		str_low = str.toLowerCase();
-		if (str_low.includes("javascript") || str_low.includes("script")
-				|| str_low.includes("div") || str_low.includes("iframe")
-				|| str_low.includes("src") || str_low.includes("href")
-				|| str_low.includes("url") || str_low.includes("ajax")
-				|| str_low.includes("data") || str_low.includes("img")
-				|| str_low.includes("code") || str_low.includes("ript")
-				|| str_low.includes("for") || str_low.includes("json")
-				|| str_low.includes("document")
-				|| str_low.includes("vbscript")
-				|| str_low.includes("applet") || str_low.includes("embed")
-				|| str_low.includes("object") || str_low.includes("frame")
-				|| str_low.includes("grameset")
-				|| str_low.includes("layer") || str_low.includes("bgsound")
-				|| str_low.includes("alert") || str_low.includes("onblur")
-				|| str_low.includes("onchange")
-				|| str_low.includes("onclick")
-				|| str_low.includes("ondblclick")
-				|| str_low.includes("enerror")
-				|| str_low.includes("onfocus")
-				|| str_low.includes("onload")
-				|| str_low.includes("onmouse")
-				|| str_low.includes("onscroll")
-				|| str_low.includes("onsubmit")
-				|| str_low.includes("onunload")) 
-		{
-			str = str_low;
-			str = str.replace("url", "1212");
-			str = str.replace("<sc", "---");
-			str = str.replace("cr", "---");
-			str = str.replace("ri", "---");
-			str = str.replace("it", "---");
-			str = str.replace("ip", "");
-			str = str.replace("img", "");
-			str = str.replace("im", "---");
-			str = str.replace("al", "---");
-			str = str.replace("er", "---");
-			str = str.replace("rt>", "---");
-			str = str.replace("ajax", "Hello");
-			str = str.replace("href", "-----");
-			str = str.replace("div", "x-div");
-			str = str.replace("json", "14dd2");
-			str = str.replace("for", "world");
-			str = str.replace("ript", "");
-			str = str.replace("code", "x-code");
-			str = str.replace("src", "x-src");
-			str = str.replace("href", "x-href");
-			str = str.replace("javascript", "x-javascript");
-			str = str.replace("script", "x-script");
-			str = str.replace("iframe", "x-iframe");
-			str = str.replace("document", "x-document");
-			str = str.replace("vbscript", "x-vbscript");
-			str = str.replace("applet", "x-applet");
-			str = str.replace("embed", "x-embed");
-			str = str.replace("object", "x-object");
-			str = str.replace("frame", "x-frame");
-			str = str.replace("grameset", "x-grameset");
-			str = str.replace("layer", "x-layer");
-			str = str.replace("bgsound", "x-bgsound");
-			str = str.replace("alert", "x-alert");
-			str = str.replace("onblur", "x-onblur");
-			str = str.replace("onchange", "x-onchange");
-			str = str.replace("onclick", "x-onclick");
-			str = str.replace("ondblclick", "x-ondblclick");
-			str = str.replace("enerror", "x-enerror");
-			str = str.replace("onfocus", "x-onfocus");
-			str = str.replace("onload", "x-onload");
-			str = str.replace("onmouse", "x-onmouse");
-			str = str.replace("onscroll", "x-onscroll");
-			str = str.replace("onsubmit", "x-onsubmit");
-			str = str.replace("onunload", "x-onunload");
-			//console.log("함수"+str);
-			$("#"+id).val(str);
-		}
-	}
-	
-	</script>
-	
-	<script>
+		//-----------------------------회원탈퇴
+		$("#delOK").on("click", function() {
+			if ($("#del_id").val() == "") {
+				alert("아이디를 입력해주세요");
+			} else if ($("#del_pw").val() == "") {
+				alert("비밀번호를 입력해주세요");
+			} else if ($("#del_pw2").val() == "") {
+				alert("비밀번호 확인을 입력해주세요");
+			} else if ($("#del_pw").val() != $("#del_pw2").val()) {
+				alert("비밀번호가 일치하지 않습니다");
+			} else {
+				var result = confirm("정말 탈퇴하시겠습니까?");
+				if (result) {
+					removeXSS($("#del_id").val(), $("#del_id").attr("id"));
+					removeXSS($("#del_pw").val(), $("#del_pw").attr("id"));
+					removeXSS($("#del_pw2").val(), $("#del_pw2").attr("id"));
+					$("#delform").submit();
+				} else
+					return;
+			}
+		});
+		//-----------------------------회원탈퇴 끝
 
-	$("#goHome").on("click",function(){
-		 location.href="/home";
-	})
-	
-	$("#delOK").on("click",function(){
-		if($("#del_id").val()==""){
-			alert("아이디를 입력해주세요");
-		}else if($("#del_pw").val()==""){
-			alert("비밀번호를 입력해주세요");
-		}else if($("#del_pw2").val()==""){
-			alert("비밀번호 확인을 입력해주세요");
-		}else if($("#del_pw").val()!=$("#del_pw2").val()){
-			alert("비밀번호가 일치하지 않습니다");
-		}
-		else{
-		var result=confirm("정말 탈퇴하시겠습니까?");
-		if(result){	
-			removeXSS($("#del_id").val(),$("#del_id").attr("id"));
-			removeXSS($("#del_pw").val(),$("#del_pw").attr("id"));
-			removeXSS($("#del_pw2").val(),$("#del_pw2").attr("id"));
-			$("#delform").submit();
-		}
-			else return;
-		}
-	});
-	
-	
 		$("#file").hide();
+		//---------------------------------------------- 정보수정 이미지 변경 확장자 제한
+		function checkFile(f) {
 
+			// files 로 해당 파일 정보 얻기.
+			var file = f.files;
+
+			// file[0].name 은 파일명 입니다.
+			// 정규식으로 확장자 체크
+			if (!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)) {
+				alert('gif, jpg, png, jpeg 파일만 선택해 주세요.\n\n현재 파일 : '
+						+ file[0].name);
+				$("#imgInput").val("");
+			}
+			// 체크를 통과했다면 종료.
+			else
+				return;
+
+			// 체크에 걸리면 선택된  내용 취소 처리를 해야함.
+			// 파일선택 폼의 내용은 스크립트로 컨트롤 할 수 없습니다.
+			// 그래서 그냥 새로 폼을 새로 써주는 방식으로 초기화 합니다.
+			// 이렇게 하면 간단 !?
+			f.outerHTML = f.outerHTML;
+		}
 
 		$("#change").on("click", function() {
 			$("#file").click();//사진변경 버튼 누르면 file버튼 클릭됨
 		});
 
 		$("#file").on("change", function() {
-				file = $("#file").prop("files")[0];
-				ImgURL = window.URL.createObjectURL(file);
-				$("#preview img").attr('src', ImgURL);
-				$("#preview").show();
+			file = $("#file").prop("files")[0];
+			ImgURL = window.URL.createObjectURL(file);
+			$("#preview img").attr('src', ImgURL);
+			$("#preview").show();
 		});
 
 		$("#edit_info").on("click", function() {//정보수정 버튼 클릭시
 
 			var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-		    var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
-			var regPw2=/(\w)\1\1/g;
+			var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+			var regPw2 = /(\w)\1\1/g;
 
 			if ($("#postcode").val() == "") {
 				alert("주소를 입력하세요");
 				$("#findAdd").click();
-			}else if ($("#phone").val() == "") {
+			} else if ($("#phone").val() == "") {
 				alert("핸드폰 번호를 입력하세요");
 				$("#phone").focus();
 			} else if (!regnum.test($("#phone").val())) {
@@ -574,21 +623,18 @@ hirght:80px;
 			} else if ($("#area").val() == "") {
 				alert("자기소개를 입력해주세요");
 				$("#area").focus();
-			}else if ($("#pw1").val() == "") {
+			} else if ($("#pw1").val() == "") {
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
-			}
-			else if(!regPw.test($("#pw1").val())){
+			} else if (!regPw.test($("#pw1").val())) {
 				alert("비밀번호 형식에 맞지 않습니다");
 				$("#pw1").focus();
 				$("#pw1").focus("");
-			}
-			else if(regPw2.test($("#pw1").val())){
-	            alert('연속으로 같은 문자를 3번 이상 사용하실 수 없습니다.');
-	            $("#pw1").focus();
+			} else if (regPw2.test($("#pw1").val())) {
+				alert('연속으로 같은 문자를 3번 이상 사용하실 수 없습니다.');
+				$("#pw1").focus();
 				$("#pw1").focus("");
-	        }
-			else if ($("#pw2").val() == "") {
+			} else if ($("#pw2").val() == "") {
 				alert("비밀번호 확인을 입력해주세요");
 				$("#pw2").focus();
 			} else if ($("#pw1").val() != $("#pw2").val()) {
@@ -597,24 +643,26 @@ hirght:80px;
 				$("#pw2").val("");
 			} else if ($("#add2").val() == "") {
 				var result = confirm("상세주소가 없습니다.\n변경하시겠습니까?");
-				if(result)	$("#edit_mypage").submit();
-				else $("#add2").focus();
+				if (result)
+					$("#edit_mypage").submit();
+				else
+					$("#add2").focus();
 			} else {//정보수정을 완벽히 입력했다면
-				removeXSS($("#postcode").val(),$("#postcode").attr("id"));
-				removeXSS($("#add1").val(),$("#add1").attr("id"));
-				removeXSS($("#add2").val(),$("#add2").attr("id"));
-				removeXSS($("#phone").val(),$("#phone").attr("id"));
-				removeXSS($("#area").val(),$("#area").attr("id"));
-				removeXSS($("#pw1").val(),$("#pw1").attr("id"));
-				removeXSS($("#pw2").val(),$("#pw2").attr("id"));
+				removeXSS($("#postcode").val(), $("#postcode").attr("id"));
+				removeXSS($("#add1").val(), $("#add1").attr("id"));
+				removeXSS($("#add2").val(), $("#add2").attr("id"));
+				removeXSS($("#phone").val(), $("#phone").attr("id"));
+				removeXSS($("#area").val(), $("#area").attr("id"));
+				removeXSS($("#pw1").val(), $("#pw1").attr("id"));
+				removeXSS($("#pw2").val(), $("#pw2").attr("id"));
 				$("#edit_mypage").submit();
 			}
 
 		});
-		
+
 		$(".del_list2").hide();
-		
-		$(".del_list").on("click",function(){
+
+		$(".del_list").on("click", function() {
 			alert("삭제 요청되었습니다");
 			$(".del_list").hide();
 			$(".del_list2").show();
@@ -664,6 +712,5 @@ hirght:80px;
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
 </html>
-
 
 

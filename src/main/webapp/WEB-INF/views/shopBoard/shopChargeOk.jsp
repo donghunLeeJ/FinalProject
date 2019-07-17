@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -96,13 +97,15 @@
 						<img src="${ldto.order_image }">
 					</div>
 					<div class="col-8 text-left" style="margin-top: 1.5em">
-						<br> ${ldto.order_title }<br>
-						<br> <small>주문번호 : ${ldto.order_number }</small>
+						<br> ${ldto.order_title }<br> <br> <small>주문번호
+							: ${ldto.order_number }</small>
 					</div>
 				</div>
 			</div>
 			<div class="col-1" style="margin-top: 3em">${ldto.order_quantity }</div>
-			<div class="col-2" style="margin-top: 3em">${ldto.order_price }</div>
+			<div class="col-2" style="margin-top: 3em">
+				<fmt:formatNumber value="${ldto.order_price }" pattern="#,###" />
+			</div>
 			<div class="col-2" style="margin-top: 1em">
 				<small>입점 업체</small><br> <small>(그룹1)</small><br> <br>
 				<small>예상 발송일</small><br> <small>(1.8일 후 발송)</small>
@@ -136,7 +139,8 @@
 				<strong>결제 금액</strong>
 			</div>
 			<div class="col-10 border bg-gray">
-				<span>${ldto.order_price } 원</span>
+				<span><fmt:formatNumber value="${ldto.order_price }"
+						pattern="#,###" /> 원</span>
 			</div>
 		</div>
 
@@ -161,7 +165,8 @@
 					<strong>배송지</strong>
 				</div>
 				<div class="col-6 border bg-gray">${ldto.order_receipt_address1 }&nbsp;
-					${ldto.order_receipt_address2 } &nbsp; (${ldto.order_receipt_postcode })</div>
+					${ldto.order_receipt_address2 } &nbsp;
+					(${ldto.order_receipt_postcode })</div>
 				<div class="col-2 border text-center">
 					<strong>전화번호</strong>
 				</div>

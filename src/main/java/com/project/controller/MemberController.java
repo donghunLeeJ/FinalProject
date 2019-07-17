@@ -17,9 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.dao.HtmlEmailDAO;
 import com.project.dto.MemberDTO;
 import com.project.dto.MemberPagingDTO;
+import com.project.dto.OrderDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.paging.Mylist_Paging;
 import com.project.service.MemberService;
+import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
 
 @Controller
@@ -38,6 +40,8 @@ public class MemberController {
 	private HttpServletRequest request;
 	@Autowired
 	private Mylist_Paging mp;
+	@Autowired
+	private OrderService os;
 
 	@RequestMapping("loginForm")
 	public String goLogin() {
@@ -50,20 +54,20 @@ public class MemberController {
 		int result = mservice.login(mdto);
 		if (result == 1) {
 
-			String confirm=mservice.checkConfirm(mdto.getMember_id());
-			if(confirm.equals("y")) {
-				
-				if(mdto.getMember_id().equals("admin")){//만일 로그인한 id가 관리자 아이디일 경우
+			String confirm = mservice.checkConfirm(mdto.getMember_id());
+			if (confirm.equals("y")) {
+
+				if (mdto.getMember_id().equals("admin")) {// 만일 로그인한 id가 관리자 아이디일 경우
 
 					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
-					return "redirect:/admin/adminHome"; //관리자 컨트롤러로 이동시킴
-					
-				}else{
+					return "redirect:/admin/adminHome"; // 관리자 컨트롤러로 이동시킴
+
+				} else {
 					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 					return "redirect:/home";
 				}
 
-			}else if(confirm.equals("n")){
+			} else if (confirm.equals("n")) {
 
 				return "member/confirm";
 			}
@@ -104,13 +108,16 @@ public class MemberController {
 
 	@RequestMapping("myPage") // 메인에서 마이페이지로 가기 이때 구매내역과 판매내역 담기
 	public String myPage() {
-		//System.out.println("1");
-		MemberDTO mdto = (MemberDTO)session.getAttribute("id");
+		// System.out.println("1");
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<ShopBoardDTO> mylist = SBservice.ShopBoardList(mdto.getMember_id());
-	//	System.out.println("4");
+		List<OrderDTO> order = os.myOrderList(mdto.getMember_id());
+		System.out.println(order.get(0).getOrder_buyer_email());
+		// System.out.println("4");
 		MemberPagingDTO mpdto = mp.MemberPaging(1);
-	request.setAttribute("mylist", mylist);
-	request.setAttribute("mpdto", mpdto);
+		request.setAttribute("mylist", mylist);
+		request.setAttribute("mpdto", mpdto);
+		request.setAttribute("order", order);
 		return "/member/myPage";
 	}
 
@@ -151,20 +158,17 @@ public class MemberController {
 		return "member/myPage";
 	}
 
-	
 	@RequestMapping("delOK")
 	public String delOK(String del_id, String del_pw) {
-		try{
-			System.out.println("넘어온 아이디 : "+ del_id);
-			System.out.println("넘어온 비밀번호 : "+ del_pw);
-		mservice.delOK(del_id,del_pw);
-		return "/member/delOK";
-		}catch(Exception e) {
+		try {
+			System.out.println("넘어온 아이디 : " + del_id);
+			System.out.println("넘어온 비밀번호 : " + del_pw);
+			mservice.delOK(del_id, del_pw);
+			return "/member/delOK";
+		} catch (Exception e) {
 			return "/member/faildel";
 		}
 	}
-
-
 
 	@RequestMapping("verifiedId")
 	public String verifiedId(String id) {

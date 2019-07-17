@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,9 +16,6 @@
 	height: 100%;
 }
 
-select {
-	color: red;
-}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -31,83 +29,29 @@ select {
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-2">ÆÇ¸Å°Ô½ÃÆÇ -> ±¸¸ÅÇÏ±â ÆäÀÌÁö</div>
+			<div class="col-lg-2">íŒë§¤ê²Œì‹œíŒ -> êµ¬ë§¤í•˜ê¸° í˜ì´ì§€</div>
 			<div class="col-lg-8">
 				<div class="container">
 
 					<div class="row">
-						<!-- Button to Open the Modal -->
-						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#myModal">Open modal</button>
 
-						<!-- The Modal -->
-						<form action="/shopboard/buyReview" method="POST">
-							<div class="modal modal-xl fade" id="myModal">
-								<div class="modal-dialog">
-									<div class="modal-content">
-
-										<!-- Modal Header -->
-										<div class="modal-header">
-											<h3 class="modal-title">´ñ±Û ÀÛ¼º</h3>
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-										</div>
-
-										<!-- Modal body -->
-										<div class="modal-body ">
-
-											<div class="row py-5  border-bottom">
-												<div class="col-3">ÀÌ¹ÌÁö</div>
-												<div class="col-9">
-													[brnad]<br>LMC EARTH LOGO TEE teal<br>
-												</div>
-											</div>
-
-											<div class="row py-3">
-												<div class="col-3">
-													<select style="height: 2em" name="star_review">
-														<option value="5">¡Ú¡Ú¡Ú¡Ú¡Ú</option>
-														<option value="4">¡Ú¡Ú¡Ú¡Ú</option>
-														<option value="3">¡Ú¡Ú¡Ú</option>
-														<option value="2">¡Ú¡Ú</option>
-														<option value="1">¡Ú</option>
-													</select>
-												</div>
-												<div class="col-9">
-													<input type="text" name="title" placeholder="Á¦¸ñ"
-														style="width: 21em; height: 2em">
-												</div>
-												<div class="col-12 py-3">
-													<textarea name="contents" cols="50" rows="7"></textarea>
-												</div>
-											</div>
-
-										</div>
-
-
-										<!-- Modal footer -->
-										<div class="modal-footer">
-											<input type="submit" class="btn btn-primary" value="´ñ±Û ÀÛ¼º">
-											<button type="button" class="btn btn-danger"
-												data-dismiss="modal">´ñ±Û Ãë¼Ò</button>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</form>
 						<c:forEach var="i" items="${boardList }">
 							<div
 								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
 								data-wow-delay="500ms">
 								<div class="akame-portfolio-single-item" style="height: 250px">
 									<img src="${i.shop_imagepath1 }" id="img1" alt="">
-
 									<!-- Overlay Content -->
 									<div
 										class="overlay-content d-flex align-items-center justify-content-center">
 										<div class="overlay-text text-center">
-											<h4 class="pb-3">${i.shop_contents }</h4>
-											<p class="pt-3">${ i.shop_price}</p>
+											<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }"><span
+												style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span></a>
+
+											<p class="pt-3">
+												<fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
+												&nbsp; ì›
+											</p>
 										</div>
 									</div>
 
@@ -116,10 +60,7 @@ select {
 										class="icon_search"></i></a>
 
 								</div>
-								<div class="team-member-info border">
-									<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }"><h5>${i.shop_title }</h5></a>
-									<p>${i.shop_contents }</p>
-								</div>
+								<div class="team-member-info border"></div>
 							</div>
 						</c:forEach>
 
@@ -139,13 +80,13 @@ select {
       var count = 2;
       $(window).scroll(
             function() {
-               // ÃÖÇÏ´ÜÀÏ °æ¿ì¸¦ Ã¼Å©ÇÏ±â À§ÇØ ÃÖÇÏ´Ü À§Ä¡°ªÀ» ÁöÁ¤
-               // È­¸é ¹®¼­ÀüÃ¼ÀÇ ±æÀÌ¿¡¼­, ÇöÀç Ã¢ ³ôÀÌ¸¦ »« °ÍÀÌ ÃÖÇÏ´Ü °ª
+               // ìµœí•˜ë‹¨ì¼ ê²½ìš°ë¥¼ ì²´í¬í•˜ê¸° ìœ„í•´ ìµœí•˜ë‹¨ ìœ„ì¹˜ê°’ì„ ì§€ì •
+               // í™”ë©´ ë¬¸ì„œì „ì²´ì˜ ê¸¸ì´ì—ì„œ, í˜„ì¬ ì°½ ë†’ì´ë¥¼ ëº€ ê²ƒì´ ìµœí•˜ë‹¨ ê°’
             
             console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
 
                  if($(document).height() <= $(window).scrollTop() + $(window).height()+100 ){
-                  // ÃÖÇÏ´ÜÀ¸·Î µµ´ŞÇßÀ» °æ¿ì
+                  // ìµœí•˜ë‹¨ìœ¼ë¡œ ë„ë‹¬í–ˆì„ ê²½ìš°
                   
                
                   
@@ -188,10 +129,10 @@ select {
                      };
                      })
                   
-                  console.log('¹Ù´ÚÀÔ´Ï´Ù!');
+                  console.log('ë°”ë‹¥ì…ë‹ˆë‹¤!');
                } else if ($(window).scrollTop() == 0) {
-                  // ÃÖ»ó´ÜÀ¸·Î µµ´ŞÇßÀ» °æ¿ì
-                  console.log('²À´ë±âÀÔ´Ï´Ù!');
+                  // ìµœìƒë‹¨ìœ¼ë¡œ ë„ë‹¬í–ˆì„ ê²½ìš°
+                  console.log('ê¼­ëŒ€ê¸°ì…ë‹ˆë‹¤!');
                }
             });
    </script>
