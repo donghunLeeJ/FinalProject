@@ -88,7 +88,6 @@ public class MemberController {
 		System.out.println("조인프록");
 		String id = mdto.getMember_id();
 		
-		
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
 	
 		// System.out.println("조인프록 " + id);

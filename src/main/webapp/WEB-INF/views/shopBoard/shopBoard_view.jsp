@@ -223,7 +223,7 @@
 									<div class="col-12" style="text-align: center"
 										style="font-wight:600">
 										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> 
-										<a id=basket href="/Basket/basketInsert?seq=${dto.shop_seq }" class="btn akame-btn">
+										<a id=basket  class="btn akame-btn">
 										<i class="icon_cart"></i>장 바 구 니에 담기</a>
 									</div>
 								</div>
@@ -367,6 +367,19 @@
 							+ quantity + "&seq=${dto.shop_seq }"
 				})
 		//수량
+		
+		
+		$("#basket").on(
+				"click",
+				function() {
+					var quantity = $("#quantity_one").val();
+					location.href = "/Basket/basketInsert?quantity="
+							+ quantity + "&seq=${dto.shop_seq }"
+				})
+		
+		//href="/Basket/basketInsert?seq=${dto.shop_seq }"
+		
+		
 
 		var upCount = function() {
 			var quantity = Number($("#quantity_one").val());
