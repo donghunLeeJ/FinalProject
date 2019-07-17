@@ -17,6 +17,7 @@ public class OrderService {
 	public void orderInsert(OrderDTO odto) {
 		dao.orderInsert(odto);
 	}
+
 	public List<OrderDTO> myOrderList(String id){
 		return dao.myOrderList(id);
 	}

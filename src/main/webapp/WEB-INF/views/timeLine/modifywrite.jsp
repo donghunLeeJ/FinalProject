@@ -50,6 +50,7 @@
 									<div id="img_field" class="border" style="height: 23em; text-align: center">
 										<img class="border" id="image_section" src="${imgaddr}" alt=""
 											style="height: 100%;margin: auto">
+											<input type="hidden" value="${imgaddr}" name="imagePath">
 									</div>
 									<div class="custom-file">
 										<input type="file" name="tl_image"

@@ -91,7 +91,12 @@ hr {
 select {
 	color: red;
 }
+
+.form-control[readonly]{
+background-color:white;
+}
 </style>
+	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -170,23 +175,17 @@ select {
 							</div>
 							<div class="col-md-12 mt-5">
 								<h5 class="mt-2">
-									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의
-									활동
-								</h5>
+									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의활동</h5>
 								<table class="table table-sm table-hover table-striped">
 									<tbody>
+									<c:forEach var="i" items="${mylist }">
+									<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
 										<tr>
-											<td><strong>김동현</strong>님의 판매 활동 <strong>`상추튀김`</strong>
+											<td><strong>${id.member_name }</strong>님의 판매 활동 <strong>${i.shop_title }`</strong>
 											</td>
 										</tr>
-										<tr>
-											<td><strong>김동현</strong>님의 판매 활동 <strong>`마늘주스`</strong>
-											</td>
-										</tr>
-										<tr>
-											<td><strong>김동현</strong>님의 구매 활동 <strong>`공룡고기`</strong>
-											</td>
-										</tr>
+										</a>
+									</c:forEach>
 
 									</tbody>
 								</table>
@@ -366,16 +365,18 @@ select {
 								<!--                </a> -->
 							</div>
 
+
 						</c:forEach>
 					</div>
 
 					<div class="tab-pane col-lg-12" id="edit">
 						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
-							<form id=mypage_Img action="/member/uploadImg" method="post"
-								enctype="multipart/form-data">
-								<img src="${id.member_imgpath }" class="mx-auto img-circle"
-									alt="avatar"> <input type=file id="file" name="file"
+
+							<form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data">
+								<img src="${id.member_imgpath }" class="mx-auto img-circle"	alt="avatar"> 
+              <input type=file id="file" name="file"
 									accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)">
+
 
 								<input type="button" id="change" class="btn btn-success "
 									name="my_images" value="사진 변경"> <input type="submit"
@@ -430,7 +431,7 @@ select {
 										aria-expanded="false" id="findAdd">
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="postcode"
+										<input class="form-control " id="postcode"
 											name="member_postcode" type="text"
 											value="${id.member_postcode}" readonly>
 									</div>
@@ -439,7 +440,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">도로명
 										주소 </label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add1" name="member_address1"
+										<input class="form-control " id="add1" name="member_address1"
 											type="text" value="${id.member_address1}" readonly>
 									</div>
 								</div>
@@ -447,7 +448,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">상세주소
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add2" name="member_address2"
+										<input class="form-control" id="add2" name="member_address2" placeholder="최대 20자"
 											type="text" value="${id.member_address2}">
 									</div>
 								</div>
@@ -464,7 +465,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">자기
 										소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
+										<textarea style="resize: none;" id=area name="member_intro" placeholder="최대 100자">${id.member_intro}</textarea>
 									</div>
 									<input name="member_intro" type="hidden">
 									<%--                                 <div class=" ">${id.member_intro}</div> --%>
@@ -474,15 +475,19 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="password" name="member_pw"
+
 											id="pw1" placeholder="대/소문자, 숫자 포함 최소 8자리">
+
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호
 										확인</label>
 									<div class="col-lg-9">
+
 										<input class="form-control" type="password" id="pw2"
 											placeholder="대/소문자, 숫자 포함 최소 8자리">
+
 									</div>
 								</div>
 								<div class="form-group row">
@@ -539,44 +544,50 @@ select {
 		</div>
 	</div>
 
-	<script src="resources/WEB-INF/views/XSS/XSS.jsp"></script>
+
 	<script>
-		$("#goHome").on("click", function() {
-			location.href = "/home";
-		})
 
-		//-----------------------------회원탈퇴
-		$("#delOK").on("click", function() {
-			if ($("#del_id").val() == "") {
-				alert("아이디를 입력해주세요");
-			} else if ($("#del_pw").val() == "") {
-				alert("비밀번호를 입력해주세요");
-			} else if ($("#del_pw2").val() == "") {
-				alert("비밀번호 확인을 입력해주세요");
-			} else if ($("#del_pw").val() != $("#del_pw2").val()) {
-				alert("비밀번호가 일치하지 않습니다");
-			} else {
-				var result = confirm("정말 탈퇴하시겠습니까?");
-				if (result) {
-					removeXSS($("#del_id").val(), $("#del_id").attr("id"));
-					removeXSS($("#del_pw").val(), $("#del_pw").attr("id"));
-					removeXSS($("#del_pw2").val(), $("#del_pw2").attr("id"));
-					$("#delform").submit();
-				} else
-					return;
-			}
-		});
-		//-----------------------------회원탈퇴 끝
 
+
+	$("#goHome").on("click",function(){
+		 location.href="/home";
+	})
+	
+	//-----------------------------회원탈퇴
+	$("#delOK").on("click",function(){
+		if($("#del_id").val()==""){
+			alert("아이디를 입력해주세요");
+		}else if($("#del_pw").val()==""){
+			alert("비밀번호를 입력해주세요");
+		}else if($("#del_pw2").val()==""){
+			alert("비밀번호 확인을 입력해주세요");
+		}else if($("#del_pw").val()!=$("#del_pw2").val()){
+			alert("비밀번호가 일치하지 않습니다");
+		}
+		else{
+		var result=confirm("정말 탈퇴하시겠습니까?");
+		if(result){	
+			removeXSS($("#del_id").val(),$("#del_id").attr("id"));
+			removeXSS($("#del_pw").val(),$("#del_pw").attr("id"));
+			removeXSS($("#del_pw2").val(),$("#del_pw2").attr("id"));
+			$("#delform").submit();
+		}
+			else return;
+		}
+	});
+	//-----------------------------회원탈퇴 끝
+	
 		$("#file").hide();
-		//---------------------------------------------- 정보수정 이미지 변경 확장자 제한
-		function checkFile(f) {
+	//---------------------------------------------- 정보수정 이미지 변경 확장자 제한
+		function checkFile(f){
+
 
 			// files 로 해당 파일 정보 얻기.
 			var file = f.files;
 
 			// file[0].name 은 파일명 입니다.
 			// 정규식으로 확장자 체크
+
 			if (!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)) {
 				alert('gif, jpg, png, jpeg 파일만 선택해 주세요.\n\n현재 파일 : '
 						+ file[0].name);
@@ -586,12 +597,14 @@ select {
 			else
 				return;
 
+
 			// 체크에 걸리면 선택된  내용 취소 처리를 해야함.
 			// 파일선택 폼의 내용은 스크립트로 컨트롤 할 수 없습니다.
 			// 그래서 그냥 새로 폼을 새로 써주는 방식으로 초기화 합니다.
 			// 이렇게 하면 간단 !?
 			f.outerHTML = f.outerHTML;
 		}
+
 
 		$("#change").on("click", function() {
 			$("#file").click();//사진변경 버튼 누르면 file버튼 클릭됨
@@ -623,7 +636,12 @@ select {
 			} else if ($("#area").val() == "") {
 				alert("자기소개를 입력해주세요");
 				$("#area").focus();
-			} else if ($("#pw1").val() == "") {
+
+			}else if($("#area").val().length>100){
+				alert("자기소개 제한 글자를 초과하였습니다");
+			}
+			else if ($("#pw1").val() == "") {
+
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
 			} else if (!regPw.test($("#pw1").val())) {

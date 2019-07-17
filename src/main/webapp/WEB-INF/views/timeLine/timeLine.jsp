@@ -8,14 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <title>Insert title here</title>
 <style>
-	#optionbtn{
-		width:2em;
-		height:2em;
-	}
+#optionbtn {
+	width: 2em;
+	height: 2em;
+}
 </style>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
@@ -23,10 +24,11 @@
 </style>
 </head>
 
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-   <!-- Preloader -->
-    <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-   <!-- Header Area End -->
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
+	<!-- Preloader -->
+	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<!-- Header Area End -->
 
 
 	<!-- Welcome Area Start -->
@@ -46,11 +48,20 @@
 				<div class="col-lg-6 border" style="margin: 0 auto">
 					<div class="row py-3">
 						<div class="col-lg-2 text-center">
-							<img class="rounded-circle" alt=""
-								src="/img/core-img/empty_profile.png">${i.tl_writer }</div>
+							<img class="rounded-circle" alt="" src="${i.tl_writer_profile }">
+							${i.tl_writer }
+						</div>
 
-						<div class="col-lg-8 py-2 text-center">${i.tl_title }<input type="hidden" value="${i.tl_board_seq }"></div>
-						<div class="col-lg-2 text-right"><button id="optionbtn" data-toggle="modal" data-target="#tlboardInfo${i.tl_board_seq }" style="background-color:white; border:none;"><i class="xi-bars"></i></button></div>
+						<div class="col-lg-8 py-2 text-center">${i.tl_title }<input
+								type="hidden" value="${i.tl_board_seq }">
+						</div>
+						<div class="col-lg-2 text-right">
+							<button id="optionbtn" data-toggle="modal"
+								data-target="#tlboardInfo${i.tl_board_seq }"
+								style="background-color: white; border: none;">
+								<i class="xi-bars"></i>
+							</button>
+						</div>
 
 					</div>
 					<div class="single-post-area">
@@ -61,85 +72,141 @@
 
 							<div class="post-meta">
 								<a href="#" class="post-date"><i class="icon_clock_alt">작성일</i>
-									${i.tl_writedate}</a> <a href="#"
-									class="post-comments"><i class="xi-star-o">좋아요</i>
-									${i.tl_likecount }</a>
+									${i.tl_writedate}</a> <a href="#" class="post-comments"><i
+									class="xi-star-o">좋아요</i> ${i.tl_likecount }</a>
 							</div>
 							<p>${i.tl_contents }</p>
+							<hr>
+							<div class="post-meta">
+								<a id="replyShow${i.tl_board_seq }" href="#" class="post-date">댓글보기</a>
+							</div>
+							<input type="text" value="${i.tl_board_seq }"
+								id="hiddenSeq${i.tl_board_seq }">
+							<div id="reply_view${i.tl_board_seq }" style="display: none">
+								<div id="forReply${i.tl_board_seq }"></div>
+								<input id="replyInput${i.tl_board_seq }" type="text"
+									name="tl_repl_contents" class="mb-3"
+									style="width: 25em; border-radius: 4px;">
+								<button type="button" id="replyBTN${i.tl_board_seq }"
+									class="commentbtn btn btn-outline-success btn-sm ml-2 mb-2">댓글
+									입력</button>
+
+							</div>
+
+
+
 						</div>
 					</div>
 				</div>
 			</div>
 
-	
-	<div class="modal fade" id="tlboardInfo${i.tl_board_seq }" tabindex="-1"
-               role="dialog" aria-labelledby="exampleModalLabel1"
-               aria-hidden="true">
-               <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                     <div class="modal-body1">
-                        <form>
-                           <div class="form-group m-0 p-0">
-                              <div class="card">
-                                 <div class="card-header">
-                                    <i class="fa fa-user"></i><strong class="card-title pl-2">옵션 </strong>
-                                    <button type="button" class="close" data-dismiss="modal"
-                                       aria-label="Close">
-                                       <span aria-hidden="true">&times;</span>
-                                    </button>
-                                 </div>
-                                 <div class="card-body text-center">
-                                    <div class="mx-auto d-block">
-                                       <h5 class="text-center mt-2 mb-1">
-                                          <b id="member_id"> </b>
-                                       </h5>
-                                    </div>
-                                    <hr>
-                                    <div class="card-text">
-                                       <div>
-                                          <a href="/timeline/reportProc?seq=${i.tl_board_seq }"><b style="color:red;">신고하기</b></a>
-                                       </div>
-                                       <div>
-                                          <a href="/timeline/boardModify?seq=${i.tl_board_seq }&writer=${i.tl_writer}&title=${i.tl_title}&imgaddr=${i.tl_imgaddr }&contents=${i.tl_contents}"><b>글 수정 </b></a>
-                                       </div>
-                                       <div>
-                                          <a href="/timeline/boardDelete?seq=${i.tl_board_seq }&writer=${i.tl_writer}"><b>글 삭제</b></a>
-                                       </div>
-                                       <div>
-                                          <b>쪽지보내기</b>
-                                          <p id="tl_board"></p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary"
-                                 data-dismiss="modal">닫기</button>
-                           </div>
-                        </form>
+			<div class="modal fade" id="tlboardInfo${i.tl_board_seq }"
+				tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-body1">
+							<form>
+								<div class="form-group m-0 p-0">
+									<div class="card">
+										<div class="card-header">
+											<i class="fa fa-user"></i><strong class="card-title pl-2">옵션
+											</strong>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="card-body text-center">
+											<div class="mx-auto d-block">
+												<h5 class="text-center mt-2 mb-1">
+													<b id="member_id"> </b>
+												</h5>
+											</div>
+											<hr>
+											<div class="card-text">
+												<div>
+													<a href="/timeline/reportProc?seq=${i.tl_board_seq }"><b
+														style="color: red;">신고하기</b></a>
+												</div>
+												<div>
+													<a
+														href="/timeline/boardModify?seq=${i.tl_board_seq }&writer=${i.tl_writer}&title=${i.tl_title}&imgaddr=${i.tl_imgaddr }&contents=${i.tl_contents}"><b>글
+															수정 </b></a>
+												</div>
+												<div>
+													<a
+														href="/timeline/boardDelete?seq=${i.tl_board_seq }&writer=${i.tl_writer}"><b>글
+															삭제</b></a>
+												</div>
+												<div>
+													<b>쪽지보내기</b>
+													<p id="tl_board"></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">닫기</button>
+								</div>
+							</form>
 
-                     </div>
-                  </div>
-               </div>
-            </div>
-	
-	
-	
-	
-	
-	
-		
-		
-		
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+			
+			$("#replyShow${i.tl_board_seq }").on("click",function(){
+				var seq = $("#hiddenSeq${i.tl_board_seq }").val();	
+				 if ( $("#reply_view${i.tl_board_seq }").css("display") == "none" ){
+					 $("#reply_view${i.tl_board_seq }").css("display","block");	
 
-
+						$.ajax({
+	                     url : "/timeline/ajaxProcReple",
+	                     type : "post",
+	                     data : {
+	                    	 seq : seq
+	                     }
+	                  }).done(function(resp) {
+	                	  var result = JSON.parse(resp);
+	                	  console.log(result);
+	                	  for(var i = 0 ; i < result.length ; i ++){
+	                		  $("#forReply${i.tl_board_seq }").append("<div>"+result[i].tl_repl_writer+result[i].tl_repl_contents+"<div>");
+	                	  }
+	                  })
+				}else if($("#reply_view${i.tl_board_seq }").css("display") == "block"){
+					 $("#reply_view${i.tl_board_seq }").css("display","none");	
+					 $("#forReply${i.tl_board_seq }").html("");
+				
+				 }
+			})
+			$("#replyBTN${i.tl_board_seq }").on("click",function(){
+				var reply = $("#replyInput${i.tl_board_seq }").val();
+				var seq = $("#hiddenSeq${i.tl_board_seq }").val();
+				$.ajax({
+                     url : "/timeline/replyAjaxProc",
+                     type : "post",
+                     data : {
+                        page : reply,
+                        seq : seq
+                     }
+                  }).done(function(resp) {
+                	  var result = JSON.stringify(resp);
+                	  $("#forReply${i.tl_board_seq }").append("<div>"+result+"<div>");
+                	  console.log(resp);
+                  })
+				
+			})
+		</script>
 		</c:forEach>
-		</div>
-		<div class="row mt-4"></div>
+	</div>
+	<div class="row mt-4"></div>
 	</section>
 
-	
+
 	<script>
       var count = 2;
       $(window).scroll(
@@ -166,7 +233,7 @@
  					<div class='row py-3'>
 					<div class='col-lg-2'>
 						<img class='rounded-circle'
-							src='/img/core-img/empty_profile.png'>`+result[i].tl_writer+` </div>
+							src='`+result[i].tl_writer_profile+`'>`+result[i].tl_writer+` </div>
 
 					<div class='col-lg-8 py-2'>`+result[i].tl_title +`<input type='hidden' value='`+result[i].tl_board_seq +`'></div>
 					<div class='col-lg-2 text-right'><button id='optionbtn' data-toggle='modal' data-target='#tlboardInfo`+result[i].tl_board_seq +`' style='background-color:white; border:none;'><i class='xi-bars'></i></button></div>

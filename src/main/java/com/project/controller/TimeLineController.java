@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.project.dto.MemberDTO;
 import com.project.dto.Tl_BoardDTO;
+import com.project.dto.Tl_ReplyDTO;
 import com.project.service.TimeLineService;
 
 @Controller
@@ -28,8 +29,10 @@ public class TimeLineController {
 
 	@RequestMapping("/accessTimeLine")
 	public String accessTimeline(HttpServletRequest request, Tl_BoardDTO dto, String seq) {
+	
 		int page = Integer.parseInt(seq);
 		request.setAttribute("result", tls.showAll(page));
+	
 		return "/timeLine/timeLine";
 	}
 
@@ -62,7 +65,7 @@ public class TimeLineController {
 		}
 		MemberDTO id = (MemberDTO) session.getAttribute("id");
 		dto.setTl_writer(id.getMember_id());
-		
+		dto.setTl_writer_profile(id.getMember_imgpath());
 		tls.write(dto);
 		return "redirect:/timeline/accessTimeLine?seq=1";
 
@@ -75,6 +78,30 @@ public class TimeLineController {
 		System.out.println(seq);
 		Gson g = new Gson();
 		return g.toJson(tls.showAll(seq));
+	}
+	
+	@RequestMapping(value = "/ajaxProcReple", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String ajaxProcReplShow(String seq) {
+		System.out.println(seq);
+		int resultSeq = Integer.parseInt(seq);
+		Gson g = new Gson();
+		return g.toJson(tls.show(resultSeq));
+		 
+	}
+	
+	@RequestMapping(value = "/replyAjaxProc", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String reAjaxProc(String page,String seq) {
+		MemberDTO mdto = (MemberDTO)session.getAttribute("id");
+		Tl_ReplyDTO dto = new Tl_ReplyDTO();
+		dto.setTl_board_seq(Integer.parseInt(seq));
+		dto.setTl_repl_writer(mdto.getMember_id());
+		dto.setTl_repl_contents(page);
+		tls.Reply_write(dto);
+		
+		String result = mdto.getMember_id() +":"+page;
+		return result;
 	}
 	
 	@RequestMapping("/reportProc")
@@ -120,29 +147,32 @@ public class TimeLineController {
 	}
 	
 	@RequestMapping("/boardModified")
-	public String boardModified(Tl_BoardDTO dto) {
-		int seq = dto.getTl_board_seq();
-		String title = dto.getTl_title();
-		String contents = dto.getTl_contents();
-		String resourcePath = session.getServletContext().getRealPath("/resources/img/tl-img/");
-		System.out.println(resourcePath);
-		try {
+	public String boardModified(Tl_BoardDTO dto,String imagePath) {
+		if(dto.getTl_image().getSize() == 0 ) {
+			dto.setTl_imgaddr(imagePath);
+			MemberDTO id = (MemberDTO) session.getAttribute("id");
+			dto.setTl_writer(id.getMember_id());
+			tls.update(dto);
+		}else {
+			String resourcePath = session.getServletContext().getRealPath("/resources/img/tl-img/");
+			System.out.println(resourcePath);
+			try {
 
-			String fileName = System.currentTimeMillis() + dto.getTl_image().getOriginalFilename();
-			File savedFile = new File(resourcePath + "/" + fileName);
-			dto.setTl_imgaddr("/img/tl-img/" + savedFile.getName());
+				String fileName = System.currentTimeMillis() + dto.getTl_image().getOriginalFilename();
+				File savedFile = new File(resourcePath + "/" + fileName);
+				dto.setTl_imgaddr("/img/tl-img/" + savedFile.getName());
 
-			dto.getTl_image().transferTo(savedFile);
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+				dto.getTl_image().transferTo(savedFile);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			MemberDTO id = (MemberDTO) session.getAttribute("id");
+			dto.setTl_writer(id.getMember_id());
+			
+			tls.update(dto);
 		}
-		MemberDTO id = (MemberDTO) session.getAttribute("id");
-		dto.setTl_writer(id.getMember_id());
-		
-		tls.update(dto);
-		
 		return "/timeLine/modifycompl";
 	}
 	
@@ -161,6 +191,26 @@ public class TimeLineController {
 			}else {
 				return "/timeLine/modi_del_reject";
 			}
+		}
+	}
+	
+	@RequestMapping("/boardReply")
+	public String boardReply(Tl_ReplyDTO dto) {
+		
+		if(dto.getTl_repl_contents() != ""){
+			if(session.getAttribute("id") != null) {
+				String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
+				int seq = (int)dto.getTl_board_seq();
+				dto.setTl_board_seq(seq);
+				dto.setTl_repl_writer(id);
+				tls.Reply_write(dto);
+				return "redirect:/timeline/accessTimeLine?seq=1";
+			}else {
+				return "/timeLine/replyreject2";
+			}
+			
+		}else {
+			return "/timeLine/replyreject";
 		}
 		
 	}

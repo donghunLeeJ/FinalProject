@@ -9,11 +9,12 @@
 		,#{order_buyer_phone},#{order_buyer_email},#{order_receipt},#{order_receipt_postcode}
 		,#{order_receipt_address1},#{order_receipt_address2},#{order_receipt_phone}
 		,#{order_receipt_demend})
-
 	</insert>
+
 	<select id="myOrderList" resultType="com.project.dto.OrderDTO">
 		select * from
 		products_order
 		where order_buyer_email = #{value}
 	</select>
+
 </mapper>

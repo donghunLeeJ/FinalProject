@@ -18,7 +18,9 @@ public class OrderDAO {
 
 		return sst.insert("OrderDAO.orderInsert", dto);
 	}
+
 	public List<OrderDTO> myOrderList(String id){
+
 		return sst.selectList("OrderDAO.myOrderList",id);
 	}
 }

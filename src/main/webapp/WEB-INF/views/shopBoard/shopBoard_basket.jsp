@@ -17,6 +17,24 @@ input[type="text"] {
 	box-shadow: 4px 4px 5px #gray inset;
 	border-radius: 5px;
 }
+
+.mypage_btn1 {
+	width: 5em;
+	height: 2em;
+	background-color: white;
+	border: 1px solid black;
+	margin-bottom: 0.1em;
+	cursor: pointer;
+}
+
+.mypage_btn2 {
+	width: 5em;
+	height: 2em;
+	background-color: white;
+	border: 1px solid black;
+	margin-top: 0.1em;
+	cursor: pointer;
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -26,7 +44,8 @@ input[type="text"] {
 	<div class="container mt-3">
 		<div class="row  pb-3 border-bottom">
 			<div class="col-12" style="text-align: right">
-				<a href="#" class="btn akame-btn">이전 페이지 </a>
+				<a href="/shopboard/ShopBoardViewProc?seq=${sdto.shop_seq }"
+					class="btn akame-btn">이전 페이지 </a>
 			</div>
 		</div>
 
@@ -85,10 +104,11 @@ input[type="text"] {
 						선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
 							브랜드 ${dto.basket_title}</small>
 					</div>
-					<div class="col-2" style="line-height: 1.4em;">
-						<button style="background-color: red;">주문하기</button>
+					<div class="col-2 text-center" style="padding: 0;">
+						<button class="mypage_btn1">주문 하기</button>
 						<br>
-						<button type="button" id="delete">삭제하기</button>
+						<button type="button" id="delete" class="mypage_btn2"
+							style="margin-right: 0.3em">삭제 하기</button>
 					</div>
 				</div>
 			</c:forEach>
@@ -103,19 +123,22 @@ input[type="text"] {
 	</div>
 
 
- 	<script>
+	<script>
 		var checkAll = function() {
 			$(".check").click();
 		}
-		$("#delete").on("click", function() {
-			
-			if(confirm("정말 삭제하시겠습니까?")==true){
-			var basket_seq = $("#seq").val();
-			location.href = "/Basket/basketDelete?basket_seq="+basket_seq;
-			}else{
-				null;
-			}
-		})
+		$("#delete").on(
+				"click",
+				function() {
+
+					if (confirm("정말 삭제하시겠습니까?") == true) {
+						var basket_seq = $("#seq").val();
+						location.href = "/Basket/basketDelete?basket_seq="
+								+ basket_seq;
+					} else {
+						null;
+					}
+				})
 
 		// 	배송지 radio reset 
 		var reset = function() {
@@ -132,8 +155,9 @@ input[type="text"] {
 		}
 		// 다음 주소 API
 		function sample6_execDaumPostcode() {
-			new daum.Postcode({
-				oncomplete : function(data) {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
 							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
 							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
@@ -199,10 +223,10 @@ input[type="text"] {
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	
-	
-	
-	
-	
+
+
+
+
+
 </body>
 </html>
