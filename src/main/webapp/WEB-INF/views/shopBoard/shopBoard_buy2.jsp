@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="../css/style2.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -34,7 +35,7 @@ img {
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<form action="/shopboard/shopOrder"
+	<form action="/shopboard/shopBasketOrder?basket_seq=${basketseq }"
 		id="completeForm" method="POST">
 		<div class="container mt-5">
 			<div class="row  pb-3 border-bottom">
@@ -73,19 +74,23 @@ img {
 				<div class="col-2">유통 기한</div>
 				<div class="col-2">배송비/판매자</div>
 			</div>
+			
+			<c:forEach var="dto" items="${basketarr}">
+			
 			<div class="row border-bottom border-top text-center py-4"
 				style="height: 8em">
 				<div class="col-5 ">
 					<div class="row">
 						<div class="col-3  pt-2 pb-2 ">
-							<img class="ml-3" src="${dto.shop_imagepath1 }"> <input
-								type="hidden" value="${dto.shop_imagepath1 }" name="order_image">
+						<input type="hidden" value="${dto.basket_seq }" name="basket_seq">
+							<img class="ml-3" src="${dto.basket_imagepath }"> <input
+								type="hidden" value="${dto.basket_imagepath }" name="order_image">
 						</div>
 						<div class="col-9"
 							style="text-overflow: ellipsis; margin-top: 1.4em; width: 25em; white-space: nowrap; overflow: hidden;">
-							<span><strong>${dto.shop_title }</strong> <input
-								type="hidden" value="${dto.shop_title }" name="order_title">
-								<input type="hidden" value="${dto.shop_id } "
+							<span><strong>${dto.basket_title }</strong> <input
+								type="hidden" value="${dto.basket_title }" name="order_title">
+								<input type="hidden" value="${dto.basket_id } "
 								name="order_seller"> </span>
 
 						</div>
@@ -93,22 +98,26 @@ img {
 					</div>
 				</div>
 
-				<div class="col-1" style="margin-top: 1.4em">${quantity }
-					<input type="hidden" value="${quantity }" name="order_quantity">
+				<div class="col-1" style="margin-top: 1.4em">${dto.basket_quantity }
+					<input type="hidden" value="${dto.basket_quantity }" name="order_quantity">
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
-					<fmt:formatNumber value="${price }" pattern="#,###" />
-					(원) <input type="hidden" value="${price }" name="order_price">
+					<fmt:formatNumber value="${dto.basket_price }" pattern="#,###" />
+					(원) <input type="hidden" value="${dto.basket_price }" name="order_price">
 				</div>
-				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
-				<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
+				<div class="col-1" style="margin-top: 1.4em">${dto.basket_location }</div>
+				<div class="col-2" style="margin-top: 1.4em">${dto.basket_expiration }</div>
 				<div class="col-2">
-					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.shop_id }
+					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.basket_id }
 
-						<br>${dto.shop_brand }</small>
+						<br>바스켓 브랜드</small>
 
 				</div>
 			</div>
+
+</c:forEach>
+
+
 
 			<div class="row pt-5 pb-1">
 
