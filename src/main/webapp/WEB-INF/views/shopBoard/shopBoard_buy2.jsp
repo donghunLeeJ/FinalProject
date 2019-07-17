@@ -82,7 +82,7 @@ img {
 				<div class="col-5 ">
 					<div class="row">
 						<div class="col-3  pt-2 pb-2 ">
-						<input type="hidden" value="${dto.basket_seq }" name="basket_seq">
+						
 							<img class="ml-3" src="${dto.basket_imagepath }"> <input
 								type="hidden" value="${dto.basket_imagepath }" name="order_image">
 						</div>

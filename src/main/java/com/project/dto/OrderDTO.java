@@ -26,6 +26,20 @@ public class OrderDTO {
 	public OrderDTO() {
 		super();
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "OrderDTO [order_seq=" + order_seq + ", products_seq=" + products_seq + ", order_number=" + order_number
+				+ ", order_time=" + order_time + ", order_title=" + order_title + ", order_quantity=" + order_quantity
+				+ ", order_price=" + order_price + ", order_image=" + order_image + ", order_seller=" + order_seller
+				+ ", order_buyer=" + order_buyer + ", order_buyer_phone=" + order_buyer_phone + ", order_buyer_email="
+				+ order_buyer_email + ", order_receipt=" + order_receipt + ", order_receipt_postcode="
+				+ order_receipt_postcode + ", order_receipt_address1=" + order_receipt_address1
+				+ ", order_receipt_address2=" + order_receipt_address2 + ", order_receipt_phone=" + order_receipt_phone
+				+ ", order_receipt_demend=" + order_receipt_demend + "]";
+	}
+
 
 	public OrderDTO(int order_seq, int products_seq, String order_number, Date order_time, String order_title,
 			int order_quantity, int order_price, String order_image, String order_seller, String order_buyer,
