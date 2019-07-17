@@ -39,6 +39,9 @@ float:left;
 #gen{
 transform:translate(20px);
 }
+.form-control[readonly]{
+background-color:white;
+}
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 </head>
@@ -79,15 +82,12 @@ transform:translate(20px);
                      <input type="text" style="width: 48%; margin: auto;" id=id
                         name="member_id" class="form-control mb-30" placeholder="인증 받을 이메일 형식으로 입력해주세요">
 
-
                   </div>
                   <div class="col-lg-12 text-center">
                      <div class=title>비밀번호</div>
 
                      <input type="password" style="width: 50%; margin: auto;" id=pw
-                        name="member_pw" class="form-control mb-30"
-
-                        placeholder="대,소문자,숫자 포함 8~13자리">
+                        name="member_pw" class="form-control mb-30" placeholder="대,소문자,숫자 포함 8~13자리">
 
                   </div>
                   <div class="col-lg-12 text-center">
@@ -103,7 +103,6 @@ transform:translate(20px);
 
 
                      <input type="text" id="name" name="member_name" style="width: 48%; margin: auto;" class="form-control mb-30" placeholder="한글 2자 이상, 4자 이하">
-
                   </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="margin: auto">
@@ -113,6 +112,7 @@ transform:translate(20px);
                   <script>
                      $('#datepicker').datepicker({
                         uiLibrary : 'bootstrap4',
+                        format : "yyyy-mm-dd"
                      });
                   </script>
                   
@@ -228,7 +228,7 @@ transform:translate(20px);
            		 }else if(reg.test($("#name").val())){
                alert("공백은 입력할 수 없습니다");
                $("#name").focus();
-           		 }else if ($("#datepicker").val() == "") {//#datepicker 이게 최신꺼 // 07-12 오후 5시 24분
+           		 }else if ($("#datepicker").val() == "") {
                alert("생년월일을 입력하세요");
             	 }  else if ($("#phone").val() == "") {
                alert("핸드폰 번호를 입력하세요");

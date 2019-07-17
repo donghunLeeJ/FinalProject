@@ -192,7 +192,6 @@ public class MemberController {
 		if (confirm.equals("n")) {
 			mservice.confirmId(id);
 			return "member/emailConfirm";
-
 		} else if (confirm.equals("y")) {
 
 			return "member/reConfirm";
