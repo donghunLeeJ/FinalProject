@@ -343,6 +343,7 @@
 			$("#resultPrice").text(result + "원");
 			$("#resultPrice1").text(result + "원");
 		})
+		
 		$("#chargeItem").on(
 				"click",
 				function() {

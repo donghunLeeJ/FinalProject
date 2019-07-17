@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,36 +37,28 @@ public class BasketController {
 		int result_seq = Integer.parseInt(seq);
 		int result_quantity = Integer.parseInt(quantity); // 수량
 		System.out.println(result_quantity);
-		
 		ShopBoardDTO sdto = sService.ShopBoardIdSelect(result_seq);
-			sdto.setShop_quantity(result_quantity);
+		sdto.setShop_quantity(result_quantity);
 		String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
-
-			int price = sdto.getShop_price();
-			int totalPrice = result_quantity*price;
-			
-			sdto.setShop_price(totalPrice);
-			
+		int price = sdto.getShop_price();//금액
+		int totalPrice = result_quantity*price; //수량 합계 금액
+		String seller = sdto.getShop_id();
+		sdto.setShop_price(totalPrice);
 		sdto.setShop_id(id);
+		sdto.setShop_contents(seller);
 		dao.basketInsert(sdto);
 		List<BasketDTO> result = bservice.basketIdSelect(id);
-
-		System.out.println(result.get(0).getBasket_imagepath());
+	
 		request.setAttribute("list", result);
 		request.setAttribute("sdto", sdto);
 		return "/shopBoard/shopBoard_basket";
 	}
 
 	@RequestMapping("/basketList")
-	public String basketSelectProc(BasketDTO basket_seq) {
+	public String basketSelectProc(String id) {
 
-		System.out.println(basket_seq);
-
-		// BasketDTO dto = bservice.basketIdSelect(seq);
-		// request.setAttribute("dto", dto);
-
-		// System.out.println(dto.getBasket_title());
-
+		List<BasketDTO> result = bservice.basketIdSelect(id);
+		request.setAttribute("list", result);
 		return "/shopBoard/shopBoard_basket";
 	}
 
@@ -86,5 +79,24 @@ public class BasketController {
 		request.setAttribute("list", result);
 
 		return "/shopBoard/shopBoard_basket";
+	}
+	
+	@RequestMapping("/asd")
+	public String asd(String basket_seq) {
+		System.out.println("asd의 리스트");
+		System.out.println(basket_seq);
+		String seq = basket_seq;
+		String[] seqList = seq.split(",");
+		List<BasketDTO> arr = new ArrayList(); 
+		for(int i = 0 ; i < seqList.length ; i ++) {
+			
+			arr.add(bservice.basketListBuy(seqList[i]));
+			
+		}
+		request.setAttribute("basketseq", basket_seq);
+		request.setAttribute("basketarr", arr);
+		
+		
+		return "/shopBoard/shopBoard_buy2";
 	}
 }

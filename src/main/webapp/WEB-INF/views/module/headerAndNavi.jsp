@@ -54,7 +54,7 @@
 							</c:when>
 
 							<c:otherwise>
-
+									<input id="listid" type="hidden" value="${id.member_id}">
 								<button id=mypage class="headerbtn">
 									<img src="/img/button-img/m_iconM.png">
 								</button>
@@ -127,7 +127,7 @@
 
 							<!-- Cart Icon -->
 							<div class="cart-icon ml-5 mt-4 mt-lg-0">
-								<a href="#"><i class="icon_cart"></i></a>
+								<a id="list" href="#"><i class="icon_cart"></i></a>
 							</div>
 
 							<!-- Book Icon -->
@@ -141,7 +141,15 @@
 			</div>
 		</div>
 	</div>
+	
 	<script>
+	
+	$("#list").on("click",function(){
+		var listId = $("#listid").val();
+		location.href = "/Basket/basketList?id="+encodeURI(listId);
+	})
+	
+	
 		$(window).scroll(function() {
 
 			var docScrollY = $(document).scrollTop()

@@ -34,4 +34,8 @@ public class BasketDAO {
 		return sst.delete("basket.basketDelete",seq);
 	}
 	
+	public BasketDTO basketListBuy(String basket_seq) {
+		return sst.selectOne("basket.basketListBuy",basket_seq);
+	}
+	
 }
