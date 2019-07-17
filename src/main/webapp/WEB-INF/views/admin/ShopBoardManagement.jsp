@@ -10,17 +10,30 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 <style>
+table {
+	font-size: 20px;
+	text-align: center;
+}
 
-table{font-size:20px;
-text-align: center;}
+#pageNumber {
+	text-align: center;
+}
 
-#pageNumber{text-align: center;}
-
+#delete_btn {
+	width: 6em;
+	height: 2em;
+	margin-right: 0.5em;
+	background-color: black;
+	color: white;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
-<div class="container">
+	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
+	<div class="container">
 
 
 		<table class="table">
@@ -36,23 +49,40 @@ text-align: center;}
 
 				<c:forEach var="i" items="${ShopBoardList}">
 					<tr class="row" style="height: 12rem">
-						<th class="col">
-							<!-- ${i.shop_imagepath1}<a href="#" onclick="window.open('','','width=600px, height=450px')"></a> -->
-							<img src="${i.shop_imagepath1}" alt="">
+						<th class="col"><a href="#"
+							onclick="window.open('/shopboard/ShopBoardViewProc?seq=${i.shop_seq}','상품','width=1920px, height=1080px')"><img
+								src="${i.shop_imagepath1}" alt=""></a></th>
 
-						</th>
-						<td class="col">${i.shop_contents}</td>
+						<td class="col"><a href="#"
+							onclick="window.open('/shopboard/ShopBoardViewProc?seq=${i.shop_seq}','상품','width=1920px, height=1080px')">${i.shop_contents}</a>
+						</td>
 						<td class="col"><b>${i.shop_price}</b>원</td>
-						<td class="col">${i.shop_expiration}</td>
+
+						<td class="col">
+							<div class="row">
+								<div class="col-12">${i.shop_expiration}</div>
+								<div class="col-12 mt-4"></div>
+								<div class="col mt-5 ml-4">
+
+									<!--<input id="delete_btn" type="button" value="삭제하기"> 
+									<button id="delete_btn">																			
+									</button> -->
+
+									<button id="delete_btn">
+										<a href="/admin/AdminDeleteShopBoard?shop_seq=${i.shop_seq}" style="color: red">삭제하기</a>
+									</button>
+								</div>
+							</div>
+						</td>
+
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 
 
-
-<div id="pageNumber">
-		<c:forEach var="i" items="${pageList}">
+		<div id="pageNumber">
+			<c:forEach var="i" items="${pageList}">
 				<c:choose>
 
 					<c:when test="${i eq '<이전'}">
@@ -69,9 +99,9 @@ text-align: center;}
 
 				</c:choose>
 			</c:forEach>
-        </div>
+		</div>
 
-</div>
-<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+	</div>
+	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
 </html>
