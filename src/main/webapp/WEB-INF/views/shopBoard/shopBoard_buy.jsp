@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,7 +34,8 @@ img {
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<form action="/shopboard/shopOrder" id="completeForm" method="POST">
+	<form action="/shopboard/shopOrder?products_seq=${dto.shop_seq }"
+		id="completeForm" method="POST">
 		<div class="container mt-5">
 			<div class="row  pb-3 border-bottom">
 				<div class="col-12 text-right">
@@ -73,17 +76,17 @@ img {
 			<div class="row border-bottom border-top text-center py-4"
 				style="height: 8em">
 				<div class="col-5 ">
-					<div class="row"">
+					<div class="row">
 						<div class="col-3  pt-2 pb-2 ">
 							<img class="ml-3" src="${dto.shop_imagepath1 }"> <input
 								type="hidden" value="${dto.shop_imagepath1 }" name="order_image">
 						</div>
 						<div class="col-9"
-							style="text-overflow: ellipsis; margin-top: 1.4em">
-							<span>${dto.shop_title } <input type="hidden"
-								value="${dto.shop_title }" name="order_title"> <input
-								type="hidden" value="${dto.shop_id } " name="order_seller">
-							</span>
+							style="text-overflow: ellipsis; margin-top: 1.4em; width: 25em; white-space: nowrap; overflow: hidden;">
+							<span><strong>${dto.shop_title }</strong> <input
+								type="hidden" value="${dto.shop_title }" name="order_title">
+								<input type="hidden" value="${dto.shop_id } "
+								name="order_seller"> </span>
 
 						</div>
 
@@ -93,8 +96,9 @@ img {
 				<div class="col-1" style="margin-top: 1.4em">${quantity }
 					<input type="hidden" value="${quantity }" name="order_quantity">
 				</div>
-				<div class="col-1" id="price" style="margin-top: 1.4em">${price }(원)
-					<input type="hidden" value="${price }" name="order_price">
+				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
+					<fmt:formatNumber value="${price }" pattern="#,###" />
+					(원) <input type="hidden" value="${price }" name="order_price">
 				</div>
 				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
 				<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>

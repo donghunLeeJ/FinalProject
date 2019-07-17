@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.project.dao.ShopBoardDAO;
 import com.project.dto.MemberDTO;
 import com.project.dto.ShopBoardDTO;
+import com.project.dto.ShopReviewDTO;
 
 @Service
 public class ShopBoardService {
@@ -37,9 +38,17 @@ public class ShopBoardService {
 	public MemberDTO shopSellerSelect(int memberSell_seq) {
 		return sdao.shopSellerSelect(memberSell_seq);
 	}
-	
-	public List<ShopBoardDTO>  ShopBoardList(String shop_id) {
-		//System.out.println("2");
+
+	public List<ShopBoardDTO> ShopBoardList(String shop_id) {
+		// System.out.println("2");
 		return sdao.ShopBoardList(shop_id);
+	}
+
+	public int shopReviewInsert(ShopReviewDTO dto) {
+		return sdao.shopReviewInsert(dto);
+	}
+
+	public List<ShopReviewDTO> shopReviewList(int shop_seq) {
+		return sdao.shopReviewList(shop_seq);
 	}
 }

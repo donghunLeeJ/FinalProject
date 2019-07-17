@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,26 +14,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 <style>
-.star_rating {
-	font-size: 0;
-	letter-spacing: -4px;
-}
-
-.star_rating a {
-	font-size: 22px;
-	letter-spacing: 0;
-	display: inline-block;
-	margin-left: 5px;
-	color: #ccc;
-	text-decoration: none;
-}
-
-.star_rating a:first-child {
-	margin-left: 0;
-}
-
-.star_rating a.on {
-	color: #FE2E2E;
+#star {
+	color: red;
 }
 
 .seller-info {
@@ -91,10 +75,10 @@
 							<div class="col-6">
 								<div class="row pb-4 border-bottom">
 									<div class="col-12">
-
-										<strong>[${dto.shop_brand}] &nbsp;
-											&nbsp;${dto.shop_title }</strong>
-
+										<h4>
+											<strong>[${dto.shop_brand}] &nbsp;
+												&nbsp;${dto.shop_title }</strong>
+										</h4>
 									</div>
 
 								</div>
@@ -105,7 +89,8 @@
 										<input type="hidden" value="${dto.shop_price }" id="price">
 
 										<p>
-											<strong>${dto.shop_price }</strong>
+											<strong><fmt:formatNumber value="${dto.shop_price }"
+													pattern="#,###" /></strong>
 										</p>
 
 									</div>
@@ -114,9 +99,10 @@
 									<div class="col-4">판매 단위</div>
 									<div class="col-8">
 										<p>
-											${dto.shop_quantity } <strong> (개)</strong> <input
-												type="hidden" name=basket_quantity
-												value="${dto.shop_quantity }">
+											<fmt:formatNumber value="${dto.shop_quantity }"
+												pattern="#,###" />
+											<strong> (개)</strong> <input type="hidden"
+												name=basket_quantity value="${dto.shop_quantity }">
 										</p>
 
 									</div>
@@ -157,7 +143,8 @@
 								<div class="row pt-2 pb-4">
 									<div class="col-6  text-left">
 										<span style="margin-right: 1em; text-align: left">총 수량
-											: <strong>${dto.shop_quantity }(개)</strong>
+											: <strong><fmt:formatNumber
+													value="${dto.shop_quantity }" pattern="#,###" />(개)</strong>
 										</span>
 									</div>
 									<div class="col-6  text-right">
@@ -195,19 +182,24 @@
 									</div>
 									<div class="col-6 py-3 text-right">
 										<small id="resultPrice1" name="shop_price"
-											value="${dto.shop_price }">${dto.shop_price }원</small>
+											value="${dto.shop_price }"><fmt:formatNumber
+												value="${dto.shop_price }" pattern="#,###" />(원)</small>
 
 									</div>
 								</div>
 								<div class="row border-top border-bottom py-3">
 									<div class="col-12 text-right" style="line-height: 2.5em;">
 										<span style="margin-right: 2em"><strong>총 상품금액
-												:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red">${dto.shop_price }원</span>
+												:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red"><fmt:formatNumber
+												value="${dto.shop_price }" pattern="#,###" />원</span>
 									</div>
 								</div>
 								<div class="row pb-3 mt-4 border-bottom-0">
 									<div class="col-12" style="text-align: center"
 										style="font-wight:600">
+
+
+
 										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> 
 										<a id=basket  class="btn akame-btn">
 										<i class="icon_cart"></i>장 바 구 니에 담기</a>
@@ -219,12 +211,14 @@
 				</div>
 			</div>
 		</div>
+
 	</form>
 	<div class="col-2">오른쪽</div>
 
 	<div class=" pb-5">
 		<div class=" col-12"></div>
 	</div>
+
 	<section class=" bg-gray">
 	<div class="container">
 		<div class="row my-2">
@@ -254,20 +248,20 @@
 								<h2>프리미엄 상품평</h2>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-12">
-								<span class="star_rating"><a href="#" class="on">★</a> <a
-									href="#" class="on">★</a> <a href="#" class="on">★</a> <a
-									href="#">★</a> <a href="#">★</a> </span> <small
-									style="color: gray; margin-left: 1em"> cwg94님 | [브랜드] |
-									2019.06.24</small>
-								<p class="py-2">
-									<strong>이가격대에서는 이 제품이 최고인듯.</strong>
-								</p>
-								<p class="py-2">완전 싼마이 중소기업 제품보다 어느정도 보증되는 가전 회사가 나은 것 같습니다.</p>
-							</div>
+						<c:forEach var="i" items="${ review}">
+							<div class="row">
+								<div class="col-12">
+									<span id="star">${i.get_star }</span> <small
+										style="color: gray; margin-left: 1em"> ${i.user_id } |
+										[${dto.shop_brand }] | ${i.writeDate }</small>
+									<p class="py-2">
+										<strong>${i.title }</strong>
+									</p>
+									<p class="py-2">${i.contents }</p>
+								</div>
 
-						</div>
+							</div>
+						</c:forEach>
 					</div>
 					<!-- 판매자 정보 -->
 					<div class="tab-pane " id="edit">
@@ -278,7 +272,7 @@
 								<p>${mdto.member_name}</p>
 							</div>
 							<div class="col-2 font-weight-bold seller-info">브랜드</div>
-							<div class="col-4 seller-info">
+							<div class="col-4 seller-info" id="brand">
 								<p>${dto.shop_brand }</p>
 							</div>
 						</div>
@@ -412,12 +406,23 @@
 			$(".view").attr("src", imgSrc);
 		})
 
-		//별점
-		$(".star_rating a").click(function() {
-			$(this).parent().children("a").removeClass("on");
-			$(this).addClass("on").prevAll("a").addClass("on");
-			return false;
-		});
+		// 		if ($("#star").text() == 1) {
+		// 			$("#star").html("★");
+		// 		} else if ($("#star").text() == 2) {
+		// 			$("#star").html("★★");
+
+		// 		} else if ($("#star").text() == 3) {
+		// 			$("#star").html("★★★");
+
+		// 		} else if ($("#star").text() == 4) {
+		// 			$("#star").html("★★★★");
+
+		// 		} else if ($("#star").text() == 5) {
+		// 			$("#star").html("★★★★★");
+
+		// 		} else {
+		// 			$("#star").html("오류");
+		// 		}
 	</script>
 </body>
 </html>

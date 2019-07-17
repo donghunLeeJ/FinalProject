@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
-import com.project.dto.BasketDTO;
 import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
-import com.project.dto.OrderListDTO;
 import com.project.dto.ShopBoardDTO;
+import com.project.dto.ShopReviewDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
@@ -77,12 +76,30 @@ public class ShopBoardController {
 	public String ShopBoardSelectProc(String seq) {
 
 		int shop_seq = Integer.parseInt(seq);
-		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);
-		System.out.println(dto.getMemberSell_seq());
+		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);// 상품판매 정보
 		int memberSell_seq = dto.getMemberSell_seq();
-		MemberDTO mdto = sService.shopSellerSelect(memberSell_seq);
+		MemberDTO mdto = sService.shopSellerSelect(memberSell_seq);// 판매자 정보
+		List<ShopReviewDTO> review = sService.shopReviewList(shop_seq);// 댓글 리스트
+
+		for (int i = 0; i <review.size(); i++) {
+
+			int count = review.get(i).getStar_review();
+			if (count == 1) {
+				review.get(i).setGet_star("★");
+			} else if (count == 2) {
+				review.get(i).setGet_star("★★");
+			} else if (count == 3) {
+				review.get(i).setGet_star("★★★");
+			} else if (count == 4) {
+				review.get(i).setGet_star("★★★★");
+			} else {
+				review.get(i).setGet_star("★★★★★");
+			}
+		}
+
 		request.setAttribute("dto", dto);
 		request.setAttribute("mdto", mdto);
+		request.setAttribute("review", review);
 		return "/shopBoard/shopBoard_view";
 	}
 
@@ -124,7 +141,7 @@ public class ShopBoardController {
 				}
 			}
 		}
-	
+
 		if (fileCount == 1) {
 
 			fileArrayPath.add("/img/default.jpg");
@@ -183,20 +200,38 @@ public class ShopBoardController {
 
 	@RequestMapping("/shopOrder")
 	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3) {
+			String getter_phone1, String getter_phone2, String getter_phone3, String products_seq) {
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
+		int products_seq1 = Integer.parseInt(products_seq);
+		System.out.println(phone);
 		String email = email1 + "@" + email2;
 		String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
+		System.out.println(getter_phone);
 		odto.setOrder_buyer_phone(phone);
 		odto.setOrder_receipt_phone(getter_phone);
 		odto.setOrder_buyer_email(email);
 		String order_number = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
 		odto.setOrder_number(order_number);
+		odto.setProducts_seq(products_seq1);
 		oService.orderInsert(odto);
 		request.setAttribute("ldto", odto);
 
 		return "/shopBoard/shopChargeOk";
+	}
+
+	@RequestMapping("/buyReview")
+	public String shopReview(ShopReviewDTO dto, String products_seq) {
+		int products_seq1 = Integer.parseInt(products_seq);
+		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+		dto.setGet_star("1");
+		System.out.println(sdf.format(System.currentTimeMillis()));
+		dto.setWriteDate(sdf.format(System.currentTimeMillis()));
+		dto.setProducts_seq(products_seq1);
+
+		sService.shopReviewInsert(dto);
+
+		return "redirect:/home/";
 	}
 
 }

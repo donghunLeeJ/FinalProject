@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.project.dao.OrderDAO;
 import com.project.dto.OrderDTO;
-import com.project.dto.OrderListDTO;
 
 @Service
 public class OrderService {
@@ -18,7 +17,7 @@ public class OrderService {
 	public void orderInsert(OrderDTO odto) {
 		dao.orderInsert(odto);
 	}
-	
+
 	public List<OrderDTO> myOrderList(String id){
 		return dao.myOrderList(id);
 	}

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.dto.MemberDTO;
 import com.project.dto.ShopBoardDTO;
+import com.project.dto.ShopReviewDTO;
 
 @Repository
 public class ShopBoardDAO {
@@ -49,4 +50,11 @@ public class ShopBoardDAO {
 		return sst.selectOne("ShopBoardDAO.shopSellerSelect", memberSell_seq);
 	}
 
+	public int shopReviewInsert(ShopReviewDTO dto) {
+		return sst.insert("ShopBoardDAO.shopReviewInsert", dto);
+	}
+
+	public List<ShopReviewDTO> shopReviewList(int shop_seq) {
+		return sst.selectList("ShopBoardDAO.shopReviewList",shop_seq);
+	}
 }
