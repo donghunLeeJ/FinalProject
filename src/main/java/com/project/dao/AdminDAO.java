@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.dto.MemberDTO;
+import com.project.dto.OrderDTO;
 
 @Repository
 public class AdminDAO {
@@ -23,18 +24,28 @@ public class AdminDAO {
 	public int MemberCount(){
 		return sst.selectOne("AdminDAO.MemberCount");}
 
-	
 	public int SelectMemberCount(String keyword){
 		return sst.selectOne("AdminDAO.SelectMemberCount",keyword);}
 		
 	
+	public int ShopBoardCount(){
+		return sst.selectOne("AdminDAO.ShopBoardCount");}
+	
+	public int OrderBoardCount(){
+		return sst.selectOne("AdminDAO.OrderBoardCount");}
+	
+	public OrderDTO OrderNumberSelect(String order_number){
+		return sst.selectOne("AdminDAO.OrderNumberSelect",order_number);}	
+	
 	public int BlackListUpdate(String member_id){
 		return sst.update("AdminDAO.BlackListUpdate", member_id);}
-	
 	
 	public int BlackListCancel(String member_id){
 		return sst.update("AdminDAO.BlackListCancel", member_id);}
 	
+	
+	public int AdminDeleteShopBoard(String shop_seq){
+		return sst.delete("AdminDAO.AdminDeleteShopBoard", shop_seq);}
 	
 	
 	
