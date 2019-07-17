@@ -65,8 +65,12 @@ height:70px;
 #sellTitle{
 hirght:80px;
 }
+
+.form-control[readonly]{
+background-color:white;
+}
 </style>
-	<script type="text/javascript" src="/js/cross.js"></script>
+	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -136,23 +140,17 @@ hirght:80px;
 							</div>
 							<div class="col-md-12 mt-5">
 								<h5 class="mt-2">
-									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의
-									활동
-								</h5>
+									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의활동</h5>
 								<table class="table table-sm table-hover table-striped">
 									<tbody>
+									<c:forEach var="i" items="${mylist }">
+									<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
 										<tr>
-											<td><strong>김동현</strong>님의 판매 활동 <strong>`상추튀김`</strong>
+											<td><strong>${id.member_name }</strong>님의 판매 활동 <strong>${i.shop_title }`</strong>
 											</td>
 										</tr>
-										<tr>
-											<td><strong>김동현</strong>님의 판매 활동 <strong>`마늘주스`</strong>
-											</td>
-										</tr>
-										<tr>
-											<td><strong>김동현</strong>님의 구매 활동 <strong>`공룡고기`</strong>
-											</td>
-										</tr>
+										</a>
+									</c:forEach>
 
 									</tbody>
 								</table>
@@ -322,7 +320,7 @@ hirght:80px;
 										aria-expanded="false" id="findAdd">
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="postcode"
+										<input class="form-control " id="postcode"
 											name="member_postcode" type="text"
 											value="${id.member_postcode}" readonly>
 									</div>
@@ -331,7 +329,7 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">도로명
 										주소 </label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add1" name="member_address1"
+										<input class="form-control " id="add1" name="member_address1"
 											type="text" value="${id.member_address1}" readonly>
 									</div>
 								</div>
@@ -425,8 +423,10 @@ hirght:80px;
 		</div>
 	</div>
 
-<script src = "resources/WEB-INF/views/XSS/XSS.jsp"></script>
+
 	<script>
+
+
 
 	$("#goHome").on("click",function(){
 		 location.href="/home";
@@ -510,7 +510,10 @@ hirght:80px;
 			} else if ($("#area").val() == "") {
 				alert("자기소개를 입력해주세요");
 				$("#area").focus();
-			}else if ($("#pw1").val() == "") {
+			}else if($("#area").val().length>100){
+				alert("자기소개 제한 글자를 초과하였습니다");
+			}
+			else if ($("#pw1").val() == "") {
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
 			}

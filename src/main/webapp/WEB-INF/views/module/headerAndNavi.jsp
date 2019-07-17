@@ -147,7 +147,7 @@
 			var docScrollY = $(document).scrollTop()
 			var barThis = $("#fixedNav")
 
-			console.log(docScrollY);
+// 			console.log(docScrollY);
 			if (docScrollY > 200) {
 				barThis.fadeIn();
 				barThis.addClass("fixed-top");
