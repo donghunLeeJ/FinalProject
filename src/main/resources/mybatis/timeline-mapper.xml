@@ -3,11 +3,11 @@
 <mapper namespace="Tl_BoardDAO">
    
    <insert id="tl_board_insert">
-      insert into tl_board values(tl_board_seq.nextval,#{tl_title},#{tl_contents},#{tl_writer},default,default,default,default,#{tl_imgaddr})
+      insert into tl_board values(tl_board_seq.nextval,#{tl_title},#{tl_contents},#{tl_writer},#{tl_writer_profile},default,default,default,default,#{tl_imgaddr})
    </insert>
    
    <select id="tl_board_showAll" resultType="com.project.dto.Tl_BoardDTO">
-      select * from (select tl_board_seq , tl_title , tl_contents , tl_writer , tl_writedate , tl_viewcount , tl_likecount , tl_likestatus , tl_imgaddr , 
+      select * from (select tl_board_seq , tl_title , tl_contents , tl_writer, tl_writer_profile , tl_writedate , tl_viewcount , tl_likecount , tl_likestatus , tl_imgaddr , 
       rank() over(order by tl_board_seq desc) rank from tl_board ) where rank between (#{page}*3-2) and #{page}*3
    </select>
    
@@ -21,5 +21,17 @@
    
    <update id="tl_board_update">
    		update tl_board set tl_title=#{tl_title}, tl_contents=#{tl_contents}, tl_imgaddr=#{tl_imgaddr}, tl_writedate=default where tl_board_seq=#{tl_board_seq}
+   </update>
+   
+   <insert id="tl_reply_insert">
+   		insert into tl_board_reply values(tl_repl_seq.nextval,#{tl_board_seq},#{tl_repl_writer},#{tl_repl_contents},default)
+   </insert>
+   
+   <select id="tl_reply_show" resultType="com.project.dto.Tl_ReplyDTO">
+   		select * from tl_board_reply where tl_board_seq=#{tl_board_seq}
+   </select>
+    <update id="updateProfile" >
+   		update tl_board set tl_writer_profile = #{path} where
+		tl_writer = #{id}
    </update>
 </mapper>

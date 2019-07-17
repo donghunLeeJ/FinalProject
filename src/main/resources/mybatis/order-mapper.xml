@@ -12,4 +12,8 @@
 
 	</insert>
 	
+	<select id="myOrderList" resultType="com.project.dto.OrderDTO">
+	select * from products_order where order_buyer=#{id}
+	</select>
+	
 </mapper>

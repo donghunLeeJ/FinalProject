@@ -65,7 +65,12 @@ height:70px;
 #sellTitle{
 hirght:80px;
 }
+
+.form-control[readonly]{
+background-color:white;
+}
 </style>
+	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -135,23 +140,17 @@ hirght:80px;
 							</div>
 							<div class="col-md-12 mt-5">
 								<h5 class="mt-2">
-									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의
-									활동
-								</h5>
+									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의활동</h5>
 								<table class="table table-sm table-hover table-striped">
 									<tbody>
+									<c:forEach var="i" items="${mylist }">
+									<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
 										<tr>
-											<td><strong>김동현</strong>님의 판매 활동 <strong>`상추튀김`</strong>
+											<td><strong>${id.member_name }</strong>님의 판매 활동 <strong>${i.shop_title }`</strong>
 											</td>
 										</tr>
-										<tr>
-											<td><strong>김동현</strong>님의 판매 활동 <strong>`마늘주스`</strong>
-											</td>
-										</tr>
-										<tr>
-											<td><strong>김동현</strong>님의 구매 활동 <strong>`공룡고기`</strong>
-											</td>
-										</tr>
+										</a>
+									</c:forEach>
 
 									</tbody>
 								</table>
@@ -233,15 +232,40 @@ hirght:80px;
 <%-- 							</c:if> --%>
 <!-- 						</ul> -->
 					</div>
+					
 					<div class="tab-pane" id="buy"><!-- 구매 내역 -->
-					구매 내역
+					<h4>구매 내역 확인</h4>
+					<hr>
+					<div class="col-12 over center">
+					<div class="col-2 float">번호</div>
+					<div class="col-1 float">이미지</div> 
+				    <div class="float col-4">제목</div>
+					<div class="col-2 float"> 구매 금액</div> 
+					<div class="col-1 float "> 수량</div>
+					<div class="col-2 float "> 구매 날짜</div>
+					</div>
+					<hr>
+					
+					<c:forEach var="i" items="${order }">
+					<div class="col-12 over center "id="clickList">
+				<div class="col-2 float">${i.order_seq }</div>
+<!-- 					<div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
+<%-- 					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"> --%>
+					<div class="col-1 float "><img src="${i.order_image }" class="listimg"></div>
+					<div class="col-4 float skip ">${i.order_title }</div>
+					<div class="col-2 float">${i.order_price }원</div>
+					<div class="col-1 float">${i.order_quantity }개</div>
+					<div class="col-2 float">${i.order_time }</div>
+<!-- 					</a> -->
+					</div>
+						</c:forEach>
 					</div>
 					
 					<div class="tab-pane col-lg-12" id="edit">
 						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
 							<form id=mypage_Img action="/member/uploadImg" method="post"enctype="multipart/form-data">
-								<img src="${id.member_imgpath }" class="mx-auto img-circle"
-									alt="avatar"> <input type=file id="file" name="file">
+								<img src="${id.member_imgpath }" class="mx-auto img-circle"alt="avatar"> 
+								<input type=file id="file" name="file" accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)">
 
 								<input type="button" id="change" class="btn btn-success " name="my_images"
 									value="사진 변경"> <input type="submit" id="uploadImg"
@@ -296,7 +320,7 @@ hirght:80px;
 										aria-expanded="false" id="findAdd">
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="postcode"
+										<input class="form-control " id="postcode"
 											name="member_postcode" type="text"
 											value="${id.member_postcode}" readonly>
 									</div>
@@ -305,7 +329,7 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">도로명
 										주소 </label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add1" name="member_address1"
+										<input class="form-control " id="add1" name="member_address1"
 											type="text" value="${id.member_address1}" readonly>
 									</div>
 								</div>
@@ -313,7 +337,7 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">상세주소
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add2" name="member_address2"
+										<input class="form-control" id="add2" name="member_address2" placeholder="최대 20자"
 											type="text" value="${id.member_address2}">
 									</div>
 								</div>
@@ -330,7 +354,7 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">자기
 										소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
+										<textarea style="resize: none;" id=area name="member_intro" placeholder="최대 100자">${id.member_intro}</textarea>
 									</div>
 									<input name="member_intro" type="hidden">
 									<%--                                 <div class=" ">${id.member_intro}</div> --%>
@@ -340,14 +364,14 @@ hirght:80px;
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="password" name="member_pw"
-											id="pw1"    placeholder="대/소문자, 숫자 포함 최소 8자리">
+											id="pw1"    placeholder="대,소문자,숫자 포함 8~13자리">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호
 										확인</label>
 									<div class="col-lg-9">
-										<input class="form-control" type="password" id="pw2"    placeholder="대/소문자, 숫자 포함 최소 8자리">
+										<input class="form-control" type="password" id="pw2"    placeholder="대,소문자,숫자 포함 8~13자리">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -399,125 +423,16 @@ hirght:80px;
 		</div>
 	</div>
 
+
 	<script>
 
-	function removeXSS (str, id) {
-	//	console.log(str);
-	//	console.log(id);
-	//	alert("XSS");
-		var str_low = "";
-		//var str = str1;
-		// HTML tag를 사용하게 할 경우 부분 허용
-		// HTML tag를 모두 제거
-		str = str.replace("<", "");
-		str = str.replace("<", "");
-		str = str.replace("<", "");
-		str = str.replace("<", "");
-		str = str.replace(">", "");
-		str = str.replace(">", "");
-		str = str.replace(">", "");
-		str = str.replace(">", "");
-		// 특수 문자 제거
-		str = str.replace("\"", "&gt;");
-		str = str.replace("&", "&amp;");
-		str = str.replace("%00", null);
-		str = str.replace("\"", "&#34;");
-		str = str.replace("\'", "&#39;");
-		str = str.replace("%", "&#37;");
-		str = str.replace("../", "");
-		str = str.replace("..\\\\", "");
-		str = str.replace("./", "");
-		str = str.replace("%2F", "");
-		// 허용할 HTML tag만 변경
-		str = str.replace("&lt;p&gt;", "<p>");
-		str = str.replace("&lt;P&gt;", "<P>");
-		str = str.replace("&lt;br&gt;", "<br>");
-		str = str.replace("&lt;BR&gt;", "<BR>");
-		// 스크립트 문자열 필터링 (선별함 - 필요한 경우 보안가이드에 첨부된 구문 추가)
-		str_low = str.toLowerCase();
-		if (str_low.includes("javascript") || str_low.includes("script")
-				|| str_low.includes("div") || str_low.includes("iframe")
-				|| str_low.includes("src") || str_low.includes("href")
-				|| str_low.includes("url") || str_low.includes("ajax")
-				|| str_low.includes("data") || str_low.includes("img")
-				|| str_low.includes("code") || str_low.includes("ript")
-				|| str_low.includes("for") || str_low.includes("json")
-				|| str_low.includes("document")
-				|| str_low.includes("vbscript")
-				|| str_low.includes("applet") || str_low.includes("embed")
-				|| str_low.includes("object") || str_low.includes("frame")
-				|| str_low.includes("grameset")
-				|| str_low.includes("layer") || str_low.includes("bgsound")
-				|| str_low.includes("alert") || str_low.includes("onblur")
-				|| str_low.includes("onchange")
-				|| str_low.includes("onclick")
-				|| str_low.includes("ondblclick")
-				|| str_low.includes("enerror")
-				|| str_low.includes("onfocus")
-				|| str_low.includes("onload")
-				|| str_low.includes("onmouse")
-				|| str_low.includes("onscroll")
-				|| str_low.includes("onsubmit")
-				|| str_low.includes("onunload")) 
-		{
-			str = str_low;
-			str = str.replace("url", "1212");
-			str = str.replace("<sc", "---");
-			str = str.replace("cr", "---");
-			str = str.replace("ri", "---");
-			str = str.replace("it", "---");
-			str = str.replace("ip", "");
-			str = str.replace("img", "");
-			str = str.replace("im", "---");
-			str = str.replace("al", "---");
-			str = str.replace("er", "---");
-			str = str.replace("rt>", "---");
-			str = str.replace("ajax", "Hello");
-			str = str.replace("href", "-----");
-			str = str.replace("div", "x-div");
-			str = str.replace("json", "14dd2");
-			str = str.replace("for", "world");
-			str = str.replace("ript", "");
-			str = str.replace("code", "x-code");
-			str = str.replace("src", "x-src");
-			str = str.replace("href", "x-href");
-			str = str.replace("javascript", "x-javascript");
-			str = str.replace("script", "x-script");
-			str = str.replace("iframe", "x-iframe");
-			str = str.replace("document", "x-document");
-			str = str.replace("vbscript", "x-vbscript");
-			str = str.replace("applet", "x-applet");
-			str = str.replace("embed", "x-embed");
-			str = str.replace("object", "x-object");
-			str = str.replace("frame", "x-frame");
-			str = str.replace("grameset", "x-grameset");
-			str = str.replace("layer", "x-layer");
-			str = str.replace("bgsound", "x-bgsound");
-			str = str.replace("alert", "x-alert");
-			str = str.replace("onblur", "x-onblur");
-			str = str.replace("onchange", "x-onchange");
-			str = str.replace("onclick", "x-onclick");
-			str = str.replace("ondblclick", "x-ondblclick");
-			str = str.replace("enerror", "x-enerror");
-			str = str.replace("onfocus", "x-onfocus");
-			str = str.replace("onload", "x-onload");
-			str = str.replace("onmouse", "x-onmouse");
-			str = str.replace("onscroll", "x-onscroll");
-			str = str.replace("onsubmit", "x-onsubmit");
-			str = str.replace("onunload", "x-onunload");
-			//console.log("함수"+str);
-			$("#"+id).val(str);
-		}
-	}
-	
-	</script>
-	
-	<script>
+
 
 	$("#goHome").on("click",function(){
 		 location.href="/home";
 	})
 	
+	//-----------------------------회원탈퇴
 	$("#delOK").on("click",function(){
 		if($("#del_id").val()==""){
 			alert("아이디를 입력해주세요");
@@ -539,9 +454,30 @@ hirght:80px;
 			else return;
 		}
 	});
-	
+	//-----------------------------회원탈퇴 끝
 	
 		$("#file").hide();
+	//---------------------------------------------- 정보수정 이미지 변경 확장자 제한
+		function checkFile(f){
+
+			// files 로 해당 파일 정보 얻기.
+			var file = f.files;
+
+			// file[0].name 은 파일명 입니다.
+			// 정규식으로 확장자 체크
+			if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)) {
+			alert('gif, jpg, png, jpeg 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+			$("#imgInput").val("");
+			}
+			// 체크를 통과했다면 종료.
+			else return;
+
+			// 체크에 걸리면 선택된  내용 취소 처리를 해야함.
+			// 파일선택 폼의 내용은 스크립트로 컨트롤 할 수 없습니다.
+			// 그래서 그냥 새로 폼을 새로 써주는 방식으로 초기화 합니다.
+			// 이렇게 하면 간단 !?
+			f.outerHTML = f.outerHTML;
+		}
 
 
 		$("#change").on("click", function() {
@@ -574,7 +510,10 @@ hirght:80px;
 			} else if ($("#area").val() == "") {
 				alert("자기소개를 입력해주세요");
 				$("#area").focus();
-			}else if ($("#pw1").val() == "") {
+			}else if($("#area").val().length>100){
+				alert("자기소개 제한 글자를 초과하였습니다");
+			}
+			else if ($("#pw1").val() == "") {
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
 			}

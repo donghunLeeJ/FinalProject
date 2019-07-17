@@ -39,13 +39,14 @@ float:left;
 #gen{
 transform:translate(20px);
 }
+.form-control[readonly]{
+background-color:white;
+}
 </style>
-
+<script type="text/javascript" src="/js/cross.js"></script>
 </head>
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
- 
-
 
    <section class="akame-contact-area bg-gray section-padding-80">
    <div class="container">
@@ -81,15 +82,12 @@ transform:translate(20px);
                      <input type="text" style="width: 48%; margin: auto;" id=id
                         name="member_id" class="form-control mb-30" placeholder="인증 받을 이메일 형식으로 입력해주세요">
 
-
                   </div>
                   <div class="col-lg-12 text-center">
                      <div class=title>비밀번호</div>
 
                      <input type="password" style="width: 50%; margin: auto;" id=pw
-                        name="member_pw" class="form-control mb-30"
-
-                        placeholder="대,소문자,숫자 포함 최소 8자리">
+                        name="member_pw" class="form-control mb-30" placeholder="대,소문자,숫자 포함 8~13자리">
 
                   </div>
                   <div class="col-lg-12 text-center">
@@ -97,7 +95,7 @@ transform:translate(20px);
 
                      <input type="password" id=pwCheck
                         style="width: 50%; margin: auto;" class="form-control mb-30"
-                        placeholder="">
+                        placeholder="대,소문자,숫자 포함 8~13자리">
                   </div>
 
                   <div class="col-lg-12 text-center">
@@ -105,7 +103,6 @@ transform:translate(20px);
 
 
                      <input type="text" id="name" name="member_name" style="width: 48%; margin: auto;" class="form-control mb-30" placeholder="한글 2자 이상, 4자 이하">
-
                   </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="margin: auto">
@@ -115,6 +112,7 @@ transform:translate(20px);
                   <script>
                      $('#datepicker').datepicker({
                         uiLibrary : 'bootstrap4',
+                        format : "yyyy-mm-dd"
                      });
                   </script>
                   
@@ -135,7 +133,7 @@ transform:translate(20px);
                   
                   <input type="text" id="postcode"style="width: 50%; margin: auto;" name="member_postcode"class="form-control mb-30" placeholder="우편번호" readonly><br> 
                   <input type="text" id="add1" style="width: 50%; margin: auto;"name="member_address1" class="form-control mb-30"placeholder="도로명 주소" readonly><br> 
-                  <input type="text"   id="add2" style="width: 50%; margin: auto;"name="member_address2" class="form-control mb-30"placeholder="상세 주소"> <br>
+                  <input type="text"   id="add2" style="width: 50%; margin: auto;"name="member_address2" class="form-control mb-30"placeholder="상세 주소 / 최대 20자"> <br>
 
                      
                   </div>
@@ -172,27 +170,28 @@ transform:translate(20px);
       $("#send").on("click",function() {
          
          var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-         var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+         var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,13}$/g;
          var regPw2=/(\w)\1\1/g;
          var regname = /^[가-힣]{2,4}$/;
          var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
          var reg = /\s/g;
 
+         
+
+          
                if ($("#id").val() == "") {//아이디가 공백이면
                   alert("아이디를 입력하세요");
                   $("#id").focus();
-               } else if(!regId.test($("#id").val())){
+               }else if(!regId.test($("#id").val())){
                   alert("이메일 형식에 맞지 않습니다");
                   $("#id").focus();   
                }else if(reg.test($("#id").val())){
                   alert("공백은 입력할 수 없습니다");
                   $("#id").focus();
-               }
-               
-               
-               else if ($("#pw").val() == "") {
+               }  else if ($("#pw").val() == "") {
                   alert("비밀번호를 입력하세요");
                   $("#pw").focus();
+               
                }else if(!regPw.test($("#pw").val())){
                   alert("비밀번호 형식에 맞지 않습니다");
                   $("#pw").focus();
@@ -211,7 +210,6 @@ transform:translate(20px);
                   alert("비밀번호가 일치하지 않습니다");
                   $("#pw").focus();
                }
-                  
                 else if ($("#name").val() == "") {
                   alert("이름을 입력하세요");
                   $("#name").focus();
@@ -221,46 +219,48 @@ transform:translate(20px);
                }else if(reg.test($("#name").val())){
                   alert("공백은 입력할 수 없습니다");
                   $("#name").focus();
-               }
-               
- 
-             else if ($("#name").val() == "") {
+               } else if ($("#name").val() == "") {
                alert("이름을 입력하세요");
                $("#name").focus();
-            }else if(!regname.test($("#name").val())){
+           		 }else if(!regname.test($("#name").val())){
                alert("이름 형식에 맞지 않습니다");
                $("#name").focus();
-            }else if(reg.test($("#name").val())){
+           		 }else if(reg.test($("#name").val())){
                alert("공백은 입력할 수 없습니다");
                $("#name").focus();
-            }
-
-            else if ($("#datepicker").val() == "") {//#datepicker 이게 최신꺼 // 07-12 오후 5시 24분
-
+           		 }else if ($("#datepicker").val() == "") {
                alert("생년월일을 입력하세요");
-            }
-            
-            else if ($("#phone").val() == "") {
+            	 }  else if ($("#phone").val() == "") {
                alert("핸드폰 번호를 입력하세요");
                $("#phone").focus();
-            }else if(!regnum.test($("#phone").val())){
+           	 }else if(!regnum.test($("#phone").val())){
                alert("핸드폰 번호가 형식에 맞지 않습니다");
                $("#phone").focus();
-            }else if(reg.test($("#phone").val())){
+          	  }else if(reg.test($("#phone").val())){
                alert("공백은 입력할 수 없습니다");
                $("#phone").focus();
-            }
-            else if ($("#postcode").val() == "") {
+           	 }else if ($("#postcode").val() == "") {
                alert("주소를 입력하세요");
-            }
-            else if ($("#man").is(':checked') == false
+           	 }else if($("#add2").val().length>20){
+           		 alert("상세주소의 글자 수를 초과하였습니다");
+           		$("#add2").focus();
+           	 } 
+           	 else if ($("#man").is(':checked') == false
                   && $("#woman").is(':checked') == false) {
-               alert("성별을 선택하세요!");
+               	 alert("성별을 선택하세요!");
             }else if($("#add2").val()==""){
                var result =confirm("상세주소가 없습니다.\n가입하시겠습니까?");
                if(result) $("form").submit();
-              
             }else{
+            	removeXSS($("#id").val(),$("#id").attr("id"));
+            	removeXSS($("#pw").val(),$("#pw").attr("id"));
+            	removeXSS($("#pwCheck").val(),$("#pwCheck").attr("id"));
+            	removeXSS($("#name").val(),$("#name").attr("id"));
+            	removeXSS($("#datepicker").val(),$("#datepicker").attr("id"));
+            	removeXSS($("#phone").val(),$("#phone").attr("id"));
+            	removeXSS($("#postcode").val(),$("#postcode").attr("id"));
+            	removeXSS($("#add1").val(),$("#add1").attr("id"));
+            	removeXSS($("#add2").val(),$("#add2").attr("id"));
                $("form").submit();
             }
 
