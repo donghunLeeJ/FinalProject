@@ -39,7 +39,7 @@ img {
 		<div class="container mt-5">
 			<div class="row  pb-3 border-bottom">
 				<div class="col-12 text-right">
-
+					<input type="hidden" value="${dto.shop_seq }" name="products_seq">
 					<a href="/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }"
 						class="btn akame-btn">이전 페이지 </a>
 

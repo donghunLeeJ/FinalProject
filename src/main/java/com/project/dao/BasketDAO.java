@@ -37,5 +37,8 @@ public class BasketDAO {
 	public BasketDTO basketListBuy(String basket_seq) {
 		return sst.selectOne("basket.basketListBuy",basket_seq);
 	}
+	public int resetBasket(String id) {
+		return sst.delete("basket.resetBasket",id);
+	}
 	
 }

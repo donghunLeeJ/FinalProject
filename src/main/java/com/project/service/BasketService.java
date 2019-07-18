@@ -29,4 +29,8 @@ public class BasketService {
 	public BasketDTO basketListBuy(String basket_seq){
 		return dao.basketListBuy(basket_seq);
 	}
+	public int resetBasket(String id){
+		return dao.resetBasket(id);
+	}
+	
 }
