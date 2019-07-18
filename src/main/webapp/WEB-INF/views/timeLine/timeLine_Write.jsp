@@ -111,12 +111,16 @@
 	}
 	
 	$("#OK").on("click",function(){
+	
+		
 		if($("#title").val()==""){
 			alert("제목을 입력해주세요");
 			$("#title").focus();
 		}else if($("#contents").val()==''){
 			alert("내용을 입력해주세요");
 			$("#contents").focus();
+		}else if($("#imgInput").val() == ''){
+			alert("이미지를 등록해주세요");
 		}else{
 		removeXSS($("#title").val(),$("#title").attr("id"));
 		removeXSS($("#contents").val(),$("#contents").attr("id"));
