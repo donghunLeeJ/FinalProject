@@ -2,7 +2,7 @@ package com.project.dto;
 
 import java.sql.Date;
 
-public class OrderDTO {
+public class OrderDTO implements Cloneable{
 
 	private int order_seq;
 	private int products_seq;
@@ -26,7 +26,10 @@ public class OrderDTO {
 	public OrderDTO() {
 		super();
 	}
-	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 	
 	@Override
 	public String toString() {

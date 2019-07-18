@@ -251,29 +251,34 @@ public class ShopBoardController {
 		String order_number = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
 		String seq = basket_seq;
 		String[] seqList = seq.split(",");
-		
 		List<OrderDTO> arr = new ArrayList(); 
 		for(int i = 0 ; i < seqList.length ; i ++) {
+			OrderDTO odto2 = new OrderDTO();
+			try {
+				odto2 = (OrderDTO)odto.clone();
+			} catch (CloneNotSupportedException e) {
+				
+				e.printStackTrace();
+			}
 			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
-			odto.setProducts_seq(bdto.getProduct_seq());
-			odto.setOrder_number(order_number);
-			odto.setOrder_title(bdto.getBasket_title());
-			odto.setOrder_quantity(bdto.getBasket_quantity());
-			odto.setOrder_price(bdto.getBasket_price());
-			odto.setOrder_image(bdto.getBasket_imagepath());
-			odto.setOrder_seller(bdto.getBasket_seller());
-			odto.setOrder_buyer_phone(phone);
-			odto.setOrder_buyer_email(email);
-			odto.setOrder_receipt_phone(getter_phone);
-			oService.orderInsert(odto);
-			arr.add(odto);
+			odto2.setOrder_buyer_phone(phone);
+			odto2.setProducts_seq(bdto.getProduct_seq());
+			odto2.setOrder_number(order_number);
+			odto2.setOrder_title(bdto.getBasket_title());
+			odto2.setOrder_quantity(bdto.getBasket_quantity());
+			odto2.setOrder_price(bdto.getBasket_price());
+			odto2.setOrder_image(bdto.getBasket_imagepath());
+			odto2.setOrder_seller(bdto.getBasket_seller());
+			odto2.setOrder_buyer_email(email);
+			odto2.setOrder_receipt_phone(getter_phone);
+			arr.add(odto2);
+			oService.orderInsert(odto2);
 		}
-		
+		Gson g = new Gson();
+		System.out.println(g.toJson(arr));
 		bservice.resetBasket(email);
-		
 		request.setAttribute("ldto", arr);
-
 		return "/shopBoard/shopChargeOk2";
 	}
 
