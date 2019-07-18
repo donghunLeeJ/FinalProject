@@ -90,6 +90,35 @@ public class MemberController {
 	public String goJoin() {
 		return "member/joinMem";
 	}
+	@RequestMapping("findinfo")
+	public String findinfo() {
+		return "member/findinfo";
+	}
+	@RequestMapping("findID")
+	public String findID(MemberDTO dto) {
+			String result = mservice.findID(dto);
+			if(result!=null) {
+			request.setAttribute("confirm", result);
+			return "member/yourID";
+			}else {
+			return "member/yourID2";
+			}
+	}
+	@RequestMapping("findPW")
+	public String findPW(String member_id) {
+		request.setAttribute("change", member_id);
+		int result = mservice.findPW(member_id);
+		if(result==1)	return "member/yourPW";
+		else return "member/yourPW2";
+	}
+	@RequestMapping("cleanPW")
+	public String cleanPW(String member_pw, String member_id) {
+		String new_pw=mdao.SHA256(member_pw);
+		int result = mservice.cleanPW(new_pw,  member_id);
+		if(result==1) return "member/cleanOK";
+		else return "member/yourPW3";
+		
+	}
 
 	@RequestMapping("/joinProc")
 	public String joinInsert(MemberDTO mdto) {
@@ -175,6 +204,7 @@ public class MemberController {
 			System.out.println("넘어온 아이디 : " + del_id);
 			System.out.println("넘어온 비밀번호 : " + del_pw);
 			mservice.delOK(del_id, del_pw);
+			session.invalidate();
 			return "/member/delOK";
 		} catch (Exception e) {
 			return "/member/faildel";

@@ -30,6 +30,28 @@ public class MemberDAO {
 		return sst.selectOne("ShopBoardDAO.totalCount");
 	}
 	
+	public String findID(MemberDTO dto) {
+		return sst.selectOne("member.findID",dto);
+	}
+	public int findPW(String mail) {
+		int count=0;
+		 count=sst.selectOne("member.findPW",mail);
+		return count;
+	}
+	public int cleanPW(String pw, String member_id) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("pw", pw);
+		map.put("id", member_id);
+		int count=0;
+		int result=0;
+		count = sst.selectOne("member.checkdupl",pw);
+		if(count==1) {
+			return count+99;
+		}else {
+			result= sst.update("member.changePW",map);
+			return result;
+		}
+	}
 	 public static String SHA256(String str){
 		  String SHA = ""; 
 		  try{
@@ -48,9 +70,6 @@ public class MemberDAO {
 		  }
 		  return SHA;
 		 }
-	
-	
-	
 	
 	public int login(MemberDTO dto) {
 		int result=0;
@@ -102,13 +121,6 @@ public class MemberDAO {
 		 return sst.selectList("member.selectProfile");
 	}
 
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

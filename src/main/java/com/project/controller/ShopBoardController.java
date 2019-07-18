@@ -198,27 +198,34 @@ public class ShopBoardController {
 
 	}
 
-	@RequestMapping("/shopOrder")
-	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3, String products_seq) {
-		// order테이블에 들어가는정보 배달정보
-		String phone = phone1 + phone2 + phone3;
-		int products_seq1 = Integer.parseInt(products_seq);
-		System.out.println(phone);
-		String email = email1 + "@" + email2;
-		String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
-		System.out.println(getter_phone);
-		odto.setOrder_buyer_phone(phone);
-		odto.setOrder_receipt_phone(getter_phone);
-		odto.setOrder_buyer_email(email);
-		String order_number = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
-		odto.setOrder_number(order_number);
-		odto.setProducts_seq(products_seq1);
-		oService.orderInsert(odto);
-		request.setAttribute("ldto", odto);
 
-		return "/shopBoard/shopChargeOk";
-	}
+	
+	
+	@RequestMapping("/shopOrder")
+	   public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
+	         String getter_phone1, String getter_phone2, String getter_phone3, String products_seq) {
+	      // order테이블에 들어가는정보 배달정보
+	      String phone = phone1 + phone2 + phone3;
+	      int products_seq1 = Integer.parseInt(products_seq);
+	      String email = email1 + "@" + email2;
+	      String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
+	      MemberDTO id = (MemberDTO) session.getAttribute("id");
+	      String login_email = id.getMember_id();
+	      odto.setMember_email(login_email);
+	      odto.setOrder_buyer_phone(phone);
+	      odto.setOrder_receipt_phone(getter_phone);
+	      odto.setOrder_buyer_email(email);
+	      String order_number = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
+	      odto.setOrder_number(order_number);
+	      odto.setProducts_seq(products_seq1);
+	      oService.orderInsert(odto);
+	      request.setAttribute("ldto", odto);
+
+	      return "/shopBoard/shopChargeOk";
+	   }
+	
+	
+	
 
 	@RequestMapping("/buyReview")
 	public String shopReview(ShopReviewDTO dto, String products_seq) {
