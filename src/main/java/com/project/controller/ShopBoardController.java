@@ -21,6 +21,7 @@ import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.dto.ShopReviewDTO;
+import com.project.dto.ViewDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
@@ -113,6 +114,8 @@ public class ShopBoardController {
 		System.out.println("지역: " + dto.getShop_location());
 		System.out.println("유통기한: " + dto.getShop_expiration());
 		System.out.println("test" + shop_expiration);
+		
+		
 		int memberSell_seq = Integer.parseInt(sell_seq);
 		System.out.println("sell_seq" + sell_seq);
 		int fileCount = 0;
@@ -167,9 +170,12 @@ public class ShopBoardController {
 
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		dto.setShop_id(mdto.getMember_id());
+		
+		
 		dto.setMemberSell_seq(memberSell_seq);
 		// dto.setShop_id("kkjangel");
 		int result = sService.ShopBoardInsert(dto);
+		ViewDTO.setBoardNewCount(ViewDTO.getBoardNewCount() + 1);
 		return "redirect:../home";
 	}
 
@@ -215,6 +221,7 @@ public class ShopBoardController {
 		odto.setOrder_number(order_number);
 		odto.setProducts_seq(products_seq1);
 		oService.orderInsert(odto);
+		ViewDTO.setTradeCount(ViewDTO.getVisitViewCount()+ 1);
 		request.setAttribute("ldto", odto);
 
 		return "/shopBoard/shopChargeOk";
