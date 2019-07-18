@@ -86,7 +86,7 @@ input[type="text"] {
 				<div class="row border-bottom border-top text-center py-4">
 					<div class="col-3 " style="line-height: 4em;">
 						<div class="row">
-							<input type="text" id="seq" value="${list.basket_seq }">
+							
 							<div class="col-4">
 								<input id="check${list.basket_seq }" type="checkbox" name="check" 
 									value="${list.basket_seq }" class="check" /><img
@@ -108,7 +108,7 @@ input[type="text"] {
 							브랜드 ${dto.basket_title}</small>
 					</div>
 					<div class="col-2 text-center" style="padding: 0;">
-						<button class="mypage_btn1">주문 하기</button>
+						
 						<br>
 						<button type="button" id="delete" class="mypage_btn2"
 							style="margin-right: 0.3em">삭제 하기</button>
@@ -136,12 +136,70 @@ input[type="text"] {
 			</c:forEach>
 		</form>
 
+
+
+
+
+<div class="row border-bottom border-top bg-gray text-center py-2">
+				<div class="col-3">
+					
+				</div>
+				<div class="col-2"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-2"></div>
+				<div class="col-2">합계 금액</div>
+			</div>
+
+		<div class="row border-bottom border-top text-center py-4">
+					<div class="col-3 " style="line-height: 4em;">
+						<div class="row">
+							
+							<div class="col-4">
+								
+									
+									 
+							</div>
+							<div class="col-8">바스켓 타이틀 자리</div>
+
+						</div>
+					</div>
+					<div class="col-2" style="line-height: 4em;">유통기한 자리</div>
+					<div class="col-1" style="line-height: 4em;">수량 자리</div>
+					<div class="col-1" style="line-height: 4em;">가격 자리</div>
+					<div class="col-1" style="line-height: 4em;">지역 자리</div>
+
+					<div class="col-2" style="line-height: 1.4em;">
+						선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
+							브랜드 ${dto.basket_title}</small>
+					</div>
+					<div class="col-2 text-center" style="padding: 0;">
+						<br>
+						
+					</div>
+				</div>
+
+
+
+
+
+
+
+
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
 				<a id="charge" class="btn akame-btn mr-3" onclick="fnGetdata();">결 제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
 			</div>
 		</div>
 	</div>
+
+	
+	
+	
+	
+	
+	
 
 
 	<script>
@@ -151,9 +209,9 @@ input[type="text"] {
 		$("#chargeForm").submit();
 		}) */
 	
-		/* var checkAll = function() {
+		 var checkAll = function() {
 			$(".check").click();
-		} */
+		} 
 		$("#delete").on(
 				"click",
 				function() {

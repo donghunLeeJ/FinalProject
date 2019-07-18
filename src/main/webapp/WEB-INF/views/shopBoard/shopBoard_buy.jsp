@@ -34,7 +34,7 @@ img {
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<form action="/shopboard/shopOrder"
+	<form action="/shopboard/shopOrder?products_seq=${dto.shop_seq }"
 		id="completeForm" method="POST">
 		<div class="container mt-5">
 			<div class="row  pb-3 border-bottom">
