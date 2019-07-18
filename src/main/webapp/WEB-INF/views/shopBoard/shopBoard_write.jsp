@@ -108,9 +108,15 @@ background-color:white;
 					$("#datepicker").datepicker({
 						uiLibrary : 'bootstrap4',
 						format : "yyyy-mm-dd",
+						 minDate : "0",
+                         maxDate : "+8M",
 						language : "kr"
-	});
+					});
+					$('#datepicker').datepicker('setDate', 'today');
+					
+
 				</script>
+				
 			</div>
 			<div class="col-lg-2 border text-center align-middle" style="background: #e6e7e8">가격</div>
 			<div class="col-lg-10 border p-0">
