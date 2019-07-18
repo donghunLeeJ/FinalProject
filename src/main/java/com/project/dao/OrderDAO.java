@@ -15,7 +15,7 @@ public class OrderDAO {
 	private SqlSessionTemplate sst;
 
 	public int orderInsert(OrderDTO dto) {
-
+		System.out.println(dto.toString());
 		return sst.insert("OrderDAO.orderInsert", dto);
 	}
 

@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="../css/style2.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -29,21 +30,17 @@ img {
 	width: 100%;
 	height: 100%;
 }
-.form-control[readonly]{
-background-color:white;
-}
 </style>
-	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<form action="/shopboard/shopOrder?products_seq=${dto.shop_seq }"
+	<form action="/shopboard/shopBasketOrder?basket_seq=${basketseq }"
 		id="completeForm" method="POST">
 		<div class="container mt-5">
 			<div class="row  pb-3 border-bottom">
 				<div class="col-12 text-right">
-					<input type="hidden" value="${dto.shop_seq }" name="products_seq">
+
 					<a href="/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }"
 						class="btn akame-btn">이전 페이지 </a>
 
@@ -77,19 +74,23 @@ background-color:white;
 				<div class="col-2">유통 기한</div>
 				<div class="col-2">배송비/판매자</div>
 			</div>
+			
+			<c:forEach var="dto" items="${basketarr}">
+			
 			<div class="row border-bottom border-top text-center py-4"
 				style="height: 8em">
 				<div class="col-5 ">
 					<div class="row">
 						<div class="col-3  pt-2 pb-2 ">
-							<img class="ml-3" src="${dto.shop_imagepath1 }"> <input
-								type="hidden" value="${dto.shop_imagepath1 }" name="order_image">
+						
+							<img class="ml-3" src="${dto.basket_imagepath }"> <input
+								type="hidden" value="${dto.basket_imagepath }" name="order_image">
 						</div>
 						<div class="col-9"
 							style="text-overflow: ellipsis; margin-top: 1.4em; width: 25em; white-space: nowrap; overflow: hidden;">
-							<span><strong>${dto.shop_title }</strong> <input
-								type="hidden" value="${dto.shop_title }" name="order_title">
-								<input type="hidden" value="${dto.shop_id } "
+							<span><strong>${dto.basket_title }</strong> <input
+								type="hidden" value="${dto.basket_title }" name="order_title">
+								<input type="hidden" value="${dto.basket_id } "
 								name="order_seller"> </span>
 
 						</div>
@@ -97,22 +98,26 @@ background-color:white;
 					</div>
 				</div>
 
-				<div class="col-1" style="margin-top: 1.4em">${quantity }
-					<input type="hidden" value="${quantity }" name="order_quantity">
+				<div class="col-1" style="margin-top: 1.4em">${dto.basket_quantity }
+					<input type="hidden" value="${dto.basket_quantity }" name="order_quantity">
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
-					<fmt:formatNumber value="${price }" pattern="#,###" />
-					(원) <input type="hidden" value="${price }" name="order_price">
+					<fmt:formatNumber value="${dto.basket_price }" pattern="#,###" />
+					(원) <input type="hidden" value="${dto.basket_price }" name="order_price">
 				</div>
-				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
-				<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
+				<div class="col-1" style="margin-top: 1.4em">${dto.basket_location }</div>
+				<div class="col-2" style="margin-top: 1.4em">${dto.basket_expiration }</div>
 				<div class="col-2">
-					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.shop_id }
+					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.basket_id }
 
-						<br>${dto.shop_brand }</small>
+						<br>바스켓 브랜드</small>
 
 				</div>
 			</div>
+
+</c:forEach>
+
+
 
 			<div class="row pt-5 pb-1">
 
@@ -171,18 +176,17 @@ background-color:white;
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송지선택</div>
 					<div class="col-9 py-2">
-						<input type="text" id="sample6_postcode" class="findAdd" 
-							name="order_receipt_postcode" placeholder="우편번호" readonly>
-							 <input
-							type="button" onclick="sample6_execDaumPostcode()" id="postbtn"
+						<input type="text" id="sample6_postcode"
+							name="order_receipt_postcode" placeholder="우편번호"> <input
+							type="button" onclick="sample6_execDaumPostcode()"
 							value="우편번호 찾기" style="margin-left: 0.5em"><br> <br>
-						<input type="text" id="sample6_address" class="findAdd" 
+						<input type="text" id="sample6_address"
 							name="order_receipt_address1" placeholder="주소"
-							style="width: 20em" readonly><br> <br> <input
+							style="width: 20em"><br> <br> <input
 							type="text" id="sample6_detailAddress"
 							name="order_receipt_address2" placeholder="상세주소"
 							style="width: 25em"> <input type="text"
-							id="sample6_extraAddress" placeholder="참고항목" readonly>
+							id="sample6_extraAddress" placeholder="참고항목">
 
 					</div>
 					<div class="col-3 font-weight-bold py-2">휴대전화</div>
@@ -194,7 +198,7 @@ background-color:white;
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
 					<div class="col-9">
-						<input type="text" name="order_receipt_demend" style="width: 35em" id="req">
+						<input type="text" name="order_receipt_demend" style="width: 35em">
 						<p style="color: blue;">
 							<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
 						</p>
@@ -205,10 +209,8 @@ background-color:white;
 				<div class="row py-2">
 					<div class="col-12">
 						<p>
-						<input type="checkbox" id=check1>
-						<small>판매명, 유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br>
-						<input type="checkbox" id=check2>
-						<small>정확하지 않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small>
+							<small>전자상거래 소비자보호 법률에 따른 구매 안전 서비스 안내: 본 판매자는 11번가㈜과 계약을
+								통해 구매 안전 서비스를 자동으로 제공중입니다. (결제대금예치업 등록번호 02-006-000022) </small>
 						</p>
 
 					</div>
@@ -233,13 +235,6 @@ background-color:white;
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 		$("#buy_aTag").on("click", function() {
-			
-			var regname = /^[가-힣]{1,10}$/;
-			var regnum1 = /^01([0|1|6|7|8|9]?)$/;
-			var regnum2 = /^([0-9]{3,4})$/;
-			var regnum3 = /^([0-9]{4})$/;
-			var regmail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
-			var regmail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			// 			var price = $("#price").text();
 			// 			IMP.request_pay({
 			// 				pg : 'inicis', // version 1.1.0부터 지원.
@@ -264,26 +259,7 @@ background-color:white;
 			// 				}
 			// 				alert(msg);
 			// 			});
-			
-				removeXSS($("#order_buyer").val(), $("#order_buyer").attr("id"));
-				removeXSS($("#order_phone1").val(), $("#order_phone1").attr("id"));
-				removeXSS($("#order_phone2").val(), $("#order_phone2").attr("id"));
-				removeXSS($("#order_phone3").val(), $("#order_phone3").attr("id"));
-				removeXSS($("#email1").val(), $("#email2").attr("id"));
-				removeXSS($("#geter_name").val(), $("#geter_name").attr("id"));
-				removeXSS($("#sample6_postcode").val(), $("#sample6_postcode").attr("id"));
-				removeXSS($("#sample6_address").val(), $("#sample6_address").attr("id"));
-				removeXSS($("#sample6_detailAddress").val(), $("#sample6_detailAddress").attr("id"));
-				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
-				removeXSS($("#phone1").val(), $("#phone1").attr("id"));
-				removeXSS($("#phone2").val(), $("#phone2").attr("id"));
-				removeXSS($("#phone3").val(), $("#phone3").attr("id"));
-				removeXSS($("#req").val(), $("#req").attr("id"));
-			    $("#completeForm").submit();
-		})//결제버튼클릭
-		
-		$(".findAdd").on("click",function(){
-			$("#postbtn").click();
+			$("#completeForm").submit();
 		})
 
 		// 	배송지 radio reset 

@@ -67,7 +67,7 @@ input[type="text"] {
 			</div>
 
 		</div>
-		<form>
+		<form action="/Basket/asd" id="chargeForm">
 			<div class="row border-bottom border-top bg-gray text-center py-2">
 				<div class="col-3">
 					<input type="checkbox" onclick="checkAll();" />상품/옵션정보
@@ -86,10 +86,13 @@ input[type="text"] {
 				<div class="row border-bottom border-top text-center py-4">
 					<div class="col-3 " style="line-height: 4em;">
 						<div class="row">
-							<input type="hidden" id="seq" value="${list.basket_seq }">
+							
 							<div class="col-4">
-								<input type="checkbox" name="check" class="check" /><img
+								<input id="check${list.basket_seq }" type="checkbox" name="check" 
+									value="${list.basket_seq }" class="check" /><img
 									src="${list.basket_imagepath }">
+									
+									 <input type="hidden" name="hiddenValue" id="hiddenValue" value=""/>
 							</div>
 							<div class="col-8">${list.basket_title}</div>
 
@@ -105,28 +108,110 @@ input[type="text"] {
 							브랜드 ${dto.basket_title}</small>
 					</div>
 					<div class="col-2 text-center" style="padding: 0;">
-						<button class="mypage_btn1">주문 하기</button>
+						
 						<br>
 						<button type="button" id="delete" class="mypage_btn2"
 							style="margin-right: 0.3em">삭제 하기</button>
 					</div>
 				</div>
+				<script>
+				
+				 function fnGetdata(){
+				        var obj = $("[name=check]");
+				        var chkArray = new Array(); // 배열 선언
+				 
+				        $('input:checkbox[name=check]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+				            chkArray.push(this.value);
+				        });
+				        $('#hiddenValue').val(chkArray);
+				        
+				        //alert($('#hiddenValue').val());  아래 체크박스가 모두 체크되어 있다면 1,2,3,4 가 출력 된다.
+				        
+				        location.href="/Basket/asd?basket_seq="+$("#hiddenValue").val();
+				       
+				    }
+				
+					
+				</script>
 			</c:forEach>
 		</form>
 
+
+
+
+
+<div class="row border-bottom border-top bg-gray text-center py-2">
+				<div class="col-3">
+					
+				</div>
+				<div class="col-2"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-2"></div>
+				<div class="col-2">합계 금액</div>
+			</div>
+
+		<div class="row border-bottom border-top text-center py-4">
+					<div class="col-3 " style="line-height: 4em;">
+						<div class="row">
+							
+							<div class="col-4">
+								
+									
+									 
+							</div>
+							<div class="col-8">바스켓 타이틀 자리</div>
+
+						</div>
+					</div>
+					<div class="col-2" style="line-height: 4em;">유통기한 자리</div>
+					<div class="col-1" style="line-height: 4em;">수량 자리</div>
+					<div class="col-1" style="line-height: 4em;">가격 자리</div>
+					<div class="col-1" style="line-height: 4em;">지역 자리</div>
+
+					<div class="col-2" style="line-height: 1.4em;">
+						선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
+							브랜드 ${dto.basket_title}</small>
+					</div>
+					<div class="col-2 text-center" style="padding: 0;">
+						<br>
+						
+					</div>
+				</div>
+
+
+
+
+
+
+
+
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
-				<a href="/shopboard/shopBoard_buyProc" class="btn akame-btn mr-3">결
-					제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
+				<a id="charge" class="btn akame-btn mr-3" onclick="fnGetdata();">결 제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
 			</div>
 		</div>
 	</div>
 
+	
+	
+	
+	
+	
+	
+
 
 	<script>
-		var checkAll = function() {
+		/* $("#charge").on("click",function(){
+					
+		location.href="/Basket/asd?basket_seq="+
+		$("#chargeForm").submit();
+		}) */
+	
+		 var checkAll = function() {
 			$(".check").click();
-		}
+		} 
 		$("#delete").on(
 				"click",
 				function() {
