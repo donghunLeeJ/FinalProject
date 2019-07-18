@@ -88,8 +88,7 @@
 						"click",
 						function() {
 
-							$
-									.ajax(
+							$.ajax(
 											{
 
 												url : "/admin/blacklist?id=${userINFO.member_id}&blackcheck=${userINFO.member_blackcheck}",
