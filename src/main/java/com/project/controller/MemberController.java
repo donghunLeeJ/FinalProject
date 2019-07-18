@@ -90,34 +90,42 @@ public class MemberController {
 	public String goJoin() {
 		return "member/joinMem";
 	}
+
 	@RequestMapping("findinfo")
 	public String findinfo() {
 		return "member/findinfo";
 	}
+
 	@RequestMapping("findID")
 	public String findID(MemberDTO dto) {
-			String result = mservice.findID(dto);
-			if(result!=null) {
+		String result = mservice.findID(dto);
+		if (result != null) {
 			request.setAttribute("confirm", result);
 			return "member/yourID";
-			}else {
+		} else {
 			return "member/yourID2";
-			}
+		}
 	}
+
 	@RequestMapping("findPW")
 	public String findPW(String member_id) {
 		request.setAttribute("change", member_id);
 		int result = mservice.findPW(member_id);
-		if(result==1)	return "member/yourPW";
-		else return "member/yourPW2";
+		if (result == 1)
+			return "member/yourPW";
+		else
+			return "member/yourPW2";
 	}
+
 	@RequestMapping("cleanPW")
 	public String cleanPW(String member_pw, String member_id) {
-		String new_pw=mdao.SHA256(member_pw);
-		int result = mservice.cleanPW(new_pw,  member_id);
-		if(result==1) return "member/cleanOK";
-		else return "member/yourPW3";
-		
+		String new_pw = mdao.SHA256(member_pw);
+		int result = mservice.cleanPW(new_pw, member_id);
+		if (result == 1)
+			return "member/cleanOK";
+		else
+			return "member/yourPW3";
+
 	}
 
 	@RequestMapping("/joinProc")
@@ -224,6 +232,21 @@ public class MemberController {
 		}
 		return null;
 
+	}
+
+	@RequestMapping("sellContentsGo")
+	public String sellContetns() {
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		List<ShopBoardDTO> sellList = SBservice.ShopBoardList(mdto.getMember_id());
+
+		request.setAttribute("sellList", sellList);
+		return "/member/sellContents";
+	}
+
+	@RequestMapping("sellStatus")
+	public String sellStatus() {
+		
+		return "/member/sellStatusPopUp";
 	}
 
 }
