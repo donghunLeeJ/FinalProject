@@ -12,10 +12,15 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <style>
 #star {
-	color: red;
+	color: #EC583A;
 }
 
 .seller-info {
@@ -25,6 +30,10 @@
 .quantity_btn {
 	width: 1.5em;
 	height: 1.5em;
+}
+
+.border {
+	border: 1px solid #FCBB00;
 }
 </style>
 </head>
@@ -54,7 +63,7 @@
 											</div>
 										</div>
 										<!-- 	밑에 이미지 3개 -->
-										<div class="row pb-3 pt-4 ">
+										<div class="row pb-2 pt-2 ">
 											<div class="col-4 border pt-2 pb-2">
 												<img class="imgCa" src="${dto.shop_imagepath1 }" alt="또안됌"
 													style="height: 6em">
@@ -66,6 +75,19 @@
 											<div class="col-4 border pt-2 pb-2">
 												<img class="imgCa" src="${dto.shop_imagepath3 }" alt="또안됌"
 													style="height: 6em">
+											</div>
+										</div>
+										<div class="row text-center" style="margin-bottom: 0.7em;">
+											<div class="col-4"
+												style="padding: 0; font-size: 1.5em; margin-top: 0.2em; color: #EC583A">${starAvg }
+											</div>
+											<div class="col-2 text-left"
+												style="padding: 0; margin-top: 0.3em; font-size: 1.5em">
+												<strong>${reviewAvg }</strong>
+											</div>
+											<div class="col-6"
+												style="margin-top: 0.6em; font-size: 1.2em">
+												상품리뷰 <strong>${reviewRowCount }건</strong>
 											</div>
 										</div>
 									</div>
@@ -154,9 +176,6 @@
 
 								<div class="row pt-2 border-top border-bottom bg-gray">
 
-									<div class="col-12 py-3 border-bottom">
-										<strong>${dto.shop_title }</strong>
-									</div>
 
 									<div class="col-4  py-3 text-right">
 
@@ -200,9 +219,10 @@
 
 
 
-										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> 
-										<a id=basket  class="btn akame-btn">
-										<i class="icon_cart"></i>장 바 구 니에 담기</a>
+										<a id="chargeItem" class="btn akame-btn">구 매 하 기 </a> <a
+											id=basket class="btn akame-btn"> <i class="icon_cart"></i>장
+											바 구 니에 담기
+										</a>
 									</div>
 								</div>
 							</div>
@@ -249,7 +269,7 @@
 							</div>
 						</div>
 						<c:forEach var="i" items="${ review}">
-							<div class="row">
+							<div class="row border-bottom">
 								<div class="col-12">
 									<span id="star">${i.get_star }</span> <small
 										style="color: gray; margin-left: 1em"> ${i.user_id } |
@@ -353,13 +373,12 @@
 				})
 		//수량
 
-		
 		$("#basket").on(
 				"click",
 				function() {
 					var quantity = $("#quantity_one").val();
-					location.href = "/Basket/basketInsert?quantity="
-							+ quantity + "&seq=${dto.shop_seq }"
+					location.href = "/Basket/basketInsert?quantity=" + quantity
+							+ "&seq=${dto.shop_seq }"
 				})
 
 		var upCount = function() {
@@ -406,24 +425,6 @@
 			var imgSrc = $(this).attr("src");
 			$(".view").attr("src", imgSrc);
 		})
-
-		// 		if ($("#star").text() == 1) {
-		// 			$("#star").html("★");
-		// 		} else if ($("#star").text() == 2) {
-		// 			$("#star").html("★★");
-
-		// 		} else if ($("#star").text() == 3) {
-		// 			$("#star").html("★★★");
-
-		// 		} else if ($("#star").text() == 4) {
-		// 			$("#star").html("★★★★");
-
-		// 		} else if ($("#star").text() == 5) {
-		// 			$("#star").html("★★★★★");
-
-		// 		} else {
-		// 			$("#star").html("오류");
-		// 		}
 	</script>
 </body>
 </html>

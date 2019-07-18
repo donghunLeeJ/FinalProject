@@ -4,7 +4,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 .headerbtn {
-	border: 0px solid skyblue;
+	border: 0px solid #FCBB00;
 	background-color: rgba(0, 0, 0, 0);
 	color: skyblue;
 	padding: 5px;
@@ -13,7 +13,6 @@
 
 .headerbtn:hover {
 	color: white;
-	
 }
 
 #logout {
@@ -26,6 +25,24 @@
 	border-bottom-right-radius: 5px;
 	width: 10%;
 }
+
+.btn {
+	border: 1px solid gray;
+	transition-duration: 1s;
+	cursor: pointer;
+	color: white;
+	background-color: #FCBB00;
+}
+
+.btn:hover {
+	background-color: white;
+	border: 1px solid #FCBB00;
+	color: black;
+}
+
+li:hover {
+	color: #FCBB00;
+}
 </style>
 <!-- Preloader -->
 <div id="preloader">
@@ -36,7 +53,7 @@
 <header class="header-area" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
-	<div class="top-header-area">
+	<div class="top-header-area" style="background-color: #FCBB00">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
@@ -70,9 +87,9 @@
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
-	<div class="main-header-area border" id="fixedNav"
-		style="background-color: white">
-		<div class="classy-nav-container breakpoint-off">
+	<div class="main-header-area " id="fixedNav">
+		<div class="classy-nav-container breakpoint-off "
+			style="border: 1px solid #FCBB00;">
 			<div class="container">
 				<!-- Classy Menu -->
 				<nav class="classy-navbar justify-content-between  " id="akameNav"
@@ -155,7 +172,7 @@
 			var docScrollY = $(document).scrollTop()
 			var barThis = $("#fixedNav")
 
-// 			console.log(docScrollY);
+			// 			console.log(docScrollY);
 			if (docScrollY > 200) {
 				barThis.fadeIn();
 				barThis.addClass("fixed-top");

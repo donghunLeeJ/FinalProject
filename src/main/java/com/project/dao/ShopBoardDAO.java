@@ -55,6 +55,13 @@ public class ShopBoardDAO {
 	}
 
 	public List<ShopReviewDTO> shopReviewList(int shop_seq) {
-		return sst.selectList("ShopBoardDAO.shopReviewList",shop_seq);
+		return sst.selectList("ShopBoardDAO.shopReviewList", shop_seq);
+	}
+
+	public Float shopReviewAvg(int shop_seq) {
+		return sst.selectOne("ShopBoardDAO.shopReviewAvg",shop_seq);
+	}
+	public int shopReviewCount(int shop_seq) {
+		return sst.selectOne("ShopBoardDAO.shopReviewCount",shop_seq);
 	}
 }

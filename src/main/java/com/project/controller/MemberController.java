@@ -29,7 +29,7 @@ import com.project.service.TimeLineService;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	
+
 	@Autowired
 	private MemberDAO mdao;
 	@Autowired
@@ -124,9 +124,9 @@ public class MemberController {
 	public String joinInsert(MemberDTO mdto) {
 		System.out.println("조인프록");
 		String id = mdto.getMember_id();
-		
+
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
-	
+
 		// System.out.println("조인프록 " + id);
 		try {
 			edao.sendMail(id);
@@ -153,9 +153,9 @@ public class MemberController {
 		List<ShopBoardDTO> mylist = SBservice.ShopBoardList(mdto.getMember_id());
 		List<OrderDTO> order = os.myOrderList(mdto.getMember_id());
 		MemberPagingDTO mpdto = mp.MemberPaging(1);
-	request.setAttribute("mylist", mylist);
-	request.setAttribute("mpdto", mpdto);
-	request.setAttribute("order", order);
+		request.setAttribute("mylist", mylist);
+		request.setAttribute("mpdto", mpdto);
+		request.setAttribute("order", order);
 
 		return "/member/myPage";
 	}

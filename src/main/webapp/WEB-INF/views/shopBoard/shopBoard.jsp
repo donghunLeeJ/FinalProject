@@ -15,7 +15,6 @@
 	width: 100%;
 	height: 100%;
 }
-
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -60,7 +59,11 @@
 										class="icon_search"></i></a>
 
 								</div>
-								<div class="team-member-info border"></div>
+								<div class="team-member-info border">
+									<div class="row">
+										<div class="col-12"></div>
+									</div>
+								</div>
 							</div>
 						</c:forEach>
 

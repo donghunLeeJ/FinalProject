@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -92,11 +94,26 @@ select {
 	color: red;
 }
 
-.form-control[readonly]{
-background-color:white;
+.btn {
+	border: 1px solid gray;
+	transition-duration: 1s;
+	cursor: pointer;
+	color: white;
+	background-color: #FCBB00;
+}
+
+.btn:hover {
+	background-color: white;
+	border: 1px solid #FCBB00;
+	color: black;
+}
+
+.form-control[readonly] {
+	background-color: white;
 }
 </style>
-	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
+<script type="text/javascript" src="/js/cross.js"></script>
+<!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -175,17 +192,19 @@ background-color:white;
 							</div>
 							<div class="col-md-12 mt-5">
 								<h5 class="mt-2">
-									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의활동</h5>
+									<span class="fa fa-clock-o ion-clock float-right"></span>최근
+									나의활동
+								</h5>
 								<table class="table table-sm table-hover table-striped">
 									<tbody>
-									<c:forEach var="i" items="${mylist }">
-									<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
-										<tr>
-											<td><strong>${id.member_name }</strong>님의 판매 활동 <strong>${i.shop_title }`</strong>
-											</td>
-										</tr>
-										</a>
-									</c:forEach>
+										<c:forEach var="i" items="${mylist }">
+											<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
+												<tr>
+													<td><strong>${id.member_name }</strong>님의 판매 활동 <strong>${i.shop_title }`</strong>
+													</td>
+												</tr>
+											</a>
+										</c:forEach>
 
 									</tbody>
 								</table>
@@ -295,8 +314,13 @@ background-color:white;
 								<div class="col-2 ">
 									<img src="${i.order_image }" class="listimg">
 								</div>
-								<div class="col-3  skip" style="margin-top: 2.2em">${i.order_title }</div>
-								<div class="col-2 " style="margin-top: 2.2em">${i.order_price }원</div>
+								<div class="col-3  skip" style="margin-top: 2.2em">
+									<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq }">${i.order_title }</a>
+								</div>
+								<div class="col-2 " style="margin-top: 2.2em">
+									<fmt:formatNumber value="${i.order_price }" pattern="#,###" />
+									원
+								</div>
 								<div class="col-1 " style="margin-top: 2.2em">${i.order_quantity }개</div>
 								<div class="col-2 " style="margin-top: 2.2em">${i.order_time }</div>
 								<div class="col-1" style="margin-top: 1.0em; padding: 0">
@@ -308,8 +332,8 @@ background-color:white;
 									<form
 										action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}"
 										method="POST">
-										<div class="modal modal-xl fade" id="myModal">
-											<div class="modal-dialog">
+										<div class="modal modal-xl fade " id="myModal">
+											<div class="modal-dialog ">
 												<div class="modal-content">
 
 													<!-- Modal Header -->
@@ -320,17 +344,16 @@ background-color:white;
 
 													<!-- Modal body -->
 													<div class="modal-body ">
-
-														<div class="row py-5  border-bottom">
-															<div class="col-3">이미지</div>
-															<div class="col-9">
-																[brnad]<br>LMC EARTH LOGO TEE teal<br>
+														<div class="row border-bottom">
+															<div class="col-12">
+																<p>
+																	작성 된 댓글은 삭제할 수 없습니다.&nbsp;<strong>(수정 가능)</strong>
+																</p>
 															</div>
 														</div>
-
 														<div class="row py-3">
-															<div class="col-3">
-																<select style="height: 2em" name="star_review">
+															<div class="col-3 text-right" style="padding: 0">
+																<select style="height: 2em;" name="star_review">
 																	<option value="5">★★★★★</option>
 																	<option value="4">★★★★</option>
 																	<option value="3">★★★</option>
@@ -338,9 +361,9 @@ background-color:white;
 																	<option value="1">★</option>
 																</select>
 															</div>
-															<div class="col-9">
+															<div class="col-9" style="padding: 0">
 																<input type="text" name="title" placeholder="제목"
-																	style="width: 21em; height: 2em">
+																	style="width: 21em; height: 2em;">
 															</div>
 															<div class="col-12 py-3">
 																<textarea name="contents" cols="56" rows="10"></textarea>
@@ -352,9 +375,9 @@ background-color:white;
 
 													<!-- Modal footer -->
 													<div class="modal-footer">
-														<input type="submit" class="btn btn-primary" value="댓글 작성">
-														<button type="button" class="btn btn-danger"
-															data-dismiss="modal">댓글 취소</button>
+														<input type="submit" class="btn" value="댓글 작성">
+														<button type="button" class="btn" data-dismiss="modal">댓글
+															취소</button>
 													</div>
 
 												</div>
@@ -372,9 +395,10 @@ background-color:white;
 					<div class="tab-pane col-lg-12" id="edit">
 						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
 
-							<form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data">
-								<img src="${id.member_imgpath }" class="mx-auto img-circle"	alt="avatar"> 
-              <input type=file id="file" name="file"
+							<form id=mypage_Img action="/member/uploadImg" method="post"
+								enctype="multipart/form-data">
+								<img src="${id.member_imgpath }" class="mx-auto img-circle"
+									alt="avatar"> <input type=file id="file" name="file"
 									accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)">
 
 
@@ -448,8 +472,9 @@ background-color:white;
 									<label class="col-lg-3 col-form-label form-control-label">상세주소
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add2" name="member_address2" placeholder="최대 20자"
-											type="text" value="${id.member_address2}">
+										<input class="form-control" id="add2" name="member_address2"
+											placeholder="최대 20자" type="text"
+											value="${id.member_address2}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -465,7 +490,8 @@ background-color:white;
 									<label class="col-lg-3 col-form-label form-control-label">자기
 										소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area name="member_intro" placeholder="최대 100자">${id.member_intro}</textarea>
+										<textarea style="resize: none;" id=area name="member_intro"
+											placeholder="최대 100자">${id.member_intro}</textarea>
 									</div>
 									<input name="member_intro" type="hidden">
 									<%--                                 <div class=" ">${id.member_intro}</div> --%>
@@ -475,7 +501,6 @@ background-color:white;
 									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
 									<div class="col-lg-9">
 										<input class="form-control" type="password" name="member_pw"
-
 											id="pw1" placeholder="대/소문자, 숫자 포함 최소 8자리">
 
 									</div>
@@ -546,41 +571,36 @@ background-color:white;
 
 
 	<script>
+		$("#goHome").on("click", function() {
+			location.href = "/home";
+		})
 
+		//-----------------------------회원탈퇴
+		$("#delOK").on("click", function() {
+			if ($("#del_id").val() == "") {
+				alert("아이디를 입력해주세요");
+			} else if ($("#del_pw").val() == "") {
+				alert("비밀번호를 입력해주세요");
+			} else if ($("#del_pw2").val() == "") {
+				alert("비밀번호 확인을 입력해주세요");
+			} else if ($("#del_pw").val() != $("#del_pw2").val()) {
+				alert("비밀번호가 일치하지 않습니다");
+			} else {
+				var result = confirm("정말 탈퇴하시겠습니까?");
+				if (result) {
+					removeXSS($("#del_id").val(), $("#del_id").attr("id"));
+					removeXSS($("#del_pw").val(), $("#del_pw").attr("id"));
+					removeXSS($("#del_pw2").val(), $("#del_pw2").attr("id"));
+					$("#delform").submit();
+				} else
+					return;
+			}
+		});
+		//-----------------------------회원탈퇴 끝
 
-
-	$("#goHome").on("click",function(){
-		 location.href="/home";
-	})
-	
-	//-----------------------------회원탈퇴
-	$("#delOK").on("click",function(){
-		if($("#del_id").val()==""){
-			alert("아이디를 입력해주세요");
-		}else if($("#del_pw").val()==""){
-			alert("비밀번호를 입력해주세요");
-		}else if($("#del_pw2").val()==""){
-			alert("비밀번호 확인을 입력해주세요");
-		}else if($("#del_pw").val()!=$("#del_pw2").val()){
-			alert("비밀번호가 일치하지 않습니다");
-		}
-		else{
-		var result=confirm("정말 탈퇴하시겠습니까?");
-		if(result){	
-			removeXSS($("#del_id").val(),$("#del_id").attr("id"));
-			removeXSS($("#del_pw").val(),$("#del_pw").attr("id"));
-			removeXSS($("#del_pw2").val(),$("#del_pw2").attr("id"));
-			$("#delform").submit();
-		}
-			else return;
-		}
-	});
-	//-----------------------------회원탈퇴 끝
-	
 		$("#file").hide();
-	//---------------------------------------------- 정보수정 이미지 변경 확장자 제한
-		function checkFile(f){
-
+		//---------------------------------------------- 정보수정 이미지 변경 확장자 제한
+		function checkFile(f) {
 
 			// files 로 해당 파일 정보 얻기.
 			var file = f.files;
@@ -597,14 +617,12 @@ background-color:white;
 			else
 				return;
 
-
 			// 체크에 걸리면 선택된  내용 취소 처리를 해야함.
 			// 파일선택 폼의 내용은 스크립트로 컨트롤 할 수 없습니다.
 			// 그래서 그냥 새로 폼을 새로 써주는 방식으로 초기화 합니다.
 			// 이렇게 하면 간단 !?
 			f.outerHTML = f.outerHTML;
 		}
-
 
 		$("#change").on("click", function() {
 			$("#file").click();//사진변경 버튼 누르면 file버튼 클릭됨
@@ -637,10 +655,9 @@ background-color:white;
 				alert("자기소개를 입력해주세요");
 				$("#area").focus();
 
-			}else if($("#area").val().length>100){
+			} else if ($("#area").val().length > 100) {
 				alert("자기소개 제한 글자를 초과하였습니다");
-			}
-			else if ($("#pw1").val() == "") {
+			} else if ($("#pw1").val() == "") {
 
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
@@ -725,6 +742,14 @@ background-color:white;
 				}
 			}).open();
 		}
+		$("#myModal").modal('show').css({
+			'margin-top' : function() {
+				return -($(this).height() / 2);
+			},
+			' margin-left' : function() {
+				return -($(this).width() / 2);
+			}
+		})
 	</script>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
