@@ -84,52 +84,52 @@ public class ShopBoardController {
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);// 상품판매 정보
 		int memberSell_seq = dto.getMemberSell_seq();
 		MemberDTO mdto = sService.shopSellerSelect(memberSell_seq);// 판매자 정보
-		List<ShopReviewDTO> review = sService.shopReviewList(shop_seq);// 댓글 리스트
-		int reviewRowCount = sService.shopReviewCount(shop_seq);// 댓글 총 row
-		Float reviewAvg = sService.shopReviewAvg(shop_seq);
-		System.out.println(reviewAvg);
+//		List<ShopReviewDTO> review = sService.shopReviewList(shop_seq);// 댓글 리스트
+//		int reviewRowCount = sService.shopReviewCount(shop_seq);// 댓글 총 row
+//		Float reviewAvg = sService.shopReviewAvg(shop_seq);
+		
 
-		for (int i = 0; i < review.size(); i++) {
-
-			int count = review.get(i).getStar_review();
-			if (count == 1) {
-				review.get(i).setGet_star("★☆☆☆☆");
-			} else if (count == 2) {
-				review.get(i).setGet_star("★★☆☆☆");
-			} else if (count == 3) {
-				review.get(i).setGet_star("★★★☆☆");
-			} else if (count == 4) {
-				review.get(i).setGet_star("★★★★☆");
-			} else {
-				review.get(i).setGet_star("★★★★★");
-			}
-		}
-		if (reviewAvg <= 1.4) {
-			starAvg = "★";
-		} else if (reviewAvg <= 1.9) {
-			starAvg = "★☆";
-		} else if (reviewAvg <= 2.4) {
-			starAvg = "★★";
-		} else if (reviewAvg <= 2.9) {
-			starAvg = "★★☆";
-		} else if (reviewAvg <= 3.4) {
-			starAvg = "★★★";
-		} else if (reviewAvg <= 3.9) {
-			starAvg = "★★★☆";
-		} else if (reviewAvg <= 4.4) {
-			starAvg = "★★★★";
-		} else if (reviewAvg <= 4.9) {
-			starAvg = "★★★★☆";
-		} else {
-			starAvg = "★★★★★";
-		}
+//		for (int i = 0; i < review.size(); i++) {
+//
+//			int count = review.get(i).getStar_review();
+//			if (count == 1) {
+//				review.get(i).setGet_star("★☆☆☆☆");
+//			} else if (count == 2) {
+//				review.get(i).setGet_star("★★☆☆☆");
+//			} else if (count == 3) {
+//				review.get(i).setGet_star("★★★☆☆");
+//			} else if (count == 4) {
+//				review.get(i).setGet_star("★★★★☆");
+//			} else {
+//				review.get(i).setGet_star("★★★★★");
+//			}
+//		}
+//		if (reviewAvg <= 1.4) {
+//			starAvg = "★";
+//		} else if (reviewAvg <= 1.9) {
+//			starAvg = "★☆";
+//		} else if (reviewAvg <= 2.4) {
+//			starAvg = "★★";
+//		} else if (reviewAvg <= 2.9) {
+//			starAvg = "★★☆";
+//		} else if (reviewAvg <= 3.4) {
+//			starAvg = "★★★";
+//		} else if (reviewAvg <= 3.9) {
+//			starAvg = "★★★☆";
+//		} else if (reviewAvg <= 4.4) {
+//			starAvg = "★★★★";
+//		} else if (reviewAvg <= 4.9) {
+//			starAvg = "★★★★☆";
+//		} else {
+//			starAvg = "★★★★★";
+//		}
 
 		request.setAttribute("dto", dto);
 		request.setAttribute("mdto", mdto);
-		request.setAttribute("review", review);
-		request.setAttribute("reviewAvg", reviewAvg);
-		request.setAttribute("starAvg", starAvg);
-		request.setAttribute("reviewRowCount", reviewRowCount);
+//		request.setAttribute("review", review);
+//		request.setAttribute("reviewAvg", reviewAvg);
+//		request.setAttribute("starAvg", starAvg);
+//		request.setAttribute("reviewRowCount", reviewRowCount);
 		return "/shopBoard/shopBoard_view";
 	}
 
@@ -279,6 +279,8 @@ public class ShopBoardController {
 		String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
 		String order_number = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
 		String seq = basket_seq;
+		MemberDTO id = (MemberDTO) session.getAttribute("id");
+		String login_email = id.getMember_id();
 		String[] seqList = seq.split(",");
 		List<OrderDTO> arr = new ArrayList(); 
 		for(int i = 0 ; i < seqList.length ; i ++) {
@@ -293,6 +295,7 @@ public class ShopBoardController {
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
 			odto2.setOrder_buyer_phone(phone);
 			odto2.setProducts_seq(bdto.getProduct_seq());
+			odto2.setMember_email(login_email);
 			odto2.setOrder_number(order_number);
 			odto2.setOrder_title(bdto.getBasket_title());
 			odto2.setOrder_quantity(bdto.getBasket_quantity());
