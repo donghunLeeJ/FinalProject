@@ -16,7 +16,7 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <style>
-input[type="text"] {
+input[type="text"], select {
 	box-shadow: 4px 4px 5px #gray inset;
 	border-radius: 5px;
 }
@@ -130,8 +130,14 @@ img {
 				</div>
 				<div class="col-3 py-2 font-weight-bold">이메일</div>
 				<div class="col-9 py-2">
-					<input type="text" name="email1" id="email1"> @ <input
-						type="text" name="email2" id="email2">
+					<input type="text" name="email1" id="email1"> @ <select
+						name="email2" id="email2">
+						<option>naver.com</option>
+						<option>paran.com</option>
+						<option>hanmail.net</option>
+						<option>hatmail.com</option>
+						<option>nate.com</option>
+					</select>
 				</div>
 
 			</div>
@@ -352,6 +358,9 @@ img {
 						})
 		$("#chargeOk_btn").on("click", function() {
 			$(location).attr("href", "/shopboard/shopChargeOk");
+		})
+		$(function() {
+
 		})
 	</script>
 </body>

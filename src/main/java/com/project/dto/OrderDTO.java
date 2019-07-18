@@ -6,6 +6,7 @@ public class OrderDTO {
 
 	private int order_seq;
 	private int products_seq;
+	private String member_email;
 	private String order_number;
 	private Date order_time;
 	private String order_title;
@@ -27,14 +28,15 @@ public class OrderDTO {
 		super();
 	}
 
-	public OrderDTO(int order_seq, int products_seq, String order_number, Date order_time, String order_title,
-			int order_quantity, int order_price, String order_image, String order_seller, String order_buyer,
-			String order_buyer_phone, String order_buyer_email, String order_receipt, String order_receipt_postcode,
-			String order_receipt_address1, String order_receipt_address2, String order_receipt_phone,
-			String order_receipt_demend) {
+	public OrderDTO(int order_seq, int products_seq, String member_email, String order_number, Date order_time,
+			String order_title, int order_quantity, int order_price, String order_image, String order_seller,
+			String order_buyer, String order_buyer_phone, String order_buyer_email, String order_receipt,
+			String order_receipt_postcode, String order_receipt_address1, String order_receipt_address2,
+			String order_receipt_phone, String order_receipt_demend) {
 		super();
 		this.order_seq = order_seq;
 		this.products_seq = products_seq;
+		this.member_email = member_email;
 		this.order_number = order_number;
 		this.order_time = order_time;
 		this.order_title = order_title;
@@ -67,6 +69,14 @@ public class OrderDTO {
 
 	public void setProducts_seq(int products_seq) {
 		this.products_seq = products_seq;
+	}
+
+	public String getMember_email() {
+		return member_email;
+	}
+
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
 
 	public String getOrder_number() {

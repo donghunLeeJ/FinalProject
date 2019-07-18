@@ -58,4 +58,10 @@
 		resultType="com.project.dto.ShopReviewDTO">
 		select * from shopreview where products_seq=#{shop_seq}
 	</select>
+	<select id="shopReviewAvg" resultType="Float">
+	select avg(star_review) from shopreview where products_seq= #{shop_seq}
+	</select>
+	<select id="shopReviewCount" resultType="Integer">
+	select count(*) from shopreview where products_seq = #{products_seq}
+	</select>
 </mapper>
