@@ -2,19 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderDAO">
 
+
 	<insert id="orderInsert">
 		insert into products_order
-		values(order_seq.nextval,#{products_seq},#{order_number},default,#{order_title}
+		values(order_seq.nextval,#{products_seq},#{member_email},#{order_number},default,#{order_title}
 		,#{order_quantity},#{order_price},#{order_image},#{order_seller},#{order_buyer}
 		,#{order_buyer_phone},#{order_buyer_email},#{order_receipt},#{order_receipt_postcode}
 		,#{order_receipt_address1},#{order_receipt_address2},#{order_receipt_phone}
 		,#{order_receipt_demend})
-	</insert>
 
+	</insert>
 	<select id="myOrderList" resultType="com.project.dto.OrderDTO">
 		select * from
 		products_order
-		where order_buyer_email = #{value}
+		where member_email = #{value}
 	</select>
 
 </mapper>

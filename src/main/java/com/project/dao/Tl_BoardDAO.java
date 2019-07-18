@@ -50,4 +50,13 @@ public class Tl_BoardDAO {
 		map.put("id", id);
 	   return sst.update("Tl_BoardDAO.updateProfile",map);
    }
+   public int replyDelete(String id ,String seq) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("seq", seq);
+	   
+	   return sst.delete("Tl_BoardDAO.replyDelete",map);
+   }
+   
+  
 }

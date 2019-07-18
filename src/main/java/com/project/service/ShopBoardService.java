@@ -51,4 +51,10 @@ public class ShopBoardService {
 	public List<ShopReviewDTO> shopReviewList(int shop_seq) {
 		return sdao.shopReviewList(shop_seq);
 	}
+	public Float shopReviewAvg(int shop_seq) {
+		return sdao.shopReviewAvg(shop_seq);
+	}
+	public int shopReviewCount(int shop_seq) {
+		return sdao.shopReviewCount(shop_seq);
+	}
 }

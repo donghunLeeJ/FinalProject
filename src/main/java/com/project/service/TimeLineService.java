@@ -49,5 +49,8 @@ public class TimeLineService {
    public int updateProfile(String path , String id){
 	   return dao.updateProfile(path , id);
    }
+   public int replyDelete(String id , String seq){
+	   return dao.replyDelete(id,seq);
+   }
 
 }

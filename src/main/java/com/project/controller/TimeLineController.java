@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -21,6 +23,9 @@ import com.project.service.TimeLineService;
 @RequestMapping("/timeline")
 public class TimeLineController {
 
+	@Autowired
+	private HttpServletRequest request;
+	
 	@Autowired
 	private HttpSession session;
 
@@ -99,8 +104,8 @@ public class TimeLineController {
 		dto.setTl_repl_writer(mdto.getMember_id());
 		dto.setTl_repl_contents(page);
 		tls.Reply_write(dto);
-		
-		String result = mdto.getMember_id() +":"+page;
+		String[] id = mdto.getMember_id().split("@");
+		String result = id[0] +":"+page;
 		return result;
 	}
 	
@@ -210,8 +215,23 @@ public class TimeLineController {
 			}
 			
 		}else {
+		
 			return "/timeLine/replyreject";
 		}
+		
+	}
+	@RequestMapping("/replyDelete")
+	public String replyDelete(String seq) {
+		MemberDTO dto = (MemberDTO)session.getAttribute("id");
+		String id = dto.getMember_id();
+		if(tls.replyDelete(id,seq)==1) {
+			return "redirect:/timeline/accessTimeLine?seq=1";
+		}else {
+			
+			request.setAttribute("check", 1);
+			return "/timeLine/replyDeleteCheck";
+		}
+		
 		
 	}
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+   pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,19 +12,20 @@
 background-color:white;
 }
 #contents{
-	width: 100%;
-	height: 300px;
+   width: 100%;
+   height: 300px;
 }
 </style>
 <script type="text/javascript" src="/js/cross.js"></script> <!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
-	onselectstart="return false">
+   onselectstart="return false">
 <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 <!-- <section class="welcome-area"> -->
 
 <form id="SBwrite" action="/shopboard/ShopBoardInsertProc" enctype="multipart/form-data" method="post">
+
 
 	<div class="container">
 
@@ -142,111 +143,112 @@ background-color:white;
 
 		</div>
 	</div>
+
 </form>
 <script>
-	$('#files')	.change(function() {
+   $('#files')   .change(function() {
 
-						var FileCount = 0;
-						//이미지 업로드 버튼을 누를 때마다 미리보기 이미지들을 초기화시킴
-						$('#mainimg').attr('src', "/img/default.jpg");
-						for (var i = 0; i < 3; i++) {
-							$('#food' + i + '').attr('src', "");
-						}
+                  var FileCount = 0;
+                  //이미지 업로드 버튼을 누를 때마다 미리보기 이미지들을 초기화시킴
+                  $('#mainimg').attr('src', "/img/default.jpg");
+                  for (var i = 0; i < 3; i++) {
+                     $('#food' + i + '').attr('src', "");
+                  }
 
-						const target = document
-								.getElementsByName('shop_images');
-						//const fileLength = target[0].files.length;
+                  const target = document
+                        .getElementsByName('shop_images');
+                  //const fileLength = target[0].files.length;
 
-						if (target[0].files.length > 3) {
+                  if (target[0].files.length > 3) {
 
-							alert("이미지는 최대 3개까지만 업로드가 가능합니다.");
+                     alert("이미지는 최대 3개까지만 업로드가 가능합니다.");
 
-						} else {	$.each(	target[0].files,
-											function(index, file) {
+                  } else {   $.each(   target[0].files,
+                                 function(index, file) {
 const fileName = file.name;
 const fileEx = fileName
-													.slice(	fileName	.indexOf(".") + 1).toLowerCase();
-	if (fileEx != "jpg"
-														&& fileEx != "png"
-														&& fileEx != "gif"
-														&& fileEx != "bmp"
-														&& fileEx != "wmv"
-														&& fileEx != "mp4"
-														&& fileEx != "avi") {
-													alert("파일은 (jpg, png, gif, bmp, wmv, mp4, avi) 형식만 등록 가능합니다.");
-													resetFile();
-													return false;
-												}
+                                       .slice(   fileName   .indexOf(".") + 1).toLowerCase();
+   if (fileEx != "jpg"
+                                          && fileEx != "png"
+                                          && fileEx != "gif"
+                                          && fileEx != "bmp"
+                                          && fileEx != "wmv"
+                                          && fileEx != "mp4"
+                                          && fileEx != "avi") {
+                                       alert("파일은 (jpg, png, gif, bmp, wmv, mp4, avi) 형식만 등록 가능합니다.");
+                                       resetFile();
+                                       return false;
+                                    }
 
-												//업로드한 이미지 파일중 최대 3개까지 미리보기 영역에 등록시킴
-												if (FileCount == 0) {
+                                    //업로드한 이미지 파일중 최대 3개까지 미리보기 영역에 등록시킴
+                                    if (FileCount == 0) {
 
-													$('#mainimg')	.attr(	'src',		''	+ URL	.createObjectURL(file)		+ '');
-												}	$('#food' + index + '')		.attr(	'src',	''	+ URL	.createObjectURL(file)+ '');
-												$('#food' + index + '').css(
-														"width", "100rem");
-												$('#food' + index + '').css(
-														"height", "100%");
-												FileCount++;
+                                       $('#mainimg')   .attr(   'src',      ''   + URL   .createObjectURL(file)      + '');
+                                    }   $('#food' + index + '')      .attr(   'src',   ''   + URL   .createObjectURL(file)+ '');
+                                    $('#food' + index + '').css(
+                                          "width", "100rem");
+                                    $('#food' + index + '').css(
+                                          "height", "100%");
+                                    FileCount++;
 
-											});
-						}
-					});
+                                 });
+                  }
+               });
 
-	//미리보기 이미지 영역의 이미지를 클릭하면 메인영역에 이미지가 나타난다.
-	$(".img").each(function(i, item) {
+   //미리보기 이미지 영역의 이미지를 클릭하면 메인영역에 이미지가 나타난다.
+   $(".img").each(function(i, item) {
 
-		$(item).on("click", function() {
+      $(item).on("click", function() {
 
-			$("#mainimg").attr('src', '' + $(item).attr('src') + '');
-		})
-	});
+         $("#mainimg").attr('src', '' + $(item).attr('src') + '');
+      })
+   });
 
-	//조건을 만족하지 않으면 컨트롤러로 데이터를 보내지 못하게 막는 함수	
-	$("#submitbtn").on("click", function() {
-		var origin = /^[0-9]{1,}$/
-		var regpr = /^[0-9]{1,6}$/
-			var reg = /^[0-9]{1,10}$/
-		var inputcount = 0;
-		$(".input").each(function(i, item) {
-			if ($(item).val() == "") {
-				inputcount++; //만일 입력창 어딘가에 빈 칸이 있을 경우 카운트를 증가시킨다.
-			}
-		});
+   //조건을 만족하지 않으면 컨트롤러로 데이터를 보내지 못하게 막는 함수   
+   $("#submitbtn").on("click", function() {
+      var origin = /^[0-9]{1,}$/
+      var regpr = /^[0-9]{1,6}$/
+         var reg = /^[0-9]{1,10}$/
+      var inputcount = 0;
+      $(".input").each(function(i, item) {
+         if ($(item).val() == "") {
+            inputcount++; //만일 입력창 어딘가에 빈 칸이 있을 경우 카운트를 증가시킨다.
+         }
+      });
 
-		if (inputcount > 0) {
-			alert("모든 항목을 반드시 입력하셔야 합니다.");
-			return false;
-		} else if ($('#food0').attr('src') == '/img/default.jpg') { //이미지가 하나도 업로드되지 않은 경우
-			alert("상품 이미지는 적어도 1개 이상 들어가야 합니다.");
-			return false;
-		} else if ($("#title").val().length>31){
-			alert("가능한 제목 길이를 초과하였습니다");
-		}else if($("#brand").val().length>11){
-			alert("가능한 브랜드 길이를 초과하였습니다");
-		}else if($("#contents").val().length>801){
-			alert("가능한 내용 길이를 초과하였습니다");
-		}else if(!origin.test($("#price").val()) || !origin.test($("#quantity").val())){
-			alert("수량이나 가격은 숫자만 가능합니다");
-		}
-		else if(!regpr.test($("#price").val())){
-			alert("100만원 이상은 관리자에게 문의주세요");
-		}else if(!reg.test($("#quantity").val())){
-			alert("수량을 다시 입력해주세요");
-		}
-		else {
-			removeXSS($("#title").val(),$("#title").attr("id"));
-			removeXSS($("#brand").val(),$("#brand").attr("id"));
-			removeXSS($("#contents").val(),$("#contents").attr("id"));
-			removeXSS($("#datepicker").val(),$("#datepicker").attr("id"));
-			removeXSS($("#price").val(),$("#price").attr("id"));
-			removeXSS($("#quantity").val(),$("#quantity").attr("id"));
-			alert("정상적으로 등록되었습니다.");
-			$("#SBwrite").submit();
-		}
-		
-		
-	});
+      if (inputcount > 0) {
+         alert("모든 항목을 반드시 입력하셔야 합니다.");
+         return false;
+      } else if ($('#food0').attr('src') == '/img/default.jpg') { //이미지가 하나도 업로드되지 않은 경우
+         alert("상품 이미지는 적어도 1개 이상 들어가야 합니다.");
+         return false;
+      } else if ($("#title").val().length>31){
+         alert("가능한 제목 길이를 초과하였습니다");
+      }else if($("#brand").val().length>11){
+         alert("가능한 브랜드 길이를 초과하였습니다");
+      }else if($("#contents").val().length>801){
+         alert("가능한 내용 길이를 초과하였습니다");
+      }else if(!origin.test($("#price").val()) || !origin.test($("#quantity").val())){
+         alert("수량이나 가격은 숫자만 가능합니다");
+      }
+      else if(!regpr.test($("#price").val())){
+         alert("100만원 이상은 관리자에게 문의주세요");
+      }else if(!reg.test($("#quantity").val())){
+         alert("수량을 다시 입력해주세요");
+      }
+      else {
+         removeXSS($("#title").val(),$("#title").attr("id"));
+         removeXSS($("#brand").val(),$("#brand").attr("id"));
+         removeXSS($("#contents").val(),$("#contents").attr("id"));
+         removeXSS($("#datepicker").val(),$("#datepicker").attr("id"));
+         removeXSS($("#price").val(),$("#price").attr("id"));
+         removeXSS($("#quantity").val(),$("#quantity").attr("id"));
+         alert("정상적으로 등록되었습니다.");
+         $("#SBwrite").submit();
+      }
+      
+      
+   });
 </script> <jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
 </html>
