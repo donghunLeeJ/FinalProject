@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +21,8 @@
 							<div class="col-lg-12 border-bottom text-center" style="background: #d3dbe8">
 								<p class="h2 pt-5 pb-5">오늘의 방문자 수</p>
 							</div>
-							<div class="col-lg-12 border-bottom text-center" style="background: #ffffff">
-								<p class="h2 pt-5 pb-5">0</p>
+							<div class="col-lg-12 border-bottom text-center" style="background: #ffffff">											
+								<p class="h2 pt-5 pb-5">${View}</p>								
 							</div>
 						</div>
 
@@ -32,7 +33,7 @@
 								<p class="h2 pt-5 pb-5">오늘의 게시글 수</p>
 							</div>
 							<div class="col-lg-12 border-bottom text-center" style="background: #ffffff">
-								<p class="h2 pt-5 pb-5">0</p>
+								<p class="h2 pt-5 pb-5">${BoardNew}</p>
 							</div>
 						</div>
 
@@ -43,7 +44,7 @@
 								<p class="h2 pt-5 pb-5">오늘의 거래 수</p>
 							</div>
 							<div class="col-lg-12 border-bottom text-center" style="background: #ffffff">
-								<p class="h2 pt-5 pb-5"> 0 </p>
+								<p class="h2 pt-5 pb-5">${Trade}</p>
 							</div>
 						</div>
 
@@ -54,99 +55,104 @@
 
 			</div>
 			<div class="col-lg-5 border m-3 pt-3 rounded mx-auto" style="background: #ffffff">
-				<strong> 회원 관리 </strong> <a href> 바로가기 </a>
+				<strong> 회원 관리 </strong> <a href="/admin/MemberManagementMove"> 바로가기 </a>
+				
 				<table class="table mt-3 border text-center" >
+				
 					<thead class="thead-dark ">
 						<tr>
-							<th class="p-1" scope="col">회원번호</th>
-							<th class="p-1" scope="col">아이디</th>
+							<th class="p-1" scope="col">ID</th>
 							<th class="p-1" scope="col">이름</th>
-							<th class="p-1" scope="col">상태</th>
+							<th class="p-1" scope="col">전화번호</th>
+							<th class="p-1" scope="col">불량회원</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th class="p-1">1</th>
-							<td class="p-1">Mark</td>
-							<td class="p-1">Otto</td>
-							<td class="p-1">@mdo</td>
+							<th class="p-1">${MemberList[0].member_id}</th>
+							<td class="p-1">${MemberList[0].member_name}</td>
+							<td class="p-1">${MemberList[0].member_phone}</td>
+							<td class="p-1">${MemberList[0].member_blackcheck}</td>
 						</tr>
 						<tr>
-							<th class="p-1">2</th>
-							<td class="p-1">Jacob</td>
-							<td class="p-1">Thornton</td>
-							<td class="p-1">@fat</td>
+							<th class="p-1">${MemberList[1].member_id}</th>
+							<td class="p-1">${MemberList[1].member_name}</td>
+							<td class="p-1">${MemberList[1].member_phone}</td>
+							<td class="p-1">${MemberList[1].member_blackcheck}</td>
 						</tr>
 						<tr>
-							<th class="p-1">3</th>
-							<td class="p-1">Larry</td>
-							<td class="p-1">the Bird</td>
-							<td class="p-1">@twitter</td>
+							<th class="p-1">${MemberList[2].member_id}</th>
+							<td class="p-1">${MemberList[2].member_name}</td>
+							<td class="p-1">${MemberList[2].member_phone}</td>
+							<td class="p-1">${MemberList[2].member_blackcheck}</td>
 						</tr>
 					</tbody>
+					
+					
 				</table>
 			</div>
+		
 			<div class="col-lg-5 border m-3 pt-3 rounded mx-auto" style="background: #ffffff">
-				<strong> 판매 게시판 관리 </strong> <a href> 바로가기 </a>
-				<table class="table mt-3">
+				<strong> 판매 게시판 관리 </strong> <a href="/admin/ShopBoardManagementMove"> 바로가기 </a>
+				<table class="table mt-3 border text-center">
 					<thead class="thead-dark">
 						<tr>
-							<th class="p-1" scope="col">게시글 번호</th>
-							<th class="p-1" scope="col">작성자 </th>
-							<th class="p-1" scope="col">제목 </th>
-							<th class="p-1" scope="col">상태 </th>
+							<th class="p-1" scope="col">제목</th>
+							<th class="p-1" scope="col">가격</th>
+							<th class="p-1" scope="col">수량</th>
+							<th class="p-1" scope="col">유통기한</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th class="p-1">1</th>
-							<td class="p-1">Mark</td>
-							<td class="p-1">Otto</td>
-							<td class="p-1">@mdo</td>
+							<th class="p-1">${ShopBoardList[0].shop_title}</th>
+							<td class="p-1">${ShopBoardList[0].shop_price}원</td>
+							<td class="p-1">${ShopBoardList[0].shop_quantity}개</td>
+							<td class="p-1">${ShopBoardList[0].shop_expiration}</td>
 						</tr>
 						<tr>
-							<th class="p-1">2</th>
-							<td class="p-1">Jacob</td>
-							<td class="p-1">Thornton</td>
-							<td class="p-1">@fat</td>
+						<th class="p-1">${ShopBoardList[1].shop_title}</th>
+							<td class="p-1">${ShopBoardList[1].shop_price}원</td>
+							<td class="p-1">${ShopBoardList[1].shop_quantity}개</td>
+							<td class="p-1">${ShopBoardList[1].shop_expiration}</td>
 						</tr>
 						<tr>
-							<th class="p-1">3</th>
-							<td class="p-1">Larry</td>
-							<td class="p-1">the Bird</td>
-							<td class="p-1">@twitter</td>
+						<th class="p-1">${ShopBoardList[2].shop_title}</th>
+							<td class="p-1">${ShopBoardList[2].shop_price}원</td>
+							<td class="p-1">${ShopBoardList[2].shop_quantity}개</td>
+							<td class="p-1">${ShopBoardList[2].shop_expiration}</td>
 						</tr>
 					</tbody>
 				</table>
 			</div><div class="col-lg-5 border m-3 pt-3 rounded mx-auto" style="background: #ffffff">
-				<strong> 회원 관리 </strong> <a href> 바로가기 </a>
-				<table class="table mt-3">
+				<strong> 회원 관리 </strong> <a href="/admin/OrderManagementMove"> 바로가기 </a>
+				<table class="table mt-3 border text-center">
 					<thead class="thead-dark">
 						<tr>
-							<th class="p-1" scope="col">#</th>
-							<th class="p-1" scope="col">First</th>
-							<th class="p-1" scope="col">Last</th>
-							<th class="p-1" scope="col">Handle</th>
+							<th class="p-1" scope="col">주문번호</th>
+							<th class="p-1" scope="col">주문금액/수량</th>
+							<th class="p-1" scope="col">주문일자</th>
+							<th class="p-1" scope="col">주문자</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th class="p-1">1</th>
-							<td class="p-1">Mark</td>
-							<td class="p-1">Otto</td>
-							<td class="p-1">@mdo</td>
+							<th class="p-1">${OrderBoardList[0].order_number}</th>
+							<td class="p-1">${OrderBoardList[0].order_price}원/${OrderBoardList[0].order_quantity}개</td>
+							<td class="p-1">${OrderBoardList[0].order_time}</td>
+							<td class="p-1">${OrderBoardList[0].order_buyer}</td>
 						</tr>
 						<tr>
-							<th class="p-1">2</th>
-							<td class="p-1">Jacob</td>
-							<td class="p-1">Thornton</td>
-							<td class="p-1">@fat</td>
+							<th class="p-1">${OrderBoardList[1].order_number}</th>
+							<td class="p-1">${OrderBoardList[1].order_price}원/${OrderBoardList[0].order_quantity}개</td>
+							<td class="p-1">${OrderBoardList[1].order_time}</td>
+							<td class="p-1">${OrderBoardList[1].order_buyer}</td>
 						</tr>
 						<tr>
-							<th class="p-1">3</th>
-							<td class="p-1">Larry</td>
-							<td class="p-1">the Bird</td>
-							<td class="p-1">@twitter</td>
+							<th class="p-1">${OrderBoardList[2].order_number}</th>
+							<td class="p-1">${OrderBoardList[2].order_price}원/${OrderBoardList[0].order_quantity}개</td>
+							<td class="p-1">${OrderBoardList[2].order_time}</td>
+							<td class="p-1">${OrderBoardList[2].order_buyer}</td>
 						</tr>
 					</tbody>
 				</table>

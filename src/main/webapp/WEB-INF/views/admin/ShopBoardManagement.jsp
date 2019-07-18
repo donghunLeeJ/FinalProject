@@ -68,8 +68,8 @@ table {
 									<button id="delete_btn">																			
 									</button> -->
 
-									<button id="delete_btn">
-										<a href="/admin/AdminDeleteShopBoard?shop_seq=${i.shop_seq}" style="color: red">삭제하기</a>
+									<button id="delete_btn" style="border-radius:10px;">
+										<a href="/admin/AdminDeleteShopBoard?shop_seq=${i.shop_seq}" style="color: white;">삭제하기</a>
 									</button>
 								</div>
 							</div>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.dto.MemberDTO;
 import com.project.dto.ShopBoardDTO;
+import com.project.dto.ViewDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.AdminService;
 
@@ -31,9 +32,20 @@ public class AdminController {
 	@Autowired
 	private ShopPaging sPaging;
 	
+	//관리자페이지로 이동시키는 순간!
 	@RequestMapping("adminHome")
 	public String adminHome(String id) {
-	//	Logger.info("message is {}.",id);
+	      
+		System.out.println(ViewDTO.getVisitViewCount());
+		System.out.println(ViewDTO.getBoardNewCount());
+		
+		  request.setAttribute("MemberList", aservice.SelectPageList(1));
+		  request.setAttribute("ShopBoardList", aservice.ShopBoardSelectPageList(1));
+		  request.setAttribute("OrderBoardList", aservice.OrderBoardSelectPageList(1));
+		  request.setAttribute("View", ViewDTO.getVisitViewCount());
+		  request.setAttribute("BoardNew", ViewDTO.getBoardNewCount());
+		  request.setAttribute("Trade", ViewDTO.getTradeCount());
+	
 		return "admin/adminhome";
 	}
 	
@@ -72,10 +84,6 @@ public class AdminController {
 		
     List<String>pageList = aservice.Page(page, totalcount);
     request.setAttribute("MemberList", aservice.SelectPageList(page));
-    
-    for(MemberDTO m : aservice.SelectPageList(page) ) {	
-    	System.out.println(m.getMember_id());}
-    
 	request.setAttribute("pageList", pageList);//1.보드게시판 아래에 숫자를 출력
 	request.setAttribute("page", page);//현재 페이지임
 
@@ -204,9 +212,25 @@ public class AdminController {
 			return "에러 발생!!";}
 
 		
+		
+		//home에서 받아온 세션 정보에 따라 방문자수 카운트를 증가시키거나 유지시킴
+		@ResponseBody
+		@RequestMapping(value="VisitViewCondition", produces = "application/text; charset=utf8")
+		public String VisitViewCondition(String access){
 
-		
-		
+			if(access.equals("1")){
+
+				System.out.println("이미 접속중인 세션이므로 세션이 만료될 때까지 방문자수 증가 없음");
+
+			}else{
+
+				System.out.println("처음 접속한 세션이므로 카운트 증가");
+				session.setAttribute("access", 1);		
+				ViewDTO.setVisitViewCount(ViewDTO.getVisitViewCount() + 1);				
+			}
+
+			return ""+access+"";}
+			
 }
 
 
