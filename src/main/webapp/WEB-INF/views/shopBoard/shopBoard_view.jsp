@@ -199,6 +199,7 @@
 											</div>
 										</div>
 									</div>
+
 									<div class="col-6 py-3 text-right">
 										<small id="resultPrice1" name="shop_price"
 											value="${dto.shop_price }"><fmt:formatNumber
@@ -364,22 +365,36 @@
 			$("#resultPrice1").text(result + "원");
 		})
 		
-		$("#chargeItem").on(
-				"click",
-				function() {
-					var quantity = $("#quantity_one").val();
-					location.href = "/shopboard/shopBoard_buyProc?quantity="
-							+ quantity + "&seq=${dto.shop_seq }"
-				})
-		//수량
 
-		$("#basket").on(
-				"click",
-				function() {
-					var quantity = $("#quantity_one").val();
-					location.href = "/Basket/basketInsert?quantity=" + quantity
-							+ "&seq=${dto.shop_seq }"
-				})
+		$("#chargeItem").on("click",function(){
+			if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
+				
+							var quantity = $("#quantity_one").val();
+							location.href = "/shopboard/shopBoard_buyProc?quantity="
+									+ quantity + "&seq=${dto.shop_seq }"
+						
+				//수량
+
+			}else{
+				alert("수량이 초과되었습니다.");
+				$("#quantity_one").val("1")
+			}
+		})
+		
+		$("#basket").on("click",function() {
+			
+			if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
+			
+				var quantity = $("#quantity_one").val();
+				location.href = "/Basket/basketInsert?quantity="+ quantity + "&seq=${dto.shop_seq }"
+			
+			}else{
+				alert("수량이 초과되었습니다.");
+				$("#quantity_one").val("1")
+			}
+		})		
+	
+
 
 		var upCount = function() {
 			var quantity = Number($("#quantity_one").val());
