@@ -29,7 +29,11 @@ img {
 	width: 100%;
 	height: 100%;
 }
+.form-control[readonly]{
+background-color:white;
+}
 </style>
+	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -167,17 +171,18 @@ img {
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송지선택</div>
 					<div class="col-9 py-2">
-						<input type="text" id="sample6_postcode"
-							name="order_receipt_postcode" placeholder="우편번호"> <input
-							type="button" onclick="sample6_execDaumPostcode()"
+						<input type="text" id="sample6_postcode" class="findAdd" 
+							name="order_receipt_postcode" placeholder="우편번호" readonly>
+							 <input
+							type="button" onclick="sample6_execDaumPostcode()" id="postbtn"
 							value="우편번호 찾기" style="margin-left: 0.5em"><br> <br>
-						<input type="text" id="sample6_address"
+						<input type="text" id="sample6_address" class="findAdd" 
 							name="order_receipt_address1" placeholder="주소"
-							style="width: 20em"><br> <br> <input
+							style="width: 20em" readonly><br> <br> <input
 							type="text" id="sample6_detailAddress"
 							name="order_receipt_address2" placeholder="상세주소"
 							style="width: 25em"> <input type="text"
-							id="sample6_extraAddress" placeholder="참고항목">
+							id="sample6_extraAddress" placeholder="참고항목" readonly>
 
 					</div>
 					<div class="col-3 font-weight-bold py-2">휴대전화</div>
@@ -189,7 +194,7 @@ img {
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
 					<div class="col-9">
-						<input type="text" name="order_receipt_demend" style="width: 35em">
+						<input type="text" name="order_receipt_demend" style="width: 35em" id="req">
 						<p style="color: blue;">
 							<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
 						</p>
@@ -200,8 +205,10 @@ img {
 				<div class="row py-2">
 					<div class="col-12">
 						<p>
-							<small>전자상거래 소비자보호 법률에 따른 구매 안전 서비스 안내: 본 판매자는 11번가㈜과 계약을
-								통해 구매 안전 서비스를 자동으로 제공중입니다. (결제대금예치업 등록번호 02-006-000022) </small>
+						<input type="checkbox" id=check1>
+						<small>판매명, 유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br>
+						<input type="checkbox" id=check2>
+						<small>정확하지 않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small>
 						</p>
 
 					</div>
@@ -226,6 +233,13 @@ img {
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 		$("#buy_aTag").on("click", function() {
+			
+			var regname = /^[가-힣]{1,10}$/;
+			var regnum1 = /^01([0|1|6|7|8|9]?)$/;
+			var regnum2 = /^([0-9]{3,4})$/;
+			var regnum3 = /^([0-9]{4})$/;
+			var regmail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
+			var regmail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			// 			var price = $("#price").text();
 			// 			IMP.request_pay({
 			// 				pg : 'inicis', // version 1.1.0부터 지원.
@@ -250,7 +264,26 @@ img {
 			// 				}
 			// 				alert(msg);
 			// 			});
-			$("#completeForm").submit();
+			
+				removeXSS($("#order_buyer").val(), $("#order_buyer").attr("id"));
+				removeXSS($("#order_phone1").val(), $("#order_phone1").attr("id"));
+				removeXSS($("#order_phone2").val(), $("#order_phone2").attr("id"));
+				removeXSS($("#order_phone3").val(), $("#order_phone3").attr("id"));
+				removeXSS($("#email1").val(), $("#email2").attr("id"));
+				removeXSS($("#geter_name").val(), $("#geter_name").attr("id"));
+				removeXSS($("#sample6_postcode").val(), $("#sample6_postcode").attr("id"));
+				removeXSS($("#sample6_address").val(), $("#sample6_address").attr("id"));
+				removeXSS($("#sample6_detailAddress").val(), $("#sample6_detailAddress").attr("id"));
+				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
+				removeXSS($("#phone1").val(), $("#phone1").attr("id"));
+				removeXSS($("#phone2").val(), $("#phone2").attr("id"));
+				removeXSS($("#phone3").val(), $("#phone3").attr("id"));
+				removeXSS($("#req").val(), $("#req").attr("id"));
+			    $("#completeForm").submit();
+		})//결제버튼클릭
+		
+		$(".findAdd").on("click",function(){
+			$("#postbtn").click();
 		})
 
 		// 	배송지 radio reset 

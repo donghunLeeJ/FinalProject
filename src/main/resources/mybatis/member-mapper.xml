@@ -7,6 +7,22 @@
 		values(memberSell_seq.nextval,#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default,default)
 	</insert>	
 
+<select id="findID" resultType="String">
+select member_id from member where member_name=#{member_name} and member_phone=#{member_phone}
+</select>
+
+
+<select id="findPW" resultType="Integer">
+select count(*) from member where member_id=#{member_id}
+</select>
+
+<select id="checkdupl" resultType="Integer">
+select count(*) from member where member_pw=#{member_pw}
+</select>
+
+<update id="changePW">
+update member set member_pw=#{pw} where member_id=#{id} 
+</update>
 
 	<select id="login" resultType="Integer">
 		select count(*) from member where

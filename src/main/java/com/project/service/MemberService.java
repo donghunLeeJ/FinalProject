@@ -1,8 +1,9 @@
 package com.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.project.dao.MemberDAO;
 import com.project.dto.MemberDTO;
@@ -11,6 +12,18 @@ import com.project.dto.MemberDTO;
 public class MemberService {
 	@Autowired
 	private MemberDAO mdao;
+	
+	public String findID(MemberDTO dto) {
+		return mdao.findID(dto);
+	}
+	public int findPW(String mail) {
+		int num=mdao.findPW(mail);
+		return num;
+	}
+	public int cleanPW(String pw, String member_id) {
+		int num=mdao.cleanPW(pw, member_id);
+		return num;
+	}
 	
 	public int login(MemberDTO mdto) {
 		int result = mdao.login(mdto);

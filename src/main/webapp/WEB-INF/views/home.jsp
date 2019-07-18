@@ -26,25 +26,22 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<div class="carousel-caption d-none d-sm-block">
-					<h1 class="display-1 mt-5 text-left">Second slide label</h1>
-					<h1 class="mt-5 text-left">Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit.</h1>
+					
+
 				</div>
 				<img src="/img/bg-img/888.jpg" class="d-block w-80" alt="...">
 			</div>
 			<div class="carousel-item">
 				<div class="carousel-caption d-none d-md-block">
-					<h1 class="display-1 mt-5 text-left">Second slide label</h1>
-					<h1 class="mt-5 text-left">Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit.</h1>
+				
+				
 				</div>
 				<img src="/img/bg-img/resultBack.jpg" class="d-block w-80" alt="...">
 			</div>
 			<div class="carousel-item">
 				<div class="carousel-caption d-none d-md-block">
-					<h1 class="display-1 mt-5 text-left">Second slide label</h1>
-					<h1 class="mt-5 text-left">Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit.</h1>
+					
+				
 				</div>
 				<img src="/img/bg-img/resultBack2.png" class="d-block w-80"
 					alt="...">
