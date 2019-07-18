@@ -2,7 +2,8 @@ package com.project.dto;
 
 import java.sql.Date;
 
-public class OrderDTO {
+public class OrderDTO implements Cloneable{
+
 
 	private int order_seq;
 	private int products_seq;
@@ -27,6 +28,23 @@ public class OrderDTO {
 	public OrderDTO() {
 		super();
 	}
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+	
+	@Override
+	public String toString() {
+		return "OrderDTO [order_seq=" + order_seq + ", products_seq=" + products_seq + ", order_number=" + order_number
+				+ ", order_time=" + order_time + ", order_title=" + order_title + ", order_quantity=" + order_quantity
+				+ ", order_price=" + order_price + ", order_image=" + order_image + ", order_seller=" + order_seller
+				+ ", order_buyer=" + order_buyer + ", order_buyer_phone=" + order_buyer_phone + ", order_buyer_email="
+				+ order_buyer_email + ", order_receipt=" + order_receipt + ", order_receipt_postcode="
+				+ order_receipt_postcode + ", order_receipt_address1=" + order_receipt_address1
+				+ ", order_receipt_address2=" + order_receipt_address2 + ", order_receipt_phone=" + order_receipt_phone
+				+ ", order_receipt_demend=" + order_receipt_demend + "]";
+	}
+
 
 	public OrderDTO(int order_seq, int products_seq, String member_email, String order_number, Date order_time,
 			String order_title, int order_quantity, int order_price, String order_image, String order_seller,
@@ -159,52 +177,60 @@ public class OrderDTO {
 		this.order_buyer_email = order_buyer_email;
 	}
 
-	public String getOrder_receipt() {
-		return order_receipt;
-	}
+   public String getOrder_buyer_email() {
+      return order_buyer_email;
+   }
 
-	public void setOrder_receipt(String order_receipt) {
-		this.order_receipt = order_receipt;
-	}
+   public void setOrder_buyer_email(String order_buyer_email) {
+      this.order_buyer_email = order_buyer_email;
+   }
 
-	public String getOrder_receipt_postcode() {
-		return order_receipt_postcode;
-	}
+   public String getOrder_receipt() {
+      return order_receipt;
+   }
 
-	public void setOrder_receipt_postcode(String order_receipt_postcode) {
-		this.order_receipt_postcode = order_receipt_postcode;
-	}
+   public void setOrder_receipt(String order_receipt) {
+      this.order_receipt = order_receipt;
+   }
 
-	public String getOrder_receipt_address1() {
-		return order_receipt_address1;
-	}
+   public String getOrder_receipt_postcode() {
+      return order_receipt_postcode;
+   }
 
-	public void setOrder_receipt_address1(String order_receipt_address1) {
-		this.order_receipt_address1 = order_receipt_address1;
-	}
+   public void setOrder_receipt_postcode(String order_receipt_postcode) {
+      this.order_receipt_postcode = order_receipt_postcode;
+   }
 
-	public String getOrder_receipt_address2() {
-		return order_receipt_address2;
-	}
+   public String getOrder_receipt_address1() {
+      return order_receipt_address1;
+   }
 
-	public void setOrder_receipt_address2(String order_receipt_address2) {
-		this.order_receipt_address2 = order_receipt_address2;
-	}
+   public void setOrder_receipt_address1(String order_receipt_address1) {
+      this.order_receipt_address1 = order_receipt_address1;
+   }
 
-	public String getOrder_receipt_phone() {
-		return order_receipt_phone;
-	}
+   public String getOrder_receipt_address2() {
+      return order_receipt_address2;
+   }
 
-	public void setOrder_receipt_phone(String order_receipt_phone) {
-		this.order_receipt_phone = order_receipt_phone;
-	}
+   public void setOrder_receipt_address2(String order_receipt_address2) {
+      this.order_receipt_address2 = order_receipt_address2;
+   }
 
-	public String getOrder_receipt_demend() {
-		return order_receipt_demend;
-	}
+   public String getOrder_receipt_phone() {
+      return order_receipt_phone;
+   }
 
-	public void setOrder_receipt_demend(String order_receipt_demend) {
-		this.order_receipt_demend = order_receipt_demend;
-	}
+   public void setOrder_receipt_phone(String order_receipt_phone) {
+      this.order_receipt_phone = order_receipt_phone;
+   }
+
+   public String getOrder_receipt_demend() {
+      return order_receipt_demend;
+   }
+
+   public void setOrder_receipt_demend(String order_receipt_demend) {
+      this.order_receipt_demend = order_receipt_demend;
+   }
 
 }

@@ -36,16 +36,37 @@
 
 	<!-- About Area Start -->
 	<section class="akame-about-area section-padding-80-0"> <!--        --------------------------------------------------------------------------------------------------- -->
-	<button id="writebtn">글쓰기</button>
-	<script>
-      $("#writebtn").on("click",function(){
-         $(location).attr("href", "/timeline/tl_boardWrite")
-      })
-   </script>
+
+
 	<div class="container " id="startSns">
+		<div class="row mt-4">
+			<div class="col-lg-6 border" style="margin: auto">
+				<div class="row py-3">
+					<div class="col-lg-2 text-center border">
+						<img class="rounded-circle" alt="" src="${id.member_imgpath }">
+
+					</div>
+
+					<div class="col-lg-8 py-2 text-center">${id.member_id}님
+						환영합니다<br> 새로운 글을 등록하여 모두 함께 글을 공유해 보세요 <br>
+						<button id="writebtn" class="btn btn-primary">글쓰기</button>
+						<script>
+    					  $("#writebtn").on("click",function(){
+         					$(location).attr("href", "/timeline/tl_boardWrite")
+      					})
+   						</script>
+
+					</div>
+
+
+				</div>
+
+			</div>
+		
+		</div>
 		<c:forEach var="i" items="${result}">
 			<div class="row mt-4">
-				<div class="col-lg-6 border" style="margin: 0 auto">
+				<div class="col-lg-6 border" style="margin:auto;">
 					<div class="row py-3">
 						<div class="col-lg-2 text-center">
 							<img class="rounded-circle" alt="" src="${i.tl_writer_profile }">
@@ -71,16 +92,16 @@
 						<div class="post-content">
 
 							<div class="post-meta">
-								<a href="#" class="post-date"><i class="icon_clock_alt">작성일</i>
-									${i.tl_writedate}</a> <a href="#" class="post-comments"><i
+								<a class="post-date"><i class="icon_clock_alt">작성일</i>
+									${i.tl_writedate}</a> <a class="post-comments"><i
 									class="xi-star-o">좋아요</i> ${i.tl_likecount }</a>
 							</div>
 							<p>${i.tl_contents }</p>
 							<hr>
 							<div class="post-meta">
-								<a id="replyShow${i.tl_board_seq }" href="#" class="post-date">댓글보기</a>
+								<a id="replyShow${i.tl_board_seq }" class="post-date">댓글보기</a>
 							</div>
-							<input type="text" value="${i.tl_board_seq }"
+							<input type="hidden" value="${i.tl_board_seq }"
 								id="hiddenSeq${i.tl_board_seq }">
 							<div id="reply_view${i.tl_board_seq }" style="display: none">
 								<div id="forReply${i.tl_board_seq }"></div>
@@ -159,11 +180,14 @@
 			</div>
 			<script>
 			
+			
 			$("#replyShow${i.tl_board_seq }").on("click",function(){
+				
 				var seq = $("#hiddenSeq${i.tl_board_seq }").val();	
 				 if ( $("#reply_view${i.tl_board_seq }").css("display") == "none" ){
 					 $("#reply_view${i.tl_board_seq }").css("display","block");	
-
+						
+					
 						$.ajax({
 	                     url : "/timeline/ajaxProcReple",
 	                     type : "post",
@@ -171,10 +195,13 @@
 	                    	 seq : seq
 	                     }
 	                  }).done(function(resp) {
+	                	
 	                	  var result = JSON.parse(resp);
 	                	  console.log(result);
 	                	  for(var i = 0 ; i < result.length ; i ++){
-	                		  $("#forReply${i.tl_board_seq }").append("<div>"+result[i].tl_repl_writer+result[i].tl_repl_contents+"<div>");
+	                		  var writer = result[i].tl_repl_writer;
+	                		  var writerList = writer.split('@');
+	                		  $("#forReply${i.tl_board_seq }").append("<div><strong>"+writerList[0]+"&nbsp;&nbsp;</strong>"+result[i].tl_repl_contents+"<img onclick=repleDelete("+result[i].tl_repl_seq+") id=reple"+result[i].tl_repl_seq+" style='width:10px' src='/img/delte.png'><div>");
 	                	  }
 	                  })
 				}else if($("#reply_view${i.tl_board_seq }").css("display") == "block"){
@@ -186,6 +213,7 @@
 			$("#replyBTN${i.tl_board_seq }").on("click",function(){
 				var reply = $("#replyInput${i.tl_board_seq }").val();
 				var seq = $("#hiddenSeq${i.tl_board_seq }").val();
+		
 				$.ajax({
                      url : "/timeline/replyAjaxProc",
                      type : "post",
@@ -194,21 +222,30 @@
                         seq : seq
                      }
                   }).done(function(resp) {
-                	  var result = JSON.stringify(resp);
-                	  $("#forReply${i.tl_board_seq }").append("<div>"+result+"<div>");
+                	  var result = resp;
+                	  var result2 = result.split(':');
+                	  $("#forReply${i.tl_board_seq }").append("<div><strong>"+result2[0]+"&nbsp;&nbsp;</strong>"+result2[1]+"<div>");
                 	  console.log(resp);
                   })
 				
 			})
+			
 		</script>
 		</c:forEach>
 	</div>
+
 	<div class="row mt-4"></div>
 	</section>
 
 
 	<script>
-      var count = 2;
+     
+	var repleDelete = function(seq){
+		location.href = "/timeline/replyDelete?seq="+seq;
+	}
+	
+	
+	var count = 2;
       $(window).scroll(
             function() {
                // 최하단일 경우를 체크하기 위해 최하단 위치값을 지정
@@ -224,89 +261,169 @@
                   }).done(function(resp) {
                      count++
                      var result = JSON.parse(resp);
-                     console.log(result[0].tl_contents);
+                  
                      console.log(result);
                      for(var i = 0 ; i < result.length ; i ++){
 
                     	 
-                     $("#startSns").append(`<div class='row mt-4'><div class='col-lg-6 border' style='margin: 0 auto'>
- 					<div class='row py-3'>
-					<div class='col-lg-2'>
-						<img class='rounded-circle'
-							src='`+result[i].tl_writer_profile+`'>`+result[i].tl_writer+` </div>
-
-					<div class='col-lg-8 py-2'>`+result[i].tl_title +`<input type='hidden' value='`+result[i].tl_board_seq +`'></div>
-					<div class='col-lg-2 text-right'><button id='optionbtn' data-toggle='modal' data-target='#tlboardInfo`+result[i].tl_board_seq +`' style='background-color:white; border:none;'><i class='xi-bars'></i></button></div>
-
-				</div>
-				<div class='single-post-area'>
-					<div class='post-thumbnail' style='text-align: center'>
-						<img src='`+result[i].tl_imgaddr+`'>
-					</div>
-					<div class='post-content'>
-
-						<div class='post-meta'>
-							<a href='#' class='post-date'><i class='icon_clock_alt'>작성일</i>
-							`+result[i].tl_writedate+`</a> <a href='#'
-								class='post-comments'><i class='icon_chat_alt'>조회수</i>
-								`+result[i].tl_likecount+`</a>
+                     $("#startSns").append(`<div class="row mt-4">
+				<div class='col-lg-6 border' style='margin: auto'>
+					<div class='row py-3'>
+						<div class='col-lg-2 text-center'>
+							<img class='rounded-circle' alt='' src='`+result[i].tl_writer_profile+`'>
+								`+result[i].tl_writer+`
 						</div>
-						<p>`+result[i].tl_contents+`</p>
+
+						<div class='col-lg-8 py-2 text-center'>`+result[i].tl_title+`<input
+								type='hidden' value='`+result[i].tl_board_seq+`'>
+						</div>
+						<div class='col-lg-2 text-right'>
+							<button id='optionbtn' data-toggle='modal'
+								data-target='#tlboardInfo`+result[i].tl_board_seq+`'
+								style='background-color: white; border: none;'>
+								<i class='xi-bars'></i>
+							</button>
+						</div>
+
+					</div>
+					<div class='single-post-area'>
+						<div class='post-thumbnail' style='text-align: center'>
+							<img src='`+result[i].tl_imgaddr+`' alt=''>
+						</div>
+						<div class='post-content'>
+
+							<div class='post-meta'>
+								<a  class='post-date'><i class='icon_clock_alt'>작성일</i>
+									${i.tl_writedate}</a> <a  class='post-comments'><i
+									class='xi-star-o'>좋아요</i> ${i.tl_likecount }</a>
+							</div>
+							<p>${i.tl_contents }</p>
+							<hr>
+							<div class='post-meta'>
+								<a id='replyShow`+result[i].tl_board_seq+`' class='post-date'>댓글보기</a>
+							</div>
+							<input type='hidden' value='`+result[i].tl_board_seq+`'
+								id='hiddenSeq`+result[i].tl_board_seq+`'>
+							<div id='reply_view`+result[i].tl_board_seq+`' style='display: none'>
+								<div id='forReply`+result[i].tl_board_seq+`'></div>
+								<input id='replyInput`+result[i].tl_board_seq+`' type='text'
+									name='tl_repl_contents' class='mb-3'
+									style='width: 25em; border-radius: 4px;'>
+								<button type='button' id='replyBTN`+result[i].tl_board_seq+`'
+									class='commentbtn btn btn-outline-success btn-sm ml-2 mb-2'>댓글
+									입력</button>
+
+							</div>
+
+
+
+						</div>
 					</div>
 				</div>
-			</div></div>
+			</div>
 
-			<div class='modal fade' id='tlboardInfo`+result[i].tl_board_seq+`' tabindex='-1'
-		          role='dialog' aria-labelledby='exampleModalLabel1'
-		          aria-hidden='true'>
-		          <div class='modal-dialog' role='document'>
-		             <div class='modal-content'>
-		                <div class='modal-body1'>
-		                   <form>
-		                      <div class='form-group m-0 p-0'>
-		                         <div class='card'>
-		                            <div class='card-header'>
-		                               <i class='fa fa-user'></i><strong class='card-title pl-2'>옵션 </strong>
-		                               <button type='button' class='close' data-dismiss='modal'
-		                                  aria-label='Close'>
-		                                  <span aria-hidden='true'>&times;</span>
-		                               </button>
-		                            </div>
-		                            <div class='card-body text-center'>
-		                               <div class='mx-auto d-block'>
-		                                  <h5 class='text-center mt-2 mb-1'>
-		                                     <b id='member_id'> </b>
-		                                  </h5>
-		                               </div>
-		                               <hr>
-		                               <div class='card-text'>
-		                                  <div>
-		                                     <a href='/timeline/reportProc?seq=`+result[i].tl_board_seq+`'><b style='color:red;'>신고하기</b></a>
-		                                     
-		                                  </div>
-		                                  <div>
-		                                     <a href='/timeline/boardModify?seq=`+result[i].tl_board_seq+`&writer=`+result[i].tl_writer+`&title=`+result[i].tl_title+`&imgaddr=`+result[i].tl_imgaddr+`&contents=`+result[i].tl_contents+`'><b>글 수정 </b></a>
-		                                  </div>
-		                                  <div>
-		                                     <a href='/timeline/boardDelete?seq=`+result[i].tl_board_seq+`&writer=`+result[i].tl_writer+`'><b>글 삭제</b></a>
-		                                  </div>
-		                                  <div>
-		                                     <a href='/timeline/boardNote'><b>쪽지보내기</b></a>
-		                                  </div>
-		                               </div>
-		                            </div>
-		                         </div>
-		                      </div>
-		                      <div class='modal-footer'>
-		                         <button type='button' class='btn btn-secondary'
-		                            data-dismiss='modal'>닫기</button>
-		                      </div>
-		                   </form>
+			<div class='modal fade' id='tlboardInfo`+result[i].tl_board_seq+`'
+				tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel1'
+				aria-hidden='true'>
+				<div class='modal-dialog' role='document'>
+					<div class='modal-content'>
+						<div class='modal-body1'>
+							<form>
+								<div class='form-group m-0 p-0'>
+									<div class='card'>
+										<div class='card-header'>
+											<i class='fa fa-user'></i><strong class='card-title pl-2'>옵션
+											</strong>
+											<button type='button' class='close' data-dismiss='modal'
+												aria-label='Close'>
+												<span aria-hidden='true'>&times;</span>
+											</button>
+										</div>
+										<div class='card-body text-center'>
+											<div class='mx-auto d-block'>
+												<h5 class='text-center mt-2 mb-1'>
+													<b id='member_id'> </b>
+												</h5>
+											</div>
+											<hr>
+											<div class='card-text'>
+												<div>
+													<a href='/timeline/reportProc?seq=`+result[i].tl_board_seq+`'><b
+														style='color: red;'>신고하기</b></a>
+												</div>
+												<div>
+													<a
+														href='/timeline/boardModify?seq=`+result[i].tl_board_seq+`'><b>글
+															수정 </b></a>
+												</div>
+												<div>
+													<a
+														href='/timeline/boardDelete?seq=`+result[i].tl_board_seq+`&writer=`+result[i].tl_writer+`'><b>글
+															삭제</b></a>
+												</div>
+												<div>
+													<b>쪽지보내기</b>
+													<p id='tl_board'></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class='modal-footer'>
+									<button type='button' class='btn btn-secondary'
+										data-dismiss='modal'>닫기</button>
+								</div>
+							</form>
 
-		                </div>
-		             </div>
-		          </div>
-		       </div>`)
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+			
+			$('#replyShow`+result[i].tl_board_seq+`').on('click',function(){
+				var seq = $('#hiddenSeq`+result[i].tl_board_seq+`').val();	
+				 if ( $('#reply_view`+result[i].tl_board_seq+`').css('display') == 'none' ){
+					 $('#reply_view`+result[i].tl_board_seq+`').css('display','block');	
+
+						$.ajax({
+	                     url : '/timeline/ajaxProcReple',
+	                     type : 'post',
+	                     data : {
+	                    	 seq : seq
+	                     }
+	                  }).done(function(resp) {
+	                	  var result1 = JSON.parse(resp);
+	                	 
+	                	  for(var i = 0 ; i < result1.length ; i ++){
+	                		  var writer =  result1[i].tl_repl_writer;
+	                		 	var writerList = writer.split('@');
+	                		  $('#forReply`+result[i].tl_board_seq+`').append('<div><strong>'+writerList[0]+'&nbsp;&nbsp;</strong>'+result1[i].tl_repl_contents+'<img src=/img/delte.png style=width:10px onclick=repleDelete('+result1[i].tl_repl_seq+') id=repleDelete'+result1[i].tl_repl_seq+'> </div>');
+	                	  }
+	                  })
+				}else if($('#reply_view`+result[i].tl_board_seq+`').css('display') == 'block'){
+					 $('#reply_view`+result[i].tl_board_seq+`').css('display','none');	
+					 $('#forReply`+result[i].tl_board_seq+`').html('');
+				
+				 }
+			})
+			$('#replyBTN`+result[i].tl_board_seq+`').on('click',function(){
+				var reply = $('#replyInput`+result[i].tl_board_seq+`').val();
+				var seq = $('#hiddenSeq`+result[i].tl_board_seq+`').val();
+				$.ajax({
+                     url : '/timeline/replyAjaxProc',
+                     type : 'post',
+                     data : {
+                        page : reply,
+                        seq : seq
+                     }
+                  }).done(function(resp) {
+                	  var result1 = resp;
+                	  var result1List = resp.split(":");
+                	  $('#forReply`+result[i].tl_board_seq+`').append('<div><strong>'+result1List[0]+'&nbsp;&nbsp;</strong>'+result1List[1]+'</div>');
+                	  console.log(resp);
+                  })
+			})`)
                      }
                   
                      })

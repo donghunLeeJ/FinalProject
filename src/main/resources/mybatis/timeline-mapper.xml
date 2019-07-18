@@ -34,4 +34,7 @@
    		update tl_board set tl_writer_profile = #{path} where
 		tl_writer = #{id}
    </update>
+    <delete id="replyDelete">
+    	delete from tl_board_reply where tl_repl_seq = ${seq} and tl_repl_writer = #{id}
+    </delete>
 </mapper>

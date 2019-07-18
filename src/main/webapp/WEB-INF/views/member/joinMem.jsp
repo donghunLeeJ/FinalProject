@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"><!-- 눈모양 -->
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="/css/style2.css">
 
 <style>
+
+
 .title {
    text-align: left;
    margin-left: 26%;
@@ -25,13 +27,17 @@
 }
 #findAdd{
 padding:0px;
-width:35px;
-height:35px;
+width:27px;
+height:27px;
 margin:0px;
 }
 #datepicker {
    position: relative;
    width : 50px;
+}
+#flash{
+width:27px;
+height:27px;
 }
 .float{
 float:left;
@@ -84,17 +90,20 @@ background-color:white;
 
                   </div>
                   <div class="col-lg-12 text-center">
-                     <div class=title>비밀번호</div>
+                     <div class=title>비밀번호 
+<!--                      <img src="/img/button-img/flash.png" id="flash"> -->
+                <i class="fa fa-eye fa-lg" id=flash></i>
+                     </div>
 
                      <input type="password" style="width: 50%; margin: auto;" id=pw
-                        name="member_pw" class="form-control mb-30" placeholder="대,소문자,숫자 포함 8~13자리">
+                        name="member_pw" class="form-control mb-30 flash" placeholder="대,소문자,숫자 포함 8~13자리">
 
                   </div>
                   <div class="col-lg-12 text-center">
                      <div class=title>비밀번호 확인</div>
 
                      <input type="password" id=pwCheck
-                        style="width: 50%; margin: auto;" class="form-control mb-30"
+                        style="width: 50%; margin: auto;" class="form-control mb-30 flash"
                         placeholder="대,소문자,숫자 포함 8~13자리">
                   </div>
 
@@ -161,11 +170,20 @@ background-color:white;
    </section>
    <jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 
-
-
-
-
    <script>
+   
+   
+   $("#flash").on("click",function(){
+	
+		   if($(".flash").attr('type')=='password'){
+			   $(this).attr('class',"fa fa-eye-slash fa-lg");
+			   $(".flash").attr('type','text');
+		   }else if($(".flash").attr('type')=='text'){
+			   $(this).attr('class',"fa fa-eye fa-lg")
+			   $(".flash").attr('type','password');
+		   }
+	  
+   });
       //여기서 부터 가입버튼 눌렀을때 실행
       $("#send").on("click",function() {
          
@@ -173,11 +191,10 @@ background-color:white;
          var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,13}$/g;
          var regPw2=/(\w)\1\1/g;
          var regname = /^[가-힣]{2,4}$/;
-         var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+         var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
          var reg = /\s/g;
 
-         
-
+        
           
                if ($("#id").val() == "") {//아이디가 공백이면
                   alert("아이디를 입력하세요");
