@@ -14,7 +14,7 @@ public class BasketDTO {
 	public BasketDTO(int basket_seq, int product_seq, String basket_seller, String basket_id, String basket_imagepath,
 			String basket_title, String basket_expiration, int basket_price, int basket_quantity,
 			String basket_location) {
-		super();
+		super();  
 		this.basket_seq = basket_seq;
 		this.product_seq = product_seq;
 		this.basket_seller = basket_seller;

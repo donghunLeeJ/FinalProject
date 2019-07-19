@@ -88,7 +88,7 @@ input[type="text"] {
 						<div class="row">
 							
 							<div class="col-4">
-								<input id="check${list.basket_seq }" type="checkbox" name="check" 
+								<input id="check${list.basket_seq }" price="${list.basket_price}" type="checkbox" name="check" 
 									value="${list.basket_seq }" class="check" /><img
 									src="${list.basket_imagepath }">
 									
@@ -100,7 +100,8 @@ input[type="text"] {
 					</div>
 					<div class="col-2" style="line-height: 4em;">${list.basket_expiration}</div>
 					<div class="col-1" style="line-height: 4em;">${list.basket_quantity}</div>
-					<div class="col-1" style="line-height: 4em;">${list.basket_price}</div>
+					<div class="col-1"  style="line-height: 4em;">${list.basket_price}</div>
+					<input type="hidden" id="toPrice${list.basket_seq }" value="${list.basket_price}">
 					<div class="col-1" style="line-height: 4em;">${list.basket_location}</div>
 
 					<div class="col-2" style="line-height: 1.4em;">
@@ -115,6 +116,29 @@ input[type="text"] {
 					</div>
 				</div>
 				<script>
+				$("#check${list.basket_seq }").on("click",function(){
+					var total = 0;
+					var count = $("#check${list.basket_seq }").length;
+					var price=$("#toPrice${list.basket_seq }").val();
+				
+					var check=$("#check${list.basket_seq }").prop("checked");
+					
+					if(check==true){
+						
+					var ad= total + Number($("#toPrice${list.basket_seq}").val());
+				var ds = $("#totalPrice").text(ad);
+ 					var sd = ds + Number($("#toPrice${list.basket_seq}").val());
+							
+ 					$("#totalPrice").text(sd);
+							
+ 					var price = $("#check12321").attr("price");
+						
+					}
+					
+// 					alert($("#toPrice${list.basket_seq }").val());	
+// 					$("#totalPrice").text(price);
+					})
+				
 				
 				 function fnGetdata(){
 				        var obj = $("[name=check]");
@@ -131,59 +155,11 @@ input[type="text"] {
 				       
 				    }
 				
+				
 					
 				</script>
 			</c:forEach>
 		</form>
-
-
-
-
-
-<div class="row border-bottom border-top bg-gray text-center py-2">
-				<div class="col-3">
-					
-				</div>
-				<div class="col-2"></div>
-				<div class="col-1"></div>
-				<div class="col-1"></div>
-				<div class="col-1"></div>
-				<div class="col-2"></div>
-				<div class="col-2">합계 금액</div>
-			</div>
-
-		<div class="row border-bottom border-top text-center py-4">
-					<div class="col-3 " style="line-height: 4em;">
-						<div class="row">
-							
-							<div class="col-4">
-								
-									
-									 
-							</div>
-							<div class="col-8">바스켓 타이틀 자리</div>
-
-						</div>
-					</div>
-					<div class="col-2" style="line-height: 4em;">유통기한 자리</div>
-					<div class="col-1" style="line-height: 4em;">수량 자리</div>
-					<div class="col-1" style="line-height: 4em;">가격 자리</div>
-					<div class="col-1" style="line-height: 4em;">지역 자리</div>
-
-					<div class="col-2" style="line-height: 1.4em;">
-						선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
-							브랜드 ${dto.basket_title}</small>
-					</div>
-					<div class="col-2 text-center" style="padding: 0;">
-						<br>
-						
-					</div>
-				</div>
-
-
-
-
-
 
 
 
@@ -194,13 +170,6 @@ input[type="text"] {
 		</div>
 	</div>
 
-	
-	
-	
-	
-	
-	
-
 
 	<script>
 		/* $("#charge").on("click",function(){
@@ -209,6 +178,8 @@ input[type="text"] {
 		$("#chargeForm").submit();
 		}) */
 	
+	
+		
 		 var checkAll = function() {
 			$(".check").click();
 		} 

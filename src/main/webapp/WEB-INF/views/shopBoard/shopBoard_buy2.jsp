@@ -103,6 +103,9 @@ img {
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
 					<fmt:formatNumber value="${dto.basket_price }" pattern="#,###" />
+					
+					<input type="hidden" id="price${dto.basket_seq}" value="${dto.basket_price }">
+					
 					(원) <input type="hidden" value="${dto.basket_price }" name="order_price">
 				</div>
 				<div class="col-1" style="margin-top: 1.4em">${dto.basket_location }</div>
@@ -123,6 +126,7 @@ img {
 
 				<div class="col-12 ">
 					<h3>주문자 정보 입력</h3>
+					<p id="ptag"></p>
 				</div>
 			</div>
 			<div class="row border rounded">
