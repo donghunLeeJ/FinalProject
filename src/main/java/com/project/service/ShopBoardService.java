@@ -60,4 +60,7 @@ public class ShopBoardService {
 	public int updateQ(int quant, int sseq) {
 		return sdao.updateQ(quant, sseq);
 	}
+	public int getQuan(int sseq) {
+		return sdao.getQuan(sseq);
+	}
 }
