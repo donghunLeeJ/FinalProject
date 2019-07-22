@@ -48,21 +48,27 @@ public class AdminController {
 	
 		return "admin/adminhome";
 	}
+
 	
 	//관리자 메인페이지에서 회원관리 페이지로 이동
 	@RequestMapping("MemberManagementMove")
 	public String MemberManagementMove(){
-	return "redirect:MemberManagementProc?page=1";}
-		
+		return "redirect:MemberManagementProc?page=1";}
+
 	//관리자 메인페이지에서 판매글 관리 페이지로 이동
 	@RequestMapping("ShopBoardManagementMove")
 	public String ShopBoardManagementMove(){
-	return "redirect:ShopBoardManagementProc?page=1";}
-		
+		return "redirect:ShopBoardManagementProc?page=1";}
+
 	//관리자 메인페이지에서 구매내역 관리 페이지로 이동
 	@RequestMapping("OrderManagementMove")
 	public String OrderManagementMove(){
-	return "redirect:OrderManagementProc?page=1";}
+		return "redirect:OrderManagementProc?page=1";}
+
+	//관리자 메인페이지에서 SNS신고 페이지로 이동
+	@RequestMapping("TimeLineManagementMove")
+	public String TimeLineManagementMove(){
+		return "redirect:TimeLineManagementProc?page=1";}
 
 	//회원관리에서 id로 검색을 할시 이동하는 곳
 	@RequestMapping("MemberManagementIDMove")
@@ -74,8 +80,6 @@ public class AdminController {
 	public String OrderNumberSelectMove(String order_number){
 	return "redirect:OrderNumberSelectProc?order_number="+order_number+"";}
 
-	
-	
 	//회원관리 페이지로 이동(이동하기 전에 먼저 모든 회원을 검색하고 시작)
 	@RequestMapping("MemberManagementProc")
 	public String MemberManagement(int page){
@@ -125,6 +129,7 @@ public class AdminController {
 
 		return "admin/ShopBoardManagement";}
 	
+		
 	
 		//구매내역관리 페이지로 이동(이동하기 전에 먼저 구매내역을 검색하고 시작)
 		@RequestMapping("OrderManagementProc")
@@ -141,12 +146,28 @@ public class AdminController {
 			return "admin/OrderManagement";}
 			
 		
+		//sns신고관리 페이지로 이동(이동하기 전에 먼저 신고내역을 검색하고 시작)
+		@RequestMapping("TimeLineManagementProc")
+		public String TimeLineManagement(int page){
+
+		//int totalcount = aservice.OrderBoardCount();
+
+		//List<String>pageList = aservice.Page(page, totalcount);
+		//request.setAttribute("OrderBoardList", aservice.OrderBoardSelectPageList(page));
+
+		//request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
+		//request.setAttribute("page", page);//현재 페이지임
+
+			return "admin/TimeLineManagement";}
+		
+		
+
 		//주문번호검색
 		@RequestMapping("OrderNumberSelectProc")
 		public String OrderNumberSelect(String order_number){
 
 			System.out.println("주문번호: " + order_number);
-		    request.setAttribute("OrderNumberSelect",  aservice.OrderNumberSelect(order_number));
+			request.setAttribute("OrderNumberSelect",  aservice.OrderNumberSelect(order_number));
 			return "admin/OrderManagement";
 		}
 	
@@ -156,7 +177,6 @@ public class AdminController {
 		@RequestMapping("targetMember")
 		public String targetMember(String userid){
 
-			System.out.println(userid);
 			MemberDTO userINFO =  aservice.MemberIdSelectAll(userid);
 			request.setAttribute("userINFO", userINFO);
 
@@ -168,9 +188,6 @@ public class AdminController {
 		@ResponseBody
 		@RequestMapping(value="blacklist", produces = "application/text; charset=utf8")
 		public String BlackListProc(String id , String blackcheck){
-
-			System.out.println(id);	
-			System.out.println("체크리스트: "+blackcheck);	
 
 			if(blackcheck.equals("n")) {
 
@@ -229,8 +246,7 @@ public class AdminController {
 				ViewDTO.setVisitViewCount(ViewDTO.getVisitViewCount() + 1);				
 			}
 
-			return ""+access+"";}
-			
+			return ""+access+"";}			
 }
 
 
