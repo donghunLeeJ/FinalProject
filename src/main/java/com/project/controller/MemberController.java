@@ -242,10 +242,20 @@ public class MemberController {
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
+	@RequestMapping("buyContentsGo")
+	public String buyContetns() {
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		List<OrderDTO> buyList = os.myOrderList(mdto.getMember_id());
+
+		request.setAttribute("buyList", buyList);
+		return "/member/buyContents";
+	}
 
 	@RequestMapping("sellStatus")
 	public String sellStatus() {
-		
+
+//		List<OrderDTO> popup = os.popup(seqq);
+//		request.setAttribute("popup", popup);
 		return "/member/sellStatusPopUp";
 	}
 

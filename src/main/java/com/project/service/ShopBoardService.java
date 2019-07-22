@@ -57,4 +57,7 @@ public class ShopBoardService {
 	public int shopReviewCount(int shop_seq) {
 		return sdao.shopReviewCount(shop_seq);
 	}
+	public int updateQ(int quant, int sseq) {
+		return sdao.updateQ(quant, sseq);
+	}
 }

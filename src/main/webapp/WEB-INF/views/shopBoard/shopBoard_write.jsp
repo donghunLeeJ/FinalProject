@@ -99,9 +99,8 @@
 					<input type="text" id=brand name="shop_brand"
 						class="form-control input" placeholder="최대 10글자">
 				</div>
-				<div class="col-lg-2 border text-center align-middle"
-					style="background: #e6e7e8">지역</div>
-				<div class="col-lg-10 border p-0">
+				<div class="col-lg-2 border text-center align-middle" style="background: #e6e7e8">지역</div>
+				<div class="col-lg-4 border p-0">
 					<select name="shop_location"
 						class="browser-default custom-select form-control input">
 						<option selected></option>
@@ -110,16 +109,11 @@
 						<option value="부산">부산</option>
 					</select>
 				</div>
-				<div class="col-lg-2 border text-center align-middle"
-					style="background: #e6e7e8">유통기한</div>
-				<div class="col-lg-10 border p-0">
-					<input id="datepicker" name="shop_expiration" class="form-control"
-						readonly>
-
-					<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
-						type="text/javascript"></script>
-					<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
-						rel="stylesheet" type="text/css" />
+				<div class="col-lg-2 border text-center align-middle" style="background: #e6e7e8">유통기한</div>
+				<div class="col-lg-4 border p-0">
+					<input id="datepicker" name="shop_expiration" class="form-control"readonly>
+					<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"type="text/javascript"></script>
+					<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"rel="stylesheet" type="text/css" />
 
 					<script>
 						$("#datepicker").datepicker({
@@ -149,7 +143,7 @@
 					style="background: #e6e7e8">내용</div>
 				<div class="col-lg-10 border p-0 m-0">
 					<textarea style="resize: none;" id=contents name="shop_contents"
-						class="form-control input" placeholder="최대 800자"
+						class="form-control input" placeholder="최대 300자"
 						style="height: 15rem;"></textarea>
 				</div>
 				<!-- 	-정현 추가 사업자번호  -->
