@@ -18,10 +18,11 @@ public class Tl_BoardDTO {
 	private int likestatus;
 	private MultipartFile tl_image;
 	private String tl_imgaddr;
-	
-	public Tl_BoardDTO(int tl_board_seq, String tl_title, String tl_contents, String tl_writer, String tl_writer_profile,
-			Date tl_writedate, String tl_formatdate, int tl_viewcount, int tl_likecount, int likestatus,
-			MultipartFile tl_image, String tl_imgaddr) {
+	private String tl_status; 
+	private String tl_reason;
+	public Tl_BoardDTO(int tl_board_seq, String tl_title, String tl_contents, String tl_writer,
+			String tl_writer_profile, Date tl_writedate, String tl_formatdate, int tl_viewcount, int tl_likecount,
+			int likestatus, MultipartFile tl_image, String tl_imgaddr, String tl_status, String tl_reason) {
 		super();
 		this.tl_board_seq = tl_board_seq;
 		this.tl_title = tl_title;
@@ -35,6 +36,8 @@ public class Tl_BoardDTO {
 		this.likestatus = likestatus;
 		this.tl_image = tl_image;
 		this.tl_imgaddr = tl_imgaddr;
+		this.tl_status = tl_status;
+		this.tl_reason = tl_reason;
 	}
 	public Tl_BoardDTO() {
 		super();
@@ -111,7 +114,20 @@ public class Tl_BoardDTO {
 	public void setTl_imgaddr(String tl_imgaddr) {
 		this.tl_imgaddr = tl_imgaddr;
 	}
-
+	public String getTl_status() {
+		return tl_status;
+	}
+	public void setTl_status(String tl_status) {
+		this.tl_status = tl_status;
+	}
+	public String getTl_reason() {
+		return tl_reason;
+	}
+	public void setTl_reason(String tl_reason) {
+		this.tl_reason = tl_reason;
+	}
+	
+	
 
 
 }

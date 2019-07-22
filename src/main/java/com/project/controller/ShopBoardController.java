@@ -79,6 +79,7 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/ShopBoardViewProc")
+
 	public String ShopBoardSelectProc(String seq) {
 		String starAvg;
 		int shop_seq = Integer.parseInt(seq);
@@ -136,6 +137,7 @@ public class ShopBoardController {
 		request.setAttribute("reviewRowCount", reviewRowCount);
 		return "/shopBoard/shopBoard_view";
 	}
+
 
 	@RequestMapping("/ShopBoardInsertProc")
 	public String filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
