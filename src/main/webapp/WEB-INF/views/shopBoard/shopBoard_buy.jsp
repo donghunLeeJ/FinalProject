@@ -466,5 +466,6 @@ img {
 			$("#must3").click();
 		});
 	</script>
+	<jsp:include page="/WEB-INF/views/module/loginModule.jsp"></jsp:include>
 </body>
 </html>

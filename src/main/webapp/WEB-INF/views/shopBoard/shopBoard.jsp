@@ -9,20 +9,16 @@
 <title>Insert title here</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
-#img1 {
-	width: 100%;
-	height: 100%;
-}
+
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<!-- header -->
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<section class="breadcrumb-area section-padding-80">
+	<section class="breadcrumb-area section-padding-80 border">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">

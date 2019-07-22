@@ -51,7 +51,7 @@ public class BasketController {
 	
 		request.setAttribute("list", result);
 		request.setAttribute("sdto", sdto);
-		return "/shopBoard/shopBoard_basket";
+		return "redirect:/Basket/basketList?id="+id;
 	}
 
 	@RequestMapping("/basketList")

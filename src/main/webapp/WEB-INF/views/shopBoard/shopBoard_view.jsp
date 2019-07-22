@@ -362,7 +362,11 @@
 		
 
 		$("#chargeItem").on("click",function(){
-			if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+			}else{
+				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
 				
 							var quantity = $("#quantity_one").val();
 							location.href = "/shopboard/shopBoard_buyProc?quantity="
@@ -370,23 +374,29 @@
 						
 				//수량
 
-			}else{
-				alert("수량이 초과되었습니다.");
-				$("#quantity_one").val("1")
+				}else{
+					alert("수량이 초과되었습니다.");
+					$("#quantity_one").val("1")
+				}
 			}
 		})
 		
 		$("#basket").on("click",function() {
-			
-			if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
-			
-				var quantity = $("#quantity_one").val();
-				location.href = "/Basket/basketInsert?quantity="+ quantity + "&seq=${dto.shop_seq }"
-			
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
 			}else{
-				alert("수량이 초과되었습니다.");
-				$("#quantity_one").val("1");
+				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
+					
+					var quantity = $("#quantity_one").val();
+					location.href = "/Basket/basketInsert?quantity="+ quantity + "&seq=${dto.shop_seq }"
+				
+				}else{
+					alert("수량이 초과되었습니다.");
+					$("#quantity_one").val("1");
+				}
 			}
+			
 		})		
 	
 

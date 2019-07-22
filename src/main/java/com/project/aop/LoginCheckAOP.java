@@ -32,6 +32,7 @@ public class LoginCheckAOP {
 	public String logCheck(ProceedingJoinPoint pjp) {
 		if(session.getAttribute("id")==null) {
 			System.out.println("로그인 필요1213");
+			
 			return "loginPlease";
 		}else {
 			try {
