@@ -258,5 +258,8 @@ public class MemberController {
 //		request.setAttribute("popup", popup);
 		return "/member/sellStatusPopUp";
 	}
-
+	@RequestMapping("myMsg")
+public String myMsg() {
+		return "/member/myMsg";
+	}
 }

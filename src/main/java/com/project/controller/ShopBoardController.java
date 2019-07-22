@@ -239,7 +239,7 @@ public class ShopBoardController {
 
 	@RequestMapping("/shopOrder")
 	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, ShopBoardDTO sdto,String getter_phone3, String products_seq, int quant) {
+			String getter_phone1, String getter_phone2,String getter_phone3, String products_seq, int quant) {
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
 		int products_seq1 = Integer.parseInt(products_seq);

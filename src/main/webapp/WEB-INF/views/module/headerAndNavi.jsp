@@ -135,7 +135,7 @@ li:hover {
 								<!--                            </ul></li> -->
 								<!--                         <li><a href="#">판매 / 구매</a> -->
 								<!--                            <ul class="dropdown"> -->
-								<li><a href="#">쪽지함</a></li>
+								<li><a href="/member/myMsg">쪽지함</a></li>
 								<li><a href="/shopboard/shopBoardGo?page=1">구매하기</a></li>
 								<li><a href="/shopboard/ShopBoard_write">판매하기</a></li>
 								<li><a href="/member/buyContentsGo">구매내역</a></li>

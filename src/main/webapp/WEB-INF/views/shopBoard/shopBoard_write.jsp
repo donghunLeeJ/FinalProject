@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
+
+
+
 <style>
 .form-control[readonly] {
 	background-color: white;
@@ -102,31 +105,40 @@
 				<div class="col-lg-2 border text-center align-middle" style="background: #e6e7e8">지역</div>
 				<div class="col-lg-4 border p-0">
 					<select name="shop_location"
-						class="browser-default custom-select form-control input">
-						<option selected></option>
+						class="browser-default  form-control input">
+						<option selected>지역 선택</option>
 						<option value="서울">서울</option>
 						<option value="경기">경기</option>
+						<option value="강원">강원</option>
+						<option value="대전">대전</option>
+						<option value="대구">대구</option>
+						<option value="광주">광주</option>
 						<option value="부산">부산</option>
+						<option value="제주">제주</option>
 					</select>
 				</div>
+
 				<div class="col-lg-2 border text-center align-middle" style="background: #e6e7e8">유통기한</div>
 				<div class="col-lg-4 border p-0">
-					<input id="datepicker" name="shop_expiration" class="form-control"readonly>
+					<input id="datepicker" name="shop_expiration" class="form-control" readonly>
+					
+
 					<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"type="text/javascript"></script>
 					<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"rel="stylesheet" type="text/css" />
-
 					<script>
-						$("#datepicker").datepicker({
-							uiLibrary : 'bootstrap4',
-							format : "yyyy-mm-dd",
-							minDate : "0",
-							maxDate : "+8M",
-							language : "kr"
+					var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+							$("#datepicker").datepicker({ 
+							uiLibrary : 'bootstrap4', 
+							format : "yyyy-mm-dd", 
+							 minDate: today
+								
 						});
-						$('#datepicker').datepicker('setDate', 'today');
-					</script>
+							
+ 						$('#datepicker').datepicker('setDate', 'today'); 
+					</script> 
 
 				</div>
+				
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #e6e7e8">가격</div>
 				<div class="col-lg-10 border p-0">
