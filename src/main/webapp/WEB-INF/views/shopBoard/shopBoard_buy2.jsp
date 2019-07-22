@@ -127,7 +127,7 @@ img {
 				<div class="col-1"></div>
 				<div class="col-1"></div>
 				<div class="col-1"></div>
-				<div class="col-2"></div>
+				<div class="col-2">총 수량</div>
 				<div class="col-2">총 금액</div>
 			</div>
 		
@@ -153,7 +153,7 @@ img {
 					
 				</div>
 				<div class="col-1" ></div>
-				<div class="col-2" ></div>
+				<div class="col-2" >${amount }</div>
 				
 				<div class="col-2">
 					
@@ -309,7 +309,7 @@ img {
 			// 					msg += '에러내용 : ' + rsp.error_msg;
 			// 				}
 			// 				alert(msg);
-			// 			});
+			// 			}); */ */
 			$("#completeForm").submit();
 		})
 

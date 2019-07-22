@@ -14,9 +14,14 @@
 						<a href="#" class="footer-logo"><img
 							src="/img/core-img/logo.png" alt=""></a>
 
-						<p class="mb-30">We would love to serve you and let you enjoy
-							your culinary experience. Excepteur sint occaecat cupidatat non
-							proident.</p>
+						<p class="mb-30">
+							 상호 : <br>
+							 대표 : 이동훈<br>
+							주소 : 서울특별시 중구 남대문로1가 남대문로 118 <br>
+							개인정보관리 책임자 : <br>
+							사업자 등록번호 : 211-06-76999 <br>
+							
+						</p>
 
 						<!-- Copywrite Text -->
 						<div class="copywrite-text">
@@ -43,8 +48,8 @@
 
 						<!-- Open Times -->
 						<div class="open-time">
-							<p>Monday: Friday: 10.00 - 23.00</p>
-							<p>Saturday: 10.00 - 19.00</p>
+							<p>근무시간 :월 ~금 AM 9:00 ~ PM 6:00</p>
+							<p>점심시간 : PM12 :00 ~ PM 1 : 00</p>
 						</div>
 
 						<!-- Social Info -->
@@ -62,13 +67,14 @@
 					<div class="single-footer-widget mb-80">
 
 						<!-- Widget Title -->
-						<h4 class="widget-title">Contact Us</h4>
+						<h4 class="widget-title">고객센터 C/S Center</h4>
 
 						<!-- Contact Address -->
 						<div class="contact-address">
-							<p>Tel: (+12) 345 678 910</p>
-							<p>E-mail: Hello.colorlib@gmail.com</p>
-							<p>Address: Iris Watson, P.O. Box 283 8562 Fusce Rd, NY</p>
+							<p>Tel: 010.4617.1396</p>
+							<p>Fax: 02-8500-5640</p>
+							<p>E-mail: cwg94@naver.com</p>
+							<p>오전 9시부터 오후 6시까지 상담가능합니다.</p>
 						</div>
 					</div>
 				</div>

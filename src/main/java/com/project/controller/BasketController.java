@@ -86,7 +86,7 @@ public class BasketController {
 	@RequestMapping("/asd")
 	public String asd(String basket_seq) {
 		int price = 0;
-		
+		int amount = 0;
 		System.out.println("asd의 리스트");
 		
 		System.out.println(basket_seq);
@@ -99,8 +99,10 @@ public class BasketController {
 			
 			arr.add(bservice.basketListBuy(seqList[i]));
 			 price = price + arr.get(i).getBasket_price();//합계금액
+			 amount = amount + arr.get(i).getBasket_quantity();//합계 수량
 		}
 		System.out.println(price);
+		request.setAttribute("amount",amount );
 		request.setAttribute("basketseq", basket_seq);
 		request.setAttribute("basketarr", arr);
 		request.setAttribute("price", price);
