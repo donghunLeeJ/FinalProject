@@ -94,7 +94,7 @@
 								<li><a href="/admin/ShopBoardManagementMove">판매 글 관리</a></li>
 								<li><a href="/admin/OrderManagementMove">구매내역 관리</a></li>
 								<li><a href="#">결제 통계</a>
-								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
+								<li><a href="/admin/TimeLineManagementMove">SNS 신고 관리</a></li>
 							</ul>
 							<!-- Cart Icon -->
 							<div class="cart-icon ml-5 mt-4 mt-lg-0">

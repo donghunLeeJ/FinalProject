@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.project.dto.MessageDTO;
 import com.project.dto.Tl_BoardDTO;
 import com.project.dto.Tl_ReplyDTO;
 
@@ -58,5 +59,17 @@ public class Tl_BoardDAO {
 	   return sst.delete("Tl_BoardDAO.replyDelete",map);
    }
    
-  
+   public int reportRegister(Tl_BoardDTO dto) {
+	   return sst.delete("Tl_BoardDAO.reportRegister",dto);
+  }
+   public int insertMessage(MessageDTO dto) {
+	   return sst.delete("Tl_BoardDAO.insertMessage",dto);
+  }
+   public int likeCount(String seq) {
+	   return sst.delete("Tl_BoardDAO.likeCount",seq);
+  }
+   public int selectlikeCount(String seq) {
+	   return sst.selectOne("Tl_BoardDAO.selectLikeCount",seq);
+  }
+   
 }

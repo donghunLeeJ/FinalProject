@@ -51,7 +51,7 @@ box-sizing: border-box;
                             </div>
                             <div class="col-lg-12 text-center" >
                                 <h5>핸드폰 번호를 입력해주세요</h5>
-                                <input type="password" style="width: 50%; margin: auto;" name="member_phone" 
+                                <input type="text" style="width: 50%; margin: auto;" name="member_phone" 
                                 placeholder="'-'를 제외하고 입력해주세요"class="form-control mb-30 tmp" id="my_phone">
                             </div>
                             <div class="col-12 text-center">
@@ -92,7 +92,7 @@ box-sizing: border-box;
 	       var regname = /^[가-힣]{2,4}$/;
 	       var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,13}$/g;
 	       var regPw2=/(\w)\1\1/g;
-	       var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+	       var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
 	         
 		   var count=0;
 		

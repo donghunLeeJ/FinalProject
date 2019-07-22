@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.project.dao.MemberDAO;
 import com.project.dao.Tl_BoardDAO;
+import com.project.dto.MessageDTO;
 import com.project.dto.ProfileImageDTO;
 import com.project.dto.Tl_BoardDTO;
 import com.project.dto.Tl_ReplyDTO;
@@ -51,6 +52,18 @@ public class TimeLineService {
    }
    public int replyDelete(String id , String seq){
 	   return dao.replyDelete(id,seq);
+   }
+   public int reportRegister(Tl_BoardDTO dto){
+	   return dao.reportRegister(dto);
+   }
+   public int insertMessage(MessageDTO dto){
+	   return dao.insertMessage(dto);
+   }
+   public int likeCount(String seq){
+	   return dao.likeCount(seq);
+   }
+   public int selectlikeCount(String seq){
+	   return dao.selectlikeCount(seq);
    }
 
 }

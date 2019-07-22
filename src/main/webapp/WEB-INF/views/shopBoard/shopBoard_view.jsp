@@ -13,11 +13,6 @@
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <style>
 #star {
 	color: #EC583A;
@@ -390,7 +385,7 @@
 			
 			}else{
 				alert("수량이 초과되었습니다.");
-				$("#quantity_one").val("1")
+				$("#quantity_one").val("1");
 			}
 		})		
 	
