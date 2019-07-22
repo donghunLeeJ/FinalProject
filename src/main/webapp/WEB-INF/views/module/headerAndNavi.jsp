@@ -51,6 +51,7 @@ li:hover {
 <!-- /Preloader -->
 <!-- Header Area Start -->
 <header class="header-area" oncontextmenu="return false"
+
    ondragstart="return false" onselectstart="return false">
    <!-- Top Header Area Start -->
    <div class="top-header-area" style="background-color: #FCBB00">
@@ -200,5 +201,6 @@ li:hover {
 
       })
    </script>
+
 
 </header>

@@ -47,11 +47,13 @@ img {
 	width: 100%;
 	height: 100%;
 }
-.form-control[readonly]{
-background-color:white;
+
+.form-control[readonly] {
+	background-color: white;
 }
 </style>
-	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
+<script type="text/javascript" src="/js/cross.js"></script>
+<!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -61,7 +63,7 @@ background-color:white;
 		<div class="container mt-5">
 			<div class="row  pb-3 border-bottom">
 				<div class="col-12 text-right">
-				
+
 					<a href="/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }"
 						class="btn akame-btn">이전 페이지 </a>
 
@@ -189,6 +191,7 @@ background-color:white;
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송지선택</div>
 					<div class="col-9 py-2">
+
 							<input type="text" id="sample6_postcode" class="findAdd empty" 
 							name="order_receipt_postcode" placeholder="우편번호" readonly>
 							 <input type="button" onclick="sample6_execDaumPostcode()" id="postbtn"
@@ -201,6 +204,8 @@ background-color:white;
 							name="order_receipt_address2" placeholder="상세주소"style="width: 25em"> 
 <!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
 
+
+
 					</div>
 					<div class="col-3 font-weight-bold py-2">휴대전화</div>
 					<div class="col-9 py-2">
@@ -210,8 +215,10 @@ background-color:white;
 					</div>
 					<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
 					<div class="col-9">
+
 						<input type="text" name="order_receipt_demend" style="width: 35em" 
 						placeholder="(선택사항)" id="req">
+
 						<p style="color: blue;">
 							<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
 						</p>
@@ -222,12 +229,14 @@ background-color:white;
 				<div class="row py-2">
 					<div class="col-12">
 						<p>
+
 						<input type="checkbox" id="must1">
 						<small class="must1">(필수)판매명, 유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br>
 						<input type="checkbox" id="must2">
 						<small class="must2">(필수)정확하지 않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br>
 						<input type="checkbox" id="must3">
 						<small class="must3">(필수)배송 과정 중 발생한 문제는 택배사에 문의 부탁드립니다</small>
+
 						</p>
 
 					</div>
@@ -251,7 +260,6 @@ background-color:white;
 	<script>
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-	
 		
 		$("#origin").is("check");
 		$("#buy_aTag").on("click", function() {
@@ -350,6 +358,7 @@ background-color:white;
 		})//결제버튼클릭
 		
 		$(".findAdd").on("click",function(){
+
 			$("#postbtn").click();
 		})
 		

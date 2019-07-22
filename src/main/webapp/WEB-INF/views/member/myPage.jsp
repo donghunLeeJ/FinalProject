@@ -263,36 +263,7 @@ select {
 
 					<div class="tab-pane" id="sell">
 						<!-- 판매 내역 -->
-						<h4>판매하기 내역</h4>
-						<hr>
-						<div class="col-12 over center" id="sellTitle">
-							<div class="col-2 float">요청</div>
-							<div class="col-1 float">이미지</div>
-							<div class="float col-4">제목</div>
-							<div class="col-2 float">판매 금액</div>
-							<div class="col-1 float ">수량</div>
-							<div class="col-2 float ">기한</div>
-						</div>
-						<hr>
 
-						<c:forEach var="i" items="${mylist }">
-							<div class="col-12 over center " id="clickList">
-								<div class="col-2 float center ">
-									<input type=button class="btn-success del_list" value="삭제요청">
-									<input type=button class="btn-danger del_list2" value="요청중">
-								</div>
-								<!--                <div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
-								<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
-									<div class="col-1 float ">
-										<img src="${i.shop_imagepath1 }" class="listimg">
-									</div>
-									<div class="col-4 float skip ">${i.shop_title }</div>
-									<div class="col-2 float">${i.shop_price }원</div>
-									<div class="col-1 float">${i.shop_quantity }개</div>
-									<div class="col-2 float">${i.shop_expiration }</div>
-								</a>
-							</div>
-						</c:forEach>
 						<!--                   <ul class="btn-group pagination"> -->
 						<%--                      <c:if test="${mpdto.toPrev }"> --%>
 						<%--                         <li><a href='<c:url value="/board/boardList?page=${mpdto.startNavi-1 }"/>'><i class="fa fa-chevron-left"></i></a></li> --%>

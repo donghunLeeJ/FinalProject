@@ -93,8 +93,7 @@
 
 							<div class="post-meta">
 								<a class="post-date"><i class="icon_clock_alt">작성일</i>
-									${i.tl_writedate}</a> <a class="post-comments"><i
-									class="xi-star-o">좋아요</i> ${i.tl_likecount }</a>
+									${i.tl_writedate}</a> 
 							</div>
 							<p>${i.tl_contents }</p>
 							<hr>
@@ -147,7 +146,7 @@
 											<hr>
 											<div class="card-text">
 												<div>
-													<a href="/timeline/reportProc?seq=${i.tl_board_seq }"><b
+													<a onclick="window.open('/timeline/reportProc?seq=${i.tl_board_seq }','','width=450px, height=600px , resizable=no')"><b
 														style="color: red;">신고하기</b></a>
 												</div>
 												<div>
@@ -161,7 +160,8 @@
 															삭제</b></a>
 												</div>
 												<div>
-													<b>쪽지보내기</b>
+														<a onclick="window.open('/timeline/message?seq=${i.tl_board_seq }&writer=${i.tl_writer}','','width=470px, height=800px , resizable=no')">
+														<b>쪽지보내기</b></a>
 													<p id="tl_board"></p>
 												</div>
 											</div>
@@ -294,8 +294,7 @@
 
 							<div class='post-meta'>
 								<a  class='post-date'><i class='icon_clock_alt'>작성일</i>
-									${i.tl_writedate}</a> <a  class='post-comments'><i
-									class='xi-star-o'>좋아요</i> ${i.tl_likecount }</a>
+								`+result[i].tl_writedate+`</a> 
 							</div>
 							<p>${i.tl_contents }</p>
 							<hr>
@@ -348,7 +347,7 @@
 											<hr>
 											<div class='card-text'>
 												<div>
-													<a href='/timeline/reportProc?seq=`+result[i].tl_board_seq+`'><b
+													<a onclick="window.open('/timeline/reportProc?seq=`+result[i].tl_board_seq+`','','width=450px, height=600px , resizable=no')" ><b
 														style='color: red;'>신고하기</b></a>
 												</div>
 												<div>
@@ -362,7 +361,8 @@
 															삭제</b></a>
 												</div>
 												<div>
-													<b>쪽지보내기</b>
+												<a onclick="window.open('/timeline/message?seq=`+result[i].tl_board_seq+`&writer=`+result[i].tl_writer+`','','width=470px, height=800px , resizable=no')">	
+												<b>쪽지보내기</b></a>
 													<p id='tl_board'></p>
 												</div>
 											</div>
