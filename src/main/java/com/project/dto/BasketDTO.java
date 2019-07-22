@@ -11,9 +11,16 @@ public class BasketDTO {
 	private int basket_price;
 	private int basket_quantity;
 	private String basket_location;
+	private String basket_brand;
+	
+	
+	
+	
+	public BasketDTO() {}
+	
 	public BasketDTO(int basket_seq, int product_seq, String basket_seller, String basket_id, String basket_imagepath,
 			String basket_title, String basket_expiration, int basket_price, int basket_quantity,
-			String basket_location) {
+			String basket_location, String basket_brand) {
 		super();
 		this.basket_seq = basket_seq;
 		this.product_seq = product_seq;
@@ -25,9 +32,7 @@ public class BasketDTO {
 		this.basket_price = basket_price;
 		this.basket_quantity = basket_quantity;
 		this.basket_location = basket_location;
-	}
-	public BasketDTO() {
-		super();
+		this.basket_brand = basket_brand;
 	}
 	public int getBasket_seq() {
 		return basket_seq;
@@ -89,13 +94,14 @@ public class BasketDTO {
 	public void setBasket_location(String basket_location) {
 		this.basket_location = basket_location;
 	}
+	public String getBasket_brand() {
+		return basket_brand;
+	}
+	public void setBasket_brand(String basket_brand) {
+		this.basket_brand = basket_brand;
+	}
 	
 	
 	
-	
-
-	
-	
-
 	
 }

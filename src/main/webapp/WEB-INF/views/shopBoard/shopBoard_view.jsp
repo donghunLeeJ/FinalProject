@@ -370,14 +370,14 @@
 				
 							var quantity = $("#quantity_one").val();
 							location.href = "/shopboard/shopBoard_buyProc?quantity="
-									+ quantity + "&seq=${dto.shop_seq }"
-						
+									+ quantity + "&seq=${dto.shop_seq }";
 				//수량
 
-				}else{
-					alert("수량이 초과되었습니다.");
-					$("#quantity_one").val("1")
-				}
+			}else{
+				alert("수량이 초과되었습니다.");
+				$("#quantity_one").val("1")
+
+
 			}
 		})
 		
