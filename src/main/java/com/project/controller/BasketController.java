@@ -56,7 +56,7 @@ public class BasketController {
 
 	@RequestMapping("/basketList")
 	public String basketSelectProc(String id) {
-
+		
 		List<BasketDTO> result = bservice.basketIdSelect(id);
 		request.setAttribute("list", result);
 		return "/shopBoard/shopBoard_basket";
