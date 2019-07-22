@@ -1,40 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Tl_BoardDAO">
-   
-   <insert id="tl_board_insert">
-      insert into tl_board values(tl_board_seq.nextval,#{tl_title},#{tl_contents},#{tl_writer},#{tl_writer_profile},default,default,default,default,#{tl_imgaddr})
-   </insert>
-   
-   <select id="tl_board_showAll" resultType="com.project.dto.Tl_BoardDTO">
-      select * from (select tl_board_seq , tl_title , tl_contents , tl_writer, tl_writer_profile , tl_writedate , tl_viewcount , tl_likecount , tl_likestatus , tl_imgaddr , 
-      rank() over(order by tl_board_seq desc) rank from tl_board ) where rank between (#{page}*3-2) and #{page}*3
-   </select>
-   
-   <select id="tl_board_all_count" resultType="Integer">
-      select count(*) from tl_board 
-   </select>
-   
-   <delete id="tl_board_delete">
-   		delete from tl_board where tl_board_seq=#{tl_board_seq}
-   </delete>
-   
-   <update id="tl_board_update">
-   		update tl_board set tl_title=#{tl_title}, tl_contents=#{tl_contents}, tl_imgaddr=#{tl_imgaddr}, tl_writedate=default where tl_board_seq=#{tl_board_seq}
-   </update>
-   
-   <insert id="tl_reply_insert">
-   		insert into tl_board_reply values(tl_repl_seq.nextval,#{tl_board_seq},#{tl_repl_writer},#{tl_repl_contents},default)
-   </insert>
-   
-   <select id="tl_reply_show" resultType="com.project.dto.Tl_ReplyDTO">
-   		select * from tl_board_reply where tl_board_seq=#{tl_board_seq}
-   </select>
-    <update id="updateProfile" >
-   		update tl_board set tl_writer_profile = #{path} where
+
+	<insert id="tl_board_insert">
+		insert into tl_board
+		values(tl_board_seq.nextval,#{tl_title},#{tl_contents},#{tl_writer},#{tl_writer_profile},default,default,default,default,#{tl_imgaddr},default,'')
+	</insert>
+
+	<select id="tl_board_showAll"
+		resultType="com.project.dto.Tl_BoardDTO">
+		select * from (select tl_board_seq , tl_title , tl_contents
+		, tl_writer,
+		tl_writer_profile , tl_writedate , tl_viewcount ,
+		tl_likecount ,
+		tl_likestatus , tl_imgaddr ,
+		rank() over(order by
+		tl_board_seq desc) rank from tl_board ) where rank
+		between
+		(#{page}*3-2) and #{page}*3
+	</select>
+
+	<select id="tl_board_all_count" resultType="Integer">
+		select count(*) from
+		tl_board
+	</select>
+
+	<delete id="tl_board_delete">
+		delete from tl_board where
+		tl_board_seq=#{tl_board_seq}
+	</delete>
+
+	<update id="tl_board_update">
+		update tl_board set tl_title=#{tl_title},
+		tl_contents=#{tl_contents},
+		tl_imgaddr=#{tl_imgaddr},
+		tl_writedate=default where
+		tl_board_seq=#{tl_board_seq}
+	</update>
+
+	<insert id="tl_reply_insert">
+		insert into tl_board_reply
+		values(tl_repl_seq.nextval,#{tl_board_seq},#{tl_repl_writer},#{tl_repl_contents},default)
+	</insert>
+
+	<select id="tl_reply_show"
+		resultType="com.project.dto.Tl_ReplyDTO">
+		select * from tl_board_reply where
+		tl_board_seq=#{tl_board_seq}
+	</select>
+	<update id="updateProfile">
+		update tl_board set tl_writer_profile = #{path} where
 		tl_writer = #{id}
-   </update>
-    <delete id="replyDelete">
-    	delete from tl_board_reply where tl_repl_seq = ${seq} and tl_repl_writer = #{id}
-    </delete>
+	</update>
+	<delete id="replyDelete">
+		delete from tl_board_reply where tl_repl_seq = ${seq}
+		and tl_repl_writer =
+		#{id}
+	</delete>
+	<update id="reportRegister">
+		update tl_board set tl_status = '신고', tl_reason =
+		#{tl_reason } where
+		tl_board_seq = #{tl_board_seq}
+	</update>
+	<insert id="insertMessage">
+		insert into message values
+		(message_seq.nextval,#{message_sender},#{message_getter},#{message_contents},sysdate)
+	</insert>
+	
+	<update id="likeCount">
+		update tl_board set tl_likecount = tl_likecount+1
+		where tl_board_seq =
+		${value}
+
+	</update>
+
+	<select id="selectLikeCount"
+		resultType="Integer">
+		select tl_likecount from tl_board where
+		tl_board_seq=${value}
+	</select>
+
+
+
+
 </mapper>

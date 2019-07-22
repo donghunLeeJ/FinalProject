@@ -2,11 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
 .headerbtn {
 	border: 0px solid #FCBB00;
 	background-color: rgba(0, 0, 0, 0);
-	color: skyblue;
+	color: white;
 	padding: 5px;
 	padding-top: 0px;
 }
@@ -71,7 +76,7 @@ li:hover {
 							</c:when>
 
 							<c:otherwise>
-									<input id="listid" type="hidden" value="${id.member_id}">
+								<input id="listid" type="hidden" value="${id.member_id}">
 								<button id=mypage class="headerbtn">
 									<img src="/img/button-img/m_iconM.png">
 								</button>
@@ -87,13 +92,13 @@ li:hover {
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
-	<div class="main-header-area " id="fixedNav">
+	<div class="main-header-area " style="background-color: white"
+		id="fixedNav">
 		<div class="classy-nav-container breakpoint-off "
 			style="border: 1px solid #FCBB00;">
 			<div class="container">
 				<!-- Classy Menu -->
-				<nav class="classy-navbar justify-content-between  " id="akameNav"
-					style="background-color: white">
+				<nav class="classy-navbar justify-content-between  " id="akameNav">
 
 					<!-- Logo -->
 					<a class="nav-brand" href="/home"><img
@@ -122,7 +127,7 @@ li:hover {
 										<li><a href="./service.html">- 서비스 소개</a></li>
 										<li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li>
 										<li><a href="./blog.html">- sns</a></li>
-										<li><a href="./single-blog.html">- Blog Details</a></li>
+										<li><a href="/member/sellContentsGo">- 판매 내역 </a></li>
 										<li><a href="./contact.html">- Contact</a></li>
 										<li><a href="#">- Dropdown</a>
 											<ul class="dropdown">
@@ -132,25 +137,26 @@ li:hover {
 												<li><a href="#">- Dropdown Item</a></li>
 											</ul></li>
 									</ul></li>
-								<li><a href="#">서비스 소개</a></li>
-								<li><a href="#">판매 게시판</a>
-									<ul class="dropdown">
-										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
-										<li><a href="/shopboard/ShopBoard_write">- 판매하기</a></li>
-									</ul></li>
-								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
+								<li><a href="/home/service">서비스 소개</a></li>
+								<!--                         <li><a href="#">판매 / 구매</a> -->
+								<!--                            <ul class="dropdown"> -->
+								<li><a href="/shopboard/shopBoardGo?page=1">구매하기</a></li>
+								<li><a onclick="loginCheck_write();">판매하기</a></li>
+								<!--                            </ul> -->
+								<!--                            </li> -->
+								<li><a onclick="loginCheck_sns();">SNS</a></li>
 
 							</ul>
 
 							<!-- Cart Icon -->
-							<div class="cart-icon ml-5 mt-4 mt-lg-0">
+							<div class="cart-icon ml-2 mt-4 mt-lg-0">
 								<a id="list" href="#"><i class="icon_cart"></i></a>
 							</div>
 
 							<!-- Book Icon -->
-							<div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
-								<a href="#" class="btn akame-btn">Book Now</a>
-							</div>
+							<!--                      <div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4"> -->
+							<!--                         <a href="#" class="btn akame-btn">Book Now</a> -->
+							<!--                      </div> -->
 						</div>
 						<!-- Nav End -->
 					</div>
@@ -158,48 +164,70 @@ li:hover {
 			</div>
 		</div>
 	</div>
-	
-	<script>
-	
-	$("#list").on("click",function(){
-		var listId = $("#listid").val();
-		location.href = "/Basket/basketList?id="+encodeURI(listId);
-	})
-	
-	
-		$(window).scroll(function() {
-
-			var docScrollY = $(document).scrollTop()
-			var barThis = $("#fixedNav")
-
-			// 			console.log(docScrollY);
-			if (docScrollY > 200) {
-				barThis.fadeIn();
-				barThis.addClass("fixed-top");
-
-			} else {
-				barThis.removeClass("fixed-top");
-			}
-
-		});
-	</script>
-
 
 	<script>
-		$("#LogIN").on("click", function() {
-			location.href = "/member/loginForm";
+ 	var loginCheck_write = function(){
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   		}else{
+   			location.href = "/shopboard/ShopBoard_write";
+   		}
+   	}
+ 	var loginCheck_sns = function(){
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   		}else{
+   			location.href = "/timeline/accessTimeLine?seq=1";
+   		}
+   	}
+   
+      $("#list").on("click", function() {
+         if(${id == null}){
+        	 alert("로그인이 필요합니다");
+    			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+         }else{
+        	 var listId = $("#listid").val();
+             location.href = "/Basket/basketList?id=" + encodeURI(listId); 
+         }
+    	  
+      })
 
-		})
+      $(window).scroll(function() {
 
-		$("#logout").on("click", function() {
-			location.href = "/member/logOutProc";
-		})
+         var docScrollY = $(document).scrollTop()
+         var barThis = $("#fixedNav")
 
-		$("#mypage").on("click", function() {
+         //          console.log(docScrollY);
+         if (docScrollY > 200) {
+            barThis.fadeIn();
+            barThis.addClass("fixed-top");
 
-			location.href = "/member/myPage";
+         } else {
+            barThis.removeClass("fixed-top");
+         }
 
-		})
-	</script>
+      });
+   </script>
+
+
+	<script>
+      $("#LogIN").on("click", function() {
+         location.href = "/member/loginForm";
+
+      })
+
+      $("#logout").on("click", function() {
+         location.href = "/member/logOutProc";
+      })
+
+      $("#mypage").on("click", function() {
+
+         location.href = "/member/myPage";
+
+      })
+   </script>
+
 
 </header>

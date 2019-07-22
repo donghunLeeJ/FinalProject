@@ -5,30 +5,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
-#img1 {
-	width: 100%;
-	height: 100%;
-}
+
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<!-- header -->
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<section class="breadcrumb-area section-padding-80 border">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="breadcrumb-content">
+					<h2>구매하기</h2>
+					<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/home"><i
+								class="icon_house_alt"></i>Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">구매하기</li>
+					</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
+
 
 	<!-- /header -->
-	<section class="akame-about-area section-padding-80-0">
+	<section class="akame-about-area bg-gray section-padding-80-0">
 
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-2">판매게시판 -> 구매하기 페이지</div>
+			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
 				<div class="container">
 
@@ -72,7 +89,7 @@
 					<div class="row" id="extendList"></div>
 				</div>
 			</div>
-			<div class="col-lg-2">ShopBoard.jsp</div>
+			<div class="col-lg-2"></div>
 		</div>
 	</div>
 

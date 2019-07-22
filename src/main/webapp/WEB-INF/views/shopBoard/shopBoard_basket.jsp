@@ -40,6 +40,29 @@ input[type="text"] {
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<section class="breadcrumb-area section-padding-80 border">
+	<div class="container ">
+		<div class="row ">
+			<div class="col-12">
+				<div class="breadcrumb-content">
+					<h2>장바구니</h2>
+					<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/home"><i
+								class="icon_house_alt"></i>Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">장바구니</li>
+					</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
+
+
+
+
 
 	<div class="container mt-3">
 		<div class="row  pb-3 border-bottom">
@@ -86,8 +109,9 @@ input[type="text"] {
 				<div class="row border-bottom border-top text-center py-4">
 					<div class="col-3 " style="line-height: 4em;">
 						<div class="row">
-							
+
 							<div class="col-4">
+
 								<input id="check${list.basket_seq }"  type="checkbox" name="check" 
 									value="${list.basket_seq }" class="check" /><img
 									src="${list.basket_imagepath }">
@@ -95,6 +119,8 @@ input[type="text"] {
 									 <input type="hidden" name="hiddenValue" id="hiddenValue" value=""/>
 									 
 									 <input type="hidden" id="seq" value="${list.basket_seq }"/>
+
+
 							</div>
 							<div class="col-8">${list.basket_title}</div>
 
@@ -111,13 +137,14 @@ input[type="text"] {
 							 ${list.basket_brand}</small>
 					</div>
 					<div class="col-2 text-center" style="padding: 0;">
-						
+
 						<br>
 						<button type="button" id="delete" class="mypage_btn2"
 							style="margin-right: 0.3em">삭제 하기</button>
 					</div>
 				</div>
 				<script>
+
 				$("#check${list.basket_seq }").on("click",function(){
 					var total = 0;
 					var count = $("#check${list.basket_seq }").length;
@@ -136,16 +163,11 @@ input[type="text"] {
  					var price = $("#check12321").attr("price");
 						
 					}
-					
-
-					})
-				
-				
+				})
+							
 				 function fnGetdata(){
 				        var obj = $("[name=check]");
 				        var chkArray = new Array(); // 배열 선언
-				      
-				        
 				        
 				        if($('input:checkbox[name=check]:checked').is(":checked")==false){
 				        	
@@ -167,29 +189,31 @@ input[type="text"] {
 				    }
 				
 				
-					
+
 				</script>
 			</c:forEach>
 		</form>
 
 
 
+
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
-				<a id="charge" class="btn akame-btn mr-3" onclick="fnGetdata();">결 제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
+				<a id="charge" class="btn akame-btn mr-3" onclick="fnGetdata();">결
+					제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
 			</div>
 		</div>
 	</div>
 
 
+
 	<script>
-		
-	
-	
-		
-		 var checkAll = function() {
+
+
+		var checkAll = function() {
+
 			$(".check").click();
-		} 
+		}
 		$("#delete").on(
 				"click",
 				function() {

@@ -11,6 +11,9 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <style>
+h5{
+display:inline;
+}
 .float {
 	float: left;
 }
@@ -30,8 +33,8 @@
 
 #findAdd {
 	padding: 5px;
-	width: 50px;
-	height: 50px;
+	width: 45px;
+	height: 45px;
 }
 
 #myinfo {
@@ -192,18 +195,30 @@ select {
 							</div>
 							<div class="col-md-12 mt-5">
 								<h5 class="mt-2">
-									<span class="fa fa-clock-o ion-clock float-right"></span>최근
-									나의활동
+									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의활동
 								</h5>
-								<table class="table table-sm table-hover table-striped">
+									<ul class="nav nav-tabs">
+					<li class="nav-item"><a href="" data-target="#List1"data-toggle="tab" class="nav-link">판매 목록</a></li>
+					<li class="nav-item"><a href="" data-target="#List2"data-toggle="tab" class="nav-link">구매 목록</a></li>
+									</ul>
+								<table class="table table-sm table-hover table-striped tab-pane" id=List1>
 									<tbody>
 										<c:forEach var="i" items="${mylist }">
-											<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
 												<tr>
 													<td><strong>${id.member_name }</strong>님의 판매 활동 <strong>${i.shop_title }`</strong>
 													</td>
 												</tr>
-											</a>
+										</c:forEach>
+
+									</tbody>
+								</table>
+								<table class="table table-sm table-hover table-striped tab-pane" id=List2>
+									<tbody>
+										<c:forEach var="i" items="${mylist }">
+												<tr>
+													<td><strong>또로롱</strong>님의 판매 활동 <strong>${i.shop_title }`</strong>
+													</td>
+												</tr>
 										</c:forEach>
 
 									</tbody>
@@ -248,36 +263,7 @@ select {
 
 					<div class="tab-pane" id="sell">
 						<!-- 판매 내역 -->
-						<h4>판매 내역 확인</h4>
-						<hr>
-						<div class="col-12 over center" id="sellTitle">
-							<div class="col-2 float">요청</div>
-							<div class="col-1 float">이미지</div>
-							<div class="float col-4">제목</div>
-							<div class="col-2 float">판매 금액</div>
-							<div class="col-1 float ">수량</div>
-							<div class="col-2 float ">기한</div>
-						</div>
-						<hr>
 
-						<c:forEach var="i" items="${mylist }">
-							<div class="col-12 over center " id="clickList">
-								<div class="col-2 float center ">
-									<input type=button class="btn-success del_list" value="삭제요청">
-									<input type=button class="btn-danger del_list2" value="요청중">
-								</div>
-								<!--                <div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
-								<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}">
-									<div class="col-1 float ">
-										<img src="${i.shop_imagepath1 }" class="listimg">
-									</div>
-									<div class="col-4 float skip ">${i.shop_title }</div>
-									<div class="col-2 float">${i.shop_price }원</div>
-									<div class="col-1 float">${i.shop_quantity }개</div>
-									<div class="col-2 float">${i.shop_expiration }</div>
-								</a>
-							</div>
-						</c:forEach>
 						<!--                   <ul class="btn-group pagination"> -->
 						<%--                      <c:if test="${mpdto.toPrev }"> --%>
 						<%--                         <li><a href='<c:url value="/board/boardList?page=${mpdto.startNavi-1 }"/>'><i class="fa fa-chevron-left"></i></a></li> --%>
@@ -293,7 +279,7 @@ select {
 
 					<div class="tab-pane" id="buy">
 						<!-- 구매 내역 -->
-						<h4>구매 내역 확인</h4>
+						<h4>구매하기 내역</h4>
 
 						<div class="row center border-top border-bottom py-2 bg-gray">
 							<div class="col-1 ">번호</div>
@@ -637,7 +623,7 @@ select {
 
 		$("#edit_info").on("click", function() {//정보수정 버튼 클릭시
 
-			var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+			 var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
 			var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
 			var regPw2 = /(\w)\1\1/g;
 

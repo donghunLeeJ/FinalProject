@@ -13,11 +13,6 @@
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <style>
 #star {
 	color: #EC583A;
@@ -367,29 +362,41 @@
 		
 
 		$("#chargeItem").on("click",function(){
-			if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+			}else{
+				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
 				
 							var quantity = $("#quantity_one").val();
 							location.href = "/shopboard/shopBoard_buyProc?quantity="
 									+ quantity + "&seq=${dto.shop_seq }";
 				//수량
+
 			}else{
 				alert("수량이 초과되었습니다.");
 				$("#quantity_one").val("1")
+
+
 			}
 		})
 		
 		$("#basket").on("click",function() {
-			
-			if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
-			
-				var quantity = $("#quantity_one").val();
-				location.href = "/Basket/basketInsert?quantity="+ quantity + "&seq=${dto.shop_seq }"
-			
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
 			}else{
-				alert("수량이 초과되었습니다.");
-				$("#quantity_one").val("1")
+				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
+					
+					var quantity = $("#quantity_one").val();
+					location.href = "/Basket/basketInsert?quantity="+ quantity + "&seq=${dto.shop_seq }"
+				
+				}else{
+					alert("수량이 초과되었습니다.");
+					$("#quantity_one").val("1");
+				}
 			}
+			
 		})		
 	
 
