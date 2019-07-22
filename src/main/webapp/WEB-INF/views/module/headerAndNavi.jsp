@@ -130,19 +130,19 @@ li:hover {
 									<li><a href="/home/service">서비스 소개</a></li>
 									<li><a href="#">여기 뭐라고 할까</a>
 										<ul class="dropdown">
-											<li><a href="/member/buyContentsGo">구매내역</a></li>
-											<li><a href="/member/sellContentsGo">판매 내역 </a></li>
+											<li><a onclick="buy_record();">구매내역</a></li>
+											<li><a onclick="sell_record();">판매 내역 </a></li>
 											<li><a href="#">쪽지함</a></li>
 										</ul></li>
-									<li><a href="/shopboard/shopBoardGo?page=1">판매하기 </a>
-									<li><a href="/shopboard/shopBoard_write">구매하기 </a>
-									<li><a href="/timeline/accessTimeLine?seq=1">SNS</a></li>
+									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
+									<li><a onclick="loginCheck_write();">판매하기 </a>
+									<li><a onclick="loginCheck_sns();">SNS</a></li>
 
 								</ul>
 
 								<!-- Cart Icon -->
 								<div class="cart-icon ml-2 mt-4 mt-lg-0">
-									<a id="list" href="#"><i class="icon_cart"></i></a>
+									<a id="list" href=""><i class="icon_cart"></i></a>
 								</div>
 							</div>
 						</div>
@@ -153,12 +153,30 @@ li:hover {
 
 		<script>
 
+		
  	var loginCheck_write = function(){
    		if(${id == null}){
    			alert("로그인이 필요합니다");
    			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
    		}else{
    			location.href = "/shopboard/ShopBoard_write";
+   		}
+   	}
+ 	var buy_record = function(){
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   		}else{
+   			location.href="/member/buyContentsGo";
+   		}
+   	}
+ 	
+ 	var sell_record = function(){
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   		}else{
+   			location.href="/member/sellContentsGo";
    		}
    	}
  	var loginCheck_sns = function(){
