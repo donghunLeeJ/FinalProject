@@ -6,7 +6,7 @@
 .headerbtn {
    border: 0px solid #FCBB00;
    background-color: rgba(0, 0, 0, 0);
-   color: skyblue;
+   color: white;
    padding: 5px;
    padding-top: 0px;
 }
