@@ -52,7 +52,7 @@
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container">
 		<div class="row mt-5  border-bottom border-warning">
@@ -77,6 +77,7 @@
 			<div class="col-1 font-weight-bold">배송</div>
 
 		</div>
+
 		<!-- 		Products_order를 products_seq로 select함 상품에대한 구매내역 뽑아옴-->
 		<c:forEach var="i" items="${dto }">
 			<div class="row text-center border-bottom " style="padding: 0">
@@ -103,6 +104,7 @@
 								id="delivery_btn2${i.order_seq }" value="발송완료">
 						</div>
 					</div>
+=
 				</div>
 			</div>
 			<script>
@@ -123,6 +125,8 @@
 						value="${total_price }" pattern="#,###" /></strong> 원
 			</div>
 		</div>
+		</c:forEach>
+		
 	</div>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>

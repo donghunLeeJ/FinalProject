@@ -40,6 +40,29 @@ input[type="text"] {
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<section class="breadcrumb-area section-padding-80 border">
+	<div class="container ">
+		<div class="row ">
+			<div class="col-12">
+				<div class="breadcrumb-content">
+					<h2>장바구니</h2>
+					<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/home"><i
+								class="icon_house_alt"></i>Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">장바구니</li>
+					</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
+
+
+
+
 
 	<div class="container mt-3">
 		<div class="row  pb-3 border-bottom">
@@ -82,17 +105,16 @@ input[type="text"] {
 
 			<c:forEach var="list" items="${list }">
 
-
 				<div class="row border-bottom border-top text-center py-4">
 					<div class="col-3 " style="line-height: 4em;">
 						<div class="row">
-							
 							<div class="col-4">
-								<input id="check${list.basket_seq }" type="checkbox" name="check" 
-									value="${list.basket_seq }" class="check" /><img
-									src="${list.basket_imagepath }">
-									
-									 <input type="hidden" name="hiddenValue" id="hiddenValue" value=""/>
+								<input id="check${list.basket_seq }" type="checkbox"
+									name="check" value="${list.basket_seq }" class="check" /><img
+									src="${list.basket_imagepath }"> <input type="hidden"
+									name="hiddenValue" id="hiddenValue" value="" /> <input
+									type="hidden" id="seq${list.basket_seq }"
+									value="${list.basket_seq }" />
 							</div>
 							<div class="col-8">${list.basket_title}</div>
 
@@ -101,205 +123,113 @@ input[type="text"] {
 					<div class="col-2" style="line-height: 4em;">${list.basket_expiration}</div>
 					<div class="col-1" style="line-height: 4em;">${list.basket_quantity}</div>
 					<div class="col-1" style="line-height: 4em;">${list.basket_price}</div>
+					<input type="hidden" id="toPrice${list.basket_seq }"
+						value="${list.basket_price}">
 					<div class="col-1" style="line-height: 4em;">${list.basket_location}</div>
 
 					<div class="col-2" style="line-height: 1.4em;">
-						선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
-							브랜드 ${dto.basket_title}</small>
+						선결제 <br> <strong>(2,500원)</strong> <br> <small>${list.basket_id}/
+							${list.basket_brand}</small>
 					</div>
 					<div class="col-2 text-center" style="padding: 0;">
-						
+
 						<br>
-						<button type="button" id="delete" class="mypage_btn2"
-							style="margin-right: 0.3em">삭제 하기</button>
+						<button type="button" id="delete${list.basket_seq }"
+							class="mypage_btn2" style="margin-right: 0.3em">삭제 하기</button>
 					</div>
 				</div>
 				<script>
-				
-				 function fnGetdata(){
-				        var obj = $("[name=check]");
-				        var chkArray = new Array(); // 배열 선언
-				 
-				        $('input:checkbox[name=check]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
-				            chkArray.push(this.value);
-				        });
-				        $('#hiddenValue').val(chkArray);
-				        
-				        //alert($('#hiddenValue').val());  아래 체크박스가 모두 체크되어 있다면 1,2,3,4 가 출력 된다.
-				        
-				        location.href="/Basket/asd?basket_seq="+$("#hiddenValue").val();
-				       
-				    }
-				
-					
+					$("#delete${list.basket_seq }").on("click",	function() {
+										if (confirm("정말 삭제하시겠습니까?") == true) {
+											var basket_seq = $(
+													"#seq${list.basket_seq }")
+													.val();
+											location.href = "/Basket/basketDelete?basket_seq="
+													+ basket_seq;
+										} else {
+											null;
+										}
+									})
+
+					$("#check${list.basket_seq }")
+							.on(
+									"click",
+									function() {
+										var total = 0;
+										var count = $("#check${list.basket_seq }").length;
+										var price = $(
+												"#toPrice${list.basket_seq }")
+												.val();
+
+										var check = $(
+												"#check${list.basket_seq }")
+												.prop("checked");
+
+										if (check == true) {
+
+											var ad = total
+													+ Number($(
+															"#toPrice${list.basket_seq}")
+															.val());
+											var ds = $("#totalPrice").text(ad);
+											var sd = ds
+													+ Number($(
+															"#toPrice${list.basket_seq}")
+															.val());
+
+											$("#totalPrice").text(sd);
+
+											var price = $("#check12321").attr(
+													"price");
+
+										}
+									})
+
+					function fnGetdata() {
+						var obj = $("[name=check]");
+						var chkArray = new Array(); // 배열 선언
+
+						if ($('input:checkbox[name=check]:checked').is(
+								":checked") == false) {
+
+							alert("상품을 선택하세요");
+						} else {
+
+							$('input:checkbox[name=check]:checked').each(
+									function() { // 체크된 체크박스의 value 값을 가지고 온다.
+										chkArray.push(this.value);
+
+									});
+
+							$('#hiddenValue').val(chkArray);
+
+							//alert($('#hiddenValue').val());  아래 체크박스가 모두 체크되어 있다면 1,2,3,4 가 출력 된다.
+
+							location.href = "/Basket/asd?basket_seq="
+									+ $("#hiddenValue").val();
+						}
+					}
 				</script>
 			</c:forEach>
 		</form>
 
-
-
-
-
-<div class="row border-bottom border-top bg-gray text-center py-2">
-				<div class="col-3">
-					
-				</div>
-				<div class="col-2"></div>
-				<div class="col-1"></div>
-				<div class="col-1"></div>
-				<div class="col-1"></div>
-				<div class="col-2"></div>
-				<div class="col-2">합계 금액</div>
-			</div>
-
-		<div class="row border-bottom border-top text-center py-4">
-					<div class="col-3 " style="line-height: 4em;">
-						<div class="row">
-							
-							<div class="col-4">
-								
-									
-									 
-							</div>
-							<div class="col-8">바스켓 타이틀 자리</div>
-
-						</div>
-					</div>
-					<div class="col-2" style="line-height: 4em;">유통기한 자리</div>
-					<div class="col-1" style="line-height: 4em;">수량 자리</div>
-					<div class="col-1" style="line-height: 4em;">가격 자리</div>
-					<div class="col-1" style="line-height: 4em;">지역 자리</div>
-
-					<div class="col-2" style="line-height: 1.4em;">
-						선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
-							브랜드 ${dto.basket_title}</small>
-					</div>
-					<div class="col-2 text-center" style="padding: 0;">
-						<br>
-						
-					</div>
-				</div>
-
-
-
-
-
-
-
-
 		<div class="row py-5 border-bottom">
 			<div class="col-12 text-center">
-				<a id="charge" class="btn akame-btn mr-3" onclick="fnGetdata();">결 제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
+				<a id="charge" class="btn akame-btn mr-3" onclick="fnGetdata();">결
+					제 하 기 </a> <a href="#" class="btn akame-btn ml-3">결 제 취 소</a>
 			</div>
 		</div>
 	</div>
 
-	
-	
-	
-	
-	
-	
 
 
 	<script>
-		/* $("#charge").on("click",function(){
-					
-		location.href="/Basket/asd?basket_seq="+
-		$("#chargeForm").submit();
-		}) */
-	
-		 var checkAll = function() {
+		var checkAll = function() {
+
 			$(".check").click();
-		} 
-		$("#delete").on(
-				"click",
-				function() {
-
-					if (confirm("정말 삭제하시겠습니까?") == true) {
-						var basket_seq = $("#seq").val();
-						location.href = "/Basket/basketDelete?basket_seq="
-								+ basket_seq;
-					} else {
-						null;
-					}
-				})
-
-		// 	배송지 radio reset 
-		var reset = function() {
-			$("#geter_name").val("");
-			$("#sample6_postcode").val("");
-			$("#sample6_address").val("");
-			$("#sample6_detailAddress").val("");
 		}
-		var origin = function() {
-			$("#geter_name").val("${id.member_name}");
-			$("#sample6_postcode").val("${id.member_postcode}");
-			$("#sample6_address").val("${id.member_address1}");
-			$("#sample6_detailAddress").val("${id.member_address2}");
-		}
-		// 다음 주소 API
-		function sample6_execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-							var addr = ''; // 주소 변수
-							var extraAddr = ''; // 참고항목 변수
-
-							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-								addr = data.roadAddress;
-							} else { // 사용자가 지번 주소를 선택했을 경우(J)
-								addr = data.jibunAddress;
-							}
-
-							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-							if (data.userSelectedType === 'R') {
-								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-								if (data.bname !== ''
-										&& /[동|로|가]$/g.test(data.bname)) {
-									extraAddr += data.bname;
-								}
-								// 건물명이 있고, 공동주택일 경우 추가한다.
-								if (data.buildingName !== ''
-										&& data.apartment === 'Y') {
-									extraAddr += (extraAddr !== '' ? ', '
-											+ data.buildingName
-											: data.buildingName);
-								}
-								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-								if (extraAddr !== '') {
-									extraAddr = ' (' + extraAddr + ')';
-								}
-								// 조합된 참고항목을 해당 필드에 넣는다.
-								document.getElementById("sample6_extraAddress").value = extraAddr;
-
-							} else {
-								document.getElementById("sample6_extraAddress").value = '';
-							}
-
-							// 우편번호와 주소 정보를 해당 필드에 넣는다.
-							document.getElementById('sample6_postcode').value = data.zonecode;
-							document.getElementById("sample6_address").value = addr;
-							// 커서를 상세주소 필드로 이동한다.
-							document.getElementById("sample6_detailAddress")
-									.focus();
-						}
-					}).open();
-		}
-		// 신규 배송지 radio
-		$("#new").on("click", function() {
-			reset();
-		})
-		// 기존 배송지 radio
-		$("#origin").on("click", function() {
-			origin();
-		})
+		
 	</script>
 
 

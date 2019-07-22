@@ -27,4 +27,8 @@ public class OrderDAO {
 	public List<OrderDTO> sellOrderList(int seq) {
 		return sst.selectList("OrderDAO.sellOrderList", seq);
 	}
+	
+	public List<OrderDTO> popup(int seqq){
+		return sst.selectList("OrderDAO.popup",seqq);
+	}
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.dao.HtmlEmailDAO;
@@ -240,6 +241,14 @@ public class MemberController {
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
+	@RequestMapping("buyContentsGo")
+	public String buyContetns() {
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		List<OrderDTO> buyList = os.myOrderList(mdto.getMember_id());
+
+		request.setAttribute("buyList", buyList);
+		return "/member/buyContents";
+	}
 
 	// 판매게시물의 판매목록
 	@RequestMapping("/sellStatus")
@@ -254,8 +263,29 @@ public class MemberController {
 		request.setAttribute("total_price", total_price);
 		request.setAttribute("total_quantity", total_quantity);
 		request.setAttribute("dto", dto);
-
 		return "/member/sellStatusPopUp";
+	}
+
+	@RequestMapping("myMsg")
+public String myMsg() {
+		return "/member/myMsg";
+	}
+
+	
+	@RequestMapping("minilogin")
+	@ResponseBody
+	public String minilog(String id , String pw) {
+		System.out.println(id);
+		System.out.println(pw);
+		MemberDTO mdto = new MemberDTO();
+		mdto.setMember_pw(mdao.SHA256(pw));
+		mdto.setMember_id(id);
+		int result = mservice.login(mdto);
+		if(result == 1) {
+			session.setAttribute("id", mservice.select_member(id));
+		}
+		String resultString = result+"";
+		return resultString;
 	}
 
 }

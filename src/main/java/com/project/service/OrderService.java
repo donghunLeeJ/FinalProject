@@ -22,7 +22,9 @@ public class OrderService {
 		return dao.myOrderList(id);
 	}
 
+
 	public List<OrderDTO> sellOrderList(int seq) {
 		return dao.sellOrderList(seq);
+
 	}
 }

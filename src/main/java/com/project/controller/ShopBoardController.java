@@ -235,8 +235,10 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/shopOrder")
-	public String log_order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3, String products_seq) {
+
+	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
+			String getter_phone1, String getter_phone2,String getter_phone3, String products_seq, int quant) {
+
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
 		int products_seq1 = Integer.parseInt(products_seq);
@@ -244,6 +246,7 @@ public class ShopBoardController {
 		String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
 		MemberDTO id = (MemberDTO) session.getAttribute("id");
 		String login_email = id.getMember_id();
+		int sseq = odto.getProducts_seq();
 		odto.setMember_email(login_email);
 		odto.setOrder_buyer_phone(phone);
 		odto.setOrder_receipt_phone(getter_phone);
@@ -254,6 +257,8 @@ public class ShopBoardController {
 		oService.orderInsert(odto);
 		ViewDTO.setTradeCount(ViewDTO.getVisitViewCount() + 1);
 		request.setAttribute("ldto", odto);
+		request.setAttribute("quant", quant);
+		sService.updateQ(quant, sseq);
 		return "/shopBoard/shopChargeOk";
 	}
 
@@ -293,6 +298,8 @@ public class ShopBoardController {
 			}
 			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
+			int balanceQuan = sService.getQuan(bdto.getProduct_seq())-bdto.getBasket_quantity(); 	
+			sService.updateQ(balanceQuan, bdto.getProduct_seq());
 			odto2.setOrder_buyer_phone(phone);
 			odto2.setProducts_seq(bdto.getProduct_seq());
 			odto2.setMember_email(login_email);
@@ -311,6 +318,7 @@ public class ShopBoardController {
 		System.out.println(g.toJson(arr));
 		bservice.resetBasket(email);
 		request.setAttribute("ldto", arr);
+		
 		return "/shopBoard/shopChargeOk2";
 	}
 

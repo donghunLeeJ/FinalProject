@@ -51,12 +51,11 @@ public class BasketController {
 	
 		request.setAttribute("list", result);
 		request.setAttribute("sdto", sdto);
-		return "/shopBoard/shopBoard_basket";
+		return "redirect:/Basket/basketList?id="+id;
 	}
 
 	@RequestMapping("/basketList")
 	public String basketSelectProc(String id) {
-		
 		List<BasketDTO> result = bservice.basketIdSelect(id);
 		request.setAttribute("list", result);
 		return "/shopBoard/shopBoard_basket";
@@ -64,9 +63,10 @@ public class BasketController {
 
 	@RequestMapping("/basketDelete")
 	public String deleteProc(String basket_seq) {
-		System.out.println("dddd");
+		System.out.println(basket_seq);
+		System.out.println("딜리트");
 		int seq = Integer.parseInt(basket_seq);
-		System.out.println("바스켓             시퀀스      " + basket_seq);
+		System.out.println("바스켓   시퀀스      " + basket_seq);
 
 		int deleteseq = dao.basketDelete(seq);
 		System.out.println("삭제 되면 1을 보여라    " + deleteseq);
@@ -83,19 +83,24 @@ public class BasketController {
 	
 	@RequestMapping("/asd")
 	public String asd(String basket_seq) {
+		int price = 0;
+		int amount = 0;
+
 		System.out.println("asd의 리스트");
 		System.out.println(basket_seq);
 		String seq = basket_seq;
 		String[] seqList = seq.split(",");
-		List<BasketDTO> arr = new ArrayList(); 
+		List<BasketDTO> arr = new ArrayList();
 		for(int i = 0 ; i < seqList.length ; i ++) {
-			
-			arr.add(bservice.basketListBuy(seqList[i]));
-			
+			 arr.add(bservice.basketListBuy(seqList[i]));
+			 price = price + arr.get(i).getBasket_price();//합계금액
+			 amount = amount + arr.get(i).getBasket_quantity();//합계 수량
 		}
+		System.out.println(price);
+		request.setAttribute("amount",amount );
 		request.setAttribute("basketseq", basket_seq);
 		request.setAttribute("basketarr", arr);
-		
+		request.setAttribute("price", price);
 		
 		return "/shopBoard/shopBoard_buy2";
 	}

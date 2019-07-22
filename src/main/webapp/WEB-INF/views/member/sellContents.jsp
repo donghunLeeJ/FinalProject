@@ -39,7 +39,7 @@
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container">
 		<div class="row border-bottom  mt-5 pb-1 border-warning">
@@ -51,15 +51,15 @@
 			class="row border-top border-bottom border-warning text-center py-1">
 			<div class="col-2">이미지</div>
 			<div class="col-4">제목</div>
-			<div class="col-2">판매 금액</div>
 			<div class="col-1">총 수량</div>
+			<div class="col-2">총 금액</div>
 			<div class="col-2">유통기한</div>
 			<div class="col-1">요청</div>
 		</div>
 
 
 		<c:forEach var="i" items="${sellList }">
-
+<%-- <input type="hidden" value="${i.shop_seq}" id=seqq name=seqq> --%>
 			<div class="row text-center border-bottom border-warning py-3">
 
 				<div class="col-2 ">
@@ -71,12 +71,12 @@
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"><strong
 						style="font-size: 1.2em">${i.shop_title }</strong> </a>
 				</div>
+				<div class="col-1 " style="margin-top: 2.3em">
+					<strong>${i.shop_quantity }</strong> (개)
+				</div>
 				<div class="col-2 " style="margin-top: 2.3em">
 					<strong><fmt:formatNumber value="${i.shop_price }"
 							pattern="#,###" /> </strong>원
-				</div>
-				<div class="col-1 " style="margin-top: 2.3em">
-					<strong>${i.shop_quantity }</strong> (개)
 				</div>
 				<div class="col-2 " style="margin-top: 2.3em; color: red">${i.shop_expiration }</div>
 

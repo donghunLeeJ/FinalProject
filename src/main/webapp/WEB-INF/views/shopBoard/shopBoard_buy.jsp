@@ -118,7 +118,8 @@ img {
 				</div>
 
 				<div class="col-1" style="margin-top: 1.4em">${quantity }
-					<input type="hidden" value="${quantity }" name="order_quantity">
+					<input type="hidden" value="${quantity }" name="order_quantity"
+						id=quant1>
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
 					<fmt:formatNumber value="${price }" pattern="#,###" />
@@ -158,6 +159,7 @@ img {
 				<div class="col-9 py-2">
 					<input type="text" name="email1" id="email1" class="empty ">
 					@ <input type="text" name="email2" id="email2" class="empty ">
+
 					<select id="selectEmail">
 						<option value="1">직접 입력</option>
 						<option value="naver.com">naver.com</option>
@@ -167,6 +169,7 @@ img {
 						<option value="hotmail.com">hotmail.com</option>
 						<option value="yahoo.co.kr">yahoo.co.kr</option>
 					</select>
+
 				</div>
 
 			</div>
@@ -185,87 +188,97 @@ img {
 				</div>
 			</div>
 
-			<form id="completeForm" method="post" action="/shopboard/completePay">
-
-				<div class="row border rounded">
-					<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
-					<div class="col-9 py-2">
-						<span>기본 배송지 <input type="radio" name="origin_radio"
-							id="origin" checked="checked"></span> <span>신규 배송지 <input
-							type="radio" name="origin_radio" id="new">
-						</span>
-					</div>
-					<div class="col-3 font-weight-bold py-2">받으시는 분</div>
-					<div class="col-9 py-2">
-						<input type="text" name="order_receipt" style="width: 8em"
-							class="empty" id="geter_name">
-					</div>
-					<div class="col-3 font-weight-bold py-2">배송지선택</div>
-					<div class="col-9 py-2">
-
-						<input type="text" id="sample6_postcode" class="findAdd empty"
-							name="order_receipt_postcode" placeholder="우편번호" readonly>
-						<input type="button" onclick="sample6_execDaumPostcode()"
-							id="postbtn" value="우편번호 찾기" style="margin-left: 0.5em">
-						<br> <br> <input type="text" id="sample6_address"
-							class="findAdd empty" name="order_receipt_address1"
-							placeholder="주소" style="width: 20em" readonly> <br>
-						<br> <input type="text" id="sample6_detailAddress"
-							class="empty" name="order_receipt_address2" placeholder="상세주소"
-							style="width: 25em">
-						<!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
 
 
 
-					</div>
-					<div class="col-3 font-weight-bold py-2">휴대전화</div>
-					<div class="col-9 py-2">
-						<input type="text" name="getter_phone1" class="empty"
-							style="width: 8em" id="phone1" value=""> - <input
-							type="text" name="getter_phone2" class="empty" style="width: 8em"
-							id="phone2"> - <input type="text" name="getter_phone3"
-							class="empty" style="width: 8em" id="phone3">
-					</div>
-					<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
-					<div class="col-9">
 
-						<input type="text" name="order_receipt_demend" style="width: 35em"
-							placeholder="(선택사항)" id="req">
+			<div class="row border rounded">
+				<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
+				<div class="col-9 py-2">
+					<span>기본 배송지 <input type="radio" name="origin_radio"
+						id="origin" checked="checked"></span> <span>신규 배송지 <input
+						type="radio" name="origin_radio" id="new">
+					</span>
+				</div>
+				<div class="col-3 font-weight-bold py-2">받으시는 분</div>
+				<div class="col-9 py-2">
+					<input type="text" name="order_receipt" style="width: 8em"
+						class="empty" id="geter_name">
+				</div>
+				<div class="col-3 font-weight-bold py-2">배송지선택</div>
+				<div class="col-9 py-2">
 
-						<p style="color: blue;">
-							<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
-						</p>
 
-					</div>
+					<input type="text" id="sample6_postcode" class="findAdd empty"
+						name="order_receipt_postcode" placeholder="우편번호" readonly>
+					<input type="button" onclick="sample6_execDaumPostcode()"
+						id="postbtn" value="우편번호 찾기" style="margin-left: 0.5em"> <br>
+					<br> <input type="text" id="sample6_address"
+						class="findAdd empty" name="order_receipt_address1"
+						placeholder="주소" style="width: 20em" readonly> <br> <br>
+					<input type="text" id="sample6_detailAddress" class="empty"
+						name="order_receipt_address2" placeholder="상세주소"
+						style="width: 25em">
+					<!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
+
+
+				</div>
+				<div class="col-3 font-weight-bold py-2">휴대전화</div>
+				<div class="col-9 py-2">
+					<input type="text" name="getter_phone1" class="empty"
+						style="width: 8em" id="phone1" value=""> - <input
+						type="text" name="getter_phone2" class="empty" style="width: 8em"
+						id="phone2"> - <input type="text" name="getter_phone3"
+						class="empty" style="width: 8em" id="phone3">
+				</div>
+				<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
+				<div class="col-9">
+
+					<input type="text" name="order_receipt_demend" style="width: 35em"
+						placeholder="(선택사항)" id="req">
+
+
+					<p style="color: blue;">
+						<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
+					</p>
+
+				</div>
+			</div>
+
+
+
+			<div class="row py-2">
+				<div class="col-12">
+					<p>
+
+						<input type="checkbox" id="must1"> <small class="must1">(필수)판매명,
+							유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br> <input
+							type="checkbox" id="must2"> <small class="must2">(필수)정확하지
+							않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
+							type="checkbox" id="must3"> <small class="must3">(필수)배송
+							과정 중 발생한 문제는 Akame에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
+							type="checkbox" id="must4"> <small class="must4">(필수)결제
+							후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
+
+					</p>
+
+
+
+
 				</div>
 
-				<div class="row py-2">
-					<div class="col-12">
-						<p>
-
-							<input type="checkbox" id="must1"> <small class="must1">(필수)판매명,
-								유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br> <input
-								type="checkbox" id="must2"> <small class="must2">(필수)정확하지
-								않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
-								type="checkbox" id="must3"> <small class="must3">(필수)배송
-								과정 중 발생한 문제는 택배사에 문의 부탁드립니다</small>
-
-						</p>
-
-					</div>
-				</div>
 
 				<div class="row py-5 border-bottom">
 					<div class="col-12 text-center">
 						<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
-							href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a>
+							href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a> <input
+							type="hidden" value="" id=quant3 name=quant> <input
+							type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
 
 
 					</div>
 				</div>
-		</div>
-
-
+			</div>
 	</form>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
@@ -275,6 +288,7 @@ img {
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 
 		$("#origin").is("check");
+
 		$("#buy_aTag")
 				.on(
 						"click",
@@ -344,50 +358,52 @@ img {
 							} else if ($("#req").val().length > 30) {
 								alert("요구사항 길이를 초과하였습니다");
 							} else if ($("#must1").is(":checked") == false) {
-								alert("필수사항을 읽고 체크해주세요");
+
+								alert("필수사항1을 읽고 체크해주세요");
 							} else if ($("#must2").is(":checked") == false) {
-								alert("필수사항을 읽고 체크해주세요");
+								alert("필수사항2를 읽고 체크해주세요");
 							} else if ($("#must3").is(":checked") == false) {
-								alert("필수사항을 읽고 체크해주세요");
+								alert("필수사항3을 읽고 체크해주세요");
+							} else if ($("#must4").is(":checked") == false) {
+								alert("필수사항4를 읽고 체크해주세요");
 							} else {
-								var result = confirm("결제 후 취소,환불,교환이 어려울 수 있습니다.\n결제하시겠습니까");
-								if (result) {
-									removeXSS($("#order_buyer").val(), $(
-											"#order_buyer").attr("id"));
-									removeXSS($("#order_phone1").val(), $(
-											"#order_phone1").attr("id"));
-									removeXSS($("#order_phone2").val(), $(
-											"#order_phone2").attr("id"));
-									removeXSS($("#order_phone3").val(), $(
-											"#order_phone3").attr("id"));
-									removeXSS($("#email1").val(), $("#email1")
-											.attr("id"));
-									removeXSS($("#email2").val(), $("#email2")
-											.attr("id"));
-									removeXSS($("#geter_name").val(), $(
-											"#geter_name").attr("id"));
-									removeXSS($("#sample6_postcode").val(), $(
-											"#sample6_postcode").attr("id"));
-									removeXSS($("#sample6_address").val(), $(
-											"#sample6_address").attr("id"));
-									removeXSS(
-											$("#sample6_detailAddress").val(),
-											$("#sample6_detailAddress").attr(
-													"id"));
-									// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
-									removeXSS($("#phone1").val(), $("#phone1")
-											.attr("id"));
-									removeXSS($("#phone2").val(), $("#phone2")
-											.attr("id"));
-									removeXSS($("#phone3").val(), $("#phone3")
-											.attr("id"));
-									removeXSS($("#req").val(), $("#req").attr(
-											"id"));
-									$("#completeForm").submit();
-								} else
-									return;
+								removeXSS($("#order_buyer").val(), $(
+										"#order_buyer").attr("id"));
+								removeXSS($("#order_phone1").val(), $(
+										"#order_phone1").attr("id"));
+								removeXSS($("#order_phone2").val(), $(
+										"#order_phone2").attr("id"));
+								removeXSS($("#order_phone3").val(), $(
+										"#order_phone3").attr("id"));
+								removeXSS($("#email1").val(), $("#email1")
+										.attr("id"));
+								removeXSS($("#email2").val(), $("#email2")
+										.attr("id"));
+								removeXSS($("#geter_name").val(), $(
+										"#geter_name").attr("id"));
+								removeXSS($("#sample6_postcode").val(), $(
+										"#sample6_postcode").attr("id"));
+								removeXSS($("#sample6_address").val(), $(
+										"#sample6_address").attr("id"));
+								removeXSS($("#sample6_detailAddress").val(), $(
+										"#sample6_detailAddress").attr("id"));
+								// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
+								removeXSS($("#phone1").val(), $("#phone1")
+										.attr("id"));
+								removeXSS($("#phone2").val(), $("#phone2")
+										.attr("id"));
+								removeXSS($("#phone3").val(), $("#phone3")
+										.attr("id"));
+								removeXSS($("#req").val(), $("#req").attr("id"));
+								var shop_q = Number($("#quant2").val());
+								var qua = Number($("#quant1").val());
+								var quant = shop_q - qua;
+								$("input[name=quant]").val(shop_q - qua);
+								alert(quant);
+								$("#completeForm").submit();
 							}
-						})//결제버튼클릭
+						});//결제버튼클릭
+
 
 		$(".findAdd").on("click", function() {
 
@@ -496,6 +512,7 @@ img {
 			$("#must3").click();
 		});
 
+
 		$("#selectEmail").change(function() {
 			var selectEmail = $(this).val();
 			if (selectEmail == "1") {
@@ -507,6 +524,12 @@ img {
 				$("input[name='email2']").attr("readonly", true);
 			}
 		})
+
+		$(".must4").on("click", function() {
+			$("#must4").click();
+		});
+
 	</script>
+	<jsp:include page="/WEB-INF/views/module/loginModule.jsp"></jsp:include>
 </body>
 </html>
