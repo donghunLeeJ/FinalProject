@@ -23,4 +23,8 @@ public class OrderDAO {
 
 		return sst.selectList("OrderDAO.myOrderList",id);
 	}
+	
+	public List<OrderDTO> popup(int seqq){
+		return sst.selectList("OrderDAO.popup",seqq);
+	}
 }

@@ -56,9 +56,7 @@ public class BasketController {
 
 	@RequestMapping("/basketList")
 	public String basketSelectProc(String id) {
-		
 		List<BasketDTO> result = bservice.basketIdSelect(id);
-		
 		request.setAttribute("list", result);
 		return "/shopBoard/shopBoard_basket";
 	}
@@ -87,17 +85,14 @@ public class BasketController {
 	public String asd(String basket_seq) {
 		int price = 0;
 		int amount = 0;
+
 		System.out.println("asd의 리스트");
-		
 		System.out.println(basket_seq);
 		String seq = basket_seq;
 		String[] seqList = seq.split(",");
 		List<BasketDTO> arr = new ArrayList();
-	
-		
 		for(int i = 0 ; i < seqList.length ; i ++) {
-			
-			arr.add(bservice.basketListBuy(seqList[i]));
+			 arr.add(bservice.basketListBuy(seqList[i]));
 			 price = price + arr.get(i).getBasket_price();//합계금액
 			 amount = amount + arr.get(i).getBasket_quantity();//합계 수량
 		}

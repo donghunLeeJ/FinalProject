@@ -21,4 +21,8 @@ public class OrderService {
 	public List<OrderDTO> myOrderList(String id){
 		return dao.myOrderList(id);
 	}
+	
+	public List<OrderDTO> popup(int seqq){
+		return dao.popup(seqq);
+	}
 }

@@ -31,7 +31,7 @@ public class LoginCheckAOP {
 	@Around("basketController()||shopBoard()||timeLine()||member()")
 	public String logCheck(ProceedingJoinPoint pjp) {
 		if(session.getAttribute("id")==null) {
-			System.out.println("로그인 필요1213");
+			System.out.println("로그인 필요");
 			
 			return "loginPlease";
 		}else {
