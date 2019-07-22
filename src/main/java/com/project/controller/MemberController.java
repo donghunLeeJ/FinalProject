@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.dao.HtmlEmailDAO;
@@ -132,7 +133,6 @@ public class MemberController {
 	public String joinInsert(MemberDTO mdto) {
 		System.out.println("조인프록");
 		String id = mdto.getMember_id();
-
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
 
 		// System.out.println("조인프록 " + id);
@@ -155,7 +155,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("myPage") // 메인에서 마이페이지로 가기 이때 구매내역과 판매내역 담기
-	public String myPage() {
+	public String log_myPage() {
 		// System.out.println("1");
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<ShopBoardDTO> mylist = SBservice.ShopBoardList(mdto.getMember_id());
@@ -169,7 +169,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("edit_mypage")
-	public String edit_mypage(MemberDTO mdto) {// 마이페이지에서 글 정보수정 버튼 누르기
+	public String log_edit_mypage(MemberDTO mdto) {// 마이페이지에서 글 정보수정 버튼 누르기
 		System.out.println("정보수정 맵핑");
 		System.out.println("1");
 		System.out.println(mservice.edit_mypage(mdto));
@@ -179,7 +179,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("uploadImg")
-	public String uploadImg(MultipartFile file) {// 마이페이지>정보수정>프로필 이미지 바꾸기
+	public String log_uploadImg(MultipartFile file) {// 마이페이지>정보수정>프로필 이미지 바꾸기
 		System.out.println("업로드 이미지 맵핑");
 		String time = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String savedName = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
@@ -207,7 +207,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("delOK")
-	public String delOK(String del_id, String del_pw) {
+	public String log_delOK(String del_id, String del_pw) {
 		try {
 			System.out.println("넘어온 아이디 : " + del_id);
 			System.out.println("넘어온 비밀번호 : " + del_pw);
@@ -227,7 +227,6 @@ public class MemberController {
 			mservice.confirmId(id);
 			return "member/emailConfirm";
 		} else if (confirm.equals("y")) {
-
 			return "member/reConfirm";
 		}
 		return null;
@@ -235,7 +234,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("sellContentsGo")
-	public String sellContetns() {
+	public String log_sellContetns() {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<ShopBoardDTO> sellList = SBservice.ShopBoardList(mdto.getMember_id());
 
@@ -252,11 +251,30 @@ public class MemberController {
 	}
 
 	@RequestMapping("sellStatus")
+
 	public String sellStatus() {
 
-//		List<OrderDTO> popup = os.popup(seqq);
-//		request.setAttribute("popup", popup);
+
+	public String log_sellStatus() {
+		
+
 		return "/member/sellStatusPopUp";
+	}
+	
+	@RequestMapping("minilogin")
+	@ResponseBody
+	public String minilog(String id , String pw) {
+		System.out.println(id);
+		System.out.println(pw);
+		MemberDTO mdto = new MemberDTO();
+		mdto.setMember_pw(mdao.SHA256(pw));
+		mdto.setMember_id(id);
+		int result = mservice.login(mdto);
+		if(result == 1) {
+			session.setAttribute("id", mservice.select_member(id));
+		}
+		String resultString = result+"";
+		return resultString;
 	}
 
 }

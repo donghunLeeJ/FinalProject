@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
 .headerbtn {
 	border: 0px solid #FCBB00;
@@ -87,13 +92,20 @@ li:hover {
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
+
 	<div class="main-header-area " id="fixedNav">
+
+	<div class="main-header-area " style="background-color: white"
+		id="fixedNav">
+
 		<div class="classy-nav-container breakpoint-off "
 			style="border: 1px solid #FCBB00;">
 			<div class="container">
 				<!-- Classy Menu -->
+
 				<nav class="classy-navbar justify-content-between  " id="akameNav"
 					style="background-color: white">
+
 
 					<!-- Logo -->
 					<a class="nav-brand" href="/home"><img
@@ -115,6 +127,7 @@ li:hover {
 						<div class="classynav">
 							<ul id="nav">
 								<li><a href="/home">Home</a></li>
+
 								<li><a href="#">서비스 소개</a></li>
 								<!--                         <li><a href="#">Pages</a> -->
 								<!--                            <ul class="dropdown"> -->
@@ -144,6 +157,7 @@ li:hover {
 								<!--                            </li> -->
 								<li><a href="/timeline/accessTimeLine?seq=1">SNS</a></li>
 
+
 							</ul>
 
 							<!-- Cart Icon -->
@@ -164,9 +178,34 @@ li:hover {
 	</div>
 
 	<script>
+
+ 	var loginCheck_write = function(){
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   		}else{
+   			location.href = "/shopboard/ShopBoard_write";
+   		}
+   	}
+ 	var loginCheck_sns = function(){
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   		}else{
+   			location.href = "/timeline/accessTimeLine?seq=1";
+   		}
+   	}
+   
+
       $("#list").on("click", function() {
-         var listId = $("#listid").val();
-         location.href = "/Basket/basketList?id=" + encodeURI(listId);
+         if(${id == null}){
+        	 alert("로그인이 필요합니다");
+    			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+         }else{
+        	 var listId = $("#listid").val();
+             location.href = "/Basket/basketList?id=" + encodeURI(listId); 
+         }
+    	  
       })
 
       $(window).scroll(function() {

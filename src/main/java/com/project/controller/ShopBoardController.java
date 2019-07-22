@@ -73,13 +73,12 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/ShopBoard_write")
-	public String ShopBoard_WriteMove() {
+	public String log_ShopBoard_WriteMove() {
 
 		return "/shopBoard/shopBoard_write";
 	}
 
 	@RequestMapping("/ShopBoardViewProc")
-
 	public String ShopBoardSelectProc(String seq) {
 		String starAvg;
 		int shop_seq = Integer.parseInt(seq);
@@ -138,9 +137,8 @@ public class ShopBoardController {
 		return "/shopBoard/shopBoard_view";
 	}
 
-
 	@RequestMapping("/ShopBoardInsertProc")
-	public String filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
+	public String log_filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
 		List<String> fileArrayPath = new ArrayList();
 		System.out.println(dto.getShop_seq());
 		System.out.println("내용: " + dto.getShop_contents());
@@ -149,7 +147,6 @@ public class ShopBoardController {
 		System.out.println("지역: " + dto.getShop_location());
 		System.out.println("유통기한: " + dto.getShop_expiration());
 		System.out.println("test" + shop_expiration);
-
 		int memberSell_seq = Integer.parseInt(sell_seq);
 		System.out.println("sell_seq" + sell_seq);
 		int fileCount = 0;
@@ -213,7 +210,7 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/shopBoard_buyProc")
-	public String buyProc(String quantity, String seq) {
+	public String log_buyProc(String quantity, String seq) {
 		int quantity1 = Integer.parseInt(quantity);// 수량
 		int shop_seq = Integer.parseInt(seq);
 		System.out.println(quantity1);
@@ -238,8 +235,10 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/shopOrder")
-	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, ShopBoardDTO sdto,String getter_phone3, String products_seq, int quant) {
+
+	public String log_order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
+			String getter_phone1, String getter_phone2, String getter_phone3, String products_seq) {
+
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
 		int products_seq1 = Integer.parseInt(products_seq);
@@ -264,21 +263,20 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/buyReview")
-	public String shopReview(ShopReviewDTO dto, String products_seq) {
+	public String log_shopReview(ShopReviewDTO dto, String products_seq) {
 		int products_seq1 = Integer.parseInt(products_seq);
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
 		dto.setGet_star("1");
 		System.out.println(sdf.format(System.currentTimeMillis()));
 		dto.setWriteDate(sdf.format(System.currentTimeMillis()));
 		dto.setProducts_seq(products_seq1);
-
 		sService.shopReviewInsert(dto);
 
 		return "redirect:/home/";
 	}
 
 	@RequestMapping("/shopBasketOrder")
-	public String basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
+	public String log_basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
 			String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq) {
 		System.out.println(basket_seq);
 		String phone = phone1 + phone2 + phone3;
