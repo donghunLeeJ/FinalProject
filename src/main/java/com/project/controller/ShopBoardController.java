@@ -311,6 +311,7 @@ public class ShopBoardController {
 		System.out.println(g.toJson(arr));
 		bservice.resetBasket(email);
 		request.setAttribute("ldto", arr);
+		
 		return "/shopBoard/shopChargeOk2";
 	}
 

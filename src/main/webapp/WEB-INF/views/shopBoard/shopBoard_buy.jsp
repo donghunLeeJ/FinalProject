@@ -15,8 +15,8 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-	<script>
-	$(function(){
+<script>
+	$(function() {
 		var origin = function() {
 
 			$("#geter_name").val("${id.member_name}");
@@ -32,7 +32,7 @@
 		})
 		$("#origin").click();
 	});
-	</script>
+</script>
 <style>
 input[type="text"], select {
 	box-shadow: 4px 4px 5px #gray inset;
@@ -143,19 +143,21 @@ img {
 			<div class="row border rounded">
 				<div class="col-3 py-2 font-weight-bold">주문자 이름</div>
 				<div class="col-9 py-2">
-					<input type="text" name="order_buyer" id="order_buyer" class="empty">
+					<input type="text" name="order_buyer" id="order_buyer"
+						class="empty">
 				</div>
 				<div class="col-3 py-2 font-weight-bold">휴대전화</div>
 				<div class="col-9 py-2">
 					<input type="text" name="phone1" id="order_phone1" class="empty"
-						style="width: 8em"> - <input type="text" name="phone2" class="empty"
-						id="order_phone2" style="width: 8em"> - <input type="text"
-						name="phone3" id="order_phone3" class="empty" style="width: 8em">
+						style="width: 8em"> - <input type="text" name="phone2"
+						class="empty" id="order_phone2" style="width: 8em"> - <input
+						type="text" name="phone3" id="order_phone3" class="empty"
+						style="width: 8em">
 				</div>
 				<div class="col-3 py-2 font-weight-bold">이메일</div>
 				<div class="col-9 py-2">
-					<input type="text" name="email1" id="email1" class="empty "> @
-					<input type="text" name="email2" id="email2" class="empty ">
+					<input type="text" name="email1" id="email1" class="empty ">
+					@ <input type="text" name="email2" id="email2" class="empty ">
 				</div>
 
 			</div>
@@ -174,85 +176,82 @@ img {
 				</div>
 			</div>
 
-			<form id="completeForm" method="post" action="/shopboard/completePay">
-
-				<div class="row border rounded">
-					<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
-					<div class="col-9 py-2">
-						<span>기본 배송지 <input type="radio" name="origin_radio"
-							id="origin" checked="checked"></span> <span>신규 배송지 <input type="radio"
-							name="origin_radio" id="new">
-						</span>
-					</div>
-					<div class="col-3 font-weight-bold py-2">받으시는 분</div>
-					<div class="col-9 py-2">
-						<input type="text" name="order_receipt" style="width: 8em" class="empty"
-							id="geter_name">
-					</div>
-					<div class="col-3 font-weight-bold py-2">배송지선택</div>
-					<div class="col-9 py-2">
-
-							<input type="text" id="sample6_postcode" class="findAdd empty" 
-							name="order_receipt_postcode" placeholder="우편번호" readonly>
-							 <input type="button" onclick="sample6_execDaumPostcode()" id="postbtn"
-							value="우편번호 찾기" style="margin-left: 0.5em">
-							<br> <br>
-							<input type="text" id="sample6_address" class="findAdd empty" 
-							name="order_receipt_address1" placeholder="주소"style="width: 20em" readonly>
-							<br> <br> 
-							<input type="text" id="sample6_detailAddress" class="empty"
-							name="order_receipt_address2" placeholder="상세주소"style="width: 25em"> 
-<!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
 
 
+			<div class="row border rounded">
+				<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
+				<div class="col-9 py-2">
+					<span>기본 배송지 <input type="radio" name="origin_radio"
+						id="origin" checked="checked"></span> <span>신규 배송지 <input
+						type="radio" name="origin_radio" id="new">
+					</span>
+				</div>
+				<div class="col-3 font-weight-bold py-2">받으시는 분</div>
+				<div class="col-9 py-2">
+					<input type="text" name="order_receipt" style="width: 8em"
+						class="empty" id="geter_name">
+				</div>
+				<div class="col-3 font-weight-bold py-2">배송지선택</div>
+				<div class="col-9 py-2">
 
-					</div>
-					<div class="col-3 font-weight-bold py-2">휴대전화</div>
-					<div class="col-9 py-2">
-						<input type="text" name="getter_phone1" class="empty" style="width: 8em"id="phone1" value=""> - 
-						<input type="text"name="getter_phone2" class="empty" style="width: 8em" id="phone2"> -
-					    <input type="text" name="getter_phone3" class="empty" style="width: 8em" id="phone3">
-					</div>
-					<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
-					<div class="col-9">
+					<input type="text" id="sample6_postcode" class="findAdd empty"
+						name="order_receipt_postcode" placeholder="우편번호" readonly>
+					<input type="button" onclick="sample6_execDaumPostcode()"
+						id="postbtn" value="우편번호 찾기" style="margin-left: 0.5em"> <br>
+					<br> <input type="text" id="sample6_address"
+						class="findAdd empty" name="order_receipt_address1"
+						placeholder="주소" style="width: 20em" readonly> <br> <br>
+					<input type="text" id="sample6_detailAddress" class="empty"
+						name="order_receipt_address2" placeholder="상세주소"
+						style="width: 25em">
+					<!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
 
-						<input type="text" name="order_receipt_demend" style="width: 35em" 
+
+
+				</div>
+				<div class="col-3 font-weight-bold py-2">휴대전화</div>
+				<div class="col-9 py-2">
+					<input type="text" name="getter_phone1" class="empty"
+						style="width: 8em" id="phone1" value=""> - <input
+						type="text" name="getter_phone2" class="empty" style="width: 8em"
+						id="phone2"> - <input type="text" name="getter_phone3"
+						class="empty" style="width: 8em" id="phone3">
+				</div>
+				<div class="col-3 font-weight-bold py-2">배송시요구사항</div>
+				<div class="col-9">
+
+					<input type="text" name="order_receipt_demend" style="width: 35em"
 						placeholder="(선택사항)" id="req">
 
-						<p style="color: blue;">
-							<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
-						</p>
+					<p style="color: blue;">
+						<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
+					</p>
 
-					</div>
 				</div>
+			</div>
 
-				<div class="row py-2">
-					<div class="col-12">
-						<p>
+			<div class="row py-2">
+				<div class="col-12">
+					<p>
 
-						<input type="checkbox" id="must1">
-						<small class="must1">(필수)판매명, 유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br>
-						<input type="checkbox" id="must2">
-						<small class="must2">(필수)정확하지 않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br>
-						<input type="checkbox" id="must3">
-						<small class="must3">(필수)배송 과정 중 발생한 문제는 택배사에 문의 부탁드립니다</small>
-
-						</p>
-
-					</div>
+						<input type="checkbox" id="must1"> <small class="must1">(필수)판매명,
+							유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br> <input
+							type="checkbox" id="must2"> <small class="must2">(필수)정확하지
+							않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
+							type="checkbox" id="must3"> <small class="must3">(필수)배송
+							과정 중 발생한 문제는 택배사에 문의 부탁드립니다</small>
+					</p>
 				</div>
+			</div>
+			<div class="row py-5 border-bottom">
+				<div class="col-12 text-center">
+					<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
+						href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a>
 
-				<div class="row py-5 border-bottom">
-					<div class="col-12 text-center">
-						<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
-							href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a>
 
-
-					</div>
 				</div>
+			</div>
 		</div>
-
-
 	</form>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
@@ -260,109 +259,126 @@ img {
 	<script>
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-		
-		$("#origin").is("check");
-		$("#buy_aTag").on("click", function() {
-			
-		    var inputcount = 0;
-		    $(".empty").each(function(i, item) {
-		         if ($(item).val() == "") {
-		            inputcount++; //만일 입력창 어딘가에 빈 칸이 있을 경우 카운트를 증가시킨다.
-		         }
-		      });
-			var regname = /^[가-힣]{1,6}$/;
-			var regnum1 = /^01([0|1|6|7|8|9]?)$/;
-			var regnum2 = /^([0-9]{3,4})$/;
-			var regnum3 = /^([0-9]{4})$/;
-			var regemail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
-			var regemail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-			// 			var price = $("#price").text();
-			// 			IMP.request_pay({
-			// 				pg : 'inicis', // version 1.1.0부터 지원.
-			// 				pay_method : 'card',
-			// 				merchant_uid : 'merchant_' + new Date().getTime(),
-			// 				name : '주문명:결제테스트',
-			// 				amount : price,
-			// 				buyer_email : 'iamport@siot.do',
-			// 				buyer_name : '구매자이름',
-			// 				buyer_tel : '010-1234-5678',
-			// 				buyer_addr : '서울특별시 강남구 삼성동',
-			// 				buyer_postcode : '123-456',
-			// 				m_redirect_url : 'localhost/home'
-			// 			}, function(rsp) {
-			// 				if (rsp.success) {
-			// 					var msg = '결제가 완료되었습니다.';
-			// 					alert(msg);
-			// 					$("#completeForm").submit();
-			// 				} else {
-			// 					var msg = '결제에 실패하였습니다.';
-			// 					msg += '에러내용 : ' + rsp.error_msg;
-			// 				}
-			// 				alert(msg);
-			// 			});
-			  
 
-		      if (inputcount > 0) {
-		         alert("모든 항목을 반드시 입력하셔야 합니다.");
-		      }else if(!regname.test($("#order_buyer").val())){
-		    	  alert("주문자 이름을 정확히 입력해주세요");
-		      }else if(!regnum1.test($("#order_phone1").val())){
-		    	  alert("핸드폰 번호를 정확히 입력해주세요");
-		      }else if(!regnum2.test($("#order_phone2").val())){
-		    	  alert("핸드폰 번호를 정확히 입력해주세요");
-		      }else if(!regnum3.test($("#order_phone3").val())){
-		    	  alert("핸드폰 번호를 정확히 입력해주세요");
-		      }else if(!regemail1.test($("#email1").val())){
-		    	  alert("메일주소를 정확히 입력해주세요");
-		      }else if(!regemail2.test($("#email2").val())){
-		    	  alert("핸드폰 번호를 정확히 입력해주세요");
-		      }else if(!regname.test($("#geter_name").val())){
-		    	  alert("받으시는 분을 정확히 입력해주세요");
-		      }else if($("#sample6_detailAddress").val().length>25){
-		    	  alert("상세주소 길이를 초과하였습니다")
-		      }else if(!regnum1.test($("#phone1").val())){
-		    	  alert("배송지 번호를 정확히 입력해주세요");
-		      }else if(!regnum2.test($("#phone2").val())){
-		    	  alert("배송지 번호를 정확히 입력해주세요");
-		      }else if(!regnum3.test($("#phone3").val())){
-		    	  alert("배송지 번호를 정확히 입력해주세요");
-		      }else if($("#req").val().length>30){
-		    	  alert("요구사항 길이를 초과하였습니다");
-		      }else if($("#must1").is(":checked")==false){
-		    	  alert("필수사항을 읽고 체크해주세요");
-		      }else if($("#must2").is(":checked")==false){
-		    	  alert("필수사항을 읽고 체크해주세요");
-		      }else if($("#must3").is(":checked")==false){
-		    	  alert("필수사항을 읽고 체크해주세요");
-		      }else{
-		    	  var result=confirm("결제 후 취소,환불,교환이 어려울 수 있습니다.\n결제하시겠습니까");
-		    	  if(result){
-				removeXSS($("#order_buyer").val(), $("#order_buyer").attr("id"));
-				removeXSS($("#order_phone1").val(), $("#order_phone1").attr("id"));
-				removeXSS($("#order_phone2").val(), $("#order_phone2").attr("id"));
-				removeXSS($("#order_phone3").val(), $("#order_phone3").attr("id"));
-				removeXSS($("#email1").val(), $("#email1").attr("id"));
-				removeXSS($("#email2").val(), $("#email2").attr("id"));
-				removeXSS($("#geter_name").val(), $("#geter_name").attr("id"));
-				removeXSS($("#sample6_postcode").val(), $("#sample6_postcode").attr("id"));
-				removeXSS($("#sample6_address").val(), $("#sample6_address").attr("id"));
-				removeXSS($("#sample6_detailAddress").val(), $("#sample6_detailAddress").attr("id"));
-// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
-				removeXSS($("#phone1").val(), $("#phone1").attr("id"));
-				removeXSS($("#phone2").val(), $("#phone2").attr("id"));
-				removeXSS($("#phone3").val(), $("#phone3").attr("id"));
-				removeXSS($("#req").val(), $("#req").attr("id"));
-			    $("#completeForm").submit();
-		    	  }else return;
-		      }
-		})//결제버튼클릭
-		
-		$(".findAdd").on("click",function(){
+		$("#origin").is("check");
+		$("#buy_aTag")
+				.on(
+						"click",
+						function() {
+
+							var inputcount = 0;
+							$(".empty").each(function(i, item) {
+								if ($(item).val() == "") {
+									inputcount++; //만일 입력창 어딘가에 빈 칸이 있을 경우 카운트를 증가시킨다.
+								}
+							});
+							var regname = /^[가-힣]{1,6}$/;
+							var regnum1 = /^01([0|1|6|7|8|9]?)$/;
+							var regnum2 = /^([0-9]{3,4})$/;
+							var regnum3 = /^([0-9]{4})$/;
+							var regemail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
+							var regemail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+							// 			var price = $("#price").text();
+							// 			IMP.request_pay({
+							// 				pg : 'inicis', // version 1.1.0부터 지원.
+							// 				pay_method : 'card',
+							// 				merchant_uid : 'merchant_' + new Date().getTime(),
+							// 				name : '주문명:결제테스트',
+							// 				amount : price,
+							// 				buyer_email : 'iamport@siot.do',
+							// 				buyer_name : '구매자이름',
+							// 				buyer_tel : '010-1234-5678',
+							// 				buyer_addr : '서울특별시 강남구 삼성동',
+							// 				buyer_postcode : '123-456',
+							// 				m_redirect_url : 'localhost/home'
+							// 			}, function(rsp) {
+							// 				if (rsp.success) {
+							// 					var msg = '결제가 완료되었습니다.';
+							// 					alert(msg);
+							// 					$("#completeForm").submit();
+							// 				} else {
+							// 					var msg = '결제에 실패하였습니다.';
+							// 					msg += '에러내용 : ' + rsp.error_msg;
+							// 				}
+							// 				alert(msg);
+							// 			});
+
+							if (inputcount > 0) {
+								alert("모든 항목을 반드시 입력하셔야 합니다.");
+							} else if (!regname.test($("#order_buyer").val())) {
+								alert("주문자 이름을 정확히 입력해주세요");
+							} else if (!regnum1.test($("#order_phone1").val())) {
+								alert("핸드폰 번호를 정확히 입력해주세요");
+							} else if (!regnum2.test($("#order_phone2").val())) {
+								alert("핸드폰 번호를 정확히 입력해주세요");
+							} else if (!regnum3.test($("#order_phone3").val())) {
+								alert("핸드폰 번호를 정확히 입력해주세요");
+							} else if (!regemail1.test($("#email1").val())) {
+								alert("메일주소를 정확히 입력해주세요");
+							} else if (!regemail2.test($("#email2").val())) {
+								alert("핸드폰 번호를 정확히 입력해주세요");
+							} else if (!regname.test($("#geter_name").val())) {
+								alert("받으시는 분을 정확히 입력해주세요");
+							} else if ($("#sample6_detailAddress").val().length > 25) {
+								alert("상세주소 길이를 초과하였습니다")
+							} else if (!regnum1.test($("#phone1").val())) {
+								alert("배송지 번호를 정확히 입력해주세요");
+							} else if (!regnum2.test($("#phone2").val())) {
+								alert("배송지 번호를 정확히 입력해주세요");
+							} else if (!regnum3.test($("#phone3").val())) {
+								alert("배송지 번호를 정확히 입력해주세요");
+							} else if ($("#req").val().length > 30) {
+								alert("요구사항 길이를 초과하였습니다");
+							} else if ($("#must1").is(":checked") == false) {
+								alert("필수사항을 읽고 체크해주세요");
+							} else if ($("#must2").is(":checked") == false) {
+								alert("필수사항을 읽고 체크해주세요");
+							} else if ($("#must3").is(":checked") == false) {
+								alert("필수사항을 읽고 체크해주세요");
+							} else {
+								var result = confirm("결제 후 취소,환불,교환이 어려울 수 있습니다.\n결제하시겠습니까");
+								if (result) {
+									removeXSS($("#order_buyer").val(), $(
+											"#order_buyer").attr("id"));
+									removeXSS($("#order_phone1").val(), $(
+											"#order_phone1").attr("id"));
+									removeXSS($("#order_phone2").val(), $(
+											"#order_phone2").attr("id"));
+									removeXSS($("#order_phone3").val(), $(
+											"#order_phone3").attr("id"));
+									removeXSS($("#email1").val(), $("#email1")
+											.attr("id"));
+									removeXSS($("#email2").val(), $("#email2")
+											.attr("id"));
+									removeXSS($("#geter_name").val(), $(
+											"#geter_name").attr("id"));
+									removeXSS($("#sample6_postcode").val(), $(
+											"#sample6_postcode").attr("id"));
+									removeXSS($("#sample6_address").val(), $(
+											"#sample6_address").attr("id"));
+									removeXSS(
+											$("#sample6_detailAddress").val(),
+											$("#sample6_detailAddress").attr(
+													"id"));
+									// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
+									removeXSS($("#phone1").val(), $("#phone1")
+											.attr("id"));
+									removeXSS($("#phone2").val(), $("#phone2")
+											.attr("id"));
+									removeXSS($("#phone3").val(), $("#phone3")
+											.attr("id"));
+									removeXSS($("#req").val(), $("#req").attr(
+											"id"));
+									$("#completeForm").submit();
+								} else
+									return;
+							}
+						})//결제버튼클릭
+
+		$(".findAdd").on("click", function() {
 
 			$("#postbtn").click();
 		})
-		
-		
 
 		// 	배송지 radio reset 
 		var reset = function() {
@@ -438,7 +454,7 @@ img {
 		})
 
 		// 기존 배송지 radio
-	
+
 		$("#back_aTag")
 				.on(
 						"click",
@@ -455,14 +471,14 @@ img {
 		$(function() {
 
 		})
-		
-		$(".must1").on("click",function(){
-	$("#must1").click();
-});
-		$(".must2").on("click",function(){
+
+		$(".must1").on("click", function() {
+			$("#must1").click();
+		});
+		$(".must2").on("click", function() {
 			$("#must2").click();
 		});
-		$(".must3").on("click",function(){
+		$(".must3").on("click", function() {
 			$("#must3").click();
 		});
 	</script>

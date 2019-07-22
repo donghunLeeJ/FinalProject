@@ -14,8 +14,6 @@ public class BasketDTO {
 	private String basket_brand;
 	
 	
-	
-	
 	public BasketDTO() {}
 	
 	public BasketDTO(int basket_seq, int product_seq, String basket_seller, String basket_id, String basket_imagepath,

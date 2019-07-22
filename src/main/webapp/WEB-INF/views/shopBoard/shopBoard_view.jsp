@@ -371,13 +371,10 @@
 							var quantity = $("#quantity_one").val();
 							location.href = "/shopboard/shopBoard_buyProc?quantity="
 									+ quantity + "&seq=${dto.shop_seq }";
-				//수량
-
-			}else{
+				}else{
 				alert("수량이 초과되었습니다.");
 				$("#quantity_one").val("1")
-
-
+				}
 			}
 		})
 		
@@ -396,9 +393,7 @@
 					$("#quantity_one").val("1");
 				}
 			}
-			
 		})		
-	
 
 
 		var upCount = function() {
