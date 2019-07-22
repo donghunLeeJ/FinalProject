@@ -135,7 +135,7 @@ li:hover {
                                     <li><a href="#">- Dropdown Item</a></li>
                                  </ul></li>
                            </ul></li>
-                       	 <li><a href="#">서비스 소개</a></li>
+                       	 <li><a href="/home/service">서비스 소개</a></li>
 <!--                         <li><a href="#">판매 / 구매</a> -->
 <!--                            <ul class="dropdown"> -->
                               <li><a href="/shopboard/shopBoardGo?page=1">구매하기</a></li>

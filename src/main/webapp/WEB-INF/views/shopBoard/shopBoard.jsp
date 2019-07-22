@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 #img1 {
@@ -21,17 +22,17 @@
 	onselectstart="return false">
 	<!-- header -->
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	<section class="breadcrumb-area py-5">
-	<div class="container border-bottom">
+	<section class="breadcrumb-area section-padding-80">
+	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<div class="breadcrumb-content">
-					<h2>상품 구매 게시판</h2>
+					<h2>구매하기</h2>
 					<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><i
-								class="icon_house_alt"></i> Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Services</li>
+						<li class="breadcrumb-item"><a href="/home"><i
+								class="icon_house_alt"></i>Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">구매하기</li>
 					</ol>
 					</nav>
 				</div>
