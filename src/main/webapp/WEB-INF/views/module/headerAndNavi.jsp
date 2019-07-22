@@ -71,7 +71,7 @@ li:hover {
 							</c:when>
 
 							<c:otherwise>
-									<input id="listid" type="hidden" value="${id.member_id}">
+								<input id="listid" type="hidden" value="${id.member_id}">
 								<button id=mypage class="headerbtn">
 									<img src="/img/button-img/m_iconM.png">
 								</button>
@@ -122,7 +122,7 @@ li:hover {
 										<li><a href="./service.html">- 서비스 소개</a></li>
 										<li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li>
 										<li><a href="./blog.html">- sns</a></li>
-										<li><a href="./single-blog.html">- Blog Details</a></li>
+										<li><a href="/member/sellContentsGo">- 판매 내역 </a></li>
 										<li><a href="./contact.html">- Contact</a></li>
 										<li><a href="#">- Dropdown</a>
 											<ul class="dropdown">
@@ -133,7 +133,7 @@ li:hover {
 											</ul></li>
 									</ul></li>
 								<li><a href="#">서비스 소개</a></li>
-								<li><a href="#">판매 게시판</a>
+								<li><a href="#">판매 / 구매</a>
 									<ul class="dropdown">
 										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
 										<li><a href="/shopboard/ShopBoard_write">- 판매하기</a></li>
@@ -158,15 +158,13 @@ li:hover {
 			</div>
 		</div>
 	</div>
-	
+
 	<script>
-	
-	$("#list").on("click",function(){
-		var listId = $("#listid").val();
-		location.href = "/Basket/basketList?id="+encodeURI(listId);
-	})
-	
-	
+		$("#list").on("click", function() {
+			var listId = $("#listid").val();
+			location.href = "/Basket/basketList?id=" + encodeURI(listId);
+		})
+
 		$(window).scroll(function() {
 
 			var docScrollY = $(document).scrollTop()
