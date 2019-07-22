@@ -118,7 +118,8 @@ img {
 				</div>
 
 				<div class="col-1" style="margin-top: 1.4em">${quantity }
-					<input type="hidden" value="${quantity }" name="order_quantity">
+					<input type="hidden" value="${quantity }" name="order_quantity"
+						id=quant1>
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
 					<fmt:formatNumber value="${price }" pattern="#,###" />
@@ -230,6 +231,7 @@ img {
 				</div>
 			</div>
 
+
 			<div class="row py-2">
 				<div class="col-12">
 					<p>
@@ -239,19 +241,28 @@ img {
 							type="checkbox" id="must2"> <small class="must2">(필수)정확하지
 							않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
 							type="checkbox" id="must3"> <small class="must3">(필수)배송
-							과정 중 발생한 문제는 택배사에 문의 부탁드립니다</small>
+							과정 중 발생한 문제는 Akame에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
+							type="checkbox" id="must4"> <small class="must4">(필수)결제
+							후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
+
 					</p>
-				</div>
-			</div>
-			<div class="row py-5 border-bottom">
-				<div class="col-12 text-center">
-					<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
-						href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a>
+
 
 
 				</div>
+
+
+				<div class="row py-5 border-bottom">
+					<div class="col-12 text-center">
+						<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
+							href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a> <input
+							type="hidden" value="" id=quant3 name=quant> <input
+							type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
+
+
+					</div>
+				</div>
 			</div>
-		</div>
 	</form>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
@@ -261,6 +272,7 @@ img {
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 
 		$("#origin").is("check");
+
 		$("#buy_aTag")
 				.on(
 						"click",
@@ -330,50 +342,50 @@ img {
 							} else if ($("#req").val().length > 30) {
 								alert("요구사항 길이를 초과하였습니다");
 							} else if ($("#must1").is(":checked") == false) {
-								alert("필수사항을 읽고 체크해주세요");
+								alert("필수사항1을 읽고 체크해주세요");
 							} else if ($("#must2").is(":checked") == false) {
-								alert("필수사항을 읽고 체크해주세요");
+								alert("필수사항2를 읽고 체크해주세요");
 							} else if ($("#must3").is(":checked") == false) {
-								alert("필수사항을 읽고 체크해주세요");
+								alert("필수사항3을 읽고 체크해주세요");
+							} else if ($("#must4").is(":checked") == false) {
+								alert("필수사항4를 읽고 체크해주세요");
 							} else {
-								var result = confirm("결제 후 취소,환불,교환이 어려울 수 있습니다.\n결제하시겠습니까");
-								if (result) {
-									removeXSS($("#order_buyer").val(), $(
-											"#order_buyer").attr("id"));
-									removeXSS($("#order_phone1").val(), $(
-											"#order_phone1").attr("id"));
-									removeXSS($("#order_phone2").val(), $(
-											"#order_phone2").attr("id"));
-									removeXSS($("#order_phone3").val(), $(
-											"#order_phone3").attr("id"));
-									removeXSS($("#email1").val(), $("#email1")
-											.attr("id"));
-									removeXSS($("#email2").val(), $("#email2")
-											.attr("id"));
-									removeXSS($("#geter_name").val(), $(
-											"#geter_name").attr("id"));
-									removeXSS($("#sample6_postcode").val(), $(
-											"#sample6_postcode").attr("id"));
-									removeXSS($("#sample6_address").val(), $(
-											"#sample6_address").attr("id"));
-									removeXSS(
-											$("#sample6_detailAddress").val(),
-											$("#sample6_detailAddress").attr(
-													"id"));
-									// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
-									removeXSS($("#phone1").val(), $("#phone1")
-											.attr("id"));
-									removeXSS($("#phone2").val(), $("#phone2")
-											.attr("id"));
-									removeXSS($("#phone3").val(), $("#phone3")
-											.attr("id"));
-									removeXSS($("#req").val(), $("#req").attr(
-											"id"));
-									$("#completeForm").submit();
-								} else
-									return;
+								removeXSS($("#order_buyer").val(), $(
+										"#order_buyer").attr("id"));
+								removeXSS($("#order_phone1").val(), $(
+										"#order_phone1").attr("id"));
+								removeXSS($("#order_phone2").val(), $(
+										"#order_phone2").attr("id"));
+								removeXSS($("#order_phone3").val(), $(
+										"#order_phone3").attr("id"));
+								removeXSS($("#email1").val(), $("#email1")
+										.attr("id"));
+								removeXSS($("#email2").val(), $("#email2")
+										.attr("id"));
+								removeXSS($("#geter_name").val(), $(
+										"#geter_name").attr("id"));
+								removeXSS($("#sample6_postcode").val(), $(
+										"#sample6_postcode").attr("id"));
+								removeXSS($("#sample6_address").val(), $(
+										"#sample6_address").attr("id"));
+								removeXSS($("#sample6_detailAddress").val(), $(
+										"#sample6_detailAddress").attr("id"));
+								// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
+								removeXSS($("#phone1").val(), $("#phone1")
+										.attr("id"));
+								removeXSS($("#phone2").val(), $("#phone2")
+										.attr("id"));
+								removeXSS($("#phone3").val(), $("#phone3")
+										.attr("id"));
+								removeXSS($("#req").val(), $("#req").attr("id"));
+								var shop_q = Number($("#quant2").val());
+								var qua = Number($("#quant1").val());
+								var quant = shop_q - qua;
+								$("input[name=quant]").val(shop_q - qua);
+								alert(quant);
+								$("#completeForm").submit();
 							}
-						})//결제버튼클릭
+						});//결제버튼클릭
 
 		$(".findAdd").on("click", function() {
 
@@ -480,6 +492,9 @@ img {
 		});
 		$(".must3").on("click", function() {
 			$("#must3").click();
+		});
+		$(".must4").on("click", function() {
+			$("#must4").click();
 		});
 	</script>
 	<jsp:include page="/WEB-INF/views/module/loginModule.jsp"></jsp:include>

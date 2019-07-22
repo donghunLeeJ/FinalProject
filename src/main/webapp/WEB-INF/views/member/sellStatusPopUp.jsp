@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container-fluid">
 		<div class="row mt-5  border-bottom border-warning">
@@ -33,10 +33,11 @@
 			<div class="col-1">구매자</div>
 
 		</div>
+			<c:forEach var="tmp" items="${popup}">
 		<div class="row text-center border-bottom " style="padding: 0">
 			<div class="col-12 my-4">
 				<div class="row">
-					<div class="col-1">번 호</div>
+					<div class="col-1">{tmp.products_seq}</div>
 					<div class="col-1">주문서 번호</div>
 					<div class="col-2">주문 일시</div>
 					<div class="col-1">상품 수</div>
@@ -51,6 +52,8 @@
 			</div>
 
 		</div>
+		</c:forEach>
+		
 	</div>
 
 

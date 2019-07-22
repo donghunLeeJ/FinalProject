@@ -20,7 +20,9 @@
 		shopboard
 	</select>
 
-
+<update id="updateQ" >
+update shopboard set shop_quantity=#{m1} where shop_seq=#{m2}
+</update>
 
 
 	<insert id="ShopBoardInsert">
@@ -63,5 +65,8 @@
 	</select>
 	<select id="shopReviewCount" resultType="Integer">
 	select count(*) from shopreview where products_seq = #{products_seq}
+	</select>
+	<select id="getQuan" resultType="Integer">
+	select shop_quantity from shopboard where shop_seq = #{value}
 	</select>
 </mapper>
