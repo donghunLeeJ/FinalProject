@@ -118,9 +118,11 @@
 					<input type="text" id=brand name="shop_brand"
 						class="form-control input" placeholder="최대 10글자">
 				</div>
+
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #fbb833;vertical-align: middle;">지역</div>
 				<div class="col-lg-10 border p-0">
+
 					<select name="shop_location"
 						class="browser-default custom-select form-control input">
 						<option selected></option>
@@ -129,6 +131,7 @@
 						<option value="부산">부산</option>
 					</select>
 				</div>
+
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #fbb833;vertical-align: middle;">유통기한</div>
 				<div class="col-lg-10 border p-0">
@@ -139,7 +142,6 @@
 						type="text/javascript"></script>
 					<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
 						rel="stylesheet" type="text/css" />
-
 					<script>
 						$("#datepicker").datepicker({
 							uiLibrary : 'bootstrap4',
@@ -168,7 +170,7 @@
 					style="background: #fbb833;vertical-align: middle;">내용</div>
 				<div class="col-lg-10 border p-0 m-0">
 					<textarea style="resize: none;" id=contents name="shop_contents"
-						class="form-control input" placeholder="최대 800자"
+						class="form-control input" placeholder="최대 300자"
 						style="height: 15rem;"></textarea>
 				</div>
 				<!-- 	-정현 추가 사업자번호  -->

@@ -55,8 +55,7 @@ img {
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false"
-	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<form action="/shopboard/shopOrder?products_seq=${dto.shop_seq }"
 		id="completeForm" method="POST">
@@ -109,8 +108,9 @@ img {
 							style="text-overflow: ellipsis; margin-top: 1.4em; width: 25em; white-space: nowrap; overflow: hidden;">
 							<span><strong>${dto.shop_title }</strong> <input
 								type="hidden" value="${dto.shop_title }" name="order_title">
-								<input type="hidden" value="${dto.shop_id } "
-								name="order_seller"> </span>
+								<input type="hidden" value="${dto.shop_id } "name="order_seller"> 
+							
+								</span>
 
 						</div>
 
@@ -118,7 +118,7 @@ img {
 				</div>
 
 				<div class="col-1" style="margin-top: 1.4em">${quantity }
-					<input type="hidden" value="${quantity }" name="order_quantity">
+					<input type="hidden" value="${quantity }" name="order_quantity" id=quant1>
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
 					<fmt:formatNumber value="${price }" pattern="#,###" />
@@ -130,7 +130,7 @@ img {
 					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.shop_id }
 
 						<br>${dto.shop_brand }</small>
-
+	
 				</div>
 			</div>
 
@@ -235,7 +235,9 @@ img {
 						<input type="checkbox" id="must2">
 						<small class="must2">(필수)정확하지 않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br>
 						<input type="checkbox" id="must3">
-						<small class="must3">(필수)배송 과정 중 발생한 문제는 택배사에 문의 부탁드립니다</small>
+						<small class="must3">(필수)배송 과정 중 발생한 문제는 Akame에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br>
+						<input type="checkbox" id="must4">
+						<small class="must4">(필수)결제 후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
 
 						</p>
 
@@ -246,7 +248,8 @@ img {
 					<div class="col-12 text-center">
 						<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
 							href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a>
-
+<input type="hidden" value="" id=quant3 name=quant>
+<input type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
 
 					</div>
 				</div>
@@ -329,14 +332,14 @@ img {
 		      }else if($("#req").val().length>30){
 		    	  alert("요구사항 길이를 초과하였습니다");
 		      }else if($("#must1").is(":checked")==false){
-		    	  alert("필수사항을 읽고 체크해주세요");
+		    	  alert("필수사항1을 읽고 체크해주세요");
 		      }else if($("#must2").is(":checked")==false){
-		    	  alert("필수사항을 읽고 체크해주세요");
+		    	  alert("필수사항2를 읽고 체크해주세요");
 		      }else if($("#must3").is(":checked")==false){
-		    	  alert("필수사항을 읽고 체크해주세요");
-		      }else{
-		    	  var result=confirm("결제 후 취소,환불,교환이 어려울 수 있습니다.\n결제하시겠습니까");
-		    	  if(result){
+		    	  alert("필수사항3을 읽고 체크해주세요");
+		      }else if($("#must4").is(":checked")==false){
+		    	  alert("필수사항4를 읽고 체크해주세요");
+		      } else{
 				removeXSS($("#order_buyer").val(), $("#order_buyer").attr("id"));
 				removeXSS($("#order_phone1").val(), $("#order_phone1").attr("id"));
 				removeXSS($("#order_phone2").val(), $("#order_phone2").attr("id"));
@@ -352,10 +355,14 @@ img {
 				removeXSS($("#phone2").val(), $("#phone2").attr("id"));
 				removeXSS($("#phone3").val(), $("#phone3").attr("id"));
 				removeXSS($("#req").val(), $("#req").attr("id"));
-			    $("#completeForm").submit();
-		    	  }else return;
+				var shop_q = Number($("#quant2").val()); 
+				var qua = Number($("#quant1").val());
+				var quant =shop_q-qua;
+				$("input[name=quant]").val(shop_q-qua);
+				alert(quant);
+			    $("#completeForm").submit();		
 		      }
-		})//결제버튼클릭
+		});//결제버튼클릭
 		
 		$(".findAdd").on("click",function(){
 
@@ -464,6 +471,9 @@ img {
 		});
 		$(".must3").on("click",function(){
 			$("#must3").click();
+		});
+		$(".must4").on("click",function(){
+			$("#must4").click();
 		});
 	</script>
 	<jsp:include page="/WEB-INF/views/module/loginModule.jsp"></jsp:include>

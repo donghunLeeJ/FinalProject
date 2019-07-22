@@ -92,13 +92,20 @@ li:hover {
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
+
+	<div class="main-header-area " id="fixedNav">
+
 	<div class="main-header-area " style="background-color: white"
 		id="fixedNav">
+
 		<div class="classy-nav-container breakpoint-off "
 			style="border: 1px solid #FCBB00;">
 			<div class="container">
 				<!-- Classy Menu -->
-				<nav class="classy-navbar justify-content-between  " id="akameNav">
+
+				<nav class="classy-navbar justify-content-between  " id="akameNav"
+					style="background-color: white">
+
 
 					<!-- Logo -->
 					<a class="nav-brand" href="/home"><img
@@ -120,31 +127,36 @@ li:hover {
 						<div class="classynav">
 							<ul id="nav">
 								<li><a href="/home">Home</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="dropdown">
-										<li><a href="/home">- Home</a></li>
-										<li><a href="./about.html">- About Us</a></li>
-										<li><a href="./service.html">- 서비스 소개</a></li>
-										<li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li>
-										<li><a href="./blog.html">- sns</a></li>
-										<li><a href="/member/sellContentsGo">- 판매 내역 </a></li>
-										<li><a href="./contact.html">- Contact</a></li>
-										<li><a href="#">- Dropdown</a>
-											<ul class="dropdown">
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-											</ul></li>
-									</ul></li>
-								<li><a href="/home/service">서비스 소개</a></li>
+
+								<li><a href="#">서비스 소개</a></li>
+								<!--                         <li><a href="#">Pages</a> -->
+								<!--                            <ul class="dropdown"> -->
+								<!--                               <li><a href="/home">- Home</a></li> -->
+								<!--                               <li><a href="./about.html">- About Us</a></li> -->
+								<!--                               <li><a href="./service.html">- 서비스 소개</a></li> -->
+								<!--                               <li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li> -->
+								<!--                               <li><a href="./blog.html">- sns</a></li> -->
+								<!--                               <li><a href="/member/sellContentsGo">- 판매 내역 </a></li> -->
+								<!--                               <li><a href="./contact.html">- Contact</a></li> -->
+								<!--                               <li><a href="#">- Dropdown</a> -->
+								<!--                                  <ul class="dropdown"> -->
+								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
+								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
+								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
+								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
+								<!--                                  </ul></li> -->
+								<!--                            </ul></li> -->
 								<!--                         <li><a href="#">판매 / 구매</a> -->
 								<!--                            <ul class="dropdown"> -->
+								<li><a href="#">쪽지함</a></li>
 								<li><a href="/shopboard/shopBoardGo?page=1">구매하기</a></li>
-								<li><a onclick="loginCheck_write();">판매하기</a></li>
+								<li><a href="/shopboard/ShopBoard_write">판매하기</a></li>
+								<li><a href="/member/buyContentsGo">구매내역</a></li>
+								<li><a href="/member/sellContentsGo">판매내역</a></li>
 								<!--                            </ul> -->
 								<!--                            </li> -->
-								<li><a onclick="loginCheck_sns();">SNS</a></li>
+								<li><a href="/timeline/accessTimeLine?seq=1">SNS</a></li>
+
 
 							</ul>
 
@@ -166,6 +178,7 @@ li:hover {
 	</div>
 
 	<script>
+
  	var loginCheck_write = function(){
    		if(${id == null}){
    			alert("로그인이 필요합니다");
@@ -183,6 +196,7 @@ li:hover {
    		}
    	}
    
+
       $("#list").on("click", function() {
          if(${id == null}){
         	 alert("로그인이 필요합니다");

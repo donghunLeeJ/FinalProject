@@ -160,8 +160,8 @@
 								<div class="row pt-2 pb-4">
 									<div class="col-6  text-left">
 										<span style="margin-right: 1em; text-align: left">총 수량
-											: <strong><fmt:formatNumber
-													value="${dto.shop_quantity }" pattern="#,###" />(개)</strong>
+											: <strong><fmt:formatNumber value="${dto.shop_quantity }" pattern="#,###" />(개)</strong>
+<%-- 												: <strong><fmt:formatNumber value="${quant }" pattern="#,###" />(개)</strong> --%>
 										</span>
 									</div>
 									<div class="col-6  text-right">
@@ -358,9 +358,26 @@
 			var result = quantity * price;
 			$("#resultPrice").text(result + "원");
 			$("#resultPrice1").text(result + "원");
+			if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
+				alert("수량이 초과되었습니다.");
+				$("#quantity_one").val("1");
+			}
 		})
 		
-
+// 	$("#quantity_one").on("change", function() {
+// 				if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
+				
+// 							var quantity = $("#quantity_one").val();
+// 							location.href = "/shopboard/shopBoard_buyProc?quantity="
+// 									+ quantity + "&seq=${dto.shop_seq }"
+							
+// 				alert("수량이 초과되었습니다.");
+// 				$("#quantity_one").val("1")
+// 			}
+// 	});
+		
+		
+		
 		$("#chargeItem").on("click",function(){
 			if(${id == null}){
 				alert("로그인이 필요합니다");
@@ -379,7 +396,7 @@
 
 
 			}
-		})
+		});
 		
 		$("#basket").on("click",function() {
 			if(${id == null}){

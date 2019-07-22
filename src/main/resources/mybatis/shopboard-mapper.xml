@@ -20,7 +20,9 @@
 		shopboard
 	</select>
 
-
+<update id="updateQ" >
+update shopboard set shop_quantity=#{m1} where shop_seq=#{m2}
+</update>
 
 
 	<insert id="ShopBoardInsert">
