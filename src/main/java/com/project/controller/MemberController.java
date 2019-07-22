@@ -259,6 +259,12 @@ public class MemberController {
 
 		return "/member/sellStatusPopUp";
 	}
+
+	@RequestMapping("myMsg")
+public String myMsg() {
+		return "/member/myMsg";
+	}
+
 	
 	@RequestMapping("minilogin")
 	@ResponseBody

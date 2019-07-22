@@ -236,8 +236,8 @@ public class ShopBoardController {
 
 	@RequestMapping("/shopOrder")
 
-	public String log_order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3, String products_seq , int quant) {
+	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
+			String getter_phone1, String getter_phone2,String getter_phone3, String products_seq, int quant) {
 
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
