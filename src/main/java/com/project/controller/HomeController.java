@@ -25,5 +25,10 @@ public class HomeController {
 	public String adhome() {
 		return "admin/adminhome";
 	}
+	
+	@RequestMapping("/service")
+	public String service() {
+		return "service/service";
+	}
 
 }
