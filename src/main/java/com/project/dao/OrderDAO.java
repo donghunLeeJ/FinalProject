@@ -19,8 +19,12 @@ public class OrderDAO {
 		return sst.insert("OrderDAO.orderInsert", dto);
 	}
 
-	public List<OrderDTO> myOrderList(String id){
+	public List<OrderDTO> myOrderList(String id) {
 
-		return sst.selectList("OrderDAO.myOrderList",id);
+		return sst.selectList("OrderDAO.myOrderList", id);
+	}
+
+	public List<OrderDTO> sellOrderList(int seq) {
+		return sst.selectList("OrderDAO.sellOrderList", seq);
 	}
 }

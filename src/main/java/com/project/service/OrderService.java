@@ -13,12 +13,16 @@ public class OrderService {
 
 	@Autowired
 	private OrderDAO dao;
-	
+
 	public void orderInsert(OrderDTO odto) {
 		dao.orderInsert(odto);
 	}
 
-	public List<OrderDTO> myOrderList(String id){
+	public List<OrderDTO> myOrderList(String id) {
 		return dao.myOrderList(id);
+	}
+
+	public List<OrderDTO> sellOrderList(int seq) {
+		return dao.sellOrderList(seq);
 	}
 }

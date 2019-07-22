@@ -64,7 +64,8 @@
 
 				<div class="col-2 ">
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"><img
-						src="${i.shop_imagepath1 }" class="listimg"> </a>
+						src="${i.shop_imagepath1 }" style="width: 130px; height: 100px">
+					</a>
 				</div>
 				<div class="col-4 skip" style="margin-top: 2.3em">
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"><strong
@@ -81,49 +82,41 @@
 
 				<div class="col-1" style="padding: 0">
 
-					<input type=button class="sell_btn del_list" value="삭제 요청"
+					<input type=button class="sell_btn del_list"
+						id="del_list${i.shop_seq }" value="삭제 요청"
 						style="margin-bottom: 0.3em"> <input type=button
-						class="del_list2" value="요청중" style="margin-bottom: 0.3em">
-					<a id="sell_statusBtn" style="margin-top: 0.3em"><input
-						class="sell_btn" type="button" value="판매 현황"></a>
+						class="sell_btn del_list2" id="del_list2${i.shop_seq }"
+						value="요청중" style="margin-bottom: 0.3em; color: red"> <a
+						href="/member/sellStatus?seq=${i.shop_seq }" id="sell_statusBtn?"
+						style="margin-top: 0.3em"><input class="sell_btn"
+						type="button" value="판매 현황"></a>
 				</div>
 
 			</div>
+			<script>
+				$("#del_list2${i.shop_seq}").hide();
+
+				$("#del_list${i.shop_seq}").on("click", function() {
+					if (confirm("삭제 요청을 하나요?") == true) {
+						$("#del_list${i.shop_seq}").hide();
+						$("#del_list2${i.shop_seq}").show();
+					}
+				})
+				$("#del_list2${i.shop_seq}").on("click", function() {
+					if (confirm("삭제 요청을 취소 하나요?") == true) {
+
+						$("#del_list2${i.shop_seq}").hide();
+						$("#del_list${i.shop_seq}").show();
+
+					}
+				})
+			</script>
 
 		</c:forEach>
 	</div>
 
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
-	<script>
-		$(".del_list2").hide();
 
-		$(".del_list").on("click", function() {
-			if (confirm("삭제 요청을 하나요?") == true) {
-				$(".del_list").hide();
-				$(".del_list2").show();
-			}
-		})
-		$(".del_list2").on("click", function() {
-			if (confirm("삭제 요청을 취소 하나요?") == true) {
-
-				$(".del_list2").hide();
-				$(".del_list").show();
-
-			}
-		})
-		$("#sell_statusBtn").on("click", function() {
-			$(location).attr("href", "/member/sellStatus")
-		})
-		// 		$("#sell_statusBtn").on("click",function(){
-		// 			var popupX = (document.body.offsetWidth / 2) - (800 / 2);
-		// 			//&nbsp;만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-
-		// 			var popupY= (document.body.offsetHeight / 2) - (500 / 2);
-		// 			//&nbsp;만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
-		// 			window.open('/member/sellStatus', '', 'status=no, height=500, width=800, left='+ popupX + ', top='+ popupY);
-		// 		})
-	</script>
 </body>
 </html>
