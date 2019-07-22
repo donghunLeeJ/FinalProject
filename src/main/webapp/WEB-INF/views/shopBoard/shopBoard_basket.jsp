@@ -88,11 +88,13 @@ input[type="text"] {
 						<div class="row">
 							
 							<div class="col-4">
-								<input id="check${list.basket_seq }" price="${list.basket_price}" type="checkbox" name="check" 
+								<input id="check${list.basket_seq }"  type="checkbox" name="check" 
 									value="${list.basket_seq }" class="check" /><img
 									src="${list.basket_imagepath }">
 									
 									 <input type="hidden" name="hiddenValue" id="hiddenValue" value=""/>
+									 
+									 <input type="hidden" id="seq" value="${list.basket_seq }"/>
 							</div>
 							<div class="col-8">${list.basket_title}</div>
 
@@ -105,8 +107,8 @@ input[type="text"] {
 					<div class="col-1" style="line-height: 4em;">${list.basket_location}</div>
 
 					<div class="col-2" style="line-height: 1.4em;">
-						선결제 <br> <strong>(2,500원)</strong> <br> <small>판매자
-							브랜드 ${dto.basket_title}</small>
+						선결제 <br> <strong>(2,500원)</strong> <br> <small>${list.basket_id}/
+							 ${list.basket_brand}</small>
 					</div>
 					<div class="col-2 text-center" style="padding: 0;">
 						
@@ -135,24 +137,33 @@ input[type="text"] {
 						
 					}
 					
-// 					alert($("#toPrice${list.basket_seq }").val());	
-// 					$("#totalPrice").text(price);
+
 					})
 				
 				
 				 function fnGetdata(){
 				        var obj = $("[name=check]");
 				        var chkArray = new Array(); // 배열 선언
+				      
+				        
+				        
+				        if($('input:checkbox[name=check]:checked').is(":checked")==false){
+				        	
+				        	alert("상품을 선택하세요");
+				        }else{
 				 
 				        $('input:checkbox[name=check]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
 				            chkArray.push(this.value);
+				        	
 				        });
+				        
 				        $('#hiddenValue').val(chkArray);
+				      
 				        
 				        //alert($('#hiddenValue').val());  아래 체크박스가 모두 체크되어 있다면 1,2,3,4 가 출력 된다.
 				        
 				        location.href="/Basket/asd?basket_seq="+$("#hiddenValue").val();
-				       
+				        }
 				    }
 				
 				
@@ -172,11 +183,7 @@ input[type="text"] {
 
 
 	<script>
-		/* $("#charge").on("click",function(){
-					
-		location.href="/Basket/asd?basket_seq="+
-		$("#chargeForm").submit();
-		}) */
+		
 	
 	
 		

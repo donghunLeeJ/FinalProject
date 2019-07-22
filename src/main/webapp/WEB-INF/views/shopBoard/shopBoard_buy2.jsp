@@ -103,7 +103,6 @@ img {
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
 					<fmt:formatNumber value="${dto.basket_price }" pattern="#,###" />
-					
 					<input type="hidden" id="price${dto.basket_seq}" value="${dto.basket_price }">
 					
 					(원) <input type="hidden" value="${dto.basket_price }" name="order_price">
@@ -113,12 +112,56 @@ img {
 				<div class="col-2">
 					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.basket_id }
 
-						<br>바스켓 브랜드</small>
+						<br>${dto.basket_brand }</small>
 
 				</div>
 			</div>
-
+	
 </c:forEach>
+
+	
+
+	<div class="row border-bottom border-top bg-gray text-center py-2">
+				<div class="col-5"></div>
+
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-1"></div>
+				<div class="col-2"></div>
+				<div class="col-2">총 금액</div>
+			</div>
+		
+			
+			<div class="row border-bottom border-top text-center py-4"
+				>
+				<div class="col-5 ">
+					<div class="row">
+						<div class="col-3  pt-2 pb-2 ">
+							
+						</div>
+						<div class="col-9"
+							style="text-overflow: ellipsis; margin-top: 1.4em; width: 25em; white-space: nowrap; overflow: hidden;">
+						
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-1" >
+				</div>
+				<div class="col-1"  >
+					
+				</div>
+				<div class="col-1" ></div>
+				<div class="col-2" ></div>
+				
+				<div class="col-2">
+					
+	<fmt:formatNumber value="${price }" pattern="#,###" />(원)
+				</div>
+			</div>
+	
+
 
 
 
@@ -236,6 +279,10 @@ img {
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
+	
+	
+	
+	
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 		$("#buy_aTag").on("click", function() {
