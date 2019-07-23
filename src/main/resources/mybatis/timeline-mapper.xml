@@ -4,7 +4,7 @@
 
 	<insert id="tl_board_insert">
 		insert into tl_board
-		values(tl_board_seq.nextval,#{tl_title},#{tl_contents},#{tl_writer},#{tl_writer_profile},default,default,default,default,#{tl_imgaddr},default,'')
+		values(tl_board_seq.nextval,#{tl_title},#{tl_contents},#{tl_writer},#{tl_writer_profile},default,default,default,default,#{tl_imgaddr},default,'','없음')
 	</insert>
 
 	<select id="tl_board_showAll"
@@ -58,10 +58,10 @@
 		#{id}
 	</delete>
 	<update id="reportRegister">
-		update tl_board set tl_status = '신고', tl_reason =
-		#{tl_reason } where
-		tl_board_seq = #{tl_board_seq}
-	</update>
+	update tl_board set tl_status = '신고', tl_reason =
+	#{tl_reason }, tl_reporter = #{tl_reporter} where
+	tl_board_seq = #{tl_board_seq}
+    </update>
 	<insert id="insertMessage">
 		insert into message values
 		(message_seq.nextval,#{message_sender},#{message_getter},#{message_contents},sysdate)

@@ -21,22 +21,8 @@ text-align: center;}
 <body>
 	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
 	<div class="container">
-
-
-		<!--id로 검색하기(맨 처음은 1페이지부터 검색하도록 함) -->
-		<form action="/admin/MemberManagementIDMove" method="post">
-
-			<div class="row mt-5">
-				<div class="col-lg-7 col-md-7 col-sm-7 ml-5"></div>
-				<input id="KeyWord" name="keyword" type="text" value="${keyword}"
-					class="form-control col-lg-3 col-md-3 col-sm-3 "> <input
-					class="btn btn-outline-secondary col-lg-1 col-md-1 col-sm-1"
-					id="IdBoardSelect" type="submit" value="id로 검색">
-			</div>
-		</form>
-
-
-		<table class="table table-striped table-borderless">
+	
+		<table class="table">
 			<thead>
 				<tr class="mainrow">
 					<th scope="col">회원ID</th>
@@ -134,6 +120,18 @@ text-align: center;}
 			</c:forEach>
 
 		</div>
+		
+<!--id로 검색하기(맨 처음은 1페이지부터 검색하도록 함) -->
+		<form action="/admin/MemberManagementIDMove" method="post">
+
+			<div class="row mt-5">
+				<div class="col-lg-7 col-md-7 col-sm-7 ml-5"></div>
+				<input id="KeyWord" name="keyword" type="text" value="${keyword}"
+					class="form-control col-lg-3 col-md-3 col-sm-3 "> <input
+					class="btn btn-outline-secondary col-lg-1 col-md-1 col-sm-1"
+					id="IdBoardSelect" type="submit" value="id로 검색">
+			</div>
+		</form>
 
 		<!--컨테이너 끝 -->
 	</div>

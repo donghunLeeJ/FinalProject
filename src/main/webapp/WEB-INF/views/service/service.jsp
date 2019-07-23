@@ -253,7 +253,124 @@
 	</div>
 	</section>
 	
+	<!-- Our Expert Area Start -->
+    <section class="akame-our-expert-area about-us-page section-padding-80-0">
 
+        <!-- Side Thumbnail -->
+        <div class="side-thumbnail" style="background-image: url(/img/service-img/bonobono2.png);"></div>
+
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-12 col-lg-6">
+                    <!-- Section Heading -->
+                    <div class="section-heading">
+                        <h2>Develovers</h2>
+                        <p>인류최고의 개발자 집단. 어떤 의미로든 최고의 개발자들이 모여있고 이제 그들의 작품을 감상해보십시오.</p>
+                    </div>
+                    <!-- Our Certificate -->
+                    <div class="our-certificate-area mb-60 d-flex align-items-center">
+                        <img src="/img/core-img/certificate-1.png" alt="">
+                        <img src="/img/core-img/certificate-2.png" alt="">
+                        <img src="/img/core-img/certificate-3.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member mb-80">
+                        <div class="team-member-img">
+                            <img src="/img/service-img/suji.jpg" alt="">
+                            <!-- Social Info -->
+                            <div class="team-social-info d-flex align-items-center justify-content-center">
+                                <div class="social-link">
+                                    <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://twitter.com/?lang=ko"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-info">
+                            <h5>박상준</h5>
+                            <p>개발자</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member mb-80">
+                        <div class="team-member-img">
+                            <img src="/img/bg-img/11.jpg" alt="">
+                            <!-- Social Info -->
+                            <div class="team-social-info d-flex align-items-center justify-content-center">
+                                <div class="social-link">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-info">
+                            <h5>Teigan Duran</h5>
+                            <p>Stylist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member mb-80">
+                        <div class="team-member-img">
+                            <img src="/img/bg-img/12.jpg" alt="">
+                            <!-- Social Info -->
+                            <div class="team-social-info d-flex align-items-center justify-content-center">
+                                <div class="social-link">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-info">
+                            <h5>Tanya Ramsay</h5>
+                            <p>Hairstylist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member mb-80">
+                        <div class="team-member-img">
+                            <img src="/img/bg-img/13.jpg" alt="">
+                            <!-- Social Info -->
+                            <div class="team-social-info d-flex align-items-center justify-content-center">
+                                <div class="social-link">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-info">
+                            <h5>Donna Carr</h5>
+                            <p>Baber</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+	
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
 </html>
