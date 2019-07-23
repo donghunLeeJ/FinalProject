@@ -31,4 +31,7 @@ public class OrderDAO {
 	public List<OrderDTO> popup(int seqq){
 		return sst.selectList("OrderDAO.popup",seqq);
 	}
+	public int orderCount() {
+		return sst.selectOne("OrderDAO.orderCount");
+	}
 }
