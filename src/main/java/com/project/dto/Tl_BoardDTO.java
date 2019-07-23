@@ -23,7 +23,7 @@ public class Tl_BoardDTO {
 
 	private String tl_reporter;
 
-	public Tl_BoardDTO(){}
+
 
 	public Tl_BoardDTO(int tl_board_seq, String tl_title, String tl_contents, String tl_writer,
 			String tl_writer_profile, Date tl_writedate, String tl_formatdate, int tl_viewcount, int tl_likecount,

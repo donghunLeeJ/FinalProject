@@ -125,7 +125,7 @@
 						value="${total_price }" pattern="#,###" /></strong> 원
 			</div>
 		</div>
-		</c:forEach>
+	
 		
 	</div>
 

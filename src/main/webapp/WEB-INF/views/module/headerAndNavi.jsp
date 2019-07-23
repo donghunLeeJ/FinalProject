@@ -118,45 +118,8 @@ li:hover {
 							<span class="navbarToggler"><span></span><span></span><span></span></span>
 						</div>
 
-						<!-- Nav Start -->
-						<div class="classynav">
-							<ul id="nav">
-								<li><a href="/home">Home</a></li>
-								<li><a href="#">서비스 소개</a></li>
-								<!--                         <li><a href="#">Pages</a> -->
-								<!--                            <ul class="dropdown"> -->
-								<!--                               <li><a href="/home">- Home</a></li> -->
-								<!--                               <li><a href="./about.html">- About Us</a></li> -->
-								<!--                               <li><a href="./service.html">- 서비스 소개</a></li> -->
-								<!--                               <li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li> -->
-								<!--                               <li><a href="./blog.html">- sns</a></li> -->
-								<!--                               <li><a href="/member/sellContentsGo">- 판매 내역 </a></li> -->
-								<!--                               <li><a href="./contact.html">- Contact</a></li> -->
-								<!--                               <li><a href="#">- Dropdown</a> -->
-								<!--                                  <ul class="dropdown"> -->
-								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
-								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
-								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
-								<!--                                     <li><a href="#">- Dropdown Item</a></li> -->
-								<!--                                  </ul></li> -->
-								<!--                            </ul></li> -->
-								<!--                         <li><a href="#">판매 / 구매</a> -->
-								<!--                            <ul class="dropdown"> -->
-								<li><a href="/member/myMsg">쪽지함</a></li>
-								<li><a href="/shopboard/shopBoardGo?page=1">구매하기</a></li>
-								<li><a href="/shopboard/ShopBoard_write">판매하기</a></li>
-								<li><a href="/member/buyContentsGo">구매내역</a></li>
-								<li><a href="/member/sellContentsGo">판매내역</a></li>
-								<!--                            </ul> -->
-								<!--                            </li> -->
-								<li><a href="/timeline/accessTimeLine?seq=1">SNS</a></li>
-
-							</ul>
-
-							<!-- Cart Icon -->
-							<div class="cart-icon ml-2 mt-4 mt-lg-0">
-								<a id="list" href="#"><i class="icon_cart"></i></a>
-							</div>
+			
+					
 
 
 						<!-- Menu -->
