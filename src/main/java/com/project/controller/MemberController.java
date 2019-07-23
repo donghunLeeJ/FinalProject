@@ -233,7 +233,7 @@ public class MemberController {
 
 	}
 
-	@RequestMapping("sellContentsGo")
+	@RequestMapping("/sellContentsGo")
 	public String log_sellContetns() {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<ShopBoardDTO> sellList = SBservice.ShopBoardList(mdto.getMember_id());
@@ -250,13 +250,19 @@ public class MemberController {
 		return "/member/buyContents";
 	}
 
-	@RequestMapping("sellStatus")
-
-
-
-	public String log_sellStatus() {
-		
-
+	// 판매게시물의 판매목록
+	@RequestMapping("/sellStatus")
+	public String log_sellStatus(int seq) {
+		int total_quantity = 0;
+		int total_price = 0;
+		List<OrderDTO> dto = os.sellOrderList(seq);
+		for (int i = 0; i < dto.size(); i++) {
+			total_price += dto.get(i).getOrder_price();
+			total_quantity += dto.get(i).getOrder_quantity();
+		}
+		request.setAttribute("total_price", total_price);
+		request.setAttribute("total_quantity", total_quantity);
+		request.setAttribute("dto", dto);
 		return "/member/sellStatusPopUp";
 	}
 

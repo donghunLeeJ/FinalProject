@@ -146,7 +146,7 @@ img {
 				<div class="col-1"></div>
 				<div class="col-1"></div>
 				<div class="col-1"></div>
-				<div class="col-2"></div>
+				<div class="col-2">총 수량</div>
 				<div class="col-2">총 금액</div>
 			</div>
 		
@@ -172,7 +172,7 @@ img {
 					
 				</div>
 				<div class="col-1" ></div>
-				<div class="col-2" ></div>
+				<div class="col-2" >${amount }</div>
 				
 				<div class="col-2">
 					
@@ -317,6 +317,9 @@ img {
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp96545220'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 
+	
+
+
 		$("#origin").is("check");
 		$("#buy_aTag")
 				.on(
@@ -435,6 +438,7 @@ img {
 		$(".findAdd").on("click", function() {
 
 			$("#postbtn").click();
+
 		})
 
 		// 	배송지 radio reset 

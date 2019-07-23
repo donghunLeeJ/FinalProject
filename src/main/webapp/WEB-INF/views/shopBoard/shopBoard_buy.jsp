@@ -49,7 +49,7 @@ img {
 }
 
 .form-control[readonly] {
-	background-color: white;
+	background-color: gray;
 }
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
@@ -79,7 +79,7 @@ img {
 				</div>
 			</div>
 
-			<div class="row py-3">
+			<div class="row pt-3">
 				<div class="col-6 font-weight-bold text-bottom">
 					<span class="">주문상품 확인</span>
 				</div>
@@ -126,7 +126,7 @@ img {
 					(원) <input type="hidden" value="${price }" name="order_price">
 				</div>
 				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
-				<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
+				<div class="col-2" style="margin-top: 1.4em;color:red">${dto.shop_expiration }</div>
 				<div class="col-2">
 					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.shop_id }
 
@@ -159,6 +159,17 @@ img {
 				<div class="col-9 py-2">
 					<input type="text" name="email1" id="email1" class="empty ">
 					@ <input type="text" name="email2" id="email2" class="empty ">
+
+					<select id="selectEmail">
+						<option value="1">직접 입력</option>
+						<option value="naver.com">naver.com</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="nate.com">nate.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="hotmail.com">hotmail.com</option>
+						<option value="yahoo.co.kr">yahoo.co.kr</option>
+					</select>
+
 				</div>
 
 			</div>
@@ -179,6 +190,8 @@ img {
 
 
 
+
+
 			<div class="row border rounded">
 				<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
 				<div class="col-9 py-2">
@@ -195,6 +208,7 @@ img {
 				<div class="col-3 font-weight-bold py-2">배송지선택</div>
 				<div class="col-9 py-2">
 
+
 					<input type="text" id="sample6_postcode" class="findAdd empty"
 						name="order_receipt_postcode" placeholder="우편번호" readonly>
 					<input type="button" onclick="sample6_execDaumPostcode()"
@@ -206,7 +220,6 @@ img {
 						name="order_receipt_address2" placeholder="상세주소"
 						style="width: 25em">
 					<!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
-
 
 
 				</div>
@@ -224,12 +237,14 @@ img {
 					<input type="text" name="order_receipt_demend" style="width: 35em"
 						placeholder="(선택사항)" id="req">
 
+
 					<p style="color: blue;">
 						<small>*특정한 배송일을 지정하고자 할 경우 판매자와 연락하여 배송일을 확인해주시기 바랍니다.</small>
 					</p>
 
 				</div>
 			</div>
+
 
 
 			<div class="row py-2">
@@ -246,6 +261,7 @@ img {
 							후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
 
 					</p>
+
 
 
 
@@ -342,6 +358,7 @@ img {
 							} else if ($("#req").val().length > 30) {
 								alert("요구사항 길이를 초과하였습니다");
 							} else if ($("#must1").is(":checked") == false) {
+
 								alert("필수사항1을 읽고 체크해주세요");
 							} else if ($("#must2").is(":checked") == false) {
 								alert("필수사항2를 읽고 체크해주세요");
@@ -386,6 +403,7 @@ img {
 								$("#completeForm").submit();
 							}
 						});//결제버튼클릭
+
 
 		$(".findAdd").on("click", function() {
 
@@ -493,9 +511,24 @@ img {
 		$(".must3").on("click", function() {
 			$("#must3").click();
 		});
+
+
+		$("#selectEmail").change(function() {
+			var selectEmail = $(this).val();
+			if (selectEmail == "1") {
+				$("input[name='email2']").val("");
+				$("input[name='email2']").attr("readonly", false);
+
+			} else {
+				$("input[name='email2']").val(selectEmail);
+				$("input[name='email2']").attr("readonly", true);
+			}
+		})
+
 		$(".must4").on("click", function() {
 			$("#must4").click();
 		});
+
 	</script>
 	<jsp:include page="/WEB-INF/views/module/loginModule.jsp"></jsp:include>
 </body>

@@ -94,7 +94,8 @@
 			<div class="col-6">
 				<div class="row">
 					<div class="col-4" style="margin-top: 0.8em">
-						<img src="${ldto.order_image }">
+						<img src="${ldto.order_image }"
+							style="width: 100px; height: 100px">
 					</div>
 					<div class="col-8 text-left" style="margin-top: 1.5em">
 						<br> ${ldto.order_title }<br> <br> <small>주문번호
