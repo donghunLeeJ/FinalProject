@@ -25,6 +25,7 @@
 .quantity_btn {
 	width: 1.5em;
 	height: 1.5em;
+	padding-bottom: 1.5em;
 }
 
 .border {

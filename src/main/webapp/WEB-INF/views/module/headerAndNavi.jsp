@@ -43,6 +43,9 @@
 li:hover {
    color: #FCBB00;
 }
+#LogIN,#mypage,#logout{
+	cursor:pointer;
+}
 </style>
 <!-- Preloader -->
 <div id="preloader">

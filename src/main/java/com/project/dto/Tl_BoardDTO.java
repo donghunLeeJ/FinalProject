@@ -20,6 +20,16 @@ public class Tl_BoardDTO {
 	private String tl_imgaddr;
 	private String tl_status; 
 	private String tl_reason;
+	
+	@Override
+	public String toString() {
+		return "Tl_BoardDTO [tl_board_seq=" + tl_board_seq + ", tl_title=" + tl_title + ", tl_contents=" + tl_contents
+				+ ", tl_writer=" + tl_writer + ", tl_writer_profile=" + tl_writer_profile + ", tl_writedate="
+				+ tl_writedate + ", tl_formatdate=" + tl_formatdate + ", tl_viewcount=" + tl_viewcount
+				+ ", tl_likecount=" + tl_likecount + ", likestatus=" + likestatus + ", tl_image=" + tl_image
+				+ ", tl_imgaddr=" + tl_imgaddr + ", tl_status=" + tl_status + ", tl_reason=" + tl_reason + "]";
+	}
+
 	public Tl_BoardDTO(int tl_board_seq, String tl_title, String tl_contents, String tl_writer,
 			String tl_writer_profile, Date tl_writedate, String tl_formatdate, int tl_viewcount, int tl_likecount,
 			int likestatus, MultipartFile tl_image, String tl_imgaddr, String tl_status, String tl_reason) {
@@ -39,6 +49,7 @@ public class Tl_BoardDTO {
 		this.tl_status = tl_status;
 		this.tl_reason = tl_reason;
 	}
+	
 	public Tl_BoardDTO() {
 		super();
 	}
