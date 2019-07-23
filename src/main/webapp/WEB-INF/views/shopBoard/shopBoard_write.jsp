@@ -122,12 +122,9 @@
 						class="form-control input" placeholder="최대 10글자">
 				</div>
 
-				<div class="col-lg-2 border text-center align-middle"
-					style="background: #fbb833;vertical-align: middle;">지역</div>
-				<div class="col-lg-10 border p-0">
-
-					<select name="shop_location"
-						class="browser-default  form-control input">
+				<div class="col-lg-2 border text-center align-middle"	style="background: #fbb833;vertical-align: middle;">지역</div>
+				<div class="col-lg-4 border p-0">
+					<select name="shop_location" class="browser-default  form-control input">
 						<option selected>지역 선택</option>
 						<option value="서울">서울</option>
 						<option value="경기">경기</option>
@@ -140,17 +137,13 @@
 					</select>
 				</div>
 
+				<div class="col-lg-2 border text-center align-middle" style="background: #fbb833; vertical-align: middle;">유통기한</div>
+				<div class="col-lg-4 border p-0">
+					<input id="datepicker" name="shop_expiration" class="form-control" readonly>
+					
 
-				<div class="col-lg-2 border text-center align-middle"
-					style="background: #fbb833;vertical-align: middle;">유통기한</div>
-				<div class="col-lg-10 border p-0">
-					<input id="datepicker" name="shop_expiration" class="form-control"
-						readonly>
-
-					<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
-						type="text/javascript"></script>
-					<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
-						rel="stylesheet" type="text/css" />
+					<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"type="text/javascript"></script>
+					<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"rel="stylesheet" type="text/css" />
 
 					<script>
 					var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
@@ -168,13 +161,13 @@
 				
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #fbb833;vertical-align: middle;">가격</div>
-				<div class="col-lg-10 border p-0">
+				<div class="col-lg-4 border p-0">
 					<input type="text" id=price name="shop_price"
 						class="form-control input">
 				</div>
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #fbb833;vertical-align: middle;">수량</div>
-				<div class="col-lg-10 border p-0">
+				<div class="col-lg-4 border p-0">
 					<input type="text" id=quantity name="shop_quantity"
 						class="form-control input">
 				</div>

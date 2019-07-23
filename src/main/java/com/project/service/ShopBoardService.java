@@ -9,14 +9,21 @@ import com.project.dao.ShopBoardDAO;
 import com.project.dto.MemberDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.dto.ShopReviewDTO;
+import com.project.paging.SellPaging;
 
 @Service
 public class ShopBoardService {
 	@Autowired
 	private ShopBoardDAO sdao;
+	@Autowired
+	private SellPaging sellP;
 
 	public List<ShopBoardDTO> ShopBoardList(int currentPage) {
 		return sdao.shopBoardList(currentPage);
+	}
+	
+	public List<ShopBoardDTO> ShopBoardPageList(int page){
+		return sellP.selectShop(page);
 	}
 
 	// 판매글 관련 데이터를 삽입시킴

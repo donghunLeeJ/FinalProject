@@ -20,6 +20,10 @@ select count(*) from member where member_id=#{member_id}
 select count(*) from member where member_pw=#{member_pw}
 </select>
 
+<select id="shopCount" resultType="Integer">
+select count(*) as shopcount from shopboard
+</select>
+
 <update id="changePW">
 update member set member_pw=#{pw} where member_id=#{id} 
 </update>
