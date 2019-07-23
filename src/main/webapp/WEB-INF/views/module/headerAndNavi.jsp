@@ -232,9 +232,7 @@ li:hover {
       })
 
       $("#mypage").on("click", function() {
-
          location.href = "/member/myPage";
-
       })
    </script>
 </header>
