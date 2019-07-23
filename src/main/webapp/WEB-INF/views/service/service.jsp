@@ -8,12 +8,11 @@
 <title>About Our Service</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
-	<section class="breadcrumb-area section-padding-80">
+	<section class="breadcrumb-area section-padding-80 border">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -34,7 +33,7 @@
 	<!-- Breadcrumb Area End -->
 
 	<!-- Akame About Area Start -->
-	<section class="akame--about--area">
+	<section class="akame--about--area ">
 	<div class="container">
 		<div class="row">
 			<!-- Section Heading -->

@@ -17,5 +17,13 @@
 		products_order
 		where member_email = #{value}
 	</select>
+	
+	<select id="popup" resultType="com.project.dto.OrderDTO">
+	select * from products_order where products_seq=#{seqq}
+	</select>
+
+	<select id="sellOrderList" resultType="com.project.dto.OrderDTO">
+		select * from products_order where products_seq = #{value}
+	</select>
 
 </mapper>

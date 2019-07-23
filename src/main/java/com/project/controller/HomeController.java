@@ -30,5 +30,10 @@ public class HomeController {
 	public String service() {
 		return "service/service";
 	}
+	@RequestMapping("/minilog")
+	public String mini() {
+		return "loginMini";
+	}
+
 
 }

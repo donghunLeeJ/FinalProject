@@ -12,6 +12,7 @@ import com.project.dto.OrderDTO;
 import com.project.dto.PageDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.dto.ShopPagingDTO;
+import com.project.dto.Tl_BoardDTO;
 
 @Component
 public class AdminPaging {
@@ -133,4 +134,21 @@ public class AdminPaging {
 				return OrderBoardContentList;}
 	
 	
+			
+			
+			//각 페이지에 해당하는 게시글(SNS) 10개를 출력시키는 메소드(검색없이)
+			public List<Tl_BoardDTO> SNSBoardSelectPageList(int page){ 
+				
+				int countPage = 10;
+				int startCount = (page - 1) * countPage + 1;
+				int endCount = page * countPage;
+			
+				List<Tl_BoardDTO>SNSBoardContentList = 
+				sst.selectList("AdminDAO.PageSNSBoardSelect", new PageDTO(startCount , endCount));	
+				return SNSBoardContentList;}
+	
+			
+			
+			
+			
 }

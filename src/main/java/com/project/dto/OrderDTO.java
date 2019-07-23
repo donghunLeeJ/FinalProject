@@ -24,6 +24,18 @@ public class OrderDTO implements Cloneable{
 	private String order_receipt_demend;
 
 	
+	@Override
+	public String toString() {
+		return "OrderDTO [order_seq=" + order_seq + ", products_seq=" + products_seq + ", member_email=" + member_email
+				+ ", order_number=" + order_number + ", order_time=" + order_time + ", order_title=" + order_title
+				+ ", order_quantity=" + order_quantity + ", order_price=" + order_price + ", order_image=" + order_image
+				+ ", order_seller=" + order_seller + ", order_buyer=" + order_buyer + ", order_buyer_phone="
+				+ order_buyer_phone + ", order_buyer_email=" + order_buyer_email + ", order_receipt=" + order_receipt
+				+ ", order_receipt_postcode=" + order_receipt_postcode + ", order_receipt_address1="
+				+ order_receipt_address1 + ", order_receipt_address2=" + order_receipt_address2
+				+ ", order_receipt_phone=" + order_receipt_phone + ", order_receipt_demend=" + order_receipt_demend
+				+ "]";
+	}
 	public int getOrder_seq() {
 		return order_seq;
 	}

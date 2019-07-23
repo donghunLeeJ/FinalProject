@@ -15,24 +15,20 @@ public class Tl_BoardDTO {
 	private String tl_formatdate;
 	private int tl_viewcount;
 	private int tl_likecount;
-	private int likestatus;
+	private int tl_likestatus;
 	private MultipartFile tl_image;
 	private String tl_imgaddr;
 	private String tl_status; 
 	private String tl_reason;
-	
-	@Override
-	public String toString() {
-		return "Tl_BoardDTO [tl_board_seq=" + tl_board_seq + ", tl_title=" + tl_title + ", tl_contents=" + tl_contents
-				+ ", tl_writer=" + tl_writer + ", tl_writer_profile=" + tl_writer_profile + ", tl_writedate="
-				+ tl_writedate + ", tl_formatdate=" + tl_formatdate + ", tl_viewcount=" + tl_viewcount
-				+ ", tl_likecount=" + tl_likecount + ", likestatus=" + likestatus + ", tl_image=" + tl_image
-				+ ", tl_imgaddr=" + tl_imgaddr + ", tl_status=" + tl_status + ", tl_reason=" + tl_reason + "]";
-	}
+
+	private String tl_reporter;
+
+	public Tl_BoardDTO(){}
 
 	public Tl_BoardDTO(int tl_board_seq, String tl_title, String tl_contents, String tl_writer,
 			String tl_writer_profile, Date tl_writedate, String tl_formatdate, int tl_viewcount, int tl_likecount,
-			int likestatus, MultipartFile tl_image, String tl_imgaddr, String tl_status, String tl_reason) {
+			int tl_likestatus, MultipartFile tl_image, String tl_imgaddr, String tl_status, String tl_reason,
+			String tl_reporter) {
 		super();
 		this.tl_board_seq = tl_board_seq;
 		this.tl_title = tl_title;
@@ -43,16 +39,19 @@ public class Tl_BoardDTO {
 		this.tl_formatdate = tl_formatdate;
 		this.tl_viewcount = tl_viewcount;
 		this.tl_likecount = tl_likecount;
-		this.likestatus = likestatus;
+		this.tl_likestatus = tl_likestatus;
 		this.tl_image = tl_image;
 		this.tl_imgaddr = tl_imgaddr;
 		this.tl_status = tl_status;
 		this.tl_reason = tl_reason;
+		this.tl_reporter = tl_reporter;
 	}
+
 	
 	public Tl_BoardDTO() {
 		super();
 	}
+
 	public int getTl_board_seq() {
 		return tl_board_seq;
 	}
@@ -107,11 +106,11 @@ public class Tl_BoardDTO {
 	public void setTl_likecount(int tl_likecount) {
 		this.tl_likecount = tl_likecount;
 	}
-	public int getLikestatus() {
-		return likestatus;
+	public int getTl_likestatus() {
+		return tl_likestatus;
 	}
-	public void setLikestatus(int likestatus) {
-		this.likestatus = likestatus;
+	public void setTl_likestatus(int tl_likestatus) {
+		this.tl_likestatus = tl_likestatus;
 	}
 	public MultipartFile getTl_image() {
 		return tl_image;
@@ -137,8 +136,13 @@ public class Tl_BoardDTO {
 	public void setTl_reason(String tl_reason) {
 		this.tl_reason = tl_reason;
 	}
-	
-	
 
+	public String getTl_reporter() {
+		return tl_reporter;
+	}
 
+	public void setTl_reporter(String tl_reporter) {
+		this.tl_reporter = tl_reporter;
+	}
+	
 }

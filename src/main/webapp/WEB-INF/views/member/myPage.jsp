@@ -118,8 +118,7 @@ select {
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false"
-	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 
@@ -130,12 +129,12 @@ select {
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a href="" data-target="#profile"
 						data-toggle="tab" class="nav-link active">나의 정보</a></li>
-					<li class="nav-item"><a href="" data-target="#messages"
-						data-toggle="tab" class="nav-link">쪽지함</a></li>
-					<li class="nav-item"><a href="" data-target="#sell"
-						data-toggle="tab" class="nav-link">판매 내역</a></li>
-					<li class="nav-item"><a href="" data-target="#buy"
-						data-toggle="tab" class="nav-link">구매 내역</a></li>
+<!-- 					<li class="nav-item"><a href="" data-target="#messages" -->
+<!-- 						data-toggle="tab" class="nav-link">쪽지함</a></li> -->
+<!-- 					<li class="nav-item"><a href="" data-target="#sell" -->
+<!-- 						data-toggle="tab" class="nav-link">판매 내역</a></li> -->
+<!-- 					<li class="nav-item"><a href="" data-target="#buy" -->
+<!-- 						data-toggle="tab" class="nav-link">구매 내역</a></li> -->
 					<li class="nav-item"><a href="" data-target="#edit"
 						data-toggle="tab" class="nav-link">정보 수정</a></li>
 					<li class="nav-item"><a href="" data-target="#delId"
@@ -227,41 +226,42 @@ select {
 						</div>
 						<!--/row-->
 					</div>
-					<div class="tab-pane" id="messages">
-						<div class="alert alert-info alert-dismissable">
-							<a class="panel-close close" data-dismiss="alert">×</a> 최근 받은 쪽지
-							목록입니다
-						</div>
-						<table class="table table-hover table-striped">
-							<tbody>
-								<tr>
-									<td><span class="float-right font-weight-bold">3
-											hrs ago</span> Here is your a link to the latest summary report from
-										the..</td>
-								</tr>
-								<tr>
-									<td><span class="float-right font-weight-bold">Yesterday</span>
-										There has been a request on your account since that was..</td>
-								</tr>
-								<tr>
-									<td><span class="float-right font-weight-bold">9/10</span>
-										Porttitor vitae ultrices quis, dapibus id dolor. Morbi
-										venenatis lacinia rhoncus.</td>
-								</tr>
-								<tr>
-									<td><span class="float-right font-weight-bold">9/4</span>
-										Vestibulum tincidunt ullamcorper eros eget luctus.</td>
-								</tr>
-								<tr>
-									<td><span class="float-right font-weight-bold">9/4</span>
-										Maxamillion ais the fix for tibulum tincidunt ullamcorper
-										eros.</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					
+<!-- 					<div class="tab-pane" id="messages"> -->
+<!-- 						<div class="alert alert-info alert-dismissable"> -->
+<!-- 							<a class="panel-close close" data-dismiss="alert">×</a> 최근 받은 쪽지 -->
+<!-- 							목록입니다 -->
+<!-- 						</div> -->
+<!-- 						<table class="table table-hover table-striped"> -->
+<!-- 							<tbody> -->
+<!-- 								<tr> -->
+<!-- 									<td><span class="float-right font-weight-bold">3 -->
+<!-- 											hrs ago</span> Here is your a link to the latest summary report from -->
+<!-- 										the..</td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td><span class="float-right font-weight-bold">Yesterday</span> -->
+<!-- 										There has been a request on your account since that was..</td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td><span class="float-right font-weight-bold">9/10</span> -->
+<!-- 										Porttitor vitae ultrices quis, dapibus id dolor. Morbi -->
+<!-- 										venenatis lacinia rhoncus.</td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td><span class="float-right font-weight-bold">9/4</span> -->
+<!-- 										Vestibulum tincidunt ullamcorper eros eget luctus.</td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td><span class="float-right font-weight-bold">9/4</span> -->
+<!-- 										Maxamillion ais the fix for tibulum tincidunt ullamcorper -->
+<!-- 										eros.</td> -->
+<!-- 								</tr> -->
+<!-- 							</tbody> -->
+<!-- 						</table> -->
+<!-- 					</div> -->
 
-					<div class="tab-pane" id="sell">
+<!-- 					<div class="tab-pane" id="sell"> -->
 						<!-- 판매 내역 -->
 
 						<!--                   <ul class="btn-group pagination"> -->
@@ -275,108 +275,108 @@ select {
 						<%--                         <li><a href='<c:url value="/board/boardList?page=${mpdto.endNavi+1 }"/>'><i class="fa fa-chevron-right"></i></a></li> --%>
 						<%--                      </c:if> --%>
 						<!--                   </ul> -->
-					</div>
+<!-- 					</div> -->
 
-					<div class="tab-pane" id="buy">
-						<!-- 구매 내역 -->
-						<h4>구매하기 내역</h4>
+<!-- 					<div class="tab-pane" id="buy"> -->
+<!-- 						구매 내역 -->
+<!-- 						<h4>구매하기 내역</h4> -->
 
-						<div class="row center border-top border-bottom py-2 bg-gray">
-							<div class="col-1 ">번호</div>
-							<div class="col-2 ">이미지</div>
-							<div class="col-3">제목</div>
-							<div class="col-2 ">구매 금액</div>
-							<div class="col-1 ">수량</div>
-							<div class="col-2 ">구매 날짜</div>
-							<div class="col-1"></div>
-						</div>
-
-
-						<c:forEach var="i" items="${order }">
-							<div class="row  center border-bottom py-3 " id="clickList">
-								<div class="col-1 " style="margin-top: 2.2em">${i.order_seq }</div>
-								<!--                <div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
-								<%--                <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"> --%>
-								<div class="col-2 ">
-									<img src="${i.order_image }" class="listimg">
-								</div>
-								<div class="col-3  skip" style="margin-top: 2.2em">
-									<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq }">${i.order_title }</a>
-								</div>
-								<div class="col-2 " style="margin-top: 2.2em">
-									<fmt:formatNumber value="${i.order_price }" pattern="#,###" />
-									원
-								</div>
-								<div class="col-1 " style="margin-top: 2.2em">${i.order_quantity }개</div>
-								<div class="col-2 " style="margin-top: 2.2em">${i.order_time }</div>
-								<div class="col-1" style="margin-top: 1.0em; padding: 0">
-									<!-- Button to Open the Modal -->
-									<button type="button" class=" mypage_btn1" data-toggle="modal"
-										data-target="#myModal">댓글 작성</button>
-									<button class="mypage_btn2">환불 요청</button>
-									<!-- The Modal -->
-									<form
-										action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}"
-										method="POST">
-										<div class="modal modal-xl fade " id="myModal">
-											<div class="modal-dialog ">
-												<div class="modal-content">
-
-													<!-- Modal Header -->
-													<div class="modal-header">
-														<h3 class="modal-title">댓글 작성</h3>
-														<button type="button" class="close" data-dismiss="modal">&times;</button>
-													</div>
-
-													<!-- Modal body -->
-													<div class="modal-body ">
-														<div class="row border-bottom">
-															<div class="col-12">
-																<p>
-																	작성 된 댓글은 삭제할 수 없습니다.&nbsp;<strong>(수정 가능)</strong>
-																</p>
-															</div>
-														</div>
-														<div class="row py-3">
-															<div class="col-3 text-right" style="padding: 0">
-																<select style="height: 2em;" name="star_review">
-																	<option value="5">★★★★★</option>
-																	<option value="4">★★★★</option>
-																	<option value="3">★★★</option>
-																	<option value="2">★★</option>
-																	<option value="1">★</option>
-																</select>
-															</div>
-															<div class="col-9" style="padding: 0">
-																<input type="text" name="title" placeholder="제목"
-																	style="width: 21em; height: 2em;">
-															</div>
-															<div class="col-12 py-3">
-																<textarea name="contents" cols="56" rows="10"></textarea>
-															</div>
-														</div>
-
-													</div>
+<!-- 						<div class="row center border-top border-bottom py-2 bg-gray"> -->
+<!-- 							<div class="col-1 ">번호</div> -->
+<!-- 							<div class="col-2 ">이미지</div> -->
+<!-- 							<div class="col-3">제목</div> -->
+<!-- 							<div class="col-2 ">구매 금액</div> -->
+<!-- 							<div class="col-1 ">수량</div> -->
+<!-- 							<div class="col-2 ">구매 날짜</div> -->
+<!-- 							<div class="col-1"></div> -->
+<!-- 						</div> -->
 
 
-													<!-- Modal footer -->
-													<div class="modal-footer">
-														<input type="submit" class="btn" value="댓글 작성">
-														<button type="button" class="btn" data-dismiss="modal">댓글
-															취소</button>
-													</div>
+<%-- 						<c:forEach var="i" items="${order }"> --%>
+<!-- 							<div class="row  center border-bottom py-3 " id="clickList"> -->
+<%-- 								<div class="col-1 " style="margin-top: 2.2em">${i.order_seq }</div> --%>
+<!-- 								               <div class="col-2 float center" ><input type=button class="btn-danger"  value="요청중"></div> -->
+<%-- 								               <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"> --%>
+<!-- 								<div class="col-2 "> -->
+<%-- 									<img src="${i.order_image }" class="listimg"> --%>
+<!-- 								</div> -->
+<!-- 								<div class="col-3  skip" style="margin-top: 2.2em"> -->
+<%-- 									<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq }">${i.order_title }</a> --%>
+<!-- 								</div> -->
+<!-- 								<div class="col-2 " style="margin-top: 2.2em"> -->
+<%-- 									<fmt:formatNumber value="${i.order_price }" pattern="#,###" /> --%>
+<!-- 									원 -->
+<!-- 								</div> -->
+<%-- 								<div class="col-1 " style="margin-top: 2.2em">${i.order_quantity }개</div> --%>
+<%-- 								<div class="col-2 " style="margin-top: 2.2em">${i.order_time }</div> --%>
+<!-- 								<div class="col-1" style="margin-top: 1.0em; padding: 0"> -->
+<!-- 									Button to Open the Modal -->
+<!-- 									<button type="button" class=" mypage_btn1" data-toggle="modal" -->
+<!-- 										data-target="#myModal">댓글 작성</button> -->
+<!-- 									<button class="mypage_btn2">환불 요청</button> -->
+<!-- 									The Modal -->
+<!-- 									<form -->
+<%-- 										action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}" --%>
+<!-- 										method="POST"> -->
+<!-- 										<div class="modal modal-xl fade " id="myModal"> -->
+<!-- 											<div class="modal-dialog "> -->
+<!-- 												<div class="modal-content"> -->
 
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-								<!--                </a> -->
-							</div>
+<!-- 													Modal Header -->
+<!-- 													<div class="modal-header"> -->
+<!-- 														<h3 class="modal-title">댓글 작성</h3> -->
+<!-- 														<button type="button" class="close" data-dismiss="modal">&times;</button> -->
+<!-- 													</div> -->
+
+<!-- 													Modal body -->
+<!-- 													<div class="modal-body "> -->
+<!-- 														<div class="row border-bottom"> -->
+<!-- 															<div class="col-12"> -->
+<!-- 																<p> -->
+<!-- 																	작성 된 댓글은 삭제할 수 없습니다.&nbsp;<strong>(수정 가능)</strong> -->
+<!-- 																</p> -->
+<!-- 															</div> -->
+<!-- 														</div> -->
+<!-- 														<div class="row py-3"> -->
+<!-- 															<div class="col-3 text-right" style="padding: 0"> -->
+<!-- 																<select style="height: 2em;" name="star_review"> -->
+<!-- 																	<option value="5">★★★★★</option> -->
+<!-- 																	<option value="4">★★★★</option> -->
+<!-- 																	<option value="3">★★★</option> -->
+<!-- 																	<option value="2">★★</option> -->
+<!-- 																	<option value="1">★</option> -->
+<!-- 																</select> -->
+<!-- 															</div> -->
+<!-- 															<div class="col-9" style="padding: 0"> -->
+<!-- 																<input type="text" name="title" placeholder="제목" -->
+<!-- 																	style="width: 21em; height: 2em;"> -->
+<!-- 															</div> -->
+<!-- 															<div class="col-12 py-3"> -->
+<!-- 																<textarea name="contents" cols="56" rows="10"></textarea> -->
+<!-- 															</div> -->
+<!-- 														</div> -->
+
+<!-- 													</div> -->
 
 
-						</c:forEach>
-					</div>
+<!-- 													Modal footer -->
+<!-- 													<div class="modal-footer"> -->
+<!-- 														<input type="submit" class="btn" value="댓글 작성"> -->
+<!-- 														<button type="button" class="btn" data-dismiss="modal">댓글 -->
+<!-- 															취소</button> -->
+<!-- 													</div> -->
+
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</form> -->
+<!-- 								</div> -->
+<!-- 								               </a> -->
+<!-- 							</div> -->
+
+
+<%-- 						</c:forEach> --%>
+<!-- 					</div> -->
 
 					<div class="tab-pane col-lg-12" id="edit">
 						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
