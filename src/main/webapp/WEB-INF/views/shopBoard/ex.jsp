@@ -11,10 +11,6 @@
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
- #img1{ 
-/*  width:250px;  */
-height:210px; 
- } 
 
 </style>
 </head>
@@ -54,31 +50,23 @@ height:210px;
             <div class="container">
 
                <div class="row">
-
                   <c:forEach var="i" items="${boardList }">
+<!--                   <div   class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp" data-wow-delay="500ms"> -->
+<!--                   <div class="akame-portfolio-single-item" style="height: 250px"> -->
                   <c:choose>
-                  <c:when test="${i.shop_quantity eq 0}">
-                <div   class="col-12 col-sm-6 col-lg-3  mb-5 " data-wow-delay="500ms">
-                        <div class="" style="height: 250px">
-                           
-                           	 <div style="position: absolute;">
+					<c:when test="${i.shop_quantity eq 0}">
+ 					<div   class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts wow fadeInUp mb-5p" data-wow-delay="500ms">
+								<div  class="akame-portfolio" style="height: 250px">
+								 <div style="position: absolute;">
 								   <div style="position: relative; top: 70px; left: 0px;">
 								   <img src="/img/core-img/soldout.png" >
 								</div>
 								</div>
 								<img src="${i.shop_imagepath1 }" id="img1"  alt="" >
-
-                           <!-- Thumbnail Zoom -->
-                           <a href="#}" class=""><i class=""></i></a>
-                        </div>
-                        <div class="team-member-info border">
-                           <div class="row">
-                              <div class="col-12"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </c:when>
-                  <c:otherwise>
+								</div>
+								</div>
+					</c:when>
+					<c:otherwise>
                      <div   class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp" data-wow-delay="500ms">
                         <div class="akame-portfolio-single-item" style="height: 250px">
                            <img src="${i.shop_imagepath1 }" id="img1" alt="">
@@ -94,19 +82,21 @@ height:210px;
                                  </p>
                               </div>
                            </div>
-
                            <!-- Thumbnail Zoom -->
                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a>
                         </div>
+                     </div>
                         <div class="team-member-info border">
                            <div class="row">
                               <div class="col-12"></div>
                            </div>
                         </div>
-                     </div>
                         </c:otherwise>
 									</c:choose>
+<!--                         </div> -->
+<!--                         </div> -->
                   </c:forEach>
+                    </div>
 
 
                </div>
@@ -115,7 +105,7 @@ height:210px;
          </div>
          <div class="col-lg-2"></div>
       </div>
-   </div>
+  
 
    </section>
 

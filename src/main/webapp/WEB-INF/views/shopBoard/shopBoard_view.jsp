@@ -373,7 +373,7 @@
 				alert("수량이 초과되었습니다.");
 				$("#quantity_one").val("1");
 			}
-		})
+		});
 		
 // 	$("#quantity_one").on("change", function() {
 // 				if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
@@ -455,13 +455,18 @@
 		//버튼클릭시 수량 추가
 		$("#up_btn").on("click", function() {
 			upCount();
+		
 			var quantity = Number($("#quantity_one").val());
 			var price = Number($("#price").val());
 			var result = quantity * price;
 			$("#resultPrice").text(result + "원");
 			$("#resultPrice1").text(result + "원");
+			if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
+				alert("수량이 초과되었습니다.");
+				$("#quantity_one").val("1");
+			}
 
-		})
+		});
 
 		//버튼클릭시 수량 감소
 		$("#down_btn").on("click", function() {
