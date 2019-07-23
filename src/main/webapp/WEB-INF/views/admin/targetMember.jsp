@@ -103,7 +103,7 @@
 
 									}).fail(function() {
 
-										alert("왜 에러뜨지");
+										alert("에러 발생!");
 
 									});
 

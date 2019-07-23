@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.dto.MemberDTO;
+import com.project.dto.MessageDTO;
 import com.project.dto.ShopBoardDTO;
+import com.project.dto.Tl_BoardDTO;
 import com.project.dto.ViewDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.AdminService;
@@ -50,22 +52,22 @@ public class AdminController {
 	}
 
 	
-	//관리자 메인페이지에서 회원관리 페이지로 이동
+	//회원관리 페이지로 이동
 	@RequestMapping("MemberManagementMove")
 	public String MemberManagementMove(){
 		return "redirect:MemberManagementProc?page=1";}
 
-	//관리자 메인페이지에서 판매글 관리 페이지로 이동
+	//판매글 관리 페이지로 이동
 	@RequestMapping("ShopBoardManagementMove")
 	public String ShopBoardManagementMove(){
 		return "redirect:ShopBoardManagementProc?page=1";}
 
-	//관리자 메인페이지에서 구매내역 관리 페이지로 이동
+	//구매내역 관리 페이지로 이동
 	@RequestMapping("OrderManagementMove")
 	public String OrderManagementMove(){
 		return "redirect:OrderManagementProc?page=1";}
 
-	//관리자 메인페이지에서 SNS신고 페이지로 이동
+	//SNS신고 페이지로 이동
 	@RequestMapping("TimeLineManagementMove")
 	public String TimeLineManagementMove(){
 		return "redirect:TimeLineManagementProc?page=1";}
@@ -150,18 +152,18 @@ public class AdminController {
 		@RequestMapping("TimeLineManagementProc")
 		public String TimeLineManagement(int page){
 
-		//int totalcount = aservice.OrderBoardCount();
+		int totalcount = aservice.SNSBoardCount();
 
-		//List<String>pageList = aservice.Page(page, totalcount);
-		//request.setAttribute("OrderBoardList", aservice.OrderBoardSelectPageList(page));
+		List<String>pageList = aservice.Page(page, totalcount);
+		request.setAttribute("SNSBoardList", aservice.SNSBoardSelectPageList(page));
 
-		//request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
-		//request.setAttribute("page", page);//현재 페이지임
+		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
+		request.setAttribute("page", page);//현재 페이지임
 
+		
 			return "admin/TimeLineManagement";}
 		
 		
-
 		//주문번호검색
 		@RequestMapping("OrderNumberSelectProc")
 		public String OrderNumberSelect(String order_number){
@@ -213,7 +215,7 @@ public class AdminController {
 		}
 
 		
-        //관리자 권한으로 글을 삭제시킴
+		//관리자 권한으로 판매글을 삭제시킴
 		@RequestMapping("AdminDeleteShopBoard")
 		public String DeleteShopBoard(String shop_seq){	
 
@@ -228,7 +230,73 @@ public class AdminController {
 
 			return "에러 발생!!";}
 
+
+		//관리자가 SNS관리 게시판에서 신고문구를 클릭하는 순간 이동한다.
+		//이때 신고사유를 가져오는 메소드
+		@RequestMapping("SNSReport")
+		public String SNSReport(String tl_board_seq){
+
+			Tl_BoardDTO SNSReport =  aservice.SNSSeqSelectAll(tl_board_seq);
+			request.setAttribute("SNSReport", SNSReport);
+
+			return "admin/report";}
+			
+				
+		//관리자 권한으로 불량SNS글을 삭제시킴
+		@RequestMapping("AdminDeleteSNS")
+		public String DeleteSNS(String tl_board_seq){	
+
+			System.out.println("시퀀스 번호" + tl_board_seq);
+
+			int result = aservice.AdminDeleteSNSBoard(tl_board_seq);
+
+			if(result > 0){
+
+				return "redirect:TimeLineManagementProc?page=1";
+			}
+
+			return "에러 발생!!";}
+
 		
+		//신고접수 후 그 결과를 신고자에게 보낸다.(메시지 테이블에 저장시킴)
+		@ResponseBody
+		@RequestMapping(value="ReportSandMessage", produces = "application/text; charset=utf8")
+		public String ReportSandMessage(MessageDTO dto){
+
+			dto.setMessage_sender("관리자");
+
+			int result = aservice.AdminReportSandInsert(dto);
+
+			if(result > 0) {
+
+				return "정상적으로 메시지를 보냈습니다.";
+
+			}else {
+
+				return "에러 발생!";  	   
+			}
+		}
+			
+	
+		//만일 신고사유가 글삭제까지 할 이유가 없을 경우 글의 상태를 신고에서 노멀로 바꾸는 메소드
+		//(추가로 신고사유와 신고자도 공란으로 비워두어야 함)
+		@ResponseBody
+		@RequestMapping(value="ReportCancel", produces = "application/text; charset=utf8")
+		public String ReportCancel(String tl_board_seq){
+
+			System.out.println("입력받은 시퀀스값!!!!: "+tl_board_seq);
+			int result = aservice.AdminReportCancel(tl_board_seq);
+			
+			if(result > 0) {
+				
+				return "정상적으로 처리 완료.";
+				
+			}else {
+				
+				return "에러 발생!!";			
+			}		
+		}
+				
 		
 		//home에서 받아온 세션 정보에 따라 방문자수 카운트를 증가시키거나 유지시킴
 		@ResponseBody
@@ -236,7 +304,6 @@ public class AdminController {
 		public String VisitViewCondition(String access){
 
 			if(access.equals("1")){
-
 				System.out.println("이미 접속중인 세션이므로 세션이 만료될 때까지 방문자수 증가 없음");
 
 			}else{

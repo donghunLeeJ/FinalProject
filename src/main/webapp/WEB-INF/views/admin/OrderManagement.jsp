@@ -27,8 +27,6 @@ table {
 <body>
 	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
 	<div class="container">
-		<div id="pageNumber">
-
 			<table class="table">
 				<thead>
 					<tr class="row mainrow">
@@ -78,8 +76,10 @@ table {
 
 				</c:choose>
 			</table>
-
-
+			
+			
+      <div id="pageNumber">
+      
 			<c:forEach var="i" items="${pageList}">
 				<c:choose>
 
