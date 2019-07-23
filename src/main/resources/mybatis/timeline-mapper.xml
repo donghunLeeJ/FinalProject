@@ -81,6 +81,13 @@
 	</select>
 
 
+	<select id="messageSeter" resultType="com.project.dto.MessageDTO">
+		select * from message where message_sender=#{value}
+	</select>
+	
+	<select id="messageGetter" resultType="com.project.dto.MessageDTO">
+		select * from message where message_getter=#{value}
+	</select>
 
 
 </mapper>

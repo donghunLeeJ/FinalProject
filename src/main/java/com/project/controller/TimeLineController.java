@@ -254,12 +254,24 @@ public class TimeLineController {
 		return "timeLine/messageWindow";
 
 	}
+	
+	
+	@RequestMapping("messageList")
+	public String message() {
+		
+		String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
+		request.setAttribute("Message", tls.messageSeter(id));
+		request.setAttribute("getter", tls.messageGetter(id));
+		
+		return "/member/message";
+	}
+	
+	
+	
+	
 	@RequestMapping("/messageProc")
 	public String messageProc(MessageDTO dto) {
-		System.out.println(dto.getMessage_getter());
-		System.out.println(dto.getMessage_sender());
-		System.out.println(dto.getMessage_contents());
-		request.setAttribute("result", tls.insertMessage(dto));
+		
 		return "timeLine/messageProc";
 
 	}
@@ -272,5 +284,7 @@ public class TimeLineController {
 		return seqs;
 		
 	}
+	
+	
 	
 }

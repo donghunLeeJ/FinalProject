@@ -65,5 +65,10 @@ public class TimeLineService {
    public int selectlikeCount(String seq){
 	   return dao.selectlikeCount(seq);
    }
-
+   public List<MessageDTO> messageSeter(String id){
+	   return dao.showSeter(id);
+   }
+   public List<MessageDTO> messageGetter(String id){
+	   return dao.showgetter(id);
+   }
 }
