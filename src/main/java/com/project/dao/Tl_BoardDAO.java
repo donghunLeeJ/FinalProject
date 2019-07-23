@@ -19,7 +19,8 @@ public class Tl_BoardDAO {
    private SqlSessionTemplate sst;
    
    public int write(Tl_BoardDTO dto) {
-      return sst.insert("Tl_BoardDAO.tl_board_insert",dto);
+	   System.out.println(dto.toString());
+	   return sst.insert("Tl_BoardDAO.tl_board_insert",dto);
    }
    
    public List<Tl_BoardDTO> showAll(int page){

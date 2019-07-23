@@ -45,11 +45,11 @@ height:27px;
             <div class="row">
                 <div class="col-12">
                     <!-- Form -->
-                    <form action="/member/loginProc" method="post" class="akame-contact-form border-0 p-0">
+                    <form action="/member/loginProc" id="login" method="post" class="akame-contact-form border-0 p-0">
                         <div class="row" >
                             <div class="col-lg-12 text-center">
                           	  <h3>ID</h3>
-                                <input type="text" style="width: 50%;margin: auto;" name="member_id" class="form-control mb-30" placeholder="id">
+                                <input type="text" style="width: 50%; margin: auto;" name="member_id" class="form-control mb-30" placeholder="id">
                             </div>
                             <div class="col-lg-12 text-center" >
                                 <h3>Password</h3> 
@@ -87,7 +87,10 @@ height:27px;
 		$("#find").on("click", function() {
 			location.href = "/member/findinfo"
 		})
-
+		
+		function press(f){ if(f.keyCode == 13){  
+        	 $("#login").submit();  
+        	 } }
 	</script>
 </body>
 </html>
