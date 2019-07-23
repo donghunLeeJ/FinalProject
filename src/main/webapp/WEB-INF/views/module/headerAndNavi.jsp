@@ -114,7 +114,7 @@ li:hover {
 						<div class="classy-navbar-toggler">
 							<span class="navbarToggler"><span></span><span></span><span></span></span>
 						</div>
-<<<<<<< HEAD
+
 						<!-- Nav Start -->
 						<div class="classynav">
 							<ul id="nav">
@@ -154,8 +154,7 @@ li:hover {
 							<div class="cart-icon ml-2 mt-4 mt-lg-0">
 								<a id="list" href="#"><i class="icon_cart"></i></a>
 							</div>
-=======
->>>>>>> f404cc0344bc1bbe57031c9eb83fdc668b0446e6
+
 
 						<!-- Menu -->
 						<div class="classy-menu">
