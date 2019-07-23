@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<footer class="footer-area section-padding-80-0"
+<footer class="footer-area border"
 	oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
-	<div class="container-fluid" style="background-color: #FCBB00">
+	<div class="container-fluid border" style="background-color: #FFF8E7">
 		<div class="container">
 			<div class="row justify-content-between">
 

@@ -45,7 +45,7 @@ input[type="text"] {
 		<div class="row ">
 			<div class="col-12">
 				<div class="breadcrumb-content">
-					<h2>장바구니</h2>
+					<h2 style="font-family :'나눔고딕OTF';">장바구니</h2>
 					<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/home"><i

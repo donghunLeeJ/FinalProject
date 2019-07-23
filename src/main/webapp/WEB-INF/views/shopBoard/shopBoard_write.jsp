@@ -32,7 +32,7 @@
 		<div class="row ">
 			<div class="col-12">
 				<div class="breadcrumb-content">
-					<h2>판매하기</h2>
+					<h2 style="font-family :'나눔고딕OTF';">판매하기</h2>
 					<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/home"><i
@@ -49,7 +49,7 @@
 	
 	
 	
-	<!-- <section class="welcome-area"> -->
+	<section class="welcome-area bg-gray ">
 
 	<form id="SBwrite" action="/shopboard/ShopBoardInsertProc"
 		enctype="multipart/form-data" method="post">
@@ -67,7 +67,7 @@
 				</div>
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #fbb833;vertical-align: middle;"">이미지</div>
-				<div class="col-lg-10 border p-0">
+				<div class="col-lg-10 border p-0" style="background: white;">
 					<div class="row">
 						<div class="col-lg-4 col-md-4 col-sm-4 ">
 							<div class="row ml-3">
@@ -188,7 +188,7 @@
 				<!-- 	-정현 추가 사업자번호  -->
 				<input type="hidden" value="${id.memberSell_seq }" name="sell_seq">
 
-				<div class="col-lg-12 text-center">
+				<div class="col-lg-12 text-center mb-5" >
 					<input id="submitbtn" type="button" value="제출"
 						class="btn akame-btn btn-3 mt-15 active">
 				</div>
@@ -199,6 +199,7 @@
 		</div>
 
 	</form>
+	</section>
 	<script>
 		$('#files')
 				.change(

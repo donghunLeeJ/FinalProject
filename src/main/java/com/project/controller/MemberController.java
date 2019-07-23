@@ -253,7 +253,8 @@ public class MemberController {
 		List<String> pageList = os.Page(page,count);
 		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
 		request.setAttribute("page", page);//현재 페이지임
-		
+
+
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<OrderDTO> buyList = os.orderTenList(page);
 

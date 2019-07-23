@@ -9,7 +9,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
 .headerbtn {
-	border: 0px solid #FCBB00;
+	border: 0px solid gray;
 	background-color: rgba(0, 0, 0, 0);
 	color: white;
 	padding: 5px;
@@ -41,7 +41,7 @@
 
 .btn:hover {
 	background-color: white;
-	border: 1px solid #FCBB00;
+	border: 1px solid gray;
 	color: black;
 }
 
@@ -61,7 +61,7 @@ li:hover {
 <header class="header-area" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
-	<div class="top-header-area" style="background-color: #FCBB00">
+	<div class="top-header-area" style="background-color: #FFF8E7">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
@@ -101,13 +101,13 @@ li:hover {
 		<div class="main-header-area " style="background-color: white"
 			id="fixedNav">
 
-			<div class="classy-nav-container breakpoint-off "
-				style="border: 1px solid #FCBB00;">
+			<div class="classy-nav-container breakpoint-off border"
+				">
 				<div class="container">
 					<!-- Classy Menu -->
 
-					<nav class="classy-navbar justify-content-between  " id="akameNav"
-						style="background-color: white">
+					<nav class="classy-navbar justify-content-between " id="akameNav"
+						>
 
 
 						<!-- Logo -->

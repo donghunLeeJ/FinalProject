@@ -133,7 +133,7 @@
 			<div class="col-2 border text-center ">
 				<strong>승인 번호</strong>
 			</div>
-			<div class="col-10 border bg-gray">35373975</div>
+			<div class="col-10 border bg-gray">${ldto[0].order_number }</div>
 
 			<div class="col-2 border text-center">
 				<strong>할부 개월</strong>
@@ -145,7 +145,7 @@
 			</div>
 			<div class="col-10 border bg-gray">
 				<span><fmt:formatNumber value="1"
-						pattern="#,###" /> 원</span>
+						pattern="#,###" />${priceTotal } 원</span>
 			</div>
 		</div>
 
