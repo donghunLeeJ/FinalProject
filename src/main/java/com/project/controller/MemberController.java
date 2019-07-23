@@ -242,7 +242,7 @@ public class MemberController {
 		return "/member/sellContents";
 	}
 	@RequestMapping("buyContentsGo")
-	public String buyContetns() {
+	public String log_buyContetns() {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<OrderDTO> buyList = os.myOrderList(mdto.getMember_id());
 
