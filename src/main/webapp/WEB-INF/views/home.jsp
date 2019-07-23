@@ -74,7 +74,7 @@ body { font-family :'나눔고딕OTF';}
 	</section>
 	<section class="why-choose-us-area bg-gray section-padding-80-0">
 		<div class="container">
-			<div class="row">
+			<div class="row mb-5">
 				<div class="col-12 border-bottom p-2">
 					<h2 style="font-family :'나눔고딕OTF';">□ 최근 등록 상품 <a href="/shopboard/shopBoardGo?page=1"><span style="font-size: small;">더보기</span></a></h2>
 				</div>	
@@ -117,7 +117,7 @@ body { font-family :'나눔고딕OTF';}
 	</section>
 	<section class="contact-information-area section-padding-80-0">
         <div class="container">
-            <div class="row">
+            <div class="row mb-5">
             	<div class="col-12 border-bottom mb-5 p-2">
 					<h2 style="font-family :'나눔고딕OTF';">□ 오시는 길</h2>
 				</div>	

@@ -67,7 +67,7 @@
 					<div class="single-footer-widget mb-80">
 
 						<!-- Widget Title -->
-						<h4 class="widget-title">고객센터 C/S Center</h4>
+						<h4 class="widget-title" style="font-family :'나눔고딕OTF';">고객센터 C/S Center</h4>
 
 						<!-- Contact Address -->
 						<div class="contact-address">

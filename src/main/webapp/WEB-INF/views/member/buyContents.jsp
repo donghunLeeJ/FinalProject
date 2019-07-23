@@ -24,8 +24,8 @@ select {
 }
 
 .sell_btn {
-	background: #FCBB00;
-	color: #fff;
+	background: #FFF8E7;
+	color: black;
 	border: 1px solid black;
 	border-radius: 5px;
 	box-shadow: 5px 5px 5px #eee;
@@ -35,7 +35,7 @@ select {
 }
 
 .sell_btn:hover {
-	color: white;
+	color: black;
 	border: black;
 	border-radius: 5px;
 	box-shadow: 5px 5px 5px #eee;
@@ -48,14 +48,15 @@ height:110px;
 </head>
 <body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
-		<div class="row border-bottom  mt-5 pb-1 border-warning">
+		<div class="row border-bottom  mt-5 pb-1">
 			<div class="col-12">
-				<h4>구매 내역 확인</h4>
+				<h4 style="font-family :'나눔고딕OTF';">구매 내역 확인</h4>
 			</div>
 		</div>
 		<div
-			class="row border-top border-bottom border-warning text-center py-1">
+			class="row border-top border-bottom  text-center py-1"style="background: #dde1e5">
 			<div class="col-2">이미지</div>
 			<div class="col-4">제목</div>
 			<div class="col-1">총 수량</div>
@@ -67,7 +68,7 @@ height:110px;
 
 		<c:forEach var="i" items="${buyList }">
 
-			<div class="row text-center border-bottom border-warning py-3">
+			<div class="row text-center border py-3" style="background: white">
 
 				<div class="col-2 ">
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}">
@@ -179,7 +180,7 @@ height:110px;
       </div>
       
 	</div>
-
+	</section>
 
 								
 

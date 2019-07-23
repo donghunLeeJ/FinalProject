@@ -33,7 +33,7 @@
 	<!-- Breadcrumb Area End -->
 
 	<!-- Akame About Area Start -->
-	<section class="akame--about--area ">
+	<section class="akame--about--area bg-gray">
 	<div class="container">
 		<div class="row">
 			<!-- Section Heading -->

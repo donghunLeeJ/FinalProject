@@ -516,9 +516,9 @@ select {
 						</div>
 					</div>
 					<div class="tab-pane" id="delId">
-						<h1>그동안 저희 사이트를 이용해 주셔서 감사합니다</h1>
+						<h1 style="font-family :'나눔고딕OTF';" class="my-5">그동안 저희 사이트를 이용해 주셔서 감사합니다</h1>
 						<p>
-						<h3>본인확인을 위해 정보를 입력해주세요</h3>
+						<h3 style="font-family :'나눔고딕OTF';" class="my-5">본인확인을 위해 정보를 입력해주세요</h3>
 						<form id="delform" action="/member/delOK">
 							<div class="form-group row">
 								<label class="col-lg-3 col-form-label form-control-label">아이디</label>

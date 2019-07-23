@@ -93,7 +93,7 @@
 							<div class="col-6">
 								<div class="row pb-4 border-bottom">
 									<div class="col-12">
-										<h4>
+										<h4 style="font-family :'나눔고딕OTF';">
 											<strong>[${dto.shop_brand}] &nbsp;
 												&nbsp;${dto.shop_title }</strong>
 										</h4>
@@ -262,8 +262,8 @@
 					<!-- 리뷰 작성 -->
 					<div class="tab-pane" id="messages">
 						<div class="row border-bottom py-3 ">
-							<div class="col-12">
-								<h2>프리미엄 상품평</h2>
+							<div class="col-12" >
+								<h2 style="font-family :'나눔고딕OTF';">프리미엄 상품평</h2>
 							</div>
 						</div>
 						<c:forEach var="i" items="${ review}">
