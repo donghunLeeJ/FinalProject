@@ -37,6 +37,16 @@
 	border-radius: 5px;
 	box-shadow: 5px 5px 5px #eee;
 }
+.navi{
+border:1px solid red;
+
+}
+.center{
+text-align:center;
+}
+
+ 
+
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
@@ -57,8 +67,8 @@
 			<div class="col-1">요청</div>
 		</div>
 
-
 		<c:forEach var="i" items="${sellList }">
+
 <%-- <input type="hidden" value="${i.shop_seq}" id=seqq name=seqq> --%>
 			<div class="row text-center border-bottom border-warning py-3">
 
@@ -111,8 +121,29 @@
 					}
 				})
 			</script>
-
 		</c:forEach>
+		
+			<div class="list_n_menu">
+			<c:forEach var="i" items="${pageList}">
+				<c:choose>
+
+					<c:when test="${i eq '<이전'}">
+						<span class="navi mr-1 center"><a href="sellContentsGoProc?page=${page-1}" class="center">${i}</a></span>
+					</c:when>
+
+					<c:when test="${i eq '다음>'}">
+						<span class="navi mr-1 center"><a href="sellContentsGoProc?page=${page+1}" class="center">${i}</a></span>
+					</c:when>
+
+					<c:otherwise>
+					<span class="navi mr-1 center"><a href="sellContentsGoProc?page=${i}" class="center">${i}</a></span>
+					</c:otherwise>
+
+				</c:choose>
+			</c:forEach>
+		</div>
+		
+		
 	</div>
 
 

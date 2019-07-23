@@ -137,7 +137,7 @@
 					</select>
 				</div>
 
-				<div class="col-lg-2 border text-center align-middle" style="background: #e6e7e8; vertical-align: middle;">유통기한</div>
+				<div class="col-lg-2 border text-center align-middle" style="background: #fbb833; vertical-align: middle;">유통기한</div>
 				<div class="col-lg-4 border p-0">
 					<input id="datepicker" name="shop_expiration" class="form-control" readonly>
 					

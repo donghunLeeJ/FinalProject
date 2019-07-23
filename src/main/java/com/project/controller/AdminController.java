@@ -120,7 +120,7 @@ public class AdminController {
 	    //상품관리 페이지로 이동(이동하기 전에 먼저 모든 상품을 검색하고 시작)
 		@RequestMapping("ShopBoardManagementProc")
 		public String ShopBoardManagement(int page){
-
+System.out.println("관리자 page:" + page);
 		int totalcount = aservice.ShopBoardCount();
 			
 	    List<String>pageList = aservice.Page(page, totalcount);

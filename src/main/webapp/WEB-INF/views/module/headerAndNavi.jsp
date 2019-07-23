@@ -118,10 +118,6 @@ li:hover {
 							<span class="navbarToggler"><span></span><span></span><span></span></span>
 						</div>
 
-			
-					
-
-
 						<!-- Menu -->
 						<div class="classy-menu">
 							<!-- Menu Close Button -->
@@ -149,7 +145,7 @@ li:hover {
 
 								<!-- Cart Icon -->
 								<div class="cart-icon ml-2 mt-4 mt-lg-0">
-									<a id="list" href=""><i class="icon_cart"></i></a>
+									<a id="list"><i class="icon_cart"></i></a>
 								</div>
 							</div>
 						</div>
@@ -236,9 +232,7 @@ li:hover {
       })
 
       $("#mypage").on("click", function() {
-
          location.href = "/member/myPage";
-
       })
    </script>
 </header>

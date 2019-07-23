@@ -24,6 +24,18 @@
 update shopboard set shop_quantity=#{m1} where shop_seq=#{m2}
 </update>
 
+<select id="PageSelect" resultType="com.project.dto.ShopBoardDTO">
+select X.rnum, X.memberSell_seq, X.shop_seq , X.shop_id, X.shop_brand, X.shop_title, X.shop_contents , X.shop_writedate , X.shop_location , X.shop_expiration , X.shop_price , X.shop_quantity , X.shop_imagepath1 , X.shop_imagepath2, X.shop_imagepath3
+from( 
+  select rownum as rnum, A.memberSell_seq, A.shop_seq , A.shop_id, A.shop_brand, A.shop_title, A.shop_contents , A.shop_writedate , A.shop_location , A.shop_expiration , A.shop_price , A.shop_quantity , A.shop_imagepath1 , A.shop_imagepath2, A.shop_imagepath3
+   from(
+        select *
+        from shopboard
+        order by shop_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
 
 	<insert id="ShopBoardInsert">
 		insert into shopboard

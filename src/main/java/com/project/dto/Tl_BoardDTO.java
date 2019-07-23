@@ -20,7 +20,6 @@ public class Tl_BoardDTO {
 	private String tl_imgaddr;
 	private String tl_status; 
 	private String tl_reason;
-
 	private String tl_reporter;
 
 
