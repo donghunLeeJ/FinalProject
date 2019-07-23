@@ -157,6 +157,27 @@ height:110px;
 										</div>
 									</form>
 		</c:forEach>
+		
+		  <div class="list_n_menu">
+         <c:forEach var="i" items="${pageList}">
+            <c:choose>
+
+               <c:when test="${i eq '<이전'}">
+                  <span class="navi mr-1 center"><a href="buyContentsGoProc?page=${page-1}" class="center">${i}</a></span>
+               </c:when>
+
+               <c:when test="${i eq '다음>'}">
+                  <span class="navi mr-1 center"><a href="buyContentsGoProc?page=${page+1}" class="center">${i}</a></span>
+               </c:when>
+
+               <c:otherwise>
+               <span class="navi mr-1 center"><a href="buyContentsGoProc?page=${i}" class="center">${i}</a></span>
+               </c:otherwise>
+
+            </c:choose>
+         </c:forEach>
+      </div>
+      
 	</div>
 
 

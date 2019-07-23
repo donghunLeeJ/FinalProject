@@ -241,10 +241,22 @@ public class MemberController {
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
+	
+	
 	@RequestMapping("buyContentsGo")
-	public String log_buyContetns() {
+	public String moveBuyContentsGo() {
+		return "redirect:buyContentsGoProc?page=1";
+	}
+	@RequestMapping("buyContentsGoProc")
+	public String buyContetns(int page) {
+		int count = os.orderCount();
+		List<String> pageList = os.Page(page,count);
+		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
+		request.setAttribute("page", page);//현재 페이지임
+
+
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<OrderDTO> buyList = os.myOrderList(mdto.getMember_id());
+		List<OrderDTO> buyList = os.orderTenList(page);
 
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
