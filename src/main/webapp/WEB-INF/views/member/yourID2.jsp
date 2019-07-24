@@ -9,7 +9,7 @@
 <body>
 <script>
 alert("가입된 정보가 아닙니다");
-location.href="/home";
+location.href="/member/findinfo";
 </script>
 </body>
 </html>

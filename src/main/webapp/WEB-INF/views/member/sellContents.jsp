@@ -44,7 +44,9 @@ border:1px solid red;
 .center{
 text-align:center;
 }
-
+.form-control[readonly] {
+	background-color: white;
+}
  
 
 </style>

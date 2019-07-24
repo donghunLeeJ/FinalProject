@@ -44,7 +44,12 @@ select {
 width:110px;
 height:110px;
 }
+.form-control[readonly] {
+	background-color: white;
+}
 </style>
+<script type="text/javascript" src="/js/cross.js"></script>
+<!-- 지우지 말 것 -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
@@ -104,7 +109,7 @@ height:110px;
 									<!-- The Modal -->
 									<form
 										action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}"
-										method="POST">
+										id=modalfo method="POST">
 										<div class="modal modal-xl fade " id="myModal">
 											<div class="modal-dialog ">
 												<div class="modal-content">
@@ -135,11 +140,11 @@ height:110px;
 																</select>
 															</div>
 															<div class="col-9" style="padding: 0">
-																<input type="text" name="title" placeholder="제목"
+																<input type="text" name="title"  id=title
 																	style="width: 21em; height: 2em;">
 															</div>
 															<div class="col-12 py-3">
-																<textarea  style="resize: none;" name="contents" cols="56" rows="10"></textarea>
+																<textarea  id=contents style="resize: none;" name="contents" cols="56" rows="10"></textarea>
 															</div>
 														</div>
 
@@ -148,7 +153,7 @@ height:110px;
 
 													<!-- Modal footer -->
 													<div class="modal-footer">
-														<input type="submit" class="btn" value="댓글 작성">
+														<input type="button" id="confirm" class="btn" value="댓글 작성">
 														<button type="button" class="btn" data-dismiss="modal">댓글
 															취소</button>
 													</div>
@@ -187,7 +192,24 @@ height:110px;
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
 		$(".del_list2").hide();
+		
+		$("#title").on("input",function(){
+		if($("#title").val().length>20){
+			alert("제목 길이를 초과하였습니다");
+		}
+		});
+		$("#contents").on("input",function(){
+			if($("#contents").val().length>100){
+				alert("내용 길이를 초과하였습니다");
+			}
+			});		
 
+		$("#confirm").on("click",function(){
+			removeXSS($("#title").val(), $("#title").attr("id"));
+			removeXSS($("#contents").val(), $("#contents").attr("id"));
+			$("#modalfo").submit();
+			
+		});
 // 		$(".del_list").on("click", function() {
 // 			if (confirm("삭제 요청을 하나요?") == true) {
 // 				$(".del_list").hide();

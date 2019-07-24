@@ -8,16 +8,30 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 
-
-
 <style>
 .form-control[readonly] {
 	background-color: white;
 }
+.float{
+float:left;
+}
+.box{
+box-sizing:border-box;
+overflow:hidden;
+}
+/* div{ */
+/* border:1px solid black; */
+/* } */
+/* .full{ */
+/* height:70px; */
+/* } */
 
 #contents {
 	width: 100%;
-	height: 300px;
+	height: 250px;
+}
+.ht{
+height:20%;
 }
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
@@ -63,67 +77,75 @@
 					style="background: #FFF8E7;vertical-align: middle;">제목</div>
 				<div class="col-lg-10 border  p-0">
 					<input type="text" id=title name="shop_title"
-						class="form-control input" placeholder="최대 30글자">
+						class="form-control input" >
 				</div>
-				<div class="col-lg-2 border text-center align-middle"
-					style="background: #FFF8E7;vertical-align: middle;"">이미지</div>
-				<div class="col-lg-10 border p-0" style="background: white;">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4 ">
-							<div class="row ml-3">
-								<div class="col-lg-12 mx-auto p-0 border"
-									style="text-align: center">
+				
+				<div class="col-lg-6 p-0">
+				<div class="box col-lg-12 p-0">
+				<div class="col-lg-4 float border text-center align-middle"
+					style="background: #FFF8E7;vertical-align: middle;">이미지<br>(최대 3장)</div>
+				<div class="col-lg-8 float border p-0" style="background: white;">
+<!-- 					<div class="row"> -->
+						<div class="col-lg-12 ">
+<!-- 							<div class="row ml-3"> -->
+								<div class="col-lg-12 mx-auto p-0 border"style="text-align: center">
 									<img id="mainimg" src="/img/default.jpg">
 								</div>
-								<div class="col-lg-12 ">
-									<div class="row mt-2">
-										<div
-											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0">
+								
+								<div class="col-lg-12 box p-0">
+<!-- 									<div class="row mt-2"> -->
+										<div class="d-none d-sm-block border float col-lg-4 col-md-4 col-sm-4 p-0">
 											<img id="food0" class="img" src="/img/default.jpg" alt="">
 										</div>
-										<div
-											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0">
+										<div class="d-none d-sm-block border float col-lg-4 col-md-4 col-sm-4 p-0">
 											<img id="food1" class="img" src="/img/default.jpg" alt="">
 										</div>
-										<div
-											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0">
+										<div class="d-none d-sm-block border  float col-lg-4 col-md-4 col-sm-4 p-0">
 											<img id="food2" class="img" src="/img/default.jpg" alt="">
 										</div>
-									</div>
+<!-- 									</div> -->
 								</div>
 								<div class="col-lg-12">
-									<input multiple="multiple" type="file"
-										class="custom-file-input" id="files" name="shop_images">
-									<label class="custom-file-label p-0" for="customFile"></label>
+									<input multiple="multiple" type="file" class="custom-file-input" id="files" name="shop_images">
+									<label class="custom-file-label p-0" for="customFile" ></label>
+									<div>*사진은 한번에 업로드 부탁드립니다</div>
 								</div>
-							</div>
+								
+<!-- 							</div> -->
 
 						</div>
-						<div class="col-lg-8">
-							<p>- 파일은 최대 3장까지 한번에 올릴 수 있습니다.</p>
-							<p>
-								- 대표 이미지는 첫번째로 등록되는 이미지 입니다.<br>
-							</p>
-							<p>
-								- 파일을 여러장 올리는 방법은 여러장을 선택해서 올리면 가능합니다.<br>
-							</p>
+<!-- 						<div class="col-lg-8"> -->
+<!-- 							<p>- 파일은 최대 3장까지 한번에 올릴 수 있습니다.</p> -->
+<!-- 							<p> -->
+<!-- 								- 대표 이미지는 첫번째로 등록되는 이미지 입니다.<br> -->
+<!-- 							</p> -->
+<!-- 							<p> -->
+<!-- 								- 파일을 여러장 올리는 방법은 여러장을 선택해서 올리면 가능합니다.<br> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-lg-12"></div>
-					</div>
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-lg-12"></div> -->
+<!-- 					</div> -->
 				</div>
-				<div class="col-lg-2 border text-center align-middle"
+				</div>
+				</div>
+				
+				<div class="col-lg-6 p-0">
+				<div class="box ht col-lg-12 p-0">
+				<div class="col-lg-4 border text-center align-middle float"
 					style="background: #FFF8E7;vertical-align: middle;">브랜드</div>
-				<div class="col-lg-10 border p-0">
+				<div class="col-lg-8 border p-0   float">
 					<input type="text" id=brand name="shop_brand"
-						class="form-control input" placeholder="최대 10글자">
+						class="form-control input full" >
 				</div>
-
-				<div class="col-lg-2 border text-center align-middle"	style="background: #FFF8E7;vertical-align: middle;">지역</div>
-				<div class="col-lg-4 border p-0">
+				</div>
+						
+				
+				<div class="box ht col-lg-12 p-0">
+				<div class="col-lg-4 float border text-center align-middle"	style="background: #FFF8E7;vertical-align: middle;">지역</div>
+				<div class="col-lg-8 float border p-0">
 					<select name="shop_location" class="browser-default  form-control input">
 						<option selected>지역 선택</option>
 						<option value="서울">서울</option>
@@ -136,46 +158,52 @@
 						<option value="제주">제주</option>
 					</select>
 				</div>
+				</div>
 
-				<div class="col-lg-2 border text-center align-middle" style="background: #FFF8E7; vertical-align: middle;">유통기한</div>
-				<div class="col-lg-4 border p-0">
+				<div class="box ht col-lg-12 p-0">
+				<div class="col-lg-4 float border text-center align-middle" style="background: #FFF8E7; vertical-align: middle;">유통기한</div>
+				<div class="col-lg-8 float border p-0">
 					<input id="datepicker" name="shop_expiration" class="form-control" readonly>
-					
-
 					<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"type="text/javascript"></script>
 					<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"rel="stylesheet" type="text/css" />
-
 					<script>
 					var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
 							$("#datepicker").datepicker({ 
 							uiLibrary : 'bootstrap4', 
 							format : "yyyy-mm-dd", 
 							 minDate: today
-								
 						});
-							
  						$('#datepicker').datepicker('setDate', 'today'); 
 					</script> 
-
+				</div>
 				</div>
 				
-				<div class="col-lg-2 border text-center"
+				<div class="box ht col-lg-12 p-0">
+				<div class="col-lg-4 float border text-center"
 					style="background: #FFF8E7;">가격</div>
-				<div class="col-lg-4 border p-0">
+				<div class="col-lg-8 float border p-0">
 					<input type="text" id=price name="shop_price"
 						class="form-control input">
 				</div>
-				<div class="col-lg-2 border text-center align-middle"
+				</div>
+				
+				<div class="box ht col-lg-12 p-0">
+				<div class="col-lg-4 float border text-center align-middle"
 					style="background: #FFF8E7;vertical-align: middle;">수량</div>
-				<div class="col-lg-4 border p-0">
+				<div class="col-lg-8 float border p-0">
 					<input type="text" id=quantity name="shop_quantity"
 						class="form-control input">
 				</div>
+				</div>
+				</div>
+				
+				
+				
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #FFF8E7;vertical-align: middle;">내용</div>
 				<div class="col-lg-10 border p-0 m-0">
 					<textarea style="resize: none;" id=contents name="shop_contents"
-						class="form-control input" placeholder="최대 300자"
+						class="form-control input" 
 						style="height: 15rem;"></textarea>
 				</div>
 				<!-- 	-정현 추가 사업자번호  -->

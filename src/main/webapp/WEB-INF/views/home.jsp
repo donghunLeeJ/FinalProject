@@ -21,14 +21,20 @@
 }
 body { font-family :'나눔고딕OTF';}
 
+#img1{
+height:220px;
+}
 
 #map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
-
+.form-control[readonly] {
+	background-color: white;
+}
 
 </style>
-
+<script type="text/javascript" src="/js/cross.js"></script>
+<!-- 지우지 말 것 -->
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 
@@ -80,7 +86,7 @@ body { font-family :'나눔고딕OTF';}
 				</div>	
 					<c:forEach var="i" items="${boardList }">
 							<div
-								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
+								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"
 								data-wow-delay="500ms">
 								<div class="akame-portfolio-single-item" style="height: 250px">
 									<img src="${i.shop_imagepath1 }" id="img1" alt="">

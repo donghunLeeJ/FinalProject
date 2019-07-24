@@ -215,14 +215,12 @@ img {
 			</div>
 			<div class="row">
 				<div class="col-12 pt-2">
-					<p>
-						<small>11번가㈜는 통신판매중개자로서 통신판매의 당사자가 아니며, 개별판매자가 등록한 상품정보 및
-							거래에 대해 11번가㈜는 일체의 책임을 지지 않습니다.</small>
-					</p>
+<!-- 					<p> -->
+<!-- 						<small>11번가㈜는 통신판매중개자로서 통신판매의 당사자가 아니며, 개별판매자가 등록한 상품정보 및 -->
+<!-- 							거래에 대해 11번가㈜는 일체의 책임을 지지 않습니다.</small> -->
+<!-- 					</p> -->
 				</div>
 			</div>
-
-
 			
 
 			<div class="row">
@@ -289,12 +287,14 @@ img {
 				<div class="col-12">
 					<p>
 
-						<input type="checkbox" id="must1"> <small class="must1">(필수)판매명,
+					<input type="checkbox" id="must1"> <small class="must1">(필수)판매명,
 							유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br> <input
 							type="checkbox" id="must2"> <small class="must2">(필수)정확하지
 							않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
 							type="checkbox" id="must3"> <small class="must3">(필수)배송
-							과정 중 발생한 문제는 택배사에 문의 부탁드립니다</small>
+							과정 중 발생한 문제는 Akame에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
+							type="checkbox" id="must4"> <small class="must4">(필수)결제
+							후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
 					</p>
 				</div>
 			</div>
@@ -372,9 +372,11 @@ img {
 								alert("필수사항을 읽고 체크해주세요");
 							} else if ($("#must3").is(":checked") == false) {
 								alert("필수사항을 읽고 체크해주세요");
+							}  else if ($("#must4").is(":checked") == false) {
+								alert("필수사항4를 읽고 체크해주세요");
 							} else {
-								var result = confirm("결제 후 취소,환불,교환이 어려울 수 있습니다.\n결제하시겠습니까");
-								if (result) {
+							
+							
 									removeXSS($("#order_buyer").val(), $(
 											"#order_buyer").attr("id"));
 									removeXSS($("#order_phone1").val(), $(
@@ -431,8 +433,7 @@ img {
 									
 									});
 									
-								} else
-									return;
+								
 							}
 						})//결제버튼클릭
 
@@ -542,6 +543,9 @@ img {
 		});
 		$(".must3").on("click", function() {
 			$("#must3").click();
+		});
+		$(".must4").on("click", function() {
+			$("#must4").click();
 		});
 	</script>
 	

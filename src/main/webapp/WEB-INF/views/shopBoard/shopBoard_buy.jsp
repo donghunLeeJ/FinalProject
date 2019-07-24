@@ -167,7 +167,7 @@ img {
 						<option value="nate.com">nate.com</option>
 						<option value="hanmail.net">hanmail.net</option>
 						<option value="hotmail.com">hotmail.com</option>
-						<option value="yahoo.co.kr">yahoo.co.kr</option>
+						<option value="yahoo.com">yahoo.com</option>
 					</select>
 
 				</div>
@@ -175,10 +175,10 @@ img {
 			</div>
 			<div class="row">
 				<div class="col-12 pt-2">
-					<p>
-						<small>11번가㈜는 통신판매중개자로서 통신판매의 당사자가 아니며, 개별판매자가 등록한 상품정보 및
-							거래에 대해 11번가㈜는 일체의 책임을 지지 않습니다.</small>
-					</p>
+<!-- 					<p> -->
+<!-- 						<small>11번가㈜는 통신판매중개자로서 통신판매의 당사자가 아니며, 개별판매자가 등록한 상품정보 및 -->
+<!-- 							거래에 대해 11번가㈜는 일체의 책임을 지지 않습니다.</small> -->
+<!-- 					</p> -->
 				</div>
 			</div>
 

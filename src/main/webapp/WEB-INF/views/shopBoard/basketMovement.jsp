@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<script>
 		var confirm = confirm("장바구니로 이동 하시겠습니까?")
 		

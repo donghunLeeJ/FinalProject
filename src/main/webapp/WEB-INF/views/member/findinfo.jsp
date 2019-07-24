@@ -7,7 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
-<title>Insert title here</title>
+<title>아이디/비밀번호 찾기</title>
 <style>
 /* div{ */
 /* border:1px solid black; */
@@ -17,6 +17,9 @@ float:left;
 }
 .box{
 box-sizing: border-box;
+}
+.form-control[readonly] {
+	background-color: white;
 }
 </style>
 	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->

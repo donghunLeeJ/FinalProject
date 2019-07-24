@@ -53,7 +53,7 @@ height:27px;
                             </div>
                             <div class="col-lg-12 text-center" >
                                 <h3>Password</h3> 
-                               <i class="fa fa-eye fa-lg" id=flash></i>
+                               <i class="fa fa-eye-slash fa-lg" id=flash></i>
                                 <input type="password" style="width: 50%; margin: auto;" name="member_pw" class="form-control mb-30 flash" placeholder="password">
                             </div>
                             <div class="col-12 text-center">
@@ -73,10 +73,10 @@ height:27px;
 	
 	 $("#flash").on("click",function(){
 		   if($(".flash").attr('type')=='password'){
-			   $(this).attr('class',"fa fa-eye-slash fa-lg");
+			   $(this).attr('class',"fa fa-eye fa-lg");
 			   $(".flash").attr('type','text');
 		   }else if($(".flash").attr('type')=='text'){
-			   $(this).attr('class',"fa fa-eye fa-lg")
+			   $(this).attr('class',"fa fa-eye-slash fa-lg")
 			   $(".flash").attr('type','password');
 		   }
  });
