@@ -38,7 +38,7 @@ table {
 	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
 		<div class="container">
 		
-		<table class="table">
+		<table class="table mt-5">
 			<thead>
 				<tr class="row mainrow">
 					<th class="col">글번호</th>
@@ -50,46 +50,105 @@ table {
 					<th class="col">글삭제</th>
 				</tr>
 			</thead>
-			
-			<tbody>
-				<c:forEach var="i" items="${SNSBoardList}">
-				
-					<tr class="row">
-						<th class="col">${i.tl_board_seq}</th>
-						<th class="col">${i.tl_title}</th>
-						<td class="col">${i.tl_writer}</td>
-						<td class="col">${i.tl_writedate}</td>
-                        <td class="col">${i.tl_reporter}</td>
-						<td class="col"><c:choose>
-								<c:when test="${i.tl_status eq '신고'}">
 
-									<a id="status${i.tl_board_seq}" href="#"
-										onclick="window.open('/admin/SNSReport?tl_board_seq=${i.tl_board_seq}','','width=600px, height=450px')">
-										<b>${i.tl_status}</b>
-									</a>
+			<c:choose>
+				<c:when test="${SNSBoardList ne null}">
 
-									<script>
-										$("#status${i.tl_board_seq}").css(
-												"color", "red");
-									</script>
+					<tbody>
+						<c:forEach var="i" items="${SNSBoardList}">
 
-								</c:when>
+							<tr class="row">
+								<th class="col">${i.tl_board_seq}</th>
+								<th class="col">${i.tl_title}</th>
+								<td class="col">${i.tl_writer}</td>
+								<td class="col">${i.tl_writedate}</td>
+								<td class="col">${i.tl_reporter}</td>
+								<td class="col"><c:choose>
+										<c:when test="${i.tl_status eq '신고'}">
 
-								<c:otherwise>							
+											<a id="status${i.tl_board_seq}" href="#"
+												onclick="window.open('/admin/SNSReport?tl_board_seq=${i.tl_board_seq}','','width=600px, height=450px')">
+												<b>${i.tl_status}</b>
+											</a>
+
+											<script>
+												$("#status${i.tl_board_seq}")
+														.css("color", "red");
+											</script>
+
+										</c:when>
+
+										<c:otherwise>							
 							${i.tl_status}			
 							</c:otherwise>
-							</c:choose></td>
+									</c:choose></td>
 
-						<td class="col">
-					<button id="delete_btn" style="border-radius: 10px;">
-						<a href="/admin/AdminDeleteSNS?tl_board_seq=${i.tl_board_seq}" style="color: white;">삭제하기</a>
-					</button>
-				</td>
+								<td class="col">
+									<button id="delete_btn" style="border-radius: 10px;">
+										<a href="/admin/AdminDeleteSNS?tl_board_seq=${i.tl_board_seq}"
+											style="color: white;">삭제하기</a>
+									</button>
+								</td>
 
+							</tr>
+						</c:forEach>
+					</tbody>
 
-					</tr>
-			</c:forEach>
-			</tbody>
+				</c:when>
+
+				<c:when test="${totalcount > 0}">
+
+					<tbody>
+						<c:forEach var="i" items="${SNSTitleSelectBoardList}">
+
+							<tr class="row">
+								<th class="col">${i.tl_board_seq}</th>
+								<th class="col">${i.tl_title}</th>
+								<td class="col">${i.tl_writer}</td>
+								<td class="col">${i.tl_writedate}</td>
+								<td class="col">${i.tl_reporter}</td>
+								<td class="col"><c:choose>
+										<c:when test="${i.tl_status eq '신고'}">
+
+											<a id="status${i.tl_board_seq}" href="#"
+												onclick="window.open('/admin/SNSReport?tl_board_seq=${i.tl_board_seq}','','width=600px, height=450px')">
+												<b>${i.tl_status}</b>
+											</a>
+
+											<script>
+												$("#status${i.tl_board_seq}")
+														.css("color", "red");
+											</script>
+
+										</c:when>
+
+										<c:otherwise>							
+							${i.tl_status}			
+							</c:otherwise>
+									</c:choose></td>
+
+								<td class="col">
+									<button id="delete_btn" style="border-radius: 10px;">
+										<a href="/admin/AdminDeleteSNS?tl_board_seq=${i.tl_board_seq}"
+											style="color: white;">삭제하기</a>
+									</button>
+								</td>
+
+							</tr>
+						</c:forEach>
+					</tbody>
+				</c:when>
+
+			<c:when test="${totalcount==0}">
+					<tbody>
+						<tr>
+							<td colspan="7" class="col">검색된 글이 없습니다.</td>
+						</tr>
+					</tbody>
+				</c:when>
+
+			</c:choose>
+
 
 		</table>
 		
@@ -111,15 +170,64 @@ table {
 					</c:when>
 
 					<c:otherwise>
-						<a href="TimeLineManagementProc?page=${i}">${i}</a>
+						<a class="${i}" href="TimeLineManagementProc?page=${i}">${i}</a>
 					</c:otherwise>
 
 				</c:choose>
 			</c:forEach>
+			
+				
+			<!--검색 대상이 제목인 경우  -->
+			<c:forEach var="i" items="${SelectpageList}">
+				<c:choose>
+
+					<c:when test="${i eq '<이전'}">
+						<a href="TimeLineManagementTitleProc?page=${page-1}&keyword=${keyword}">${i}</a>
+					</c:when>
+
+					<c:when test="${i eq '다음>'}">
+						<a href="TimeLineManagementTitleProc?page=${page+1}&keyword=${keyword}">${i}</a>
+					</c:when>
+
+					<c:otherwise>
+						<a class="${i}" href="TimeLineManagementTitleProc?page=${i}&keyword=${keyword}">${i}</a>
+					</c:otherwise>
+
+				</c:choose>
+			</c:forEach>
+			
+			<script>
+				$(".${page}").css("font-weight", "bold");
+			</script>
+			
 		</div>
+		
+		<!--제목으로 검색하기(맨 처음은 1페이지부터 검색하도록 함) -->
+		<form action="/admin/TimeLineManagementTitleMove" method="post">
+
+			<div class="row mt-5">
+				<div class="col-lg-6 col-md-6 col-sm-6 ml-5"></div>
+				<input id="KeyWord" name="keyword" type="text" value="${keyword}"
+					class="form-control col-lg-3 col-md-3 col-sm-3 "> <input
+					class="btn btn-outline-secondary col-lg-2 col-md-2 col-sm-2"
+					id="TitleBoardSelect" type="submit" value="제목으로 검색">
+			</div>
+		</form>
+		
 		
 	<!--컨테이너 끝 -->	
 		</div>	
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+	
+		<script>
+		$("#TitleBoardSelect").on("click", function() {
+
+			if ($("#KeyWord").val() == "") {
+				alert("검색어를 입력해 주세요!!");
+				return false;
+			}
+		})
+	</script>
+	
 </body>
 </html>

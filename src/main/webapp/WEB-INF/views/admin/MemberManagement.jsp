@@ -22,7 +22,7 @@ text-align: center;}
 	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
 	<div class="container">
 	
-		<table class="table">
+		<table class="table mt-5">
 			<thead>
 				<tr class="mainrow">
 					<th scope="col">회원ID</th>
@@ -78,7 +78,6 @@ text-align: center;}
 			</c:choose>
 		</table>
 
-
 		<!--검색 대상이 전체인 경우  -->
 		<div id="pageNumber">
 			<c:forEach var="i" items="${pageList}">
@@ -93,12 +92,11 @@ text-align: center;}
 					</c:when>
 
 					<c:otherwise>
-						<a href="MemberManagementProc?page=${i}">${i}</a>
+						<a class="${i}" href="MemberManagementProc?page=${i}">${i}</a>														
 					</c:otherwise>
 
 				</c:choose>
 			</c:forEach>
-
 
 			<!--검색 대상이 id인 경우  -->
 			<c:forEach var="i" items="${SelectpageList}">
@@ -113,12 +111,16 @@ text-align: center;}
 					</c:when>
 
 					<c:otherwise>
-						<a href="MemberManagementIDProc?page=${i}&keyword=${keyword}">${i}</a>
+						<a class="${i}" href="MemberManagementIDProc?page=${i}&keyword=${keyword}">${i}</a>
 					</c:otherwise>
 
 				</c:choose>
 			</c:forEach>
-
+						
+			<script>
+				$(".${page}").css("font-weight", "bold");
+			</script>
+			
 		</div>
 		
 <!--id로 검색하기(맨 처음은 1페이지부터 검색하도록 함) -->

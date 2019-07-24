@@ -22,6 +22,7 @@ import com.project.dto.MemberPagingDTO;
 import com.project.dto.OrderDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.paging.Mylist_Paging;
+import com.project.service.AdminService;
 import com.project.service.MemberService;
 import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
@@ -47,10 +48,11 @@ public class MemberController {
 	private Mylist_Paging mp;
 	@Autowired
 	private OrderService os;
-
 	@Autowired
 	private TimeLineService tservice;
-
+    @Autowired
+	private AdminService aservice;
+    
 	@RequestMapping("loginForm")
 	public String goLogin() {
 		return "member/login";
@@ -66,7 +68,20 @@ public class MemberController {
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
 			if (confirm.equals("y")) {
 
-				if (mdto.getMember_id().equals("admin")) {// 만일 로그인한 id가 관리자 아이디일 경우
+				int BlackCount = 0;
+				List<String>BlackListResult = aservice.AdminBlackCheckList();
+				
+				for(String BlackList : BlackListResult) {	
+					
+					if(mdto.getMember_id().equals(BlackList)){BlackCount++;}
+				}		
+				
+				if(BlackCount > 0){//만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
+					
+					return "redirect:/admin/BlackListNoLogin";
+				}
+
+				else if (mdto.getMember_id().equals("admin")) {// 만일 로그인한 id가 관리자 아이디일 경우
 
 					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 					return "redirect:/admin/adminHome"; // 관리자 컨트롤러로 이동시킴
@@ -282,10 +297,24 @@ public String myMsg() {
 		mdto.setMember_id(id);
 		int result = mservice.login(mdto);
 		if(result == 1) {
-			session.setAttribute("id", mservice.select_member(id));
+			
+			int BlackCount = 0;
+			List<String>BlackListResult = aservice.AdminBlackCheckList();
+			
+			for(String BlackList : BlackListResult) {	
+				
+				if(mdto.getMember_id().equals(BlackList)){BlackCount++;}
+			}					
+			if(BlackCount > 0){//만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
+				
+				result = -1;
+				
+			}else {
+				
+				session.setAttribute("id", mservice.select_member(id));
+			}		
 		}
 		String resultString = result+"";
 		return resultString;
 	}
-
 }
