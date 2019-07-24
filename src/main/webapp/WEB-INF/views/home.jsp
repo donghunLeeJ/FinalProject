@@ -202,9 +202,25 @@ body { font-family :'나눔고딕OTF';}
 			infowindow.open(map, marker);
 		});
 	});
+				
+				
+			
+				//페이지가 갱신되는 순간 조건을 만족할 경우 방문자수를 증가시키도록 정보를 보내는 ajax
+				$.ajax({
 
+					url : "/admin/VisitViewCondition",
+					type : "post",
+					data : {
+						access : "${access}"
+					}
 
+				}).done(function(resp) {
 
+				}).fail(function() {
+
+					alert("에러 발생!");
+
+				});
 			</script>
 </body>
 </html>
