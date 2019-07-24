@@ -144,7 +144,7 @@ body { font-family :'나눔고딕OTF';}
 										<ul class="dropdown">
 											<li><a onclick="buy_record();">구매 내역</a></li>
 											<li><a onclick="sell_record();">판매 내역 </a></li>
-											<li><a href="#">쪽지함</a></li>
+											<li><a onclick="message();">쪽지함</a></li>
 										</ul></li>
 									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
 									<li><a  onclick="loginCheck_write();">판매하기 </a>
@@ -164,7 +164,16 @@ body { font-family :'나눔고딕OTF';}
 		</div>
 
 		<script>
-
+	
+		var message = function(){
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+				window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+			}else{
+			
+				location.href = "/timeline/messageList";
+			}
+		}
 		
  	var loginCheck_write = function(){
    		if(${id == null}){
