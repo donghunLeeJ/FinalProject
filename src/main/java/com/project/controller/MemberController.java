@@ -110,43 +110,65 @@ public class MemberController {
 
 	@RequestMapping("findPW")
 	public String findPW(String member_id) {
-		request.setAttribute("change", member_id);
+		System.out.println(member_id);
+		int result = mservice.findPW(member_id);
+		if(result == 1) {
+			try {
+			edao.findPw(member_id);
+			System.out.println("메일발송");
+			System.out.println(member_id);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return "member/pwSendEmail";
+		}else {
+			return "member/yourPW2";
+		}
+		
+	/*	request.setAttribute("change", member_id);
 		int result = mservice.findPW(member_id);
 		if (result == 1)
 			return "member/yourPW";
 		else
-			return "member/yourPW2";
+			return "member/yourPW2";*/
+	}
+	
+	
+	
+	@RequestMapping("yourPW")
+	public String yourPW(String id) {
+		System.out.println("이것 부터가 와야지 "+id);
+		request.setAttribute("id", id);
+		return "member/yourPW";
 	}
 
 	@RequestMapping("cleanPW")
 	public String cleanPW(String member_pw, String member_id) {
 		String new_pw = mdao.SHA256(member_pw);
 		int result = mservice.cleanPW(new_pw, member_id);
-		if (result == 1)
-			return "member/cleanOK";
-		else
-			return "member/yourPW3";
-
+		return "member/cleanOK";
+	
 	}
 
 	@RequestMapping("/joinProc")
 	public String joinInsert(MemberDTO mdto) {
-		System.out.println("조인프록");
 		String id = mdto.getMember_id();
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
 
-		// System.out.println("조인프록 " + id);
+	
 		try {
 			edao.sendMail(id);
-			System.out.println("가입1");
+			
 			int result = mservice.joinInsert(mdto);
-			System.out.println("조인프록 서비스 리턴값 : " + result);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// System.out.println(result);
+	
 		return "member/emailsend";
 	}
+	
+	
 
 	@RequestMapping("logOutProc")
 	public String logout() {
@@ -209,8 +231,7 @@ public class MemberController {
 	@RequestMapping("delOK")
 	public String log_delOK(String del_id, String del_pw) {
 		try {
-			System.out.println("넘어온 아이디 : " + del_id);
-			System.out.println("넘어온 비밀번호 : " + del_pw);
+			
 			mservice.delOK(del_id, del_pw);
 			session.invalidate();
 			return "/member/delOK";
@@ -221,7 +242,6 @@ public class MemberController {
 
 	@RequestMapping("verifiedId")
 	public String verifiedId(String id) {
-		System.out.println("아이디                                " + id);
 		String confirm = mservice.checkConfirm(id);
 		if (confirm.equals("n")) {
 			mservice.confirmId(id);
