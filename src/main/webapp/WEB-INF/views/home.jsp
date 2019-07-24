@@ -19,6 +19,8 @@
 	top: auto;
 	bottom: auto;
 }
+body { font-family :'나눔고딕OTF';}
+
 
 #map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
 
@@ -32,28 +34,28 @@
 
 	<section class="welcome-area">
 	<div id="carouselExampleInterval" class="carousel slide"
-		data-ride="carousel">
+		data-ride="carousel" style="z-index: -1000">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<div class="carousel-caption d-none d-sm-block">
 					
 
 				</div>
-				<img src="/img/bg-img/888.jpg" class="d-block w-80" alt="...">
+				<img src="/img/bg-img/back2.jpg" class="d-block w-80" alt="...">
 			</div>
 			<div class="carousel-item">
 				<div class="carousel-caption d-none d-md-block">
 				
 				
 				</div>
-				<img src="/img/bg-img/resultBack.jpg" class="d-block w-80" alt="...">
+				<img src="/img/bg-img/back3.jpg" class="d-block w-80" alt="...">
 			</div>
 			<div class="carousel-item">
 				<div class="carousel-caption d-none d-md-block">
 					
 				
 				</div>
-				<img src="/img/bg-img/resultBack2.png" class="d-block w-80"
+				<img src="/img/bg-img/back4.jpg" class="d-block w-80"
 					alt="...">
 			</div>
 
@@ -71,17 +73,92 @@
 	</div>
 	</section>
 	<section class="why-choose-us-area bg-gray section-padding-80-0">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-12 border-bottom p-2">
+					<h2 style="font-family :'나눔고딕OTF';">□ 최근 등록 상품 <a href="/shopboard/shopBoardGo?page=1"><span style="font-size: small;">더보기</span></a></h2>
+				</div>	
+					<c:forEach var="i" items="${boardList }">
+							<div
+								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
+								data-wow-delay="500ms">
+								<div class="akame-portfolio-single-item" style="height: 250px">
+									<img src="${i.shop_imagepath1 }" id="img1" alt="">
+									<!-- Overlay Content -->
+									<div
+										class="overlay-content d-flex align-items-center justify-content-center">
+										<div class="overlay-text text-center">
+											<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }"><span
+												style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span></a>
 
+											<p class="pt-3">
+												<fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
+												&nbsp; 원
+											</p>
+										</div>
+									</div>
 
+									<!-- Thumbnail Zoom -->
+									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i
+										class="icon_search"></i></a>
 
+								</div>
+								<div class="team-member-info border">
+									<div class="row">
+										<div class="col-12"></div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
 
-
+			</div>
+		</div>
 
 	</section>
-	<section class="why-choose-us-area  section-padding-80-0">
-		
-	
-	 </section>
+	<section class="contact-information-area section-padding-80-0">
+        <div class="container">
+            <div class="row mb-5">
+            	<div class="col-12 border-bottom mb-5 p-2">
+					<h2 style="font-family :'나눔고딕OTF';">□ 오시는 길</h2>
+				</div>	
+                <!-- Single Contact Information -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-contact-information mb-80">
+                        <i class="icon_phone"></i>
+                        <h4>Phone</h4>
+                        <p>+01-3-8888-6868</p>
+                    </div>
+                </div>
+
+                <!-- Single Contact Information -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-contact-information mb-80">
+                        <i class="icon_pin"></i>
+                        <h4>Address</h4>
+                        <p>Iris Watson, 283 Fusce Rd,NY</p>
+                    </div>
+                </div>
+
+                <!-- Single Contact Information -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-contact-information mb-80">
+                        <i class="icon_clock"></i>
+                        <h4>Open time</h4>
+                        <p>10:00 am to 23:00 pm</p>
+                    </div>
+                </div>
+
+                <!-- Single Contact Information -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-contact-information mb-80">
+                        <i class="icon_mail"></i>
+                        <h4>Email</h4>
+                        <p>info.colorlib@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 	 
 	<div id="map_ma"></div>
 

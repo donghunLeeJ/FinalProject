@@ -72,5 +72,13 @@ public class Tl_BoardDAO {
    public int selectlikeCount(String seq) {
 	   return sst.selectOne("Tl_BoardDAO.selectLikeCount",seq);
   }
-   
+   public List<MessageDTO> showSeter(String id){
+	  return sst.selectList("Tl_BoardDAO.messageSeter",id);
+   }
+   public List<MessageDTO> showgetter(String id){
+	   return sst.selectList("Tl_BoardDAO.messageGetter",id);
+   }
+   public int messageDelete(String seq) {
+	   return sst.delete("Tl_BoardDAO.messageDelete",seq);
+   }
 }

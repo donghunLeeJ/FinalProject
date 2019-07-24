@@ -25,5 +25,22 @@
 	<select id="sellOrderList" resultType="com.project.dto.OrderDTO">
 		select * from products_order where products_seq = #{value}
 	</select>
+	<select id="PageSelect" resultType="com.project.dto.OrderDTO">
+select X.rnum, X.order_seq, X.order_number , X.order_time, X.order_quantity, X.order_price, X.order_image , X.order_seller , X.order_buyer , X.order_buyer_phone , X.order_buyer_email , X.order_receipt , X.order_receipt_postcode , X.order_receipt_address1, X.order_receipt_address2, X.order_receipt_phone, X.order_receipt_demend
+from( 
+  select rownum as rnum, A.order_seq, A.order_number , A.order_time, A.order_quantity, A.order_price, A.order_image , A.order_seller , A.order_buyer , A.order_buyer_phone , A.order_buyer_email , A.order_receipt , A.order_receipt_postcode , A.order_receipt_address1, A.order_receipt_address2, A.order_receipt_phone, A.order_receipt_demend
+   from(
+        select *
+        from products_order
+        order by order_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+<!--게시글의 총 갯수를 뽑아오는 쿼리(샵보드) -->
+<select id="orderCount" resultType="Integer">
+ select count(*) as orderCount from products_order
+</select>
+
 
 </mapper>

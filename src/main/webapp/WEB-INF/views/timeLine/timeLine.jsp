@@ -42,7 +42,7 @@
 		<div class="row mt-4">
 			<div class="col-lg-6 border" style="margin: auto">
 				<div class="row py-3">
-					<div class="col-lg-2 text-center border">
+					<div class="col-lg-2 text-center ">
 						<img class="rounded-circle" alt="" src="${id.member_imgpath }">
 
 					</div>

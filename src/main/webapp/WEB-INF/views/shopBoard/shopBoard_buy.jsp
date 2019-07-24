@@ -72,10 +72,10 @@ img {
 
 			<div class="row border-bottom border-top py-2 bg-gray">
 				<div class="col-6">
-					<h3>주문결제</h3>
+					<h3 style="font-family :'나눔고딕OTF';">주문결제</h3>
 				</div>
 				<div class="col-6 " style="text-align: right">
-					<h3>장바구니 주문/결제 주문완료</h3>
+					<h3 style="font-family :'나눔고딕OTF';">장바구니 주문/결제 주문완료</h3>
 				</div>
 			</div>
 
@@ -84,7 +84,7 @@ img {
 					<span class="">주문상품 확인</span>
 				</div>
 				<div class="col-6 text-bottom" style="text-align: right">
-					<p>*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p>
+					<p style="font-family :'나눔고딕OTF';">*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p>
 				</div>
 
 			</div>
@@ -126,7 +126,7 @@ img {
 					(원) <input type="hidden" value="${price }" name="order_price">
 				</div>
 				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
-				<div class="col-2" style="margin-top: 1.4em;color:red">${dto.shop_expiration }</div>
+				<div class="col-2" style="margin-top: 1.4em; color: red">${dto.shop_expiration }</div>
 				<div class="col-2">
 					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.shop_id }
 
@@ -293,7 +293,6 @@ img {
 				.on(
 						"click",
 						function() {
-
 							var inputcount = 0;
 							$(".empty").each(function(i, item) {
 								if ($(item).val() == "") {
@@ -306,30 +305,8 @@ img {
 							var regnum3 = /^([0-9]{4})$/;
 							var regemail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
 							var regemail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-							// 			var price = $("#price").text();
-							// 			IMP.request_pay({
-							// 				pg : 'inicis', // version 1.1.0부터 지원.
-							// 				pay_method : 'card',
-							// 				merchant_uid : 'merchant_' + new Date().getTime(),
-							// 				name : '주문명:결제테스트',
-							// 				amount : price,
-							// 				buyer_email : 'iamport@siot.do',
-							// 				buyer_name : '구매자이름',
-							// 				buyer_tel : '010-1234-5678',
-							// 				buyer_addr : '서울특별시 강남구 삼성동',
-							// 				buyer_postcode : '123-456',
-							// 				m_redirect_url : 'localhost/home'
-							// 			}, function(rsp) {
-							// 				if (rsp.success) {
-							// 					var msg = '결제가 완료되었습니다.';
-							// 					alert(msg);
-							// 					$("#completeForm").submit();
-							// 				} else {
-							// 					var msg = '결제에 실패하였습니다.';
-							// 					msg += '에러내용 : ' + rsp.error_msg;
-							// 				}
-							// 				alert(msg);
-							// 			});
+							var price = $("#price").text();
+
 
 							if (inputcount > 0) {
 								alert("모든 항목을 반드시 입력하셔야 합니다.");
@@ -399,14 +376,34 @@ img {
 								var qua = Number($("#quant1").val());
 								var quant = shop_q - qua;
 								$("input[name=quant]").val(shop_q - qua);
-								alert(quant);
 								$("#completeForm").submit();
+// 								IMP.request_pay({
+// 									pg : 'inicis', // version 1.1.0부터 지원.
+// 									pay_method : 'card',
+// 									merchant_uid : 'merchant_'
+// 											+ new Date().getTime(),
+// 									name : '주문명:결제테스트',
+// 									amount : price,
+// 									buyer_email : 'iamport@siot.do',
+// 									buyer_name : '구매자이름',
+// 									buyer_tel : '010-1234-5678',
+// 									buyer_addr : '서울특별시 강남구 삼성동',
+// 									buyer_postcode : '123-456',
+// 									m_redirect_url : 'localhost/home'
+// 								}, function(rsp) {
+// 									if (rsp.success) {
+// 										var msg = '결제가 완료되었습니다.';
+// 										alert(msg);
+// 										$("#completeForm").submit();
+// 									} else {
+// 										var msg = '결제에 실패하였습니다.';
+// 										msg += '에러내용 : ' + rsp.error_msg;
+// 									}
+// 								});
 							}
 						});//결제버튼클릭
 
-
 		$(".findAdd").on("click", function() {
-
 			$("#postbtn").click();
 		})
 
@@ -512,7 +509,6 @@ img {
 			$("#must3").click();
 		});
 
-
 		$("#selectEmail").change(function() {
 			var selectEmail = $(this).val();
 			if (selectEmail == "1") {
@@ -528,8 +524,7 @@ img {
 		$(".must4").on("click", function() {
 			$("#must4").click();
 		});
-
 	</script>
-	<jsp:include page="/WEB-INF/views/module/loginModule.jsp"></jsp:include>
+
 </body>
 </html>

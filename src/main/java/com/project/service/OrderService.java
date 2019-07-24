@@ -7,12 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.project.dao.OrderDAO;
 import com.project.dto.OrderDTO;
+import com.project.paging.BuyPaging;
 
 @Service
 public class OrderService {
 
 	@Autowired
 	private OrderDAO dao;
+	@Autowired
+	private BuyPaging bp;
 
 	public void orderInsert(OrderDTO odto) {
 		dao.orderInsert(odto);
@@ -26,5 +29,15 @@ public class OrderService {
 	public List<OrderDTO> sellOrderList(int seq) {
 		return dao.sellOrderList(seq);
 
+	}
+	
+	public int orderCount() {
+		return dao.orderCount();
+	}
+	public List<String> Page(int page, int count){
+		return bp.myPaging(page, count);
+	}
+	public List<OrderDTO> orderTenList(int page){
+		return bp.selectOrder(page);
 	}
 }

@@ -21,8 +21,8 @@
 }
 
 .sell_btn {
-	background: #FCBB00;
-	color: #fff;
+	background: #FFF8E7;
+	color: black;
 	border: 1px solid black;
 	border-radius: 5px;
 	box-shadow: 5px 5px 5px #eee;
@@ -32,35 +32,47 @@
 }
 
 .sell_btn:hover {
-	color: white;
+	color: black;
 	border: black;
 	border-radius: 5px;
 	box-shadow: 5px 5px 5px #eee;
 }
+.navi{
+border:1px solid red;
+
+}
+.center{
+text-align:center;
+}
+
+ 
+
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	
+	<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
-		<div class="row border-bottom  mt-5 pb-1 border-warning">
+		<div class="row border-bottom  mt-5 pb-1 ">
 			<div class="col-12">
-				<h4>판매 내역 확인</h4>
+				<h4 class="mb-3" style="font-family :'나눔고딕OTF';">판매 내역 확인</h4>
 			</div>
 		</div>
 		<div
-			class="row border-top border-bottom border-warning text-center py-1">
-			<div class="col-2">이미지</div>
-			<div class="col-4">제목</div>
-			<div class="col-1">총 수량</div>
-			<div class="col-2">총 금액</div>
-			<div class="col-2">유통기한</div>
-			<div class="col-1">요청</div>
+			class="row border-top border-bottom  text-center py-1" style="background: #dde1e5">
+			<div class="col-2 border">이미지</div>
+			<div class="col-4 border">제목</div>
+			<div class="col-1 border">총 수량</div>
+			<div class="col-2 border">총 금액</div>
+			<div class="col-2 border">유통기한</div>
+			<div class="col-1 border">요청</div>
 		</div>
 
-
 		<c:forEach var="i" items="${sellList }">
+
 <%-- <input type="hidden" value="${i.shop_seq}" id=seqq name=seqq> --%>
-			<div class="row text-center border-bottom border-warning py-3">
+			<div class="row text-center border py-3" style="background: white">
 
 				<div class="col-2 ">
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq}"><img
@@ -111,10 +123,31 @@
 					}
 				})
 			</script>
-
 		</c:forEach>
-	</div>
+		
+			<div class="list_n_menu">
+			<c:forEach var="i" items="${pageList}">
+				<c:choose>
 
+					<c:when test="${i eq '<이전'}">
+						<span class="navi mr-1 center"><a href="sellContentsGoProc?page=${page-1}" class="center">${i}</a></span>
+					</c:when>
+
+					<c:when test="${i eq '다음>'}">
+						<span class="navi mr-1 center"><a href="sellContentsGoProc?page=${page+1}" class="center">${i}</a></span>
+					</c:when>
+
+					<c:otherwise>
+					<span class="navi mr-1 center"><a href="sellContentsGoProc?page=${i}" class="center">${i}</a></span>
+					</c:otherwise>
+
+				</c:choose>
+			</c:forEach>
+		</div>
+		
+		
+	</div>
+	</section>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 

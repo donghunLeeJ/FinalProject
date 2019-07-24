@@ -17,12 +17,12 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="breadcrumb-content">
-					<h2>서비스 소개</h2>
+					<h2 style="font-family :'나눔고딕OTF';">서비스 소개</h2>
 					<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/home"><i
 								class="icon_house_alt"></i>Home</a></li>
-						<li class="breadcrumb-item active" aria-current="page">서비스 소개</li>
+						<li class="breadcrumb-item active" aria-current="page" >서비스 소개</li>
 					</ol>
 					</nav>
 				</div>
@@ -33,7 +33,7 @@
 	<!-- Breadcrumb Area End -->
 
 	<!-- Akame About Area Start -->
-	<section class="akame--about--area ">
+	<section class="akame--about--area bg-gray">
 	<div class="container">
 		<div class="row">
 			<!-- Section Heading -->

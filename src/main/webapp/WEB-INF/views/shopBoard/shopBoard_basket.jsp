@@ -45,7 +45,7 @@ input[type="text"] {
 		<div class="row ">
 			<div class="col-12">
 				<div class="breadcrumb-content">
-					<h2>장바구니</h2>
+					<h2 style="font-family :'나눔고딕OTF';">장바구니</h2>
 					<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/home"><i
@@ -65,19 +65,13 @@ input[type="text"] {
 
 
 	<div class="container mt-3">
-		<div class="row  pb-3 border-bottom">
-			<div class="col-12" style="text-align: right">
-				<a href="/shopboard/ShopBoardViewProc?seq=${sdto.shop_seq }"
-					class="btn akame-btn">이전 페이지 </a>
-			</div>
-		</div>
-
+		
 		<div class="row border-bottom border-top py-2 bg-gray">
 			<div class="col-6">
-				<h3>주문결제</h3>
+				<h3 style="font-family :'나눔고딕OTF';">주문결제</h3>
 			</div>
 			<div class="col-6 " style="text-align: right">
-				<h3>장바구니 주문/결제 주문완료</h3>
+				<h3 style="font-family :'나눔고딕OTF';">장바구니 주문/결제 주문완료</h3>
 			</div>
 		</div>
 
@@ -86,7 +80,7 @@ input[type="text"] {
 				<span class="">주문상품 확인</span>
 			</div>
 			<div class="col-6 text-bottom" style="text-align: right">
-				<p>*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p>
+				<p style="font-family :'나눔고딕OTF';">*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p>
 			</div>
 
 		</div>

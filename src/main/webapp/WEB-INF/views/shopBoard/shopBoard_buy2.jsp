@@ -176,13 +176,14 @@ img {
 				
 				<div class="col-2">
 					
-		<fmt:formatNumber value="${price }" pattern="#,###" />(원)
+			<fmt:formatNumber value="${price }" pattern="#,###" />(원)
+			
 				</div>
 			</div>
 	
 <form action="/shopboard/shopBasketOrder?basket_seq=${basketseq }" method="post" id="basketCharge">
 
-
+<input type="hidden" value="${price }" id="priceTotal" name="priceTotal">
 
 		
 			<div class="row pt-5 pb-1">
@@ -338,31 +339,7 @@ img {
 							var regnum3 = /^([0-9]{4})$/;
 							var regemail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
 							var regemail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-							// 			var price = $("#price").text();
-							// 			IMP.request_pay({
-							// 				pg : 'inicis', // version 1.1.0부터 지원.
-							// 				pay_method : 'card',
-							// 				merchant_uid : 'merchant_' + new Date().getTime(),
-							// 				name : '주문명:결제테스트',
-							// 				amount : price,
-							// 				buyer_email : 'iamport@siot.do',
-							// 				buyer_name : '구매자이름',
-							// 				buyer_tel : '010-1234-5678',
-							// 				buyer_addr : '서울특별시 강남구 삼성동',
-							// 				buyer_postcode : '123-456',
-							// 				m_redirect_url : 'localhost/home'
-							// 			}, function(rsp) {
-							// 				if (rsp.success) {
-							// 					var msg = '결제가 완료되었습니다.';
-							// 					alert(msg);
-							// 					$("#completeForm").submit();
-							// 				} else {
-							// 					var msg = '결제에 실패하였습니다.';
-							// 					msg += '에러내용 : ' + rsp.error_msg;
-							// 				}
-							// 				alert(msg);
-							// 			});
-
+						
 							if (inputcount > 0) {
 								alert("모든 항목을 반드시 입력하셔야 합니다.");
 							} else if (!regname.test($("#order_buyer").val())) {
@@ -429,7 +406,31 @@ img {
 											.attr("id"));
 									removeXSS($("#req").val(), $("#req").attr(
 											"id"));
-									$("#basketCharge").submit();
+									var price = Number($("#priceTotal").val());
+									IMP.request_pay({
+										pg : 'inicis', // version 1.1.0부터 지원.
+										pay_method : 'card',
+										merchant_uid : 'merchant_' + new Date().getTime(),
+										name : '주문명:결제테스트',
+										amount : price,
+										buyer_email : 'iamport@siot.do',
+										buyer_name : '구매자이름',
+										buyer_tel : '010-1234-5678',
+										buyer_addr : '서울특별시 강남구 삼성동',
+										buyer_postcode : '123-456',
+										m_redirect_url : 'localhost/home'
+									}, function(rsp) {
+										if (rsp.success) {
+											var msg = '결제가 완료되었습니다.';
+											alert(msg);
+											$("#basketCharge").submit();
+										} else {
+											var msg = '결제에 실패하였습니다.';
+											msg += '에러내용 : ' + rsp.error_msg;
+										}
+									
+									});
+									
 								} else
 									return;
 							}
