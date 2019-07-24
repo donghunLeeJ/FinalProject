@@ -72,13 +72,14 @@
 						<div class="col-lg-4 col-md-4 col-sm-4 ">
 							<div class="row ml-3">
 								<div class="col-lg-12 mx-auto p-0 border"
-									style="text-align: center">
+									style="text-align: center;height: 12em">
 									<img id="mainimg" src="/img/default.jpg">
 								</div>
 								<div class="col-lg-12 ">
 									<div class="row mt-2">
 										<div
-											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0">
+											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0"
+											style="text-align: center;height: 5em">
 											<img id="food0" class="img" src="/img/default.jpg" alt="">
 										</div>
 										<div

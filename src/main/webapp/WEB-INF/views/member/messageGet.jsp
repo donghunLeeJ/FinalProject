@@ -121,8 +121,9 @@ select {
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
-	<section class="why-choose-us-area bg-gray pt-3"> <jsp:include
+	 <jsp:include
 		page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
 		<div class="row my-2">
 			<div class="col-lg-12 order-lg-2">
@@ -162,7 +163,7 @@ select {
 										${i.message_time }</div>
 									<div class="col-3 my-2" style="margin-top: 0em;">
 										${i.message_contents }</div>
-									<div class="col-2 my-2" style="margin-top: 0em;">
+									<div class="col-2 " style="margin-top: 0em;">
 										<button id="btn${i.message_seq }">답장</button>
 										<button id="delete${i.message_seq }">삭제</button>
 									</div>
@@ -192,7 +193,7 @@ select {
 								<nav aria-label="...">
 								<ul class="pagination">
 									<c:if test="${paging.needPrev == true }">
-										<li class="page-item"><a class="page-link" href="/timeline/getMessagePage?seq=${paging.toPrev} }">Previous</a></li>
+										<li class="page-item"><a class="page-link" href="/timeline/getMessagePage?seq=${paging.toPrev}">Previous</a></li>
 									</c:if>
 
 									<c:forEach var="i" begin="${paging.startNavi }"
@@ -213,7 +214,7 @@ select {
 			</div>
 		</div>
 	</div>
-
+	</section>
 
 	<script>
 		$("#goHome").on("click", function() {

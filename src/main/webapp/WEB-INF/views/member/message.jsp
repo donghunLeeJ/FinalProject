@@ -177,9 +177,9 @@ select {
 									</script>
 								</c:forEach>
 							</div>
-							<div class="row text-center  py-1">
-								<nav aria-label="Page navigation example">
-								<ul class="pagination">
+							<div class="row text-center  py-1" >
+								<nav aria-label="Page navigation example" >
+								<ul class="pagination ">
 									<c:if test="${paging.needPrev == true }">
 									<li class="page-item"><a class="page-link" href="${paging.toPrev }">Previous</a></li>
 									</c:if>
