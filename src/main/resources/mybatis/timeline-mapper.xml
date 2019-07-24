@@ -93,5 +93,41 @@
 		delete from message where
 		message_seq=#{value}
 	</delete>
+	
+	
+	<select id="selectAll_message_sender" resultType="com.project.dto.MessageDTO">
+		select * from (select message_seq , message_sender , message_getter
+		, message_contents, message_time,
+		rank() over(order by
+		message_seq desc) rank from message where message_sender = #{id}) where rank
+		between
+		(${page}*10-9) and ${page}*10 
+	</select>
+	
+	<select id="selectAll_message_getter" resultType="com.project.dto.MessageDTO">
+		select * from (select message_seq , message_sender , message_getter
+		, message_contents, message_time ,
+		rank() over(order by
+		message_seq desc) rank from message where message_getter = #{id }) where rank
+		between
+		(${page}*10-9) and ${page}*10
+	
+	</select>
+	<select id="message_getter_count" resultType="Integer">
+		select count(*) from message where message_getter = #{value }
+	
+	</select>
+	<select id="message_sender_count" resultType="Integer">
+		select count(*) from message where message_sender = #{value }
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>

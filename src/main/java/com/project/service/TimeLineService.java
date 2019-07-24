@@ -74,4 +74,16 @@ public class TimeLineService {
    public int messageDelete(String seq) {
 	   return dao.messageDelete(seq);
    }
+   public List<MessageDTO> selectAll_message_sender(String id ,String currentPage)  {
+	   return dao.selectAll_message_sender(id, currentPage);
+   }
+   public List<MessageDTO> selectAll_message_getter(String id ,String currentPage)  {
+	   return dao.selectAll_message_getter(id, currentPage);
+   }
+   public int message_sender_count(String id ) {
+	   return dao.message_sender_count(id);
+   }
+   public int message_getter_count(String id ) {
+	   return dao.message_getter_count(id);
+   }
 }

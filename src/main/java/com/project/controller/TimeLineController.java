@@ -16,12 +16,20 @@ import com.project.dto.MemberDTO;
 import com.project.dto.MessageDTO;
 import com.project.dto.Tl_BoardDTO;
 import com.project.dto.Tl_ReplyDTO;
+import com.project.paging.MessageGetPage;
+import com.project.paging.MessageSendPage;
 import com.project.service.TimeLineService;
 
 @Controller
 @RequestMapping("/timeline")
 public class TimeLineController {
 
+	@Autowired
+	private MessageSendPage msp;
+	
+	@Autowired
+	private MessageGetPage mgp;
+	
 	@Autowired
 	private HttpServletRequest request;
 
@@ -275,10 +283,12 @@ public class TimeLineController {
 	}
 
 	@RequestMapping("messageList")
-	public String message() {
+	public String message(String seq) {
 		String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
-		request.setAttribute("Message", tls.messageSeter(id));
 
+		request.setAttribute("Message", tls.selectAll_message_sender(id,seq));
+		request.setAttribute("paging", msp.msPaging(seq, id));
+		
 		return "/member/message";
 	}
 
@@ -303,9 +313,10 @@ public class TimeLineController {
 	}
 
 	@RequestMapping("/getMessagePage")
-	public String getmessagePage() {
+	public String getmessagePage(String seq) {
 		String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
-		request.setAttribute("getter", tls.messageGetter(id));
+		request.setAttribute("getter", tls.selectAll_message_getter(id, seq));
+		request.setAttribute("paging", mgp.msPaging(seq, id));
 		return "/member/messageGet";
 
 	}

@@ -119,7 +119,8 @@ select {
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
@@ -128,20 +129,20 @@ select {
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a href="" data-target="#profile"
 						data-toggle="tab" class="nav-link active">보낸 쪽지함</a></li>
-					<li class="nav-item"><a href="/timeline/getMessagePage" 
-						 class="nav-link">받은 쪽지함</a></li>
+					<li class="nav-item"><a href="/timeline/getMessagePage?seq=1"
+						class="nav-link">받은 쪽지함</a></li>
 				</ul>
 				<div class="tab-content py-4 ">
 					<div class="tab-pane active" id="profile">
 						<div class="container">
 							<div class="row border-bottom  mt-5 pb-1 ">
 								<div class="col-12">
-									<h4 style="font-family :'나눔고딕OTF';">보낸 쪽지함</h4>
+									<h4 style="font-family: '나눔고딕OTF';">보낸 쪽지함</h4>
 								</div>
 							</div>
-						
-							<div
-								class="row border-top border-bottom border text-center py-1" style="background: #dde1e5">
+
+							<div class="row border-top border-bottom border text-center py-1"
+								style="background: #dde1e5">
 
 								<div class="col-3">보낸 사람</div>
 								<div class="col-2">받는 이</div>
@@ -149,18 +150,19 @@ select {
 								<div class="col-3">내용</div>
 							</div>
 
-							<div class="row text-center border py-1" style="background: white">
+							<div class="row text-center border py-1"
+								style="background: white">
 								<c:forEach var="i" items="${Message }">
 
-									<div class="col-3 skip" style="margin-top: 0em">
+									<div class="col-3 skip my-2" >
 										${i.message_sender }</div>
-									<div class="col-2 " style="margin-top: 0em">
+									<div class="col-2 my-2" >
 										${i.message_getter }</div>
-									<div class="col-2 " style="margin-top: 0em">
+									<div class="col-2 my-2" >
 										${i.message_time }</div>
-									<div class="col-3 " style="margin-top: 0em;">
+									<div class="col-3 my-2">
 										${i.message_contents }</div>
-									<div class="col-2">
+									<div class="col-2 my-2">
 										<button id="delete${i.message_seq }">삭제</button>
 									</div>
 
@@ -175,6 +177,26 @@ select {
 									</script>
 								</c:forEach>
 							</div>
+							<div class="row text-center  py-1">
+								<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<c:if test="${paging.needPrev == true }">
+									<li class="page-item"><a class="page-link" href="${paging.toPrev }">Previous</a></li>
+									</c:if>
+									<c:forEach  var="i" begin="${paging.startNavi }" end="${paging.endNavi }">
+									<li class="page-item " id="act${i }"><a class="page-link " href="/timeline/messageList?seq=${i }">${i }</a></li>
+									</c:forEach>
+									<c:if test="${paging.needNext == true }">
+									<li class="page-item"><a class="page-link" href="${paging.toNext }">next</a></li>
+									</c:if>
+									
+									
+								</ul>
+								</nav>
+
+
+							</div>
+
 						</div>
 					</div>
 				</div>

@@ -26,9 +26,11 @@ public class LoginCheckAOP {
 	public void timeLine() {}
 	@Pointcut("execution(* com.project.controller.MemberController.log_*(..))")
 	public void member() {}
+	@Pointcut("execution(* com.project.controller.AdminController.*(..))")
+	public void admin() {}
 	
 	
-	@Around("basketController()||shopBoard()||timeLine()||member()")
+	@Around("basketController()||shopBoard()||timeLine()||member()||admin()")
 	public String logCheck(ProceedingJoinPoint pjp) {
 		if(session.getAttribute("id")==null) {
 			System.out.println("로그인 필요");
@@ -43,4 +45,5 @@ public class LoginCheckAOP {
 		return null;
 		}
 	}
+	
 }

@@ -37,9 +37,7 @@
                내용
                <textarea id="textWrite"
                   style="width: 413px; height: 300px; resize: none;"
-                  name="message_contents">
-         
-               </textarea>
+                  name="message_contents"></textarea>
             </div>
 
          </div>

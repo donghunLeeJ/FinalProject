@@ -36,7 +36,7 @@
 	transition-duration: 1s;
 	cursor: pointer;
 	color: black;
-	background-color:  #FFF8E7;
+	background-color:  #f4ead0;
 }
 
 .btn:hover {
@@ -46,7 +46,7 @@
 }
 
 li:hover {
-	color:  #FFF8E7;
+	color:  #f4ead0;
 }
 a,#LogIN,#mypage,#logout{
 	cursor:pointer;
@@ -70,7 +70,7 @@ body { font-family :'나눔고딕OTF';}
 <header class="header-area" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
-	<div class="top-header-area" style="background-color: #FFF8E7">
+	<div class="top-header-area" style="background-color: #f4ead0">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
@@ -171,7 +171,7 @@ body { font-family :'나눔고딕OTF';}
 				window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
 			}else{
 			
-				location.href = "/timeline/messageList";
+				location.href = "/timeline/messageList?seq=1";
 			}
 		}
 		
