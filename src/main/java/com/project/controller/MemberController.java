@@ -50,9 +50,9 @@ public class MemberController {
 	private OrderService os;
 	@Autowired
 	private TimeLineService tservice;
-    @Autowired
+	@Autowired
 	private AdminService aservice;
-    
+
 	@RequestMapping("loginForm")
 	public String goLogin() {
 		return "member/login";
@@ -69,15 +69,17 @@ public class MemberController {
 			if (confirm.equals("y")) {
 
 				int BlackCount = 0;
-				List<String>BlackListResult = aservice.AdminBlackCheckList();
-				
-				for(String BlackList : BlackListResult) {	
-					
-					if(mdto.getMember_id().equals(BlackList)){BlackCount++;}
-				}		
-				
-				if(BlackCount > 0){//만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
-					
+				List<String> BlackListResult = aservice.AdminBlackCheckList();
+
+				for (String BlackList : BlackListResult) {
+
+					if (mdto.getMember_id().equals(BlackList)) {
+						BlackCount++;
+					}
+				}
+
+				if (BlackCount > 0) {// 만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
+
 					return "redirect:/admin/BlackListNoLogin";
 				}
 
@@ -271,35 +273,37 @@ public class MemberController {
 	public String moveSellContentsGo() {
 		return "redirect:sellContentsGoProc?page=1";
 	}
+
 	@RequestMapping("/sellContentsGoProc")
 	public String log_sellContetns(int page) {
-		
+
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		int shopcount = mservice.shopCount();
-		List<String> pageList = mservice.paging(page, shopcount );
+		List<String> pageList = mservice.paging(page, shopcount);
 		List<ShopBoardDTO> sellList = SBservice.ShopBoardPageList(page);
-		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
-		request.setAttribute("page", page);//현재 페이지
+		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자 출력
+		request.setAttribute("page", page);// 현재 페이지
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
-	
-	
+
 	@RequestMapping("buyContentsGo")
 	public String moveBuyContentsGo() {
 		return "redirect:buyContentsGoProc?page=1";
 	}
+
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(int page) {
 		int count = os.orderCount();
-		List<String> pageList = os.Page(page,count);
-		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
-		request.setAttribute("page", page);//현재 페이지임
-
+		List<String> pageList = os.Page(page, count);
+		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
+		request.setAttribute("page", page);// 현재 페이지임
 
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<OrderDTO> buyList = os.orderTenList(page);
-
+		System.out.println(buyList.get(0).getOrder_title());
+		System.out.println(buyList.get(0).getOrder_buyer_email());
+		
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}
@@ -321,39 +325,40 @@ public class MemberController {
 	}
 
 	@RequestMapping("myMsg")
-public String myMsg() {
+	public String myMsg() {
 		return "/member/myMsg";
 	}
 
-	
 	@RequestMapping("minilogin")
 	@ResponseBody
-	public String minilog(String id , String pw) {
+	public String minilog(String id, String pw) {
 		System.out.println(id);
 		System.out.println(pw);
 		MemberDTO mdto = new MemberDTO();
 		mdto.setMember_pw(mdao.SHA256(pw));
 		mdto.setMember_id(id);
 		int result = mservice.login(mdto);
-		if(result == 1) {
-			
+		if (result == 1) {
+
 			int BlackCount = 0;
-			List<String>BlackListResult = aservice.AdminBlackCheckList();
-			
-			for(String BlackList : BlackListResult) {	
-				
-				if(mdto.getMember_id().equals(BlackList)){BlackCount++;}
-			}					
-			if(BlackCount > 0){//만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
-				
+			List<String> BlackListResult = aservice.AdminBlackCheckList();
+
+			for (String BlackList : BlackListResult) {
+
+				if (mdto.getMember_id().equals(BlackList)) {
+					BlackCount++;
+				}
+			}
+			if (BlackCount > 0) {// 만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
+
 				result = -1;
-				
-			}else {
-				
+
+			} else {
+
 				session.setAttribute("id", mservice.select_member(id));
-			}		
+			}
 		}
-		String resultString = result+"";
+		String resultString = result + "";
 		return resultString;
 	}
 
