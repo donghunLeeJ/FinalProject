@@ -255,6 +255,27 @@ public class TimeLineController {
 
 	}
 	
+	@RequestMapping("/reply")
+	public String messageReply(String id) {
+		String sender=((MemberDTO)session.getAttribute("id")).getMember_id();
+		
+		
+		request.setAttribute("sender", sender);
+		request.setAttribute("writer", id);
+		return "timeLine/messageWindow";
+		
+	}
+	
+	@RequestMapping("messageDelete")
+	public String messageDelete(String seq) {
+		
+		tls.messageDelete(seq);
+		String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
+		request.setAttribute("Message", tls.messageSeter(id));
+		request.setAttribute("getter", tls.messageGetter(id));
+		return "/member/message";
+	}
+	
 	
 	@RequestMapping("messageList")
 	public String message() {
@@ -270,11 +291,14 @@ public class TimeLineController {
 	
 	
 	@RequestMapping("/messageProc")
-	public String messageProc(MessageDTO dto) {
-		
-		return "timeLine/messageProc";
+	   public String messageProc(MessageDTO dto) {
+	      System.out.println(dto.getMessage_getter());
+	      System.out.println(dto.getMessage_sender());
+	      System.out.println(dto.getMessage_contents());
+	      request.setAttribute("result", tls.insertMessage(dto));
+	      return "timeLine/messageProc";
 
-	}
+	   }
 	@RequestMapping(value = "/like", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String likeProc(String seq) {

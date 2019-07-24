@@ -11,9 +11,10 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <style>
-h5{
-display:inline;
+h5 {
+	display: inline;
 }
+
 .float {
 	float: left;
 }
@@ -118,7 +119,8 @@ select {
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 
@@ -128,109 +130,124 @@ select {
 			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a href="" data-target="#profile"
-						data-toggle="tab" class="nav-link active">받은 쪽지함</a></li>
-<
+						data-toggle="tab" class="nav-link active">보낸 쪽지함</a></li>
+
 					<li class="nav-item"><a href="" data-target="#edit"
-						data-toggle="tab" class="nav-link">보낸 쪽지함</a></li>
-					
+						data-toggle="tab" class="nav-link">받은 쪽지함</a></li>
+
 				</ul>
 				<div class="tab-content py-4 ">
-					<div class="tab-pane active" id="profile">
+						<div class="tab-pane active" id="profile">
+						
 						<div class="container">
-		<div class="row border-bottom  mt-5 pb-1 border-warning">
-			<div class="col-12">
-				<h4>보낸 쪽지함</h4>
-				
-			</div>
-		</div>
-		<div
-			class="row border-top border-bottom border-warning text-center py-1">
-			<div class="col-1">선택</div>
-			<div class="col-3">보낸 사람</div>
-			<div class="col-2">받는 이</div>
-			<div class="col-2">받은 날짜</div>
-			<div class="col-4">내용</div>
-		</div>
+							<div class="row border-bottom  mt-5 pb-1 border-warning">
+								<div class="col-12">
+									<h4>보낸 쪽지함</h4>
+								</div>
+							</div>
+							<div
+								class="row border-top border-bottom border-warning text-center py-1">
+								
+								<div class="col-3">보낸 사람</div>
+								<div class="col-2">받는 이</div>
+								<div class="col-2">받은 날짜</div>
+								<div class="col-3">내용</div>
+							</div>
 
 
 
 
 
-			<div class="row text-center border-bottom border-warning py-3">
-				<c:forEach var="i" items="${Message }">
-				<div class="col-1 ">
-					<input type="checkbox">
-				</div>
-				<div class="col-3 skip" style="margin-top: 0em">
-					${i.message_sender }
-				</div>
-				<div class="col-2 " style="margin-top: 0em">
-					${i.message_getter }
-				</div>
-				<div class="col-2 " style="margin-top: 0em">
-					${i.message_time }
-				</div>
-				<div class="col-4 " style="margin-top: 0em;">
-					${i.message_contents }
-				</div>
+							<div class="row text-center border-bottom border-warning py-1">
+								<c:forEach var="i" items="${Message }">
+									
+									<div class="col-3 skip" style="margin-top: 0em">
+										${i.message_sender }</div>
+									<div class="col-2 " style="margin-top: 0em">
+										${i.message_getter }</div>
+									<div class="col-2 " style="margin-top: 0em">
+										${i.message_time }</div>
+									<div class="col-3 " style="margin-top: 0em;">
+										${i.message_contents }</div>
+								<div class="col-2">
+								<button id="delete${i.message_seq }">삭제</button>
+								</div>
+								
+								<script>
+								$("#delete${i.message_seq}").on("click",function(){
+									
+									location.href="/timeline/messageDelete?seq=${i.message_seq}";
+								})	
+								
+								</script>
+								</c:forEach>
 
-				</c:forEach>
+							</div>
 
-			</div>
-			
 
-	
-	</div>
-					
+
+						</div>
+
 					</div>
 
 					<div class="tab-pane col-lg-12" id="edit">
-						
+
 						<div class="container">
-		<div class="row border-bottom  mt-5 pb-1 border-warning">
-			<div class="col-12">
-				<h4>받은 쪽지함</h4>
-				
-			</div>
-		</div>
-		<div
-			class="row border-top border-bottom border-warning text-center py-1">
-			<div class="col-1">선택</div>
-			<div class="col-3">보낸 사람</div>
-			<div class="col-2">받는 이</div>
-			<div class="col-2">받은 날짜</div>
-			<div class="col-4">내용</div>
-		</div>
+							<div class="row border-bottom  mt-5 pb-1 border-warning">
+								<div class="col-12">
+									<h4>받은 쪽지함</h4>
+
+								</div>
+							</div>
+							<div
+								class="row border-top border-bottom border-warning text-center py-1">
+								
+								<div class="col-3">보낸 사람</div>
+								<div class="col-2">받는 이</div>
+								<div class="col-2">받은 날짜</div>
+								<div class="col-3">내용</div>
+								<div class="col-2"></div>
+							</div>
 
 
 
 
 
-			<div class="row text-center border-bottom border-warning py-3">
-				<c:forEach var="i" items="${getter }">
-				<div class="col-1 ">
-					<input type="checkbox">
-				</div>
-				<div class="col-3 skip" style="margin-top: 0em">
-					${i.message_sender }
-				</div>
-				<div class="col-2 " style="margin-top: 0em">
-					${i.message_getter }
-				</div>
-				<div class="col-2 " style="margin-top: 0em">
-					${i.message_time }
-				</div>
-				<div class="col-4 " style="margin-top: 0em;">
-					${i.message_contents }
-				</div>
+							<div class="row text-center border-bottom border-warning py-1">
+								<c:forEach var="i" items="${getter }">
 
-				</c:forEach>
-			</div>
-		
-	</div>
+									
+									<div class="col-3 skip" style="margin-top: 0em">
+										${i.message_sender }</div>
+									<div class="col-2 " style="margin-top: 0em">
+										${i.message_getter }</div>
+									<div class="col-2 " style="margin-top: 0em">
+										${i.message_time }</div>
+									<div class="col-3 " style="margin-top: 0em;">
+										${i.message_contents }</div>
+									<div class="col-2 " style="margin-top: 0em;">
+										<button id="btn${i.message_seq }">답장</button>
+										<button id="delete${i.message_seq }">삭제</button>
+									</div>
+
+									<script>
+										$("#btn${i.message_seq }").on("click",function() {window.open("/timeline/reply?id=${i.message_sender }",
+												"",
+												"width=470px, height=800px , resizable=no");
+														})
+														$("#delete${i.message_seq}").on("click",function(){
+															
+															location.href="/timeline/messageDelete?seq=${i.message_seq}";
+														})
+									</script>
+
+								</c:forEach>
+							</div>
+
+						</div>
 
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -241,7 +258,6 @@ select {
 		$("#goHome").on("click", function() {
 			location.href = "/home";
 		})
-
 	</script>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>

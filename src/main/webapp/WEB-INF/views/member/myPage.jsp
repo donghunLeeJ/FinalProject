@@ -129,7 +129,7 @@ select {
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a href="" data-target="#profile"
 						data-toggle="tab" class="nav-link active">나의 정보</a></li>
-<
+
 					<li class="nav-item"><a href="" data-target="#edit"
 						data-toggle="tab" class="nav-link">정보 수정</a></li>
 					<li class="nav-item"><a href="" data-target="#delId"

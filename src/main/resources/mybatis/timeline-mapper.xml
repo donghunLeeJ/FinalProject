@@ -88,6 +88,10 @@
 	<select id="messageGetter" resultType="com.project.dto.MessageDTO">
 		select * from message where message_getter=#{value}
 	</select>
-
+	
+	<delete id="messageDelete">
+		delete from message where
+		message_seq=#{value}
+	</delete>
 
 </mapper>

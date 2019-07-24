@@ -78,5 +78,7 @@ public class Tl_BoardDAO {
    public List<MessageDTO> showgetter(String id){
 	   return sst.selectList("Tl_BoardDAO.messageGetter",id);
    }
-   
+   public int messageDelete(String seq) {
+	   return sst.delete("Tl_BoardDAO.messageDelete",seq);
+   }
 }

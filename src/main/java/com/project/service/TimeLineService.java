@@ -71,4 +71,7 @@ public class TimeLineService {
    public List<MessageDTO> messageGetter(String id){
 	   return dao.showgetter(id);
    }
+   public int messageDelete(String seq) {
+	   return dao.messageDelete(seq);
+   }
 }
