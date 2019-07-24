@@ -119,39 +119,40 @@ select {
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<section class="why-choose-us-area bg-gray pt-3">
+	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container">
 		<div class="row my-2">
 			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a href="" data-target="#profile"
-						data-toggle="tab" class="nav-link active">보낸 쪽지함</a></li>
-					<li class="nav-item"><a href="/timeline/getMessagePage" 
-						 class="nav-link">받은 쪽지함</a></li>
+					<li class="nav-item"><a href="/timeline/messageList"  class="nav-link ">보낸 쪽지함</a></li>
+					<li class="nav-item"><a href="/timeline/getMessagePage"  class="nav-link active">받은 쪽지함</a></li>
 				</ul>
 				<div class="tab-content py-4 ">
-					<div class="tab-pane active" id="profile">
+					<div class="tab-pane active" id="edit">
 						<div class="container">
-							<div class="row border-bottom  mt-5 pb-1 ">
+							<div class="row border-bottom  mt-5 pb-1 border-warning">
 								<div class="col-12">
-									<h4 style="font-family :'나눔고딕OTF';">보낸 쪽지함</h4>
+									<h4 style="font-family :'나눔고딕OTF';>받은 쪽지함</h4>
+
 								</div>
 							</div>
-						
 							<div
-								class="row border-top border-bottom border text-center py-1" style="background: #dde1e5">
-
+								class="row border-top border-bottom border-warning text-center py-1">
+								
 								<div class="col-3">보낸 사람</div>
 								<div class="col-2">받는 이</div>
 								<div class="col-2">받은 날짜</div>
 								<div class="col-3">내용</div>
+								<div class="col-2"></div>
 							</div>
 
-							<div class="row text-center border py-1" style="background: white">
-								<c:forEach var="i" items="${Message }">
-
+							<div class="row text-center border-bottom border-warning py-1">
+							
+							
+								<c:forEach var="i" items="${getter }">
 									<div class="col-3 skip" style="margin-top: 0em">
 										${i.message_sender }</div>
 									<div class="col-2 " style="margin-top: 0em">
@@ -160,17 +161,19 @@ select {
 										${i.message_time }</div>
 									<div class="col-3 " style="margin-top: 0em;">
 										${i.message_contents }</div>
-									<div class="col-2">
+									<div class="col-2 " style="margin-top: 0em;">
+										<button id="btn${i.message_seq }">답장</button>
 										<button id="delete${i.message_seq }">삭제</button>
 									</div>
 
 									<script>
-										$("#delete${i.message_seq}")
-												.on(
-														"click",
-														function() {
-
-															location.href = "/timeline/messageDelete?seq=${i.message_seq}";
+										$("#btn${i.message_seq }").on("click",function() {window.open("/timeline/reply?id=${i.message_sender }",
+												"",
+												"width=470px, height=800px , resizable=no");
+														})
+														$("#delete${i.message_seq}").on("click",function(){
+															
+															location.href="/timeline/messageDelete?seq=${i.message_seq}";
 														})
 									</script>
 								</c:forEach>
@@ -181,7 +184,8 @@ select {
 			</div>
 		</div>
 	</div>
-	</section>
+
+
 	<script>
 		$("#goHome").on("click", function() {
 			location.href = "/home";
