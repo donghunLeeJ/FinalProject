@@ -145,34 +145,35 @@
 			</div>
 		</div>
 
-		<div class="row py-5 border-bottom">
+		<div class="row pt-5 border-bottom">
 			<div class="col-12 py-2">
 				<h3>
 					<strong>배송 정보</strong>
 				</h3>
 			</div>
-			<div class="row border text-center"
-				style="height: 10em; line-height: 4.7em">
-				<div class="col-1 border">
-					<strong>수령인</strong>
-				</div>
-				<div class="col-6 border bg-gray">${ldto.order_receipt }</div>
-				<div class="col-2 border text-center">
-					<strong>휴대전화</strong>
-				</div>
-				<div class="col-3 border bg-gray">${ldto.order_receipt_phone }</div>
 
-				<div class="col-1 border">
-					<strong>배송지</strong>
-				</div>
-				<div class="col-6 border bg-gray">${ldto.order_receipt_address1 }&nbsp;
-					${ldto.order_receipt_address2 } &nbsp;
-					(${ldto.order_receipt_postcode })</div>
-				<div class="col-2 border text-center">
-					<strong>전화번호</strong>
-				</div>
-				<div class="col-3 border bg-gray">${ldto.order_receipt_phone }</div>
+		</div>
+		<div class="row border text-center"
+			style="height: 10em; line-height: 4.7em">
+			<div class="col-1 border">
+				<strong>수령인</strong>
 			</div>
+			<div class="col-6 border bg-gray">${ldto.order_receipt }</div>
+			<div class="col-2 border text-center">
+				<strong>휴대전화</strong>
+			</div>
+			<div class="col-3 border bg-gray">${ldto.order_receipt_phone }</div>
+
+			<div class="col-1 border">
+				<strong>배송지</strong>
+			</div>
+			<div class="col-6 border bg-gray">${ldto.order_receipt_address1 }&nbsp;
+				${ldto.order_receipt_address2 } &nbsp;
+				(${ldto.order_receipt_postcode })</div>
+			<div class="col-2 border text-center">
+				<strong>전화번호</strong>
+			</div>
+			<div class="col-3 border bg-gray">${ldto.order_receipt_phone }</div>
 		</div>
 	</div>
 	<div class="row pb-5"></div>
@@ -180,7 +181,10 @@
 		$("#homeGo_btn").on("click", function() {
 			$(location).attr("href", "/home/")
 		})
-	</script>
+	$("#chargeInfo_btn").on("click",function(){
+		$(location).attr("href","/member/buyContentsGo")
+	})
+		</script>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>

@@ -56,7 +56,7 @@
 								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
 								data-wow-delay="500ms">
 								<div class="akame-portfolio-single-item" style="height: 250px">
-									<img src="${i.shop_imagepath1 }" id="img1" alt="">
+									<img src="${i.shop_imagepath1 }" id="img1" alt="" style="height:250px;">
 									<!-- Overlay Content -->
 									<div
 										class="overlay-content d-flex align-items-center justify-content-center">
