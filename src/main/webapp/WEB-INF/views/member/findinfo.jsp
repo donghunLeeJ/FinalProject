@@ -75,7 +75,7 @@ box-sizing: border-box;
                             
                             <div class="col-12 text-center">
                             <br>
-                                <button id="find_pw" type="button" class="btn akame-btn btn-3 mt-10 active">비밀번호 초기화</button>
+                                <button id="find_pw" type="button" class="btn akame-btn btn-3 mt-10 active">email 발송</button>
                             </div>
                         </div>
                     </form>

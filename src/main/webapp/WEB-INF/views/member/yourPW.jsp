@@ -42,7 +42,7 @@ text-align: center;
                         <div class="row" >
                             <div class="col-lg-12 text-center">
                              <h3>비밀번호 입력</h3>
-                             <input type="hidden" value="${change}" name=member_id>
+                             <input type="hidden" value="${id}" name=member_id>
                                 <input type="password" style="width: 50%;margin: auto;" name="member_pw" id=pw
                                 class="form-control mb-30"placeholder="대,소문자,숫자 포함 8~13자리">
                             </div>
