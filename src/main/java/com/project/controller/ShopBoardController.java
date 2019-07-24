@@ -277,7 +277,7 @@ public class ShopBoardController {
 
 	@RequestMapping("/shopBasketOrder")
 	public String log_basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq) {
+			String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq ,String priceTotal) {
 		System.out.println(basket_seq);
 		String phone = phone1 + phone2 + phone3;
 		String email = email1 + "@" + email2;
@@ -298,25 +298,29 @@ public class ShopBoardController {
 			}
 			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
-			int balanceQuan = sService.getQuan(bdto.getProduct_seq())-bdto.getBasket_quantity(); 	
-			sService.updateQ(balanceQuan, bdto.getProduct_seq());
-			odto2.setOrder_buyer_phone(phone);
-			odto2.setProducts_seq(bdto.getProduct_seq());
-			odto2.setMember_email(login_email);
-			odto2.setOrder_number(order_number);
-			odto2.setOrder_title(bdto.getBasket_title());
-			odto2.setOrder_quantity(bdto.getBasket_quantity());
-			odto2.setOrder_price(bdto.getBasket_price());
-			odto2.setOrder_image(bdto.getBasket_imagepath());
-			odto2.setOrder_seller(bdto.getBasket_seller());
-			odto2.setOrder_buyer_email(email);
-			odto2.setOrder_receipt_phone(getter_phone);
-			arr.add(odto2);
-			oService.orderInsert(odto2);
+			if(sService.getQuan(bdto.getProduct_seq())<=0) {
+				return "/shopBoard/chargeCancel";
+			}else {
+				int balanceQuan = sService.getQuan(bdto.getProduct_seq())-bdto.getBasket_quantity(); 	
+				sService.updateQ(balanceQuan, bdto.getProduct_seq());
+				odto2.setOrder_buyer_phone(phone);
+				odto2.setProducts_seq(bdto.getProduct_seq());
+				odto2.setMember_email(login_email);
+				odto2.setOrder_number(order_number);
+				odto2.setOrder_title(bdto.getBasket_title());
+				odto2.setOrder_quantity(bdto.getBasket_quantity());
+				odto2.setOrder_price(bdto.getBasket_price());
+				odto2.setOrder_image(bdto.getBasket_imagepath());
+				odto2.setOrder_seller(bdto.getBasket_seller());
+				odto2.setOrder_buyer_email(email);
+				odto2.setOrder_receipt_phone(getter_phone);
+				arr.add(odto2);
+				oService.orderInsert(odto2);
+			}
 		}
-		Gson g = new Gson();
-		System.out.println(g.toJson(arr));
 		bservice.resetBasket(email);
+		System.out.println(priceTotal);
+		request.setAttribute("price", priceTotal);
 		request.setAttribute("ldto", arr);
 		
 		return "/shopBoard/shopChargeOk2";

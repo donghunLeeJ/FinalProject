@@ -44,8 +44,8 @@
 	<div class="container pt-5">
 		<div class="row border-bottom">
 			<div class="col-12 pb-2">
-				<h3>
-					<strong>결제 완료</strong>
+				<h3 style="font-family :'나눔고딕OTF';">
+					<strong >결제 완료</strong>
 				</h3>
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 				<small>주문번호 </small>&nbsp; <a href="#" class="border-bottom"><small>${i.order_number }</small></a>
 			</div>
 			<div class="col-12 py-2">
-				<h4>
+				<h4 style="font-family :'나눔고딕OTF';">
 					<strong>주문과 결제가 정상적으로 완료되었습니다.</strong>
 				</h4>
 			</div>
@@ -67,7 +67,7 @@
 		</div>
 		<div class="row pt-5 pb-2">
 			<div class="col-12">
-				<h3>
+				<h3 style="font-family :'나눔고딕OTF';">
 					<Strong>상품 정보</Strong>
 				</h3>
 			</div>
@@ -119,7 +119,7 @@
 		</c:forEach>
 		<div class="row pt-5 pb-2">
 			<div class="col-12">
-				<h3>
+				<h3 style="font-family :'나눔고딕OTF';">
 					<strong>결제 정보</strong>
 				</h3>
 			</div>
@@ -133,7 +133,7 @@
 			<div class="col-2 border text-center ">
 				<strong>승인 번호</strong>
 			</div>
-			<div class="col-10 border bg-gray">35373975</div>
+			<div class="col-10 border bg-gray">${ldto[0].order_number }</div>
 
 			<div class="col-2 border text-center">
 				<strong>할부 개월</strong>
@@ -144,17 +144,23 @@
 				<strong>결제 금액</strong>
 			</div>
 			<div class="col-10 border bg-gray">
+<<<<<<< HEAD
 				<span><fmt:formatNumber value="1" pattern="#,###" /> 원</span>
+=======
+				<span><fmt:formatNumber value="1" pattern="#,###" />${priceTotal }
+					원</span>
+>>>>>>> 6a1005a924a9a014cbd6947026e685785806d5dd
 			</div>
 		</div>
 
 		<div class="row py-5 border-bottom">
 			<div class="col-12 py-2">
-				<h3>
+				<h3 style="font-family :'나눔고딕OTF';">
 					<strong>배송 정보</strong>
 				</h3>
 			</div>
 
+<<<<<<< HEAD
 		</div>
 		<div class="row border text-center"
 			style="height: 10em; line-height: 4.7em">
@@ -174,15 +180,42 @@
 				${i.order_receipt_address2 } &nbsp; (${i.order_receipt_postcode })</div>
 			<div class="col-2 border text-center">
 				<strong>전화번호</strong>
+=======
+				<div class="col-1 border">
+					<strong>배송지</strong>
+				</div>
+				<div class="col-6 border bg-gray">${ldto[0].order_receipt_address1 }&nbsp;
+					${i.order_receipt_address2 } &nbsp; (${i.order_receipt_postcode })</div>
+				<div class="col-2 border text-center">
+					<strong>전화번호</strong>
+				</div>
+				<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
+>>>>>>> 6a1005a924a9a014cbd6947026e685785806d5dd
 			</div>
 			<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
 		</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6a1005a924a9a014cbd6947026e685785806d5dd
 	</div>
 	<div class="row pb-5"></div>
 	<script>
 		$("#homeGo_btn").on("click", function() {
 			$(location).attr("href", "/home/")
 		})
+
+		function doNotReload() {
+			if ((event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82))
+					|| (event.keyCode == 116)) {
+				event.keyCode = 0;
+				event.cancelBubble = true;
+				event.returnValue = false;
+			}
+		}
+		document.onkeydown = doNotReload;
+
+	
 	</script>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>

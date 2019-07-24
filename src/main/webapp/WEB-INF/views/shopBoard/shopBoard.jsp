@@ -11,7 +11,10 @@
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
-
+#img1 {
+	/*  width:250px;  */
+	height: 210px;
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -23,7 +26,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="breadcrumb-content">
-					<h2>구매하기</h2>
+					<h2 style="font-family: '나눔고딕OTF';">구매하기</h2>
 					<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/home"><i
@@ -52,36 +55,65 @@
 					<div class="row">
 
 						<c:forEach var="i" items="${boardList }">
-							<div
-								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
-								data-wow-delay="500ms">
-								<div class="akame-portfolio-single-item" style="height: 250px">
-									<img src="${i.shop_imagepath1 }" id="img1" alt="" style="height:250px;">
-									<!-- Overlay Content -->
-									<div
-										class="overlay-content d-flex align-items-center justify-content-center">
-										<div class="overlay-text text-center">
-											<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }"><span
-												style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span></a>
+							<c:choose>
+								<c:when test="${i.shop_quantity eq 0}">
+									<div class="col-12 col-sm-6 col-lg-3  mb-5 "
+										data-wow-delay="500ms">
+										<div class="" style="height: 250px">
 
-											<p class="pt-3">
-												<fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
-												&nbsp; 원
-											</p>
+											<div style="position: absolute;">
+												<div style="position: relative; top: 70px; left: 0px;">
+													<img src="/img/core-img/soldout.png">
+
+												</div>
+											</div>
+											<img src="${i.shop_imagepath1 }" id="img1" alt=""
+												style="height: 300px">
+
+											<!-- Thumbnail Zoom -->
+											<a href="#}" class=""><i class=""></i></a>
+										</div>
+										<div class="team-member-info border">
+											<div class="row">
+												<div class="col-12"></div>
+											</div>
 										</div>
 									</div>
+								</c:when>
+								<c:otherwise>
+									<div
+										class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
+										data-wow-delay="500ms">
+										<div class="akame-portfolio-single-item" style="height: 250px">
+											<img src="${i.shop_imagepath1 }" id="img1" alt=""
+												style="height: 250px">
+											<!-- Overlay Content -->
+											<div
+												class="overlay-content d-flex align-items-center justify-content-center">
+												<div class="overlay-text text-center">
+													<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
+														<span style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span>
+													</a>
 
-									<!-- Thumbnail Zoom -->
-									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i
-										class="icon_search"></i></a>
+													<p class="pt-3">
+														<fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
+														&nbsp; 원
+													</p>
+												</div>
+											</div>
 
-								</div>
-								<div class="team-member-info border">
-									<div class="row">
-										<div class="col-12"></div>
+											<!-- Thumbnail Zoom -->
+											<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i
+												class="icon_search"></i></a>
+										</div>
+										<div class="team-member-info border">
+											<div class="row">
+												<div class="col-12"></div>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 
 
@@ -96,7 +128,7 @@
 	</section>
 
 	<script>
-	
+   
       var count = 2;
       $(window).scroll(
             function() {

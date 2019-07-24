@@ -7,11 +7,14 @@ import org.springframework.stereotype.Service;
 
 import com.project.dao.MemberDAO;
 import com.project.dto.MemberDTO;
+import com.project.paging.SellPaging;
 
 @Service
 public class MemberService {
 	@Autowired
 	private MemberDAO mdao;
+	@Autowired
+	private SellPaging sellP;
 	
 	public String findID(MemberDTO dto) {
 		return mdao.findID(dto);
@@ -23,6 +26,13 @@ public class MemberService {
 	public int cleanPW(String pw, String member_id) {
 		int num=mdao.cleanPW(pw, member_id);
 		return num;
+	}
+	
+	public int shopCount() {
+		return mdao.shopCount();
+	}
+	public List<String> paging(int page, int shopcount){
+		return sellP.myPaging(page, shopcount);
 	}
 	
 	public int login(MemberDTO mdto) {

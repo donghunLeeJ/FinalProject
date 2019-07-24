@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<footer class="footer-area section-padding-80-0"
+<footer class="footer-area border"
 	oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
-	<div class="container-fluid" style="background-color: #FCBB00">
+	<div class="container-fluid border" style="background-color: #FFF8E7">
 		<div class="container">
 			<div class="row justify-content-between">
 
@@ -67,7 +67,7 @@
 					<div class="single-footer-widget mb-80">
 
 						<!-- Widget Title -->
-						<h4 class="widget-title">고객센터 C/S Center</h4>
+						<h4 class="widget-title" style="font-family :'나눔고딕OTF';">고객센터 C/S Center</h4>
 
 						<!-- Contact Address -->
 						<div class="contact-address">

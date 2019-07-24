@@ -36,7 +36,7 @@ table {
 	<div class="container">
 
 
-		<table class="table">
+		<table class="table mt-5">
 			<thead>
 				<tr class="row">
 					<th class="col">이미지</th>
@@ -94,13 +94,17 @@ table {
 					</c:when>
 
 					<c:otherwise>
-						<a href="ShopBoardManagementProc?page=${i}">${i}</a>
+						<a class="${i}" href="ShopBoardManagementProc?page=${i}">${i}</a>
 					</c:otherwise>
 
 				</c:choose>
 			</c:forEach>
 		</div>
-
+		
+		<script>
+			$(".${page}").css("font-weight", "bold");
+		</script>
+		
 	</div>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>

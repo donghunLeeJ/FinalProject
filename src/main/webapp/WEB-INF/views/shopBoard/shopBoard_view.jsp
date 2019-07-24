@@ -39,7 +39,7 @@
 	<form id="form" action="/Basket/basketInsert" method="post">
 		<div class="container-fluid mt-5">
 			<div class="row pt-5 ">
-				<div class="col-2">왼쪽</div>
+				<div class="col-2"></div>
 				<div class="col-8">
 					<!-- 상품정보 전체내용 -->
 					<div class="container">
@@ -93,7 +93,7 @@
 							<div class="col-6">
 								<div class="row pb-4 border-bottom">
 									<div class="col-12">
-										<h4>
+										<h4 style="font-family :'나눔고딕OTF';">
 											<strong>[${dto.shop_brand}] &nbsp;
 												&nbsp;${dto.shop_title }</strong>
 										</h4>
@@ -130,7 +130,8 @@
 									<div class="col-8">
 										<p>
 											<strong>${dto.shop_expiration }</strong> <input type="hidden"
-												name=basket_expiration value="${dto.shop_expiration }">
+												id="expi" name=basket_expiration
+												value="${dto.shop_expiration }">
 										</p>
 
 									</div>
@@ -161,8 +162,8 @@
 								<div class="row pt-2 pb-4">
 									<div class="col-6  text-left">
 										<span style="margin-right: 1em; text-align: left">총 수량
-											: <strong><fmt:formatNumber value="${dto.shop_quantity }" pattern="#,###" />(개)</strong>
-<%-- 												: <strong><fmt:formatNumber value="${quant }" pattern="#,###" />(개)</strong> --%>
+											: <strong><fmt:formatNumber
+													value="${dto.shop_quantity }" pattern="#,###" />(개)</strong> <%-- 												: <strong><fmt:formatNumber value="${quant }" pattern="#,###" />(개)</strong> --%>
 										</span>
 									</div>
 									<div class="col-6  text-right">
@@ -230,7 +231,7 @@
 		</div>
 
 	</form>
-	<div class="col-2">오른쪽</div>
+	<div class="col-2"></div>
 
 	<div class=" pb-5">
 		<div class=" col-12"></div>
@@ -261,8 +262,8 @@
 					<!-- 리뷰 작성 -->
 					<div class="tab-pane" id="messages">
 						<div class="row border-bottom py-3 ">
-							<div class="col-12">
-								<h2>프리미엄 상품평</h2>
+							<div class="col-12" >
+								<h2 style="font-family :'나눔고딕OTF';">프리미엄 상품평</h2>
 							</div>
 						</div>
 						<c:forEach var="i" items="${ review}">
@@ -353,6 +354,15 @@
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+		
+		
+		function parse(str) {
+   	 		var y = str.substr(0, 4);
+    		var m = str.substr(5, 2);
+    		var d = str.substr(8, 2);
+    		return new Date(y,m-1,d);
+		}
+	
 		$("#quantity_one").on("input", function() {
 			var quantity = Number($("#quantity_one").val());
 			var price = Number($("#price").val());
@@ -363,7 +373,7 @@
 				alert("수량이 초과되었습니다.");
 				$("#quantity_one").val("1");
 			}
-		})
+		});
 		
 // 	$("#quantity_one").on("change", function() {
 // 				if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
@@ -380,16 +390,21 @@
 		
 		
 		$("#chargeItem").on("click",function(){
+			var date = $("#expi").val();
+			var expidate = parse(date);
+			var nowdate = new Date();
 			if(${id == null}){
 				alert("로그인이 필요합니다");
 	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
 			}else{
-				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
-				
+				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0 && expidate >= nowdate){
 							var quantity = $("#quantity_one").val();
 							location.href = "/shopboard/shopBoard_buyProc?quantity="
 									+ quantity + "&seq=${dto.shop_seq }";
-				}else{
+				}else if(expidate <= nowdate){
+					alert("유통기한이 지났습니다.")
+				}
+				else{
 				alert("수량이 초과되었습니다.");
 				$("#quantity_one").val("1")
 				}
@@ -397,15 +412,20 @@
 		});
 		
 		$("#basket").on("click",function() {
+			var date = $("#expi").val();
+			var expidate = parse(date);
+			var nowdate = new Date();
 			if(${id == null}){
 				alert("로그인이 필요합니다");
 	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
 			}else{
-				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0){
+				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0 && expidate >= nowdate){
 					
 					var quantity = $("#quantity_one").val();
 					location.href = "/Basket/basketInsert?quantity="+ quantity + "&seq=${dto.shop_seq }"
 				
+				}else if(expidate <= nowdate){
+					alert("유통기한이 지났습니다.")
 				}else{
 					alert("수량이 초과되었습니다.");
 					$("#quantity_one").val("1");
@@ -435,13 +455,18 @@
 		//버튼클릭시 수량 추가
 		$("#up_btn").on("click", function() {
 			upCount();
+		
 			var quantity = Number($("#quantity_one").val());
 			var price = Number($("#price").val());
 			var result = quantity * price;
 			$("#resultPrice").text(result + "원");
 			$("#resultPrice1").text(result + "원");
+			if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
+				alert("수량이 초과되었습니다.");
+				$("#quantity_one").val("1");
+			}
 
-		})
+		});
 
 		//버튼클릭시 수량 감소
 		$("#down_btn").on("click", function() {

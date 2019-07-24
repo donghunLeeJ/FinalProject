@@ -22,6 +22,7 @@ import com.project.dto.MemberPagingDTO;
 import com.project.dto.OrderDTO;
 import com.project.dto.ShopBoardDTO;
 import com.project.paging.Mylist_Paging;
+import com.project.service.AdminService;
 import com.project.service.MemberService;
 import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
@@ -47,9 +48,10 @@ public class MemberController {
 	private Mylist_Paging mp;
 	@Autowired
 	private OrderService os;
-
 	@Autowired
 	private TimeLineService tservice;
+	@Autowired
+	private AdminService aservice;
 
 	@RequestMapping("loginForm")
 	public String goLogin() {
@@ -66,7 +68,22 @@ public class MemberController {
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
 			if (confirm.equals("y")) {
 
-				if (mdto.getMember_id().equals("admin")) {// 만일 로그인한 id가 관리자 아이디일 경우
+				int BlackCount = 0;
+				List<String> BlackListResult = aservice.AdminBlackCheckList();
+
+				for (String BlackList : BlackListResult) {
+
+					if (mdto.getMember_id().equals(BlackList)) {
+						BlackCount++;
+					}
+				}
+
+				if (BlackCount > 0) {// 만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
+
+					return "redirect:/admin/BlackListNoLogin";
+				}
+
+				else if (mdto.getMember_id().equals("admin")) {// 만일 로그인한 id가 관리자 아이디일 경우
 
 					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 					return "redirect:/admin/adminHome"; // 관리자 컨트롤러로 이동시킴
@@ -230,22 +247,43 @@ public class MemberController {
 			return "member/reConfirm";
 		}
 		return null;
-
 	}
 
 	@RequestMapping("/sellContentsGo")
-	public String log_sellContetns() {
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<ShopBoardDTO> sellList = SBservice.ShopBoardList(mdto.getMember_id());
+	public String moveSellContentsGo() {
+		return "redirect:sellContentsGoProc?page=1";
+	}
 
+	@RequestMapping("/sellContentsGoProc")
+	public String log_sellContetns(int page) {
+
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		int shopcount = mservice.shopCount();
+		List<String> pageList = mservice.paging(page, shopcount);
+		List<ShopBoardDTO> sellList = SBservice.ShopBoardPageList(page);
+		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자 출력
+		request.setAttribute("page", page);// 현재 페이지
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
-	@RequestMapping("buyContentsGo")
-	public String buyContetns() {
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<OrderDTO> buyList = os.myOrderList(mdto.getMember_id());
 
+	@RequestMapping("buyContentsGo")
+	public String moveBuyContentsGo() {
+		return "redirect:buyContentsGoProc?page=1";
+	}
+
+	@RequestMapping("buyContentsGoProc")
+	public String buyContetns(int page) {
+		int count = os.orderCount();
+		List<String> pageList = os.Page(page, count);
+		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
+		request.setAttribute("page", page);// 현재 페이지임
+
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		List<OrderDTO> buyList = os.orderTenList(page);
+		System.out.println(buyList.get(0).getOrder_title());
+		System.out.println(buyList.get(0).getOrder_buyer_email());
+		
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}
@@ -267,24 +305,40 @@ public class MemberController {
 	}
 
 	@RequestMapping("myMsg")
-public String myMsg() {
+	public String myMsg() {
 		return "/member/myMsg";
 	}
 
-	
 	@RequestMapping("minilogin")
 	@ResponseBody
-	public String minilog(String id , String pw) {
+	public String minilog(String id, String pw) {
 		System.out.println(id);
 		System.out.println(pw);
 		MemberDTO mdto = new MemberDTO();
 		mdto.setMember_pw(mdao.SHA256(pw));
 		mdto.setMember_id(id);
 		int result = mservice.login(mdto);
-		if(result == 1) {
-			session.setAttribute("id", mservice.select_member(id));
+		if (result == 1) {
+
+			int BlackCount = 0;
+			List<String> BlackListResult = aservice.AdminBlackCheckList();
+
+			for (String BlackList : BlackListResult) {
+
+				if (mdto.getMember_id().equals(BlackList)) {
+					BlackCount++;
+				}
+			}
+			if (BlackCount > 0) {// 만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
+
+				result = -1;
+
+			} else {
+
+				session.setAttribute("id", mservice.select_member(id));
+			}
 		}
-		String resultString = result+"";
+		String resultString = result + "";
 		return resultString;
 	}
 

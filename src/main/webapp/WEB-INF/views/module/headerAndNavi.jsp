@@ -9,15 +9,15 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
 .headerbtn {
-	border: 0px solid #FCBB00;
+	border: 0px solid gray;
 	background-color: rgba(0, 0, 0, 0);
-	color: white;
+	color: black;
 	padding: 5px;
 	padding-top: 0px;
 }
 
 .headerbtn:hover {
-	color: white;
+	color: black;
 }
 
 #logout {
@@ -35,23 +35,32 @@
 	border: 1px solid gray;
 	transition-duration: 1s;
 	cursor: pointer;
-	color: white;
-	background-color: #FCBB00;
+	color: black;
+	background-color:  #FFF8E7;
 }
 
 .btn:hover {
 	background-color: white;
-	border: 1px solid #FCBB00;
+	border: 1px solid gray;
 	color: black;
 }
 
 li:hover {
-	color: #FCBB00;
+	color:  #FFF8E7;
 }
-#LogIN,#mypage,#logout{
+a,#LogIN,#mypage,#logout{
 	cursor:pointer;
 }
+
+body { font-family :'나눔고딕OTF';}
+
+
+#map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
+
+
 </style>
+
+
 <!-- Preloader -->
 <div id="preloader">
 	<div class="loader"></div>
@@ -61,12 +70,12 @@ li:hover {
 <header class="header-area" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
-	<div class="top-header-area" style="background-color: #FCBB00">
+	<div class="top-header-area" style="background-color: #FFF8E7">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p>Welcome to hair salon!</p>
+						<p style="font-family :'나눔고딕OTF';color: black">Welcome to our page!</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -84,7 +93,7 @@ li:hover {
 									<img src="/img/button-img/m_iconM.png">
 								</button>
 								<button id=logout style="width: 8%;" class="headerbtn ">
-									<img src="/img/button-img/logout-icon.png">
+									<img src="/img/button-img/logout2.png">
 								</button>
 							</c:otherwise>
 						</c:choose>
@@ -101,13 +110,13 @@ li:hover {
 		<div class="main-header-area " style="background-color: white"
 			id="fixedNav">
 
-			<div class="classy-nav-container breakpoint-off "
-				style="border: 1px solid #FCBB00;">
+			<div class="classy-nav-container breakpoint-off border"
+				">
 				<div class="container">
 					<!-- Classy Menu -->
 
-					<nav class="classy-navbar justify-content-between  " id="akameNav"
-						style="background-color: white">
+					<nav class="classy-navbar justify-content-between " id="akameNav"
+						>
 
 
 						<!-- Logo -->
@@ -133,13 +142,13 @@ li:hover {
 									<li><a href="/home/service">서비스 소개</a></li>
 									<li><a href="#">여기 뭐라고 할까</a>
 										<ul class="dropdown">
-											<li><a onclick="buy_record();">구매내역</a></li>
+											<li><a onclick="buy_record();">구매 내역</a></li>
 											<li><a onclick="sell_record();">판매 내역 </a></li>
-											<li><a href="#">쪽지함</a></li>
+											<li><a onclick="message();">쪽지함</a></li>
 										</ul></li>
 									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
-									<li><a onclick="loginCheck_write();">판매하기 </a>
-									<li><a onclick="loginCheck_sns();">SNS</a></li>
+									<li><a  onclick="loginCheck_write();">판매하기 </a>
+									<li><a  onclick="loginCheck_sns();">SNS</a></li>
 
 								</ul>
 
@@ -155,7 +164,16 @@ li:hover {
 		</div>
 
 		<script>
-
+	
+		var message = function(){
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+				window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+			}else{
+			
+				location.href = "/timeline/messageList";
+			}
+		}
 		
  	var loginCheck_write = function(){
    		if(${id == null}){
