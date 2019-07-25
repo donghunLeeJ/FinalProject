@@ -36,7 +36,7 @@
 	transition-duration: 1s;
 	cursor: pointer;
 	color: black;
-	background-color:  #f4ead0;
+	background-color: #f4ead0;
 }
 
 .btn:hover {
@@ -46,18 +46,23 @@
 }
 
 li:hover {
-	color:  #f4ead0;
-}
-a,#LogIN,#mypage,#logout{
-	cursor:pointer;
+	color: #f4ead0;
 }
 
-body { font-family :'나눔고딕OTF';}
+a, #LogIN, #mypage, #logout {
+	cursor: pointer;
+}
 
+body {
+	font-family: '나눔고딕OTF';
+}
 
-#map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
-
-
+#map_ma {
+	width: 100%;
+	height: 400px;
+	clear: both;
+	border: solid 0px;
+}
 </style>
 
 
@@ -75,7 +80,8 @@ body { font-family :'나눔고딕OTF';}
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p style="font-family :'나눔고딕OTF';color: black">Akame에 오신 여러분 환영합니다!</p>
+						<p style="font-family: '나눔고딕OTF'; color: black">Akame에 오신 여러분
+							환영합니다!</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -110,18 +116,16 @@ body { font-family :'나눔고딕OTF';}
 		<div class="main-header-area " style="background-color: white"
 			id="fixedNav">
 
-			<div class="classy-nav-container breakpoint-off border"
-				">
+			<div class="classy-nav-container breakpoint-off border"">
 				<div class="container">
 					<!-- Classy Menu -->
 
-					<nav class="classy-navbar justify-content-between " id="akameNav"
-						>
+					<nav class="classy-navbar justify-content-between " id="akameNav">
 
 
 						<!-- Logo -->
 						<a class="nav-brand" href="/home"><img
-							src="/img/core-img/logo.png" alt=""></a>
+							src="/img/core-img/logo3.png" alt="" style="height: 3em"></a>
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
 							<span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -135,23 +139,21 @@ body { font-family :'나눔고딕OTF';}
 									<span class="top"></span><span class="bottom"></span>
 								</div>
 							</div>
-							<!-- Nav Start -->
 							<div class="classynav">
 								<ul id="nav">
 									<li><a href="/home">Home</a></li>
 									<li><a href="/home/service">서비스 소개</a></li>
-									<li><a href="#">여기 뭐라고 할까</a>
+									<li><a href="#">판매/구매 현황</a>
 										<ul class="dropdown">
 											<li><a onclick="buy_record();">구매 내역</a></li>
 											<li><a onclick="sell_record();">판매 내역 </a></li>
-											<li><a onclick="message();">쪽지함</a></li>
 										</ul></li>
 									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
-									<li><a  onclick="loginCheck_write();">판매하기 </a>
-									<li><a  onclick="loginCheck_sns();">SNS</a></li>
+									<li><a onclick="loginCheck_write();">판매하기 </a>
+									<li><a onclick="loginCheck_sns();">SNS</a></li>
+									<li><a onclick="message();">쪽지함</a></li>
 
 								</ul>
-
 								<!-- Cart Icon -->
 								<div class="cart-icon ml-2 mt-4 mt-lg-0">
 									<a id="list"><i class="icon_cart"></i></a>

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"><!-- 눈모양 -->
-<title>Insert title here</title>
+<title>회원가입</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
@@ -68,7 +68,7 @@ background-color:white;
 
          <div class="col-12">
             <div class="section-heading text-center">
-               <h2>회원가입</h2>
+               <h2 style="font-family :'나눔고딕OTF';">회원가입</h2>
 
             </div>
          </div>
@@ -95,7 +95,7 @@ background-color:white;
                   <i class="fa fa-eye-slash fa-lg" id=flash></i>
                      </div>
 
-                     <input type="password" style="width: 50%; margin: auto;" id=pw
+                     <input type="password" style="width: 48%; margin: auto;" id=pw
                         name="member_pw" class="form-control mb-30 flash" placeholder="대,소문자,숫자 포함 8~13자리">
 
                   </div>
@@ -103,7 +103,7 @@ background-color:white;
                      <div class=title>비밀번호 확인</div>
 
                      <input type="password" id=pwCheck
-                        style="width: 50%; margin: auto;" class="form-control mb-30 flash"
+                        style="width: 48%; margin: auto;" class="form-control mb-30 flash"
                         placeholder="대,소문자,숫자 포함 8~13자리">
                   </div>
 
@@ -121,13 +121,14 @@ background-color:white;
                   <script>
                      $('#datepicker').datepicker({
                         uiLibrary : 'bootstrap4',
-                        format : "yyyy-mm-dd"
+                        format : "yyyy-mm-dd",
+                        maxDate: new Date(), 
                      });
                   </script>
                   
                   <div class="col-lg-12 text-center">
                      <div class=title>핸드폰 번호</div>
-                     <input type="text" name=member_phone id=phone style="width: 50%; margin: auto;" class="form-control mb-30"
+                     <input type="text" name=member_phone id=phone style="width: 48%; margin: auto;" class="form-control mb-30"
                         placeholder=" '-'를 제외하고 입력해주세요">
                   </div>
                   
@@ -140,9 +141,9 @@ background-color:white;
                   </div>
                   <div class="col-lg-12 text-center">
                   
-                  <input type="text" id="postcode"style="width: 50%; margin: auto;" name="member_postcode"class="form-control mb-30" placeholder="우편번호" readonly><br> 
-                  <input type="text" id="add1" style="width: 50%; margin: auto;"name="member_address1" class="form-control mb-30"placeholder="도로명 주소" readonly><br> 
-                  <input type="text"   id="add2" style="width: 50%; margin: auto;"name="member_address2" class="form-control mb-30"placeholder="상세 주소 / 최대 20자"> <br>
+                  <input type="text" id="postcode"style="width: 48%; margin: auto;" name="member_postcode"class="form-control mb-30" placeholder="우편번호" readonly><br> 
+                  <input type="text" id="add1" style="width: 48%; margin: auto;"name="member_address1" class="form-control mb-30"placeholder="도로명 주소" readonly><br> 
+                  <input type="text"   id="add2" style="width: 48%; margin: auto;"name="member_address2" class="form-control mb-30"placeholder="상세 주소 / 최대 20자"> <br>
 
                      
                   </div>

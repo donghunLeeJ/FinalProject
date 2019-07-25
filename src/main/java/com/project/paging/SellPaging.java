@@ -19,7 +19,7 @@ public class SellPaging {
 		//여기서 받을 매개변수는 클라이언트에서 입력받은 페이지의 값이다.
 		//디비에서 찾는 전체 게시물 갯수		
 		System.out.println("현재 글 갯수 : " + totalCount);
-		int countList=2; //페이지당 게시글  n개씩 출력
+		int countList=5; //페이지당 게시글  n개씩 출력
 		int countPage=10; //페이지당 내비 갯수(1~10, 11~20)
 		int totalPage = totalCount/countList;// 총 갯수 /페이지당 내비 갯수 = 페이지 갯수
 		if(totalCount%countList>0) totalPage++; //한 페이지를 넘어가면 다음 페이지 생성하기
@@ -34,11 +34,11 @@ public class SellPaging {
 		if(page==1) Prev=false;
 		if(endPage==totalPage) Next=false;
 		
-		List<String> pageList = new ArrayList<>();
+		List<String> pageList = new ArrayList();
 		if(Prev) pageList.add("<<");
 		//페이지 시작 값이 1이 아니라면 '이전'을 추가로 생성함
 		for(int i = startPage; i<=endPage; i++) {
-			pageList.add(""+i+""); //페이지 네비 1 2 3 4 ..  추가 과정
+			pageList.add(i+""); //페이지 네비 1 2 3 4 ..  추가 과정
 		}
 		if(Next) pageList.add(">>");
 		//현재보다 전체 페이지 값이 큰 경우 '다음'을 달아줌
@@ -52,9 +52,9 @@ public class SellPaging {
 	
 	//각 페이지마다 게시글 n개 출력하는 메서드
 	public List<ShopBoardDTO> selectShop(int page){
-		int  countPage=2;
-		int startCount=((page-1)/countPage)*countPage+1;
-		int endCount=startCount + (countPage - 1);
+		  int  countPage=5;
+	      int startCount=(page-1)*countPage+1;
+	      int endCount=page*countPage;
 		
 		List<ShopBoardDTO> shopList = 
 				sst.selectList("ShopBoardDAO.PageSelect",new PageDTO(startCount, endCount));
