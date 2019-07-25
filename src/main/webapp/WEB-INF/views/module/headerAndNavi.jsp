@@ -36,7 +36,7 @@
 	transition-duration: 1s;
 	cursor: pointer;
 	color: black;
-	background-color:  #f4ead0;
+	background-color: #f4ead0;
 }
 
 .btn:hover {
@@ -46,18 +46,23 @@
 }
 
 li:hover {
-	color:  #f4ead0;
-}
-a,#LogIN,#mypage,#logout{
-	cursor:pointer;
+	color: #f4ead0;
 }
 
-body { font-family :'나눔고딕OTF';}
+a, #LogIN, #mypage, #logout {
+	cursor: pointer;
+}
 
+body {
+	font-family: '나눔고딕OTF';
+}
 
-#map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
-
-
+#map_ma {
+	width: 100%;
+	height: 400px;
+	clear: both;
+	border: solid 0px;
+}
 </style>
 
 
@@ -75,7 +80,8 @@ body { font-family :'나눔고딕OTF';}
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p style="font-family :'나눔고딕OTF';color: black">Akame에 오신 여러분 환영합니다!</p>
+						<p style="font-family: '나눔고딕OTF'; color: black">Akame에 오신 여러분
+							환영합니다!</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -110,13 +116,11 @@ body { font-family :'나눔고딕OTF';}
 		<div class="main-header-area " style="background-color: white"
 			id="fixedNav">
 
-			<div class="classy-nav-container breakpoint-off border"
-				">
+			<div class="classy-nav-container breakpoint-off border"">
 				<div class="container">
 					<!-- Classy Menu -->
 
-					<nav class="classy-navbar justify-content-between " id="akameNav"
-						>
+					<nav class="classy-navbar justify-content-between " id="akameNav">
 
 
 						<!-- Logo -->
@@ -147,8 +151,8 @@ body { font-family :'나눔고딕OTF';}
 											<li><a onclick="message();">쪽지함</a></li>
 										</ul></li>
 									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
-									<li><a  onclick="loginCheck_write();">판매하기 </a>
-									<li><a  onclick="loginCheck_sns();">SNS</a></li>
+									<li><a onclick="loginCheck_write();">판매하기 </a>
+									<li><a onclick="loginCheck_sns();">SNS</a></li>
 
 								</ul>
 
@@ -166,9 +170,15 @@ body { font-family :'나눔고딕OTF';}
 		<script>
 	
 		var message = function(){
+			var popupX = (window.screen.width / 2) - (500 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (window.screen.height / 2) - (600 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
 			if(${id == null}){
 				alert("로그인이 필요합니다");
-				window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+				window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
 			}else{
 			
 				location.href = "/timeline/messageList?seq=1";
@@ -176,34 +186,58 @@ body { font-family :'나눔고딕OTF';}
 		}
 		
  	var loginCheck_write = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href = "/shopboard/ShopBoard_write";
    		}
    	}
  	var buy_record = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href="/member/buyContentsGo";
    		}
    	}
  	
  	var sell_record = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href="/shopboard/sellContentsGo";
    		}
    	}
  	var loginCheck_sns = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href = "/timeline/accessTimeLine?seq=1";
    		}
@@ -211,9 +245,15 @@ body { font-family :'나눔고딕OTF';}
    
 
       $("#list").on("click", function() {
+    		var popupX = (window.screen.width / 2) - (500 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (window.screen.height / 2) - (600 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
          if(${id == null}){
         	 alert("로그인이 필요합니다");
-    			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+        		window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
          }else{
         	 var listId = $("#listid").val();
              location.href = "/Basket/basketList?id=" + encodeURI(listId); 
