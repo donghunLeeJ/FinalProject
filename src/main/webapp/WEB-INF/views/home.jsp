@@ -7,7 +7,7 @@
 	onselectstart="return false">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Akame</title>
+<title>AGGABI</title>
 <!-- 구글 맵 API -->
 <script type="text/javascript"
 	src="http://maps.google.com/maps/api/js?key=AIzaSyBJPpkHrAjmxY5-i1zd8qgs6mO6Ybi_jL4 "></script>

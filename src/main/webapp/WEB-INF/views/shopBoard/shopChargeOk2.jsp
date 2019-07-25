@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>결제완료</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -144,12 +144,12 @@
 				<strong>결제 금액</strong>
 			</div>
 			<div class="col-10 border bg-gray">
-<<<<<<< HEAD
+
 				<span><fmt:formatNumber value="1" pattern="#,###" /> 원</span>
-=======
+
 				<span><fmt:formatNumber value="1" pattern="#,###" />${priceTotal }
 					원</span>
->>>>>>> 6a1005a924a9a014cbd6947026e685785806d5dd
+
 			</div>
 		</div>
 
@@ -160,7 +160,7 @@
 				</h3>
 			</div>
 
-<<<<<<< HEAD
+
 		</div>
 		<div class="row border text-center"
 			style="height: 10em; line-height: 4.7em">
@@ -180,7 +180,7 @@
 				${i.order_receipt_address2 } &nbsp; (${i.order_receipt_postcode })</div>
 			<div class="col-2 border text-center">
 				<strong>전화번호</strong>
-=======
+
 				<div class="col-1 border">
 					<strong>배송지</strong>
 				</div>
@@ -190,14 +190,12 @@
 					<strong>전화번호</strong>
 				</div>
 				<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
->>>>>>> 6a1005a924a9a014cbd6947026e685785806d5dd
+
 			</div>
 			<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
 		</div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 6a1005a924a9a014cbd6947026e685785806d5dd
+
 	</div>
 	<div class="row pb-5"></div>
 	<script>

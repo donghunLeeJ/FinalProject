@@ -51,7 +51,10 @@ li:hover {
 a,#LogIN,#mypage,#logout{
 	cursor:pointer;
 }
-
+#logo{
+	width:15em;
+	height:5em;
+}
 body { font-family :'나눔고딕OTF';}
 
 
@@ -121,7 +124,7 @@ body { font-family :'나눔고딕OTF';}
 
 						<!-- Logo -->
 						<a class="nav-brand" href="/home"><img
-							src="/img/core-img/logo.png" alt=""></a>
+							src="/img/core-img/logo3.png" id="logo" alt=""></a>
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
 							<span class="navbarToggler"><span></span><span></span><span></span></span>

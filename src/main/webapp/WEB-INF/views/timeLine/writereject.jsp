@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Write Reject Page</title>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
    <script>

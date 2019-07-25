@@ -55,7 +55,7 @@
 
 								<div class="col-lg-12 ">
 									<h3>- contents -</h3>
-									<div id="img_field" class="border" style="height: 23em;text-align: center">
+									<div id="img_field" class="border" style="height: 23em; text-align: center">
 										<img class="border" id="image_section" src="/img/defaultee.jpg" alt=""
 											style="height: 100%;margin: auto">
 									</div>
