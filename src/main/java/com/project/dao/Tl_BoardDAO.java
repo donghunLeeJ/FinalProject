@@ -112,4 +112,15 @@ public class Tl_BoardDAO {
 		return sst.selectOne("Tl_BoardDAO.message_sender_count", id);
 	}
 
+	
+	  public MessageDTO message_getter_contents(String message_seq)  {
+		   return sst.selectOne("Tl_BoardDAO.message_getter_contents",message_seq);
+	   }
+	   
+	
+	
+	
+	
+	
+	
 }

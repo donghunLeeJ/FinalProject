@@ -60,44 +60,33 @@ public class MemberController {
 
 	@RequestMapping("loginProc")
 	public String login(MemberDTO mdto) {
-		System.out.println("로그인프록  " + mdto.getMember_id());
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
 		int result = mservice.login(mdto);
 		if (result == 1) {
-
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
 			if (confirm.equals("y")) {
-
 				int BlackCount = 0;
 				List<String> BlackListResult = aservice.AdminBlackCheckList();
-
 				for (String BlackList : BlackListResult) {
-
 					if (mdto.getMember_id().equals(BlackList)) {
 						BlackCount++;
 					}
 				}
-
 				if (BlackCount > 0) {// 만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
-
 					return "redirect:/admin/BlackListNoLogin";
 				}
 
 				else if (mdto.getMember_id().equals("admin")) {// 만일 로그인한 id가 관리자 아이디일 경우
-
 					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 					return "redirect:/admin/adminHome"; // 관리자 컨트롤러로 이동시킴
-
 				} else {
 					session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 					return "redirect:/home";
 				}
 
 			} else if (confirm.equals("n")) {
-
 				return "member/confirm";
 			}
-
 		} else {
 			return "member/notLogin";
 		}
@@ -132,8 +121,6 @@ public class MemberController {
 		if(result == 1) {
 			try {
 			edao.findPw(member_id);
-			System.out.println("메일발송");
-			System.out.println(member_id);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -141,20 +128,10 @@ public class MemberController {
 		}else {
 			return "member/yourPW2";
 		}
-		
-	/*	request.setAttribute("change", member_id);
-		int result = mservice.findPW(member_id);
-		if (result == 1)
-			return "member/yourPW";
-		else
-			return "member/yourPW2";*/
 	}
-	
-	
 	
 	@RequestMapping("yourPW")
 	public String yourPW(String id) {
-		System.out.println("이것 부터가 와야지 "+id);
 		request.setAttribute("id", id);
 		return "member/yourPW";
 	}
@@ -171,21 +148,14 @@ public class MemberController {
 	public String joinInsert(MemberDTO mdto) {
 		String id = mdto.getMember_id();
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
-
-	
 		try {
 			edao.sendMail(id);
-			
 			int result = mservice.joinInsert(mdto);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
 		return "member/emailsend";
 	}
-	
-	
 
 	@RequestMapping("logOutProc")
 	public String logout() {
@@ -195,7 +165,6 @@ public class MemberController {
 
 	@RequestMapping("myPage") // 메인에서 마이페이지로 가기 이때 구매내역과 판매내역 담기
 	public String log_myPage() {
-		// System.out.println("1");
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<ShopBoardDTO> mylist = SBservice.ShopBoardList(mdto.getMember_id());
 		List<OrderDTO> order = os.myOrderList(mdto.getMember_id());
@@ -203,15 +172,11 @@ public class MemberController {
 		request.setAttribute("mylist", mylist);
 		request.setAttribute("mpdto", mpdto);
 		request.setAttribute("order", order);
-
 		return "/member/myPage";
 	}
 
 	@RequestMapping("edit_mypage")
 	public String log_edit_mypage(MemberDTO mdto) {// 마이페이지에서 글 정보수정 버튼 누르기
-		System.out.println("정보수정 맵핑");
-		System.out.println("1");
-		System.out.println(mservice.edit_mypage(mdto));
 		session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 		return "member/edit_OK";
 
@@ -268,23 +233,27 @@ public class MemberController {
 		return null;
 	}
 
-
-
-
 	@RequestMapping("buyContentsGo")
 	public String moveBuyContentsGo() {
 		return "redirect:buyContentsGoProc?page=1";
 	}
 
 	@RequestMapping("buyContentsGoProc")
-	public String buyContetns(int page) {
+	public String buyContetns(String page) {
+		System.out.println(page);
+		int resultPage = Integer.parseInt(page);
 		int count = os.orderCount();
-		List<String> pageList = os.Page(page, count);
+		List<String> pageList = os.Page(resultPage, count);
+		
+		for(int i = 0 ; i < pageList.size() ; i ++) {
+			System.out.println(pageList.get(i));
+		}
+		
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
-		request.setAttribute("page", page);// 현재 페이지임
+		request.setAttribute("page", resultPage);// 현재 페이지임
 
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<OrderDTO> buyList = os.orderTenList(page);
+		List<OrderDTO> buyList = os.orderTenList(resultPage);
 		System.out.println(buyList.get(0).getOrder_title());
 		System.out.println(buyList.get(0).getOrder_buyer_email());
 		

@@ -60,17 +60,24 @@ public class ShopBoardController {
 		return "redirect:sellContentsGoProc?page=1";
 	}
 	@RequestMapping("/sellContentsGoProc")
-	public String log_sellContetns(int page) {
-		
+	public String log_sellContetns(String page) {
+		int resultPage = Integer.parseInt(page);
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		int shopcount = mservice.shopCount();//테이블에서 전체 레코드 갯수 불러옴
-		List<String> pageList = mservice.paging(page, shopcount );
-		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(page);
+		int shopcount = mservice.shopCount(mdto.getMember_id());//테이블에서 전체 레코드 갯수 불러옴
+		List<String> pageList = mservice.paging(resultPage, shopcount );
+		for(String a : pageList) {
+			System.out.println(a);
+		}
+		
+		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage);
 		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
 		request.setAttribute("page", page);//현재 페이지
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
+	
+	
+	
 	
 
 	@RequestMapping("/shopBoardGo")

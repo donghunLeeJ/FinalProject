@@ -86,4 +86,14 @@ public class TimeLineService {
    public int message_getter_count(String id ) {
 	   return dao.message_getter_count(id);
    }
+   
+   
+   
+   public MessageDTO message_getter_contents(String message_seq)  {
+	   return dao.message_getter_contents(message_seq);
+   }
+   
+   
+   
+   
 }

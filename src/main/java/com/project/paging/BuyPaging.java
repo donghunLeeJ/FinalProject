@@ -35,7 +35,7 @@ public class BuyPaging {
 	      System.out.println(startPage + " : " + endPage);
 	      //입력받은 페이지번호를 화면에 출력
 	      for(int i = startPage; i<=endPage; i++) {
-	         pageList.add(" "+i+" "); //페이지 네비 1 2 3 4 ..  추가 과정
+	         pageList.add(i+""); //페이지 네비 1 2 3 4 ..  추가 과정
 	      }
 	      //현재보다 전체 페이지 값이 큰 경우 '다음'을 달아줌
 	      if(page<totalPage) pageList.add("다음");

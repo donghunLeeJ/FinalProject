@@ -123,7 +123,6 @@ select {
 
 
 	<div class="container">
-
 		<div class="row my-2">
 			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
@@ -136,8 +135,8 @@ select {
 						data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
 				</ul>
 				<div class="tab-content py-4 ">
-					<div class="tab-pane active" id="profile">
-						<div class="row">
+					<div class="tab-pane active" id="profile" >
+						<div class="row" style="position: relative; left: 7em" >
 							<div class="col-lg-3">
 								<img src="${id.member_imgpath }" class="mx-auto img-circle"
 									id=myinfo alt="avatar">
@@ -187,38 +186,7 @@ select {
 									</div>
 								</div>
 							</div>
-							
-<!-- 							<div class="col-md-12 mt-5"> -->
-<!-- 								<h5 class="mt-2"> -->
-<!-- 									<span class="fa fa-clock-o ion-clock float-right"></span>최근 나의활동 -->
-<!-- 								</h5> -->
-<!-- 									<ul class="nav nav-tabs"> -->
-<!-- 					<li class="nav-item"><a href="" data-target="#List1"data-toggle="tab" class="nav-link">판매 목록</a></li> -->
-<!-- 					<li class="nav-item"><a href="" data-target="#List2"data-toggle="tab" class="nav-link">구매 목록</a></li> -->
-<!-- 									</ul> -->
-<!-- 								<table class="table table-sm table-hover table-striped tab-pane" id=List1> -->
-<!-- 									<tbody> -->
-<%-- 										<c:forEach var="i" items="${mylist }"> --%>
-<!-- 												<tr> -->
-<%-- 													<td><strong>${id.member_name }</strong>님의 판매 활동 <strong>${i.shop_title }`</strong> --%>
-<!-- 													</td> -->
-<!-- 												</tr> -->
-<%-- 										</c:forEach> --%>
 
-<!-- 									</tbody> -->
-<!-- 								</table> -->
-<!-- 								<table class="table table-sm table-hover table-striped tab-pane" id=List2> -->
-<!-- 									<tbody> -->
-<%-- 										<c:forEach var="i" items="${mylist }"> --%>
-<!-- 												<tr> -->
-<%-- 													<td><strong>또로롱</strong>님의 판매 활동 <strong>${i.shop_title }`</strong> --%>
-<!-- 													</td> -->
-<!-- 												</tr> -->
-<%-- 										</c:forEach> --%>
-
-<!-- 									</tbody> -->
-<!-- 								</table> -->
-<!-- 							</div> -->
 						</div>
 					
 					</div>
