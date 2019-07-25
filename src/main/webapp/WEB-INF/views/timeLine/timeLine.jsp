@@ -11,7 +11,7 @@
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<title>TimeLine Page</title>
+<title>Insert title here</title>
 <style>
 #optionbtn {
 	width: 2em;

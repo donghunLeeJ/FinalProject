@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TimeLine Delete Complete Page</title>
+<title>Delete</title>
 </head>
 <body>
 	<script>
