@@ -15,6 +15,15 @@
 	/*  width:250px;  */
 	height: 210px;
 }
+
+.ellipsis{
+/* 0725추가 */
+    overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      width:170px;
+      font-size: 15px; color: #e1e5eb;
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -86,7 +95,8 @@
                            <!-- Overlay Content -->
                            <div class="overlay-content d-flex align-items-center justify-content-center">
                               <div class="overlay-text text-center">
-                                 <span style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span>
+                                <div class="ellipsis">${i.shop_title }</div> <!-- 0725추가 -->
+
 
                                  <p class="pt-3">
                                     <fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />

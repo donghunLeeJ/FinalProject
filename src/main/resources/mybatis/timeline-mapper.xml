@@ -127,6 +127,14 @@
 	
 	
 	
+	<select id="message_getter_contents" resultType="com.project.dto.MessageDTO">
+		select * from message where message_seq=#{message_seq}
+
+	</select>
+	
+	
+	
+	
 	
 	
 

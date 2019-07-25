@@ -29,8 +29,8 @@ public class MemberDAO {
 	public int totalCount() {
 		return sst.selectOne("ShopBoardDAO.totalCount");
 	}
-	public int shopCount() {
-		return sst.selectOne("member.shopCount");
+	public int shopCount(String id) {
+		return sst.selectOne("member.shopCount",id);
 	}
 	
 	public String findID(MemberDTO dto) {

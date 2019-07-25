@@ -109,14 +109,14 @@ height:110px;
 									<!-- The Modal -->
 									<form
 										action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}"
-										id=modalfo method="POST">
+										id="modalfo" method="POST">
 										<div class="modal modal-xl fade " id="myModal">
 											<div class="modal-dialog ">
 												<div class="modal-content">
 
 													<!-- Modal Header -->
 													<div class="modal-header">
-														<h3 class="modal-title">댓글 작성</h3>
+														<h3 class="modal-title">후기 댓글 작성</h3>
 														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
 
@@ -167,19 +167,15 @@ height:110px;
 		  <div class="list_n_menu">
          <c:forEach var="i" items="${pageList}">
             <c:choose>
-
-               <c:when test="${i eq '<이전'}">
+               <c:when test="${i eq '이전'}">
                   <span class="navi mr-1 center"><a href="buyContentsGoProc?page=${page-1}" class="center">${i}</a></span>
                </c:when>
-
-               <c:when test="${i eq '다음>'}">
+               <c:when test="${i eq '다음'}">
                   <span class="navi mr-1 center"><a href="buyContentsGoProc?page=${page+1}" class="center">${i}</a></span>
                </c:when>
-
                <c:otherwise>
                <span class="navi mr-1 center"><a href="buyContentsGoProc?page=${i}" class="center">${i}</a></span>
                </c:otherwise>
-
             </c:choose>
          </c:forEach>
       </div>

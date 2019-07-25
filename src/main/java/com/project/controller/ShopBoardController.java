@@ -60,17 +60,24 @@ public class ShopBoardController {
 		return "redirect:sellContentsGoProc?page=1";
 	}
 	@RequestMapping("/sellContentsGoProc")
-	public String log_sellContetns(int page) {
-		
+	public String log_sellContetns(String page) {
+		int resultPage = Integer.parseInt(page);
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		int shopcount = mservice.shopCount();//테이블에서 전체 레코드 갯수 불러옴
-		List<String> pageList = mservice.paging(page, shopcount );
-		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(page);
+		int shopcount = mservice.shopCount(mdto.getMember_id());//테이블에서 전체 레코드 갯수 불러옴
+		List<String> pageList = mservice.paging(resultPage, shopcount );
+		for(String a : pageList) {
+			System.out.println(a);
+		}
+		
+		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage);
 		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
 		request.setAttribute("page", page);//현재 페이지
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
+	
+	
+	
 	
 
 	@RequestMapping("/shopBoardGo")
@@ -163,13 +170,13 @@ public class ShopBoardController {
 	@RequestMapping("/ShopBoardInsertProc")
 	public String log_filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
 		List<String> fileArrayPath = new ArrayList();
-		System.out.println(dto.getShop_seq());
-		System.out.println("내용: " + dto.getShop_contents());
-		System.out.println("브랜드: " + dto.getShop_brand());
-		System.out.println("타이틀: " + dto.getShop_title());
-		System.out.println("지역: " + dto.getShop_location());
-		System.out.println("유통기한: " + dto.getShop_expiration());
-		System.out.println("test" + shop_expiration);
+//		System.out.println(dto.getShop_seq());
+//		System.out.println("내용: " + dto.getShop_contents());
+//		System.out.println("브랜드: " + dto.getShop_brand());
+//		System.out.println("타이틀: " + dto.getShop_title());
+//		System.out.println("지역: " + dto.getShop_location());
+//		System.out.println("유통기한: " + dto.getShop_expiration());
+//		System.out.println("test" + shop_expiration);
 		int memberSell_seq = Integer.parseInt(sell_seq);
 		System.out.println("sell_seq" + sell_seq);
 		int fileCount = 0;

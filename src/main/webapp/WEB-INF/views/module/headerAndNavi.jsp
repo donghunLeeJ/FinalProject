@@ -53,6 +53,7 @@ a, #LogIN, #mypage, #logout {
 	cursor: pointer;
 }
 
+
 body {
 	font-family: '나눔고딕OTF';
 }
@@ -125,7 +126,7 @@ body {
 
 						<!-- Logo -->
 						<a class="nav-brand" href="/home"><img
-							src="/img/core-img/logo.png" alt=""></a>
+							src="/img/core-img/logo3.png" alt="" style="height: 3em"></a>
 						<!-- Navbar Toggler -->
 						<div class="classy-navbar-toggler">
 							<span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -139,23 +140,22 @@ body {
 									<span class="top"></span><span class="bottom"></span>
 								</div>
 							</div>
-							<!-- Nav Start -->
 							<div class="classynav">
 								<ul id="nav">
 									<li><a href="/home">Home</a></li>
 									<li><a href="/home/service">서비스 소개</a></li>
-									<li><a href="#">여기 뭐라고 할까</a>
+									<li><a href="#">판매/구매 현황</a>
 										<ul class="dropdown">
 											<li><a onclick="buy_record();">구매 내역</a></li>
 											<li><a onclick="sell_record();">판매 내역 </a></li>
-											<li><a onclick="message();">쪽지함</a></li>
 										</ul></li>
 									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
 									<li><a onclick="loginCheck_write();">판매하기 </a>
 									<li><a onclick="loginCheck_sns();">SNS</a></li>
+								<li><a onclick="message();">쪽지함</a></li>
+
 
 								</ul>
-
 								<!-- Cart Icon -->
 								<div class="cart-icon ml-2 mt-4 mt-lg-0">
 									<a id="list"><i class="icon_cart"></i></a>

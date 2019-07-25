@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Reply Rejected Page</title>
+<title>에러</title>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<script>
    	alert("먼저 로그인 해주세요.")
    	location.href = "/timeline/accessTimeLine?seq=1"
