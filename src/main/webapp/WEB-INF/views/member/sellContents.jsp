@@ -65,9 +65,6 @@ text-align:center;
         }
 
 
-
- 
-
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
