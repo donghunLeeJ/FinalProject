@@ -78,7 +78,7 @@ float:left;
 								<div class="col-lg-12 mx-auto p-0 border"
 									style="text-align: center;height: 12em">
 
-									<img id="mainimg" src="/img/default.jpg">
+									<img id="mainimg" src="/img/default.jpg" style="height: 100%">
 
 
 
@@ -89,15 +89,15 @@ float:left;
 										<div
 											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0"
 											style="text-align: center;height: 5em">
-											<img id="food0" class="img" src="/img/default.jpg" alt="">
+											<img id="food0" class="img" src="/img/default.jpg" style="height: 100%" alt="">
 										</div>
-										<div
+										<div style="text-align: center;height: 5em"
 											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0">
-											<img id="food1" class="img" src="/img/default.jpg" alt="">
+											<img id="food1" class="img" src="/img/default.jpg" style="height: 100%" alt="">
 										</div>
-										<div
+										<div style="text-align: center;height: 5em"
 											class="d-none d-sm-block border col-lg-4 col-md-4 col-sm-4 p-0">
-											<img id="food2" class="img" src="/img/default.jpg" alt="">
+											<img id="food2" class="img" src="/img/default.jpg" style="height: 100%" alt="">
 										</div>
 									</div>
 								</div>

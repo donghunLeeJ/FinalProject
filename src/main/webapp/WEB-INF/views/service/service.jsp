@@ -51,7 +51,7 @@
 				<div class="about--us--content mb-80 " style="margin-top: 3em">
 					<p>
 						농촌진흥청에 따르면 우리나라 음식물 쓰레기 하루 평균 발생량은 1만4700톤(t)에 이르고 있습니다. 매일 버려지는
-						음식들 중에는 아무도 손대지 않았지만 아깝게 버려지는 음식들이 정말 많습니다.<br> AGGABI(가칭)는 그
+						음식들 중에는 아무도 손대지 않았지만 아깝게 버려지는 음식들이 정말 많습니다.<br> AGGABI는 그
 						음식들을 어떻게 하면 버리지 않을 수 있을까 하는 생각에서 출발했습니다.
 					</p>
 					<img src="/img/service-img/tabete01.png" alt="">
@@ -153,7 +153,7 @@
 						<div class="card mb-3">
 							<img class="card-img-top" src="/img/service-img/tabete02.png">
 							<div class="card-body">
-								<h5 class="card-title">너무 아까운 음식들이 많아요</h5>
+								<h5 class="card-title" style="font-family: '나눔고딕OTF'">너무 아까운 음식들이 많아요</h5>
 								<p class="card-text">버려지기엔 너~무 아까운 맛있는 음식을 구해주세요. 우리가 알지 못하는
 									곳에서 정말 맛있고 신선한 음식들이 버려지고 있습니다.</p>
 							</div>
@@ -218,7 +218,7 @@
 									class="icon_star"></i> <i class="icon_star"></i> <i
 									class="icon_star"></i>
 							</div>
-							<h5>서울 거주 박모씨</h5>
+							<h5 style="font-family: '나눔고딕OTF'">서울 거주 박모씨</h5>
 						</div>
 					</div>
 
@@ -235,7 +235,7 @@
 								<i class="icon_star"></i> <i class="icon_star"></i> <i
 									class="icon_star"></i> <i class="icon_star"></i>
 							</div>
-							<h5>경기 거주 김모씨</h5>
+							<h5 style="font-family: '나눔고딕OTF'">경기 거주 김모씨</h5>
 						</div>
 					</div>
 
@@ -251,7 +251,7 @@
 								<i class="icon_star"></i> <i class="icon_star"></i> <i
 									class="icon_star"></i>
 							</div>
-							<h5>인천 거주 이모씨</h5>
+							<h5 style="font-family: '나눔고딕OTF'">인천 거주 이모씨</h5>
 						</div>
 					</div>
 
@@ -263,15 +263,14 @@
 
 	<!-- Our Expert Area Start -->
 	<section
-		class="akame-our-expert-area about-us-page section-padding-80-0">
+		class="akame-our-expert-area about-us-page section-padding-80-0" >
 
 	<!-- Side Thumbnail -->
-	<div class="side-thumbnail"
-		style="background-image: url(/img/service-img/bonobono2.png);"></div>
+	
 
 	<div class="container">
-		<div class="row justify-content-end">
-			<div class="col-12 col-lg-6">
+		
+			<div class="col-12 col-lg-6" >
 				<!-- Section Heading -->
 				<div class="section-heading">
 					<h2>Develovers</h2>
@@ -284,10 +283,10 @@
 						src="/img/core-img/certificate-3.png" alt="">
 				</div>
 			</div>
-		</div>
+		
 	</div>
 	<div class="container">
-		<div class="row">
+		<div class="row" >
 
 			<!-- Single Team Member -->
 			<div class="col-12 col-sm-6 col-lg-3">
@@ -308,7 +307,7 @@
 						</div>
 					</div>
 					<div class="team-member-info">
-						<h5>박상준</h5>
+						<h5 style="font-family: '나눔고딕OTF'">박상준</h5>
 						<p>개발자</p>
 					</div>
 				</div>
@@ -332,7 +331,7 @@
 						</div>
 					</div>
 					<div class="team-member-info">
-						<h5>다현</h5>
+						<h5 style="font-family: '나눔고딕OTF'">김갑중</h5>
 						<p>개발자</p>
 					</div>
 				</div>
@@ -342,7 +341,7 @@
 			<div class="col-12 col-sm-6 col-lg-3">
 				<div class="single-team-member mb-80">
 					<div class="team-member-img">
-						<img src="/img/bg-img/12.jpg" alt="">
+						<img src="/img/service-img/younwoo.jpg" alt="" style="height: 243px">
 						<!-- Social Info -->
 						<div
 							class="team-social-info d-flex align-items-center justify-content-center">
@@ -355,8 +354,8 @@
 						</div>
 					</div>
 					<div class="team-member-info">
-						<h5>Tanya Ramsay</h5>
-						<p>Hairstylist</p>
+						<h5 style="font-family: '나눔고딕OTF'">이동훈</h5>
+						<p>개발자</p>
 					</div>
 				</div>
 			</div>
@@ -378,8 +377,52 @@
 						</div>
 					</div>
 					<div class="team-member-info">
-						<h5>Donna Carr</h5>
-						<p>Baber</p>
+						<h5 style="font-family: '나눔고딕OTF'">김동현</h5>
+						<p>개발자</p>
+					</div>
+				</div>
+			</div>
+				<!-- Single Team Member -->
+			<div class="col-12 col-sm-6 col-lg-3">
+				<div class="single-team-member mb-80">
+					<div class="team-member-img">
+						<img src="/img/bg-img/13.jpg" alt="">
+						<!-- Social Info -->
+						<div
+							class="team-social-info d-flex align-items-center justify-content-center">
+							<div class="social-link">
+								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+									class="fa fa-twitter"></i></a> <a href="#"><i
+									class="fa fa-linkedin"></i></a> <a href="#"><i
+									class="fa fa-dribbble"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="team-member-info">
+						<h5 style="font-family: '나눔고딕OTF'">조하늘</h5>
+						<p>개발자</p>
+					</div>
+				</div>
+			</div>
+				<!-- Single Team Member -->
+			<div class="col-12 col-sm-6 col-lg-3">
+				<div class="single-team-member mb-80">
+					<div class="team-member-img">
+						<img src="/img/service-img/dahyun.jpg" alt="" style="height: 243px">
+						<!-- Social Info -->
+						<div
+							class="team-social-info d-flex align-items-center justify-content-center">
+							<div class="social-link">
+								<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+									class="fa fa-twitter"></i></a> <a href="#"><i
+									class="fa fa-linkedin"></i></a> <a href="#"><i
+									class="fa fa-dribbble"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="team-member-info">
+						<h5 style="font-family: '나눔고딕OTF'">최정현</h5>
+						<p>개발자</p>
 					</div>
 				</div>
 			</div>

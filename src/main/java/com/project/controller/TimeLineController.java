@@ -320,5 +320,39 @@ public class TimeLineController {
 		return "/member/messageGet";
 
 	}
+	
+	
+	
+	//보낸 쪽지함에서 컨텐츠를 클릭하면 새 창이 뜨고 거기에 창이 나오도록 함
+		@RequestMapping("/MessagePageContents")
+		public String MessagePageContents(String seq){
+		
+			request.setAttribute("Message_PageContents", tls.message_getter_contents(seq));
+			return "/member/messageContents";
+
+		}
+	
+			
+	//받은 쪽지함에서 컨텐츠를 클릭하면 새 창이 뜨고 거기에 창이 나오도록 함
+	@RequestMapping("/getMessagePageContents")
+	public String getmessagePageContents(String seq){
+	
+		request.setAttribute("getMessage_PageContents", tls.message_getter_contents(seq));
+		return "/member/messageGetContents";
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

@@ -39,17 +39,12 @@ public class AdminController {
 	//관리자페이지로 이동시키는 순간!
 	@RequestMapping("adminHome")
 	public String adminHome(String id) {
-
-		System.out.println(ViewDTO.getVisitViewCount());
-		System.out.println(ViewDTO.getBoardNewCount());
-
 		request.setAttribute("MemberList", aservice.SelectPageList(1));
 		request.setAttribute("ShopBoardList", aservice.ShopBoardSelectPageList(1));
 		request.setAttribute("OrderBoardList", aservice.OrderBoardSelectPageList(1));
 		request.setAttribute("View", ViewDTO.getVisitViewCount());
 		request.setAttribute("BoardNew", ViewDTO.getBoardNewCount());
 		request.setAttribute("Trade", ViewDTO.getTradeCount());
-
 		return "admin/adminhome";
 	}
 
@@ -109,19 +104,13 @@ public class AdminController {
 	//반복상황을 board페이지에서 구별을 확실히 해야 함
 	@RequestMapping("MemberManagementIDProc")
 	public String pageExample(int page, String keyword, HttpServletRequest request){
-
-		System.out.println("페이지: " + page);
-		System.out.println("키워드: " + keyword);
 		int totalcount = aservice.SelectMemberCount(keyword);
-
 		List<String>pageList =  aservice.Page(page , totalcount);
 		request.setAttribute("SelectMemberlist",  aservice.SelectPageKeywordList(page, keyword));
-
 		request.setAttribute("SelectpageList", pageList);//1.보드게시판 아래에 숫자를 출력
 		request.setAttribute("keyword", keyword);//1.보드게시판 아래에 숫자를 출력
 		request.setAttribute("totalcount", totalcount);//검색된 글의 총 갯수가 0인지 아닌지를 구별함
 		request.setAttribute("page", page);//현재 페이지임
-
 		return "admin/MemberManagement";
 	}
 
@@ -175,25 +164,19 @@ public class AdminController {
 	//SNS제목검색기능 알고리즘		
 	@RequestMapping("TimeLineManagementTitleProc")		
 	public String TimeLineManagementIDProc(int page, String keyword){
-
-		System.out.println("키워드: " + keyword);
 		int totalcount = aservice.SelectSNSBoardCount(keyword);
-
 		List<String>pageList =  aservice.Page(page , totalcount);
 		request.setAttribute("SNSTitleSelectBoardList",  aservice.SelectTitlePageSNSBoardSelect(page, keyword));	    
 		request.setAttribute("SelectpageList", pageList);//1.보드게시판 아래에 숫자를 출력
 		request.setAttribute("keyword", keyword);//1.보드게시판 아래에 숫자를 출력
 		request.setAttribute("totalcount", totalcount);//검색된 글의 총 갯수가 0인지 아닌지를 구별함
 		request.setAttribute("page", page);//현재 페이지임
-
 		return "admin/TimeLineManagement";
 	}
 
 	//주문번호검색
 	@RequestMapping("OrderNumberSelectProc")
 	public String OrderNumberSelect(String order_number){
-
-		System.out.println("주문번호: " + order_number);
 		request.setAttribute("OrderNumberSelect",  aservice.OrderNumberSelect(order_number));
 		return "admin/OrderManagement";
 	}
@@ -260,67 +243,43 @@ public class AdminController {
 	//이때 신고사유를 가져오는 메소드
 	@RequestMapping("SNSReport")
 	public String SNSReport(String tl_board_seq){
-
 		Tl_BoardDTO SNSReport =  aservice.SNSSeqSelectAll(tl_board_seq);
 		request.setAttribute("SNSReport", SNSReport);
-
 		return "admin/report";}
-
 
 	//관리자 권한으로 불량SNS글을 삭제시킴
 	@RequestMapping("AdminDeleteSNS")
 	public String DeleteSNS(String tl_board_seq){	
-
-		System.out.println("시퀀스 번호" + tl_board_seq);
-
 		int result = aservice.AdminDeleteSNSBoard(tl_board_seq);
-
 		if(result > 0){
-
 			return "redirect:TimeLineManagementProc?page=1";
 		}
-
 		return "에러 발생!!";}
-
 
 	//신고접수 후 그 결과를 신고자에게 보낸다.(메시지 테이블에 저장시킴)
 	@ResponseBody
 	@RequestMapping(value="ReportSandMessage", produces = "application/text; charset=utf8")
 	public String ReportSandMessage(MessageDTO dto){
-
 		dto.setMessage_sender("관리자");
-
 		int result = aservice.AdminReportSandInsert(dto);
-
 		if(result > 0) {
-
 			return "정상적으로 메시지를 보냈습니다.";
-
 		}else {
-
 			return "에러 발생!";  	   
 		}
 	}
-
-
 	//만일 신고사유가 글삭제까지 할 이유가 없을 경우 글의 상태를 신고에서 노멀로 바꾸는 메소드
 	//(추가로 신고사유와 신고자도 공란으로 비워두어야 함)
 	@ResponseBody
 	@RequestMapping(value="ReportCancel", produces = "application/text; charset=utf8")
 	public String ReportCancel(String tl_board_seq){
-
 		int result = aservice.AdminReportCancel(tl_board_seq);
-
 		if(result > 0) {
-
 			return "정상적으로 처리 완료.";
-
 		}else {
-
 			return "에러 발생!!";			
 		}		
 	}
-
 	//home에서 받아온 세션 정보에 따라 방문자수 카운트를 증가시키거나 유지시킴
 	@ResponseBody
 	@RequestMapping(value="VisitViewCondition", produces = "application/text; charset=utf8")

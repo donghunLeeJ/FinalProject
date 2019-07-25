@@ -28,8 +28,8 @@ public class MemberService {
 		return num;
 	}
 	
-	public int shopCount() {
-		return mdao.shopCount();
+	public int shopCount(String id) {
+		return mdao.shopCount(id);
 	}
 	public List<String> paging(int page, int shopcount){
 		return sellP.myPaging(page, shopcount);
@@ -69,4 +69,6 @@ public class MemberService {
 	public int delOK(String del_id, String del_pw) {
 		return mdao.delOK(del_id, del_pw);
 	}
+
+	
 }

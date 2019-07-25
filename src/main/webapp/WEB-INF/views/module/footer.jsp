@@ -12,7 +12,7 @@
 					<div class="single-footer-widget mb-80">
 						<!-- Footer Logo -->
 						<a href="#" class="footer-logo"><img
-							src="/img/core-img/logo.png" alt=""></a>
+							src="/img/core-img/logo3.png" alt="" style="height: 3em"></a>
 
 						<p class="mb-30">
 							 상호 : <br>
