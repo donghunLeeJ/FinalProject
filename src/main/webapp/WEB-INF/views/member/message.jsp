@@ -168,6 +168,7 @@ select {
 									<div id="contents" class="col-3 my-2 text-truncate" " style="margin-top: 0em; height:1.5rem"
 									onclick="window.open('/timeline/MessagePageContents?seq=${i.message_seq }','','width=400px, height=400px')">
 										${i.message_contents }</div>
+
 									<div class="col-2 my-2" style="margin-top: 0em; height:1.5rem">
 										<button id="delete${i.message_seq }">삭제</button>
 									</div>

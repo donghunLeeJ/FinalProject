@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
+
 <style>
 h5 {
 	display: inline;
@@ -116,10 +117,14 @@ select {
 	background-color: white;
 }
 
+
+
+
 #contents:hover {
 	font-weight: bold;
 	cursor: pointer;
 }
+
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
@@ -169,9 +174,13 @@ select {
 									<div id="contents" class="col-3 my-2 text-truncate" " style="margin-top: 0em; height:1.5rem"
 										onclick="window.open('/timeline/getMessagePageContents?seq=${i.message_seq }','','width=400px, height=400px')">
 										${i.message_contents }</div>
-									<div class="col-2 " style="margin-top: 0em; height:1.5rem">
-										<button id="btn${i.message_seq }">답장</button>
-										<button id="delete${i.message_seq }">삭제</button>
+
+									<div class="col-2 " style="margin-top: 0em;">
+										<button class="btn btn-secondary"  id="btn${i.message_seq }">답장</button>
+										<button class="btn btn-secondary" id="delete${i.message_seq }">삭제</button>
+										
+
+
 									</div>
 
 									<script>
