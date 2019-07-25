@@ -72,20 +72,20 @@ img {
 
 			<div class="row border-bottom border-top py-2 bg-gray">
 				<div class="col-6">
-					<h3 style="font-family :'나눔고딕OTF';">주문결제</h3>
+					<h3 style="font-family :'나눔고딕OTF';">결제하기</h3>
 				</div>
-				<div class="col-6 " style="text-align: right">
-					<h3 style="font-family :'나눔고딕OTF';">장바구니 주문/결제 주문완료</h3>
-				</div>
+<!-- 				<div class="col-6 " style="text-align: right"> -->
+<!-- 					<h3 style="font-family :'나눔고딕OTF';">장바구니 주문/결제 주문완료</h3> -->
+<!-- 				</div> -->
 			</div>
 
 			<div class="row pt-3">
 				<div class="col-6 font-weight-bold text-bottom">
 					<span class="">주문상품 확인</span>
 				</div>
-				<div class="col-6 text-bottom" style="text-align: right">
-					<p style="font-family :'나눔고딕OTF';">*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p>
-				</div>
+<!-- 				<div class="col-6 text-bottom" style="text-align: right"> -->
+<!-- 					<p style="font-family :'나눔고딕OTF';">*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p> -->
+<!-- 				</div> -->
 
 			</div>
 			<div class="row border-bottom border-top bg-gray text-center py-2">
@@ -251,13 +251,13 @@ img {
 				<div class="col-12">
 					<p>
 
-						<input type="checkbox" id="must1"> <small class="must1">(필수)판매명,
+						<input type="checkbox" id="must1"> <small class="must1">(필수1)판매명,
 							유통기한, 판매수량, 판매금액 등 상품 정보를 모두 확인하였습니다</small><br> <input
-							type="checkbox" id="must2"> <small class="must2">(필수)정확하지
+							type="checkbox" id="must2"> <small class="must2">(필수2)정확하지
 							않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
-							type="checkbox" id="must3"> <small class="must3">(필수)배송
+							type="checkbox" id="must3"> <small class="must3">(필수3)배송
 							과정 중 발생한 문제는 Akame에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
-							type="checkbox" id="must4"> <small class="must4">(필수)결제
+							type="checkbox" id="must4"> <small class="must4">(필수4)결제
 							후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
 
 					</p>
@@ -335,7 +335,6 @@ img {
 							} else if ($("#req").val().length > 30) {
 								alert("요구사항 길이를 초과하였습니다");
 							} else if ($("#must1").is(":checked") == false) {
-
 								alert("필수사항1을 읽고 체크해주세요");
 							} else if ($("#must2").is(":checked") == false) {
 								alert("필수사항2를 읽고 체크해주세요");

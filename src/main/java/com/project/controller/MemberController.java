@@ -190,8 +190,7 @@ public class MemberController {
 		String uploadPath = session.getServletContext().getRealPath("/resources/img/profile-img/" + time + "/");// 파일 저장
 																												// 위치
 		File makeFile = new File(uploadPath);
-		if (!makeFile.exists())
-			makeFile.mkdir();
+		if (!makeFile.exists()) makeFile.mkdir();
 		System.out.println(uploadPath);
 		File f = new File(uploadPath + "/" + savedName + "__.jpg");
 		try {
@@ -233,7 +232,6 @@ public class MemberController {
 		}
 		return null;
 	}
-
 
 	@RequestMapping("buyContentsGo")
 	public String moveBuyContentsGo() {

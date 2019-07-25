@@ -18,7 +18,7 @@ float:left;
 
 #contents {
 	width: 100%;
-	height: 300px;
+	height: 240px;
 }
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
@@ -111,14 +111,16 @@ float:left;
 
 						</div>
 						<div class="col-lg-8">
-							<p>- 파일은 최대 3장까지 한번에 올릴 수 있습니다.</p>
+							<p>- 파일은 최대 3장까지 업로드 하실 수 있습니다.</p>
 							<p>
-								- 대표 이미지는 첫번째로 등록되는 이미지 입니다.<br>
+								-  첫번째로 등록되는 이미지가 대표 이미지 입니다.<br>
 							</p>
 							<p>
-								- 파일을 여러장 올리는 방법은 여러장을 선택해서 올리면 가능합니다.<br>
+								- 한번에 다중 선택해야 여러 파일을 업로드 하실 수 있습니다.<br>
 							</p>
-
+							<p>
+							- 파일은 (jpg, png, gif, bmp, jpeg) 형식만 등록 가능합니다.<br>
+							</p>
 						</div>
 					</div>
 
@@ -128,9 +130,15 @@ float:left;
 				</div>
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #FFF8E7; padding-top: 8px;">브랜드</div>
-				<div class="col-lg-10 border p-0">
+				<div class="col-lg-4 border p-0">
 					<input type="text" id=brand name="shop_brand"
 						class="form-control input" >
+				</div>
+				<div class="col-lg-2 border text-center align-middle"
+					style="background: #FFF8E7; padding-top: 8px;">재료</div>
+				<div class="col-lg-4 border p-0">
+					<input type="text" id=material name="shop_material"
+						class="form-control input"  placeholder="알레르기 정보를 위하여 입력해주세요">
 				</div>
 
 				<div class="col-lg-2 border text-center align-middle"
@@ -181,26 +189,29 @@ float:left;
 					style="background: #FFF8E7; padding-top: 8px;">가격</div>
 				<div class="col-lg-4 border p-0">
 					<input type="text" id=price name="shop_price"
-						class="form-control input">
+						class="form-control input" placeholder="택배비 포함 가격 입력">
 				</div>
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #FFF8E7; padding-top: 8px;">수량</div>
 				<div class="col-lg-4 border p-0">
 					<input type="text" id=quantity name="shop_quantity"
-						class="form-control input">
+						class="form-control input" placeholder="무게 단위 판매는 내용에 추가로 기재">
 				</div>
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #FFF8E7; padding-top: 130px;">내용</div>
 				<div class="col-lg-10 border p-0 m-0">
-					<textarea style="resize: none;" id=contents name="shop_contents"
-						class="form-control input" 
-						style="height: 15rem;"></textarea>
+					<textarea style="resize: none;" id=contents name="shop_contents" 
+						class="form-control input" style="height: 15rem;"></textarea>
 				</div>
 				<!-- 	-정현 추가 사업자번호  -->
 				<input type="hidden" value="${id.memberSell_seq }" name="sell_seq">
 
+					<p>
+						<input type="checkbox" id="must1"> <small class="must1">
+						(필수)부정확한 정보 입력으로 발생한 문제는 판매자가 책임지겠습니다</small>
+							</p>
 				<div class="col-lg-12 text-center mb-5">
-					<input id="submitbtn" type="button" value="제출"
+					<input id="submitbtn" type="button" value="판매등록"
 						class="btn akame-btn btn-3 mt-15 active">
 				</div>
 
@@ -246,10 +257,9 @@ float:left;
 															&& fileEx != "png"
 															&& fileEx != "gif"
 															&& fileEx != "bmp"
-															&& fileEx != "wmv"
-															&& fileEx != "mp4"
-															&& fileEx != "avi") {
-														alert("파일은 (jpg, png, gif, bmp, wmv, mp4, avi) 형식만 등록 가능합니다.");
+																&& fileEx != "jpeg"
+													) {
+														alert("파일은 (jpg, png, gif, bmp, jpeg) 형식만 등록 가능합니다.");
 														resetFile();
 														return false;
 													}
@@ -300,9 +310,10 @@ float:left;
 					var origin = /^[0-9]{1,}$/
 					var regpr = /^[0-9]{1,6}$/
 					var reg = /^[0-9]{1,10}$/
+						var emp = /^\s*$/g;
 					var inputcount = 0;
 					$(".input").each(function(i, item) {
-						if ($(item).val() == "") {
+						if ($(item).val() == "" || emp.test($(item).val())) {
 							inputcount++; //만일 입력창 어딘가에 빈 칸이 있을 경우 카운트를 증가시킨다.
 						}
 					});
@@ -313,11 +324,13 @@ float:left;
 					} else if ($('#food0').attr('src') == '/img/default.jpg') { //이미지가 하나도 업로드되지 않은 경우
 						alert("상품 이미지는 적어도 1개 이상 들어가야 합니다.");
 						return false;
-					} else if ($("#title").val().length > 31) {
-						alert("가능한 제목 길이를 초과하였습니다");
-					} else if ($("#brand").val().length > 11) {
-						alert("가능한 브랜드 길이를 초과하였습니다");
-					} else if ($("#contents").val().length > 801) {
+					} else if ($("#title").val().length > 30) {
+						alert(" 제목 길이를 초과하였습니다");
+					} else if ($("#brand").val().length > 15) {
+						alert(" 브랜드 길이를 초과하였습니다");
+					} else if ($("#material").val().length > 30) {
+						alert("재료입력 길이를 초과하였습니다");
+					} else if ($("#contents").val().length > 200) {
 						alert("가능한 내용 길이를 초과하였습니다");
 					} else if (!origin.test($("#price").val())
 							|| !origin.test($("#quantity").val())) {
@@ -326,9 +339,12 @@ float:left;
 						alert("100만원 이상은 관리자에게 문의주세요");
 					} else if (!reg.test($("#quantity").val())) {
 						alert("수량을 다시 입력해주세요");
-					} else {
+					} else if ($("#must1").is(":checked") == false) {
+						alert("필수사항을 읽고 체크해주세요");
+					}else {
 						removeXSS($("#title").val(), $("#title").attr("id"));
 						removeXSS($("#brand").val(), $("#brand").attr("id"));
+						removeXSS($("#material").val(), $("#material").attr("id"));
 						removeXSS($("#contents").val(), $("#contents").attr(
 								"id"));
 						removeXSS($("#datepicker").val(), $("#datepicker")
@@ -341,6 +357,10 @@ float:left;
 					}
 
 				});
+		
+		$(".must1").on("click", function() {
+			$("#must1").click();
+		});
 	</script>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>

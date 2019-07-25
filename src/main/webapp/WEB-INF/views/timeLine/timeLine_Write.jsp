@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TimeLine Write Page</title>
+<title>타임라인 작성하기</title>
 <style>
 	textarea{
 	width: 100%;
@@ -111,12 +111,13 @@
 	}
 	
 	$("#OK").on("click",function(){
-	
 		
-		if($("#title").val()==""){
+		var emp = /^\s*$/g;
+		if($("#title").val()=="" || emp.test($("#title").val())){
+		
 			alert("제목을 입력해주세요");
 			$("#title").focus();
-		}else if($("#contents").val()==''){
+		}else if($("#contents").val()=='' || emp.test($("#contents").val())){
 			alert("내용을 입력해주세요");
 			$("#contents").focus();
 		}else if($("#imgInput").val() == ''){
