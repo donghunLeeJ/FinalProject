@@ -8,14 +8,16 @@ public class MessageDTO {
 	private String message_getter; 
 	private String message_contents; 	
 	private Date message_time;
+	private int rank;
 	public MessageDTO(int message_seq, String message_sender, String message_getter, String message_contents,
-			Date message_time) {
+			Date message_time, int rank) {
 		super();
 		this.message_seq = message_seq;
 		this.message_sender = message_sender;
 		this.message_getter = message_getter;
 		this.message_contents = message_contents;
 		this.message_time = message_time;
+		this.rank = rank;
 	}
 	public MessageDTO() {
 		super();
@@ -50,6 +52,11 @@ public class MessageDTO {
 	public void setMessage_time(Date message_time) {
 		this.message_time = message_time;
 	}
-	
-	
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 }

@@ -157,10 +157,46 @@
 					</tbody>
 				</table>
 			</div>
+			
+			
+			<div class="col-lg-5 border m-3 pt-3 rounded mx-auto" style="background: #ffffff">
+				<strong> 회원 관리 </strong> <a href="/admin/OrderManagementMove"> 바로가기 </a>
+				<table class="table mt-3 border text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th class="p-1" scope="col">주문번호</th>
+							<th class="p-1" scope="col">주문금액/수량</th>
+							<th class="p-1" scope="col">주문일자</th>
+							<th class="p-1" scope="col">주문자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th class="p-1">${OrderBoardList[0].order_number}</th>
+							<td class="p-1">${OrderBoardList[0].order_price}원/${OrderBoardList[0].order_quantity}개</td>
+							<td class="p-1">${OrderBoardList[0].order_time}</td>
+							<td class="p-1">${OrderBoardList[0].order_buyer}</td>
+						</tr>
+						<tr>
+							<th class="p-1">${OrderBoardList[1].order_number}</th>
+							<td class="p-1">${OrderBoardList[1].order_price}원/${OrderBoardList[0].order_quantity}개</td>
+							<td class="p-1">${OrderBoardList[1].order_time}</td>
+							<td class="p-1">${OrderBoardList[1].order_buyer}</td>
+						</tr>
+						<tr>
+							<th class="p-1">${OrderBoardList[2].order_number}</th>
+							<td class="p-1">${OrderBoardList[2].order_price}원/${OrderBoardList[0].order_quantity}개</td>
+							<td class="p-1">${OrderBoardList[2].order_time}</td>
+							<td class="p-1">${OrderBoardList[2].order_buyer}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			
 		</div>
 	</div>
 </section>
-
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>
 </html>

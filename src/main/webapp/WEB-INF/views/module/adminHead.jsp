@@ -93,7 +93,6 @@
 								<li><a href="/admin/MemberManagementMove">회원 관리 </a>
 								<li><a href="/admin/ShopBoardManagementMove">판매 글 관리</a></li>
 								<li><a href="/admin/OrderManagementMove">구매내역 관리</a></li>
-								<li><a href="#">결제 통계</a>
 								<li><a href="/admin/TimeLineManagementMove">SNS 신고 관리</a></li>
 							</ul>
 							<!-- Cart Icon -->

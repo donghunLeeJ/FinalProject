@@ -38,6 +38,8 @@ public class AdminDAO {
 	public int SNSBoardCount(){
 		return sst.selectOne("AdminDAO.SNSBoardCount");}
 	
+	public int SelectSNSBoardCount(String keyword){
+		return sst.selectOne("AdminDAO.SelectSNSBoardCount",keyword);}
 	
 	
 	public OrderDTO OrderNumberSelect(String order_number){
@@ -62,6 +64,10 @@ public class AdminDAO {
 	
 	public int AdminReportCancel(String tl_board_seq){
 		return sst.update("AdminDAO.AdminReportCancel", tl_board_seq);
+	}
+	
+	public List<String>AdminBlackCheckList(){
+		return sst.selectList("AdminBlackCheckList");
 	}
 	
 	

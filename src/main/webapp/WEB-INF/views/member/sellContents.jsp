@@ -38,6 +38,7 @@
 	box-shadow: 5px 5px 5px #eee;
 }
 
+
 .center{
 text-align:center;
 }
@@ -68,20 +69,30 @@ text-align:center;
 
  
 
+.navi a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+
+.center {
+	text-align: center;
+}
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-	
+
 	<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
 		<div class="row border-bottom  mt-5 pb-1 ">
 			<div class="col-12">
-				<h4 class="mb-3" style="font-family :'나눔고딕OTF';">판매 내역 확인</h4>
+				<h4 class="mb-3" style="font-family: '나눔고딕OTF';">판매 내역 확인</h4>
 			</div>
 		</div>
-		<div
-			class="row border-top border-bottom  text-center py-1" style="background: #dde1e5">
+		<div class="row border-top border-bottom  text-center py-1"
+			style="background: #dde1e5">
 			<div class="col-2 border">이미지</div>
 			<div class="col-4 border">제목</div>
 			<div class="col-1 border">총 수량</div>
@@ -92,7 +103,7 @@ text-align:center;
 
 		<c:forEach var="i" items="${sellList }">
 
-<%-- <input type="hidden" value="${i.shop_seq}" id=seqq name=seqq> --%>
+			<%-- <input type="hidden" value="${i.shop_seq}" id=seqq name=seqq> --%>
 			<div class="row text-center border py-3" style="background: white">
 
 				<div class="col-2 ">
@@ -145,6 +156,7 @@ text-align:center;
 				})
 			</script>
 		</c:forEach>
+
 		<br>
 		
 <!-- <button type="button" class="btn btn-outline-info"> </button> -->
@@ -161,13 +173,14 @@ text-align:center;
 
 					<c:otherwise>
 					<a href="sellContentsGoProc?page=${i}" class="center"><button class="list_sub " id=sellNavi>${i}</button></a>
+
 					</c:otherwise>
 
 				</c:choose>
 			</c:forEach>
 		</div>
-		
-		
+
+
 	</div>
 	</section>
 

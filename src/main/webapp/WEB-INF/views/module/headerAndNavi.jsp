@@ -36,7 +36,7 @@
 	transition-duration: 1s;
 	cursor: pointer;
 	color: black;
-	background-color:  #FFF8E7;
+	background-color:  #f4ead0;
 }
 
 .btn:hover {
@@ -46,7 +46,7 @@
 }
 
 li:hover {
-	color:  #FFF8E7;
+	color:  #f4ead0;
 }
 a,#LogIN,#mypage,#logout{
 	cursor:pointer;
@@ -70,7 +70,7 @@ body { font-family :'나눔고딕OTF';}
 <header class="header-area" oncontextmenu="return false"
 	ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
-	<div class="top-header-area" style="background-color: #FFF8E7">
+	<div class="top-header-area" style="background-color: #f4ead0">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
@@ -144,7 +144,7 @@ body { font-family :'나눔고딕OTF';}
 										<ul class="dropdown">
 											<li><a onclick="buy_record();">구매 내역</a></li>
 											<li><a onclick="sell_record();">판매 내역 </a></li>
-											<li><a href="#">쪽지함</a></li>
+											<li><a onclick="message();">쪽지함</a></li>
 										</ul></li>
 									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
 									<li><a  onclick="loginCheck_write();">판매하기 </a>
@@ -164,7 +164,16 @@ body { font-family :'나눔고딕OTF';}
 		</div>
 
 		<script>
-
+	
+		var message = function(){
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+				window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+			}else{
+			
+				location.href = "/timeline/messageList?seq=1";
+			}
+		}
 		
  	var loginCheck_write = function(){
    		if(${id == null}){

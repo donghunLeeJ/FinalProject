@@ -3,7 +3,7 @@
 <footer class="footer-area border"
 	oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
-	<div class="container-fluid border" style="background-color: #FFF8E7">
+	<div class="container-fluid border" style="background-color: #f4ead0">
 		<div class="container">
 			<div class="row justify-content-between">
 
