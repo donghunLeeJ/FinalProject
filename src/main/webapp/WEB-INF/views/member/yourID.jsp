@@ -44,6 +44,7 @@ text-align: center;
                          
                             <div class="col-12 text-center">
                                 <button type="button" class="btn akame-btn btn-3 mt-15 active" id=home>Home</button>
+                                  <button type="button" class="btn akame-btn btn-3 mt-15 active" id=pass>비밀번호 초기화</button>
                             </div>
                         </div>
                 </div>
@@ -55,6 +56,9 @@ text-align: center;
 
 		$("#home").on("click", function() {
 			location.href = "/home"
+		})
+		$("#pass").on("click", function() {
+			location.href = "/member/findinfo"
 		})
 
 	</script>

@@ -25,6 +25,7 @@ import com.project.dto.ShopReviewDTO;
 import com.project.dto.ViewDTO;
 import com.project.paging.ShopPaging;
 import com.project.service.BasketService;
+import com.project.service.MemberService;
 import com.project.service.OrderService;
 import com.project.service.ShopBoardService;
 
@@ -49,6 +50,28 @@ public class ShopBoardController {
 
 	@Autowired
 	private BasketService bservice;
+	@Autowired
+	private MemberService mservice;
+	
+	
+	
+	@RequestMapping("/sellContentsGo")
+	public String moveSellContentsGo() {
+		return "redirect:sellContentsGoProc?page=1";
+	}
+	@RequestMapping("/sellContentsGoProc")
+	public String log_sellContetns(int page) {
+		
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		int shopcount = mservice.shopCount();//테이블에서 전체 레코드 갯수 불러옴
+		List<String> pageList = mservice.paging(page, shopcount );
+		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(page);
+		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
+		request.setAttribute("page", page);//현재 페이지
+		request.setAttribute("sellList", sellList);
+		return "/member/sellContents";
+	}
+	
 
 	@RequestMapping("/shopBoardGo")
 	public String ShopBoardGo(String page) {

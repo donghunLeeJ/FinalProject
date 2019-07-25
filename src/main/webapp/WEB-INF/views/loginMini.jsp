@@ -8,8 +8,10 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="/js/cross.js"></script>
+<!-- 지우지 말 것 -->
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<div class="row">
 		<div class="col-12">
 			<!-- Form -->
@@ -44,6 +46,7 @@
 		$("#login").on("click", function() {
 			var id = $("#member_id").val();
 			var pw = $("#member_pw").val();
+		
 
 			$.ajax({
 				url : "/member/minilogin",
@@ -56,6 +59,8 @@
 			}).done(function(resp) {
 				
 				if (resp == 1) {
+					removeXSS($("#member_id").val(), $("#member_id").attr("id"));
+					removeXSS($("#member_pw").val(), $("#member_pw").attr("id"));
 					alert("로그인 되었습니다.");
 					opener.parent.location.reload();
 					window.close();

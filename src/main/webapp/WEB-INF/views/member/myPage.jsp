@@ -304,7 +304,7 @@ select {
 									</label>
 									<div class="col-lg-9">
 										<input class="form-control" id="add2" name="member_address2"
-											placeholder="최대 20자" type="text"
+											 type="text"
 											value="${id.member_address2}">
 									</div>
 								</div>
@@ -321,8 +321,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">자기
 										소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area name="member_intro"
-											placeholder="최대 100자">${id.member_intro}</textarea>
+										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
 									</div>
 									<input name="member_intro" type="hidden">
 									<%--                                 <div class=" ">${id.member_intro}</div> --%>
@@ -402,6 +401,16 @@ select {
 
 
 	<script>
+	
+	
+	$("#area").on("input",function(){
+	if ($("#area").val().length > 100) {
+		alert("자기소개 제한 글자를 초과하였습니다");
+	}
+	});
+	
+	
+	
 		$("#goHome").on("click", function() {
 			location.href = "/home";
 		})
@@ -486,9 +495,7 @@ select {
 				alert("자기소개를 입력해주세요");
 				$("#area").focus();
 
-			} else if ($("#area").val().length > 100) {
-				alert("자기소개 제한 글자를 초과하였습니다");
-			} else if ($("#pw1").val() == "") {
+			}  else if ($("#pw1").val() == "") {
 
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();

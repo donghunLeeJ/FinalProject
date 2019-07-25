@@ -92,7 +92,7 @@ background-color:white;
                   <div class="col-lg-12 text-center">
                      <div class=title>비밀번호 
 <!--                      <img src="/img/button-img/flash.png" id="flash"> -->
-                <i class="fa fa-eye fa-lg" id=flash></i>
+                  <i class="fa fa-eye-slash fa-lg" id=flash></i>
                      </div>
 
                      <input type="password" style="width: 50%; margin: auto;" id=pw
@@ -173,17 +173,15 @@ background-color:white;
    <script>
    
    
-   $("#flash").on("click",function(){
-	
+	 $("#flash").on("click",function(){
 		   if($(".flash").attr('type')=='password'){
-			   $(this).attr('class',"fa fa-eye-slash fa-lg");
+			   $(this).attr('class',"fa fa-eye fa-lg");
 			   $(".flash").attr('type','text');
 		   }else if($(".flash").attr('type')=='text'){
-			   $(this).attr('class',"fa fa-eye fa-lg")
+			   $(this).attr('class',"fa fa-eye-slash fa-lg")
 			   $(".flash").attr('type','password');
 		   }
-	  
-   });
+});
       //여기서 부터 가입버튼 눌렀을때 실행
       $("#send").on("click",function() {
          

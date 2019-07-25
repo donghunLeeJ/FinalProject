@@ -38,10 +38,42 @@
 	box-shadow: 5px 5px 5px #eee;
 }
 
+
+.center{
+text-align:center;
+}
+.form-control[readonly] {
+	background-color: white;
+}
+.list_sub{
+         
+            margin-right:1px;
+            text-align:center;
+        }
+
+
+.list_menu button{
+            border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding:3px;
+            text-align:center;
+            width:30px;
+        }
+.list_menu button:hover{
+            color:white;
+            background-color: skyblue;
+        }
+
+
+
+ 
+
 .navi a.active {
 	background-color: #4CAF50;
 	color: white;
 }
+
 
 .center {
 	text-align: center;
@@ -64,7 +96,7 @@
 			<div class="col-2 border">이미지</div>
 			<div class="col-4 border">제목</div>
 			<div class="col-1 border">총 수량</div>
-			<div class="col-2 border">총 금액</div>
+			<div class="col-2 border">개당 금액</div>
 			<div class="col-2 border">유통기한</div>
 			<div class="col-1 border">요청</div>
 		</div>
@@ -125,23 +157,23 @@
 			</script>
 		</c:forEach>
 
-		<div class="list_n_menu text-center py-3">
+		<br>
+		
+<!-- <button type="button" class="btn btn-outline-info"> </button> -->
+			<div class="list_menu">
 			<c:forEach var="i" items="${pageList}">
 				<c:choose>
-
-					<c:when test="${i eq '<이전'}">
-						<span class="navi mr-1 center"><a
-							href="sellContentsGoProc?page=${page-1}" class="center">${i}</a></span>
+					<c:when test="${i eq '<<'}">
+					<a href="sellContentsGoProc?page=${page-1}" class="center"><button class="list_sub ">${i}</button></a>
 					</c:when>
 
-					<c:when test="${i eq '다음>'}">
-						<span class="navi mr-1 center"><a
-							href="sellContentsGoProc?page=${page+1}" class="center">${i}</a></span>
+					<c:when test="${i eq '>>'}">
+					<a href="sellContentsGoProc?page=${page+1}" class="center"><button class="list_sub ">${i}</button></a>
 					</c:when>
 
 					<c:otherwise>
-						<span class="navi mr-1 center"><a
-							href="sellContentsGoProc?page=${i}" class="center">${i}</a></span>
+					<a href="sellContentsGoProc?page=${i}" class="center"><button class="list_sub " id=sellNavi>${i}</button></a>
+
 					</c:otherwise>
 
 				</c:choose>

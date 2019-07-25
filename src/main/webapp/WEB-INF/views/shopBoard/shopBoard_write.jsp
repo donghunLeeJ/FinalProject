@@ -8,11 +8,12 @@
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 
-
-
 <style>
 .form-control[readonly] {
 	background-color: white;
+}
+.float{
+float:left;
 }
 
 #contents {
@@ -63,21 +64,26 @@
 					style="background: #FFF8E7; padding-top: 8px">제목</div>
 				<div class="col-lg-10 border  p-0">
 					<input type="text" id=title name="shop_title"
-						class="form-control input" placeholder="최대 30글자">
+						class="form-control input" >
 				</div>
 				<div class="col-lg-2 border text-center align-middle"
+
 					style="background: #FFF8E7; padding-top: 170px">이미지</div>
+
 				<div class="col-lg-10 border p-0" style="background: white;">
 					<div class="row">
 						<div class="col-lg-4 col-md-4 col-sm-4 ">
 							<div class="row ml-3">
+
 								<div class="col-lg-12 mx-auto p-0 border"
 									style="text-align: center;height: 12em">
+
 									<img id="mainimg" src="/img/default.jpg">
 
 
 
 								</div>
+								
 								<div class="col-lg-12 ">
 									<div class="row mt-2">
 										<div
@@ -100,6 +106,7 @@
 										class="custom-file-input" id="files" name="shop_images">
 									<label class="custom-file-label p-0" for="customFile"></label>
 								</div>
+								
 							</div>
 
 						</div>
@@ -115,15 +122,15 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-lg-12"></div>
-					</div>
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-lg-12"></div> -->
+<!-- 					</div> -->
 				</div>
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #FFF8E7; padding-top: 8px;">브랜드</div>
 				<div class="col-lg-10 border p-0">
 					<input type="text" id=brand name="shop_brand"
-						class="form-control input" placeholder="최대 10글자">
+						class="form-control input" >
 				</div>
 
 				<div class="col-lg-2 border text-center align-middle"
@@ -186,7 +193,7 @@
 					style="background: #FFF8E7; padding-top: 130px;">내용</div>
 				<div class="col-lg-10 border p-0 m-0">
 					<textarea style="resize: none;" id=contents name="shop_contents"
-						class="form-control input" placeholder="최대 300자"
+						class="form-control input" 
 						style="height: 15rem;"></textarea>
 				</div>
 				<!-- 	-정현 추가 사업자번호  -->

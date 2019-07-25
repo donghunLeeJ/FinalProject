@@ -269,6 +269,7 @@ public class MemberController {
 		return null;
 	}
 
+
 	@RequestMapping("/sellContentsGo")
 	public String moveSellContentsGo() {
 		return "redirect:sellContentsGoProc?page=1";
@@ -286,6 +287,7 @@ public class MemberController {
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
+
 
 	@RequestMapping("buyContentsGo")
 	public String moveBuyContentsGo() {
