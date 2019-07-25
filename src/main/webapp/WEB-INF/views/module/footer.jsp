@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<footer class="footer-area border"
-	oncontextmenu="return false" ondragstart="return false"
-	onselectstart="return false">
+<footer class="footer-area border" oncontextmenu="return false"
+	ondragstart="return false" onselectstart="return false">
 	<div class="container-fluid border" style="background-color: #f4ead0">
 		<div class="container">
 			<div class="row justify-content-between">
@@ -15,12 +14,10 @@
 							src="/img/core-img/logo3.png" alt="" style="height: 3em"></a>
 
 						<p class="mb-30">
-							 상호 : <br>
-							 대표 : 이동훈<br>
-							주소 : 서울특별시 중구 남대문로1가 남대문로 118 <br>
-							개인정보관리 책임자 : <br>
-							사업자 등록번호 : 211-06-76999 <br>
-							
+							상호 : (주) AGGABI <br> 대표 : 이동훈<br> 주소 : 서울특별시 중구 남대문로1가
+							남대문로 118 하늘빌딩 16층 <br> 개인정보관리 책임자 : 이상준 <br> 사업자 등록번호 :
+							14-73051085 <br>
+
 						</p>
 
 						<!-- Copywrite Text -->
@@ -67,7 +64,8 @@
 					<div class="single-footer-widget mb-80">
 
 						<!-- Widget Title -->
-						<h4 class="widget-title" style="font-family :'나눔고딕OTF';">고객센터 C/S Center</h4>
+						<h4 class="widget-title" style="font-family: '나눔고딕OTF';">고객센터
+							C/S Center</h4>
 
 						<!-- Contact Address -->
 						<div class="contact-address">

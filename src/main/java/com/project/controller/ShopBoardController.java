@@ -52,33 +52,28 @@ public class ShopBoardController {
 	private BasketService bservice;
 	@Autowired
 	private MemberService mservice;
-	
-	
-	
+
 	@RequestMapping("/sellContentsGo")
 	public String moveSellContentsGo() {
 		return "redirect:sellContentsGoProc?page=1";
 	}
+
 	@RequestMapping("/sellContentsGoProc")
 	public String log_sellContetns(String page) {
 		int resultPage = Integer.parseInt(page);
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		int shopcount = mservice.shopCount(mdto.getMember_id());//테이블에서 전체 레코드 갯수 불러옴
-		List<String> pageList = mservice.paging(resultPage, shopcount );
-		for(String a : pageList) {
+		int shopcount = mservice.shopCount(mdto.getMember_id());// 테이블에서 전체 레코드 갯수 불러옴
+		List<String> pageList = mservice.paging(resultPage, shopcount);
+		for (String a : pageList) {
 			System.out.println(a);
 		}
-		
+
 		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage);
-		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
-		request.setAttribute("page", page);//현재 페이지
+		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자 출력
+		request.setAttribute("page", page);// 현재 페이지
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
-	
-	
-	
-	
 
 	@RequestMapping("/shopBoardGo")
 	public String ShopBoardGo(String page) {
@@ -168,7 +163,8 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/ShopBoardInsertProc")
-	public String log_filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
+	public String log_filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration,
+			String sell_seq) {
 		List<String> fileArrayPath = new ArrayList();
 //		System.out.println(dto.getShop_seq());
 //		System.out.println("내용: " + dto.getShop_contents());
@@ -267,7 +263,7 @@ public class ShopBoardController {
 	@RequestMapping("/shopOrder")
 
 	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2,String getter_phone3, String products_seq, int quant) {
+			String getter_phone1, String getter_phone2, String getter_phone3, String products_seq, int quant) {
 
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
@@ -306,8 +302,9 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/shopBasketOrder")
-	public String log_basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq ,String priceTotal) {
+	public String log_basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1,
+			String email2, String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq,
+			String priceTotal) {
 		System.out.println(basket_seq);
 		String phone = phone1 + phone2 + phone3;
 		String email = email1 + "@" + email2;
@@ -328,10 +325,10 @@ public class ShopBoardController {
 			}
 			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
-			if(sService.getQuan(bdto.getProduct_seq())<=0) {
+			if (sService.getQuan(bdto.getProduct_seq()) <= 0) {
 				return "/shopBoard/chargeCancel";
-			}else {
-				int balanceQuan = sService.getQuan(bdto.getProduct_seq())-bdto.getBasket_quantity(); 	
+			} else {
+				int balanceQuan = sService.getQuan(bdto.getProduct_seq()) - bdto.getBasket_quantity();
 				sService.updateQ(balanceQuan, bdto.getProduct_seq());
 				odto2.setOrder_buyer_phone(phone);
 				odto2.setProducts_seq(bdto.getProduct_seq());
@@ -352,7 +349,7 @@ public class ShopBoardController {
 		System.out.println(priceTotal);
 		request.setAttribute("price", priceTotal);
 		request.setAttribute("ldto", arr);
-		
+
 		return "/shopBoard/shopChargeOk2";
 	}
 
