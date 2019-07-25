@@ -19,7 +19,7 @@ public class BuyPaging {
 	      
 	      //디비에서 찾는 전체 게시물 갯수
 	      System.out.println("현재 글 갯수 : " + totalCount);
-	      int countList=10; //페이지당 게시글 10개씩 출력
+	      int countList=5; //페이지당 게시글 10개씩 출력
 	      int totalPage = totalCount/countList;//총 갯수 /페이지당 10개 = 페이지 갯수
 	      if(totalCount%countList>0) totalPage++; //한 페이지를 넘어가면 다음 페이지 생성하기
 	      int countPage=10; //한 페이지에 표시될 네비 갯수(1~10, 11~20)
@@ -47,7 +47,7 @@ public class BuyPaging {
 	 
 	   //각 페이지마다 게시글 10개 출력하는 메서드
 	   public List<OrderDTO> selectOrder(int page){
-	      int  countPage=10;
+	      int  countPage=5;
 	      int startCount=(page-1)*countPage+1;
 	      int endCount=page*countPage;
 	      

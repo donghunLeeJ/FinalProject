@@ -232,22 +232,7 @@ public class MemberController {
 		return null;
 	}
 
-	@RequestMapping("/sellContentsGo")
-	public String moveSellContentsGo() {
-		return "redirect:sellContentsGoProc?page=1";
-	}
-	@RequestMapping("/sellContentsGoProc")
-	public String log_sellContetns(int page) {
-		
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		int shopcount = mservice.shopCount();
-		List<String> pageList = mservice.paging(page, shopcount );
-		List<ShopBoardDTO> sellList = SBservice.ShopBoardPageList(page);
-		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
-		request.setAttribute("page", page);//현재 페이지
-		request.setAttribute("sellList", sellList);
-		return "/member/sellContents";
-	}
+
 	
 	
 	@RequestMapping("buyContentsGo")

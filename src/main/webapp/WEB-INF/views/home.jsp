@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Akame</title>
 <!-- 구글 맵 API -->
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBJPpkHrAjmxY5-i1zd8qgs6mO6Ybi_jL4 " ></script>
 
@@ -24,6 +25,9 @@ body { font-family :'나눔고딕OTF';}
 #img1{
 height:220px;
 }
+/* div{ */
+/* border:1px solid black; */
+/* } */
 
 #map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
 .form-control[readonly] {
@@ -85,28 +89,49 @@ height:220px;
 					<h2 style="font-family :'나눔고딕OTF';">□ 최근 등록 상품 <a href="/shopboard/shopBoardGo?page=1"><span style="font-size: small;">더보기</span></a></h2>
 				</div>	
 					<c:forEach var="i" items="${boardList }">
-							<div
-								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"
-								data-wow-delay="500ms">
+					  <c:choose>
+					   <c:when test="${i.shop_quantity eq 0}">
+                <div   class="col-12 col-sm-6 col-lg-3  mb-5 mt-3" data-wow-delay="500ms">
+                        <div class="" style="height: 250px">
+                           
+                           	 <div style="position: absolute;">
+								   <div style="position: relative; top: 70px; left: 0px;">
+								   <img src="/img/core-img/soldout.png" >
+								</div>
+								</div>
+								<img src="${i.shop_imagepath1 }" id="img1"  alt="" >
+
+                           <!-- Thumbnail Zoom -->
+                           <a href="#}" class=""><i class=""></i></a>
+                        </div>
+                        <div class="team-member-info border">
+                           <div class="row">
+                              <div class="col-12"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </c:when>
+					<c:otherwise>
+							<div class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"data-wow-delay="500ms">
+							<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
 								<div class="akame-portfolio-single-item" style="height: 250px">
 									<img src="${i.shop_imagepath1 }" id="img1" alt="">
 									<!-- Overlay Content -->
 									<div
 										class="overlay-content d-flex align-items-center justify-content-center">
 										<div class="overlay-text text-center">
-											<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }"><span
-												style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span></a>
+											<span style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span>
 
 											<p class="pt-3">
 												<fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
-												&nbsp; 원
+												원
 											</p>
 										</div>
 									</div>
 
 									<!-- Thumbnail Zoom -->
-									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i
-										class="icon_search"></i></a>
+<%-- 									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i --%>
+<!-- 										class="icon_search"></i></a> -->
 
 								</div>
 								<div class="team-member-info border">
@@ -114,7 +139,10 @@ height:220px;
 										<div class="col-12"></div>
 									</div>
 								</div>
+								</a>
 							</div>
+							 </c:otherwise>
+									</c:choose>
 						</c:forEach>
 
 			</div>

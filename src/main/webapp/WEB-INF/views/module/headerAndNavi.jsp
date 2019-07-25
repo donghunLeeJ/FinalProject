@@ -75,7 +75,7 @@ body { font-family :'나눔고딕OTF';}
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p style="font-family :'나눔고딕OTF';color: black">Welcome to our page!</p>
+						<p style="font-family :'나눔고딕OTF';color: black">Akame에 오신 여러분 환영합니다!</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -188,7 +188,7 @@ body { font-family :'나눔고딕OTF';}
    			alert("로그인이 필요합니다");
    			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
    		}else{
-   			location.href="/member/sellContentsGo";
+   			location.href="/shopboard/sellContentsGo";
    		}
    	}
  	var loginCheck_sns = function(){

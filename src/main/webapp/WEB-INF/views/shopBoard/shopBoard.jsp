@@ -80,29 +80,30 @@ height:210px;
                   </c:when>
                   <c:otherwise>
                      <div   class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp" data-wow-delay="500ms">
+                                 <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
                         <div class="akame-portfolio-single-item" style="height: 250px">
                            <img src="${i.shop_imagepath1 }" id="img1" alt="">
                            <!-- Overlay Content -->
                            <div class="overlay-content d-flex align-items-center justify-content-center">
                               <div class="overlay-text text-center">
-                                 <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
-                                 <span style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span></a>
+                                 <span style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span>
 
                                  <p class="pt-3">
                                     <fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
-                                    &nbsp; 원
+                                    원
                                  </p>
                               </div>
                            </div>
 
                            <!-- Thumbnail Zoom -->
-                           <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a>
+<%--                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
                         </div>
                         <div class="team-member-info border">
                            <div class="row">
                               <div class="col-12"></div>
                            </div>
                         </div>
+                     </a>
                      </div>
                         </c:otherwise>
 									</c:choose>
