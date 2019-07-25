@@ -53,6 +53,7 @@ a, #LogIN, #mypage, #logout {
 	cursor: pointer;
 }
 
+
 body {
 	font-family: '나눔고딕OTF';
 }
@@ -151,7 +152,8 @@ body {
 									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
 									<li><a onclick="loginCheck_write();">판매하기 </a>
 									<li><a onclick="loginCheck_sns();">SNS</a></li>
-									<li><a onclick="message();">쪽지함</a></li>
+								<li><a onclick="message();">쪽지함</a></li>
+
 
 								</ul>
 								<!-- Cart Icon -->
@@ -168,9 +170,15 @@ body {
 		<script>
 	
 		var message = function(){
+			var popupX = (window.screen.width / 2) - (500 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (window.screen.height / 2) - (600 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
 			if(${id == null}){
 				alert("로그인이 필요합니다");
-				window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+				window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
 			}else{
 			
 				location.href = "/timeline/messageList?seq=1";
@@ -178,34 +186,58 @@ body {
 		}
 		
  	var loginCheck_write = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href = "/shopboard/ShopBoard_write";
    		}
    	}
  	var buy_record = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href="/member/buyContentsGo";
    		}
    	}
  	
  	var sell_record = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href="/shopboard/sellContentsGo";
    		}
    	}
  	var loginCheck_sns = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
    		if(${id == null}){
    			alert("로그인이 필요합니다");
-   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
    		}else{
    			location.href = "/timeline/accessTimeLine?seq=1";
    		}
@@ -213,9 +245,15 @@ body {
    
 
       $("#list").on("click", function() {
+    		var popupX = (window.screen.width / 2) - (500 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (window.screen.height / 2) - (600 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
          if(${id == null}){
         	 alert("로그인이 필요합니다");
-    			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+        		window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
          }else{
         	 var listId = $("#listid").val();
              location.href = "/Basket/basketList?id=" + encodeURI(listId); 

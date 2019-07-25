@@ -10,71 +10,136 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
+<style>
+html {
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+#login {
+	color: white;
+	height: 50px;
+}
+</style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
-	<div class="row">
-		<div class="col-12">
-			<!-- Form -->
-
-
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h3>ID</h3>
-					<input type="text" style="width: 50%; margin: auto;" id="member_id"
-						class="form-control mb-30" placeholder="id">
-				</div>
-				<div class="col-lg-12 text-center">
-					<h3>Password</h3>
-					<i class="fa fa-eye fa-lg" id=flash></i> <input type="password"
-						style="width: 50%; margin: auto;" id="member_pw"
-						class="form-control mb-30 flash" placeholder="password">
-				</div>
-				<div class="col-12 text-center">
-					<br> <br>
-					<button id="login" type="button"
-						class="btn akame-btn btn-3 mt-15 active">로그인</button>
-					<button id="joinmem" type="button"
-						class="btn akame-btn btn-3 mt-15 active">회원가입</button>
-					<button id="find" type="button"
-						class="btn akame-btn btn-3 mt-15 active">아이디/패스워드 찾기</button>
-				</div>
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
+	<div class="container-fluid">
+		<div class="row border-bottom mt-2">
+			<div class="col-12">
+				<img src="/img/core-img/logo4.png"
+					style="width: 80px; height: 40px; padding: 0; margin-bottom: 5px;">
 			</div>
 
+
 		</div>
+
+		<!-- Form -->
+
+		<div class="container  mt-2" style="width: 400px; height: 430px;">
+			<div class="row ">
+				<div class="col-12 mt-2">
+					<h4>AGGABI</h4>
+				</div>
+				<div class="col-lg-12 text-center mt-4">
+					<h3>ID</h3>
+					<input type="text" id="member_id" class="form-control mb-30"
+						placeholder="이메일을 입력해주세요.">
+				</div>
+				<div class="col-lg-12 text-center mt-2">
+					<h3>Password</h3>
+					<i class="fa fa-eye fa-lg" id=flash></i> <input type="password"
+						id="member_pw" class="form-control mb-30 flash"
+						placeholder="패스워드를 입력해주세요.">
+				</div>
+				<div class="col-12 text-center mt-4">
+					<button id="login" type="button"
+						class="btn form-control btn-primary">로그인</button>
+				</div>
+			</div>
+			<hr style="margin-top: 60px; margin-bottom: 0">
+			<div class="row">
+
+				<div class="col-4">
+
+					<button id="joinmem" type="button"
+						class="btn akame-btn btn-3 mt-15 active">
+						<small>회원가입</small>
+					</button>
+				</div>
+				<div class="col-8  text-right">
+					<button id="find" type="button"
+						class="btn akame-btn btn-3 mt-15 active">
+						<small>아이디/패스워드 찾기</small>
+					</button>
+
+				</div>
+			</div>
+		</div>
+		<div class="row border-top mt-4">
+			<div class="col-12 text-center mt-3">
+				<a href="#">이용약관 |</a> <a href="#">개인정보 취급방침 |</a> <a href="#">운영정책
+					| </a> <a href="#">공지사항</a>
+
+			</div>
+			<div class="col-12 text-center mt-1">
+				<small>Copyright © AGGABI Corp. All rights reserved.</small>
+			</div>
+		</div>
+
 	</div>
 	<script>
-		$("#login").on("click", function() {
-			var id = $("#member_id").val();
-			var pw = $("#member_pw").val();
-		
+		$("#login")
+				.on(
+						"click",
+						function() {
+							var id = $("#member_id").val();
+							var pw = $("#member_pw").val();
 
-			$.ajax({
-				url : "/member/minilogin",
-				type : "post",
-				data : {
-					id : id,
-					pw : pw
-				}
-			
-			}).done(function(resp) {
-				
-				if (resp == 1) {
-					removeXSS($("#member_id").val(), $("#member_id").attr("id"));
-					removeXSS($("#member_pw").val(), $("#member_pw").attr("id"));
-					alert("로그인 되었습니다.");
-					opener.parent.location.reload();
-					window.close();
-					
-				} else if(resp == -1){
-					
-					alert("해당 id는 블랙리스트로 등록되어 로그인을 할 수 없으니 관리자에게 문의해주세요.");
-					
-				}else{		
-					
-					alert("아이디나 비밀번호가 옳지 않습니다");
-				}
-			})
-		})
+							$
+									.ajax({
+										url : "/member/minilogin",
+										type : "post",
+										data : {
+											id : id,
+											pw : pw
+										}
+
+									})
+									.done(
+											function(resp) {
+
+												if (resp == 1) {
+													removeXSS($("#member_id")
+															.val(), $(
+															"#member_id").attr(
+															"id"));
+													removeXSS($("#member_pw")
+															.val(), $(
+															"#member_pw").attr(
+															"id"));
+													alert("로그인 되었습니다.");
+													opener.parent.location
+															.reload();
+													window.close();
+
+												} else if (resp == -1) {
+
+													alert("해당 id는 블랙리스트로 등록되어 로그인을 할 수 없으니 관리자에게 문의해주세요.");
+
+												} else {
+
+													alert("아이디나 비밀번호가 옳지 않습니다");
+												}
+											})
+						})
 
 		$("#joinmem").on("click", function() {
 			opener.parent.location.href = "/member/joinForm";

@@ -61,18 +61,21 @@ public class ShopBoardDAO {
 	}
 
 	public Float shopReviewAvg(int shop_seq) {
-		return sst.selectOne("ShopBoardDAO.shopReviewAvg",shop_seq);
+		return sst.selectOne("ShopBoardDAO.shopReviewAvg", shop_seq);
 	}
+
 	public int shopReviewCount(int shop_seq) {
-		return sst.selectOne("ShopBoardDAO.shopReviewCount",shop_seq);
+		return sst.selectOne("ShopBoardDAO.shopReviewCount", shop_seq);
 	}
+
 	public int updateQ(int quant, int seq) {
-		Map<String,Integer> map= new HashMap();
-		map.put("m1",quant);
-		map.put("m2",seq);
-		return sst.update("ShopBoardDAO.updateQ",map);
+		Map<String, Integer> map = new HashMap();
+		map.put("m1", quant);
+		map.put("m2", seq);
+		return sst.update("ShopBoardDAO.updateQ", map);
 	}
+
 	public int getQuan(int seq) {
-		return sst.selectOne("ShopBoardDAO.getQuan",seq);
+		return sst.selectOne("ShopBoardDAO.getQuan", seq);
 	}
 }

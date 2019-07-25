@@ -111,9 +111,11 @@ display: -webkit-box;
 							<div class="col-1 "></div>
 							<div class="col-6">
 								<div class="row pb-4 border-bottom">
+
 									<div class="col-4 ">
 										<h4 style="font-family :'나눔고딕OTF';">
 										[${dto.shop_brand}]
+
 										</h4>
 									</div>
 										<div class="col-8 ellipsis">
@@ -286,8 +288,8 @@ display: -webkit-box;
 					<!-- 리뷰 작성 -->
 					<div class="tab-pane" id="messages">
 						<div class="row border-bottom py-3 ">
-							<div class="col-12" >
-								<h2 style="font-family :'나눔고딕OTF';">프리미엄 상품평</h2>
+							<div class="col-12">
+								<h2 style="font-family: '나눔고딕OTF';">프리미엄 상품평</h2>
 							</div>
 						</div>
 						<c:forEach var="i" items="${ review}">
@@ -378,7 +380,11 @@ display: -webkit-box;
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
-		
+	var popupX = (window.screen.width / 2) - (500 / 2);
+	// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+	var popupY= (window.screen.height / 2) - (600 / 2);
+	// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 		
 		function parse(str) {
    	 		var y = str.substr(0, 4);
@@ -419,7 +425,7 @@ display: -webkit-box;
 			var nowdate = new Date();
 			if(${id == null}){
 				alert("로그인이 필요합니다");
-	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+	       		window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
 			}else{
 				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0 && expidate >= nowdate){
 							var quantity = $("#quantity_one").val();
@@ -441,7 +447,7 @@ display: -webkit-box;
 			var nowdate = new Date();
 			if(${id == null}){
 				alert("로그인이 필요합니다");
-	   			window.open("/home/minilog","", "height=300,width=500,resizable=no", "false");
+	       		window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
 			}else{
 				if(${dto.shop_quantity}-$("#quantity_one").val() >= 0 && expidate >= nowdate){
 					
