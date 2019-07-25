@@ -16,12 +16,20 @@ import com.project.dto.MemberDTO;
 import com.project.dto.MessageDTO;
 import com.project.dto.Tl_BoardDTO;
 import com.project.dto.Tl_ReplyDTO;
+import com.project.paging.MessageGetPage;
+import com.project.paging.MessageSendPage;
 import com.project.service.TimeLineService;
 
 @Controller
 @RequestMapping("/timeline")
 public class TimeLineController {
 
+	@Autowired
+	private MessageSendPage msp;
+	
+	@Autowired
+	private MessageGetPage mgp;
+	
 	@Autowired
 	private HttpServletRequest request;
 
@@ -113,20 +121,18 @@ public class TimeLineController {
 		return "/timeLine/reportcompl";
 	}
 
-
 	@RequestMapping("/reportRegister")
 	public String reportRegister(Tl_BoardDTO dto) {
 		System.out.println(dto.getTl_board_seq());
 		System.out.println(dto.getTl_reason());
-		
-		//신고당한 글을 갱신할 때 신고자를 추가시킴
-		MemberDTO user = (MemberDTO)session.getAttribute("id");
+
+		// 신고당한 글을 갱신할 때 신고자를 추가시킴
+		MemberDTO user = (MemberDTO) session.getAttribute("id");
 		dto.setTl_reporter(user.getMember_id());
- 		request.setAttribute("report", tls.reportRegister(dto));
-				
+		request.setAttribute("report", tls.reportRegister(dto));
+
 		return "/timeLine/reportProc";
 	}
-
 
 	@RequestMapping("/boardModify")
 	public String boardModify(HttpServletRequest request) {
@@ -239,21 +245,53 @@ public class TimeLineController {
 		}
 
 	}
+
 	@RequestMapping("/message")
 	public String messageWindow(String seq, String writer) {
-		String sender = ((MemberDTO)session.getAttribute("id")).getMember_id();
-		
-		if(writer.equals(sender)) {
+		String sender = ((MemberDTO) session.getAttribute("id")).getMember_id();
+
+		if (writer.equals(sender)) {
 			request.setAttribute("no", 1);
-		}else {
+		} else {
 			request.setAttribute("seq", seq);
 			request.setAttribute("writer", writer);
 			request.setAttribute("sender", sender);
-			
+
 		}
 		return "timeLine/messageWindow";
 
 	}
+
+	@RequestMapping("/reply")
+	public String messageReply(String id) {
+		String sender = ((MemberDTO) session.getAttribute("id")).getMember_id();
+
+		request.setAttribute("sender", sender);
+		request.setAttribute("writer", id);
+		return "timeLine/messageWindow";
+
+	}
+
+	@RequestMapping("messageDelete")
+	public String messageDelete(String seq) {
+
+		tls.messageDelete(seq);
+		String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
+		request.setAttribute("Message", tls.messageSeter(id));
+		request.setAttribute("getter", tls.messageGetter(id));
+		return "/member/messageGet";
+	}
+
+	@RequestMapping("messageList")
+	public String message(String seq) {
+		String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
+
+		request.setAttribute("Message", tls.selectAll_message_sender(id,seq));
+		request.setAttribute("paging", msp.msPaging(seq, id));
+		
+		return "/member/message";
+	}
+
 	@RequestMapping("/messageProc")
 	public String messageProc(MessageDTO dto) {
 		System.out.println(dto.getMessage_getter());
@@ -263,14 +301,24 @@ public class TimeLineController {
 		return "timeLine/messageProc";
 
 	}
+
 	@RequestMapping(value = "/like", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String likeProc(String seq) {
 		tls.likeCount(seq);
-		String seqs = tls.selectlikeCount(seq)+" ";
+		String seqs = tls.selectlikeCount(seq) + " ";
 		System.out.println(seqs);
 		return seqs;
-		
+
 	}
-	
+
+	@RequestMapping("/getMessagePage")
+	public String getmessagePage(String seq) {
+		String id = ((MemberDTO)session.getAttribute("id")).getMember_id();
+		request.setAttribute("getter", tls.selectAll_message_getter(id, seq));
+		request.setAttribute("paging", mgp.msPaging(seq, id));
+		return "/member/messageGet";
+
+	}
+
 }

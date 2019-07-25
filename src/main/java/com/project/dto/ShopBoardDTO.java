@@ -10,6 +10,7 @@ public class ShopBoardDTO {
 	private int shop_seq; // 글번호
 	private String shop_id; // 판매자의 로그인 id
 	private String shop_brand;
+	private String shop_material;
 	private String shop_title; // 판매글 제목
 	private String shop_contents;// 판매글 내용
 	private Timestamp shop_writedate;// 판매글 작성 시간
@@ -24,7 +25,7 @@ public class ShopBoardDTO {
 
 	public ShopBoardDTO() {}
 
-	public ShopBoardDTO(int memberSell_seq, int shop_seq, String shop_id, String shop_brand, String shop_title,
+	public ShopBoardDTO(int memberSell_seq, int shop_seq, String shop_id, String shop_brand, String shop_material,String shop_title,
 			String shop_contents, Timestamp shop_writedate, String shop_location, String shop_expiration,
 			int shop_price, int shop_quantity, String shop_imagepath1, String shop_imagepath2, String shop_imagepath3) {
 		super();
@@ -32,6 +33,7 @@ public class ShopBoardDTO {
 		this.shop_seq = shop_seq;
 		this.shop_id = shop_id;
 		this.shop_brand = shop_brand;
+		this.shop_material=shop_material;
 		this.shop_title = shop_title;
 		this.shop_contents = shop_contents;
 		this.shop_writedate = shop_writedate;
@@ -42,6 +44,14 @@ public class ShopBoardDTO {
 		this.shop_imagepath1 = shop_imagepath1;
 		this.shop_imagepath2 = shop_imagepath2;
 		this.shop_imagepath3 = shop_imagepath3;
+	}
+
+	public String getShop_material() {
+		return shop_material;
+	}
+
+	public void setShop_material(String shop_material) {
+		this.shop_material = shop_material;
 	}
 
 	public int getMemberSell_seq() {

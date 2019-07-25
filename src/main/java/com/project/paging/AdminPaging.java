@@ -26,8 +26,7 @@ public class AdminPaging {
 	
 	
 		//데이터베이스에서 검색된 게시물의 갯수(이건 데이터베이스의 select문에 따라 변해야 함)	
-		System.out.println("현재 게시글의 갯수: "+totalCount);	
-		
+
 		int countList = 10;//한 페이지에 출력될 게시물의 수(이는 웹사이트에 따라 다를 수 있지만 기본적으로는 10개임)
 		
 		int totalPage = totalCount / countList;//총 게시물의 수 / 한 페이지당 들어갈 게시물의 수로 총 페이지의 수를 구한다		
@@ -48,7 +47,6 @@ public class AdminPaging {
 		int startPage = ((page-1)/10) * 10 + 1;
 		int endPage = startPage + countPage -1;
 		
-		System.out.println("엔트페이지: " + endPage);
 	/*	
 		//각 페이지당 데이터베이스의 글을 보여줄 수 있음
 		int startCount = (page - 1) * countPage + 1;
@@ -58,15 +56,11 @@ public class AdminPaging {
 		//위와 같은 로직으로 짤 경우 맨 마지막 페이지를 보정해줘야 함
 		if(endPage > totalPage){endPage = totalPage;}
 		
-		System.out.println("엔트페이지: " + endPage);
-		
 		List<String> pageList = new ArrayList();
 		
 		//만일 받아온 페이지의 값이 1보다 클 경우에는 이전을 추가로 달아준다.
 		if(page > 1){pageList.add("<이전");}
 		
-		
-		System.out.println(startPage + " : " + endPage);
 		//입력받은 페이지번호를 화면에 출력시킨다.
 		for(int i = startPage; i<=endPage; i++ ){
 		
@@ -77,8 +71,6 @@ public class AdminPaging {
 		
 		//만일 endPage보다 총 페이지가 더 클 경우 끝을 추가로 달아준다.
 		//if(endPage < totalPage){pageList.add("<끝>");}
-		
-		for(String a : pageList){System.out.print(a);}
 		
 		return pageList;	}
 
@@ -147,6 +139,21 @@ public class AdminPaging {
 				sst.selectList("AdminDAO.PageSNSBoardSelect", new PageDTO(startCount , endCount));	
 				return SNSBoardContentList;}
 	
+			
+				
+			 //각 페이지에 해당하는 게시글(SNS) 10개를 출력시키는 메소드(SNS 제목 검색 키워드로 이동했을 경우)
+			public List<Tl_BoardDTO>SelectTitlePageSNSBoardSelect(int page ,String keyword){ 
+				
+				int countPage = 10;
+				int startCount = (page - 1) * countPage + 1;
+				int endCount = page * countPage;
+			
+				List<Tl_BoardDTO>SelectTitleSNSBoardContentList = 
+				sst.selectList("AdminDAO.SelectTitlePageSNSBoardSelect", new PageDTO(startCount,endCount,keyword));			
+				return SelectTitleSNSBoardContentList;}
+			
+			
+			
 			
 			
 			

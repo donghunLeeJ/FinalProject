@@ -52,7 +52,8 @@
 }
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 	<div class="container">
 		<div class="row mt-5  border-bottom border-warning">
@@ -104,7 +105,7 @@
 								id="delivery_btn2${i.order_seq }" value="발송완료">
 						</div>
 					</div>
-=
+
 				</div>
 			</div>
 			<script>
@@ -125,8 +126,8 @@
 						value="${total_price }" pattern="#,###" /></strong> 원
 			</div>
 		</div>
-	
-		
+
+
 	</div>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>

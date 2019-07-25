@@ -35,19 +35,17 @@ public class AdminService {
 	public List<MemberDTO> SelectPageList(int page){return apag.SelectPageList(page);}
 	public List<MemberDTO> SelectPageKeywordList(int page , String keyword){return apag.SelectPageKeywordList(page, keyword);}
 	
-	
 	public int ShopBoardCount(){return adao.ShopBoardCount();}
 	public List<ShopBoardDTO> ShopBoardSelectPageList(int page){return apag.ShopBoardSelectPageList(page);}
-	
 	
 	public int OrderBoardCount(){return adao.OrderBoardCount();}	
 	public List<OrderDTO>OrderBoardSelectPageList(int page){return apag.OrderBoardSelectPageList(page);}
 	public OrderDTO OrderNumberSelect(String order_number){return adao.OrderNumberSelect(order_number);}
 
-	
 	public int SNSBoardCount(){return adao.SNSBoardCount();}
+	public int SelectSNSBoardCount(String keyword){return adao.SelectSNSBoardCount(keyword);}
 	public List<Tl_BoardDTO>SNSBoardSelectPageList(int page){return apag.SNSBoardSelectPageList(page);}
-	
+	public List<Tl_BoardDTO>SelectTitlePageSNSBoardSelect(int page , String keyword){return apag.SelectTitlePageSNSBoardSelect(page, keyword);}
 	
 	public int BlackListUpdate(String member_id){return adao.BlackListUpdate(member_id);}
 	public int BlackListCancel(String member_id){return adao.BlackListCancel(member_id);}
@@ -59,6 +57,7 @@ public class AdminService {
 	
 	public int AdminReportCancel(String tl_board_seq){return adao.AdminReportCancel(tl_board_seq);}
 	
+	public List<String>AdminBlackCheckList(){return adao.AdminBlackCheckList();}
 	
 	
 }

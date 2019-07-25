@@ -55,17 +55,24 @@
 					id : id,
 					pw : pw
 				}
+			
 			}).done(function(resp) {
+				
 				if (resp == 1) {
 					removeXSS($("#member_id").val(), $("#member_id").attr("id"));
 					removeXSS($("#member_pw").val(), $("#member_pw").attr("id"));
 					alert("로그인 되었습니다.");
 					opener.parent.location.reload();
 					window.close();
-				} else {
-					alert("아이디나 비밀번호가 옳지 않습니다")
+					
+				} else if(resp == -1){
+					
+					alert("해당 id는 블랙리스트로 등록되어 로그인을 할 수 없으니 관리자에게 문의해주세요.");
+					
+				}else{		
+					
+					alert("아이디나 비밀번호가 옳지 않습니다");
 				}
-
 			})
 		})
 

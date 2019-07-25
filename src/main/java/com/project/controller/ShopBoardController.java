@@ -163,13 +163,13 @@ public class ShopBoardController {
 	@RequestMapping("/ShopBoardInsertProc")
 	public String log_filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
 		List<String> fileArrayPath = new ArrayList();
-		System.out.println(dto.getShop_seq());
-		System.out.println("내용: " + dto.getShop_contents());
-		System.out.println("브랜드: " + dto.getShop_brand());
-		System.out.println("타이틀: " + dto.getShop_title());
-		System.out.println("지역: " + dto.getShop_location());
-		System.out.println("유통기한: " + dto.getShop_expiration());
-		System.out.println("test" + shop_expiration);
+//		System.out.println(dto.getShop_seq());
+//		System.out.println("내용: " + dto.getShop_contents());
+//		System.out.println("브랜드: " + dto.getShop_brand());
+//		System.out.println("타이틀: " + dto.getShop_title());
+//		System.out.println("지역: " + dto.getShop_location());
+//		System.out.println("유통기한: " + dto.getShop_expiration());
+//		System.out.println("test" + shop_expiration);
 		int memberSell_seq = Integer.parseInt(sell_seq);
 		System.out.println("sell_seq" + sell_seq);
 		int fileCount = 0;

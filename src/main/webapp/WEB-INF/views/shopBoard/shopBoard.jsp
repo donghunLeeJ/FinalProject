@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-   pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,14 +11,23 @@
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
- #img1{ 
-/*  width:250px;  */
-height:210px; 
- } 
+#img1 {
+	/*  width:250px;  */
+	height: 210px;
+}
 
+.ellipsis{
+/* 0725추가 */
+    overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      width:170px;
+      font-size: 15px; color: #e1e5eb;
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
+
    onselectstart="return false">
    <!-- header -->
    <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
@@ -86,7 +95,8 @@ height:210px;
                            <!-- Overlay Content -->
                            <div class="overlay-content d-flex align-items-center justify-content-center">
                               <div class="overlay-text text-center">
-                                 <span style="font-size: 15px; color: #e1e5eb;">${i.shop_title }</span>
+                                <div class="ellipsis">${i.shop_title }</div> <!-- 0725추가 -->
+
 
                                  <p class="pt-3">
                                     <fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
@@ -121,6 +131,7 @@ height:210px;
    </section>
 
    <script>
+
    
       var count = 2;
       $(window).scroll(
@@ -181,8 +192,8 @@ height:210px;
                }
             });
    </script>
-   <!-- footer -->
-   <jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
-   <!-- /footer -->
+	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+	<!-- /footer -->
 </body>
 </html>

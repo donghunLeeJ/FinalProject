@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>에러</title>
+<title>Insert title here</title>
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
+<body>
 	<script>
-   alert("신고하시려면 먼저 로그인을 해주십시오.")
-   location.href = "/timeline/accessTimeLine?seq=1"
-   	</script>
+		alert("메일이 발송되었습니다");
+		location.href="/home";
+	</script>
 </body>
 </html>

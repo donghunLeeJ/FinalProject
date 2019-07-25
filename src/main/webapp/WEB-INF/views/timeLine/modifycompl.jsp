@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Modify Complete Page</title>
+<title>수정 완료</title>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<script>
    alert("수정이 완료되었습니다.")
    location.href = "/timeline/accessTimeLine?seq=1"

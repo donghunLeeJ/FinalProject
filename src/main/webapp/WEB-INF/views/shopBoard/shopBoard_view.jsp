@@ -31,6 +31,25 @@
 .border {
 	border: 1px solid #FCBB00;
 }
+.intro{
+width:100%;
+height:230px;
+}
+.ellipsis{
+    overflow:hidden;
+      text-overflow:ellipsis;
+/*       white-space:nowrap; */
+display: -webkit-box;
+      font-family :'나눔 고딕';
+      font-size:25px;
+       -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    height: 3.6em;
+/*       height:100px; */
+/*       border:1px solid black; */
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -92,12 +111,17 @@
 							<div class="col-1 "></div>
 							<div class="col-6">
 								<div class="row pb-4 border-bottom">
-									<div class="col-12">
+									<div class="col-4 ">
 										<h4 style="font-family :'나눔고딕OTF';">
-											<strong>[${dto.shop_brand}] &nbsp;
-												&nbsp;${dto.shop_title }</strong>
+										[${dto.shop_brand}]
 										</h4>
 									</div>
+										<div class="col-8 ellipsis">
+										${dto.shop_title }
+									</div>
+											 &nbsp;&nbsp;
+<!-- 											<strong class="ellipsis"> -->
+<!-- 											</strong> -->
 
 								</div>
 								<div class="row pb-3 mt-4 border-bottom">
@@ -114,7 +138,7 @@
 									</div>
 								</div>
 								<div class="row pb-3 mt-4  border-bottom">
-									<div class="col-4">판매 단위</div>
+									<div class="col-4">남은 수량</div>
 									<div class="col-8">
 										<p>
 											<fmt:formatNumber value="${dto.shop_quantity }"
@@ -150,10 +174,10 @@
 
 								<!-- 테이블 추가요망 -->
 								<div class="row pb-3 mt-4  border-bottom">
-									<div class="col-4">알레르기 정보</div>
+									<div class="col-4">재료</div>
 									<div class="col-8">
 										<p>
-											<strong>-밀,계란,우유,밤,함유(공주밤 몽블랑)</strong>
+											<strong>${dto.shop_material }</strong>
 										</p>
 
 									</div>
@@ -161,7 +185,7 @@
 
 								<div class="row pt-2 pb-4">
 									<div class="col-6  text-left">
-										<span style="margin-right: 1em; text-align: left">총 수량
+										<span style="margin-right: 1em; text-align: left">구매 가능 수량
 											: <strong><fmt:formatNumber
 													value="${dto.shop_quantity }" pattern="#,###" />(개)</strong> <%-- 												: <strong><fmt:formatNumber value="${quant }" pattern="#,###" />(개)</strong> --%>
 										</span>
@@ -206,7 +230,7 @@
 								</div>
 								<div class="row border-top border-bottom py-3">
 									<div class="col-12 text-right" style="line-height: 2.5em;">
-										<span style="margin-right: 2em"><strong>총 상품금액
+										<span style="margin-right: 2em"><strong>총 상품금액(택배비 포함)
 												:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red"><fmt:formatNumber
 												value="${dto.shop_price }" pattern="#,###" />원</span>
 									</div>
@@ -253,8 +277,8 @@
 				<div class="tab-content py-4">
 					<!--상품 정보 -->
 					<div class="tab-pane active" id="profile">
-						<div class="col-lg-12">
-							<p>소 개</p>
+						<div class="col-lg-12 intro border">
+							<p>${dto.shop_contents}</p>
 						</div>
 
 					</div>
@@ -289,7 +313,7 @@
 							<div class="col-4 border-right seller-info">
 								<p>${mdto.member_name}</p>
 							</div>
-							<div class="col-2 font-weight-bold seller-info">브랜드</div>
+							<div class="col-2 font-weight-bold seller-info">브랜드(종류)</div>
 							<div class="col-4 seller-info" id="brand">
 								<p>${dto.shop_brand }</p>
 							</div>

@@ -144,8 +144,10 @@
 				<strong>결제 금액</strong>
 			</div>
 			<div class="col-10 border bg-gray">
+
 				<span><fmt:formatNumber value="1" pattern="#,###" />${priceTotal }
 					원</span>
+
 			</div>
 		</div>
 
@@ -155,29 +157,31 @@
 					<strong>배송 정보</strong>
 				</h3>
 			</div>
-			<div class="row border text-center"
-				style="height: 10em; line-height: 4.7em">
-				<div class="col-1 border">
-					<strong>수령인</strong>
-				</div>
-				<div class="col-6 border bg-gray">${ldto[0].order_receipt }</div>
-				<div class="col-2 border text-center">
-					<strong>휴대전화</strong>
-				</div>
-				<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
 
-				<div class="col-1 border">
-					<strong>배송지</strong>
-				</div>
-				<div class="col-6 border bg-gray">${ldto[0].order_receipt_address1 }&nbsp;
-					${i.order_receipt_address2 } &nbsp; (${i.order_receipt_postcode })</div>
-				<div class="col-2 border text-center">
-					<strong>전화번호</strong>
-				</div>
-				<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
-			</div>
+
 		</div>
+		<div class="row border text-center"
+			style="height: 10em; line-height: 4.7em">
+			<div class="col-1 border">
+				<strong>수령인</strong>
+			</div>
+			<div class="col-6 border bg-gray">${ldto[0].order_receipt }</div>
+			<div class="col-2 border text-center">
+				<strong>휴대전화</strong>
+			</div>
+			<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
 
+			<div class="col-1 border">
+				<strong>배송지</strong>
+			</div>
+			<div class="col-6 border bg-gray">${ldto[0].order_receipt_address1 }&nbsp;
+				${i.order_receipt_address2 } &nbsp; (${i.order_receipt_postcode })</div>
+			<div class="col-2 border text-center">
+				<strong>전화번호</strong>
+
+			</div>
+			<div class="col-3 border bg-gray">${ldto[0].order_receipt_phone }</div>
+		</div>
 	</div>
 	<div class="row pb-5"></div>
 	<script>

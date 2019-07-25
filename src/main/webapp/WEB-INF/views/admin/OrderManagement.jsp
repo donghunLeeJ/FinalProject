@@ -27,7 +27,7 @@ table {
 <body>
 	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
 	<div class="container">
-			<table class="table">
+			<table class="table mt-5">
 				<thead>
 					<tr class="row mainrow">
 						<th class="col">주문번호</th>
@@ -92,13 +92,17 @@ table {
 					</c:when>
 
 					<c:otherwise>
-						<a href="OrderManagementProc?page=${i}">${i}</a>
+						<a class="${i}" href="OrderManagementProc?page=${i}">${i}</a>
 					</c:otherwise>
 
 				</c:choose>
 			</c:forEach>
+				
 		</div>
-
+		
+		<script>
+			$(".${page}").css("font-weight", "bold");
+		</script>
 
 		<div id="serech">
 			<form action="/admin/OrderNumberSelectMove" method="post">
@@ -125,5 +129,6 @@ table {
 			}
 		})
 	</script>
+	
 </body>
 </html>

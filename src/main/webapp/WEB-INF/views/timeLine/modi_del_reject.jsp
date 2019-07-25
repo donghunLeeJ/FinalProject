@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Rejected</title>
+<title>에러</title>
 </head>
-<body>
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<script>
    alert("작성자만이 수정,삭제 할 수 있습니다.")
    location.href = "/timeline/accessTimeLine?seq=1"
