@@ -34,7 +34,7 @@ public class SellPaging {
 		if(page==1) Prev=false;
 		if(endPage==totalPage) Next=false;
 		
-		List<String> pageList = new ArrayList<>();
+		List<String> pageList = new ArrayList();
 		if(Prev) pageList.add("<<");
 		//페이지 시작 값이 1이 아니라면 '이전'을 추가로 생성함
 		for(int i = startPage; i<=endPage; i++) {

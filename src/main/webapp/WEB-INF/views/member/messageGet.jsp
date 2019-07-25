@@ -115,6 +115,11 @@ select {
 .form-control[readonly] {
 	background-color: white;
 }
+
+#contents:hover {
+	font-weight: bold;
+	cursor: pointer;
+}
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
@@ -153,17 +158,18 @@ select {
 							</div>
 
 							<div class="row text-center border py-1"
-								style="background: white">
+								style="background: white;">
 								<c:forEach var="i" items="${getter }">
-									<div class="col-3 skip my-2" style="margin-top: 0em">
+									<div class="col-3 skip my-2" style="margin-top: 0em; height:1.5rem">
 										${i.message_sender }</div>
-									<div class="col-2 my-2" style="margin-top: 0em">
+									<div class="col-2 my-2" style="margin-top: 0em; height:1.5rem ">
 										${i.message_getter }</div>
-									<div class="col-2 my-2" style="margin-top: 0em">
+									<div class="col-2 my-2" style="margin-top: 0em; height:1.5rem">
 										${i.message_time }</div>
-									<div class="col-3 my-2" style="margin-top: 0em;">
+									<div id="contents" class="col-3 my-2 text-truncate" " style="margin-top: 0em; height:1.5rem"
+										onclick="window.open('/timeline/getMessagePageContents?seq=${i.message_seq }','','width=400px, height=400px')">
 										${i.message_contents }</div>
-									<div class="col-2 " style="margin-top: 0em;">
+									<div class="col-2 " style="margin-top: 0em; height:1.5rem">
 										<button id="btn${i.message_seq }">답장</button>
 										<button id="delete${i.message_seq }">삭제</button>
 									</div>
