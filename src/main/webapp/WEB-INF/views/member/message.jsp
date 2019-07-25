@@ -163,7 +163,7 @@ select {
 									<div class="col-3 my-2">
 										${i.message_contents }</div>
 									<div class="col-2 my-2">
-										<button id="delete${i.message_seq }">삭제</button>
+										<button class="btn btn-secondary" id="delete${i.message_seq }">삭제</button>
 									</div>
 
 									<script>

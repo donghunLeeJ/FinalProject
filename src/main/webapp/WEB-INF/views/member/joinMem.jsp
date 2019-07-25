@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400.300" rel="stylesheet" type="text/css">
+
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"><!-- 눈모양 -->
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -19,6 +22,7 @@
 .title {
    text-align: left;
    margin-left: 26%;
+   font-family: naBrush;
 }
 
 #addinput {
@@ -48,19 +52,28 @@ transform:translate(20px);
 .form-control[readonly]{
 background-color:white;
 }
+.h2{
+font-family: 'Nanum Pen Script', cursive;
+
+}
+.title{
+font-family: 'Nanum Pen Script', cursive;
+}
+
 </style>
+
 <script type="text/javascript" src="/js/cross.js"></script>
 </head>
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
-   <section class="akame-contact-area bg-gray section-padding-80">
+   <section class="section-padding-80" style="background-color: #f4ead0">
    <div class="container">
       <div class="row">
          <!-- Section Heading -->
          <div class="col-12">
             <div class="section-heading text-center">
-               <img alt="" src="/img/core-img/fakelogo.png" style="width: 30%">
+               <img alt="" src="/img/logoimg.png" style="width: 40%">
 
             </div>
          </div>
@@ -68,7 +81,8 @@ background-color:white;
 
          <div class="col-12">
             <div class="section-heading text-center">
-               <h2>회원가입</h2>
+               <h2 class=h2>회원가입</h2>
+               
 
             </div>
          </div>
@@ -115,7 +129,7 @@ background-color:white;
                   </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="margin: auto">
-                     <div >생년월일</div>
+                     <div>생년월일</div>
                   <input id="datepicker" name="member_birth" class="form-control mb-30" readonly/>
                      </div>
                   <script>
@@ -159,7 +173,7 @@ background-color:white;
 
                   <div class="col-12 text-center">
                      <br> <br>
-                     <button type="button" class="btn akame-btn btn-3 mt-15 active"id=send>가입하기</button>
+                     <button type="button" class="btn akame-btn btn-3 mb-80 active"id=send>가입하기</button>
 
                   </div>
                
@@ -168,7 +182,7 @@ background-color:white;
       </div>
    </div>
    </section>
-   <jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+   
 
    <script>
    

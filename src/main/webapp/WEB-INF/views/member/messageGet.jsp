@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
+
 <style>
 h5 {
 	display: inline;
@@ -115,6 +116,10 @@ select {
 .form-control[readonly] {
 	background-color: white;
 }
+
+
+
+
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
@@ -164,8 +169,9 @@ select {
 									<div class="col-3 my-2" style="margin-top: 0em;">
 										${i.message_contents }</div>
 									<div class="col-2 " style="margin-top: 0em;">
-										<button id="btn${i.message_seq }">답장</button>
-										<button id="delete${i.message_seq }">삭제</button>
+										<button class="btn btn-secondary"  id="btn${i.message_seq }">답장</button>
+										<button class="btn btn-secondary" id="delete${i.message_seq }">삭제</button>
+										
 									</div>
 
 									<script>
