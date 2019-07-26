@@ -110,7 +110,7 @@
 								<button type="button" id="replyBTN${i.tl_board_seq }"
 									class="commentbtn btn btn-outline-success btn-sm ml-2 mb-2">댓글
 									입력</button>
-
+								
 							</div>
 
 
@@ -211,9 +211,13 @@
 				 }
 			})
 			$("#replyBTN${i.tl_board_seq }").on("click",function(){
+				
+				var emp = /^\s*$/g;
 				var reply = $("#replyInput${i.tl_board_seq }").val();
 				var seq = $("#hiddenSeq${i.tl_board_seq }").val();
-		
+				if($("#replyInput${i.tl_board_seq }").val()=="" || emp.test($("#replyInput${i.tl_board_seq }").val())){
+					alert("댓글을 입력해주세요");
+					}else{
 				$.ajax({
                      url : "/timeline/replyAjaxProc",
                      type : "post",
@@ -227,8 +231,8 @@
                 	  $("#forReply${i.tl_board_seq }").append("<div><strong>"+result2[0]+"&nbsp;&nbsp;</strong>"+result2[1]+"<div>");
                 	  console.log(resp);
                   })
-				
-			})
+					}
+			});
 			
 		</script>
 		</c:forEach>
@@ -239,6 +243,7 @@
 
 
 	<script>
+
      
 	var repleDelete = function(seq){
 		location.href = "/timeline/replyDelete?seq="+seq;
@@ -408,8 +413,12 @@
 				 }
 			})
 			$('#replyBTN`+result[i].tl_board_seq+`').on('click',function(){
+				var emp = /^\s*$/g;
 				var reply = $('#replyInput`+result[i].tl_board_seq+`').val();
 				var seq = $('#hiddenSeq`+result[i].tl_board_seq+`').val();
+				if(reply=="" || emp.test(reply)){
+					alert("댓글을 입력해주세요");
+					}else{
 				$.ajax({
                      url : '/timeline/replyAjaxProc',
                      type : 'post',
@@ -423,6 +432,7 @@
                 	  $('#forReply`+result[i].tl_board_seq+`').append('<div><strong>'+result1List[0]+'&nbsp;&nbsp;</strong>'+result1List[1]+'</div>');
                 	  console.log(resp);
                   })
+			}
 			})`)
                      }
                   

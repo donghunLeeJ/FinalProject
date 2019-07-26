@@ -32,6 +32,9 @@ public class MemberDAO {
 	public int shopCount(String id) {
 		return sst.selectOne("member.shopCount",id);
 	}
+	public int buyCount(String id) {
+		return sst.selectOne("member.buyCount",id);
+	}
 	
 	public String findID(MemberDTO dto) {
 		return sst.selectOne("member.findID",dto);
@@ -91,6 +94,10 @@ public class MemberDAO {
 
 	public MemberDTO selectById(String id){
 		return sst.selectOne("member.selectById",id);
+	}
+	
+	public int updateById(MemberDTO dto){
+		return sst.update("member.updateById",dto);
 	}
 
 	public int confirmId(String id) {//멤버 컨펌을 n에서 y로 바꿔주는 메서드

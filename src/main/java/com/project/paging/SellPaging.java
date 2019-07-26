@@ -43,7 +43,7 @@ public class SellPaging {
 		if(Next) pageList.add(">>");
 		//현재보다 전체 페이지 값이 큰 경우 '다음'을 달아줌
 		
-		System.out.println(startPage + " : " + endPage);
+//		System.out.println(startPage + " : " + endPage);
 		//입력받은 페이지번호를 화면에 출력
 		
 	//	for(String a : pageList) System.out.println(a);

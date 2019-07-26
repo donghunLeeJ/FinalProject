@@ -38,7 +38,6 @@
 	box-shadow: 5px 5px 5px #eee;
 }
 
-
 .center{
 text-align:center;
 }
@@ -46,12 +45,9 @@ text-align:center;
 	background-color: white;
 }
 .list_sub{
-         
-            margin-right:1px;
-            text-align:center;
-        }
-
-
+ margin-right:1px;
+text-align:center;
+ }
 .list_menu button{
             border: 1px solid skyblue;
             background-color: rgba(0,0,0,0);
@@ -64,8 +60,6 @@ text-align:center;
             color:white;
             background-color: skyblue;
         }
-
-
 
 </style>
 </head>
@@ -84,7 +78,7 @@ text-align:center;
 			style="background: #dde1e5">
 			<div class="col-2 border">이미지</div>
 			<div class="col-4 border">제목</div>
-			<div class="col-1 border">구매 수량</div><!-- 0725수정 -->
+			<div class="col-1 border">총 수량</div><!-- 0725수정 -->
 			<div class="col-2 border">개당 금액</div>
 			<div class="col-2 border">유통기한</div>
 			<div class="col-1 border">요청</div>
@@ -115,13 +109,9 @@ text-align:center;
 
 				<div class="col-1" style="padding: 0">
 
-					<input type=button class="sell_btn del_list"
-						id="del_list${i.shop_seq }" value="삭제 요청"
-						style="margin-bottom: 0.3em"> <input type=button
-						class="sell_btn del_list2" id="del_list2${i.shop_seq }"
-						value="요청중" style="margin-bottom: 0.3em; color: red"> <a
-						href="/member/sellStatus?seq=${i.shop_seq }" id="sell_statusBtn?"
-						style="margin-top: 0.3em"><input class="sell_btn"
+					<input type=button class="sell_btn del_list" id="del_list${i.shop_seq }" value="매진 처리" style="margin-bottom: 0.3em"> 
+					<input type=button class="sell_btn del_list2" id="del_list2${i.shop_seq }"value="" style="margin-bottom: 0.3em; color: red">
+					 <a href="/member/sellStatus?seq=${i.shop_seq }" id="sell_statusBtn?"style="margin-top: 0.3em"><input class="sell_btn"
 						type="button" value="판매 현황"></a>
 				</div>
 
@@ -130,19 +120,17 @@ text-align:center;
 				$("#del_list2${i.shop_seq}").hide();
 
 				$("#del_list${i.shop_seq}").on("click", function() {
-					if (confirm("삭제 요청을 하나요?") == true) {
+					alert("매진 처리 되었습니다. \n판매 글은 삭제 예정입니다.");
 						$("#del_list${i.shop_seq}").hide();
-						$("#del_list2${i.shop_seq}").show();
-					}
-				})
-				$("#del_list2${i.shop_seq}").on("click", function() {
-					if (confirm("삭제 요청을 취소 하나요?") == true) {
+				});
+// 				$("#del_list2${i.shop_seq}").on("click", function() {
+// 					if (confirm("삭제 요청을 취소 하나요?") == true) {
 
-						$("#del_list2${i.shop_seq}").hide();
-						$("#del_list${i.shop_seq}").show();
+// 						$("#del_list2${i.shop_seq}").hide();
+// 						$("#del_list${i.shop_seq}").show();
 
-					}
-				})
+// 					}
+// 				})
 			</script>
 		</c:forEach>
 
@@ -168,6 +156,7 @@ text-align:center;
 				</c:choose>
 			</c:forEach>
 		</div>
+		<br>
 
 
 	</div>

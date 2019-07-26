@@ -65,9 +65,9 @@ public class ShopBoardController {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		int shopcount = mservice.shopCount(mdto.getMember_id());//테이블에서 전체 레코드 갯수 불러옴
 		List<String> pageList = mservice.paging(resultPage, shopcount );
-		for(String a : pageList) {
-			System.out.println(a);
-		}
+//		for(String a : pageList) {
+//			System.out.println(a);
+//		}
 		
 		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage);
 		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
@@ -292,6 +292,22 @@ public class ShopBoardController {
 		return "/shopBoard/shopChargeOk";
 	}
 
+	
+	@RequestMapping("/shopOrderA")
+
+	public String order(OrderDTO odto) {
+	
+		MemberDTO id = (MemberDTO) session.getAttribute("id");
+		String login_email = id.getMember_id();
+		odto.setMember_email(login_email);
+		oService.orderSelect(odto);
+		System.out.println("AA");
+		ViewDTO.setTradeCount(ViewDTO.getVisitViewCount() + 1);
+		System.out.println(odto);
+		request.setAttribute("ldto", odto);
+		return "/shopBoard/shopChargeOk";
+	}
+	
 	@RequestMapping("/buyReview")
 	public String log_shopReview(ShopReviewDTO dto, String products_seq) {
 		int products_seq1 = Integer.parseInt(products_seq);

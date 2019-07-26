@@ -177,7 +177,10 @@ public class MemberController {
 
 	@RequestMapping("edit_mypage")
 	public String log_edit_mypage(MemberDTO mdto) {// 마이페이지에서 글 정보수정 버튼 누르기
-		session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
+		MemberDTO id = (MemberDTO)session.getAttribute("id");
+		String member_id = id.getMember_id();
+		mdto.setMember_id(member_id);
+		mservice.update_member(mdto);
 		return "member/edit_OK";
 
 	}
@@ -240,26 +243,26 @@ public class MemberController {
 
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
-		System.out.println(page);
 		int resultPage = Integer.parseInt(page);
-		int count = os.orderCount();
-		List<String> pageList = os.Page(resultPage, count);
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		int buycount = mservice.buyCount(mdto.getMember_id());
+		List<String> pageList = os.Page(resultPage, buycount);
+//		int count = os.orderCount();
 		
-		for(int i = 0 ; i < pageList.size() ; i ++) {
-			System.out.println(pageList.get(i));
-		}
+//		for(int i = 0 ; i < pageList.size() ; i ++) {
+//			System.out.println(pageList.get(i));
+//		}
 		
+		List<OrderDTO> buyList = os.orderTenList(resultPage);
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
-
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<OrderDTO> buyList = os.orderTenList(resultPage);
-		System.out.println(buyList.get(0).getOrder_title());
-		System.out.println(buyList.get(0).getOrder_buyer_email());
-		
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}
+
+//		System.out.println(buyList.get(0).getOrder_title());
+//		System.out.println(buyList.get(0).getOrder_buyer_email());
+		
 
 	// 판매게시물의 판매목록
 	@RequestMapping("/sellStatus")

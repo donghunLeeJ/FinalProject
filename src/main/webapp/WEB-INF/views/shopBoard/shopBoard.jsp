@@ -67,7 +67,7 @@
                   <c:forEach var="i" items="${boardList }">
                   <c:choose>
                   <c:when test="${i.shop_quantity eq 0}">
-                <div   class="col-12 col-sm-6 col-lg-3  mb-5 " data-wow-delay="500ms">
+                <div   class="col-12 col-sm-6 col-lg-3  mb-5 akame-portfolio-item wow fadeInUp " data-wow-delay="500ms">
                         <div class="" style="height: 250px">
                            
                            	 <div style="position: absolute;">

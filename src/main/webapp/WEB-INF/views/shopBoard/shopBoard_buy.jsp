@@ -195,9 +195,8 @@ img {
 			<div class="row border rounded">
 				<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
 				<div class="col-9 py-2">
-					<span>기본 배송지 <input type="radio" name="origin_radio"
-						id="origin" checked="checked"></span> <span>신규 배송지 <input
-						type="radio" name="origin_radio" id="new">
+					<span>기본 배송지 <input type="radio" name="origin_radio"id="origin" checked="checked"></span> 
+					<span>신규 배송지 <input type="radio" name="origin_radio" id="new">
 					</span>
 				</div>
 				<div class="col-3 font-weight-bold py-2">받으시는 분</div>
@@ -219,7 +218,7 @@ img {
 					<input type="text" id="sample6_detailAddress" class="empty"
 						name="order_receipt_address2" placeholder="상세주소"
 						style="width: 25em">
-					<!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
+<!-- 												<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
 
 
 				</div>
@@ -278,6 +277,7 @@ img {
 
 					</div>
 				</div>
+			</div>
 			</div>
 	</form>
 
@@ -363,7 +363,7 @@ img {
 										"#sample6_address").attr("id"));
 								removeXSS($("#sample6_detailAddress").val(), $(
 										"#sample6_detailAddress").attr("id"));
-								// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
+// 								removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
 								removeXSS($("#phone1").val(), $("#phone1")
 										.attr("id"));
 								removeXSS($("#phone2").val(), $("#phone2")
@@ -458,7 +458,7 @@ img {
 									extraAddr = ' (' + extraAddr + ')';
 								}
 								// 조합된 참고항목을 해당 필드에 넣는다.
-								document.getElementById("sample6_extraAddress").value = extraAddr;
+// 								document.getElementById("sample6_extraAddress").value = extraAddr;
 
 							} else {
 								document.getElementById("sample6_extraAddress").value = '';

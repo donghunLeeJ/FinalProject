@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,14 +43,24 @@ height:230px;
 display: -webkit-box;
       font-family :'나눔 고딕';
       font-size:25px;
-       -webkit-line-clamp: 3; 
+       -webkit-line-clamp: 2; 
     -webkit-box-orient: vertical;
     word-wrap:break-word; 
     line-height: 1.2em;
-    height: 3.6em;
+    height: 2.4em;
 /*       height:100px; */
 /*       border:1px solid black; */
 }
+.red{
+        background-color: #f29202;
+        color:white;
+        font-size:30px;
+        text-align:center;
+        height:50px;
+    }
+    div{
+    border:1px solid black;
+    }
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -105,6 +116,24 @@ display: -webkit-box;
 												상품리뷰 <strong>${reviewRowCount }건</strong>
 											</div>
 										</div>
+										<div class="col-12 red mb-2" id="countdown"></div>
+											<div id=countd>
+											<c:set var="msg" value="${dto.shop_expiration }" />
+											<c:set var="start" value="${fn:split(msg,'-')}" />
+											<c:forEach var="i" begin="0" end="0">
+												<input type="hidden" value="${start[i]} " id=hi1>
+											</c:forEach>
+											<br>
+											<c:forEach var="i" begin="1" end="1">
+												<input type="hidden" value="${start[i]}" id=hi2>
+											</c:forEach>
+											<br>
+											<c:forEach var="i" begin="2" end="2">
+												<input type="hidden" value="${start[i]}" id=hi3>
+											</c:forEach>
+											<br>
+
+										</div>
 									</div>
 								</div>
 							</div>
@@ -127,14 +156,14 @@ display: -webkit-box;
 
 								</div>
 								<div class="row pb-3 mt-4 border-bottom">
-									<div class="col-4">판매가</div>
+									<div class="col-4">판매 가격</div>
 									<div class="col-8">
 
 										<input type="hidden" value="${dto.shop_price }" id="price">
 
 										<p>
 											<strong><fmt:formatNumber value="${dto.shop_price }"
-													pattern="#,###" /></strong>
+													pattern="#,###" />(원)</strong>
 										</p>
 
 									</div>
@@ -143,9 +172,9 @@ display: -webkit-box;
 									<div class="col-4">남은 수량</div>
 									<div class="col-8">
 										<p>
-											<fmt:formatNumber value="${dto.shop_quantity }"
-												pattern="#,###" />
-											<strong> (개)</strong> <input type="hidden"
+											<strong><fmt:formatNumber value="${dto.shop_quantity }"
+												pattern="#,###" />(개)</strong>
+											 <input type="hidden"
 												name=basket_quantity value="${dto.shop_quantity }">
 										</p>
 
@@ -157,11 +186,11 @@ display: -webkit-box;
 										<p>
 											<strong>${dto.shop_expiration }</strong> <input type="hidden"
 												id="expi" name=basket_expiration
-												value="${dto.shop_expiration }">
+												value="${dto.shop_expiration }"><br>
+												*유통기한 당일 상품은 구매 불가
 										</p>
-
+									
 									</div>
-								</div>
 
 								<div class="row pb-3 mt-4 border-bottom">
 									<div class="col-4">판매 지역</div>
@@ -205,19 +234,15 @@ display: -webkit-box;
 
 
 
-										수량 : <input type="text" name="shop_quantity" value="1"
-											id="quantity_one"
-											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-											style="width: 3em; text-align: right">
+										수량 : <input type="text" name="shop_quantity" value="1"id="quantity_one"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" style="width: 3em; text-align: right">
 									</div>
-									<div class="col-2"
-										style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
+									<div class="col-2"	style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
 										<div class="row">
 											<div class="col-12">
 
-												<input type="button" value="+" id="up_btn"
-													class="quantity_btn"> <input type="button"
-													value="-" id="down_btn" class="quantity_btn">
+												<input type="button" value="+" id="up_btn"class="quantity_btn"> 
+												<input type="button" value="-" id="down_btn" class="quantity_btn">
 
 											</div>
 										</div>
@@ -380,6 +405,7 @@ display: -webkit-box;
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+$("#countd").hide();
 	var popupX = (window.screen.width / 2) - (500 / 2);
 	// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
@@ -401,7 +427,8 @@ display: -webkit-box;
 			$("#resultPrice1").text(result + "원");
 			if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
 				alert("수량이 초과되었습니다.");
-				$("#quantity_one").val("1");
+				$("#quantity_one").val("${dto.shop_quantity }");
+			
 			}
 		});
 		
@@ -431,12 +458,12 @@ display: -webkit-box;
 							var quantity = $("#quantity_one").val();
 							location.href = "/shopboard/shopBoard_buyProc?quantity="
 									+ quantity + "&seq=${dto.shop_seq }";
-				}else if(expidate <= nowdate){
-					alert("유통기한이 지났습니다.")
+				}else if(expidate <= nowdate  ){
+					alert("유통기한이 지났습니다.");
 				}
 				else{
 				alert("수량이 초과되었습니다.");
-				$("#quantity_one").val("1")
+				$("#quantity_one").val("${dto.shop_quantity }");
 				}
 			}
 		});
@@ -458,7 +485,7 @@ display: -webkit-box;
 					alert("유통기한이 지났습니다.")
 				}else{
 					alert("수량이 초과되었습니다.");
-					$("#quantity_one").val("1");
+					$("#quantity_one").val("${dto.shop_quantity }");
 				}
 			}
 		})		
@@ -493,7 +520,7 @@ display: -webkit-box;
 			$("#resultPrice1").text(result + "원");
 			if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
 				alert("수량이 초과되었습니다.");
-				$("#quantity_one").val("1");
+				$("#quantity_one").val("${dto.shop_quantity }");
 			}
 
 		});
@@ -513,6 +540,50 @@ display: -webkit-box;
 			var imgSrc = $(this).attr("src");
 			$(".view").attr("src", imgSrc);
 		})
+		
+		$("#quantity_one").keydown(function() {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+});
 	</script>
+	  <script>
+   CountDownTimer('07/28/2019', 'countdown'); // 2017년 1월 1일까지
+//CountDownTimer('01/01/2019 00:00 AM', 'newcountdown'); // 2018년 1월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용합니다.
+
+function CountDownTimer(dt, id)
+{
+var end = new Date(dt);
+
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+
+function showRemaining() {
+var now = new Date();
+var distance = end - now;
+if (distance < 0) {
+
+clearInterval(timer);
+document.getElementById(id).innerHTML = '판매 종료!';
+
+return;
+}
+var days = Math.floor(distance / _day);
+var hours = Math.floor((distance % _day) / _hour);
+var minutes = Math.floor((distance % _hour) / _minute);
+var seconds = Math.floor((distance % _minute) / _second);
+
+document.getElementById(id).innerHTML = days + '일 ';
+document.getElementById(id).innerHTML += hours + '시간 ';
+document.getElementById(id).innerHTML += minutes + '분 ';
+document.getElementById(id).innerHTML += seconds + '초';
+}
+
+timer = setInterval(showRemaining, 1000);
+}
+    </script>
 </body>
 </html>

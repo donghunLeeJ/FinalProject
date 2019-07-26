@@ -28,6 +28,9 @@
 .h {
 	font-family: naBrush;
 }
+.h3{
+ display: inline;
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -61,9 +64,9 @@
 								name="member_id" class="form-control mb-30" placeholder="id">
 						</div>
 						<div class="col-lg-12 text-center">
-							<h3 class=h>Password</h3>
-							<i class="fa fa-eye-slash fa-lg" id=flash></i> <input
-								type="password" style="width: 50%; margin: auto;"
+							<h3 class=h3>Password</h3>
+							<i class="fa fa-eye-slash fa-lg" id=flash></i> 
+							<input type="password" style="width: 50%; margin: auto;"
 								name="member_pw" class="form-control mb-30 flash"
 								placeholder="password">
 						</div>
