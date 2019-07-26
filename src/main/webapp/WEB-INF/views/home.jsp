@@ -243,7 +243,7 @@ height:220px;
 		//페이지가 갱신되는 순간 조건을 만족할 경우 방문자수를 증가시키도록 정보를 보내는 ajax
 		$.ajax({
 
-			url : "/admin/VisitViewCondition",
+			url : "/view/VisitViewCondition",
 			type : "post",
 			data : {
 				access : "${access}"

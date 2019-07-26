@@ -42,6 +42,7 @@ table {
 					<th class="col">이미지</th>
 					<th class="col">제목</th>
 					<th class="col">가격</th>
+					<th class="col">수량</th>
 					<th class="col">유통기한</th>
 				</tr>
 			</thead>
@@ -57,7 +58,7 @@ table {
 							onclick="window.open('/shopboard/ShopBoardViewProc?seq=${i.shop_seq}','상품','width=1920px, height=1080px')">${i.shop_contents}</a>
 						</td>
 						<td class="col"><b>${i.shop_price}</b>원</td>
-
+                        <td class="col"><b>${i.shop_quantity}</b>개</td>
 						<td class="col">
 							<div class="row">
 								<div class="col-12">${i.shop_expiration}</div>

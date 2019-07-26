@@ -123,9 +123,7 @@ public class TimeLineController {
 
 	@RequestMapping("/reportRegister")
 	public String reportRegister(Tl_BoardDTO dto) {
-		System.out.println(dto.getTl_board_seq());
-		System.out.println(dto.getTl_reason());
-
+		
 		// 신고당한 글을 갱신할 때 신고자를 추가시킴
 		MemberDTO user = (MemberDTO) session.getAttribute("id");
 		dto.setTl_reporter(user.getMember_id());
