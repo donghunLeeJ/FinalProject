@@ -238,14 +238,6 @@ public class MemberController {
 		return "redirect:buyContentsGoProc?page=1";
 	}
 
-	@RequestMapping("deleteRequest")
-	public String sellContentsDeleteRequest(String seq) {
-		System.out.println("deleteRequest"+seq);
-		mservice.delRequest(seq);
-//		return "shopboard/sellContentsGo";
-		
-		return "/home";
-	}
 	
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
