@@ -54,11 +54,12 @@ public class ShopBoardController {
 	private MemberService mservice;
 	
 	
-	
+
 	@RequestMapping("/sellContentsGo")
 	public String moveSellContentsGo() {
 		return "redirect:sellContentsGoProc?page=1";
 	}
+	
 	@RequestMapping("/sellContentsGoProc")
 	public String log_sellContetns(String page) {
 		int resultPage = Integer.parseInt(page);
@@ -356,4 +357,14 @@ public class ShopBoardController {
 		return "/shopBoard/shopChargeOk2";
 	}
 
+	
+	@RequestMapping("deleteRequest")
+	public String sellContentsDeleteRequest(String seq) {
+		System.out.println("deleteRequest"+seq);
+		mservice.delRequest(seq);
+		return "redirect:sellContentsGo";
+		
+	}
+	
+	
 }

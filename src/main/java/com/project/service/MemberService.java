@@ -70,5 +70,7 @@ public class MemberService {
 		return mdao.delOK(del_id, del_pw);
 	}
 
-	
+	public int delRequest(String seq) {
+		return mdao.sellContentsDelete(seq);
+	}
 }
