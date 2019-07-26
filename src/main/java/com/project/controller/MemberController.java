@@ -118,18 +118,18 @@ public class MemberController {
 	public String findPW(String member_id) {
 		System.out.println(member_id);
 		int result = mservice.findPW(member_id);
-		if(result == 1) {
+		if (result == 1) {
 			try {
-			edao.findPw(member_id);
-			}catch(Exception e) {
+				edao.findPw(member_id);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return "member/pwSendEmail";
-		}else {
+		} else {
 			return "member/yourPW2";
 		}
 	}
-	
+
 	@RequestMapping("yourPW")
 	public String yourPW(String id) {
 		request.setAttribute("id", id);
@@ -141,7 +141,7 @@ public class MemberController {
 		String new_pw = mdao.SHA256(member_pw);
 		int result = mservice.cleanPW(new_pw, member_id);
 		return "member/cleanOK";
-	
+
 	}
 
 	@RequestMapping("/joinProc")
@@ -166,12 +166,7 @@ public class MemberController {
 	@RequestMapping("myPage") // 메인에서 마이페이지로 가기 이때 구매내역과 판매내역 담기
 	public String log_myPage() {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<ShopBoardDTO> mylist = SBservice.ShopBoardList(mdto.getMember_id());
-		List<OrderDTO> order = os.myOrderList(mdto.getMember_id());
-		MemberPagingDTO mpdto = mp.MemberPaging(1);
-		request.setAttribute("mylist", mylist);
-		request.setAttribute("mpdto", mpdto);
-		request.setAttribute("order", order);
+
 		return "/member/myPage";
 	}
 
@@ -184,14 +179,12 @@ public class MemberController {
 
 	@RequestMapping("uploadImg")
 	public String log_uploadImg(MultipartFile file) {// 마이페이지>정보수정>프로필 이미지 바꾸기
-		System.out.println("업로드 이미지 맵핑");
 		String time = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String savedName = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
 		String uploadPath = session.getServletContext().getRealPath("/resources/img/profile-img/" + time + "/");// 파일 저장
-																												// 위치
 		File makeFile = new File(uploadPath);
-		if (!makeFile.exists()) makeFile.mkdir();
-		System.out.println(uploadPath);
+		if (!makeFile.exists())
+			makeFile.mkdir();
 		File f = new File(uploadPath + "/" + savedName + "__.jpg");
 		try {
 			file.transferTo(f);// 여기까지 사진 저장되는지 확인
@@ -205,20 +198,16 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return "member/myPage";
 	}
 
 	@RequestMapping("delOK")
 	public String log_delOK(String del_id, String del_pw) {
-		try {
-			
-			mservice.delOK(del_id, del_pw);
-			session.invalidate();
-			return "/member/delOK";
-		} catch (Exception e) {
-			return "/member/faildel";
-		}
+
+		mservice.delOK(del_id, mdao.SHA256(del_pw));
+		session.invalidate();
+		return "/member/delOK";
+
 	}
 
 	@RequestMapping("verifiedId")
@@ -240,23 +229,16 @@ public class MemberController {
 
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
-		System.out.println(page);
 		int resultPage = Integer.parseInt(page);
 		int count = os.orderCount();
 		List<String> pageList = os.Page(resultPage, count);
-		
-		for(int i = 0 ; i < pageList.size() ; i ++) {
+		for (int i = 0; i < pageList.size(); i++) {
 			System.out.println(pageList.get(i));
 		}
-		
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
-
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<OrderDTO> buyList = os.orderTenList(resultPage);
-		System.out.println(buyList.get(0).getOrder_title());
-		System.out.println(buyList.get(0).getOrder_buyer_email());
-		
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}
@@ -285,34 +267,25 @@ public class MemberController {
 	@RequestMapping("minilogin")
 	@ResponseBody
 	public String minilog(String id, String pw) {
-		System.out.println(id);
-		System.out.println(pw);
 		MemberDTO mdto = new MemberDTO();
 		mdto.setMember_pw(mdao.SHA256(pw));
 		mdto.setMember_id(id);
 		int result = mservice.login(mdto);
 		if (result == 1) {
-
 			int BlackCount = 0;
 			List<String> BlackListResult = aservice.AdminBlackCheckList();
-
 			for (String BlackList : BlackListResult) {
-
 				if (mdto.getMember_id().equals(BlackList)) {
 					BlackCount++;
 				}
 			}
 			if (BlackCount > 0) {// 만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
-
 				result = -1;
-
 			} else {
-
 				session.setAttribute("id", mservice.select_member(id));
 			}
 		}
 		String resultString = result + "";
 		return resultString;
 	}
-
 }

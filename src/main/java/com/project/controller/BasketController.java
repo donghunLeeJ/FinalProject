@@ -36,7 +36,6 @@ public class BasketController {
 	public String basketInsert(String seq, String quantity) {
 		int result_seq = Integer.parseInt(seq);
 		int result_quantity = Integer.parseInt(quantity); // 수량
-		System.out.println(result_quantity);
 		ShopBoardDTO sdto = sService.ShopBoardIdSelect(result_seq);
 		sdto.setShop_quantity(result_quantity);
 		String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
@@ -48,7 +47,6 @@ public class BasketController {
 		sdto.setShop_contents(seller);
 		dao.basketInsert(sdto);
 		List<BasketDTO> result = bservice.basketIdSelect(id);
-	
 		request.setAttribute("list", result);
 		request.setAttribute("sdto", sdto);
 		return "redirect:/Basket/basketList?id="+id;
@@ -63,21 +61,12 @@ public class BasketController {
 
 	@RequestMapping("/basketDelete")
 	public String deleteProc(String basket_seq) {
-		System.out.println(basket_seq);
-		System.out.println("딜리트");
 		int seq = Integer.parseInt(basket_seq);
-		System.out.println("바스켓   시퀀스      " + basket_seq);
-
 		int deleteseq = dao.basketDelete(seq);
-		System.out.println("삭제 되면 1을 보여라    " + deleteseq);
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		String id = mdto.getMember_id();
-		System.out.println("세션 아이디  : " + id);
-
 		List<BasketDTO> result = bservice.basketIdSelect(id);
-		// dto.setBasket_id(id);
 		request.setAttribute("list", result);
-
 		return "/shopBoard/shopBoard_basket";
 	}
 	
@@ -85,9 +74,6 @@ public class BasketController {
 	public String asd(String basket_seq) {
 		int price = 0;
 		int amount = 0;
-
-		System.out.println("asd의 리스트");
-		System.out.println(basket_seq);
 		String seq = basket_seq;
 		String[] seqList = seq.split(",");
 		List<BasketDTO> arr = new ArrayList();
@@ -96,12 +82,10 @@ public class BasketController {
 			 price = price + arr.get(i).getBasket_price();//합계금액
 			 amount = amount + arr.get(i).getBasket_quantity();//합계 수량
 		}
-		System.out.println(price);
 		request.setAttribute("amount",amount );
 		request.setAttribute("basketseq", basket_seq);
 		request.setAttribute("basketarr", arr);
 		request.setAttribute("price", price);
-		
 		return "/shopBoard/shopBoard_buy2";
 	}
 }

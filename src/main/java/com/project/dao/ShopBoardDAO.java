@@ -68,6 +68,10 @@ public class ShopBoardDAO {
 		return sst.selectOne("ShopBoardDAO.shopReviewCount", shop_seq);
 	}
 
+	public int shopReviewDelete(String id) {
+		return sst.delete("shopBoardDAO.shopReviewDelete", id);
+	}
+
 	public int updateQ(int quant, int seq) {
 		Map<String, Integer> map = new HashMap();
 		map.put("m1", quant);
@@ -77,5 +81,10 @@ public class ShopBoardDAO {
 
 	public int getQuan(int seq) {
 		return sst.selectOne("ShopBoardDAO.getQuan", seq);
+	}
+
+	public int shopBoardDelete(String id) {
+
+		return sst.delete("ShopBoardDAO.shopBoardDelete", id);
 	}
 }

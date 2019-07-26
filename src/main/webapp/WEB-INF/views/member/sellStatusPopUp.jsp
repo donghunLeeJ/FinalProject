@@ -133,7 +133,7 @@
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
 		$("#back_btn").on("click", function() {
-			$(location).attr("href", "/member/sellContentsGo");
+			$(location).attr("href", "/shopboard/sellContentsGo");
 		})
 	</script>
 </body>

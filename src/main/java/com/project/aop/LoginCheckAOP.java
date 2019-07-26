@@ -33,8 +33,6 @@ public class LoginCheckAOP {
 	@Around("basketController()||shopBoard()||timeLine()||member()||admin()")
 	public String logCheck(ProceedingJoinPoint pjp) {
 		if(session.getAttribute("id")==null) {
-	
-			
 			return "loginPlease";
 		}else {
 			try {
