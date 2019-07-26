@@ -165,7 +165,6 @@ public class MemberController {
 
 	@RequestMapping("myPage") // 메인에서 마이페이지로 가기 이때 구매내역과 판매내역 담기
 	public String log_myPage() {
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 
 		return "/member/myPage";
 	}
@@ -232,9 +231,11 @@ public class MemberController {
 		int resultPage = Integer.parseInt(page);
 		int count = os.orderCount();
 		List<String> pageList = os.Page(resultPage, count);
+
 		for (int i = 0; i < pageList.size(); i++) {
 			System.out.println(pageList.get(i));
 		}
+
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
