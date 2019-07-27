@@ -7,7 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
-<title>Insert title here</title>
+<title>비밀번호 초기화</title>
 <style>
 .form-control[readonly]{
 background-color:white;
