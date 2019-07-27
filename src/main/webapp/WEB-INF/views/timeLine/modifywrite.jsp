@@ -25,7 +25,7 @@
 					<!-- Section Heading -->
 					<div class="col-12">
 						<div class="section-heading text-center">
-							<h2>글 수정</h2>
+							<h2 style="font-family: '나눔고딕OTF'">글 수정</h2>
 						</div>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 					<div class="col-12">
 						<!-- Form -->
 						<form action="/timeline/boardModified" method="post"
-							enctype="multipart/form-data"
+							enctype="multipart/form-data" id="delform"
 							class="akame-contact-form border-0 p-0">
 							<div class="row">
 								<div class="col-lg-12">
