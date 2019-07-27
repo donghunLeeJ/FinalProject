@@ -72,7 +72,7 @@
 				<nav class="classy-navbar justify-content-between" id="akameNav">
 
 					<!-- Logo -->
-					<a class="nav-brand" href="/home"><img
+					<a class="nav-brand" href="/admin/adminHome"><img
 						src="/img/core-img/logo3.png" alt="" style="height: 3em"></a>
 					<!-- Navbar Toggler -->
 					<div class="classy-navbar-toggler">
@@ -89,8 +89,7 @@
 						</div>
 						<!-- Nav Start -->
 						<div class="classynav">
-							<ul id="nav">
-								<li ><a href="/admin/adminHome">Home</a></li>
+							<ul id="nav">							
 								<li><a href="/admin/MemberManagementMove">회원 관리 </a>
 								<li><a href="/admin/ShopBoardManagementMove">판매 글 관리</a></li>
 								<li><a href="/admin/OrderManagementMove">구매내역 관리</a></li>

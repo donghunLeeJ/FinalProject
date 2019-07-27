@@ -5,7 +5,8 @@ public class PageDTO {
 	private int startCount;
 	private int endCount;
 	private String keyWord;
-	
+	private String shop_id;
+	private String member_email;
 	public PageDTO(){}
 	
 	public PageDTO(int startCount, int endCount) {
@@ -41,5 +42,22 @@ public class PageDTO {
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
 	}
+
+	public String getShop_id() {
+		return shop_id;
+	}
+
+	public void setShop_id(String shop_id) {
+		this.shop_id = shop_id;
+	}
+
+	public String getMember_email() {
+		return member_email;
+	}
+
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
+	}
+	
 	
 }

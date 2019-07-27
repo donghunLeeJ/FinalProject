@@ -241,7 +241,7 @@ public class MemberController {
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<OrderDTO> buyList = os.orderTenList(resultPage);
+		List<OrderDTO> buyList = os.orderTenList(resultPage , mdto.getMember_id());
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}

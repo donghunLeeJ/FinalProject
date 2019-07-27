@@ -44,6 +44,7 @@ table {
 					<th class="col">가격</th>
 					<th class="col">수량</th>
 					<th class="col">유통기한</th>
+					<th class="col">삭제요청유무</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -59,10 +60,13 @@ table {
 						</td>
 						<td class="col"><b>${i.shop_price}</b>원</td>
                         <td class="col"><b>${i.shop_quantity}</b>개</td>
-						<td class="col">
-							<div class="row">
-								<div class="col-12">${i.shop_expiration}</div>
-								<div class="col-12 mt-4"></div>
+						<td class="col">${i.shop_expiration}</td>
+                     <td class="col">
+                     <div class="row">
+                       <div class="col-12">${i.shop_deleterequest}</div>
+                     
+                     			
+			<div class="col-12 mt-4"></div>
 								<div class="col mt-5 ml-4">
 
 									<!--<input id="delete_btn" type="button" value="삭제하기"> 
@@ -73,9 +77,14 @@ table {
 										<a href="/admin/AdminDeleteShopBoard?shop_seq=${i.shop_seq}" style="color: white;">삭제하기</a>
 									</button>
 								</div>
-							</div>
-						</td>
-
+                   
+                     
+                     
+            
+                     
+                     
+                     </div>
+                     </td>
 					</tr>
 				</c:forEach>
 			</tbody>

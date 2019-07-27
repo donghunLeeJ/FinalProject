@@ -38,7 +38,7 @@ public class OrderService {
 		return bp.myPaging(page, count);
 	}
 
-	public List<OrderDTO> orderTenList(int page) {
-		return bp.selectOrder(page);
+	public List<OrderDTO> orderTenList(int page ,String member_email) {
+		return bp.selectOrder(page , member_email);
 	}
 }
