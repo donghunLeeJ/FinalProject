@@ -80,10 +80,8 @@
 		select member_id,member_imgpath from member;
 	</select>
 
-	
 	<update id="updateQuantity">
-		update shopboard set shop_quantity = 0 where shop_seq = #{seq}
+		update shopboard set shop_quantity = 0 , shop_deleterequest ='y' where shop_seq = #{seq}	
 	</update>
 	
-
 </mapper>

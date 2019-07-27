@@ -25,12 +25,14 @@
 		shop_seq=#{m2}
 	</update>
 
+
+	<!--판매 내역을 검색시키는 페이징 코드임(검색 기준은 판매자 id를 기준으로 함) -->
 	<select id="PageSelect"
 		resultType="com.project.dto.ShopBoardDTO">
 		select X.rnum, X.memberSell_seq, X.shop_seq , X.shop_id, X.shop_brand,
 		X.shop_title, X.shop_contents , X.shop_writedate , X.shop_location ,
 		X.shop_expiration , X.shop_price , X.shop_quantity , X.shop_imagepath1
-		, X.shop_imagepath2, X.shop_imagepath3
+		, X.shop_imagepath2, X.shop_imagepath3 , X.shop_deleterequest
 		from(
 		select rownum as rnum,
 		A.memberSell_seq, A.shop_seq , A.shop_id,
@@ -39,10 +41,13 @@
 		A.shop_location ,
 		A.shop_expiration , A.shop_price , A.shop_quantity ,
 		A.shop_imagepath1
-		, A.shop_imagepath2, A.shop_imagepath3
+		, A.shop_imagepath2, A.shop_imagepath3 ,
+		A.shop_deleterequest
 		from(
 		select *
 		from shopboard
+		where shop_id =
+		#{shop_id}
 		order by shop_seq desc) A
 		where rownum <![CDATA[<]]>=
 		#{endCount}) X
@@ -52,7 +57,7 @@
 
 	<insert id="ShopBoardInsert">
 		insert into shopboard
-		values(#{MemberSell_seq},SHOP_SEQ.NEXTVAL,#{shop_id},#{shop_brand},#{shop_material},#{shop_title},#{shop_contents},default,#{shop_location},#{shop_expiration},#{shop_price},#{shop_quantity},#{shop_imagepath1},#{shop_imagepath2},#{shop_imagepath3})
+		values(#{MemberSell_seq},SHOP_SEQ.NEXTVAL,#{shop_id},#{shop_brand},#{shop_material},#{shop_title},#{shop_contents},default,#{shop_location},#{shop_expiration},#{shop_price},#{shop_quantity},#{shop_imagepath1},#{shop_imagepath2},#{shop_imagepath3},default)
 	</insert>
 
 

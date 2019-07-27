@@ -46,7 +46,7 @@ table {
 								<tr class="row">
 									<th class="col">${i.order_number}</th>
 									<td class="col">${i.order_time}</td>
-									<td class="col"><b>${i.order_price}원</b>/${i.order_quantity}</td>
+									<td class="col"><b>${i.order_price}원</b>/${i.order_quantity}개</td>
 									<td class="col">${i.order_buyer}</td>
 									<td class="col">${i.order_receipt}</td>
 								</tr>
@@ -59,7 +59,7 @@ table {
 							<tr class="row">
 								<th class="col">${OrderNumberSelect.order_number}</th>
 								<td class="col">${OrderNumberSelect.order_time}</td>
-								<td class="col"><b>${OrderNumberSelect.order_price}원</b>/${OrderNumberSelect.order_quantity}</td>
+								<td class="col"><b>${OrderNumberSelect.order_price}원</b>/${OrderNumberSelect.order_quantity}개</td>
 								<td class="col">${OrderNumberSelect.order_buyer}</td>
 								<td class="col">${OrderNumberSelect.order_receipt}</td>
 							</tr>
@@ -115,7 +115,6 @@ table {
 				</div>
 			</form>
 		</div>
-
 
 		<!--컨테이너 끝 -->
 	</div>

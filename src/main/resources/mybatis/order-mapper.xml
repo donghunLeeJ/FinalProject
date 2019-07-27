@@ -27,6 +27,9 @@
 		select * from
 		products_order where products_seq = #{value}
 	</select>
+	
+	
+	<!--구매내역 페이징 겸 출력 -->
 	<select id="PageSelect" resultType="com.project.dto.OrderDTO">
 		select X.rnum, X.order_seq,X.products_seq,X.member_email,
 		X.order_number , X.order_title, X.order_time, X.order_quantity,
@@ -53,6 +56,7 @@
 		select *
 		from
 		products_order
+		 where member_email=#{member_email}
 		order by order_seq desc) A
 		where rownum <![CDATA[<]]>=
 		#{endCount}) X

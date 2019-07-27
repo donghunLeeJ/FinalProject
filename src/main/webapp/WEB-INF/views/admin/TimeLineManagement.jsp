@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,7 +38,7 @@ table {
 <body>
 	<jsp:include page="/WEB-INF/views/module/adminHead.jsp"></jsp:include>
 		<div class="container">
-		
+
 		<table class="table mt-5">
 			<thead>
 				<tr class="row mainrow">
@@ -61,7 +62,8 @@ table {
 								<th class="col">${i.tl_board_seq}</th>
 								<th class="col">${i.tl_title}</th>
 								<td class="col">${i.tl_writer}</td>
-								<td class="col">${i.tl_writedate}</td>
+								<td class="col"><fmt:formatDate value="${i.tl_writedate}"
+										pattern="yyyy-MM-dd" /></td>
 								<td class="col">${i.tl_reporter}</td>
 								<td class="col"><c:choose>
 										<c:when test="${i.tl_status eq '신고'}">
@@ -105,7 +107,8 @@ table {
 								<th class="col">${i.tl_board_seq}</th>
 								<th class="col">${i.tl_title}</th>
 								<td class="col">${i.tl_writer}</td>
-								<td class="col">${i.tl_writedate}</td>
+								<td class="col"><fmt:formatDate value="${i.tl_writedate}"
+										pattern="yyyy-MM-dd" /></td>
 								<td class="col">${i.tl_reporter}</td>
 								<td class="col"><c:choose>
 										<c:when test="${i.tl_status eq '신고'}">
@@ -139,7 +142,7 @@ table {
 					</tbody>
 				</c:when>
 
-			<c:when test="${totalcount==0}">
+				<c:when test="${totalcount==0}">
 					<tbody>
 						<tr>
 							<td colspan="7" class="col">검색된 글이 없습니다.</td>
@@ -151,12 +154,12 @@ table {
 
 
 		</table>
-		
-		
-		
-				
-				
-      <div id="pageNumber">
+
+
+
+
+
+		<div id="pageNumber">
       
 			<c:forEach var="i" items="${pageList}">
 				<c:choose>
