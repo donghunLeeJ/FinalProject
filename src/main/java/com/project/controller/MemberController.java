@@ -118,18 +118,18 @@ public class MemberController {
 	public String findPW(String member_id) {
 		System.out.println(member_id);
 		int result = mservice.findPW(member_id);
-		if(result == 1) {
+		if (result == 1) {
 			try {
-			edao.findPw(member_id);
-			}catch(Exception e) {
+				edao.findPw(member_id);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return "member/pwSendEmail";
-		}else {
+		} else {
 			return "member/yourPW2";
 		}
 	}
-	
+
 	@RequestMapping("yourPW")
 	public String yourPW(String id) {
 		request.setAttribute("id", id);
@@ -141,7 +141,7 @@ public class MemberController {
 		String new_pw = mdao.SHA256(member_pw);
 		int result = mservice.cleanPW(new_pw, member_id);
 		return "member/cleanOK";
-	
+
 	}
 
 	@RequestMapping("/joinProc")
@@ -165,13 +165,7 @@ public class MemberController {
 
 	@RequestMapping("myPage") // 메인에서 마이페이지로 가기 이때 구매내역과 판매내역 담기
 	public String log_myPage() {
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<ShopBoardDTO> mylist = SBservice.ShopBoardList(mdto.getMember_id());
-		List<OrderDTO> order = os.myOrderList(mdto.getMember_id());
-		MemberPagingDTO mpdto = mp.MemberPaging(1);
-		request.setAttribute("mylist", mylist);
-		request.setAttribute("mpdto", mpdto);
-		request.setAttribute("order", order);
+
 		return "/member/myPage";
 	}
 
@@ -190,7 +184,8 @@ public class MemberController {
 		String uploadPath = session.getServletContext().getRealPath("/resources/img/profile-img/" + time + "/");// 파일 저장
 																												// 위치
 		File makeFile = new File(uploadPath);
-		if (!makeFile.exists()) makeFile.mkdir();
+		if (!makeFile.exists())
+			makeFile.mkdir();
 		System.out.println(uploadPath);
 		File f = new File(uploadPath + "/" + savedName + "__.jpg");
 		try {
@@ -212,7 +207,7 @@ public class MemberController {
 	@RequestMapping("delOK")
 	public String log_delOK(String del_id, String del_pw) {
 		try {
-			
+
 			mservice.delOK(del_id, del_pw);
 			session.invalidate();
 			return "/member/delOK";
@@ -245,11 +240,11 @@ public class MemberController {
 		int resultPage = Integer.parseInt(page);
 		int count = os.orderCount();
 		List<String> pageList = os.Page(resultPage, count);
-		
-		for(int i = 0 ; i < pageList.size() ; i ++) {
+
+		for (int i = 0; i < pageList.size(); i++) {
 			System.out.println(pageList.get(i));
 		}
-		
+
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
 
@@ -257,7 +252,7 @@ public class MemberController {
 		List<OrderDTO> buyList = os.orderTenList(resultPage);
 		System.out.println(buyList.get(0).getOrder_title());
 		System.out.println(buyList.get(0).getOrder_buyer_email());
-		
+
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}

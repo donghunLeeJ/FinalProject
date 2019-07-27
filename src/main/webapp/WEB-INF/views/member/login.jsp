@@ -40,7 +40,8 @@
 			<!-- Section Heading -->
 			<div class="col-12">
 				<div class="section-heading text-center" style="margin: 0px">
-					<img alt="" src="/img/logoimg.png" style="width: 40%">
+					<a href="/home"><img alt="" src="/img/logoimg.png"
+						style="width: 40%"></a>
 
 				</div>
 			</div>
