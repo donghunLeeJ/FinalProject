@@ -1,9 +1,12 @@
 package com.project.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
 
 @Component
@@ -13,7 +16,27 @@ public class OrderDAO {
 	private SqlSessionTemplate sst;
 
 	public int orderInsert(OrderDTO dto) {
+//		System.out.println(dto.toString());
+		return sst.insert("OrderDAO.orderInsert", dto);
+	}
+	public List<OrderDTO> orderSelect(OrderDTO dto) {
+		System.out.println("2");
+		return sst.selectList("OrderDAO.orderSelect");
+	}
 
-		return sst.insert("OrderDAO.insert", dto);
+	public List<OrderDTO> myOrderList(String id) {
+
+		return sst.selectList("OrderDAO.myOrderList", id);
+	}
+
+	public List<OrderDTO> sellOrderList(int seq) {
+		return sst.selectList("OrderDAO.sellOrderList", seq);
+	}
+	
+	public List<OrderDTO> popup(int seqq){
+		return sst.selectList("OrderDAO.popup",seqq);
+	}
+	public int orderCount() {
+		return sst.selectOne("OrderDAO.orderCount");
 	}
 }

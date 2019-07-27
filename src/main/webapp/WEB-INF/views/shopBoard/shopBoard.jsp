@@ -1,86 +1,148 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 #img1 {
-	width: 100%;
-	height: 100%;
+	/*  width:250px;  */
+	height: 210px;
+}
+
+.ellipsis{
+/* 0725Ï∂îÍ∞Ä */
+    overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      width:170px;
+      font-size: 15px; color: #e1e5eb;
 }
 </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-	<!-- header -->
-	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+<body oncontextmenu="return false" ondragstart="return false"
 
-	<!-- /header -->
-	<section class="akame-about-area section-padding-80-0">
+   onselectstart="return false">
+   <!-- header -->
+   <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+   <section class="breadcrumb-area section-padding-80 border">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <div class="breadcrumb-content">
+               <h2 style="font-family :'ÎÇòÎàîÍ≥†ÎîïOTF';">Íµ¨Îß§ÌïòÍ∏∞</h2>
+               <nav aria-label="breadcrumb">
+               <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/home"><i
+                        class="icon_house_alt"></i>Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Íµ¨Îß§ÌïòÍ∏∞</li>
+               </ol>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+   </section>
 
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-2">asdasd</div>
-			<div class="col-lg-8">
-				<div class="container">
-					<div class="row">
-						<c:forEach var="i" items="${boardList }">
-							<div
-								class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
-								data-wow-delay="500ms">
-								<div class="akame-portfolio-single-item" style="height: 250px">
-									<img src="${i.shop_imagepath1 }" id="img1" alt="">
 
-									<!-- Overlay Content -->
-									<div
-										class="overlay-content d-flex align-items-center justify-content-center">
-										<div class="overlay-text text-center">
-											<h4 class="pb-3">${i.shop_contents }</h4>
-											<p class="pt-3">${ i.shop_price}</p>
-										</div>
-									</div>
+   <!-- /header -->
+   <section class="akame-about-area bg-gray section-padding-80-0">
 
-									<!-- Thumbnail Zoom -->
-									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i
-										class="icon_search"></i></a>
 
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-lg-2"></div>
+         <div class="col-lg-8">
+            <div class="container">
+
+               <div class="row">
+
+                  <c:forEach var="i" items="${boardList }">
+                  <c:choose>
+                  <c:when test="${i.shop_quantity eq 0}">
+                <div   class="col-12 col-sm-6 col-lg-3  mb-5 akame-portfolio-item wow fadeInUp " data-wow-delay="500ms">
+                        <div class="" style="height: 250px">
+                           
+                           	 <div style="position: absolute;">
+								   <div style="position: relative; top: 70px; left: 0px;">
+								   <img src="/img/core-img/soldout.png" >
 								</div>
-								<div class="team-member-info border">
-									<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }"><h5>${i.shop_title }</h5></a>
-									<p>${i.shop_contents }</p>
 								</div>
-							</div>
-						</c:forEach>
+								<img src="${i.shop_imagepath1 }" id="img1"  alt="" >
+
+                           <!-- Thumbnail Zoom -->
+                           <a href="#}" class=""><i class=""></i></a>
+                        </div>
+                        <div class="team-member-info border">
+                           <div class="row">
+                              <div class="col-12"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </c:when>
+                  <c:otherwise>
+                     <div   class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp" data-wow-delay="500ms">
+                                 <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
+                        <div class="akame-portfolio-single-item" style="height: 250px">
+                           <img src="${i.shop_imagepath1 }" id="img1" alt="">
+                           <!-- Overlay Content -->
+                           <div class="overlay-content d-flex align-items-center justify-content-center">
+                              <div class="overlay-text text-center">
+                                <div class="ellipsis">${i.shop_title }</div> <!-- 0725Ï∂îÍ∞Ä -->
 
 
-					</div>
-					<div class="row" id="extendList"></div>
-				</div>
-			</div>
-			<div class="col-lg-2">asdasd</div>
-		</div>
-	</div>
+                                 <p class="pt-3">
+                                    <fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
+                                    Ïõê
+                                 </p>
+                              </div>
+                           </div>
 
-	</section>
+                           <!-- Thumbnail Zoom -->
+<%--                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
+                        </div>
+                        <div class="team-member-info border">
+                           <div class="row">
+                              <div class="col-12"></div>
+                           </div>
+                        </div>
+                     </a>
+                     </div>
+                        </c:otherwise>
+									</c:choose>
+                  </c:forEach>
 
-	<script>
-	
+
+               </div>
+               <div class="row" id="extendList"></div>
+            </div>
+         </div>
+         <div class="col-lg-2"></div>
+      </div>
+   </div>
+
+   </section>
+
+   <script>
+
+   
       var count = 2;
       $(window).scroll(
             function() {
-               // √÷«œ¥‹¿œ ∞ÊøÏ∏¶ √º≈©«œ±‚ ¿ß«ÿ √÷«œ¥‹ ¿ßƒ°∞™¿ª ¡ˆ¡§
-               // »≠∏È πÆº≠¿¸√º¿« ±Ê¿Ãø°º≠, «ˆ¿Á √¢ ≥Ù¿Ã∏¶ ª´ ∞Õ¿Ã √÷«œ¥‹ ∞™
+               // ÏµúÌïòÎã®Ïùº Í≤ΩÏö∞Î•º Ï≤¥ÌÅ¨ÌïòÍ∏∞ ÏúÑÌï¥ ÏµúÌïòÎã® ÏúÑÏπòÍ∞íÏùÑ ÏßÄÏ†ï
+               // ÌôîÎ©¥ Î¨∏ÏÑúÏ†ÑÏ≤¥Ïùò Í∏∏Ïù¥ÏóêÏÑú, ÌòÑÏû¨ Ï∞Ω ÎÜíÏù¥Î•º Î∫Ä Í≤ÉÏù¥ ÏµúÌïòÎã® Í∞í
             
             console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
 
                  if($(document).height() <= $(window).scrollTop() + $(window).height()+100 ){
-                  // √÷«œ¥‹¿∏∑Œ µµ¥ﬁ«ﬂ¿ª ∞ÊøÏ
+                  // ÏµúÌïòÎã®ÏúºÎ°ú ÎèÑÎã¨ÌñàÏùÑ Í≤ΩÏö∞
                   
                
                   
@@ -97,7 +159,7 @@
                      
                      for(var i = 0 ; i < result.length; i ++){
                      $("#extendList").append(`<div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
-                              data-wow-delay='500ms'>
+                              data-wow-delay='500ms'`>
                               <div class='akame-portfolio-single-item' style="height: 250px">
                                  <img id='img1' src=`+ result[i].shop_imagepath1+` >
 
@@ -123,10 +185,10 @@
                      };
                      })
                   
-                  console.log('πŸ¥⁄¿‘¥œ¥Ÿ!');
+                  console.log('Î∞îÎã•ÏûÖÎãàÎã§!');
                } else if ($(window).scrollTop() == 0) {
-                  // √÷ªÛ¥‹¿∏∑Œ µµ¥ﬁ«ﬂ¿ª ∞ÊøÏ
-                  console.log('≤¿¥Î±‚¿‘¥œ¥Ÿ!');
+                  // ÏµúÏÉÅÎã®ÏúºÎ°ú ÎèÑÎã¨ÌñàÏùÑ Í≤ΩÏö∞
+                  console.log('Íº≠ÎåÄÍ∏∞ÏûÖÎãàÎã§!');
                }
             });
    </script>

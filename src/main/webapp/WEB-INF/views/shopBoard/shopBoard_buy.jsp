@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/style2.css">
 
@@ -13,8 +15,26 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script>
+	$(function() {
+		var origin = function() {
+
+			$("#geter_name").val("${id.member_name}");
+			$("#sample6_postcode").val("${id.member_postcode}");
+			$("#sample6_address").val("${id.member_address1}");
+			$("#sample6_detailAddress").val("${id.member_address2}");
+			$("#phone1").val(phone.substr(0, 3));
+			$("#phone2").val(phone.substr(3, 4));
+			$("#phone3").val(phone.substr(7, 4));
+		}
+		$("#origin").on("click", function() {
+			origin();
+		})
+		$("#origin").click();
+	});
+</script>
 <style>
-input[type="text"] {
+input[type="text"], select {
 	box-shadow: 4px 4px 5px #gray inset;
 	border-radius: 5px;
 }
@@ -22,169 +42,371 @@ input[type="text"] {
 a {
 	cursor: pointer;
 }
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.form-control[readonly] {
+	background-color: gray;
+}
 </style>
+<script type="text/javascript" src="/js/cross.js"></script>
+<!-- ì§€ìš°ì§€ ë§ ê²ƒ -->
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<form action="/shopboard/shopOrder?products_seq=${dto.shop_seq }"
+		id="completeForm" method="POST">
+		<div class="container mt-5">
+			<div class="row  pb-3 border-bottom">
+				<div class="col-12 text-right">
 
-	<div class="container mt-5">
-		<div class="row  pb-3 border-bottom">
-			<div class="col-12 text-right">
-				<a href="#" class="btn akame-btn">ÀÌÀü ÆäÀÌÁö </a>
-			</div>
-		</div>
-
-		<div class="row border-bottom border-top py-2 bg-gray">
-			<div class="col-6">
-				<h3>ÁÖ¹®°áÁ¦</h3>
-			</div>
-			<div class="col-6 " style="text-align: right">
-				<h3>Àå¹Ù±¸´Ï ÁÖ¹®/°áÁ¦ ÁÖ¹®¿Ï·á</h3>
-			</div>
-		</div>
-
-		<div class="row py-3">
-			<div class="col-6 font-weight-bold text-bottom">
-				<span class="">ÁÖ¹®»óÇ° È®ÀÎ</span>
-			</div>
-			<div class="col-6 text-bottom" style="text-align: right">
-				<p>*»óÇ°¼ö·® ¹× ¿É¼Çº¯°æÀº »óÇ°»ó¼¼ ¶Ç´Â Àå¹Ù±¸´Ï¿¡¼­ °¡´ÉÇÕ´Ï´Ù.</p>
-			</div>
-
-		</div>
-		<div class="row border-bottom border-top bg-gray text-center py-2">
-			<div class="col-5">»óÇ°/¿É¼ÇÁ¤º¸</div>
-
-			<div class="col-1">¼ö·®(°³)</div>
-			<div class="col-1">»óÇ°±İ¾×</div>
-			<div class="col-1">Áö¿ª</div>
-			<div class="col-2">À¯Åë ±âÇÑ</div>
-			<div class="col-2">¹è¼Ûºñ/ÆÇ¸ÅÀÚ</div>
-		</div>
-		<div class="row border-bottom border-top text-center py-4">
-			<div class="col-5 " style="margin-top: 1.4em">
-				<div class="row">
-					<div class="col-3">${dto.shop_imagepath1 }</div>
-					<div class="col-9" style="text-overflow: ellipsis;">
-						<span>${dto.shop_title }</span>
-					</div>
+					<a href="/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }"
+						class="btn akame-btn">ì´ì „ í˜ì´ì§€ </a>
 
 				</div>
 			</div>
 
-			<div class="col-1" style="margin-top: 1.4em">${quantity }</div>
-			<div class="col-1" style="margin-top: 1.4em">${price }(¿ø)</div>
-			<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
-			<div class="col-2" style="margin-top: 1.4em">${dto.shop_expiration }</div>
-			<div class="col-2">
-				¼±°áÁ¦ <br> <strong>(2,500¿ø)</strong> <br> <small>${dto.shop_id }
-					${dto.shop_brand }</small>
-			</div>
-		</div>
-		<div class="row pt-5 pb-1">
-			<div class="col-12 ">
-				<h3>ÁÖ¹®ÀÚ Á¤º¸ ÀÔ·Â</h3>
-			</div>
-		</div>
-		<div class="row border rounded">
-			<div class="col-3 py-2 font-weight-bold">ÁÖ¹®ÀÚ ÀÌ¸§</div>
-			<div class="col-9 py-2">
-				<input type="text" name="order_name" id="order_name">
-			</div>
-			<div class="col-3 py-2 font-weight-bold">ÈŞ´ëÀüÈ­</div>
-			<div class="col-9 py-2">
-				<input type="text" name="phone1" id="phone1" style="width: 8em">
-				- <input type="text" name="phone2" id="phone2" style="width: 8em">
-				- <input type="text" name="phone3" id="phone3" style="width: 8em">
-			</div>
-			<div class="col-3 py-2 font-weight-bold">ÀÌ¸ŞÀÏ</div>
-			<div class="col-9 py-2">
-				<input type="text" name="email1" id="email1"> @ <input
-					type="text" name="email2" id="email2">
+			<div class="row border-bottom border-top py-2 bg-gray">
+				<div class="col-6">
+					<h3 style="font-family :'ë‚˜ëˆ”ê³ ë”•OTF';">ê²°ì œí•˜ê¸°</h3>
+				</div>
+<!-- 				<div class="col-6 " style="text-align: right"> -->
+<!-- 					<h3 style="font-family :'ë‚˜ëˆ”ê³ ë”•OTF';">ì¥ë°”êµ¬ë‹ˆ ì£¼ë¬¸/ê²°ì œ ì£¼ë¬¸ì™„ë£Œ</h3> -->
+<!-- 				</div> -->
 			</div>
 
-		</div>
-		<div class="row">
-			<div class="col-12 pt-2">
-				<p>
-					<small>11¹ø°¡¢ß´Â Åë½ÅÆÇ¸ÅÁß°³ÀÚ·Î¼­ Åë½ÅÆÇ¸ÅÀÇ ´ç»çÀÚ°¡ ¾Æ´Ï¸ç, °³º°ÆÇ¸ÅÀÚ°¡ µî·ÏÇÑ »óÇ°Á¤º¸ ¹×
-						°Å·¡¿¡ ´ëÇØ 11¹ø°¡¢ß´Â ÀÏÃ¼ÀÇ Ã¥ÀÓÀ» ÁöÁö ¾Ê½À´Ï´Ù.</small>
-				</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-12 pt-2 font-weight-bold">
-				<h3>¹è¼ÛÁö Á¤º¸ ÀÔ·Â</h3>
-			</div>
-		</div>
-
-		<div class="row border rounded">
-			<div class="col-3 font-weight-bold py-2" style="line-height: 2em">¹è¼ÛÁö¼±ÅÃ</div>
-			<div class="col-9 py-2">
-				<span>±âÁ¸ ¹è¼ÛÁö <input type="radio" name="origin_radio"
-					id="origin"></span> <span>½Å±Ô ¹è¼ÛÁö <input type="radio"
-					name="origin_radio" id="new">
-				</span>
-			</div>
-			<div class="col-3 font-weight-bold py-2">¹ŞÀ¸½Ã´Â ºĞ</div>
-			<div class="col-9 py-2">
-				<input type="text" style="width: 8em" id="geter_name">
-			</div>
-			<div class="col-3 font-weight-bold py-2">¹è¼ÛÁö¼±ÅÃ</div>
-			<div class="col-9 py-2">
-				<input type="text" id="sample6_postcode" placeholder="¿ìÆí¹øÈ£">
-				<input type="button" onclick="sample6_execDaumPostcode()"
-					value="¿ìÆí¹øÈ£ Ã£±â" style="margin-left: 0.5em"><br> <br>
-				<input type="text" id="sample6_address" placeholder="ÁÖ¼Ò"
-					style="width: 20em"><br> <br> <input type="text"
-					id="sample6_detailAddress" placeholder="»ó¼¼ÁÖ¼Ò" style="width: 25em">
-				<input type="text" id="sample6_extraAddress" placeholder="Âü°íÇ×¸ñ">
+			<div class="row pt-3">
+				<div class="col-6 font-weight-bold text-bottom">
+					<span class="">ì£¼ë¬¸ìƒí’ˆ í™•ì¸</span>
+				</div>
+<!-- 				<div class="col-6 text-bottom" style="text-align: right"> -->
+<!-- 					<p style="font-family :'ë‚˜ëˆ”ê³ ë”•OTF';">*ìƒí’ˆìˆ˜ëŸ‰ ë° ì˜µì…˜ë³€ê²½ì€ ìƒí’ˆìƒì„¸ ë˜ëŠ” ì¥ë°”êµ¬ë‹ˆì—ì„œ ê°€ëŠ¥í•©ë‹ˆë‹¤.</p> -->
+<!-- 				</div> -->
 
 			</div>
-			<div class="col-3 font-weight-bold py-2">ÈŞ´ëÀüÈ­</div>
-			<div class="col-9 py-2">
-				<input type="text" name="phone1" style="width: 8em" id="phone1"
-					value=""> - <input type="text" name="phone2"
-					style="width: 8em" id="phone2"> - <input type="text"
-					name="phone3" style="width: 8em" id="phone3">
+			<div class="row border-bottom border-top bg-gray text-center py-2">
+				<div class="col-5">ìƒí’ˆ/ì˜µì…˜ì •ë³´</div>
+
+				<div class="col-1">ìˆ˜ëŸ‰(ê°œ)</div>
+				<div class="col-1">ìƒí’ˆê¸ˆì•¡</div>
+				<div class="col-1">ì§€ì—­</div>
+				<div class="col-2">ìœ í†µ ê¸°í•œ</div>
+				<div class="col-2">ë°°ì†¡ë¹„/íŒë§¤ì</div>
 			</div>
-			<div class="col-3 font-weight-bold py-2">¹è¼Û½Ã¿ä±¸»çÇ×</div>
-			<div class="col-9">
-				<input type="text" style="width: 35em">
-				<p style="color: blue;">
-					<small>*Æ¯Á¤ÇÑ ¹è¼ÛÀÏÀ» ÁöÁ¤ÇÏ°íÀÚ ÇÒ °æ¿ì ÆÇ¸ÅÀÚ¿Í ¿¬¶ôÇÏ¿© ¹è¼ÛÀÏÀ» È®ÀÎÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.</small>
-				</p>
+			<div class="row border-bottom border-top text-center py-4"
+				style="height: 8em">
+				<div class="col-5 ">
+					<div class="row">
+						<div class="col-3  pt-2 pb-2 ">
+							<img class="ml-3" src="${dto.shop_imagepath1 }"> <input
+								type="hidden" value="${dto.shop_imagepath1 }" name="order_image">
+						</div>
+						<div class="col-9"
+							style="text-overflow: ellipsis; margin-top: 1.4em; width: 25em; white-space: nowrap; overflow: hidden;">
+							<span><strong>${dto.shop_title }</strong> <input
+								type="hidden" value="${dto.shop_title }" name="order_title">
+								<input type="hidden" value="${dto.shop_id } "
+								name="order_seller"> </span>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-1" style="margin-top: 1.4em">${quantity }
+					<input type="hidden" value="${quantity }" name="order_quantity"
+						id=quant1>
+				</div>
+				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
+					<fmt:formatNumber value="${price }" pattern="#,###" />
+					(ì›) <input type="hidden" value="${price }" name="order_price">
+				</div>
+				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
+				<div class="col-2" style="margin-top: 1.4em; color: red">${dto.shop_expiration }</div>
+				<div class="col-2">
+					ì„ ê²°ì œ <br> <strong>(2,500ì›)</strong> <br> <small>${dto.shop_id }
+
+						<br>${dto.shop_brand }</small>
+
+				</div>
+			</div>
+
+			<div class="row pt-5 pb-1">
+
+				<div class="col-12 ">
+					<h3>ì£¼ë¬¸ì ì •ë³´ ì…ë ¥</h3>
+				</div>
+			</div>
+			<div class="row border rounded">
+				<div class="col-3 py-2 font-weight-bold">ì£¼ë¬¸ì ì´ë¦„</div>
+				<div class="col-9 py-2">
+					<input type="text" name="order_buyer" id="order_buyer"
+						class="empty">
+				</div>
+				<div class="col-3 py-2 font-weight-bold">íœ´ëŒ€ì „í™”</div>
+				<div class="col-9 py-2">
+					<input type="text" name="phone1" id="order_phone1" class="empty"
+						style="width: 8em"> - <input type="text" name="phone2"
+						class="empty" id="order_phone2" style="width: 8em"> - <input
+						type="text" name="phone3" id="order_phone3" class="empty"
+						style="width: 8em">
+				</div>
+				<div class="col-3 py-2 font-weight-bold">ì´ë©”ì¼</div>
+				<div class="col-9 py-2">
+					<input type="text" name="email1" id="email1" class="empty ">
+					@ <input type="text" name="email2" id="email2" class="empty ">
+
+					<select id="selectEmail">
+						<option value="1">ì§ì ‘ ì…ë ¥</option>
+						<option value="naver.com">naver.com</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="nate.com">nate.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="hotmail.com">hotmail.com</option>
+						<option value="yahoo.com">yahoo.com</option>
+					</select>
+
+				</div>
 
 			</div>
-		</div>
-		<div class="row py-2">
-			<div class="col-12">
-				<p>
-					<small>ÀüÀÚ»ó°Å·¡ ¼ÒºñÀÚº¸È£ ¹ı·ü¿¡ µû¸¥ ±¸¸Å ¾ÈÀü ¼­ºñ½º ¾È³»: º» ÆÇ¸ÅÀÚ´Â 11¹ø°¡¢ß°ú °è¾àÀ»
-						ÅëÇØ ±¸¸Å ¾ÈÀü ¼­ºñ½º¸¦ ÀÚµ¿À¸·Î Á¦°øÁßÀÔ´Ï´Ù. (°áÁ¦´ë±İ¿¹Ä¡¾÷ µî·Ï¹øÈ£ 02-006-000022) </small>
-				</p>
-
+			<div class="row">
+				<div class="col-12 pt-2">
+<!-- 					<p> -->
+<!-- 						<small>11ë²ˆê°€ãˆœëŠ” í†µì‹ íŒë§¤ì¤‘ê°œìë¡œì„œ í†µì‹ íŒë§¤ì˜ ë‹¹ì‚¬ìê°€ ì•„ë‹ˆë©°, ê°œë³„íŒë§¤ìê°€ ë“±ë¡í•œ ìƒí’ˆì •ë³´ ë° -->
+<!-- 							ê±°ë˜ì— ëŒ€í•´ 11ë²ˆê°€ãˆœëŠ” ì¼ì²´ì˜ ì±…ì„ì„ ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.</small> -->
+<!-- 					</p> -->
+				</div>
 			</div>
-		</div>
 
-		<div class="row py-5 border-bottom">
-			<div class="col-12 text-center">
-				<a class="btn akame-btn mr-3" id="buy_aTag">°á Á¦ ÇÏ ±â </a> <a href="#"
-					class="btn akame-btn ml-3">°á Á¦ Ãë ¼Ò</a>
-
+			<div class="row">
+				<div class="col-12 pt-2 font-weight-bold">
+					<h3>ë°°ì†¡ì§€ ì •ë³´ ì…ë ¥</h3>
+				</div>
 			</div>
-		</div>
-	</div>
 
 
+
+
+
+			<div class="row border rounded">
+				<div class="col-3 font-weight-bold py-2" style="line-height: 2em">ë°°ì†¡ì§€ì„ íƒ</div>
+				<div class="col-9 py-2">
+					<span>ê¸°ë³¸ ë°°ì†¡ì§€ <input type="radio" name="origin_radio"id="origin" checked="checked"></span> 
+					<span>ì‹ ê·œ ë°°ì†¡ì§€ <input type="radio" name="origin_radio" id="new">
+					</span>
+				</div>
+				<div class="col-3 font-weight-bold py-2">ë°›ìœ¼ì‹œëŠ” ë¶„</div>
+				<div class="col-9 py-2">
+					<input type="text" name="order_receipt" style="width: 8em"
+						class="empty" id="geter_name">
+				</div>
+				<div class="col-3 font-weight-bold py-2">ë°°ì†¡ì§€ì„ íƒ</div>
+				<div class="col-9 py-2">
+
+
+					<input type="text" id="sample6_postcode" class="findAdd empty"
+						name="order_receipt_postcode" placeholder="ìš°í¸ë²ˆí˜¸" readonly>
+					<input type="button" onclick="sample6_execDaumPostcode()"
+						id="postbtn" value="ìš°í¸ë²ˆí˜¸ ì°¾ê¸°" style="margin-left: 0.5em"> <br>
+					<br> <input type="text" id="sample6_address"
+						class="findAdd empty" name="order_receipt_address1"
+						placeholder="ì£¼ì†Œ" style="width: 20em" readonly> <br> <br>
+					<input type="text" id="sample6_detailAddress" class="empty"
+						name="order_receipt_address2" placeholder="ìƒì„¸ì£¼ì†Œ"
+						style="width: 25em">
+<!-- 												<input type="text"	id="sample6_extraAddress" class="empty" placeholder="ì§€ë²ˆ" readonly> -->
+
+
+				</div>
+				<div class="col-3 font-weight-bold py-2">íœ´ëŒ€ì „í™”</div>
+				<div class="col-9 py-2">
+					<input type="text" name="getter_phone1" class="empty"
+						style="width: 8em" id="phone1" value=""> - <input
+						type="text" name="getter_phone2" class="empty" style="width: 8em"
+						id="phone2"> - <input type="text" name="getter_phone3"
+						class="empty" style="width: 8em" id="phone3">
+				</div>
+				<div class="col-3 font-weight-bold py-2">ë°°ì†¡ì‹œìš”êµ¬ì‚¬í•­</div>
+				<div class="col-9">
+
+					<input type="text" name="order_receipt_demend" style="width: 35em"
+						placeholder="(ì„ íƒì‚¬í•­)" id="req">
+
+
+					<p style="color: blue;">
+						<small>*íŠ¹ì •í•œ ë°°ì†¡ì¼ì„ ì§€ì •í•˜ê³ ì í•  ê²½ìš° íŒë§¤ìì™€ ì—°ë½í•˜ì—¬ ë°°ì†¡ì¼ì„ í™•ì¸í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.</small>
+					</p>
+
+				</div>
+			</div>
+
+
+
+			<div class="row py-2">
+				<div class="col-12">
+					<p>
+
+						<input type="checkbox" id="must1"> <small class="must1">(í•„ìˆ˜1)íŒë§¤ëª…,
+							ìœ í†µê¸°í•œ, íŒë§¤ìˆ˜ëŸ‰, íŒë§¤ê¸ˆì•¡ ë“± ìƒí’ˆ ì •ë³´ë¥¼ ëª¨ë‘ í™•ì¸í•˜ì˜€ìŠµë‹ˆë‹¤</small><br> <input
+							type="checkbox" id="must2"> <small class="must2">(í•„ìˆ˜2)ì •í™•í•˜ì§€
+							ì•Šì€ ì •ë³´ ì…ë ¥ìœ¼ë¡œ ì¸í•˜ì—¬ ìƒê¸´ í”¼í•´ëŠ” ì£¼ë¬¸ìê°€ ì±…ì„ì§€ê² ìŠµë‹ˆë‹¤</small><br> <input
+							type="checkbox" id="must3"> <small class="must3">(í•„ìˆ˜3)ë°°ì†¡
+							ê³¼ì • ì¤‘ ë°œìƒí•œ ë¬¸ì œëŠ” Akameì—ì„œ ì±…ì„ì§€ì§€ ì•Šìœ¼ë¯€ë¡œ íƒë°°ì‚¬ì— ë¬¸ì˜ ë¶€íƒë“œë¦½ë‹ˆë‹¤</small><br> <input
+							type="checkbox" id="must4"> <small class="must4">(í•„ìˆ˜4)ê²°ì œ
+							í›„ ì·¨ì†Œ,í™˜ë¶ˆ,êµí™˜ì´ ì–´ë ¤ìš¸ ìˆ˜ ìˆìœ¼ë©°, ì´ì— ë™ì˜í•©ë‹ˆë‹¤ </small>
+
+					</p>
+
+
+
+
+				</div>
+
+
+				<div class="row py-5 border-bottom">
+					<div class="col-12 text-center">
+						<a class="btn akame-btn mr-3" id="buy_aTag">ê²° ì œ í•˜ ê¸° </a> <a
+							href="#" class="btn akame-btn ml-3" id="back_aTag">ê²° ì œ ì·¨ ì†Œ</a> <input
+							type="hidden" value="" id=quant3 name=quant> <input
+							type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
+
+
+					</div>
+				</div>
+			</div>
+			</div>
+	</form>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
-
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
-		// 	¹è¼ÛÁö radio reset 
+		var IMP = window.IMP; // ìƒëµê°€ëŠ¥
+		IMP.init('imp96545220'); // 'iamport' ëŒ€ì‹  ë¶€ì—¬ë°›ì€ "ê°€ë§¹ì  ì‹ë³„ì½”ë“œ"ë¥¼ ì‚¬ìš©
+
+		$("#origin").is("check");
+
+		$("#buy_aTag")
+				.on(
+						"click",
+						function() {
+							var inputcount = 0;
+							$(".empty").each(function(i, item) {
+								if ($(item).val() == "") {
+									inputcount++; //ë§Œì¼ ì…ë ¥ì°½ ì–´ë”˜ê°€ì— ë¹ˆ ì¹¸ì´ ìˆì„ ê²½ìš° ì¹´ìš´íŠ¸ë¥¼ ì¦ê°€ì‹œí‚¨ë‹¤.
+								}
+							});
+							var regname = /^[ê°€-í£]{1,6}$/;
+							var regnum1 = /^01([0|1|6|7|8|9]?)$/;
+							var regnum2 = /^([0-9]{3,4})$/;
+							var regnum3 = /^([0-9]{4})$/;
+							var regemail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
+							var regemail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+							var price = $("#price").text();
+
+
+							if (inputcount > 0) {
+								alert("ëª¨ë“  í•­ëª©ì„ ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
+							} else if (!regname.test($("#order_buyer").val())) {
+								alert("ì£¼ë¬¸ì ì´ë¦„ì„ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regnum1.test($("#order_phone1").val())) {
+								alert("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regnum2.test($("#order_phone2").val())) {
+								alert("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regnum3.test($("#order_phone3").val())) {
+								alert("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regemail1.test($("#email1").val())) {
+								alert("ë©”ì¼ì£¼ì†Œë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regemail2.test($("#email2").val())) {
+								alert("í•¸ë“œí° ë²ˆí˜¸ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regname.test($("#geter_name").val())) {
+								alert("ë°›ìœ¼ì‹œëŠ” ë¶„ì„ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if ($("#sample6_detailAddress").val().length > 25) {
+								alert("ìƒì„¸ì£¼ì†Œ ê¸¸ì´ë¥¼ ì´ˆê³¼í•˜ì˜€ìŠµë‹ˆë‹¤")
+							} else if (!regnum1.test($("#phone1").val())) {
+								alert("ë°°ì†¡ì§€ ë²ˆí˜¸ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regnum2.test($("#phone2").val())) {
+								alert("ë°°ì†¡ì§€ ë²ˆí˜¸ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if (!regnum3.test($("#phone3").val())) {
+								alert("ë°°ì†¡ì§€ ë²ˆí˜¸ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”");
+							} else if ($("#req").val().length > 30) {
+								alert("ìš”êµ¬ì‚¬í•­ ê¸¸ì´ë¥¼ ì´ˆê³¼í•˜ì˜€ìŠµë‹ˆë‹¤");
+							} else if ($("#must1").is(":checked") == false) {
+								alert("í•„ìˆ˜ì‚¬í•­1ì„ ì½ê³  ì²´í¬í•´ì£¼ì„¸ìš”");
+							} else if ($("#must2").is(":checked") == false) {
+								alert("í•„ìˆ˜ì‚¬í•­2ë¥¼ ì½ê³  ì²´í¬í•´ì£¼ì„¸ìš”");
+							} else if ($("#must3").is(":checked") == false) {
+								alert("í•„ìˆ˜ì‚¬í•­3ì„ ì½ê³  ì²´í¬í•´ì£¼ì„¸ìš”");
+							} else if ($("#must4").is(":checked") == false) {
+								alert("í•„ìˆ˜ì‚¬í•­4ë¥¼ ì½ê³  ì²´í¬í•´ì£¼ì„¸ìš”");
+							} else {
+								removeXSS($("#order_buyer").val(), $(
+										"#order_buyer").attr("id"));
+								removeXSS($("#order_phone1").val(), $(
+										"#order_phone1").attr("id"));
+								removeXSS($("#order_phone2").val(), $(
+										"#order_phone2").attr("id"));
+								removeXSS($("#order_phone3").val(), $(
+										"#order_phone3").attr("id"));
+								removeXSS($("#email1").val(), $("#email1")
+										.attr("id"));
+								removeXSS($("#email2").val(), $("#email2")
+										.attr("id"));
+								removeXSS($("#geter_name").val(), $(
+										"#geter_name").attr("id"));
+								removeXSS($("#sample6_postcode").val(), $(
+										"#sample6_postcode").attr("id"));
+								removeXSS($("#sample6_address").val(), $(
+										"#sample6_address").attr("id"));
+								removeXSS($("#sample6_detailAddress").val(), $(
+										"#sample6_detailAddress").attr("id"));
+// 								removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
+								removeXSS($("#phone1").val(), $("#phone1")
+										.attr("id"));
+								removeXSS($("#phone2").val(), $("#phone2")
+										.attr("id"));
+								removeXSS($("#phone3").val(), $("#phone3")
+										.attr("id"));
+								removeXSS($("#req").val(), $("#req").attr("id"));
+								var shop_q = Number($("#quant2").val());
+								var qua = Number($("#quant1").val());
+								var quant = shop_q - qua;
+								$("input[name=quant]").val(shop_q - qua);
+								$("#completeForm").submit();
+// 								IMP.request_pay({
+// 									pg : 'inicis', // version 1.1.0ë¶€í„° ì§€ì›.
+// 									pay_method : 'card',
+// 									merchant_uid : 'merchant_'
+// 											+ new Date().getTime(),
+// 									name : 'ì£¼ë¬¸ëª…:ê²°ì œí…ŒìŠ¤íŠ¸',
+// 									amount : price,
+// 									buyer_email : 'iamport@siot.do',
+// 									buyer_name : 'êµ¬ë§¤ìì´ë¦„',
+// 									buyer_tel : '010-1234-5678',
+// 									buyer_addr : 'ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ ì‚¼ì„±ë™',
+// 									buyer_postcode : '123-456',
+// 									m_redirect_url : 'localhost/home'
+// 								}, function(rsp) {
+// 									if (rsp.success) {
+// 										var msg = 'ê²°ì œê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.';
+// 										alert(msg);
+// 										$("#completeForm").submit();
+// 									} else {
+// 										var msg = 'ê²°ì œì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.';
+// 										msg += 'ì—ëŸ¬ë‚´ìš© : ' + rsp.error_msg;
+// 									}
+// 								});
+							}
+						});//ê²°ì œë²„íŠ¼í´ë¦­
+
+		$(".findAdd").on("click", function() {
+			$("#postbtn").click();
+		})
+
+		// 	ë°°ì†¡ì§€ radio reset 
 		var reset = function() {
 			$("#geter_name").val("");
 			$("#sample6_postcode").val("");
@@ -196,114 +418,112 @@ a {
 		}
 		var phone = '${id.member_phone}';
 		console.log(phone);
-		var origin = function() {
 
-			$("#geter_name").val("${id.member_name}");
-			$("#sample6_postcode").val("${id.member_postcode}");
-			$("#sample6_address").val("${id.member_address1}");
-			$("#sample6_detailAddress").val("${id.member_address2}");
-			$("#phone1").val(phone.substr(0, 2));
-			$("#phone2").val(phone.substr(2, 4));
-			$("#phone3").val(phone.substr(4, 4));
-		}
-		// ´ÙÀ½ ÁÖ¼Ò API	
+		// ë‹¤ìŒ ì£¼ì†Œ API	
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{
 						oncomplete : function(data) {
-							// ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+							// íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 
-							// °¢ ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-							// ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-							var addr = ''; // ÁÖ¼Ò º¯¼ö
-							var extraAddr = ''; // Âü°íÇ×¸ñ º¯¼ö
+							// ê° ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ ì¡°í•©í•œë‹¤.
+							// ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+							var addr = ''; // ì£¼ì†Œ ë³€ìˆ˜
+							var extraAddr = ''; // ì°¸ê³ í•­ëª© ë³€ìˆ˜
 
-							//»ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò Å¸ÀÔ¿¡ µû¶ó ÇØ´ç ÁÖ¼Ò °ªÀ» °¡Á®¿Â´Ù.
-							if (data.userSelectedType === 'R') { // »ç¿ëÀÚ°¡ µµ·Î¸í ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì
+							//ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œ íƒ€ì…ì— ë”°ë¼ í•´ë‹¹ ì£¼ì†Œ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
+							if (data.userSelectedType === 'R') { // ì‚¬ìš©ìê°€ ë„ë¡œëª… ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°
 								addr = data.roadAddress;
-							} else { // »ç¿ëÀÚ°¡ Áö¹ø ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì(J)
+							} else { // ì‚¬ìš©ìê°€ ì§€ë²ˆ ì£¼ì†Œë¥¼ ì„ íƒí–ˆì„ ê²½ìš°(J)
 								addr = data.jibunAddress;
 							}
 
-							// »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò°¡ µµ·Î¸í Å¸ÀÔÀÏ¶§ Âü°íÇ×¸ñÀ» Á¶ÇÕÇÑ´Ù.
+							// ì‚¬ìš©ìê°€ ì„ íƒí•œ ì£¼ì†Œê°€ ë„ë¡œëª… íƒ€ì…ì¼ë•Œ ì°¸ê³ í•­ëª©ì„ ì¡°í•©í•œë‹¤.
 							if (data.userSelectedType === 'R') {
-								// ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-								// ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+								// ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+								// ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
 								if (data.bname !== ''
-										&& /[µ¿|·Î|°¡]$/g.test(data.bname)) {
+										&& /[ë™|ë¡œ|ê°€]$/g.test(data.bname)) {
 									extraAddr += data.bname;
 								}
-								// °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+								// ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
 								if (data.buildingName !== ''
 										&& data.apartment === 'Y') {
 									extraAddr += (extraAddr !== '' ? ', '
 											+ data.buildingName
 											: data.buildingName);
 								}
-								// Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+								// í‘œì‹œí•  ì°¸ê³ í•­ëª©ì´ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
 								if (extraAddr !== '') {
 									extraAddr = ' (' + extraAddr + ')';
 								}
-								// Á¶ÇÕµÈ Âü°íÇ×¸ñÀ» ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
-								document.getElementById("sample6_extraAddress").value = extraAddr;
+								// ì¡°í•©ëœ ì°¸ê³ í•­ëª©ì„ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
+// 								document.getElementById("sample6_extraAddress").value = extraAddr;
 
 							} else {
 								document.getElementById("sample6_extraAddress").value = '';
 							}
 
-							// ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+							// ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
 							document.getElementById('sample6_postcode').value = data.zonecode;
 							document.getElementById("sample6_address").value = addr;
-							// Ä¿¼­¸¦ »ó¼¼ÁÖ¼Ò ÇÊµå·Î ÀÌµ¿ÇÑ´Ù.
-							document.getElementById("sample6_detailAddress").value = "";//»ó¼¼ÁÖ¼Ò ÀÔ·ÂÇÏ°í Ãß°¡ÇÏ¸é »èÁ¦µÇ°ÔÇÔ
+							// ì»¤ì„œë¥¼ ìƒì„¸ì£¼ì†Œ í•„ë“œë¡œ ì´ë™í•œë‹¤.
+							document.getElementById("sample6_detailAddress").value = "";//ìƒì„¸ì£¼ì†Œ ì…ë ¥í•˜ê³  ì¶”ê°€í•˜ë©´ ì‚­ì œë˜ê²Œí•¨
 							document.getElementById("sample6_detailAddress")
 									.focus();
 						}
 					}).open();
 		}
-		//¾ÆÀÓÆ÷Æ® API
 
-		$("#buy_aTag").on("click", function() {
-			var IMP = window.IMP; // »ı·«°¡´É
-			IMP.init('imp00502224'); // 'iamport' ´ë½Å ºÎ¿©¹ŞÀº "°¡¸ÍÁ¡ ½Äº°ÄÚµå"¸¦ »ç¿ë
-
-			IMP.request_pay({
-				pg : 'kakao', // version 1.1.0ºÎÅÍ Áö¿ø.
-				pay_method : 'card',
-				merchant_uid : 'merchant_' + new Date().getTime(),
-				name : '${dto.shop_title}', //ÁÖ¹®ÀÚ ÀÌ¸§
-				amount : '${dto.shop_price}', //ÁÖ¹®±İ¾×  ¼­¹ö´Ü¿¡¼­ ½ÇÁ¦ ÆÇ¸Å±İ¾×ÀÌ¶û ºñ±³ÇØ¾ßÇÔ ½ºÅ©¸³Æ® °ø°İ°¡´É
-				buyer_email : $("#email1").val()+"@"+$("#email2").val(), //±¸¸ÅÀÚ ÀÌ¸ŞÀÏ 
-				buyer_name : $("#order_name").val(), //½Ç ±¸¸ÅÀÚ ÀÌ¸§
-				buyer_tel : $("#phone1").val()+$("#phone2").val()+$("#phone3").val(), //±¸¸ÅÀÚ ¹øÈ£
-				buyer_addr : $("#sample6_address").val()+" "+$("#sample6_detailAddress").val(), //½ÇÁ¦ ¹è¼ÛÁöÁÖ¼Ò?
-				buyer_postcode : $("#sample6_postcode").val(), //±¸¸ÅÀÚ ¿ìÆíÁÖ¼Ò
-				m_redirect_url : '/board/shopBoard_import'//ÀÌ°Ô mappingÀÓ?
-			}, function(rsp) {
-				if (rsp.success) {
-					console.log(resp);
-					var msg = '°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.';
-					msg += '°íÀ¯ID : ' + rsp.imp_uid;
-					msg += '»óÁ¡ °Å·¡ID : ' + rsp.merchant_uid;
-					msg += '°áÁ¦ ±İ¾× : ' + rsp.paid_amount;
-					msg += 'Ä«µå ½ÂÀÎ¹øÈ£ : ' + rsp.apply_num;
-				} else {
-					var msg = '°áÁ¦¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.';
-					msg += '¿¡·¯³»¿ë : ' + rsp.error_msg;
-				}
-				alert(msg);
-			});
-		})
-
-		// ½Å±Ô ¹è¼ÛÁö radio
 		$("#new").on("click", function() {
 			reset();
 		})
-		// ±âÁ¸ ¹è¼ÛÁö radio
-		$("#origin").on("click", function() {
 
-			origin();
+		// ê¸°ì¡´ ë°°ì†¡ì§€ radio
+
+		$("#back_aTag")
+				.on(
+						"click",
+						function() {
+							if (confirm("ê²°ì œë¥¼ ì·¨ì†Œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ì…ë ¥í•˜ì‹  ì •ë³´ëŠ” ì €ì¥ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.")) {
+								$(location)
+										.attr("href",
+												"/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }");
+							}
+						})
+		$("#chargeOk_btn").on("click", function() {
+			$(location).attr("href", "/shopboard/shopChargeOk");
 		})
+		$(function() {
+
+		})
+
+		$(".must1").on("click", function() {
+			$("#must1").click();
+		});
+		$(".must2").on("click", function() {
+			$("#must2").click();
+		});
+		$(".must3").on("click", function() {
+			$("#must3").click();
+		});
+
+		$("#selectEmail").change(function() {
+			var selectEmail = $(this).val();
+			if (selectEmail == "1") {
+				$("input[name='email2']").val("");
+				$("input[name='email2']").attr("readonly", false);
+
+			} else {
+				$("input[name='email2']").val(selectEmail);
+				$("input[name='email2']").attr("readonly", true);
+			}
+		})
+
+		$(".must4").on("click", function() {
+			$("#must4").click();
+		});
 	</script>
+
 </body>
 </html>

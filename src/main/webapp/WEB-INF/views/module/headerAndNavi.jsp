@@ -2,45 +2,87 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
-	.headerbtn{
-		border: 1px solid skyblue;
-            background-color: rgba(0,0,0,0);
-            color: skyblue;
-            padding: 5px;
-            
-	}
-	
-	.headerbtn:hover{
-		color:white;
-            background-color: skyblue;
-	}
-	#logout{
+.headerbtn {
+	border: 0px solid gray;
+	background-color: rgba(0, 0, 0, 0);
+	color: black;
+	padding: 5px;
+	padding-top: 0px;
+}
+
+.headerbtn:hover {
+	color: black;
+}
+
+#logout {
 	border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-	}
-	
-	#mypage{
+	border-bottom-left-radius: 5px;
+}
+
+#mypage {
 	border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-	}
+	border-bottom-right-radius: 5px;
+	width: 10%;
+}
+
+.btn {
+	border: 1px solid gray;
+	transition-duration: 1s;
+	cursor: pointer;
+	color: black;
+	background-color: #f4ead0;
+}
+
+.btn:hover {
+	background-color: white;
+	border: 1px solid gray;
+	color: black;
+}
+
+li:hover {
+	color: #f4ead0;
+}
+
+a, #LogIN, #mypage, #logout {
+	cursor: pointer;
+}
 
 
+body {
+	font-family: '나눔고딕OTF';
+}
+
+#map_ma {
+	width: 100%;
+	height: 400px;
+	clear: both;
+	border: solid 0px;
+}
 </style>
+
+
 <!-- Preloader -->
 <div id="preloader">
 	<div class="loader"></div>
 </div>
 <!-- /Preloader -->
 <!-- Header Area Start -->
-<header class="header-area" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<header class="header-area" oncontextmenu="return false"
+	ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
-	<div class="top-header-area">
+	<div class="top-header-area" style="background-color: #f4ead0">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p>Welcome to hair salon!</p>
+						<p style="font-family: '나눔고딕OTF'; color: black">Akame에 오신 여러분
+							환영합니다!</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -49,12 +91,17 @@
 						<c:choose>
 							<c:when test="${id eq null}">
 
-								<button  id="LogIN" class="headerbtn">LogIN</button>
+								<button id="LogIN" class="headerbtn">LogIN</button>
 							</c:when>
 
 							<c:otherwise>
-								<button id=logout class="headerbtn">logout</button>
-								<button id=mypage  class="headerbtn"></button>
+								<input id="listid" type="hidden" value="${id.member_id}">
+								<button id=mypage class="headerbtn">
+									<img src="/img/button-img/m_iconM.png">
+								</button>
+								<button id=logout style="width: 8%;" class="headerbtn ">
+									<img src="/img/button-img/logout2.png">
+								</button>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -64,99 +111,186 @@
 	</div>
 	<!-- Top Header Area End -->
 	<!-- Main Header Start -->
-	<div class="main-header-area">
-		<div class="classy-nav-container breakpoint-off">
-			<div class="container">
-				<!-- Classy Menu -->
-				<nav class="classy-navbar justify-content-between" id="akameNav">
 
-					<!-- Logo -->
-					<a class="nav-brand" href="index.html"><img
-						src="/img/core-img/logo.png" alt=""></a>
-					<!-- Navbar Toggler -->
-					<div class="classy-navbar-toggler">
-						<span class="navbarToggler"><span></span><span></span><span></span></span>
-					</div>
+	<div class="main-header-area " id="fixedNav">
 
-					<!-- Menu -->
-					<div class="classy-menu">
-						<!-- Menu Close Button -->
-						<div class="classycloseIcon">
-							<div class="cross-wrap">
-								<span class="top"></span><span class="bottom"></span>
+		<div class="main-header-area " style="background-color: white"
+			id="fixedNav">
+
+			<div class="classy-nav-container breakpoint-off border"">
+				<div class="container">
+					<!-- Classy Menu -->
+
+					<nav class="classy-navbar justify-content-between " id="akameNav">
+
+
+						<!-- Logo -->
+						<a class="nav-brand" href="/home"><img
+							src="/img/core-img/logo3.png" alt="" style="height: 3em"></a>
+						<!-- Navbar Toggler -->
+						<div class="classy-navbar-toggler">
+							<span class="navbarToggler"><span></span><span></span><span></span></span>
+						</div>
+
+						<!-- Menu -->
+						<div class="classy-menu">
+							<!-- Menu Close Button -->
+							<div class="classycloseIcon">
+								<div class="cross-wrap">
+									<span class="top"></span><span class="bottom"></span>
+								</div>
+							</div>
+							<div class="classynav">
+								<ul id="nav">
+									<li><a href="/home">Home</a></li>
+									<li><a href="/home/service">서비스 소개</a></li>
+									<li><a href="#">판매/구매 현황</a>
+										<ul class="dropdown">
+											<li><a onclick="buy_record();">구매 내역</a></li>
+											<li><a onclick="sell_record();">판매 내역 </a></li>
+										</ul></li>
+									<li><a href="/shopboard/shopBoardGo?page=1">구매하기 </a>
+									<li><a onclick="loginCheck_write();">판매하기 </a>
+									<li><a onclick="loginCheck_sns();">SNS</a></li>
+								<li><a onclick="message();">쪽지함</a></li>
+
+
+								</ul>
+								<!-- Cart Icon -->
+								<div class="cart-icon ml-2 mt-4 mt-lg-0">
+									<a id="list"><i class="icon_cart"></i></a>
+								</div>
 							</div>
 						</div>
-						<!-- Nav Start -->
-						<div class="classynav">
-							<ul id="nav">
-								<li ><a href="./index.html">Home</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="dropdown">
-										<li><a href="./index.html">- Home</a></li>
-										<li><a href="./about.html">- About Us</a></li>
-										<li><a href="./service.html">- 서비스 소개</a></li>
-										<li><a href="shopboard/shopBoardGo?page=1">- 글 보기</a></li>
-										<li><a href="./blog.html">- sns</a></li>
-										<li><a href="./single-blog.html">- Blog Details</a></li>
-										<li><a href="./contact.html">- Contact</a></li>
-										<li><a href="#">- Dropdown</a>
-											<ul class="dropdown">
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-												<li><a href="#">- Dropdown Item</a></li>
-											</ul></li>
-									</ul></li>
-								<li><a href="/home/ee">서비스 소개</a></li>
-								<li><a href="#">판매 게시판</a>
-									<ul class="dropdown">
-										<li><a href="/shopboard/shopBoardGo?page=1">- 구매하기</a></li>
-										<li><a href="/shopboard/ShopBoard_write">- 판매하기</a></li>
-									</ul></li>
-								<li><a href="/timeline/accessTimeLine?seq=1">sns</a></li>
-
-							</ul>
-
-							
-
-							<!-- Cart Icon -->
-							<div class="cart-icon ml-5 mt-4 mt-lg-0">
-								<a href="#"><i class="icon_cart"></i></a>
-							</div>
-
-							<!-- Book Icon -->
-							<div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
-								<a href="#" class="btn akame-btn">Book Now</a>
-							</div>
-						</div>
-						<!-- Nav End -->
-					</div>
-				</nav>
+					</nav>
+				</div>
 			</div>
 		</div>
-	</div>
 
-
-
-
-
-
-	<script>
-
-		$("#LogIN").on("click",function(){
-			location.href="/member/loginForm";
-			
-		})
+		<script>
 	
-		$("#logout").on("click",function(){
-			location.href="/member/logOutProc";
-		})
+		var message = function(){
+			var popupX = (window.screen.width / 2) - (500 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (window.screen.height / 2) - (600 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+			if(${id == null}){
+				alert("로그인이 필요합니다");
+				window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
+			}else{
+			
+				location.href = "/timeline/messageList?seq=1";
+			}
+		}
 		
-		$("#mypage").on("click",function(){
+ 	var loginCheck_write = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
-			location.href="/member/myPage";
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
 
-		})
-	</script>
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
+   		}else{
+   			location.href = "/shopboard/ShopBoard_write";
+   		}
+   	}
+ 	var buy_record = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
+   		}else{
+   			location.href="/member/buyContentsGo";
+   		}
+   	}
+ 	
+ 	var sell_record = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
+   		}else{
+   			location.href="/shopboard/sellContentsGo";
+   		}
+   	}
+ 	var loginCheck_sns = function(){
+ 		var popupX = (window.screen.width / 2) - (500 / 2);
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY= (window.screen.height / 2) - (600 / 2);
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+   		if(${id == null}){
+   			alert("로그인이 필요합니다");
+   			window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
+   		}else{
+   			location.href = "/timeline/accessTimeLine?seq=1";
+   		}
+   	}
+   
+
+      $("#list").on("click", function() {
+    		var popupX = (window.screen.width / 2) - (500 / 2);
+			// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+			var popupY= (window.screen.height / 2) - (600 / 2);
+			// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+         if(${id == null}){
+        	 alert("로그인이 필요합니다");
+        		window.open('/home/minilog', '', 'status=no, height=600, width=500, left='+ popupX + ', top='+ popupY);
+         }else{
+        	 var listId = $("#listid").val();
+             location.href = "/Basket/basketList?id=" + encodeURI(listId); 
+         }
+    	  
+      })
+
+      $(window).scroll(function() {
+
+         var docScrollY = $(document).scrollTop()
+         var barThis = $("#fixedNav")
+
+         //          console.log(docScrollY);
+         if (docScrollY > 200) {
+            barThis.fadeIn();
+            barThis.addClass("fixed-top");
+
+         } else {
+            barThis.removeClass("fixed-top");
+         }
+
+      });
+   </script>
+
+
+		<script>
+      $("#LogIN").on("click", function() {
+         location.href = "/member/loginForm";
+
+      })
+
+      $("#logout").on("click", function() {
+         location.href = "/member/logOutProc";
+      })
+
+      $("#mypage").on("click", function() {
+         location.href = "/member/myPage";
+      })
+   </script>
 </header>

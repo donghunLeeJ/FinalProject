@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminDAO">
+
+<select id="MemberSelectAll" resultType="com.project.dto.MemberDTO">
+    select * from member
+</select>
+
+<select id="MemberSelectIdAll" resultType="com.project.dto.MemberDTO">
+    select * from member where member_id=#{member_id}
+</select>
+
+
+<select id="SNSSelectSeqAll" resultType="com.project.dto.Tl_BoardDTO">
+    select * from tl_board where tl_board_seq=#{tl_board_seq}
+</select>
+
+
+<!--게시글의 총 갯수를 뽑아오는 쿼리(멤버) -->
+<select id="MemberCount" resultType="Integer">
+ select count(*) as membercount from member
+</select>
+
+<!--게시글의 총 갯수(맴버검색 결과)를 뽑아오는 쿼리
+(like를 사용할 때는 주의합시다! 해결방법이 오라클이랑 mysql이랑 다름)-->
+<select id="SelectMemberCount" resultType="Integer">
+	select count(*) as memberidcount
+	from member
+	where member_id like '%'||#{keyword}||'%'
+</select>
+
+
+
+<!-- <![CDATA[<]]>-->
+<!--페이지의 어떤 번호를 클릭시 해당 페이지의 글 10개를 보여주는 함수입니다.(멤버테이블)-->
+<select id="PageMemberselect" resultType="com.project.dto.MemberDTO">
+select X.rnum, X.member_id, X.member_pw, X.member_name, X.member_birth, X.member_gender, X.member_phone , X.member_postcode , X.member_address1 , X.member_address2 , X.member_imgpath , X.member_intro , X.member_confirm , X.member_blackcheck
+from( 
+  select rownum as rnum, A.member_id, A.member_pw, A.member_name, A.member_birth, A.member_gender, A.member_phone , A.member_postcode , A.member_address1 , A.member_address2 , A.member_imgpath , A.member_intro , A.member_confirm , A.member_blackcheck
+   from(
+        select *
+        from member
+        order by member_id desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+<!--페이지의 어떤 번호를 클릭시 해당 페이지의 글 10개를 보여주는 함수입니다.(멤버테이블 id로 검색)-->
+<select id="PageMemberIdselect" resultType="com.project.dto.MemberDTO">
+select X.rnum, X.member_id, X.member_pw, X.member_name, X.member_birth, X.member_gender, X.member_phone , X.member_postcode , X.member_address1 , X.member_address2 , X.member_imgpath , X.member_intro , X.member_confirm , X.member_blackcheck
+from( 
+  select rownum as rnum, A.member_id, A.member_pw, A.member_name, A.member_birth, A.member_gender, A.member_phone , A.member_postcode , A.member_address1 , A.member_address2 , A.member_imgpath , A.member_intro , A.member_confirm , A.member_blackcheck
+   from(
+        select *
+        from member
+        where member_id like '%'||#{keyWord}||'%'
+        order by member_id desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+<!--게시글의 총 갯수를 뽑아오는 쿼리(샵보드) -->
+<select id="ShopBoardCount" resultType="Integer">
+ select count(*) as ShopBoardCount from shopboard
+</select>
+
+<!-- <![CDATA[<]]>-->
+<!--페이지의 어떤 번호를 클릭시 해당 페이지의 글 10개를 보여주는 함수입니다.(샵보드)-->
+<select id="PageShopBoardSelect" resultType="com.project.dto.ShopBoardDTO">
+select X.rnum, X.memberSell_seq, X.shop_seq , X.shop_id, X.shop_brand, X.shop_title, X.shop_contents , X.shop_writedate , X.shop_location , X.shop_expiration , X.shop_price , X.shop_quantity , X.shop_imagepath1 , X.shop_imagepath2, X.shop_imagepath3
+from( 
+  select rownum as rnum, A.memberSell_seq, A.shop_seq , A.shop_id, A.shop_brand, A.shop_title, A.shop_contents , A.shop_writedate , A.shop_location , A.shop_expiration , A.shop_price , A.shop_quantity , A.shop_imagepath1 , A.shop_imagepath2, A.shop_imagepath3
+   from(
+        select *
+        from shopboard
+        order by shop_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+
+<!--게시글의 총 갯수를 뽑아오는 쿼리(구매내역) -->
+<select id="OrderBoardCount" resultType="Integer">
+ select count(*) as OrderBoardCount from products_order
+</select>
+
+
+<!--페이지의 어떤 번호를 클릭시 해당 페이지의 글 10개를 보여주는 함수입니다.(구매내역)-->
+<select id="PageOrderBoardSelect" resultType="com.project.dto.OrderDTO">
+select X.rnum, X.order_seq, X.order_number , X.order_time, X.order_quantity, X.order_price, X.order_image , X.order_seller , X.order_buyer , X.order_buyer_phone , X.order_buyer_email , X.order_receipt , X.order_receipt_postcode , X.order_receipt_address1, X.order_receipt_address2, X.order_receipt_phone, X.order_receipt_demend
+from( 
+  select rownum as rnum, A.order_seq, A.order_number , A.order_time, A.order_quantity, A.order_price, A.order_image , A.order_seller , A.order_buyer , A.order_buyer_phone , A.order_buyer_email , A.order_receipt , A.order_receipt_postcode , A.order_receipt_address1, A.order_receipt_address2, A.order_receipt_phone, A.order_receipt_demend
+   from(
+        select *
+        from products_order
+        order by order_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+	<!--주문번호로 검색시 해당 주문번호를 출력시키는 sql(주문번호의 특성상 반드시 하나만 나올 것이다.) -->
+	<select id="OrderNumberSelect" resultType="com.project.dto.OrderDTO">
+		select * from products_order where order_number=#{order_number}
+	</select>
+
+
+
+
+<!--게시글의 총 갯수를 뽑아오는 쿼리(SNS) -->
+<select id="SNSBoardCount" resultType="Integer">
+ select count(*) as SNSBoardCount from tl_board
+</select>
+
+
+<!--게시글의 총 갯수(SNS)를 뽑아오는 쿼리
+(like를 사용할 때는 주의합시다! 해결방법이 오라클이랑 mysql이랑 다름)-->
+<select id="SelectSNSBoardCount" resultType="Integer">
+	select count(*) as SelectSNSBoardCount
+	from tl_board
+	where tl_title like '%'||#{keyword}||'%'
+</select>
+
+
+<!--페이지의 어떤 번호를 클릭시 해당 페이지의 글 10개를 보여주는 함수입니다.(Sns)-->
+<select id="PageSNSBoardSelect" resultType="com.project.dto.Tl_BoardDTO">
+select X.rnum, X.tl_board_seq, X.tl_title , X.tl_contents, X.tl_writer, X.tl_writer_profile, X.tl_writedate , X.tl_viewcount , X.tl_likecount , X.tl_likestatus , X.tl_imgaddr , X.tl_status, X.tl_reason , X.tl_reporter  
+from( 
+  select rownum as rnum, A.tl_board_seq, A.tl_title , A.tl_contents, A. tl_writer, A.tl_writer_profile, A.tl_writedate, A.tl_viewcount , A.tl_likecount , A.tl_likestatus , A.tl_imgaddr , A.tl_status, A.tl_reason , A.tl_reporter
+   from(
+        select *
+        from tl_board
+        order by tl_board_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+<!--페이지의 어떤 번호를 클릭시 해당 페이지의 글 10개를 보여주는 함수입니다.(Sns 글제목으로 검색)-->
+<select id="SelectTitlePageSNSBoardSelect" resultType="com.project.dto.Tl_BoardDTO">
+select X.rnum, X.tl_board_seq, X.tl_title , X.tl_contents, X.tl_writer, X.tl_writer_profile, X.tl_writedate , X.tl_viewcount , X.tl_likecount , X.tl_likestatus , X.tl_imgaddr , X.tl_status, X.tl_reason , X.tl_reporter  
+from( 
+  select rownum as rnum, A.tl_board_seq, A.tl_title , A.tl_contents, A. tl_writer, A.tl_writer_profile, A.tl_writedate, A.tl_viewcount , A.tl_likecount , A.tl_likestatus , A.tl_imgaddr , A.tl_status, A.tl_reason , A.tl_reporter
+   from(
+        select *
+        from tl_board
+        where tl_title like '%'||#{keyWord}||'%'
+        order by tl_board_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+<!--관리자가 선택한 id를 블랙리스트로 지정시키는 쿼리문-->
+<update id="BlackListUpdate">
+update member set member_blackcheck='y' where member_id=#{member_id} 
+</update>
+
+
+<!--관리자가 선택한 id를 블랙리스트를 해제시키는 쿼리문-->
+<update id="BlackListCancel">
+update member set member_blackcheck='n' where member_id=#{member_id} 
+</update>
+
+
+<!--관리자가 선택한 판매글을 관리자 권한으로 삭제시키는 쿼리문-->
+<delete id="AdminDeleteShopBoard">
+delete from shopboard where shop_seq=#{shop.seq} 
+</delete>
+
+
+<!--관리자가 선택한 SNS글을 관리자 권한으로 삭제시키는 쿼리문-->
+<delete id="AdminDeleteSNSBoard">
+delete from tl_board where tl_board_seq=#{tl_board_seq} 
+</delete>
+
+
+<!--관리자가 보낸 신고결과 메시지를 메시지 테이블에 저장시킨다.-->
+<insert id="AdminReportSandInsert">
+insert into message values(message_seq.nextval,#{message_sender},#{message_getter},#{message_contents},default)
+</insert>
+
+
+<!--관리자가 원할 경우 신고상태의 글을 다시 원래대로 돌릴 수 있다.-->
+<update id="AdminReportCancel">
+update tl_board set tl_status=default , tl_reason='' , tl_reporter='없음' where tl_board_seq=#{tl_board_seq}
+</update>
+
+
+<!--블랙리스트로 지정된 id를 검색하는 쿼리-->
+<select id="AdminBlackCheckList" resultType="string">
+select member_id from member where member_blackcheck = 'y'
+</select>
+
+
+</mapper>

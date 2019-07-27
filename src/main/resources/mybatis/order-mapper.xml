@@ -2,8 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderDAO">
 
-	<insert id="insert">
+
+	<insert id="orderInsert">
 		insert into products_order
-		values(order_seq.nextval,#{products_seq},#{seller_id},#{buyer_id},default,#{products_title},#{products_location},#{products_price},#{products_quantity},#{products_imagepath})
+		values(order_seq.nextval,#{products_seq},#{member_email},#{order_number},default,#{order_title}
+		,#{order_quantity},#{order_price},#{order_image},#{order_seller},#{order_buyer}
+		,#{order_buyer_phone},#{order_buyer_email},#{order_receipt},#{order_receipt_postcode}
+		,#{order_receipt_address1},#{order_receipt_address2},#{order_receipt_phone}
+		,#{order_receipt_demend})
 	</insert>
+	
+	<select id="orderSelect" resultType="com.project.dto.OrderDTO">
+	select * from products_order where member_email=#{value}
+	</select>
+	<select id="myOrderList" resultType="com.project.dto.OrderDTO">
+		select * from
+		products_order
+		where member_email = #{value}
+	</select>
+	
+	<select id="popup" resultType="com.project.dto.OrderDTO">
+	select * from products_order where products_seq=#{seqq}
+	</select>
+
+	<select id="sellOrderList" resultType="com.project.dto.OrderDTO">
+		select * from products_order where products_seq = #{value}
+	</select>
+	<select id="PageSelect" resultType="com.project.dto.OrderDTO">
+select X.rnum, X.order_seq, X.order_number , X.order_title, X.order_time, X.order_quantity, X.order_price, X.order_image , X.order_seller , X.order_buyer , X.order_buyer_phone , X.order_buyer_email , X.order_receipt , X.order_receipt_postcode , X.order_receipt_address1, X.order_receipt_address2, X.order_receipt_phone, X.order_receipt_demend
+from( 
+  select rownum as rnum, A.order_seq, A.order_number , A.order_title, A.order_time, A.order_quantity, A.order_price, A.order_image , A.order_seller , A.order_buyer , A.order_buyer_phone , A.order_buyer_email , A.order_receipt , A.order_receipt_postcode , A.order_receipt_address1, A.order_receipt_address2, A.order_receipt_phone, A.order_receipt_demend
+   from(
+        select *
+        from products_order
+        order by order_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+<!--게시글의 총 갯수를 뽑아오는 쿼리(샵보드) -->
+<select id="orderCount" resultType="Integer">
+ select count(*) as orderCount from products_order
+</select>
+
+
 </mapper>

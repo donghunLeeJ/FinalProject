@@ -4,30 +4,81 @@
 <mapper namespace="ShopBoardDAO">
 
 	<select id="boardList" resultType="com.project.dto.ShopBoardDTO">
-	 select * from (select shop_seq,shop_id,shop_title,shop_contents, shop_writedate, shop_location, shop_expiration, shop_price, shop_quantity, shop_imagepath1, shop_imagepath2, shop_imagepath3,  
-      rank() over(order by shop_seq desc) rank from shopboard ) where rank between #{lastPage}-11 and #{lastPage}
+		select * from (select
+		shop_seq,shop_id,shop_title,shop_contents,
+		shop_writedate,
+		shop_location, shop_expiration, shop_price,
+		shop_quantity,
+		shop_imagepath1, shop_imagepath2, shop_imagepath3,
+		rank() over(order by
+		shop_seq desc) rank from shopboard ) where rank
+		between #{lastPage}-11
+		and #{lastPage}
 	</select>
 	<select id="totalCount" resultType="Integer">
-		select count(*) from shopboard
+		select count(*) from
+		shopboard
+	</select>
+
+<update id="updateQ" >
+update shopboard set shop_quantity=#{m1} where shop_seq=#{m2}
+</update>
+
+<select id="PageSelect" resultType="com.project.dto.ShopBoardDTO">
+select X.rnum, X.memberSell_seq, X.shop_seq , X.shop_id, X.shop_brand, X.shop_title, X.shop_contents , X.shop_writedate , X.shop_location , X.shop_expiration , X.shop_price , X.shop_quantity , X.shop_imagepath1 , X.shop_imagepath2, X.shop_imagepath3
+from( 
+  select rownum as rnum, A.memberSell_seq, A.shop_seq , A.shop_id, A.shop_brand, A.shop_title, A.shop_contents , A.shop_writedate , A.shop_location , A.shop_expiration , A.shop_price , A.shop_quantity , A.shop_imagepath1 , A.shop_imagepath2, A.shop_imagepath3
+   from(
+        select *
+        from shopboard
+        order by shop_seq desc) A
+  where rownum <![CDATA[<]]>= #{endCount}) X
+where X.rnum >= #{startCount}
+</select>
+
+
+	<insert id="ShopBoardInsert">
+		insert into shopboard
+		values(#{MemberSell_seq},SHOP_SEQ.NEXTVAL,#{shop_id},#{shop_brand},#{shop_material},#{shop_title},#{shop_contents},default,#{shop_location},#{shop_expiration},#{shop_price},#{shop_quantity},#{shop_imagepath1},#{shop_imagepath2},#{shop_imagepath3})
+	</insert>
+
+
+	<select id="ShopBoardSelect"
+		resultType="com.project.dto.ShopBoardDTO">
+		select * from shopboard
+	</select>
+
+	<select id="ShopBoardList"
+		resultType="com.project.dto.ShopBoardDTO"> <!-- 마이페이지에서 판매목록 조회 -->
+		select * from shopboard where shop_id=#{value}
+	</select>
+
+	<select id="ShopBoardIdSelect"
+		resultType="com.project.dto.ShopBoardDTO">
+		select * from shopboard where shop_seq=#{value}
 	</select>
 
 
-
-
-<insert id="ShopBoardInsert">
- insert into shopboard values(SHOP_SEQ.NEXTVAL,#{shop_id},#{shop_brand},#{shop_title},#{shop_contents},default,#{shop_location},#{shop_expiration},#{shop_price},#{shop_quantity},#{shop_imagepath1},#{shop_imagepath2},#{shop_imagepath3})
-</insert>
-
-
-<select id="ShopBoardSelect" resultType="com.project.dto.ShopBoardDTO">
-select * from shopboard
-</select>
-
- 
- 
-<select id="ShopBoardIdSelect" resultType="com.project.dto.ShopBoardDTO">
-select * from shopboard where shop_seq=#{value}
-</select>
-
-
+	<select id="shopSellerSelect"
+		resultType="com.project.dto.MemberDTO">
+		select * from member where memberSell_seq =
+		#{memberSell_seq}
+	</select>
+	<insert id="shopReviewInsert">
+		insert into shopReview
+		values(shop_review.nextval,#{products_seq},#{user_id},#{star_review},#{get_star},#{title},#{contents},#{writeDate})
+	</insert>
+	<select id="shopReviewList"
+		resultType="com.project.dto.ShopReviewDTO">
+		select * from shopreview where products_seq=#{shop_seq}
+	</select>
+	<select id="shopReviewAvg" resultType="Float">
+	select avg(star_review) from shopreview where products_seq= #{shop_seq}
+	</select>
+	<select id="shopReviewCount" resultType="Integer">
+	select count(*) from shopreview where products_seq = #{products_seq}
+	</select>
+	<select id="getQuan" resultType="Integer">
+	select shop_quantity from shopboard where shop_seq = #{value}
+	</select>
 </mapper>

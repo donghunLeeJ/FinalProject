@@ -5,7 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Insert title here</title>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400.300" rel="stylesheet" type="text/css">
+
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"><!-- 눈모양 -->
+<title>회원가입</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
@@ -14,9 +17,12 @@
 <link rel="stylesheet" href="/css/style2.css">
 
 <style>
+
+
 .title {
    text-align: left;
    margin-left: 26%;
+   font-family: naBrush;
 }
 
 #addinput {
@@ -25,13 +31,17 @@
 }
 #findAdd{
 padding:0px;
-width:35px;
-height:35px;
+width:27px;
+height:27px;
 margin:0px;
 }
 #datepicker {
    position: relative;
    width : 50px;
+}
+#flash{
+width:27px;
+height:27px;
 }
 .float{
 float:left;
@@ -39,21 +49,31 @@ float:left;
 #gen{
 transform:translate(20px);
 }
+.form-control[readonly]{
+background-color:white;
+}
+.h2{
+font-family: 'Nanum Pen Script', cursive;
+
+}
+.title{
+font-family: 'Nanum Pen Script', cursive;
+}
+
 </style>
 
+<script type="text/javascript" src="/js/cross.js"></script>
 </head>
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
- 
 
-
-   <section class="akame-contact-area bg-gray section-padding-80">
+   <section class="section-padding-80" style="background-color: #f4ead0">
    <div class="container">
       <div class="row">
          <!-- Section Heading -->
          <div class="col-12">
             <div class="section-heading text-center">
-               <img alt="" src="/img/core-img/fakelogo.png" style="width: 30%">
+               <img alt="" src="/img/logoimg.png" style="width: 40%">
 
             </div>
          </div>
@@ -61,8 +81,7 @@ transform:translate(20px);
 
          <div class="col-12">
             <div class="section-heading text-center">
-               <h2>회원가입</h2>
-
+               <h2 class=h2>회원가입</h2>
             </div>
          </div>
       </div>
@@ -71,7 +90,8 @@ transform:translate(20px);
          <div class="col-12">
             <!-- Form -->
 
-            <form id=formproc action="/member/joinProc" method=postclass="akame-contact-form border-0 p-0">
+            <form id="formproc" action="/member/joinProc" method=postclass="akame-contact-form border-0 p-0">
+
 
                <div class="row">
                   <div class="col-lg-12 text-center">
@@ -80,23 +100,23 @@ transform:translate(20px);
                      <input type="text" style="width: 48%; margin: auto;" id=id
                         name="member_id" class="form-control mb-30" placeholder="인증 받을 이메일 형식으로 입력해주세요">
 
-
                   </div>
                   <div class="col-lg-12 text-center">
-                     <div class=title>비밀번호</div>
+                     <div class=title>비밀번호 
+<!--                      <img src="/img/button-img/flash.png" id="flash"> -->
+                  <i class="fa fa-eye-slash fa-lg" id=flash></i>
+                     </div>
 
-                     <input type="password" style="width: 50%; margin: auto;" id=pw
-                        name="member_pw" class="form-control mb-30"
-
-                        placeholder="대,소문자,숫자 포함 최소 8자리">
+                     <input type="password" style="width: 48%; margin: auto;" id=pw
+                        name="member_pw" class="form-control mb-30 flash" placeholder="대,소문자,숫자 포함 8~13자리">
 
                   </div>
                   <div class="col-lg-12 text-center">
                      <div class=title>비밀번호 확인</div>
 
                      <input type="password" id=pwCheck
-                        style="width: 50%; margin: auto;" class="form-control mb-30"
-                        placeholder="">
+                        style="width: 48%; margin: auto;" class="form-control mb-30 flash"
+                        placeholder="대,소문자,숫자 포함 8~13자리">
                   </div>
 
                   <div class="col-lg-12 text-center">
@@ -104,22 +124,23 @@ transform:translate(20px);
 
 
                      <input type="text" id="name" name="member_name" style="width: 48%; margin: auto;" class="form-control mb-30" placeholder="한글 2자 이상, 4자 이하">
-
                   </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" style="margin: auto">
-                     <div >생년월일</div>
+                     <div>생년월일</div>
                   <input id="datepicker" name="member_birth" class="form-control mb-30" readonly/>
                      </div>
                   <script>
                      $('#datepicker').datepicker({
                         uiLibrary : 'bootstrap4',
+                        format : "yyyy-mm-dd",
+                        maxDate: new Date(), 
                      });
                   </script>
                   
                   <div class="col-lg-12 text-center">
                      <div class=title>핸드폰 번호</div>
-                     <input type="text" name=member_phone id=phone style="width: 50%; margin: auto;" class="form-control mb-30"
+                     <input type="text" name=member_phone id=phone style="width: 48%; margin: auto;" class="form-control mb-30"
                         placeholder=" '-'를 제외하고 입력해주세요">
                   </div>
                   
@@ -132,9 +153,9 @@ transform:translate(20px);
                   </div>
                   <div class="col-lg-12 text-center">
                   
-                  <input type="text" id="postcode"style="width: 50%; margin: auto;" name="member_postcode"class="form-control mb-30" placeholder="우편번호" readonly><br> 
-                  <input type="text" id="add1" style="width: 50%; margin: auto;"name="member_address1" class="form-control mb-30"placeholder="도로명 주소" readonly><br> 
-                  <input type="text"   id="add2" style="width: 50%; margin: auto;"name="member_address2" class="form-control mb-30"placeholder="상세 주소"> <br>
+                  <input type="text" id="postcode"style="width: 48%; margin: auto;" name="member_postcode"class="form-control mb-30" placeholder="우편번호" readonly><br> 
+                  <input type="text" id="add1" style="width: 48%; margin: auto;"name="member_address1" class="form-control mb-30"placeholder="도로명 주소" readonly><br> 
+                  <input type="text"   id="add2" style="width: 48%; margin: auto;"name="member_address2" class="form-control mb-30"placeholder="상세 주소 / 최대 20자"> <br>
 
                      
                   </div>
@@ -151,7 +172,7 @@ transform:translate(20px);
 
                   <div class="col-12 text-center">
                      <br> <br>
-                     <button type="button" class="btn akame-btn btn-3 mt-15 active"id=send>가입하기</button>
+                     <button type="button" class="btn akame-btn btn-3 mb-80 active"id=send>가입하기</button>
 
                   </div>
                
@@ -160,38 +181,45 @@ transform:translate(20px);
       </div>
    </div>
    </section>
-   <jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
-
-
-
-
+   
 
    <script>
+   
+   
+	 $("#flash").on("click",function(){
+		   if($(".flash").attr('type')=='password'){
+			   $(this).attr('class',"fa fa-eye fa-lg");
+			   $(".flash").attr('type','text');
+		   }else if($(".flash").attr('type')=='text'){
+			   $(this).attr('class',"fa fa-eye-slash fa-lg")
+			   $(".flash").attr('type','password');
+		   }
+});
       //여기서 부터 가입버튼 눌렀을때 실행
       $("#send").on("click",function() {
          
          var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-         var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
+         var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,13}$/g;
          var regPw2=/(\w)\1\1/g;
          var regname = /^[가-힣]{2,4}$/;
-         var regnum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+         var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
          var reg = /\s/g;
 
+        
+          
                if ($("#id").val() == "") {//아이디가 공백이면
                   alert("아이디를 입력하세요");
                   $("#id").focus();
-               } else if(!regId.test($("#id").val())){
+               }else if(!regId.test($("#id").val())){
                   alert("이메일 형식에 맞지 않습니다");
                   $("#id").focus();   
                }else if(reg.test($("#id").val())){
                   alert("공백은 입력할 수 없습니다");
                   $("#id").focus();
-               }
-               
-               
-               else if ($("#pw").val() == "") {
+               }  else if ($("#pw").val() == "") {
                   alert("비밀번호를 입력하세요");
                   $("#pw").focus();
+               
                }else if(!regPw.test($("#pw").val())){
                   alert("비밀번호 형식에 맞지 않습니다");
                   $("#pw").focus();
@@ -210,7 +238,6 @@ transform:translate(20px);
                   alert("비밀번호가 일치하지 않습니다");
                   $("#pw").focus();
                }
-                  
                 else if ($("#name").val() == "") {
                   alert("이름을 입력하세요");
                   $("#name").focus();
@@ -220,44 +247,48 @@ transform:translate(20px);
                }else if(reg.test($("#name").val())){
                   alert("공백은 입력할 수 없습니다");
                   $("#name").focus();
-               }
-               
- 
-             else if ($("#name").val() == "") {
+               } else if ($("#name").val() == "") {
                alert("이름을 입력하세요");
                $("#name").focus();
-            }else if(!regname.test($("#name").val())){
+           		 }else if(!regname.test($("#name").val())){
                alert("이름 형식에 맞지 않습니다");
                $("#name").focus();
-            }else if(reg.test($("#name").val())){
+           		 }else if(reg.test($("#name").val())){
                alert("공백은 입력할 수 없습니다");
                $("#name").focus();
-            }
-            else if ($("#datepicker").val() == "") {
+           		 }else if ($("#datepicker").val() == "") {
                alert("생년월일을 입력하세요");
-            }
-            
-            else if ($("#phone").val() == "") {
+            	 }  else if ($("#phone").val() == "") {
                alert("핸드폰 번호를 입력하세요");
                $("#phone").focus();
-            }else if(!regnum.test($("#phone").val())){
+           	 }else if(!regnum.test($("#phone").val())){
                alert("핸드폰 번호가 형식에 맞지 않습니다");
                $("#phone").focus();
-            }else if(reg.test($("#phone").val())){
+          	  }else if(reg.test($("#phone").val())){
                alert("공백은 입력할 수 없습니다");
                $("#phone").focus();
-            }
-            else if ($("#postcode").val() == "") {
+           	 }else if ($("#postcode").val() == "") {
                alert("주소를 입력하세요");
-            }
-            else if ($("#man").is(':checked') == false
+           	 }else if($("#add2").val().length>20){
+           		 alert("상세주소의 글자 수를 초과하였습니다");
+           		$("#add2").focus();
+           	 } 
+           	 else if ($("#man").is(':checked') == false
                   && $("#woman").is(':checked') == false) {
-               alert("성별을 선택하세요!");
+               	 alert("성별을 선택하세요!");
             }else if($("#add2").val()==""){
                var result =confirm("상세주소가 없습니다.\n가입하시겠습니까?");
                if(result) $("form").submit();
-              
             }else{
+            	removeXSS($("#id").val(),$("#id").attr("id"));
+            	removeXSS($("#pw").val(),$("#pw").attr("id"));
+            	removeXSS($("#pwCheck").val(),$("#pwCheck").attr("id"));
+            	removeXSS($("#name").val(),$("#name").attr("id"));
+            	removeXSS($("#datepicker").val(),$("#datepicker").attr("id"));
+            	removeXSS($("#phone").val(),$("#phone").attr("id"));
+            	removeXSS($("#postcode").val(),$("#postcode").attr("id"));
+            	removeXSS($("#add1").val(),$("#add1").attr("id"));
+            	removeXSS($("#add2").val(),$("#add2").attr("id"));
                $("form").submit();
             }
 

@@ -2,7 +2,6 @@ package com.project.paging;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Component;
 
 import com.project.dao.ShopBoardDAO;
 import com.project.dto.ShopPagingDTO;

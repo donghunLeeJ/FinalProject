@@ -1,19 +1,43 @@
 package com.project.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.project.service.ShopBoardService;
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
 	//private static final Logger Logger = LoggerFactory.getLogger(HomeController.class);//sysout대신에 사용함
+	@Autowired
+	private ShopBoardService sservice;
+	@Autowired
+	private HttpServletRequest request;
+	
 	
 	@RequestMapping("")
-	public String home(String id) {
-	//	Logger.info("message is {}.",id);
+	public String home(String id,HttpSession session) {
+		request.setAttribute("boardList", sservice.ShopBoardList(4));
 		return "home";
 	}
+	
+	@RequestMapping("/admin")
+	public String adhome() {
+		return "admin/adminhome";
+	}
+	
+	@RequestMapping("/service")
+	public String service() {
+		return "service/service";
+	}
+	@RequestMapping("/minilog")
+	public String mini() {
+		return "loginMini";
+	}
+
 
 }

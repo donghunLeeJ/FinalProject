@@ -1,117 +1,189 @@
 package com.project.dto;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
-public class OrderDTO {
-	private int order_seq;// 주문정보
-	private int products_seq; // 글정보seq
-	private String seller_id; // 판매자 ID
-	private String buyer_id; // 구매자ID
-	private Timestamp buyDate; // 상품 구매시간
-	private String products_title; // 상품 제목
-	private String products_location; // 판매지역
-	private int products_price; // 상품가격
-	private int products_quantity; // 판매 수량
-	private String products_imagepath; // 상품이미지
+public class OrderDTO implements Cloneable{
+	private int order_seq;
+	private int products_seq;
+	private String member_email;
+	private String order_number;
+	private Date order_time;
+	private String order_title;
+	private int order_quantity;
+	private int order_price;
+	private String order_image;
+	private String order_seller;
+	private String order_buyer;
+	private String order_buyer_phone;
+	private String order_buyer_email;
+	private String order_receipt;
+	private String order_receipt_postcode;
+	private String order_receipt_address1;
+	private String order_receipt_address2;
+	private String order_receipt_phone;
+	private String order_receipt_demend;
 
-	public OrderDTO() {
-		super();
+	
+	@Override
+	public String toString() {
+		return "OrderDTO [order_seq=" + order_seq + ", products_seq=" + products_seq + ", member_email=" + member_email
+				+ ", order_number=" + order_number + ", order_time=" + order_time + ", order_title=" + order_title
+				+ ", order_quantity=" + order_quantity + ", order_price=" + order_price + ", order_image=" + order_image
+				+ ", order_seller=" + order_seller + ", order_buyer=" + order_buyer + ", order_buyer_phone="
+				+ order_buyer_phone + ", order_buyer_email=" + order_buyer_email + ", order_receipt=" + order_receipt
+				+ ", order_receipt_postcode=" + order_receipt_postcode + ", order_receipt_address1="
+				+ order_receipt_address1 + ", order_receipt_address2=" + order_receipt_address2
+				+ ", order_receipt_phone=" + order_receipt_phone + ", order_receipt_demend=" + order_receipt_demend
+				+ "]";
 	}
-
-	public OrderDTO(int order_seq, int products_seq, String seller_id, String buyer_id, Timestamp buyDate,
-			String products_title, String products_location, int products_price, int products_quantity,
-			String products_imagepath) {
-		super();
-		this.order_seq = order_seq;
-		this.products_seq = products_seq;
-		this.seller_id = seller_id;
-		this.buyer_id = buyer_id;
-		this.buyDate = buyDate;
-		this.products_title = products_title;
-		this.products_location = products_location;
-		this.products_price = products_price;
-		this.products_quantity = products_quantity;
-		this.products_imagepath = products_imagepath;
-	}
-
 	public int getOrder_seq() {
 		return order_seq;
 	}
-
 	public void setOrder_seq(int order_seq) {
 		this.order_seq = order_seq;
 	}
-
 	public int getProducts_seq() {
 		return products_seq;
 	}
-
 	public void setProducts_seq(int products_seq) {
 		this.products_seq = products_seq;
 	}
-
-	public String getSeller_id() {
-		return seller_id;
+	public String getMember_email() {
+		return member_email;
 	}
-
-	public void setSeller_id(String seller_id) {
-		this.seller_id = seller_id;
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
-
-	public String getBuyer_id() {
-		return buyer_id;
+	public String getOrder_number() {
+		return order_number;
 	}
-
-	public void setBuyer_id(String buyer_id) {
-		this.buyer_id = buyer_id;
+	public void setOrder_number(String order_number) {
+		this.order_number = order_number;
 	}
-
-	public Timestamp getBuyDate() {
-		return buyDate;
+	public Date getOrder_time() {
+		return order_time;
 	}
-
-	public void setBuyDate(Timestamp buyDate) {
-		this.buyDate = buyDate;
+	public void setOrder_time(Date order_time) {
+		this.order_time = order_time;
 	}
-
-	public String getProducts_title() {
-		return products_title;
+	public String getOrder_title() {
+		return order_title;
 	}
-
-	public void setProducts_title(String products_title) {
-		this.products_title = products_title;
+	public void setOrder_title(String order_title) {
+		this.order_title = order_title;
 	}
-
-	public String getProducts_location() {
-		return products_location;
+	public int getOrder_quantity() {
+		return order_quantity;
 	}
-
-	public void setProducts_location(String products_location) {
-		this.products_location = products_location;
+	public void setOrder_quantity(int order_quantity) {
+		this.order_quantity = order_quantity;
 	}
-
-	public int getProducts_price() {
-		return products_price;
+	public int getOrder_price() {
+		return order_price;
 	}
-
-	public void setProducts_price(int products_price) {
-		this.products_price = products_price;
+	public void setOrder_price(int order_price) {
+		this.order_price = order_price;
 	}
-
-	public int getProducts_quantity() {
-		return products_quantity;
+	public String getOrder_image() {
+		return order_image;
 	}
-
-	public void setProducts_quantity(int products_quantity) {
-		this.products_quantity = products_quantity;
+	public void setOrder_image(String order_image) {
+		this.order_image = order_image;
 	}
-
-	public String getProducts_imagepath() {
-		return products_imagepath;
+	public String getOrder_seller() {
+		return order_seller;
 	}
-
-	public void setProducts_imagepath(String products_imagepath) {
-		this.products_imagepath = products_imagepath;
+	public void setOrder_seller(String order_seller) {
+		this.order_seller = order_seller;
 	}
+	public String getOrder_buyer() {
+		return order_buyer;
+	}
+	public void setOrder_buyer(String order_buyer) {
+		this.order_buyer = order_buyer;
+	}
+	public String getOrder_buyer_phone() {
+		return order_buyer_phone;
+	}
+	public void setOrder_buyer_phone(String order_buyer_phone) {
+		this.order_buyer_phone = order_buyer_phone;
+	}
+	public String getOrder_buyer_email() {
+		return order_buyer_email;
+	}
+	public void setOrder_buyer_email(String order_buyer_email) {
+		this.order_buyer_email = order_buyer_email;
+	}
+	public String getOrder_receipt() {
+		return order_receipt;
+	}
+	public void setOrder_receipt(String order_receipt) {
+		this.order_receipt = order_receipt;
+	}
+	public String getOrder_receipt_postcode() {
+		return order_receipt_postcode;
+	}
+	public void setOrder_receipt_postcode(String order_receipt_postcode) {
+		this.order_receipt_postcode = order_receipt_postcode;
+	}
+	public String getOrder_receipt_address1() {
+		return order_receipt_address1;
+	}
+	public void setOrder_receipt_address1(String order_receipt_address1) {
+		this.order_receipt_address1 = order_receipt_address1;
+	}
+	public String getOrder_receipt_address2() {
+		return order_receipt_address2;
+	}
+	public void setOrder_receipt_address2(String order_receipt_address2) {
+		this.order_receipt_address2 = order_receipt_address2;
+	}
+	public String getOrder_receipt_phone() {
+		return order_receipt_phone;
+	}
+	public void setOrder_receipt_phone(String order_receipt_phone) {
+		this.order_receipt_phone = order_receipt_phone;
+	}
+	public String getOrder_receipt_demend() {
+		return order_receipt_demend;
+	}
+	public void setOrder_receipt_demend(String order_receipt_demend) {
+		this.order_receipt_demend = order_receipt_demend;
+	}
+	public OrderDTO() {
+		super();
+	}
+	public OrderDTO(int order_seq, int products_seq, String member_email, String order_number, Date order_time,
+			String order_title, int order_quantity, int order_price, String order_image, String order_seller,
+			String order_buyer, String order_buyer_phone, String order_buyer_email, String order_receipt,
+			String order_receipt_postcode, String order_receipt_address1, String order_receipt_address2,
+			String order_receipt_phone, String order_receipt_demend) {
+		super();
+		this.order_seq = order_seq;
+		this.products_seq = products_seq;
+		this.member_email = member_email;
+		this.order_number = order_number;
+		this.order_time = order_time;
+		this.order_title = order_title;
+		this.order_quantity = order_quantity;
+		this.order_price = order_price;
+		this.order_image = order_image;
+		this.order_seller = order_seller;
+		this.order_buyer = order_buyer;
+		this.order_buyer_phone = order_buyer_phone;
+		this.order_buyer_email = order_buyer_email;
+		this.order_receipt = order_receipt;
+		this.order_receipt_postcode = order_receipt_postcode;
+		this.order_receipt_address1 = order_receipt_address1;
+		this.order_receipt_address2 = order_receipt_address2;
+		this.order_receipt_phone = order_receipt_phone;
+		this.order_receipt_demend = order_receipt_demend;
+	}
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+	
+	
 
 }
