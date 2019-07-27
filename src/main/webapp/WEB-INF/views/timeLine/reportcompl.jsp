@@ -41,7 +41,7 @@
 	</form>
 </div>
 <script type="text/javascript">
-	$("textWrite#").focus();
+	$("#textWrite").focus();
 	
 	$("#rpt").on("click",function(){
 		var emp = /^\s*$/g;

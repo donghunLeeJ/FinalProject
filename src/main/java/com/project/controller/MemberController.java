@@ -233,6 +233,7 @@ public class MemberController {
 		return "redirect:buyContentsGoProc?page=1";
 	}
 
+	
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
 		System.out.println(page);
