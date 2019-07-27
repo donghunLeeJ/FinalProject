@@ -65,6 +65,7 @@ public class MemberController {
 		if (result == 1) {
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
 			if (confirm.equals("y")) {
+	
 				int BlackCount = 0;
 				List<String> BlackListResult = aservice.AdminBlackCheckList();
 				for (String BlackList : BlackListResult) {
@@ -73,7 +74,7 @@ public class MemberController {
 					}
 				}
 				if (BlackCount > 0) {// 만일 블랙리스트로 지정된 아이디가 존재할 경우 로그인을 못하게 만듬
-					return "redirect:/admin/BlackListNoLogin";
+					return "admin/BlackListNoLogin";
 				}
 
 				else if (mdto.getMember_id().equals("admin")) {// 만일 로그인한 id가 관리자 아이디일 경우
@@ -226,6 +227,7 @@ public class MemberController {
 		return "redirect:buyContentsGoProc?page=1";
 	}
 
+	
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
 		int resultPage = Integer.parseInt(page);
@@ -289,4 +291,5 @@ public class MemberController {
 		String resultString = result + "";
 		return resultString;
 	}
+
 }

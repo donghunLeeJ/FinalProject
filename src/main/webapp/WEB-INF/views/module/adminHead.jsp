@@ -35,12 +35,12 @@
 <!-- Header Area Start -->
 <header class="header-area" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<!-- Top Header Area Start -->
-	<div class="top-header-area">
+	<div class="top-header-area" style="background-color: #f4ead0">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p>관리자 페이지 입니다</p>
+						<p style="font-family: '나눔고딕OTF'; color: black">관리자 페이지 입니다</p>
 					</div>
 				</div>
 				<div class="col-7">
@@ -53,8 +53,9 @@
 							</c:when>
 
 							<c:otherwise>
-								<button id=logout class="headerbtn">logout</button>
-								<button id=mypage  class="headerbtn"></button>
+								<button id=logout style="width: 8%;" class="headerbtn ">
+									<img src="/img/button-img/logout2.png">
+								</button>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -71,8 +72,8 @@
 				<nav class="classy-navbar justify-content-between" id="akameNav">
 
 					<!-- Logo -->
-					<a class="nav-brand" href="index.html"><img
-						src="/img/core-img/logo.png" alt=""></a>
+					<a class="nav-brand" href="/home"><img
+						src="/img/core-img/logo3.png" alt="" style="height: 3em"></a>
 					<!-- Navbar Toggler -->
 					<div class="classy-navbar-toggler">
 						<span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -95,15 +96,7 @@
 								<li><a href="/admin/OrderManagementMove">구매내역 관리</a></li>
 								<li><a href="/admin/TimeLineManagementMove">SNS 신고 관리</a></li>
 							</ul>
-							<!-- Cart Icon -->
-							<div class="cart-icon ml-5 mt-4 mt-lg-0">
-								<a href="#"><i class="icon_cart"></i></a>
-							</div>
-
-							<!-- Book Icon -->
-							<div class="book-now-btn ml-5 mt-4 mt-lg-0 ml-md-4">
-								<a href="#" class="btn akame-btn">Book Now</a>
-							</div>
+										
 						</div>
 						<!-- Nav End -->
 					</div>

@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>비밀번호변경 완료</title>
+<title>Insert title here</title>
 </head>
 <body>
-<script>
-alert("비밀번호가 변경되었습니다");
-location.href = "/home"
-</script>
-
+	<script>
+		alert("관리자 로그인이 필요합니다");
+		location.href ="/home";
+	</script>
 </body>
 </html>

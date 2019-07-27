@@ -85,4 +85,8 @@ public class MemberService {
 		sdao.shopReviewDelete(del_id);
 	}
 
+	public int delRequest(String seq) {
+		return mdao.sellContentsDelete(seq);
+	}
+
 }

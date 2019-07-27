@@ -69,6 +69,7 @@
 	<select id="totalCount" resultType="Integer">
 		select count(*) from
 		shopboard
+		select count(*) from shopboard
 	</select>
 
 	<delete id="delOK">
@@ -78,5 +79,11 @@
 		resultType="com.project.dto.ProfileImageDTO">
 		select member_id,member_imgpath from member;
 	</select>
+
+	
+	<update id="updateQuantity">
+		update shopboard set shop_quantity = 0 where shop_seq = #{seq}
+	</update>
+	
 
 </mapper>

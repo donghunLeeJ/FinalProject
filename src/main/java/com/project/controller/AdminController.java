@@ -250,6 +250,7 @@ public class AdminController {
 			return "에러 발생!!";			
 		}		
 	}
+
 	//home에서 받아온 세션 정보에 따라 방문자수 카운트를 증가시키거나 유지시킴
 	@ResponseBody
 	@RequestMapping(value="VisitViewCondition", produces = "application/text; charset=utf8")
