@@ -53,7 +53,6 @@ public class ShopBoardController {
 	@Autowired
 	private MemberService mservice;
 
-
 	@RequestMapping("/sellContentsGo")
 	public String moveSellContentsGo() {
 		return "redirect:sellContentsGoProc?page=1";
@@ -65,7 +64,7 @@ public class ShopBoardController {
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		int shopcount = mservice.shopCount(mdto.getMember_id());// 테이블에서 전체 레코드 갯수 불러옴
 		List<String> pageList = mservice.paging(resultPage, shopcount);
-		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage , mdto.getMember_id());
+		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage, mdto.getMember_id());
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자 출력
 		request.setAttribute("page", page);// 현재 페이지
 		request.setAttribute("sellList", sellList);
@@ -293,12 +292,12 @@ public class ShopBoardController {
 			}
 			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
-			try{
+			try {
 				sService.getQuan(bdto.getProduct_seq());
-				}catch(Exception e) {
+			} catch (Exception e) {
 				return "redirect:/home";
 			}
-			
+
 			if (sService.getQuan(bdto.getProduct_seq()) <= 0) {
 				return "/shopBoard/chargeCancel";
 			} else {
@@ -326,14 +325,12 @@ public class ShopBoardController {
 		return "/shopBoard/shopChargeOk2";
 	}
 
-	
 	@RequestMapping("deleteRequest")
 	public String sellContentsDeleteRequest(String seq) {
-		System.out.println("deleteRequest"+seq);
+		System.out.println("deleteRequest" + seq);
 		mservice.delRequest(seq);
 		return "redirect:sellContentsGo";
-		
+
 	}
-	
-	
+
 }

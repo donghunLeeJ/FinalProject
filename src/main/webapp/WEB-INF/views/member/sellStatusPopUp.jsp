@@ -57,7 +57,7 @@
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
-<section class="why-choose-us-area bg-gray pt-3">
+	<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
 		<div class="row mt-5  border-bottom ">
 			<div class="col-6 mb-3">
@@ -69,7 +69,7 @@
 		</div>
 
 		<div class="row text-center border  py-2"
-			style="padding: 0;background: #dde1e5">
+			style="padding: 0; background: #dde1e5">
 
 			<div class="col-2 font-weight-bold">주문서 번호</div>
 			<div class="col-2 font-weight-bold">주문일시</div>
@@ -84,7 +84,8 @@
 
 		<!-- 		Products_order를 products_seq로 select함 상품에대한 구매내역 뽑아옴-->
 		<c:forEach var="i" items="${dto }">
-			<div class="row text-center border-bottom " style="padding: 0;background: white">
+			<div class="row text-center border-bottom "
+				style="padding: 0; background: white">
 				<div class="col-12 my-4">
 					<div class="row">
 
@@ -92,6 +93,9 @@
 						<div class="col-2" style="margin-top: 0.3em">${i.order_time }</div>
 						<div class="col-1" style="margin-top: 0.3em">${i.order_quantity }</div>
 						<div class="col-1" style="margin-top: 0.3em">
+							<input id="deliveryCheck" type="hidden"
+								value="${i.order_delivery }">
+
 							<fmt:formatNumber value="${i.order_price }" pattern="#,###" />
 						</div>
 						<div class="col-1" style="margin-top: 0.3em">
@@ -103,23 +107,47 @@
 						<div class="col-2" style="margin-top: 0.3em">${i.order_buyer_email }</div>
 						<div class="col-1" style="padding: 0">
 							<input type="button" class="delivery_btn"
-								id="delivery_btn${i.order_seq }" value="발송완료"> <input
-								type="button" class="delivery_btn2"
-								id="delivery_btn2${i.order_seq }" value="발송완료">
+								id="delivery_btn${i.order_seq }" value="발송완료">
+							<script>
+							if($("#deliveryCheck").val() == "y"){
+								
+								$("#delivery_btn${i.order_seq}").attr("disabled",true).css("cursor","default",).css("background-color","red");
+							}else{
+						
+								$("#delivery_btn${i.order_seq}").attr("disabled",false);
+							}
+							</script>
 						</div>
 					</div>
 
 				</div>
 			</div>
 			<script>
-				$("#delivery_btn2${i.order_seq}").hide();
+				$("#delivery_btn${i.order_seq}").on("click",
+								function() {
+									if (confirm("발송완료를 신청하시겠습니까? (취소 불가)") == true) {
+										$.ajax({
+											type : "post",
+											url : "/member/deliveryOk",
+											data : {
+												order_delivery : "y",
+												order_seq : ${i.order_seq}
+											
+											}
+											
+										}).done(function(resp){
+											if(resp == "O"){
+												alery("발송 완료! ")
+												$("#delivery_btn${i.order_seq}").attr("disabled",true).css("cursor","default",).css("background-color","red");
+											}else{
+												
+											}
+										})
+										
+										//$(location).attr("href","/member/deliveryOk?order_delivery=y&order_seq=${i.order_seq}")
 
-				$("#delivery_btn${i.order_seq}").on("click", function() {
-					if (confirm("발송완료를 신청하시겠습니까? (취소 불가)") == true) {
-						$("#delivery_btn${i.order_seq}").hide();
-						$("#delivery_btn2${i.order_seq}").show();
-					}
-				})
+									}
+								})
 			</script>
 		</c:forEach>
 		<div class="row mt-2">
@@ -132,7 +160,7 @@
 
 
 	</div>
-</section>
+	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
 		$("#back_btn").on("click", function() {
