@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
-<title>Insert title here</title>
+<title>로그인</title>
 <style>
 .float {
 	float: left;
@@ -40,7 +40,8 @@
 			<!-- Section Heading -->
 			<div class="col-12">
 				<div class="section-heading text-center" style="margin: 0px">
-					<img alt="" src="/img/logoimg.png" style="width: 40%">
+					<a href="/home"><img alt="" src="/img/logoimg.png"
+						style="width: 40%"></a>
 
 				</div>
 			</div>

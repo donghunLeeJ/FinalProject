@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>결제</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -16,121 +16,130 @@
 	height: 210px;
 }
 
-.ellipsis{
-/* 0725추가 */
-    overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      width:170px;
-      font-size: 15px; color: #e1e5eb;
+.ellipsis {
+	/* 0725추가 */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 170px;
+	font-size: 15px;
+	color: #e1e5eb;
 }
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
-
-   onselectstart="return false">
-   <!-- header -->
-   <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-   <section class="breadcrumb-area section-padding-80 border">
-   <div class="container">
-      <div class="row">
-         <div class="col-12">
-            <div class="breadcrumb-content">
-               <h2 style="font-family :'나눔고딕OTF';">구매하기</h2>
-               <nav aria-label="breadcrumb">
-               <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/home"><i
-                        class="icon_house_alt"></i>Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">구매하기</li>
-               </ol>
-               </nav>
-            </div>
-         </div>
-      </div>
-   </div>
-   </section>
-
+	onselectstart="return false">
+	<!-- header -->
+	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<section class="breadcrumb-area section-padding-80 border">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="breadcrumb-content">
+					<h2 style="font-family: '나눔고딕OTF';">구매하기</h2>
+					<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/home"><i
+								class="icon_house_alt"></i>Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">구매하기</li>
+					</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
 
 
-   <!-- /header -->
-   <section class="akame-about-area bg-gray section-padding-80-0">
+
+	<!-- /header -->
+	<section class="akame-about-area bg-gray section-padding-80-0">
 
 
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-lg-2"></div>
-         <div class="col-lg-8">
-            <div class="container">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				<div class="container">
 
-               <div class="row">
+					<div class="row">
 
-                  <c:forEach var="i" items="${boardList }">
-                  <c:choose>
-                  <c:when test="${i.shop_quantity eq 0}">
-                <div   class="col-12 col-sm-6 col-lg-3  mb-5 " data-wow-delay="500ms">
-                        <div class="" style="height: 250px">
-                           
-                           	 <div style="position: absolute;">
-								   <div style="position: relative; top: 70px; left: 0px;">
-								   <img src="/img/core-img/soldout.png" >
-								</div>
-								</div>
-								<img src="${i.shop_imagepath1 }" id="img1"  alt="" >
+						<c:forEach var="i" items="${boardList }">
+							<c:choose>
+								<c:when test="${i.shop_quantity eq 0}">
+									<div class="col-12 col-sm-6 col-lg-3  mb-5 "
+										data-wow-delay="500ms">
+										<div class="" style="height: 250px">
 
-                           <!-- Thumbnail Zoom -->
-                           <a href="#}" class=""><i class=""></i></a>
-                        </div>
-                        <div class="team-member-info border">
-                           <div class="row">
-                              <div class="col-12"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </c:when>
-                  <c:otherwise>
-                     <div   class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp" data-wow-delay="500ms">
-                                 <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
-                        <div class="akame-portfolio-single-item" style="height: 250px">
-                           <img src="${i.shop_imagepath1 }" id="img1" alt="">
-                           <!-- Overlay Content -->
-                           <div class="overlay-content d-flex align-items-center justify-content-center">
-                              <div class="overlay-text text-center">
-                                <div class="ellipsis">${i.shop_title }</div> <!-- 0725추가 -->
+											<div style="position: absolute;">
+												<div style="position: relative; top: 70px; left: 0px;">
+													<img src="/img/core-img/soldout.png">
+												</div>
+											</div>
+											<img src="${i.shop_imagepath1 }" id="img1" alt=""
+												style="width: 250px">
 
-
-                                 <p class="pt-3">
-                                    <fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
-                                    원
-                                 </p>
-                              </div>
-                           </div>
-
-                           <!-- Thumbnail Zoom -->
-<%--                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
-                        </div>
-                        <div class="team-member-info border">
-                           <div class="row">
-                              <div class="col-12"></div>
-                           </div>
-                        </div>
-                     </a>
-                     </div>
-                        </c:otherwise>
-									</c:choose>
-                  </c:forEach>
+											<!-- Thumbnail Zoom -->
+											<a href="#}" class=""><i class=""></i></a>
+										</div>
+										<div class="team-member-info border">
+											<div class="row">
+												<div class="col-12"></div>
+											</div>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div
+										class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
+										data-wow-delay="500ms">
+										<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
+											<div class="akame-portfolio-single-item"
+												style="height: 250px">
+												<img src="${i.shop_imagepath1 }" id="img1" alt=""
+													style="width: 250px;">
+												<!-- Overlay Content -->
+												<div
+													class="overlay-content d-flex align-items-center justify-content-center">
+													<div class="overlay-text text-center">
+														<div class="ellipsis">${i.shop_title }</div>
+														<!-- 0725추가 -->
 
 
-               </div>
-               <div class="row" id="extendList"></div>
-            </div>
-         </div>
-         <div class="col-lg-2"></div>
-      </div>
-   </div>
+														<p class="pt-3">
+															<fmt:formatNumber value="${ i.shop_price}"
+																pattern="#,###" />
+															원
+														</p>
+													</div>
+												</div>
 
-   </section>
+												<!-- Thumbnail Zoom -->
+												<%--                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
+											</div>
+											<div class="team-member-info border">
+												<div class="row">
+													<div class="col-12"></div>
+												</div>
+											</div>
+										</a>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 
-   <script>
+
+					</div>
+					<div class="row" id="extendList"></div>
+				</div>
+			</div>
+			<div class="col-lg-2"></div>
+		</div>
+	</div>
+
+	</section>
+
+	<script>
 
    
       var count = 2;
@@ -158,8 +167,9 @@
                      console.log(result);
                      
                      for(var i = 0 ; i < result.length; i ++){
-                     $("#extendList").append(`<div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
-                              data-wow-delay='500ms'`>
+                     $("#extendList").append(`<a href="/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`">
+                    		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
+                              data-wow-delay='500ms'>
                               <div class='akame-portfolio-single-item' style="height: 250px">
                                  <img id='img1' src=`+ result[i].shop_imagepath1+` >
 
@@ -167,8 +177,8 @@
                                  <div
                                     class='overlay-content d-flex align-items-center justify-content-center'>
                                     <div class='overlay-text text-center'>
-                                       <h4>Hairstyle</h4>
-                                       <p>Consectetur adipisicing elit sed doe</p>
+                                       <h4>`+result[i].shop_title+`</h4>
+                                       <p>`+result[i].shop_price+`</p>
                                     </div>
                                  </div>
 
@@ -178,10 +188,9 @@
 
                               </div>
                               <div class='team-member-info border'>
-                              <a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`' <h5> `+result[i].shop_title+` </h5></a>
-                                 <p>`+ result[i].shop_contents+` </p>
+                           
                               </div>
-                           </div>`);
+                           </div></a>`);
                      };
                      })
                   

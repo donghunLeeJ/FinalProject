@@ -5,28 +5,29 @@
 	<insert id="insert">
 		insert into member
 		values(memberSell_seq.nextval,#{member_id},#{member_pw},#{member_name},#{member_birth},#{member_gender},#{member_phone},#{member_postcode},#{member_address1},#{member_address2},default,'',default,default)
-	</insert>	
+	</insert>
 
-<select id="findID" resultType="String">
-select member_id from member where member_name=#{member_name} and member_phone=#{member_phone}
-</select>
+	<select id="findID" resultType="String">
+		select member_id from member where member_name=#{member_name} and
+		member_phone=#{member_phone}
+	</select>
 
 
-<select id="findPW" resultType="Integer">
-select count(*) from member where member_id=#{member_id}
-</select>
+	<select id="findPW" resultType="Integer">
+		select count(*) from member where member_id=#{member_id}
+	</select>
 
-<select id="checkdupl" resultType="Integer">
-select count(*) from member where member_pw=#{member_pw}
-</select>
+	<select id="checkdupl" resultType="Integer">
+		select count(*) from member where member_pw=#{member_pw}
+	</select>
 
-<select id="shopCount" resultType="Integer">
-select count(*) as shopcount from shopboard where shop_id = #{value}
-</select>
+	<select id="shopCount" resultType="Integer">
+		select count(*) as shopcount from shopboard where shop_id = #{value}
+	</select>
 
-<update id="changePW">
-update member set member_pw=#{pw} where member_id=#{id} 
-</update>
+	<update id="changePW">
+		update member set member_pw=#{pw} where member_id=#{id}
+	</update>
 
 	<select id="login" resultType="Integer">
 		select count(*) from member where
@@ -55,7 +56,7 @@ update member set member_pw=#{pw} where member_id=#{id}
 		member_phone=#{member_phone},member_pw=#{member_pw},member_intro=#{member_intro}
 		where member_id=#{member_id}
 	</update>
-	
+
 
 	<update id="uploadImg">
 		update member set member_imgpath = #{path} where
@@ -64,16 +65,25 @@ update member set member_pw=#{pw} where member_id=#{id}
 	<insert id="orderInsert">
 		insert into products_order values()
 	</insert>
-	
+
 	<select id="totalCount" resultType="Integer">
-		select count(*) from	shopboard
+		select count(*) from
+		shopboard
+		select count(*) from shopboard
 	</select>
-	
+
 	<delete id="delOK">
-	delete from member where member_id=#{id}and member_pw=#{pw}
+		delete from member where member_id=#{id}and member_pw=#{pw}
 	</delete>
-	<select id="selectProfile" resultType="com.project.dto.ProfileImageDTO">
+	<select id="selectProfile"
+		resultType="com.project.dto.ProfileImageDTO">
 		select member_id,member_imgpath from member;
 	</select>
+
 	
+	<update id="updateQuantity">
+		update shopboard set shop_quantity = 0 where shop_seq = #{seq}
+	</update>
+	
+
 </mapper>

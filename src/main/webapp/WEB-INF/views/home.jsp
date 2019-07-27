@@ -22,19 +22,25 @@
 	bottom: auto;
 }
 
-body { font-family :'나눔고딕OTF';}
+body {
+	font-family: '나눔고딕OTF';
+}
 
-#img1{
-height:220px;
+#img1 {
+	height: 220px;
 }
 /* div{ */
 /* border:1px solid black; */
 /* } */
+#map_ma {
+	width: 100%;
+	height: 400px;
+	clear: both;
+	border: solid 0px;
+}
 
-#map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
 .form-control[readonly] {
 	background-color: white;
-
 }
 
 #map_ma {
@@ -47,7 +53,8 @@ height:220px;
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 
@@ -83,36 +90,42 @@ height:220px;
 	</section>
 	<section class="why-choose-us-area bg-gray section-padding-80-0">
 
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-12 border-bottom p-2">
-					<h2 style="font-family :'나눔고딕OTF';">□ 최근 등록 상품 <a href="/shopboard/shopBoardGo?page=1"><span style="font-size: small;">더보기</span></a></h2>
-				</div>	
-					<c:forEach var="i" items="${boardList }">
-					  <c:choose>
-					   <c:when test="${i.shop_quantity eq 0}">
-                <div   class="col-12 col-sm-6 col-lg-3  mb-5 mt-3" data-wow-delay="500ms">
-                        <div class="" style="height: 250px">
-                           
-                           	 <div style="position: absolute;">
-								   <div style="position: relative; top: 70px; left: 0px;">
-								   <img src="/img/core-img/soldout.png" >
-								</div>
-								</div>
-								<img src="${i.shop_imagepath1 }" id="img1"  alt="" >
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-12 border-bottom p-2">
+				<h2 style="font-family: '나눔고딕OTF';">
+					□ 최근 등록 상품 <a href="/shopboard/shopBoardGo?page=1"><span
+						style="font-size: small;">더보기</span></a>
+				</h2>
+			</div>
+			<c:forEach var="i" items="${boardList }">
+				<c:choose>
+					<c:when test="${i.shop_quantity eq 0}">
+						<div class="col-12 col-sm-6 col-lg-3  mb-5 mt-3"
+							data-wow-delay="500ms">
+							<div class="" style="height: 250px">
 
-                           <!-- Thumbnail Zoom -->
-                           <a href="#}" class=""><i class=""></i></a>
-                        </div>
-                        <div class="team-member-info border">
-                           <div class="row">
-                              <div class="col-12"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </c:when>
+								<div style="position: absolute;">
+									<div style="position: relative; top: 70px; left: 0px;">
+										<img src="/img/core-img/soldout.png">
+									</div>
+								</div>
+								<img src="${i.shop_imagepath1 }" id="img1" alt="">
+
+								<!-- Thumbnail Zoom -->
+								<a href="#}" class=""><i class=""></i></a>
+							</div>
+							<div class="team-member-info border">
+								<div class="row">
+									<div class="col-12"></div>
+								</div>
+							</div>
+						</div>
+					</c:when>
 					<c:otherwise>
-							<div class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"data-wow-delay="500ms">
+						<div
+							class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"
+							data-wow-delay="500ms">
 							<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
 								<div class="akame-portfolio-single-item" style="height: 250px">
 									<img src="${i.shop_imagepath1 }" id="img1" alt="">
@@ -130,8 +143,8 @@ height:220px;
 									</div>
 
 									<!-- Thumbnail Zoom -->
-<%-- 									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i --%>
-<!-- 										class="icon_search"></i></a> -->
+									<%-- 									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i --%>
+									<!-- 										class="icon_search"></i></a> -->
 
 								</div>
 								<div class="team-member-info border">
@@ -139,11 +152,11 @@ height:220px;
 										<div class="col-12"></div>
 									</div>
 								</div>
-								</a>
-							</div>
-							 </c:otherwise>
-									</c:choose>
-						</c:forEach>
+							</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 
 
 		</div>
@@ -195,7 +208,7 @@ height:220px;
 	</div>
 	</section>
 
-	<div id="map_ma"></div>
+	<div id="map_ma" style="height: 600px; margin-bottom: 50px;"></div>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 

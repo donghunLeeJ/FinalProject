@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>구매</title>
 <link rel="stylesheet" href="../css/style2.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -43,11 +43,6 @@ a {
 	cursor: pointer;
 }
 
-img {
-	width: 100%;
-	height: 100%;
-}
-
 .form-control[readonly] {
 	background-color: gray;
 }
@@ -72,20 +67,20 @@ img {
 
 			<div class="row border-bottom border-top py-2 bg-gray">
 				<div class="col-6">
-					<h3 style="font-family :'나눔고딕OTF';">결제하기</h3>
+					<h3 style="font-family: '나눔고딕OTF';">결제하기</h3>
 				</div>
-<!-- 				<div class="col-6 " style="text-align: right"> -->
-<!-- 					<h3 style="font-family :'나눔고딕OTF';">장바구니 주문/결제 주문완료</h3> -->
-<!-- 				</div> -->
+				<!-- 				<div class="col-6 " style="text-align: right"> -->
+				<!-- 					<h3 style="font-family :'나눔고딕OTF';">장바구니 주문/결제 주문완료</h3> -->
+				<!-- 				</div> -->
 			</div>
 
 			<div class="row pt-3">
 				<div class="col-6 font-weight-bold text-bottom">
 					<span class="">주문상품 확인</span>
 				</div>
-<!-- 				<div class="col-6 text-bottom" style="text-align: right"> -->
-<!-- 					<p style="font-family :'나눔고딕OTF';">*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p> -->
-<!-- 				</div> -->
+				<!-- 				<div class="col-6 text-bottom" style="text-align: right"> -->
+				<!-- 					<p style="font-family :'나눔고딕OTF';">*상품수량 및 옵션변경은 상품상세 또는 장바구니에서 가능합니다.</p> -->
+				<!-- 				</div> -->
 
 			</div>
 			<div class="row border-bottom border-top bg-gray text-center py-2">
@@ -175,10 +170,10 @@ img {
 			</div>
 			<div class="row">
 				<div class="col-12 pt-2">
-<!-- 					<p> -->
-<!-- 						<small>11번가㈜는 통신판매중개자로서 통신판매의 당사자가 아니며, 개별판매자가 등록한 상품정보 및 -->
-<!-- 							거래에 대해 11번가㈜는 일체의 책임을 지지 않습니다.</small> -->
-<!-- 					</p> -->
+					<!-- 					<p> -->
+					<!-- 						<small>11번가㈜는 통신판매중개자로서 통신판매의 당사자가 아니며, 개별판매자가 등록한 상품정보 및 -->
+					<!-- 							거래에 대해 11번가㈜는 일체의 책임을 지지 않습니다.</small> -->
+					<!-- 					</p> -->
 				</div>
 			</div>
 
@@ -279,6 +274,7 @@ img {
 					</div>
 				</div>
 			</div>
+		</div>
 	</form>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
@@ -306,7 +302,6 @@ img {
 							var regemail1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
 							var regemail2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 							var price = $("#price").text();
-
 
 							if (inputcount > 0) {
 								alert("모든 항목을 반드시 입력하셔야 합니다.");
@@ -376,29 +371,29 @@ img {
 								var quant = shop_q - qua;
 								$("input[name=quant]").val(shop_q - qua);
 								$("#completeForm").submit();
-// 								IMP.request_pay({
-// 									pg : 'inicis', // version 1.1.0부터 지원.
-// 									pay_method : 'card',
-// 									merchant_uid : 'merchant_'
-// 											+ new Date().getTime(),
-// 									name : '주문명:결제테스트',
-// 									amount : price,
-// 									buyer_email : 'iamport@siot.do',
-// 									buyer_name : '구매자이름',
-// 									buyer_tel : '010-1234-5678',
-// 									buyer_addr : '서울특별시 강남구 삼성동',
-// 									buyer_postcode : '123-456',
-// 									m_redirect_url : 'localhost/home'
-// 								}, function(rsp) {
-// 									if (rsp.success) {
-// 										var msg = '결제가 완료되었습니다.';
-// 										alert(msg);
-// 										$("#completeForm").submit();
-// 									} else {
-// 										var msg = '결제에 실패하였습니다.';
-// 										msg += '에러내용 : ' + rsp.error_msg;
-// 									}
-// 								});
+								// 								IMP.request_pay({
+								// 									pg : 'inicis', // version 1.1.0부터 지원.
+								// 									pay_method : 'card',
+								// 									merchant_uid : 'merchant_'
+								// 											+ new Date().getTime(),
+								// 									name : '주문명:결제테스트',
+								// 									amount : price,
+								// 									buyer_email : 'iamport@siot.do',
+								// 									buyer_name : '구매자이름',
+								// 									buyer_tel : '010-1234-5678',
+								// 									buyer_addr : '서울특별시 강남구 삼성동',
+								// 									buyer_postcode : '123-456',
+								// 									m_redirect_url : 'localhost/home'
+								// 								}, function(rsp) {
+								// 									if (rsp.success) {
+								// 										var msg = '결제가 완료되었습니다.';
+								// 										alert(msg);
+								// 										$("#completeForm").submit();
+								// 									} else {
+								// 										var msg = '결제에 실패하였습니다.';
+								// 										msg += '에러내용 : ' + rsp.error_msg;
+								// 									}
+								// 								});
 							}
 						});//결제버튼클릭
 

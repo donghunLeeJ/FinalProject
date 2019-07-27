@@ -20,21 +20,34 @@
 		shopboard
 	</select>
 
-<update id="updateQ" >
-update shopboard set shop_quantity=#{m1} where shop_seq=#{m2}
-</update>
+	<update id="updateQ">
+		update shopboard set shop_quantity=#{m1} where
+		shop_seq=#{m2}
+	</update>
 
-<select id="PageSelect" resultType="com.project.dto.ShopBoardDTO">
-select X.rnum, X.memberSell_seq, X.shop_seq , X.shop_id, X.shop_brand, X.shop_title, X.shop_contents , X.shop_writedate , X.shop_location , X.shop_expiration , X.shop_price , X.shop_quantity , X.shop_imagepath1 , X.shop_imagepath2, X.shop_imagepath3
-from( 
-  select rownum as rnum, A.memberSell_seq, A.shop_seq , A.shop_id, A.shop_brand, A.shop_title, A.shop_contents , A.shop_writedate , A.shop_location , A.shop_expiration , A.shop_price , A.shop_quantity , A.shop_imagepath1 , A.shop_imagepath2, A.shop_imagepath3
-   from(
-        select *
-        from shopboard
-        order by shop_seq desc) A
-  where rownum <![CDATA[<]]>= #{endCount}) X
-where X.rnum >= #{startCount}
-</select>
+	<select id="PageSelect"
+		resultType="com.project.dto.ShopBoardDTO">
+		select X.rnum, X.memberSell_seq, X.shop_seq , X.shop_id, X.shop_brand,
+		X.shop_title, X.shop_contents , X.shop_writedate , X.shop_location ,
+		X.shop_expiration , X.shop_price , X.shop_quantity , X.shop_imagepath1
+		, X.shop_imagepath2, X.shop_imagepath3
+		from(
+		select rownum as rnum,
+		A.memberSell_seq, A.shop_seq , A.shop_id,
+		A.shop_brand, A.shop_title,
+		A.shop_contents , A.shop_writedate ,
+		A.shop_location ,
+		A.shop_expiration , A.shop_price , A.shop_quantity ,
+		A.shop_imagepath1
+		, A.shop_imagepath2, A.shop_imagepath3
+		from(
+		select *
+		from shopboard
+		order by shop_seq desc) A
+		where rownum <![CDATA[<]]>=
+		#{endCount}) X
+		where X.rnum >= #{startCount}
+	</select>
 
 
 	<insert id="ShopBoardInsert">
@@ -57,7 +70,9 @@ where X.rnum >= #{startCount}
 		resultType="com.project.dto.ShopBoardDTO">
 		select * from shopboard where shop_seq=#{value}
 	</select>
-
+	<delete id="shopBoardDelete">
+		delete from shopboard where shop_id = #{value}
+	</delete>
 
 	<select id="shopSellerSelect"
 		resultType="com.project.dto.MemberDTO">
@@ -73,12 +88,19 @@ where X.rnum >= #{startCount}
 		select * from shopreview where products_seq=#{shop_seq}
 	</select>
 	<select id="shopReviewAvg" resultType="Float">
-	select avg(star_review) from shopreview where products_seq= #{shop_seq}
+		select avg(star_review)
+		from shopreview where products_seq= #{shop_seq}
 	</select>
 	<select id="shopReviewCount" resultType="Integer">
-	select count(*) from shopreview where products_seq = #{products_seq}
+		select count(*) from
+		shopreview where products_seq = #{products_seq}
 	</select>
+	<delete id="shopReviewDelete">
+		delete from shopReview where user_id=#{value}
+	</delete>
 	<select id="getQuan" resultType="Integer">
-	select shop_quantity from shopboard where shop_seq = #{value}
+		select shop_quantity from
+		shopboard where shop_seq = #{value}
 	</select>
+
 </mapper>

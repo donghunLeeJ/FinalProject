@@ -30,7 +30,7 @@ public class HtmlEmailDAO {
 				+ "            <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A<strong>KKABI</strong> 회원가입을 감사드립니다.</p>\r\n"
 				+ "            <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;안전한 서비스를 위하여 이메일 인증을 완료하여 주시기 바랍니다.</p>\r\n"
 				+ "            <br>\r\n"
-				+ "            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=\"192.168.60.27/member/verifiedId?id="
+				+ "            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=\"192.168.60.33/member/verifiedId?id="
 				+ id + "\" style=\"text-decoration: none\">이메일 인증을 하시려면 여기를 클릭하세요.</a></div>\r\n" + "        <br>\r\n"
 				+ "        <br>\r\n"
 				+ "        <p style=\"font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Value Exchange. <strong>AGGABI</strong></p>\r\n"

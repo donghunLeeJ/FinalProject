@@ -119,46 +119,32 @@ public class AdminController {
 	//상품관리 페이지로 이동(이동하기 전에 먼저 모든 상품을 검색하고 시작)
 	@RequestMapping("ShopBoardManagementProc")
 	public String ShopBoardManagement(int page){
-
-
 		int totalcount = aservice.ShopBoardCount();
-
 		List<String>pageList = aservice.Page(page, totalcount);
 		request.setAttribute("ShopBoardList", aservice.ShopBoardSelectPageList(page));
-
 		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
 		request.setAttribute("page", page);//현재 페이지임
-
 		return "admin/ShopBoardManagement";}
-
 
 	//구매내역관리 페이지로 이동(이동하기 전에 먼저 구매내역을 검색하고 시작)
 	@RequestMapping("OrderManagementProc")
 	public String OrderManagement(int page){
-
 		int totalcount = aservice.OrderBoardCount();
-
 		List<String>pageList = aservice.Page(page, totalcount);
 		request.setAttribute("OrderBoardList", aservice.OrderBoardSelectPageList(page));
-
 		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
 		request.setAttribute("page", page);//현재 페이지임
-
 		return "admin/OrderManagement";}
 
 
 	//sns신고관리 페이지로 이동(이동하기 전에 먼저 신고내역을 검색하고 시작)
 	@RequestMapping("TimeLineManagementProc")
 	public String TimeLineManagement(int page){
-
 		int totalcount = aservice.SNSBoardCount();
-
 		List<String>pageList = aservice.Page(page, totalcount);
 		request.setAttribute("SNSBoardList", aservice.SNSBoardSelectPageList(page));
-
 		request.setAttribute("pageList", pageList);//게시판 아래에 숫자를 출력
 		request.setAttribute("page", page);//현재 페이지임
-
 		return "admin/TimeLineManagement";}
 
 
@@ -187,10 +173,8 @@ public class AdminController {
 	//이때 해당 회원의 모든 정보를 가져오는 메소드
 	@RequestMapping("targetMember")
 	public String targetMember(String userid){
-
 		MemberDTO userINFO =  aservice.MemberIdSelectAll(userid);
 		request.setAttribute("userINFO", userINFO);
-
 		return "admin/targetMember";
 	}
 
@@ -199,23 +183,15 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="blacklist", produces = "application/text; charset=utf8")
 	public String BlackListProc(String id , String blackcheck){
-
 		if(blackcheck.equals("n")) {
-
 			int result = aservice.BlackListUpdate(id);
-
 			if(result > 0) {
-
 				return ""+id+"님이 블랙리스트에 등록되었습니다.";
-
 			}
 
 		}else if(blackcheck.equals("y")){
-
 			int result = aservice.BlackListCancel(id);
-
 			if(result > 0) {
-
 				return ""+id+"님이 블랙리스트에서 벗어났습니다..";
 			}
 		}	
@@ -227,16 +203,10 @@ public class AdminController {
 	//관리자 권한으로 판매글을 삭제시킴
 	@RequestMapping("AdminDeleteShopBoard")
 	public String DeleteShopBoard(String shop_seq){	
-
-		System.out.println("시퀀스 번호" + shop_seq);
-
 		int result = aservice.AdminDeleteShopBoard(shop_seq);
-
 		if(result > 0){
-
 			return "redirect:ShopBoardManagementProc?page=1";
 		}
-
 		return "에러 발생!!";}
 
 
@@ -281,7 +251,25 @@ public class AdminController {
 			return "에러 발생!!";			
 		}		
 	}
-	
+
+	//home에서 받아온 세션 정보에 따라 방문자수 카운트를 증가시키거나 유지시킴
+	@ResponseBody
+	@RequestMapping(value="VisitViewCondition", produces = "application/text; charset=utf8")
+	public String VisitViewCondition(String access){
+		if(access.equals("1")){
+		}else{
+			session.setAttribute("access", 1);		
+			ViewDTO.setVisitViewCount(ViewDTO.getVisitViewCount() + 1);				
+		}
+
+		return ""+access+"";}		
+
+	//검색된 id가 블랙리스트에 해당될 경우 해당 페이지로 이동
+	@RequestMapping("BlackListNoLogin")
+	public String BlackListNoLogin(){	
+		return "admin/BlackListNoLogin";
+	}
+
 }
 
 

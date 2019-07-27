@@ -12,12 +12,10 @@ import com.project.service.ShopBoardService;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-	//private static final Logger Logger = LoggerFactory.getLogger(HomeController.class);//sysout대신에 사용함
 	@Autowired
 	private ShopBoardService sservice;
 	@Autowired
 	private HttpServletRequest request;
-	
 	
 	@RequestMapping("")
 	public String home(String id,HttpSession session) {
@@ -34,6 +32,7 @@ public class HomeController {
 	public String service() {
 		return "service/service";
 	}
+
 	@RequestMapping("/minilog")
 	public String mini() {
 		return "loginMini";

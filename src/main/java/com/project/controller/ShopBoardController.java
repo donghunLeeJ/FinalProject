@@ -52,37 +52,28 @@ public class ShopBoardController {
 	private BasketService bservice;
 	@Autowired
 	private MemberService mservice;
-	
-	
-	
+
+
 	@RequestMapping("/sellContentsGo")
 	public String moveSellContentsGo() {
 		return "redirect:sellContentsGoProc?page=1";
 	}
+
 	@RequestMapping("/sellContentsGoProc")
 	public String log_sellContetns(String page) {
 		int resultPage = Integer.parseInt(page);
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		int shopcount = mservice.shopCount(mdto.getMember_id());//테이블에서 전체 레코드 갯수 불러옴
-		List<String> pageList = mservice.paging(resultPage, shopcount );
-		for(String a : pageList) {
-			System.out.println(a);
-		}
-		
+		int shopcount = mservice.shopCount(mdto.getMember_id());// 테이블에서 전체 레코드 갯수 불러옴
+		List<String> pageList = mservice.paging(resultPage, shopcount);
 		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage);
-		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
-		request.setAttribute("page", page);//현재 페이지
+		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자 출력
+		request.setAttribute("page", page);// 현재 페이지
 		request.setAttribute("sellList", sellList);
 		return "/member/sellContents";
 	}
-	
-	
-	
-	
 
 	@RequestMapping("/shopBoardGo")
 	public String ShopBoardGo(String page) {
-
 		int currentPage = Integer.parseInt(page);
 		int lastPage = currentPage * 12;
 		sPaging.sPaging(currentPage);
@@ -99,12 +90,10 @@ public class ShopBoardController {
 		sPaging.sPaging(currentPage);
 		List<ShopBoardDTO> boardList = sService.ShopBoardList(lastPage);
 		return new Gson().toJson(boardList);
-
 	}
 
 	@RequestMapping("/ShopBoard_write")
 	public String log_ShopBoard_WriteMove() {
-
 		return "/shopBoard/shopBoard_write";
 	}
 
@@ -115,14 +104,12 @@ public class ShopBoardController {
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);// 상품판매 정보
 		int memberSell_seq = dto.getMemberSell_seq();
 		MemberDTO mdto = sService.shopSellerSelect(memberSell_seq);// 판매자 정보
+		System.out.println(shop_seq);
 		List<ShopReviewDTO> review = sService.shopReviewList(shop_seq);// 댓글 리스트
 		int reviewRowCount = sService.shopReviewCount(shop_seq);// 댓글 총 row
 		Float reviewAvg = sService.shopReviewAvg(shop_seq);
-
 		for (int i = 0; i < review.size(); i++) {
-
 			int count = review.get(i).getStar_review();
-
 			if (count == 1) {
 				review.get(i).setGet_star("★☆☆☆☆");
 			} else if (count == 2) {
@@ -137,7 +124,6 @@ public class ShopBoardController {
 		}
 		if (reviewAvg == null) {
 			starAvg = "(평가중)";
-
 		} else if (reviewAvg <= 1.4) {
 			starAvg = "★";
 		} else if (reviewAvg <= 1.9) {
@@ -157,7 +143,6 @@ public class ShopBoardController {
 		} else {
 			starAvg = "★★★★★";
 		}
-
 		request.setAttribute("dto", dto);
 		request.setAttribute("mdto", mdto);
 		request.setAttribute("review", review);
@@ -168,38 +153,23 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/ShopBoardInsertProc")
-	public String log_filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration, String sell_seq) {
+	public String log_filetest(ShopBoardDTO dto, List<MultipartFile> shop_images, String shop_expiration,
+			String sell_seq) {
 		List<String> fileArrayPath = new ArrayList();
-//		System.out.println(dto.getShop_seq());
-//		System.out.println("내용: " + dto.getShop_contents());
-//		System.out.println("브랜드: " + dto.getShop_brand());
-//		System.out.println("타이틀: " + dto.getShop_title());
-//		System.out.println("지역: " + dto.getShop_location());
-//		System.out.println("유통기한: " + dto.getShop_expiration());
-//		System.out.println("test" + shop_expiration);
 		int memberSell_seq = Integer.parseInt(sell_seq);
-		System.out.println("sell_seq" + sell_seq);
 		int fileCount = 0;
 		for (MultipartFile image : shop_images) {
-
-			// if(fileCount>2){System.out.println("이미지는 최대 3개까지만 업로드 가능.");break;}
-
 			if (image.getSize() != 0) {
 				String originFileName = image.getOriginalFilename();
 				long fileSize = image.getSize();
-				System.out.println("originFileName : " + originFileName);
-				System.out.println("fileSize : " + fileSize);
 				String resourcePath = session.getServletContext().getRealPath("/resources/img/shopfoodimg/");
-				System.out.println(resourcePath);
 				String targetFile = resourcePath + "/" + UUID.randomUUID().toString().replace("-", "").substring(0, 8)
 						+ "_foodimage.png";
 				try {
-
 					File f = new File(targetFile);
 					image.transferTo(f);
 					fileArrayPath.add("/img/shopfoodimg/" + f.getName());
 					fileCount++;
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -231,9 +201,7 @@ public class ShopBoardController {
 
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		dto.setShop_id(mdto.getMember_id());
-
 		dto.setMemberSell_seq(memberSell_seq);
-		// dto.setShop_id("kkjangel");
 		int result = sService.ShopBoardInsert(dto);
 		ViewDTO.setBoardNewCount(ViewDTO.getBoardNewCount() + 1);
 		return "redirect:../home";
@@ -243,22 +211,17 @@ public class ShopBoardController {
 	public String log_buyProc(String quantity, String seq) {
 		int quantity1 = Integer.parseInt(quantity);// 수량
 		int shop_seq = Integer.parseInt(seq);
-		System.out.println(quantity1);
-		// 상품정보 테이블의 값을 꺼내오는 query필요.
 		ShopBoardDTO sdto = sService.ShopBoardIdSelect(shop_seq);
 		int price = sdto.getShop_price();
 		int resultDB = quantity1 * sdto.getShop_price();
 		int resultPage = quantity1 * price;// DB에 저장된 개당 가격 == 홈페이지에서뜬 개당 가격 비교해야함.
-
 		request.setAttribute("dto", sdto);// 상품정보
 		request.setAttribute("quantity", quantity1); // 상품수량
 		if (resultDB == resultPage) {
 			request.setAttribute("price", resultDB);// 수량에따른 금액
-			System.out.println("일치함");
 			return "/shopBoard/shopBoard_buy";
 
 		} else {
-			System.out.println("금액오류");
 			return "/error";
 		}
 
@@ -267,7 +230,7 @@ public class ShopBoardController {
 	@RequestMapping("/shopOrder")
 
 	public String order(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2,String getter_phone3, String products_seq, int quant) {
+			String getter_phone1, String getter_phone2, String getter_phone3, String products_seq, int quant) {
 
 		// order테이블에 들어가는정보 배달정보
 		String phone = phone1 + phone2 + phone3;
@@ -289,6 +252,7 @@ public class ShopBoardController {
 		request.setAttribute("ldto", odto);
 		request.setAttribute("quant", quant);
 		sService.updateQ(quant, sseq);
+
 		return "/shopBoard/shopChargeOk";
 	}
 
@@ -296,8 +260,8 @@ public class ShopBoardController {
 	public String log_shopReview(ShopReviewDTO dto, String products_seq) {
 		int products_seq1 = Integer.parseInt(products_seq);
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+		System.out.println(products_seq1);
 		dto.setGet_star("1");
-		System.out.println(sdf.format(System.currentTimeMillis()));
 		dto.setWriteDate(sdf.format(System.currentTimeMillis()));
 		dto.setProducts_seq(products_seq1);
 		sService.shopReviewInsert(dto);
@@ -306,8 +270,9 @@ public class ShopBoardController {
 	}
 
 	@RequestMapping("/shopBasketOrder")
-	public String log_basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1, String email2,
-			String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq ,String priceTotal) {
+	public String log_basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1,
+			String email2, String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq,
+			String priceTotal) {
 		System.out.println(basket_seq);
 		String phone = phone1 + phone2 + phone3;
 		String email = email1 + "@" + email2;
@@ -328,10 +293,10 @@ public class ShopBoardController {
 			}
 			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
-			if(sService.getQuan(bdto.getProduct_seq())<=0) {
+			if (sService.getQuan(bdto.getProduct_seq()) <= 0) {
 				return "/shopBoard/chargeCancel";
-			}else {
-				int balanceQuan = sService.getQuan(bdto.getProduct_seq())-bdto.getBasket_quantity(); 	
+			} else {
+				int balanceQuan = sService.getQuan(bdto.getProduct_seq()) - bdto.getBasket_quantity();
 				sService.updateQ(balanceQuan, bdto.getProduct_seq());
 				odto2.setOrder_buyer_phone(phone);
 				odto2.setProducts_seq(bdto.getProduct_seq());
@@ -349,11 +314,20 @@ public class ShopBoardController {
 			}
 		}
 		bservice.resetBasket(email);
-		System.out.println(priceTotal);
 		request.setAttribute("price", priceTotal);
 		request.setAttribute("ldto", arr);
-		
+
 		return "/shopBoard/shopChargeOk2";
 	}
 
+	
+	@RequestMapping("deleteRequest")
+	public String sellContentsDeleteRequest(String seq) {
+		System.out.println("deleteRequest"+seq);
+		mservice.delRequest(seq);
+		return "redirect:sellContentsGo";
+		
+	}
+	
+	
 }
