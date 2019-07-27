@@ -174,7 +174,7 @@ body {
 				<div class="single-contact-information mb-80">
 					<i class="icon_phone"></i>
 					<h4>Phone</h4>
-					<p>+01-3-8888-6868</p>
+					<p>010-8862-8976</p>
 				</div>
 			</div>
 
@@ -183,7 +183,7 @@ body {
 				<div class="single-contact-information mb-80">
 					<i class="icon_pin"></i>
 					<h4>Address</h4>
-					<p>Iris Watson, 283 Fusce Rd,NY</p>
+					<p>118, Namdaemun-ro, Jung-gu, Seoul, Republic of Korea</p>
 				</div>
 			</div>
 
@@ -201,7 +201,7 @@ body {
 				<div class="single-contact-information mb-80">
 					<i class="icon_mail"></i>
 					<h4>Email</h4>
-					<p>info.colorlib@gmail.com</p>
+					<p>sidong91@gmail.com</p>
 				</div>
 			</div>
 		</div>

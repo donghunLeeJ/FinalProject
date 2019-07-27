@@ -13,7 +13,7 @@
 
 <style>
 .btn {
-	background: #FCBB00;
+	background: #dde1e5;
 	color: #fff;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -31,7 +31,7 @@
 }
 
 .delivery_btn {
-	background: #FCBB00;
+	background: #dde1e5;
 	color: #fff;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -42,7 +42,7 @@
 }
 
 .delivery_btn2 {
-	background: gray;
+	background: #dde1e5;
 	color: white;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -52,21 +52,24 @@
 }
 </style>
 </head>
+
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+
+<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
-		<div class="row mt-5  border-bottom border-warning">
+		<div class="row mt-5  border-bottom ">
 			<div class="col-6 mb-3">
-				<h3>상세 판매 내역</h3>
+				<h3 style="font-family: '나눔고딕OTF';">상세 판매 내역</h3>
 			</div>
 			<div class="col-6 mb-3 text-right">
 				<input type="button" class="btn" id="back_btn" value="이전 페이지">
 			</div>
 		</div>
 
-		<div class="row text-center border-bottom border-warning  py-2"
-			style="padding: 0">
+		<div class="row text-center border  py-2"
+			style="padding: 0;background: #dde1e5">
 
 			<div class="col-2 font-weight-bold">주문서 번호</div>
 			<div class="col-2 font-weight-bold">주문일시</div>
@@ -81,7 +84,7 @@
 
 		<!-- 		Products_order를 products_seq로 select함 상품에대한 구매내역 뽑아옴-->
 		<c:forEach var="i" items="${dto }">
-			<div class="row text-center border-bottom " style="padding: 0">
+			<div class="row text-center border-bottom " style="padding: 0;background: white">
 				<div class="col-12 my-4">
 					<div class="row">
 
@@ -129,7 +132,7 @@
 
 
 	</div>
-
+</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
 		$("#back_btn").on("click", function() {

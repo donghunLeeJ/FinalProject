@@ -20,7 +20,7 @@
 	<div class="row">
 		<div class="col-12 border-bottom p-4">
 		<input type="hidden" value="${seq }" name="tl_board_seq">	
-		 <h2 style="color: gray"> <img alt="" src="/img/core-img/logo.png"> 신고하기 </h2>
+		 <h2 style="color: gray"> <img alt="" src="/img/core-img/logo3.png" style="height: 80px">  </h2>
 		</div>
 		<div class="col-12">
 			폭력적 게시물 , 선정적 게시물 등 악의적인 의도를 가지고 올린 게시물에 관하여 신고가 가능합니다.	
