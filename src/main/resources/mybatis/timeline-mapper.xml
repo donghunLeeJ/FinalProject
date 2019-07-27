@@ -6,6 +6,10 @@
 		insert into tl_board
 		values(tl_board_seq.nextval,#{tl_title},#{tl_contents},#{tl_writer},#{tl_writer_profile},default,default,default,default,#{tl_imgaddr},default,'','없음')
 	</insert>
+	
+	<select id="tl_board_showBySeq" resultType="com.project.dto.Tl_BoardDTO">
+		select * from tl_board where tl_board_seq = #{tl_board_seq}
+	</select>
 
 	<select id="tl_board_showAll"
 		resultType="com.project.dto.Tl_BoardDTO">
