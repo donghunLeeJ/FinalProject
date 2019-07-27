@@ -43,15 +43,15 @@
 								</div>
 								<div class="col-lg-12">
 									<input type="text" name="tl_title" class="form-control mb-30" id=line_title
-										placeholder="제목을 입력해주세요" value="${title }">
+										placeholder="제목을 입력해주세요" value="${result.tl_title }">
 								</div>
-								<input type="hidden" name="tl_board_seq" value="${seq }">
+								<input type="hidden" name="tl_board_seq" value="${result.tl_board_seq }">
 								<div class="col-lg-12 ">
 									<h3>- contents -</h3>
 									<div id="img_field" class="border" style="height: 23em; text-align: center">
-										<img class="border" id="image_section" src="${imgaddr}" alt=""
+										<img class="border" id="image_section" src="${result.tl_imgaddr}" alt=""
 											style="height: 100%;margin: auto">
-											<input type="hidden" value="${imgaddr}" name="imagePath">
+											<input type="hidden" value="${result.tl_imgaddr}" name="imagePath">
 									</div>
 									<div class="custom-file">
 										<input type="file" name="tl_image"
@@ -63,7 +63,7 @@
 								</div>
 								<div class="col-lg-12 ">
 									<textarea name="tl_contents" class="form-control mb-30" id=line_con style="resize: none;"
-										placeholder="내용을 입력해주세요">${contents }</textarea>
+										placeholder="내용을 입력해주세요">${result.tl_contents }</textarea>
 								</div>
 								<div class="col-lg-6 text-right">
 									<button type="button" class="btn akame-btn btn-3 mt-15 active" id=confirm>수정
@@ -108,9 +108,9 @@
 		
 		$("#confirm").on("click",function(){
 			var emp = /^\s*$/g;
-			if($("#line_title").val()="" || emp.test($("#line_title").val())){
+			if($("#line_title").val()=="" || emp.test($("#line_title").val())){
 				alert("제목을 입력해주세요");
-			}else if($("#line_con").val()="" || emp.test($("#line_con").val())){
+			}else if($("#line_con").val()=="" || emp.test($("#line_con").val())){
 				alert("내용을 입력해주세요");
 			}else{
 			removeXSS($("#line_title").val(), $("#line_title").attr("id"));

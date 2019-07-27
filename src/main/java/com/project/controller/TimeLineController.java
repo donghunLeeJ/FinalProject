@@ -133,30 +133,22 @@ public class TimeLineController {
 	}
 
 	@RequestMapping("/boardModify")
-	public String boardModify(HttpServletRequest request) {
+	public String boardModify(HttpServletRequest request, String tl_board_seq) {
 
-		if (session.getAttribute("id") == null) {
-			return "/timeLine/modi_del_reject2";
-		} else {
-
-			String seq = request.getParameter("seq");
-			System.out.println(seq);
-			String writer = request.getParameter("writer");
-			String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
-			String title = request.getParameter("title");
-			String contents = request.getParameter("contents");
-			String imgaddr = request.getParameter("imgaddr");
-
-			if (writer.equals(id)) {
-				request.setAttribute("seq", seq);
-				request.setAttribute("title", title);
-				request.setAttribute("contents", contents);
-				request.setAttribute("imgaddr", imgaddr);
+		Tl_BoardDTO dto =  tls.showOne(tl_board_seq);
+		String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
+		
+			if (dto.getTl_writer().equals(id)) {
+				
+				request.setAttribute("result", dto);
+						
 				return "/timeLine/modifywrite";
+				
 			} else {
+				
 				return "/timeLine/modi_del_reject";
 			}
-		}
+	
 
 	}
 
