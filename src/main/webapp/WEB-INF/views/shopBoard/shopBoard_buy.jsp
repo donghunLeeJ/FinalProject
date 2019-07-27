@@ -251,7 +251,7 @@ a {
 							type="checkbox" id="must2"> <small class="must2">(필수2)정확하지
 							않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
 							type="checkbox" id="must3"> <small class="must3">(필수3)배송
-							과정 중 발생한 문제는 Akame에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
+							과정 중 발생한 문제는 AGGABI에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
 							type="checkbox" id="must4"> <small class="must4">(필수4)결제
 							후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
 

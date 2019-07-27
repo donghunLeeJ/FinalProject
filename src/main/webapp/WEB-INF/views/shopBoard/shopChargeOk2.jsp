@@ -98,7 +98,7 @@
 
 					<div class="row">
 						<div class="col-4" style="margin-top: 0.8em">
-							<img src="${i.order_image }">
+							<img src="${i.order_image }" style="height: 5em">
 						</div>
 						<div class="col-8 text-left" style="margin-top: 1.5em">
 							<br> ${i.order_title }<br> <br> <small>주문번호

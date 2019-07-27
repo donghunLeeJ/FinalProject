@@ -78,7 +78,15 @@ public class BasketController {
 		String[] seqList = seq.split(",");
 		List<BasketDTO> arr = new ArrayList();
 		for(int i = 0 ; i < seqList.length ; i ++) {
-			 arr.add(bservice.basketListBuy(seqList[i]));
+			 
+			try {
+				arr.add(bservice.basketListBuy(seqList[i]));
+			}catch(Exception e) {
+				return "/home";
+			}
+			
+			
+			
 			 price = price + arr.get(i).getBasket_price();//합계금액
 			 amount = amount + arr.get(i).getBasket_quantity();//합계 수량
 		}

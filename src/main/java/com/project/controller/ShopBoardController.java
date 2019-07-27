@@ -293,6 +293,12 @@ public class ShopBoardController {
 			}
 			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
+			try{
+				sService.getQuan(bdto.getProduct_seq());
+				}catch(Exception e) {
+				return "redirect:/home";
+			}
+			
 			if (sService.getQuan(bdto.getProduct_seq()) <= 0) {
 				return "/shopBoard/chargeCancel";
 			} else {
