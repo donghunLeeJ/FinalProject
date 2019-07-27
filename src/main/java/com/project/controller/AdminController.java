@@ -42,6 +42,7 @@ public class AdminController {
 		request.setAttribute("MemberList", aservice.SelectPageList(1));
 		request.setAttribute("ShopBoardList", aservice.ShopBoardSelectPageList(1));
 		request.setAttribute("OrderBoardList", aservice.OrderBoardSelectPageList(1));
+		request.setAttribute("SNSBoardList", aservice.SNSBoardSelectPageList(1));
 		request.setAttribute("View", ViewDTO.getVisitViewCount());
 		request.setAttribute("BoardNew", ViewDTO.getBoardNewCount());
 		request.setAttribute("Trade", ViewDTO.getTradeCount());

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,8 +68,8 @@
 							<th class="p-1" scope="col">불량회원</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
+					<tbody>										
+					    <tr>
 							<th class="p-1">${MemberList[0].member_id}</th>
 							<td class="p-1">${MemberList[0].member_name}</td>
 							<td class="p-1">${MemberList[0].member_phone}</td>
@@ -85,7 +86,7 @@
 							<td class="p-1">${MemberList[2].member_name}</td>
 							<td class="p-1">${MemberList[2].member_phone}</td>
 							<td class="p-1">${MemberList[2].member_blackcheck}</td>
-						</tr>
+						</tr>						
 					</tbody>
 					
 					
@@ -125,7 +126,7 @@
 					</tbody>
 				</table>
 			</div><div class="col-lg-5 border m-3 pt-3 rounded mx-auto" style="background: #ffffff">
-				<strong> 회원 관리 </strong> <a href="/admin/OrderManagementMove"> 바로가기 </a>
+				<strong> 구매내역 관리 </strong> <a href="/admin/OrderManagementMove"> 바로가기 </a>
 				<table class="table mt-3 border text-center">
 					<thead class="thead-dark">
 						<tr>
@@ -157,37 +158,57 @@
 					</tbody>
 				</table>
 			</div>
-			
+			<!-- private int tl_board_seq;
+	private String tl_title;
+	private String tl_contents;
+	private String tl_writer;
+	private String tl_writer_profile;
+	private Date tl_writedate;
+	private String tl_formatdate;
+	private int tl_viewcount;
+	private int tl_likecount;
+	private int tl_likestatus;
+	private MultipartFile tl_image;
+	private String tl_imgaddr;
+	private String tl_status; 
+	private String tl_reason;
+	private String tl_reporter; -->
 			
 			<div class="col-lg-5 border m-3 pt-3 rounded mx-auto" style="background: #ffffff">
-				<strong> 회원 관리 </strong> <a href="/admin/OrderManagementMove"> 바로가기 </a>
+				<strong> SNS 신고 관리 </strong> <a href="/admin/OrderManagementMove"> 바로가기 </a>
 				<table class="table mt-3 border text-center">
 					<thead class="thead-dark">
 						<tr>
-							<th class="p-1" scope="col">주문번호</th>
-							<th class="p-1" scope="col">주문금액/수량</th>
-							<th class="p-1" scope="col">주문일자</th>
-							<th class="p-1" scope="col">주문자</th>
+							<th class="p-1" scope="col">제목</th>
+							<th class="p-1" scope="col">글쓴이</th>
+							<th class="p-1" scope="col">상태</th>
+							<th class="p-1" scope="col">날짜</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th class="p-1">${OrderBoardList[0].order_number}</th>
-							<td class="p-1">${OrderBoardList[0].order_price}원/${OrderBoardList[0].order_quantity}개</td>
-							<td class="p-1">${OrderBoardList[0].order_time}</td>
-							<td class="p-1">${OrderBoardList[0].order_buyer}</td>
+							<tr>
+								<th class="p-1">${SNSBoardList[0].tl_title}</th>
+								<td class="p-1">${SNSBoardList[0].tl_writer}</td>
+								<td class="p-1">${SNSBoardList[0].tl_status}</td>
+								<td class="p-1"><fmt:formatDate
+										value="${SNSBoardList[0].tl_writedate}" pattern="yyyy-MM-dd" />
+								</td>
+							</tr>
+							<tr>
+							<th class="p-1">${SNSBoardList[1].tl_title}</th>
+							<td class="p-1">${SNSBoardList[1].tl_writer}</td>
+							<td class="p-1">${SNSBoardList[1].tl_status}</td>
+							<td class="p-1"><fmt:formatDate
+										value="${SNSBoardList[1].tl_writedate}" pattern="yyyy-MM-dd" />
+								</td>
 						</tr>
 						<tr>
-							<th class="p-1">${OrderBoardList[1].order_number}</th>
-							<td class="p-1">${OrderBoardList[1].order_price}원/${OrderBoardList[0].order_quantity}개</td>
-							<td class="p-1">${OrderBoardList[1].order_time}</td>
-							<td class="p-1">${OrderBoardList[1].order_buyer}</td>
-						</tr>
-						<tr>
-							<th class="p-1">${OrderBoardList[2].order_number}</th>
-							<td class="p-1">${OrderBoardList[2].order_price}원/${OrderBoardList[0].order_quantity}개</td>
-							<td class="p-1">${OrderBoardList[2].order_time}</td>
-							<td class="p-1">${OrderBoardList[2].order_buyer}</td>
+							<th class="p-1">${SNSBoardList[2].tl_title}</th>
+							<td class="p-1">${SNSBoardList[2].tl_writer}</td>
+							<td class="p-1">${SNSBoardList[2].tl_status}</td>
+							<td class="p-1"><fmt:formatDate
+										value="${SNSBoardList[2].tl_writedate}" pattern="yyyy-MM-dd" />
+								</td>
 						</tr>
 					</tbody>
 				</table>
