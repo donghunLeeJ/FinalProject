@@ -22,8 +22,8 @@ public class ShopBoardService {
 		return sdao.shopBoardList(currentPage);
 	}
 
-	public List<ShopBoardDTO> ShopBoardPageList(int page) {
-		return sellP.selectShop(page);
+	public List<ShopBoardDTO> ShopBoardPageList(int page , String shop_id) {
+		return sellP.selectShop(page , shop_id);
 	}
 
 	// 판매글 관련 데이터를 삽입시킴
