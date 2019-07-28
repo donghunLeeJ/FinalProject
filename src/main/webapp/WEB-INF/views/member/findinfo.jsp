@@ -5,7 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link rel="icon" href="/img/core-img/favicon.ico">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400.300"
+	rel="stylesheet" type="text/css">
+<link
+	rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <title>아이디/비밀번호 찾기</title>
 <style>
@@ -23,85 +27,81 @@
 .form-control[readonly] {
 	background-color: white;
 }
+.h {
+	font-family: naBrush;
+}
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false"
-	onselectstart="return false">
-	<section class="akame-contact-area bg-gray section-padding-80">
-	<div class="container">
-		<div class="row">
-			<!-- Section Heading -->
-			<div class="col-12">
-				<div class="section-heading text-center">
-					<img alt="" src="/img/core-img/logo4.png" style="width: 30%">
-				</div>
-			</div>
-			<div class="col-12">
-				<div class="section-heading text-center">
-					<h2>아이디/비밀번호 찾기</h2>
-				</div>
-			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-12">
-				<!-- Form -->
-				<form action="/member/findID" method="post"
-					class="akame-contact-form border-0 p-0" id="findID">
-					<div class="row">
-						<div class="col-lg-12 text-center">
-							<h3>아이디 찾기</h3>
-							<br>
-							<h5>성함을 입력해주세요</h5>
-							<input type="text" style="width: 50%; margin: auto;"
-								name="member_name" placeholder="성합을 입력해주세요"
-								class="form-control mb-30 tmp" id="my_name">
-						</div>
-						<div class="col-lg-12 text-center">
-							<h5>핸드폰 번호를 입력해주세요</h5>
-							<input type="text" style="width: 50%; margin: auto;"
-								name="member_phone" placeholder="'-'를 제외하고 입력해주세요"
-								class="form-control mb-30 tmp" id="my_phone">
-						</div>
-						<div class="col-12 text-center">
-							<br>
-							<button id="find_id" type="button"
-								class="btn akame-btn btn-3 mt-10 active">아이디 찾기</button>
-						</div>
-					</div>
-				</form>
-			</div>
 
-			<div class="col-12 mt-5">
-				<!-- Form -->
-				<form action="/member/findPW" method="post"
-					class="akame-contact-form border-0 p-0" id="findPW">
-					<div class="row">
-						<div class="col-lg-12 text-center">
-							<h3>비밀번호 찾기</h3>
-							<br>
-							<h5>이메일을 입력해주세요</h5>
-							<input type="text" style="width: 50%; margin: auto;"
-								name="member_id" placeholder="가입된 이메일을 입력해주세요"
-								class="form-control mb-30 tmp" id="my_email">
-						</div>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+	<section class="section-padding-80"
+		style="background-color: #f4ead0; padding-bottom:40px; ">
+        <div class="container">
+            <div class="row">
+                <!-- Section Heading -->
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                      <a href="/home"> <img alt="" src="/img/core-img/logo4.png"style="width: 30%"></a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2 class=h>아이디/비밀번호 찾기</h2>
+                    </div>
+                </div>
+            </div>
 
-						<div class="col-12 text-center">
-							<br>
-							<button id="find_pw" type="button"
-								class="btn akame-btn btn-3 mt-10 active">email 발송</button>
-						</div>
-					</div>
-				</form>
-			</div>
-
-		</div>
-
-	</div>
-	</section>
-	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Form -->
+                    <form action="/member/findID" method="post" class="akame-contact-form border-0 p-0" id="findID">
+                        <div class="row" >
+                            <div class="col-lg-12 text-center">
+                            <h3 class=h>아이디 찾기</h3><br>
+                          	  <h5 class=h>성함을 입력해주세요</h5>
+                                <input type="text" style="width: 50%;margin: auto;" name="member_name" 
+                                placeholder="성합을 입력해주세요" class="form-control mb-30 tmp" id="my_name">
+                            </div>
+                            <div class="col-lg-12 text-center" >
+                                <h5 class=h>핸드폰 번호를 입력해주세요</h5>
+                                <input type="text" style="width: 50%; margin: auto;" name="member_phone" 
+                                placeholder="'-'를 제외하고 입력해주세요"class="form-control mb-30 tmp" id="my_phone">
+                            </div>
+                            <div class="col-12 text-center">
+                            <br>
+                                <button id="find_id" type="button" class="btn akame-btn btn-3 mt-10 active">아이디 찾기</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+           
+                 <div class="col-12 mt-5">
+                    <!-- Form -->
+                    <form action="/member/findPW" method="post" class="akame-contact-form border-0 p-0" id="findPW">
+                        <div class="row" >
+                            <div class="col-lg-12 text-center">
+                              <h3 class=h>비밀번호 찾기</h3><br>
+                          	  <h5 class=h>이메일을 입력해주세요</h5>
+                                <input type="text" style="width: 50%;margin: auto;" name="member_id" 
+                                placeholder="가입된 이메일을 입력해주세요"class="form-control mb-30 tmp" id="my_email">
+                            </div>
+                            
+                            <div class="col-12 text-center">
+                            <br>
+                                <button id="find_pw" type="button" class="btn akame-btn btn-3 mt-10 active">email 발송</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
 		$("#find_id")
 				.on(

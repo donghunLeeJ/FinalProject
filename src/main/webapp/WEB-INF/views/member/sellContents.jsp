@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="/img/core-img/logo4.png">
 <title>판매</title>
 
 <link rel="icon" href="./img/core-img/favicon.ico">
@@ -45,7 +46,7 @@ text-align:center;
 .form-control[readonly] {
 	background-color: white;
 }
-<<<<<<< HEAD
+
 .list_sub{
  margin-right:1px;
 text-align:center;
@@ -80,11 +81,8 @@ text-align:center;
 			style="background: #dde1e5">
 			<div class="col-2 border">이미지</div>
 			<div class="col-4 border">제목</div>
-
-			<div class="col-1 border">수량</div>
-			<!-- 0725수정 -->
-			<div class="col-2 border">금액 (개)</div>
-
+			<div class="col-1 border">총 수량</div><!-- 0728수정 -->
+			<div class="col-2 border">개당 금액</div>
 			<div class="col-2 border">유통기한</div>
 			<div class="col-1 border">요청</div>
 		</div>
@@ -165,7 +163,6 @@ text-align:center;
 						location.href ="/shopboard/deleteRequest?seq=${i.shop_seq}";
 					}
 				})
-
 				$("#del_list2${i.shop_seq}").on("click", function() {
 					if (confirm("삭제 요청을 취소 하나요?") == true) {
 					}

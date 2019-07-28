@@ -18,7 +18,7 @@
 	height: 2em;
 }
 </style>
-<link rel="icon" href="/img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <style>
 </style>
@@ -203,6 +203,7 @@
 	                		  var writerList = writer.split('@');
 	                		  $("#forReply${i.tl_board_seq }").append("<div><strong>"+writerList[0]+"&nbsp;&nbsp;</strong>"+result[i].tl_repl_contents+"<img onclick=repleDelete("+result[i].tl_repl_seq+") id=reple"+result[i].tl_repl_seq+" style='width:10px' src='/img/delte.png'><div>");
 	                	  }
+	                	 
 	                  })
 				}else if($("#reply_view${i.tl_board_seq }").css("display") == "block"){
 					 $("#reply_view${i.tl_board_seq }").css("display","none");	
@@ -230,6 +231,7 @@
                 	  var result2 = result.split(':');
                 	  $("#forReply${i.tl_board_seq }").append("<div><strong>"+result2[0]+"&nbsp;&nbsp;</strong>"+result2[1]+"<div>");
                 	  console.log(resp);
+                	  $("#replyInput${i.tl_board_seq }").val("");
                   })
 					}
 			});
@@ -431,6 +433,7 @@
                 	  var result1List = resp.split(":");
                 	  $('#forReply`+result[i].tl_board_seq+`').append('<div><strong>'+result1List[0]+'&nbsp;&nbsp;</strong>'+result1List[1]+'</div>');
                 	  console.log(resp);
+                	  $('#replyInput`+result[i].tl_board_seq+`').val('');
                   })
 			}
 			})`)

@@ -97,6 +97,7 @@ public class MemberDAO {
 	}
 	
 	public int updateById(MemberDTO dto){
+		System.out.println(dto.toString());
 		return sst.update("member.updateById",dto);
 	}
 
@@ -134,7 +135,10 @@ public class MemberDAO {
 	public int sellContentsDelete(String seq) {
 		return sst.update("member.updateQuantity",seq);
 	}
-
+	public int overlap(String id) {
+		System.out.println("디에이오 "+id);
+		return sst.selectOne("member.overlap",id);
+	}
 	
 
 }

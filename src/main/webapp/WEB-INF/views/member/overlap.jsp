@@ -4,17 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="icon" href="/img/core-img/logo4.png">
-<title>에러</title>
+<title>Insert title here</title>
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
+<body>
 	<script>
-	if(${check } == 1){
-		alert("본인만 댓글을 지울 수 있습니다");
-		location.href = "/timeline/accessTimeLine?seq=1";
-	}
-	
-	
+		alert("이미 가입되어있는 아이디입니다");
+		location.href="/home";
 	</script>
 </body>
 </html>
