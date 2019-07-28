@@ -35,7 +35,7 @@
 						<!-- Form -->
 						<form action="/timeline/boardModified" method="post"
 							enctype="multipart/form-data"
-							class="akame-contact-form border-0 p-0">
+							class="akame-contact-form border-0 p-0" id="delform">
 							<div class="row">
 								<div class="col-lg-12">
 									<h3>- title -</h3>
