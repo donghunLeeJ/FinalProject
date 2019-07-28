@@ -44,4 +44,8 @@ public class OrderDAO {
 	public int deliveryOk(OrderDTO dto) {
 		return sst.update("OrderDAO.deliveryOk", dto);
 	}
+	
+	public int buyConfirm(String seq) {
+		return sst.update("OrderDAO.buyConfirm", seq);
+	}
 }

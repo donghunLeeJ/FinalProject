@@ -23,6 +23,24 @@ public class OrderDTO implements Cloneable {
 	private String order_receipt_phone;
 	private String order_receipt_demend;
 	private String order_delivery;
+	private String order_confirm;
+
+//	@Override
+//	public String toString() {
+//		return "OrderDTO [order_seq=" + order_seq + ", products_seq=" + products_seq + ", member_email=" + member_email
+//				+ ", order_number=" + order_number + ", order_time=" + order_time + ", order_title=" + order_title
+//				+ ", order_quantity=" + order_quantity + ", order_price=" + order_price + ", order_image=" + order_image
+//				+ ", order_seller=" + order_seller + ", order_buyer=" + order_buyer + ", order_buyer_phone="
+//				+ order_buyer_phone + ", order_buyer_email=" + order_buyer_email + ", order_receipt=" + order_receipt
+//				+ ", order_receipt_postcode=" + order_receipt_postcode + ", order_receipt_address1="
+//				+ order_receipt_address1 + ", order_receipt_address2=" + order_receipt_address2
+//				+ ", order_receipt_phone=" + order_receipt_phone + ", order_receipt_demend=" + order_receipt_demend
+//				+ ", order_delivery=" + order_delivery + "]";
+//	}
+
+	public int getOrder_seq() {
+		return order_seq;
+	}
 
 	@Override
 	public String toString() {
@@ -34,11 +52,12 @@ public class OrderDTO implements Cloneable {
 				+ ", order_receipt_postcode=" + order_receipt_postcode + ", order_receipt_address1="
 				+ order_receipt_address1 + ", order_receipt_address2=" + order_receipt_address2
 				+ ", order_receipt_phone=" + order_receipt_phone + ", order_receipt_demend=" + order_receipt_demend
-				+ ", order_delivery=" + order_delivery + "]";
+				+ ", order_delivery=" + order_delivery + ", order_confirm=" + order_confirm + "]";
 	}
 
-	public int getOrder_seq() {
-		return order_seq;
+	public OrderDTO(String order_confirm) {
+		super();
+		this.order_confirm = order_confirm;
 	}
 
 	public void setOrder_seq(int order_seq) {
@@ -196,29 +215,13 @@ public class OrderDTO implements Cloneable {
 	public void setOrder_delivery(String order_delivery) {
 		this.order_delivery = order_delivery;
 	}
+	
+	public String getOrder_confirm() {
+		return order_confirm;
+	}
 
-	public OrderDTO() {
-		super();
-		this.order_seq = order_seq;
-		this.products_seq = products_seq;
-		this.member_email = member_email;
-		this.order_number = order_number;
-		this.order_time = order_time;
-		this.order_title = order_title;
-		this.order_quantity = order_quantity;
-		this.order_price = order_price;
-		this.order_image = order_image;
-		this.order_seller = order_seller;
-		this.order_buyer = order_buyer;
-		this.order_buyer_phone = order_buyer_phone;
-		this.order_buyer_email = order_buyer_email;
-		this.order_receipt = order_receipt;
-		this.order_receipt_postcode = order_receipt_postcode;
-		this.order_receipt_address1 = order_receipt_address1;
-		this.order_receipt_address2 = order_receipt_address2;
-		this.order_receipt_phone = order_receipt_phone;
-		this.order_receipt_demend = order_receipt_demend;
-		this.order_delivery = order_delivery;
+	public void setOrder_confirm(String order_confirm) {
+		this.order_confirm = order_confirm;
 	}
 
 	@Override

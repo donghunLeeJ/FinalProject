@@ -50,4 +50,8 @@ public class OrderService {
 	public int deliveryOk(OrderDTO dto) {
 		return dao.deliveryOk(dto);
 	}
+	
+	public int buyConfirm(String seq) {
+		return dao.buyConfirm(seq);
+	}
 }

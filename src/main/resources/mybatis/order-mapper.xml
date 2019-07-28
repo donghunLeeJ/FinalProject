@@ -9,7 +9,7 @@
 		,#{order_quantity},#{order_price},#{order_image},#{order_seller},#{order_buyer}
 		,#{order_buyer_phone},#{order_buyer_email},#{order_receipt},#{order_receipt_postcode}
 		,#{order_receipt_address1},#{order_receipt_address2},#{order_receipt_phone}
-		,#{order_receipt_demend},default)
+		,#{order_receipt_demend},default,default)
 
 	</insert>
 	
@@ -77,6 +77,10 @@
 		update products_order set order_delivery =
 		#{order_delivery}
 		where order_seq = #{order_seq}
+	</update>
+	
+	<update id="buyConfirm">
+		update products_order set order_confirm = 'Y' where order_seq = #{order_seq}
 	</update>
 
 </mapper>
