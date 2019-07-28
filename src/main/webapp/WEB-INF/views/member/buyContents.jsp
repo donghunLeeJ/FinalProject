@@ -126,10 +126,20 @@ select {
 						data-toggle="modal" style="margin-bottom: 0.3em"
 						data-target="#myModal"> <input type=button
 						class="del_list2" value="요청중" style="margin-bottom: 0.3em">
-					<a id="sell_statusBtn" style="margin-top: 0.3em"> <input
-						class="sell_btn" type="button" value="환불 요청"></a>
+					<a style="margin-top: 0.3em"> <input
+						id="buyConfirmBtn${i.order_seq}" class="sell_btn" type="button" value="구매 확정"></a>
 				</div>
-
+				<script>
+				$("#buyConfirmBtn${i.order_seq}").on("click", function() {
+					var result = confirm("구매를 확정하시겠습니까?");
+					if(result){
+						$(location).attr("href", "/member/buyConfirm?seq=${i.order_seq}")
+					}else{
+						return;
+					}
+					
+				})
+				</script>
 			</div>
 
 			<!-- The Modal -->
@@ -243,6 +253,7 @@ select {
 		$("#sell_statusBtn").on("click", function() {
 			$(location).attr("href", "/member/sellStatus")
 		})
+
 	</script>
 </body>
 </html>

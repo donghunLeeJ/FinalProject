@@ -286,6 +286,13 @@ public class MemberController {
 		request.setAttribute("dto", dto);
 		return "/member/sellStatusPopUp";
 	}
+	
+	@RequestMapping("/buyConfirm")
+	public String buyConfirm(String seq) {
+		System.out.println("구매확정 :" + seq);
+		os.buyConfirm(seq);
+		return "redirect:buyContentsGoProc?page=1";
+	}
 
 	@RequestMapping("myMsg")
 	public String myMsg() {
