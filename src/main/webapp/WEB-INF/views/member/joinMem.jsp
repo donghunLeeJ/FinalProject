@@ -70,12 +70,12 @@
 }
 
 .h2 {
-	font-family: 'Nanum Pen Script', cursive;
+	font-family: 'Great Vibes', cursive;
+}
+.title{
+	font-family: 'Josefin Sans', sans-serif;
 }
 
-.title {
-	font-family: 'Nanum Pen Script', cursive;
-}
 </style>
 
 <script type="text/javascript" src="/js/cross.js"></script>
