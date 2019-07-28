@@ -58,9 +58,9 @@ display: -webkit-box;
         text-align:center;
         height:50px;
     }
-    div{
-    border:1px solid black;
-    }
+    div{ 
+/*      border:1px solid black;  */
+     } 
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -191,7 +191,7 @@ display: -webkit-box;
 										</p>
 									
 									</div>
-
+</div>
 								<div class="row pb-3 mt-4 border-bottom">
 									<div class="col-4">판매 지역</div>
 									<div class="col-8">
@@ -548,7 +548,11 @@ $("#countd").hide();
 });
 	</script>
 	  <script>
-   CountDownTimer('07/28/2019', 'countdown'); // 2017년 1월 1일까지
+	  var hi1 = $("#hi1").val();
+	  var hi2 = $("#hi2").val();
+	 var hi3 = $("#hi3").val()
+	
+   CountDownTimer(hi2+'/'+hi3+'/'+hi1, 'countdown'); // 2017년 1월 1일까지
 //CountDownTimer('01/01/2019 00:00 AM', 'newcountdown'); // 2018년 1월 1일까지, 시간을 표시하려면 01:00 AM과 같은 형식을 사용합니다.
 
 function CountDownTimer(dt, id)
