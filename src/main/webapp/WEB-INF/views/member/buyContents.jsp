@@ -99,7 +99,6 @@ select {
 			<div class="row text-center border py-3" style="background: white">
 
 				<div class="col-2 ">
-
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}"> <img
 						src="${i.order_image}" class="listimg">
 					</a>
@@ -191,7 +190,6 @@ select {
 				</div>
 			</form>
 		</c:forEach>
-
 		<br>
 
 		<div class="list_menu">
