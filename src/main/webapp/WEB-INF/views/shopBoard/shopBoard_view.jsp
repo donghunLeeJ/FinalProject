@@ -37,32 +37,37 @@
 	width: 100%;
 	height: 230px;
 }
-<<<<<<< HEAD
-.ellipsis{
-    overflow:hidden;
-      text-overflow:ellipsis;
-/*       white-space:nowrap; */
-display: -webkit-box;
-      font-family :'나눔 고딕';
-      font-size:25px;
-       -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-    word-wrap:break-word; 
-    line-height: 1.2em;
-    height: 2.4em;
-/*       height:100px; */
-/*       border:1px solid black; */
+
+<<<<<<<
+HEAD
+.ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/*       white-space:nowrap; */
+	display: -webkit-box;
+	font-family: '나눔 고딕';
+	font-size: 25px;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	word-wrap: break-word;
+	line-height: 1.2em;
+	height: 2.4em;
+	/*       height:100px; */
+	/*       border:1px solid black; */
 }
-.red{
-        background-color: #f29202;
-        color:white;
-        font-size:30px;
-        text-align:center;
-        height:50px;
-    }
-    div{ 
-/*      border:1px solid black;  */
-     } 
+
+.red {
+	background-color: #f29202;
+	color: white;
+	font-size: 30px;
+	text-align: center;
+	height: 50px;
+}
+
+div {
+	/*      border:1px solid black;  */
+	
+}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -119,7 +124,7 @@ display: -webkit-box;
 											</div>
 										</div>
 										<div class="col-12 red mb-2" id="countdown"></div>
-											<div id=countd>
+										<div id=countd>
 											<c:set var="msg" value="${dto.shop_expiration }" />
 											<c:set var="start" value="${fn:split(msg,'-')}" />
 											<c:forEach var="i" begin="0" end="0">
@@ -141,12 +146,16 @@ display: -webkit-box;
 							</div>
 							<div class="col-1 "></div>
 							<div class="col-6">
-								<div class="row pb-4 border-bottom">
+								<div class="row  border-bottom">
 
-									<div class="col-4 ">
+									<div class="col-5 ">
 										<h4 style="font-family: '나눔고딕OTF';">[${dto.shop_brand}]</h4>
 									</div>
-									<div class="col-8 ellipsis">${dto.shop_title }</div>
+									<div class="col-7 ellipsis text-left" style="padding: 0">
+										<h4>
+											<strong>${dto.shop_title }</strong>
+										</h4>
+									</div>
 									&nbsp;&nbsp;
 									<!-- 											<strong class="ellipsis"> -->
 									<!-- 											</strong> -->
@@ -168,11 +177,11 @@ display: -webkit-box;
 								<div class="row pb-3 mt-4  border-bottom">
 									<div class="col-4">남은 수량</div>
 									<div class="col-8">
-										<p>
-											<strong><fmt:formatNumber value="${dto.shop_quantity }"
-												pattern="#,###" />(개)</strong>
-											 <input type="hidden"
-												name=basket_quantity value="${dto.shop_quantity }">
+										<p style="color: red">
+											<strong><fmt:formatNumber
+													value="${dto.shop_quantity }" pattern="#,###" />(개)</strong> <input
+												type="hidden" name=basket_quantity
+												value="${dto.shop_quantity }">
 										</p>
 
 									</div>
@@ -183,12 +192,12 @@ display: -webkit-box;
 										<p>
 											<strong>${dto.shop_expiration }</strong> <input type="hidden"
 												id="expi" name=basket_expiration
-												value="${dto.shop_expiration }"><br>
-												*유통기한 당일 상품은 구매 불가
+												value="${dto.shop_expiration }"><br> <span
+												style="color: red">*유통기한 당일 상품은 구매 불가</span>
 										</p>
-									
+
 									</div>
-</div>
+								</div>
 								<div class="row pb-3 mt-4 border-bottom">
 									<div class="col-4">판매 지역</div>
 									<div class="col-8">
@@ -231,15 +240,19 @@ display: -webkit-box;
 
 
 
-										수량 : <input type="text" name="shop_quantity" value="1"id="quantity_one"
-											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" style="width: 3em; text-align: right">
+										수량 : <input type="text" name="shop_quantity" value="1"
+											id="quantity_one"
+											oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+											style="width: 3em; text-align: right">
 									</div>
-									<div class="col-2"	style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
+									<div class="col-2"
+										style="padding-left: 0; padding-right: 0; margin-top: 1.1em">
 										<div class="row">
 											<div class="col-12">
 
-												<input type="button" value="+" id="up_btn"class="quantity_btn"> 
-												<input type="button" value="-" id="down_btn" class="quantity_btn">
+												<input type="button" value="+" id="up_btn"
+													class="quantity_btn"> <input type="button"
+													value="-" id="down_btn" class="quantity_btn">
 
 											</div>
 										</div>
@@ -545,7 +558,7 @@ $("#countd").hide();
     }
 });
 	</script>
-	  <script>
+	<script>
 	  var hi1 = $("#hi1").val();
 	  var hi2 = $("#hi2").val();
 	 var hi3 = $("#hi3").val()
@@ -579,9 +592,9 @@ var minutes = Math.floor((distance % _hour) / _minute);
 var seconds = Math.floor((distance % _minute) / _second);
 
 document.getElementById(id).innerHTML = days + '일 ';
-document.getElementById(id).innerHTML += hours + '시간 ';
-document.getElementById(id).innerHTML += minutes + '분 ';
-document.getElementById(id).innerHTML += seconds + '초';
+document.getElementById(id).innerHTML += hours + ' 시 ';
+document.getElementById(id).innerHTML += minutes + ' 분 ';
+document.getElementById(id).innerHTML += seconds + ' 초';
 }
 
 timer = setInterval(showRemaining, 1000);
