@@ -172,6 +172,9 @@ public class MemberController {
 
 	@RequestMapping("edit_mypage")
 	public String log_edit_mypage(MemberDTO mdto) {// 마이페이지에서 글 정보수정 버튼 누르기
+		
+		
+		
 		session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
 		return "member/edit_OK";
 
