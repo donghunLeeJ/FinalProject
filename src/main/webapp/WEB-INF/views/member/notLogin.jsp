@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<title>Insert title here</title>
+<title>에러</title>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<script>

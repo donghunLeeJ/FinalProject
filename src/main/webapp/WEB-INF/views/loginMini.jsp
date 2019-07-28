@@ -96,50 +96,52 @@ a:hover {
 
 	</div>
 	<script>
-		$("#login")
-				.on(
-						"click",
-						function() {
-							var id = $("#member_id").val();
-							var pw = $("#member_pw").val();
+		loginClick = function() {
+			var id = $("#member_id").val();
+			var pw = $("#member_pw").val();
 
-							$
-									.ajax({
-										url : "/member/minilogin",
-										type : "post",
-										data : {
-											id : id,
-											pw : pw
-										}
+			$
+					.ajax({
+						url : "/member/minilogin",
+						type : "post",
+						data : {
+							id : id,
+							pw : pw
+						}
 
-									})
-									.done(
-											function(resp) {
+					})
+					.done(
+							function(resp) {
 
-												if (resp == 1) {
-													removeXSS($("#member_id")
-															.val(), $(
-															"#member_id").attr(
-															"id"));
-													removeXSS($("#member_pw")
-															.val(), $(
-															"#member_pw").attr(
-															"id"));
-													alert("로그인 되었습니다.");
-													opener.parent.location
-															.reload();
-													window.close();
+								if (resp == 1) {
+									removeXSS($("#member_id").val(), $(
+											"#member_id").attr("id"));
+									removeXSS($("#member_pw").val(), $(
+											"#member_pw").attr("id"));
+									alert("로그인 되었습니다.");
+									opener.parent.location.reload();
+									window.close();
 
-												} else if (resp == -1) {
+								} else if (resp == -1) {
 
-													alert("해당 id는 블랙리스트로 등록되어 로그인을 할 수 없으니 관리자에게 문의해주세요.");
+									alert("해당 id는 블랙리스트로 등록되어 로그인을 할 수 없으니 관리자에게 문의해주세요.");
 
-												} else {
+								} else {
 
-													alert("아이디나 비밀번호가 옳지 않습니다");
-												}
-											})
-						})
+									alert("아이디나 비밀번호가 옳지 않습니다");
+								}
+							})
+		}
+		$("#member_pw").keydown(function(key) {
+
+			if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
+				loginClick();
+			}
+		})
+
+		$("#login").on("click", function() {
+			loginClick();
+		})
 
 		$("#joinmem").on("click", function() {
 			opener.parent.location.href = "/member/joinForm";

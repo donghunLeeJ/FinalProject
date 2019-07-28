@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>구매</title>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="../css/style2.css">
 
@@ -46,10 +46,6 @@ a {
 	cursor: pointer;
 }
 
-img {
-	width: 100%;
-	height: 100%;
-}
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 </head>
@@ -58,18 +54,11 @@ img {
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 <!-- 	장바구니에서 결제하기 화면 >> shopChargeOK2로 넘어감 -->
 		<div class="container mt-5">
-			<div class="row  pb-3 border-bottom">
-				<div class="col-12 text-right">
-
-					<a href="/shopboard/ShopBoardViewProc?seq=${dto.shop_seq }"
-						class="btn akame-btn">이전 페이지 </a>
-
-				</div>
-			</div>
+			
 
 			<div class="row border-bottom border-top py-2 bg-gray">
 				<div class="col-6">
-					<h3>장바구니 결제</h3>
+					<h3 style="font-family: '나눔고딕OTF';">장바구니 결제</h3>
 				</div>
 <!-- 				<div class="col-6 " style="text-align: right"> -->
 <!-- 					<h3>장바구니 결제 </h3> -->
@@ -189,7 +178,7 @@ img {
 			<div class="row pt-5 pb-1">
 
 				<div class="col-12 ">
-					<h3>주문자 정보 입력</h3>
+					<h3 style="font-family: '나눔고딕OTF';">주문자 정보 입력</h3>
 				</div>
 			</div>
 			<div class="row border rounded">
@@ -225,7 +214,7 @@ img {
 
 			<div class="row">
 				<div class="col-12 pt-2 font-weight-bold">
-					<h3>배송지 정보 입력</h3>
+					<h3 style="font-family: '나눔고딕OTF';">배송지 정보 입력</h3>
 				</div>
 			</div>
 
@@ -292,7 +281,7 @@ img {
 							type="checkbox" id="must2"> <small class="must2">(필수)정확하지
 							않은 정보 입력으로 인하여 생긴 피해는 주문자가 책임지겠습니다</small><br> <input
 							type="checkbox" id="must3"> <small class="must3">(필수)배송
-							과정 중 발생한 문제는 Akame에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
+							과정 중 발생한 문제는 AGGABI에서 책임지지 않으므로 택배사에 문의 부탁드립니다</small><br> <input
 							type="checkbox" id="must4"> <small class="must4">(필수)결제
 							후 취소,환불,교환이 어려울 수 있으며, 이에 동의합니다 </small>
 					</p>

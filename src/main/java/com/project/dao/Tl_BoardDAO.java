@@ -23,6 +23,10 @@ public class Tl_BoardDAO {
 		return sst.insert("Tl_BoardDAO.tl_board_insert", dto);
 	}
 
+	public Tl_BoardDTO showOne(String tl_board_seq){
+		return sst.selectOne("Tl_BoardDAO.tl_board_showBySeq",tl_board_seq);
+	}
+	
 	public List<Tl_BoardDTO> showAll(int page) {
 		return sst.selectList("Tl_BoardDAO.tl_board_showAll", page);
 	}

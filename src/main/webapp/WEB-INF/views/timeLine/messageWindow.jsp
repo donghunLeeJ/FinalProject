@@ -18,9 +18,8 @@
             <div class="col-12  p-4">
                <input type="hidden" value="${seq }" name="tl_board_seq">
                <h2 style="color: gray">
-                  <img alt="" src="/img/core-img/logo.png"> 메세지 보내기
+                  <img alt="" src="/img/core-img/logo3.png" style="height: 80px"> 
                </h2>
-
             </div>
 
          </div>

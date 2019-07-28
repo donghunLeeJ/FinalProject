@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>결제완료</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -98,7 +98,7 @@
 
 					<div class="row">
 						<div class="col-4" style="margin-top: 0.8em">
-							<img src="${i.order_image }">
+							<img src="${i.order_image }" style="height: 5em">
 						</div>
 						<div class="col-8 text-left" style="margin-top: 1.5em">
 							<br> ${i.order_title }<br> <br> <small>주문번호

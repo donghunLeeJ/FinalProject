@@ -30,19 +30,20 @@ public class OrderService {
 		return dao.myOrderList(id);
 	}
 
-
 	public List<OrderDTO> sellOrderList(int seq) {
 		return dao.sellOrderList(seq);
 
 	}
-	
+
 	public int orderCount() {
 		return dao.orderCount();
 	}
-	public List<String> Page(int page, int count){
+
+	public List<String> Page(int page, int count) {
 		return bp.myPaging(page, count);
 	}
-	public List<OrderDTO> orderTenList(int page){
-		return bp.selectOrder(page);
+
+	public List<OrderDTO> orderTenList(int page ,String member_email) {
+		return bp.selectOrder(page , member_email);
 	}
 }

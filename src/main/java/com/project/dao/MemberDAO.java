@@ -130,6 +130,10 @@ public class MemberDAO {
 	public List<ProfileImageDTO> profile_image() {
 		 return sst.selectList("member.selectProfile");
 	}
+	
+	public int sellContentsDelete(String seq) {
+		return sst.update("member.updateQuantity",seq);
+	}
 
 	
 

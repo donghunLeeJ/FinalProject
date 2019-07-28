@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>판매</title>
 
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
@@ -109,10 +109,41 @@ text-align:center;
 
 				<div class="col-1" style="padding: 0">
 
-					<input type=button class="sell_btn del_list" id="del_list${i.shop_seq }" value="매진 처리" style="margin-bottom: 0.3em"> 
-					<input type=button class="sell_btn del_list2" id="del_list2${i.shop_seq }"value="" style="margin-bottom: 0.3em; color: red">
-					 <a href="/member/sellStatus?seq=${i.shop_seq }" id="sell_statusBtn?"style="margin-top: 0.3em"><input class="sell_btn"
-						type="button" value="판매 현황"></a>
+
+
+					<c:choose>
+						<c:when test="${i.shop_quantity == 0}">
+
+							<input type=button class="sell_btn del_list"
+								id="del_list${i.shop_seq }" value="매진 완료"
+								style="color:red; margin-bottom: 0.3em">
+								
+								<script>
+									$('#del_list${i.shop_seq }').attr('disabled',true);//버튼 비활성화
+								</script>
+						</c:when>
+
+						<c:otherwise>
+
+							<input type=button class="sell_btn del_list"
+								id="del_list${i.shop_seq }" value="매진 신청"
+								style="margin-bottom: 0.3em">
+
+						</c:otherwise>
+
+					</c:choose>
+
+					<!-- 
+						 <input type=button
+						class="sell_btn del_list2" id="del_list2${i.shop_seq }"
+						value="매진 완료" style="margin-bottom: 0.3em; color: red"> <a
+						href="/member/sellStatus?seq=${i.shop_seq }" id="sell_statusBtn?"
+						style="margin-top: 0.3em">
+										
+						 -->
+																
+						<a href="/member/sellStatus?seq=${i.shop_seq }" id="sell_statusBtn?"style="margin-top: 0.3em"><input class="sell_btn"
+                  type="button" value="판매 현황"></a>
 				</div>
 
 			</div>
@@ -120,17 +151,16 @@ text-align:center;
 				$("#del_list2${i.shop_seq}").hide();
 
 				$("#del_list${i.shop_seq}").on("click", function() {
-					alert("매진 처리 되었습니다. \n판매 글은 삭제 예정입니다.");
-						$("#del_list${i.shop_seq}").hide();
-				});
-// 				$("#del_list2${i.shop_seq}").on("click", function() {
-// 					if (confirm("삭제 요청을 취소 하나요?") == true) {
 
-// 						$("#del_list2${i.shop_seq}").hide();
-// 						$("#del_list${i.shop_seq}").show();
-
-// 					}
-// 				})
+					if (confirm("삭제 요청을 하나요?") == true) {
+									
+						location.href ="/shopboard/deleteRequest?seq=${i.shop_seq}";
+					}
+				})
+				$("#del_list2${i.shop_seq}").on("click", function() {
+					if (confirm("삭제 요청을 취소 하나요?") == true) {
+					}
+				})
 			</script>
 		</c:forEach>
 

@@ -22,19 +22,25 @@
 	bottom: auto;
 }
 
-body { font-family :'나눔고딕OTF';}
+body {
+	font-family: '나눔고딕OTF';
+}
 
-#img1{
-height:220px;
+#img1 {
+	height: 220px;
 }
 /* div{ */
 /* border:1px solid black; */
 /* } */
+#map_ma {
+	width: 100%;
+	height: 400px;
+	clear: both;
+	border: solid 0px;
+}
 
-#map_ma {width:100%; height:400px; clear:both; border:solid 0px;}
 .form-control[readonly] {
 	background-color: white;
-
 }
 
 #map_ma {
@@ -47,7 +53,8 @@ height:220px;
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"
+	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 
@@ -97,22 +104,24 @@ height:220px;
                            	 <div style="position: absolute;">
 								   <div style="position: relative; top: 70px; left: 0px;">
 								   <img src="/img/core-img/soldout.png" >
-								</div>
-								</div>
-								<img src="${i.shop_imagepath1 }" id="img1"  alt="" >
 
-                           <!-- Thumbnail Zoom -->
-                           <a href="#}" class=""><i class=""></i></a>
-                        </div>
-                        <div class="team-member-info border">
-                           <div class="row">
-                              <div class="col-12"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </c:when>
+								</div>
+								<img src="${i.shop_imagepath1 }" id="img1" alt="">
+
+								<!-- Thumbnail Zoom -->
+								<a href="#}" class=""><i class=""></i></a>
+							</div>
+							<div class="team-member-info border">
+								<div class="row">
+									<div class="col-12"></div>
+								</div>
+							</div>
+						</div>
+					</c:when>
 					<c:otherwise>
-							<div class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"data-wow-delay="500ms">
+						<div
+							class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"
+							data-wow-delay="500ms">
 							<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
 								<div class="akame-portfolio-single-item" style="height: 250px">
 									<img src="${i.shop_imagepath1 }" id="img1" alt="">
@@ -130,8 +139,8 @@ height:220px;
 									</div>
 
 									<!-- Thumbnail Zoom -->
-<%-- 									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i --%>
-<!-- 										class="icon_search"></i></a> -->
+									<%-- 									<a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i --%>
+									<!-- 										class="icon_search"></i></a> -->
 
 								</div>
 								<div class="team-member-info border">
@@ -139,11 +148,11 @@ height:220px;
 										<div class="col-12"></div>
 									</div>
 								</div>
-								</a>
-							</div>
-							 </c:otherwise>
-									</c:choose>
-						</c:forEach>
+							</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 
 
 		</div>
@@ -161,7 +170,7 @@ height:220px;
 				<div class="single-contact-information mb-80">
 					<i class="icon_phone"></i>
 					<h4>Phone</h4>
-					<p>+01-3-8888-6868</p>
+					<p>010-8862-8976</p>
 				</div>
 			</div>
 
@@ -170,7 +179,7 @@ height:220px;
 				<div class="single-contact-information mb-80">
 					<i class="icon_pin"></i>
 					<h4>Address</h4>
-					<p>Iris Watson, 283 Fusce Rd,NY</p>
+					<p>118, Namdaemun-ro, Jung-gu, Seoul, Republic of Korea</p>
 				</div>
 			</div>
 
@@ -188,14 +197,14 @@ height:220px;
 				<div class="single-contact-information mb-80">
 					<i class="icon_mail"></i>
 					<h4>Email</h4>
-					<p>info.colorlib@gmail.com</p>
+					<p>sidong91@gmail.com</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	</section>
 
-	<div id="map_ma"></div>
+	<div id="map_ma" style="height: 600px; margin-bottom: 50px;"></div>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 
@@ -243,7 +252,7 @@ height:220px;
 		//페이지가 갱신되는 순간 조건을 만족할 경우 방문자수를 증가시키도록 정보를 보내는 ajax
 		$.ajax({
 
-			url : "/admin/VisitViewCondition",
+			url : "/view/VisitViewCondition",
 			type : "post",
 			data : {
 				access : "${access}"

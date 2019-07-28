@@ -52,13 +52,18 @@ public class BuyPaging {
 	   }
 	 
 	   //각 페이지마다 게시글 10개 출력하는 메서드
-	   public List<OrderDTO> selectOrder(int page){
+	   public List<OrderDTO> selectOrder(int page , String member_email){
 	      int  countPage=5;
 	      int startCount=(page-1)*countPage+1;
 	      int endCount=page*countPage;
 	      
+	      PageDTO value = new PageDTO();
+	      value.setStartCount(startCount);
+	      value.setEndCount(endCount);
+	      value.setMember_email(member_email);
+	      
 	      List<OrderDTO> shopList = 
-	            sst.selectList("OrderDAO.PageSelect",new PageDTO(startCount, endCount));
+	            sst.selectList("OrderDAO.PageSelect",value);
 	      return shopList;
 	   }
 

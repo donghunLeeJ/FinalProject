@@ -22,18 +22,20 @@ public class ShopBoardDTO {
 	private String shop_imagepath1;
 	private String shop_imagepath2;
 	private String shop_imagepath3;// 음식 이미지 주소가 들어가는 경로
-
-	public ShopBoardDTO() {}
-
-	public ShopBoardDTO(int memberSell_seq, int shop_seq, String shop_id, String shop_brand, String shop_material,String shop_title,
-			String shop_contents, Timestamp shop_writedate, String shop_location, String shop_expiration,
-			int shop_price, int shop_quantity, String shop_imagepath1, String shop_imagepath2, String shop_imagepath3) {
+	private String shop_deleterequest;
+	
+	public ShopBoardDTO(){}
+	
+	public ShopBoardDTO(int memberSell_seq, int shop_seq, String shop_id, String shop_brand, String shop_material,
+			String shop_title, String shop_contents, Timestamp shop_writedate, String shop_location,
+			String shop_expiration, int shop_price, int shop_quantity, String shop_imagepath1, String shop_imagepath2,
+			String shop_imagepath3, String shop_deleterequest) {
 		super();
 		MemberSell_seq = memberSell_seq;
 		this.shop_seq = shop_seq;
 		this.shop_id = shop_id;
 		this.shop_brand = shop_brand;
-		this.shop_material=shop_material;
+		this.shop_material = shop_material;
 		this.shop_title = shop_title;
 		this.shop_contents = shop_contents;
 		this.shop_writedate = shop_writedate;
@@ -44,6 +46,7 @@ public class ShopBoardDTO {
 		this.shop_imagepath1 = shop_imagepath1;
 		this.shop_imagepath2 = shop_imagepath2;
 		this.shop_imagepath3 = shop_imagepath3;
+		this.shop_deleterequest = shop_deleterequest;
 	}
 
 	public String getShop_material() {
@@ -166,4 +169,13 @@ public class ShopBoardDTO {
 		this.shop_imagepath3 = shop_imagepath3;
 	}
 
+	public String getShop_deleterequest() {
+		return shop_deleterequest;
+	}
+
+	public void setShop_deleterequest(String shop_deleterequest) {
+		this.shop_deleterequest = shop_deleterequest;
+	}
+
+	
 }

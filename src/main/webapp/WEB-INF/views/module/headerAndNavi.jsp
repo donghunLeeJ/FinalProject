@@ -81,7 +81,7 @@ body {
 			<div class="row h-100 align-items-center">
 				<div class="col-5">
 					<div class="top-header-content">
-						<p style="font-family: '나눔고딕OTF'; color: black">Akame에 오신 여러분
+						<p style="font-family: '나눔고딕OTF'; color: black">AGGABI에 오신 여러분
 							환영합니다!</p>
 					</div>
 				</div>

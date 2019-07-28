@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>판매글 관리</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
@@ -42,7 +42,9 @@ table {
 					<th class="col">이미지</th>
 					<th class="col">제목</th>
 					<th class="col">가격</th>
+					<th class="col">수량</th>
 					<th class="col">유통기한</th>
+					<th class="col">삭제요청유무</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,11 +59,14 @@ table {
 							onclick="window.open('/shopboard/ShopBoardViewProc?seq=${i.shop_seq}','상품','width=1920px, height=1080px')">${i.shop_contents}</a>
 						</td>
 						<td class="col"><b>${i.shop_price}</b>원</td>
-
-						<td class="col">
-							<div class="row">
-								<div class="col-12">${i.shop_expiration}</div>
-								<div class="col-12 mt-4"></div>
+                        <td class="col"><b>${i.shop_quantity}</b>개</td>
+						<td class="col">${i.shop_expiration}</td>
+                     <td class="col">
+                     <div class="row">
+                       <div class="col-12">${i.shop_deleterequest}</div>
+                     
+                     			
+			<div class="col-12 mt-4"></div>
 								<div class="col mt-5 ml-4">
 
 									<!--<input id="delete_btn" type="button" value="삭제하기"> 
@@ -72,9 +77,14 @@ table {
 										<a href="/admin/AdminDeleteShopBoard?shop_seq=${i.shop_seq}" style="color: white;">삭제하기</a>
 									</button>
 								</div>
-							</div>
-						</td>
-
+                   
+                     
+                     
+            
+                     
+                     
+                     </div>
+                     </td>
 					</tr>
 				</c:forEach>
 			</tbody>

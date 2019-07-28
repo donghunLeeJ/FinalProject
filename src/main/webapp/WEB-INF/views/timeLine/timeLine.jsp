@@ -151,7 +151,7 @@
 												</div>
 												<div>
 													<a
-														href="/timeline/boardModify?seq=${i.tl_board_seq }&writer=${i.tl_writer}&title=${i.tl_title}&imgaddr=${i.tl_imgaddr }&contents=${i.tl_contents}"><b>글
+														href="/timeline/boardModify?tl_board_seq=${i.tl_board_seq }"><b>글
 															수정 </b></a>
 												</div>
 												<div>

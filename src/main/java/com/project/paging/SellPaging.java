@@ -50,14 +50,20 @@ public class SellPaging {
 		return pageList;
 	}
 	
-	//각 페이지마다 게시글 n개 출력하는 메서드
-	public List<ShopBoardDTO> selectShop(int page){
-		  int  countPage=5;
-	      int startCount=(page-1)*countPage+1;
-	      int endCount=page*countPage;
-		
+	
+	//로그인한 사용자의 판매 내역을 페이징과 함께 출력시켜주는 메소드
+	public List<ShopBoardDTO> selectShop(int page , String shop_id){
+		int  countPage=5;
+		int startCount=(page-1)*countPage+1;
+		int endCount=page*countPage;
+
+		PageDTO value = new PageDTO();
+		value.setStartCount(startCount);
+		value.setEndCount(endCount);
+		value.setShop_id(shop_id);
+
 		List<ShopBoardDTO> shopList = 
-				sst.selectList("ShopBoardDAO.PageSelect",new PageDTO(startCount, endCount));
+				sst.selectList("ShopBoardDAO.PageSelect",value);
 		return shopList;
 	}
 	

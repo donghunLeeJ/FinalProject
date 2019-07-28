@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>About Our Service</title>
+<title>서비스 소개</title>
 <link rel="icon" href="/img/core-img/favicon.ico">
 <link rel="stylesheet" href="/css/style2.css">
 <style>
@@ -135,10 +135,9 @@
 						Monday - Friday: 10.00 AM - 20.00 PM <br> Saturday: 10.00 AM
 						- 19.00 PM
 					</p>
-					<h4>(+82) 02 356 4561</h4>
+					<h4>(+82) 010 8862 8976</h4>
 					<p>
-						welcome.aggabi@gmail.com <br> 12 Insadong-gil, Jongno-gu,
-						Seoul, Republic of Korea (03163)
+						welcome.aggabi@gmail.com <br> 118, Namdaemun-ro, Jung-gu, Seoul, Republic of Korea
 					</p>
 				</div>
 			</div>
