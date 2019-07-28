@@ -93,7 +93,7 @@
 						<div class="col-2" style="margin-top: 0.3em">${i.order_time }</div>
 						<div class="col-1" style="margin-top: 0.3em">${i.order_quantity }</div>
 						<div class="col-1" style="margin-top: 0.3em">
-							<input id="deliveryCheck" type="hidden"
+							<input id="deliveryCheck${i.order_seq }" type="hidden"
 								value="${i.order_delivery }">
 
 							<fmt:formatNumber value="${i.order_price }" pattern="#,###" />
@@ -109,9 +109,9 @@
 							<input type="button" class="delivery_btn"
 								id="delivery_btn${i.order_seq }" value="발송완료">
 							<script>
-							if($("#deliveryCheck").val() == "y"){
+							if($("#deliveryCheck${i.order_seq }").val() == "y"){
 								
-								$("#delivery_btn${i.order_seq}").attr("disabled",true).css("cursor","default",).css("background-color","red");
+								$("#delivery_btn${i.order_seq}").attr("disabled",true).css("cursor","default").css("background-color","red");
 							}else{
 						
 								$("#delivery_btn${i.order_seq}").attr("disabled",false);
@@ -137,8 +137,8 @@
 											
 										}).done(function(resp){
 											if(resp == "O"){
-												alery("발송 완료! ")
-												$("#delivery_btn${i.order_seq}").attr("disabled",true).css("cursor","default",).css("background-color","red");
+												alert("발송 완료! ");
+												$("#delivery_btn${i.order_seq}").attr("disabled",true).css("cursor","default").css("background-color","red");
 											}else{
 												
 											}

@@ -68,8 +68,8 @@ public class ShopBoardDAO {
 		return sst.selectOne("ShopBoardDAO.shopReviewCount", shop_seq);
 	}
 
-	public int shopReviewDelete(String id) {
-		return sst.delete("shopBoardDAO.shopReviewDelete", id);
+	public int shopReviewDelete(String del_id) {
+		return sst.delete("ShopBoardDAO.shopReviewDelete", del_id);
 	}
 
 	public int updateQ(int quant, int seq) {
@@ -83,8 +83,8 @@ public class ShopBoardDAO {
 		return sst.selectOne("ShopBoardDAO.getQuan", seq);
 	}
 
-	public int shopBoardDelete(String id) {
+	public int shopBoardDelete(String del_id) {
 
-		return sst.delete("ShopBoardDAO.shopBoardDelete", id);
+		return sst.delete("ShopBoardDAO.shopBoardDelete", del_id);
 	}
 }
