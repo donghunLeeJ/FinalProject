@@ -70,7 +70,7 @@
 }
 
 .h2 {
-	font-family: 'Great Vibes', cursive;
+	font-family: 'Josefin Sans', sans-serif;
 }
 .title{
 	font-family: 'Josefin Sans', sans-serif;
@@ -166,7 +166,7 @@
 							<div class=title>핸드폰 번호</div>
 							<input type="text" name=member_phone id=phone
 								style="width: 48%; margin: auto;" class="form-control mb-30"
-								placeholder=" '-'를 제외하고 입력해주세요">
+								placeholder=" '-'를 제외하고 입력해주세요" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 						</div>
 
 						<div class="col-lg-12 ">

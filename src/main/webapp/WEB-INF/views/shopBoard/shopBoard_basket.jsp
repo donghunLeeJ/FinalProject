@@ -87,7 +87,7 @@ input[type="text"] {
 <!-- 			</div> -->
 
 		</div>
-		<form action="/Basket/asd" id="chargeForm">
+		<form action="/Basket/shopBoard_buy2Proc" id="chargeForm">
 			<div class="row border-bottom border-top bg-gray text-center py-2">
 				<div class="col-1 py-2"><input type="checkbox" onclick="checkAll();" /></div>
 				<div class="col-3">상품/옵션정보</div>
