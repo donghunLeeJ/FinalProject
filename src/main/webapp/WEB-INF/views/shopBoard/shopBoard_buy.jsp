@@ -145,10 +145,11 @@ a {
 				<div class="col-3 py-2 font-weight-bold">휴대전화</div>
 				<div class="col-9 py-2">
 					<input type="text" name="phone1" id="order_phone1" class="empty"
-						style="width: 8em"> - <input type="text" name="phone2"
-						class="empty" id="order_phone2" style="width: 8em"> - <input
+						style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+						> - <input type="text" name="phone2"
+						class="empty" id="order_phone2" style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" > - <input
 						type="text" name="phone3" id="order_phone3" class="empty"
-						style="width: 8em">
+						style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 				</div>
 				<div class="col-3 py-2 font-weight-bold">이메일</div>
 				<div class="col-9 py-2">

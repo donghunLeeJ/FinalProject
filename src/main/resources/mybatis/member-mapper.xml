@@ -92,6 +92,9 @@ update member set member_pw=#{pw} where member_id=#{id}
 
 	<update id="updateQuantity">
 		update shopboard set shop_quantity = 0 , shop_deleterequest ='y' where shop_seq = #{seq}	
-	</update>
+	</update> 
 	
+	<select id="overlap" resultType="Integer">
+		select count(*) from member where member_id=#{member_id}
+	</select>
 </mapper>

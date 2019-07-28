@@ -70,8 +70,8 @@ public class BasketController {
 		return "/shopBoard/shopBoard_basket";
 	}
 	
-	@RequestMapping("/asd")
-	public String asd(String basket_seq) {
+	@RequestMapping("/shopBoard_buy2Proc")
+	public String shopBoard_buy2Proc(String basket_seq) {
 		int price = 0;
 		int amount = 0;
 		String seq = basket_seq;
