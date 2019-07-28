@@ -7,14 +7,14 @@
 	onselectstart="return false">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Akame</title>
+<title>AGGABI </title>
 <!-- 구글 맵 API -->
 <script type="text/javascript"
 	src="http://maps.google.com/maps/api/js?key=AIzaSyBJPpkHrAjmxY5-i1zd8qgs6mO6Ybi_jL4 "></script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <style>
 .carousel-caption {

@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="../css/style2.css">
 </head>
 <body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">

@@ -7,6 +7,7 @@
 <title>신고하기</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link rel="icon" href="/img/core-img/logo4.png">
 <style type="text/css">
 
 </style>

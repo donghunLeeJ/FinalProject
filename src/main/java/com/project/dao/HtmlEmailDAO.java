@@ -19,7 +19,7 @@ public class HtmlEmailDAO {
 		String fromEmail = "cwg94@naver.com"; // 보내는사람이메일
 		String fromName = "develLover";
 
-		String subject = "[JH!] 회원가입 확인 ";
+		String subject = "[AGGABI] 회원가입 확인 ";
 		String msg = "<!DOCTYPE html>\r\n" + "<html lang=\"en\">\r\n" + "<head>\r\n"
 				+ "    <meta charset=\"UTF-8\">\r\n" + "    <title>Document</title>\r\n" + "\r\n" + "</head>\r\n"
 				+ "<body>\r\n" + "    <div class=\"wrapper\">\r\n"
@@ -27,7 +27,7 @@ public class HtmlEmailDAO {
 				+ "        <div class=\"body\">\r\n"
 				+ "            <p style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;안녕하세요 " + id
 				+ "님</p>\r\n"
-				+ "            <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A<strong>KKABI</strong> 회원가입을 감사드립니다.</p>\r\n"
+				+ "            <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>AGGABI</strong> 회원가입을 감사드립니다.</p>\r\n"
 				+ "            <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;안전한 서비스를 위하여 이메일 인증을 완료하여 주시기 바랍니다.</p>\r\n"
 				+ "            <br>\r\n"
 				+ "            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=\"192.168.60.33/member/verifiedId?id="
@@ -74,14 +74,14 @@ public class HtmlEmailDAO {
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com"; // SMTP 서버명
 		String hostSMTPid = "cwg94"; // 아이디
-		String hostSMTPpw = "1q2w3e4r%T"; // 비밀번호
+		String hostSMTPpw = "1q2w3e4r%T^Y"; // 비밀번호
 
 		// 보내는 사람
 
 		String fromEmail = "cwg94@naver.com"; // 보내는사람이메일
 		String fromName = "develLover";
 
-		String subject = "[JH!] 비밀번호 찾기 ";
+		String subject = "[AGGABI] 비밀번호 찾기 ";
 		String msg = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n"
 				+ "<html>\r\n" + "<head>\r\n"
 				+ "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n"

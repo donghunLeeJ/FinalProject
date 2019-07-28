@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>타임라인 작성하기</title>
 <style>
 	textarea{
@@ -15,7 +16,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="../css/style2.css">
 <!-- <link rel="stylesheet" href="style.css"> -->
 	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
