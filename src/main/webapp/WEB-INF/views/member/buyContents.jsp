@@ -50,6 +50,25 @@ select {
 .form-control[readonly] {
 	background-color: white;
 }
+
+.list_sub {
+	margin-right: 1px;
+	text-align: center;
+}
+
+.list_menu button {
+	border: 1px solid skyblue;
+	background-color: rgba(0, 0, 0, 0);
+	color: skyblue;
+	padding: 3px;
+	text-align: center;
+	width: 30px;
+}
+
+.list_menu button:hover {
+	color: white;
+	background-color: skyblue;
+}
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
@@ -80,13 +99,15 @@ select {
 			<div class="row text-center border py-3" style="background: white">
 
 				<div class="col-2 ">
+
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}"> <img
 						src="${i.order_image}" class="listimg">
 					</a>
 				</div>
 				<div class="col-4 skip" style="margin-top: 2.3em">
-					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}"><strong
-						style="font-size: 1.2em">${i.order_title }</strong> </a>
+					<a href="/shopboard/shopOrderA?products_seq=${i.products_seq}">
+						<strong style="font-size: 1.2em">${i.order_title }</strong>
+					</a>
 				</div>
 
 				<div class="col-1 " style="margin-top: 2.3em">
@@ -171,24 +192,28 @@ select {
 			</form>
 		</c:forEach>
 
-		<div class="list_n_menu">
+		<br>
+
+		<div class="list_menu">
 			<c:forEach var="i" items="${pageList}">
 				<c:choose>
-					<c:when test="${i eq '이전'}">
-						<span class="navi mr-1 center"><a
-							href="buyContentsGoProc?page=${page-1}" class="center">${i}</a></span>
+					<c:when test="${i eq '<<'}">
+						<a href="buyContentsGoProc?page=${page-1}" class="center"><button
+								class="list_sub">${i}</button></a>
 					</c:when>
-					<c:when test="${i eq '다음'}">
-						<span class="navi mr-1 center"><a
-							href="buyContentsGoProc?page=${page+1}" class="center">${i}</a></span>
+					<c:when test="${i eq '>>'}">
+						<a href="buyContentsGoProc?page=${page+1}" class="center"><button
+								class="list_sub">${i}</button></a>
 					</c:when>
 					<c:otherwise>
-						<span class="navi mr-1 center"><a
-							href="buyContentsGoProc?page=${i}" class="center">${i}</a></span>
+						<a href="buyContentsGoProc?page=${i}" class="center"><button
+								class="list_sub">${i}</button></a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 		</div>
+		<br>
+
 
 	</div>
 	</section>
@@ -216,32 +241,12 @@ select {
 			$("#modalfo").submit();
 
 		});
-		// 		$(".del_list").on("click", function() {
-		// 			if (confirm("삭제 요청을 하나요?") == true) {
-		// 				$(".del_list").hide();
-		// 				$(".del_list2").show();
-		// 			}
-		// 		})
-		// 		$(".del_list2").on("click", function() {
-		// 			if (confirm("삭제 요청을 취소 하나요?") == true) {
-
-		// 				$(".del_list2").hide();
-		// 				$(".del_list").show();
-
-		// 			}
-		// 		})
+		
+		
 		$("#sell_statusBtn").on("click", function() {
 			$(location).attr("href", "/member/sellStatus")
 		})
-		// 		$("#sell_statusBtn").on("click",function(){
-		// 			var popupX = (document.body.offsetWidth / 2) - (800 / 2);
-		// 			//&nbsp;만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-
-		// 			var popupY= (document.body.offsetHeight / 2) - (500 / 2);
-		// 			//&nbsp;만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
-		// 			window.open('/member/sellStatus', '', 'status=no, height=500, width=800, left='+ popupX + ', top='+ popupY);
-		// 		})
+		
 	</script>
 </body>
 </html>

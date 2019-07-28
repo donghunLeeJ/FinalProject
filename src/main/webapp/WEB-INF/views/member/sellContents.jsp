@@ -38,32 +38,31 @@
 	box-shadow: 5px 5px 5px #eee;
 }
 
-.center {
-	text-align: center;
+.center{
+text-align:center;
 }
 
 .form-control[readonly] {
 	background-color: white;
 }
+<<<<<<< HEAD
+.list_sub{
+ margin-right:1px;
+text-align:center;
+ }
+.list_menu button{
+            border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue;
+            padding:3px;
+            text-align:center;
+            width:30px;
+        }
+.list_menu button:hover{
+            color:white;
+            background-color: skyblue;
+        }
 
-.list_sub {
-	margin-right: 1px;
-	text-align: center;
-}
-
-.list_menu button {
-	border: 1px solid skyblue;
-	background-color: rgba(0, 0, 0, 0);
-	color: skyblue;
-	padding: 3px;
-	text-align: center;
-	width: 30px;
-}
-
-.list_menu button:hover {
-	color: white;
-	background-color: skyblue;
-}
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -81,9 +80,11 @@
 			style="background: #dde1e5">
 			<div class="col-2 border">이미지</div>
 			<div class="col-4 border">제목</div>
+
 			<div class="col-1 border">수량</div>
 			<!-- 0725수정 -->
 			<div class="col-2 border">금액 (개)</div>
+
 			<div class="col-2 border">유통기한</div>
 			<div class="col-1 border">요청</div>
 		</div>
@@ -112,6 +113,7 @@
 				<div class="col-2 " style="margin-top: 2.3em; color: red">${i.shop_expiration }</div>
 
 				<div class="col-1" style="padding: 0">
+
 
 
 					<c:choose>
@@ -155,15 +157,15 @@
 			<script>
 				$("#del_list2${i.shop_seq}").hide();
 
-				$("#del_list${i.shop_seq}")
-						.on(
-								"click",
-								function() {
-									if (confirm("삭제 요청을 하나요?") == true) {
 
-										location.href = "/shopboard/deleteRequest?seq=${i.shop_seq}";
-									}
-								})
+				$("#del_list${i.shop_seq}").on("click", function() {
+
+					if (confirm("삭제 요청을 하나요?") == true) {
+									
+						location.href ="/shopboard/deleteRequest?seq=${i.shop_seq}";
+					}
+				})
+
 				$("#del_list2${i.shop_seq}").on("click", function() {
 					if (confirm("삭제 요청을 취소 하나요?") == true) {
 					}
@@ -196,6 +198,7 @@
 				</c:choose>
 			</c:forEach>
 		</div>
+		<br>
 
 
 	</div>

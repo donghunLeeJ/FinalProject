@@ -12,6 +12,10 @@
 		,#{order_receipt_demend},default)
 
 	</insert>
+	
+	<select id="orderSelect" resultType="com.project.dto.OrderDTO">
+	select * from products_order where member_email=#{value}
+	</select>
 	<select id="myOrderList" resultType="com.project.dto.OrderDTO">
 		select * from
 		products_order
