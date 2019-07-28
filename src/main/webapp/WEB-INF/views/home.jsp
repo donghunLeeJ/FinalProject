@@ -7,14 +7,14 @@
 	onselectstart="return false">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Akame</title>
+<title>AGGABI </title>
 <!-- 구글 맵 API -->
 <script type="text/javascript"
 	src="http://maps.google.com/maps/api/js?key=AIzaSyBJPpkHrAjmxY5-i1zd8qgs6mO6Ybi_jL4 "></script>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <style>
 .carousel-caption {
@@ -29,9 +29,9 @@ body {
 #img1 {
 	height: 220px;
 }
-/* div{ */
-/* border:1px solid black; */
-/* } */
+ div{ 
+/*  border:1px solid black;  */
+} 
 #map_ma {
 	width: 100%;
 	height: 400px;
@@ -99,17 +99,17 @@ body {
 					  <c:choose>
 					   <c:when test="${i.shop_quantity eq 0}">
                 <div   class="col-12 col-sm-6 col-lg-3  mb-5 mt-3 akame-portfolio-item wow fadeInUp" data-wow-delay="500ms">
-                        <div class="" style="height: 250px">
-                           
+                        <div class="" style=" height: 250px">
                            	 <div style="position: absolute;">
 								   <div style="position: relative; top: 70px; left: 0px;">
 								   <img src="/img/core-img/soldout.png" >
 
 								</div>
+								</div>
 								<img src="${i.shop_imagepath1 }" id="img1" alt="">
 
 								<!-- Thumbnail Zoom -->
-								<a href="#}" class=""><i class=""></i></a>
+								<a href="#" class=""><i class=""></i></a>
 							</div>
 							<div class="team-member-info border">
 								<div class="row">
@@ -120,8 +120,7 @@ body {
 					</c:when>
 					<c:otherwise>
 						<div
-							class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"
-							data-wow-delay="500ms">
+							class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"data-wow-delay="500ms">
 							<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
 								<div class="akame-portfolio-single-item" style="height: 250px">
 									<img src="${i.shop_imagepath1 }" id="img1" alt="">

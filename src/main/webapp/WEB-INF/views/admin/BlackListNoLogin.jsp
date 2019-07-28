@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="/img/core-img/logo4.png">
 <title>블랙리스트 아이디</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>

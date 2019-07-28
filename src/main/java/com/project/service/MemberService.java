@@ -94,5 +94,10 @@ public class MemberService {
 	public int delRequest(String seq) {
 		return mdao.sellContentsDelete(seq);
 	}
+	
+	public int overlap(String id) {
+		System.out.println("서비스 "+id);
+		return mdao.overlap(id);
+	}
 
 }
