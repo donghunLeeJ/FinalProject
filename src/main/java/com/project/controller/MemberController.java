@@ -65,7 +65,7 @@ public class MemberController {
 		if (result == 1) {
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
 			if (confirm.equals("y")) {
-	
+
 				int BlackCount = 0;
 				List<String> BlackListResult = aservice.AdminBlackCheckList();
 				for (String BlackList : BlackListResult) {
@@ -230,7 +230,6 @@ public class MemberController {
 		return "redirect:buyContentsGoProc?page=1";
 	}
 
-	
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
 		int resultPage = Integer.parseInt(page);
@@ -244,7 +243,7 @@ public class MemberController {
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<OrderDTO> buyList = os.orderTenList(resultPage , mdto.getMember_id());
+		List<OrderDTO> buyList = os.orderTenList(resultPage, mdto.getMember_id());
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}
@@ -254,7 +253,7 @@ public class MemberController {
 	public String log_sellStatus(int seq) {
 		int total_quantity = 0;
 		int total_price = 0;
-		List<OrderDTO> dto = os.sellOrderList(seq);
+		List<OrderDTO> dto = os.sellOrderList(seq);//판매글의 판매목록
 		for (int i = 0; i < dto.size(); i++) {
 			total_price += dto.get(i).getOrder_price();
 			total_quantity += dto.get(i).getOrder_quantity();
@@ -295,4 +294,16 @@ public class MemberController {
 		return resultString;
 	}
 
+	@RequestMapping("/deliveryOk")
+	@ResponseBody
+	public String deliveryOk(OrderDTO dto) {
+		String updateOk;
+		int result = os.deliveryOk(dto);
+		if (result == 1) {
+			updateOk = "O";
+		} else {
+			updateOk = "X";
+		}
+		return updateOk;
+	}
 }

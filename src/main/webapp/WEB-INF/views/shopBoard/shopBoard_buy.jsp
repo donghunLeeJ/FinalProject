@@ -263,15 +263,16 @@ a {
 				</div>
 
 
-				<div class="row py-5 border-bottom">
-					<div class="col-12 text-center">
-						<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
-							href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a> <input
-							type="hidden" value="" id=quant3 name=quant> <input
-							type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
+
+			</div>
+			<div class="row py-5 border-bottom">
+				<div class="col-12 text-center">
+					<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
+						href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a> <input
+						type="hidden" value="" id=quant3 name=quant> <input
+						type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
 
 
-					</div>
 				</div>
 			</div>
 		</div>
@@ -370,7 +371,7 @@ a {
 								var qua = Number($("#quant1").val());
 								var quant = shop_q - qua;
 								$("input[name=quant]").val(shop_q - qua);
-									IMP.request_pay({
+								IMP.request_pay({
 									pg : 'inicis', // version 1.1.0부터 지원.
 									pay_method : 'card',
 									merchant_uid : 'merchant_'
