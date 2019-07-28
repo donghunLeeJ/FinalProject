@@ -12,7 +12,7 @@ public class HtmlEmailDAO {
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com"; // SMTP 서버명
 		String hostSMTPid = "cwg94"; // 아이디
-		String hostSMTPpw = "1q2w3e4r%T"; // 비밀번호
+		String hostSMTPpw = "1q2w3e4r%T^Y"; // 비밀번호
 
 		// 보내는 사람
 

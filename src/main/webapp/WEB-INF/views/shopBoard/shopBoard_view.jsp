@@ -32,10 +32,12 @@
 .border {
 	border: 1px solid #FCBB00;
 }
-.intro{
-width:100%;
-height:230px;
+
+.intro {
+	width: 100%;
+	height: 230px;
 }
+<<<<<<< HEAD
 .ellipsis{
     overflow:hidden;
       text-overflow:ellipsis;
@@ -142,17 +144,12 @@ display: -webkit-box;
 								<div class="row pb-4 border-bottom">
 
 									<div class="col-4 ">
-										<h4 style="font-family :'나눔고딕OTF';">
-										[${dto.shop_brand}]
-
-										</h4>
+										<h4 style="font-family: '나눔고딕OTF';">[${dto.shop_brand}]</h4>
 									</div>
-										<div class="col-8 ellipsis">
-										${dto.shop_title }
-									</div>
-											 &nbsp;&nbsp;
-<!-- 											<strong class="ellipsis"> -->
-<!-- 											</strong> -->
+									<div class="col-8 ellipsis">${dto.shop_title }</div>
+									&nbsp;&nbsp;
+									<!-- 											<strong class="ellipsis"> -->
+									<!-- 											</strong> -->
 
 								</div>
 								<div class="row pb-3 mt-4 border-bottom">
@@ -216,8 +213,8 @@ display: -webkit-box;
 
 								<div class="row pt-2 pb-4">
 									<div class="col-6  text-left">
-										<span style="margin-right: 1em; text-align: left">구매 가능 수량
-											: <strong><fmt:formatNumber
+										<span style="margin-right: 1em; text-align: left">구매 가능
+											수량 : <strong><fmt:formatNumber
 													value="${dto.shop_quantity }" pattern="#,###" />(개)</strong> <%-- 												: <strong><fmt:formatNumber value="${quant }" pattern="#,###" />(개)</strong> --%>
 										</span>
 									</div>
@@ -257,8 +254,9 @@ display: -webkit-box;
 								</div>
 								<div class="row border-top border-bottom py-3">
 									<div class="col-12 text-right" style="line-height: 2.5em;">
-										<span style="margin-right: 2em"><strong>총 상품금액(택배비 포함)
-												:</strong></span><span id="resultPrice" style="font-size: 1.5em; color: red"><fmt:formatNumber
+										<span style="margin-right: 2em"><strong>총
+												상품금액(택배비 포함) :</strong></span><span id="resultPrice"
+											style="font-size: 1.5em; color: red"><fmt:formatNumber
 												value="${dto.shop_price }" pattern="#,###" />원</span>
 									</div>
 								</div>
