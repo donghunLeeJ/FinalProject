@@ -33,7 +33,7 @@ h5 {
 }
 
 #findAdd {
-	padding: 5px;
+	padding: 2px;
 	width: 45px;
 	height: 45px;
 }
@@ -115,6 +115,9 @@ select {
 .form-control[readonly] {
 	background-color: white;
 }
+/* div{ */
+/* border: 1px solid black; */
+/* } */
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
@@ -128,14 +131,71 @@ select {
 		<div class="row my-2">
 			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
+<!-- 					<li class="nav-item"><a href="" data-target="#profile" -->
+<!-- 						data-toggle="tab" class="nav-link active">나의 정보</a></li> -->
+
 					<li class="nav-item"><a href="" data-target="#profile"
 						data-toggle="tab" class="nav-link active">나의 정보</a></li>
-
-					<li class="nav-item"><a href="" data-target="#edit"
-						data-toggle="tab" class="nav-link">정보 수정</a></li>
 					<li class="nav-item"><a href="" data-target="#delId"
 						data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
 				</ul>
+<<<<<<< HEAD
+				<div class="tab-content col-lg-12 py-4 ">
+<!-- 					<div class="tab-pane active" id="profile" > -->
+<!-- 						<div class="row" style="position: relative; left: 7em" > --> 
+<!-- 							<div class="order-lg-1 col-lg-4 float text-center"> -->
+<%-- 								<img src="${id.member_imgpath }" class="mx-auto img-circle" id=myinfo alt="avatar"> --%>
+<!-- 							</div> -->
+<!-- 							<div class="col-lg-8 float"> -->
+<!-- 								<div class="float col-lg-12 col-mf-12"> -->
+<!-- 									<div class=" form-group row"> -->
+<!-- 										<label class="col-lg-3 col-form-label form-control-label">아이디</label> -->
+<!-- 										<div class=" col-lg-9"> -->
+<%-- 											<div class=" form-control" type="text">${id.member_id } --%>
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group row"> -->
+<!-- 										<label class="col-lg-3 col-form-label form-control-label">이름</label> -->
+<!-- 										<div class="col-lg-9"> -->
+<%-- 											<div class="form-control" type="text">${id.member_name } --%>
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group row"> -->
+<!-- 										<label class="col-lg-3 col-form-label form-control-label">생일</label> -->
+<!-- 										<div class="col-lg-9"> -->
+<%-- 											<div class="form-control" type="text">${id.member_birth}</div> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group row"> -->
+<!-- 										<label class="col-lg-3 col-form-label form-control-label">핸드폰 -->
+<!-- 											번호</label> -->
+<!-- 										<div class="col-lg-9"> -->
+<%-- 											<div class="form-control" type="text">${id.member_phone}</div> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group row"> -->
+<!-- 										<label class="col-lg-3 col-form-label form-control-label">기본 -->
+<!-- 											주소</label> -->
+<!-- 										<div class="col-lg-9"> -->
+<%-- 											<div class="form-control" type="text">${id.member_address1 }</div> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group row"> -->
+<!-- 										<label class="col-lg-3 col-form-label form-control-label">상세 -->
+<!-- 											주소</label> -->
+<!-- 										<div class="col-lg-9"> -->
+<%-- 											<div class="form-control" type="text">${id.member_address2 }</div> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+
+<!-- 					</div> --> 
+					
+<!-- 					</div> -->
+=======
 				<div class="tab-content py-4 ">
 					<div class="tab-pane active" id="profile">
 						<div class="row" style="position: relative; left: 7em">
@@ -201,12 +261,17 @@ select {
 								<img src="${id.member_imgpath }" class="mx-auto img-circle"
 									alt="avatar"> <input type=file id="file" name="file"
 									accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)">
+>>>>>>> 33b4b087ed720e74c8383a635977e9b3c49a79f5
 
 
-								<input type="button" id="change" class="btn btn-success "
-									name="my_images" value="사진 변경"> <input type="submit"
-									id="uploadImg" class="btn btn-success " value="사진 업로드">
 
+					<div class="tab-pane active col-lg-12" id="profile">
+						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
+							<form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data">
+								<div><img src="${id.member_imgpath }" width="280px" height="200px" class="mx-auto img-circle"alt="avatar"></div><br>
+								 <input type=file id="file" name="file" accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)">
+								<input type="button" id="change" class="btn btn-success "name="my_images" value="사진 변경">
+								 <input type="submit" id="uploadImg" class="btn btn-success " value="사진 업로드">
 							</form>
 						</div>
 
@@ -247,12 +312,19 @@ select {
 									</div>
 								</div>
 								<div class="form-group row">
+<<<<<<< HEAD
+									<label class="col-lg-3 col-form-label form-control-label">우편번호
+<!-- 										                            <button type="button" onclick="sample4_execDaumPostcode()" -->
+<!-- 										                           class="btn btn-success p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
+										<img src="/img/core-img/find_addr.png"onclick="sample4_execDaumPostcode()"class="mx-auto img-circle" data-aria-haspopup="true"
+=======
 									<label class="col-lg-3 col-form-label form-control-label"
 										style="margin-top: 8px">우편번호 <!--                             <button type="button" onclick="sample4_execDaumPostcode()" -->
 										<!--                            class="btn btn-success p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
 										<img src="/img/core-img/find_addr.png"
 										onclick="sample4_execDaumPostcode()"
 										class="mx-auto img-circle" data-aria-haspopup="true"
+>>>>>>> 33b4b087ed720e74c8383a635977e9b3c49a79f5
 										aria-expanded="false" id="findAdd">
 									</label>
 									<div class="col-lg-9 mt-3">
@@ -287,13 +359,11 @@ select {
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label"
-										style="margin-top: 27px;">자기 소개</label>
+									<label class="col-lg-3 col-form-label form-control-label"	style="margin-top: 27px;">자기 소개</label>
 									<div class="col-lg-9" id="introdiv">
 										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
 									</div>
-									<input name="member_intro" type="hidden">
-									<%--                                 <div class=" ">${id.member_intro}</div> --%>
+<%-- 									<input name="member_intro" type="hidden"> <div class=" ">${id.member_intro}</div> --%>
 								</div>
 
 								<div class="form-group row">
@@ -316,18 +386,15 @@ select {
 								</div>
 								<div class="form-group row text-right">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
-									<div class="col-lg-9">
-
-										<!--                                 <input type="reset" class="btn btn-secondary" value="초기화"> -->
-
-										<input type="button" id="edit_info" class="btn btn-success"
-											value="정보 수정"> <input type="button" id="goHome"
-											class="btn btn-success" value="홈으로">
+									<div class="col-lg-9"><input type="reset" class="btn btn-secondary" value="초기화">
+										<input type="button" id="edit_info" class="btn btn-success" value="정보 수정"> 
+										<input type="button" id="goHome" class="btn btn-success" value="홈으로">
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
+					
 					<div class="tab-pane" id="delId">
 						<h1 style="font-family: '나눔고딕OTF';" class="my-5">그동안 저희 사이트를
 							이용해 주셔서 감사합니다.</h1>
@@ -372,12 +439,25 @@ select {
 
 
 	<script>
+<<<<<<< HEAD
+$("#uploadImg").hide();	
+	
+	$("#area").on("input",function(){
+	if ($("#area").val().length > 100) {
+		alert("자기소개 제한 글자를 초과하였습니다");
+	}
+	});
+	
+	
+	
+=======
 		$("#area").on("input", function() {
 			if ($("#area").val().length > 100) {
 				alert("자기소개 제한 글자를 초과하였습니다");
 			}
 		});
 
+>>>>>>> 33b4b087ed720e74c8383a635977e9b3c49a79f5
 		$("#goHome").on("click", function() {
 			location.href = "/home";
 		})
@@ -440,6 +520,7 @@ select {
 			ImgURL = window.URL.createObjectURL(file);
 			$("#preview img").attr('src', ImgURL);
 			$("#preview").show();
+			$("#uploadImg").show();	
 		});
 
 		$("#edit_info").on("click", function() {//정보수정 버튼 클릭시

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.dao.OrderDAO;
+import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
 import com.project.paging.BuyPaging;
 
@@ -19,6 +20,10 @@ public class OrderService {
 
 	public void orderInsert(OrderDTO odto) {
 		dao.orderInsert(odto);
+	}
+	public List<OrderDTO> orderSelect(OrderDTO odto) {
+		System.out.println("1");
+		return dao.orderSelect(odto);
 	}
 
 	public List<OrderDTO> myOrderList(String id) {
