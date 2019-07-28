@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -15,108 +15,105 @@ h5{
 display:inline;
 }
 .float {
-	float: left;
+   float: left;
 }
 
 .over {
-	overflow: hidden;
-	box-sizing: border-box;
+   overflow: hidden;
+   box-sizing: border-box;
 }
 
 .skip {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	word-wrap: normal;
-	width: 100%;
-	overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   word-wrap: normal;
+   width: 100%;
+   overflow: hidden;
 }
 
 #findAdd {
-	padding: 2px;
-	width: 45px;
-	height: 45px;
+   padding: 5px;
+   width: 45px;
+   height: 45px;
 }
 
 #myinfo {
-	width: 260px;
-	height: 260px;
+   width: 260px;
+   height: 260px;
 }
 
 .no {
-	padding: 0px;
-	margin: 0px;
+   padding: 0px;
+   margin: 0px;
 }
 
 #area {
-	width: 100%;
-	height: 100px;
+   width: 100%;
+   height: 100px;
 }
 /*    div{     */
 /*     border:1px solid black;     */
 /*    }     */
 #delId {
-	text-align: center;
+   text-align: center;
 }
 
 hr {
-	margin: 5px;
+   margin: 5px;
 }
 
 .center {
-	text-align: center;
+   text-align: center;
 }
 
 .listimg {
-	width: 8em;
-	height: 6em;
+   width: 8em;
+   height: 6em;
 }
 
 #sellTitle {
-	hirght: 80px;
+   hirght: 80px;
 }
 
 .mypage_btn1 {
-	width: 5em;
-	height: 2em;
-	background-color: white;
-	border: 1px solid black;
-	margin-bottom: 0.1em;
-	cursor: pointer;
+   width: 5em;
+   height: 2em;
+   background-color: white;
+   border: 1px solid black;
+   margin-bottom: 0.1em;
+   cursor: pointer;
 }
 
 .mypage_btn2 {
-	width: 5em;
-	height: 2em;
-	background-color: white;
-	border: 1px solid black;
-	margin-top: 0.1em;
-	cursor: pointer;
+   width: 5em;
+   height: 2em;
+   background-color: white;
+   border: 1px solid black;
+   margin-top: 0.1em;
+   cursor: pointer;
 }
 
 select {
-	color: red;
+   color: red;
 }
 
 .btn {
-	border: 1px solid gray;
-	transition-duration: 1s;
-	cursor: pointer;
-	color: white;
-	background-color: #FCBB00;
+   border: 1px solid gray;
+   transition-duration: 1s;
+   cursor: pointer;
+   color: white;
+   background-color: #FCBB00;
 }
 
 .btn:hover {
-	background-color: white;
-	border: 1px solid #FCBB00;
-	color: black;
+   background-color: white;
+   border: 1px solid #FCBB00;
+   color: black;
 }
 
 .form-control[readonly] {
-	background-color: white;
+   background-color: white;
 }
-/* div{ */
-/* border: 1px solid black; */
-/* } */
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
@@ -613,7 +610,7 @@ $("#uploadImg").hide();
 	</script>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+
 </body>
 </html>
-
 
