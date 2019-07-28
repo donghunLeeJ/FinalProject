@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link rel="icon" href="/img/core-img/logo4.png">
 <style>
 	.headerbtn{
 		border: 1px solid skyblue;
