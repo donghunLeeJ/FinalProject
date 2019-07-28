@@ -23,9 +23,10 @@ public class ShopBoardDTO {
 	private String shop_imagepath2;
 	private String shop_imagepath3;// 음식 이미지 주소가 들어가는 경로
 	private String shop_deleterequest;
-	
-	public ShopBoardDTO(){}
-	
+
+	public ShopBoardDTO() {
+	}
+
 	public ShopBoardDTO(int memberSell_seq, int shop_seq, String shop_id, String shop_brand, String shop_material,
 			String shop_title, String shop_contents, Timestamp shop_writedate, String shop_location,
 			String shop_expiration, int shop_price, int shop_quantity, String shop_imagepath1, String shop_imagepath2,
@@ -177,5 +178,4 @@ public class ShopBoardDTO {
 		this.shop_deleterequest = shop_deleterequest;
 	}
 
-	
 }
