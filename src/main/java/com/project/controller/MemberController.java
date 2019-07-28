@@ -61,6 +61,7 @@ public class MemberController {
 	@RequestMapping("loginProc")
 	public String login(MemberDTO mdto) {
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
+		System.out.println("로그인프록");
 		int result = mservice.login(mdto);
 		if (result == 1) {
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
