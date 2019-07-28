@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>판매글</title>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <!-- Latest compiled and minified CSS -->
@@ -37,7 +37,7 @@
 	width: 100%;
 	height: 230px;
 }
-<<<<<<< HEAD
+
 .ellipsis{
     overflow:hidden;
       text-overflow:ellipsis;
@@ -60,10 +60,33 @@ display: -webkit-box;
         text-align:center;
         height:50px;
     }
+    .reds{
+        background-color: #f29202;
+        color:white;
+        font-size:25px;
+        text-align:center;
+        height:50px;
+    }
     div{ 
 /*      border:1px solid black;  */
      } 
 </style>
+<script>
+$(function(){
+	$("#exShow").hide();
+	
+		var date = $("#expi").val();
+		var expidate = parse(date);
+		var nowdate = new Date();
+	    if(expidate <= nowdate  ){
+	    	$("#exHide").hide();
+	    	$("#exShow").show();
+			}
+			
+		
+	
+})
+</script>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
 	onselectstart="return false">
@@ -184,7 +207,6 @@ display: -webkit-box;
 											<strong>${dto.shop_expiration }</strong> <input type="hidden"
 												id="expi" name=basket_expiration
 												value="${dto.shop_expiration }"><br>
-												*유통기한 당일 상품은 구매 불가
 										</p>
 									
 									</div>
@@ -257,12 +279,13 @@ display: -webkit-box;
 										<span style="margin-right: 2em"><strong>총
 												상품금액(택배비 포함) :</strong></span><span id="resultPrice"
 											style="font-size: 1.5em; color: red"><fmt:formatNumber
-												value="${dto.shop_price }" pattern="#,###" />원</span>
+												value="${dto.shop_price }" pattern="#,###" />원</span><br>
+												*수량 확인 후 장바구니에 담아주세요
 									</div>
 								</div>
 								<div class="row pb-3 mt-4 border-bottom-0">
 									<div class="col-12" style="text-align: center"
-										style="font-wight:600">
+										style="font-wight:600" id=exHide>
 
 
 
@@ -271,6 +294,10 @@ display: -webkit-box;
 											바 구 니에 담기
 										</a>
 									</div>
+									<div class="col-12 reds" style="text-align: center"
+										style="font-wight:600" id=exShow>
+										당일 유통기간 상품은 구매하실 수 없습니다
+								</div>
 								</div>
 							</div>
 						</div>
@@ -442,7 +469,7 @@ $("#countd").hide();
 // 			}
 // 	});
 		
-		
+		$("#exShow").hide();
 		
 		$("#chargeItem").on("click",function(){
 			var date = $("#expi").val();
@@ -584,8 +611,7 @@ document.getElementById(id).innerHTML += minutes + '분 ';
 document.getElementById(id).innerHTML += seconds + '초';
 }
 
-timer = setInterval(showRemaining, 1000);
+timer = setInterval(showRemaining, 00);
 }
     </script>
-</body>
 </html>

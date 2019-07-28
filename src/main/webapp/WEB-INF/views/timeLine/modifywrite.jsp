@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>수정 페이지</title>
 
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="../css/style2.css">
 <!-- <link rel="stylesheet" href="style.css"> -->
 <script type="text/javascript" src="/js/cross.js"></script>
@@ -35,7 +36,7 @@
 						<!-- Form -->
 						<form action="/timeline/boardModified" method="post"
 							enctype="multipart/form-data"
-							class="akame-contact-form border-0 p-0">
+							class="akame-contact-form border-0 p-0" id="delform">
 							<div class="row">
 								<div class="col-lg-12">
 									<h3>- title -</h3>

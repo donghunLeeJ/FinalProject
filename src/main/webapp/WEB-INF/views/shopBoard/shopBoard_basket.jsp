@@ -12,6 +12,7 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<link rel="icon" href="/img/core-img/logo4.png">
 <style>
 input[type="text"] {
 	box-shadow: 4px 4px 5px #gray inset;

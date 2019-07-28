@@ -5,7 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link rel="icon" href="/img/core-img/favicon.ico">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400.300"
+	rel="stylesheet" type="text/css">
+<link
+	rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <title>비밀번호 초기화</title>
 <style>
@@ -15,23 +19,26 @@ background-color:white;
 .center{
 text-align: center;
 }
+.h {
+	font-family: naBrush;
+}
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-
-	<section class="akame-contact-area bg-gray section-padding-80">
+	<section class="section-padding-80"
+		style="background-color: #f4ead0; padding-bottom:40px; ">
         <div class="container">
             <div class="row">
                 <!-- Section Heading -->
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <img alt="" src="/img/core-img/fakelogo.png" style="width: 30%">
+                  <a href="/home"> <img alt="" src="/img/core-img/logo4.png"style="width: 30%"></a>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>비밀번호를 초기화합니다</h2>
+                        <h2 class=h>비밀번호를 초기화합니다</h2>
                     </div>
                 </div>
             </div>
@@ -41,13 +48,13 @@ text-align: center;
                 <form action="/member/cleanPW" id="cleanPW" method="post" class="akame-contact-form border-0 p-0">
                         <div class="row" >
                             <div class="col-lg-12 text-center">
-                             <h3>비밀번호 입력</h3>
+                             <h3 class=h>비밀번호 입력</h3>
                              <input type="hidden" value="${id}" name=member_id>
                                 <input type="password" style="width: 50%;margin: auto;" name="member_pw" id=pw
                                 class="form-control mb-30"placeholder="대,소문자,숫자 포함 8~13자리">
                             </div>
                           <div class="col-lg-12 text-center" >
-                                <h3>비밀번호 재입력</h3>
+                                <h3 class=h>비밀번호 재입력</h3>
                                 <input type="password" style="width: 50%; margin: auto;" id=pw2 
                                 class="form-control mb-30" placeholder="대,소문자,숫자 포함 8~13자리">
                             </div>

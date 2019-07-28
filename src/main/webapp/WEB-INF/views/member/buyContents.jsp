@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>구매하기</title>
 
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
@@ -99,7 +99,6 @@ select {
 			<div class="row text-center border py-3" style="background: white">
 
 				<div class="col-2 ">
-
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}"> <img
 						src="${i.order_image}" class="listimg">
 					</a>
@@ -191,7 +190,6 @@ select {
 				</div>
 			</form>
 		</c:forEach>
-
 		<br>
 
 		<div class="list_menu">

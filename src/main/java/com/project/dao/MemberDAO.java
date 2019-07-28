@@ -97,6 +97,7 @@ public class MemberDAO {
 	}
 	
 	public int updateById(MemberDTO dto){
+		System.out.println(dto.toString());
 		return sst.update("member.updateById",dto);
 	}
 
