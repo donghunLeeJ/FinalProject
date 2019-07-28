@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,12 +16,14 @@
 /* div{ */
 /* border:1px solid black; */
 /* } */
-.float{
-float:left;
+.float {
+	float: left;
 }
-.box{
-box-sizing: border-box;
+
+.box {
+	box-sizing: border-box;
 }
+
 .form-control[readonly] {
 	background-color: white;
 }
@@ -29,8 +31,11 @@ box-sizing: border-box;
 	font-family: naBrush;
 }
 </style>
-	<script type="text/javascript" src="/js/cross.js"></script><!-- 지우지 말 것 -->
+<script type="text/javascript" src="/js/cross.js"></script>
+<!-- 지우지 말 것 -->
 </head>
+
+
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<section class="section-padding-80"
 		style="background-color: #f4ead0; padding-bottom:40px; ">
@@ -96,51 +101,59 @@ box-sizing: border-box;
             
         </div>
     </section>
-	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
-	$("#find_id").on("click",function(){
-	       var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	       var regname = /^[가-힣]{2,4}$/;
-	       var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,13}$/g;
-	       var regPw2=/(\w)\1\1/g;
-	       var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
-	         
-		   var count=0;
-		
-		$(".tmp").each(function(i, item){
-			if($(item).val==""){
-				count++;
-			}
-		});
-		
-		if(count>0){
-			alert("모든 항목을 입력하세요");
-		}else if(!regname.test($("#my_name").val())){
-			alert("이름이 형식에 맞지 않습니다");
-		}else if(!regnum.test($("#my_phone").val())){
-			alert("핸드폰 번호가 형식에 맞지 않습니다");
-		}else{
-		removeXSS($("#my_name").val(), $("#my_name").attr("id"));
-		removeXSS($("#my_phone").val(), $("#my_phone").attr("id"));
-	$("#findID").submit();
-		}
-		
-	});
-	
-	$("#find_pw").on("click",function(){
-		 var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-		 
-		if($("#my_email").val()==""){
-			alert("이메일을 입력해주세요");
-		}else if(!regId.test($("#my_email").val())){
-			alert("이메일 형식에 맞지 않습니다");
-		}else{
-		removeXSS($("#my_email").val(), $("#my_email").attr("id"));
-		$("#findPW").submit();
-		}
-		
-	});
-	
+		$("#find_id")
+				.on(
+						"click",
+						function() {
+							var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+							var regname = /^[가-힣]{2,4}$/;
+							var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,13}$/g;
+							var regPw2 = /(\w)\1\1/g;
+							var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
+
+							var count = 0;
+
+							$(".tmp").each(function(i, item) {
+								if ($(item).val == "") {
+									count++;
+								}
+							});
+
+							if (count > 0) {
+								alert("모든 항목을 입력하세요");
+							} else if (!regname.test($("#my_name").val())) {
+								alert("이름이 형식에 맞지 않습니다");
+							} else if (!regnum.test($("#my_phone").val())) {
+								alert("핸드폰 번호가 형식에 맞지 않습니다");
+							} else {
+								removeXSS($("#my_name").val(), $("#my_name")
+										.attr("id"));
+								removeXSS($("#my_phone").val(), $("#my_phone")
+										.attr("id"));
+								$("#findID").submit();
+							}
+
+						});
+
+		$("#find_pw")
+				.on(
+						"click",
+						function() {
+							var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+							if ($("#my_email").val() == "") {
+								alert("이메일을 입력해주세요");
+							} else if (!regId.test($("#my_email").val())) {
+								alert("이메일 형식에 맞지 않습니다");
+							} else {
+								removeXSS($("#my_email").val(), $("#my_email")
+										.attr("id"));
+								$("#findPW").submit();
+							}
+
+						});
 	</script>
 </body>
 </html>

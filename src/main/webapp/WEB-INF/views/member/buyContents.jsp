@@ -104,8 +104,8 @@ select {
 					</a>
 				</div>
 				<div class="col-4 skip" style="margin-top: 2.3em">
-					<a href="/shopboard/shopOrderA?products_seq=${i.products_seq}">
-						<strong style="font-size: 1.2em">${i.order_title }</strong>
+					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}"> <strong
+						style="font-size: 1.2em">${i.order_title }</strong>
 					</a>
 				</div>
 
@@ -239,12 +239,10 @@ select {
 			$("#modalfo").submit();
 
 		});
-		
-		
+
 		$("#sell_statusBtn").on("click", function() {
 			$(location).attr("href", "/member/sellStatus")
 		})
-		
 	</script>
 </body>
 </html>

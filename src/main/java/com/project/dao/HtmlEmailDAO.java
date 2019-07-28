@@ -19,6 +19,7 @@ public class HtmlEmailDAO {
 		String fromEmail = "cwg94@naver.com"; // 보내는사람이메일
 		String fromName = "develLover";
 
+
 		String subject = "[AGGABI] 회원가입 확인 ";
 		String msg = "<!DOCTYPE html>\r\n" + "<html lang=\"en\">\r\n" + "<head>\r\n"
 				+ "    <meta charset=\"UTF-8\">\r\n" + "    <title>Document</title>\r\n" + "\r\n" + "</head>\r\n"
@@ -42,6 +43,7 @@ public class HtmlEmailDAO {
 				+ "            <p  style=\"margin-top:15px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright © AGGABI Corp. All rights reserved.</p>\r\n"
 				+ "            \r\n" + "        </div>\r\n" + "        \r\n" + "        \r\n" + "    </div>\r\n"
 				+ "</body>\r\n" + "</html>";
+
 
 		// email 전송
 
@@ -80,6 +82,7 @@ public class HtmlEmailDAO {
 
 		String fromEmail = "cwg94@naver.com"; // 보내는사람이메일
 		String fromName = "develLover";
+
 
 		String subject = "[AGGABI] 비밀번호 찾기 ";
 		String msg = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n"
