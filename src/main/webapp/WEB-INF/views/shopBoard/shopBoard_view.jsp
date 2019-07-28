@@ -37,7 +37,7 @@
 	width: 100%;
 	height: 230px;
 }
-<<<<<<< HEAD
+
 .ellipsis{
     overflow:hidden;
       text-overflow:ellipsis;
@@ -257,7 +257,8 @@ display: -webkit-box;
 										<span style="margin-right: 2em"><strong>총
 												상품금액(택배비 포함) :</strong></span><span id="resultPrice"
 											style="font-size: 1.5em; color: red"><fmt:formatNumber
-												value="${dto.shop_price }" pattern="#,###" />원</span>
+												value="${dto.shop_price }" pattern="#,###" />원</span><br>
+												*수량 확인 후 장바구니에 담아주세요
 									</div>
 								</div>
 								<div class="row pb-3 mt-4 border-bottom-0">

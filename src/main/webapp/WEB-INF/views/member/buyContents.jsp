@@ -97,7 +97,7 @@ text-align:center;
 
 				<div class="col-2 ">
 <%-- 					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}"> --%>
-					<img src="${i.order_image}" class="listimg"> 
+<%-- 					<img src="${i.order_image}" class="listimg">  --%>
 <!-- 					</a> -->
 					<a href="/shopboard/ShopBoardViewProc?seq=${i.products_seq}"> <img
 						src="${i.order_image}" class="listimg">
@@ -190,7 +190,6 @@ text-align:center;
 				</div>
 			</form>
 		</c:forEach>
-<<<<<<< HEAD
 		<br>
 		
 		  <div class="list_menu">

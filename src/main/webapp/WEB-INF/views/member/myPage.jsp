@@ -7,14 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>마이페이지</title>
+<title>Insert title here</title>
 <link rel="icon" href="./img/core-img/favicon.ico">
 <link rel="stylesheet" href="../css/style2.css">
 <style>
-h5 {
-	display: inline;
+h5{
+display:inline;
 }
-
 .float {
 	float: left;
 }
@@ -122,8 +121,7 @@ select {
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
 </head>
-<body oncontextmenu="return false" ondragstart="return false"
-	onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false"	onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
 
 
@@ -131,141 +129,136 @@ select {
 		<div class="row my-2">
 			<div class="col-lg-12 order-lg-2">
 				<ul class="nav nav-tabs">
-<!-- 					<li class="nav-item"><a href="" data-target="#profile" -->
-<!-- 						data-toggle="tab" class="nav-link active">나의 정보</a></li> -->
-
 					<li class="nav-item"><a href="" data-target="#profile"
 						data-toggle="tab" class="nav-link active">나의 정보</a></li>
+
+					<li class="nav-item"><a href="" data-target="#edit"
+						data-toggle="tab" class="nav-link">정보 수정</a></li>
 					<li class="nav-item"><a href="" data-target="#delId"
 						data-toggle="tab" class="nav-link">회원 탈퇴</a></li>
 				</ul>
-<<<<<<< HEAD
 				<div class="tab-content col-lg-12 py-4 ">
-<!-- 					<div class="tab-pane active" id="profile" > -->
-<!-- 						<div class="row" style="position: relative; left: 7em" > --> 
-<!-- 							<div class="order-lg-1 col-lg-4 float text-center"> -->
-<%-- 								<img src="${id.member_imgpath }" class="mx-auto img-circle" id=myinfo alt="avatar"> --%>
-<!-- 							</div> -->
-<!-- 							<div class="col-lg-8 float"> -->
-<!-- 								<div class="float col-lg-12 col-mf-12"> -->
-<!-- 									<div class=" form-group row"> -->
-<!-- 										<label class="col-lg-3 col-form-label form-control-label">아이디</label> -->
-<!-- 										<div class=" col-lg-9"> -->
-<%-- 											<div class=" form-control" type="text">${id.member_id } --%>
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="form-group row"> -->
-<!-- 										<label class="col-lg-3 col-form-label form-control-label">이름</label> -->
-<!-- 										<div class="col-lg-9"> -->
-<%-- 											<div class="form-control" type="text">${id.member_name } --%>
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="form-group row"> -->
-<!-- 										<label class="col-lg-3 col-form-label form-control-label">생일</label> -->
-<!-- 										<div class="col-lg-9"> -->
-<%-- 											<div class="form-control" type="text">${id.member_birth}</div> --%>
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="form-group row"> -->
-<!-- 										<label class="col-lg-3 col-form-label form-control-label">핸드폰 -->
-<!-- 											번호</label> -->
-<!-- 										<div class="col-lg-9"> -->
-<%-- 											<div class="form-control" type="text">${id.member_phone}</div> --%>
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="form-group row"> -->
-<!-- 										<label class="col-lg-3 col-form-label form-control-label">기본 -->
-<!-- 											주소</label> -->
-<!-- 										<div class="col-lg-9"> -->
-<%-- 											<div class="form-control" type="text">${id.member_address1 }</div> --%>
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="form-group row"> -->
-<!-- 										<label class="col-lg-3 col-form-label form-control-label">상세 -->
-<!-- 											주소</label> -->
-<!-- 										<div class="col-lg-9"> -->
-<%-- 											<div class="form-control" type="text">${id.member_address2 }</div> --%>
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-
-<!-- 					</div> --> 
-					
-<!-- 					</div> -->
-=======
-				<div class="tab-content py-4 ">
-					<div class="tab-pane active" id="profile">
-						<div class="row" style="position: relative; left: 7em">
-							<div class="col-lg-3">
-								<img src="${id.member_imgpath }" class="mx-auto img-circle"
-									id=myinfo alt="avatar">
-							</div>
-							<div class="col-lg-6">
-								<div class="float col-lg-12 col-mf-12">
-									<div class=" form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">아이디</label>
-										<div class=" col-lg-9">
-											<div class=" form-control" type="text">${id.member_id }
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">이름</label>
-										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_name }
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">생일</label>
-										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_birth}</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">핸드폰
-											번호</label>
-										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_phone}</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">기본
-											주소</label>
-										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_address1 }</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">상세
-											주소</label>
-										<div class="col-lg-9">
-											<div class="form-control" type="text">${id.member_address2 }</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
+		<div class="tab-pane active col-lg-12" id="profile">
+						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
+<!-- 							<form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data"> -->
+								<div><img src="${id.member_imgpath }" width="280px" height="200px" class="mx-auto img-circle"alt="avatar"></div><br>
+<!-- 								 <input type=file id="file" name="file" accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)"> -->
+<!-- 								<input type="button" id="change" class="btn btn-success "name="my_images" value="사진 변경"> -->
+<!-- 								 <input type="submit" id="uploadImg" class="btn btn-success " value="사진 업로드"> -->
+<!-- 							</form> -->
 						</div>
 
+						<div class="float col-lg-8">
+<!-- 							<form id="edit_mypage" action="/member/edit_mypage" method="post"> -->
+								<div class="form-group row">
+
+									<label class="col-lg-3 col-form-label form-control-label">아이디</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" name="member_id"
+											value="${id.member_id }" readonly>
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">이름</label>
+									<div class="col-lg-9">
+										<input class="form-control" name="member_name" type="text"
+											value="${id.member_name }" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">생일</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" name="member_birth"
+											value="${id.member_birth}" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">성별</label>
+									<div class="col-lg-9">
+										<input class="form-control" type="text" name="member_gender"
+											value="${id.member_gender }" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">우편번호
+<!-- 										                            <button type="button" onclick="sample4_execDaumPostcode()" -->
+<!-- 										                           class="btn btn-success p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
+<!-- 										<img src="/img/core-img/find_addr.png"onclick="sample4_execDaumPostcode()"class="mx-auto img-circle" data-aria-haspopup="true" -->
+<!-- 										aria-expanded="false" id="findAdd"> -->
+									</label>
+									<div class="col-lg-9">
+										<input class="form-control " id="postcode"
+											name="member_postcode" type="text"
+											value="${id.member_postcode}" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">도로명
+										주소 </label>
+									<div class="col-lg-9">
+										<input class="form-control " id="add1" name="member_address1"
+											type="text" value="${id.member_address1}" readonly>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">상세주소
+									</label>
+									<div class="col-lg-9">
+										<input class="form-control" id="add2" name="member_address2"
+											 type="text"
+											value="${id.member_address2}">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">핸드폰
+										번호</label>
+									<div class="col-lg-9">
+										<input class="form-control" id="phone" name="member_phone"
+											type="text" value="${id.member_phone}"
+											placeholder=" '-'를 제외하고 입력해주세요">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-lg-3 col-form-label form-control-label">자기소개</label>
+									<div class="col-lg-9" id="introdiv">
+										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
+									</div>
+<%-- 									<input name="member_intro" type="hidden"> <div class=" ">${id.member_intro}</div> --%>
+								</div>
+
+<!-- 								<div class="form-group row"> -->
+<!-- 									<label class="col-lg-3 col-form-label form-control-label">비밀번호</label> -->
+<!-- 									<div class="col-lg-9"> -->
+<!-- 										<input class="form-control" type="password" name="member_pw" -->
+<!-- 											id="pw1" placeholder="대/소문자, 숫자 포함 최소 8자리"> -->
+
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="form-group row"> -->
+<!-- 									<label class="col-lg-3 col-form-label form-control-label">비밀번호 -->
+<!-- 										확인</label> -->
+<!-- 									<div class="col-lg-9"> -->
+
+<!-- 										<input class="form-control" type="password" id="pw2" -->
+<!-- 											placeholder="대/소문자, 숫자 포함 최소 8자리"> -->
+
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="form-group row"> -->
+<!-- 									<label class="col-lg-3 col-form-label form-control-label"></label> -->
+<!-- 									<div class="col-lg-9"><input type="reset" class="btn btn-secondary" value="초기화"> -->
+<!-- 										<input type="button" id="edit_info" class="btn btn-success" value="정보 수정">  -->
+<!-- 										<input type="button" id="goHome" class="btn btn-success" value="홈으로"> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</form> -->
+						</div>
 					</div>
 
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 					<div class="tab-pane col-lg-12" id="edit">
-						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
-
-							<form id=mypage_Img action="/member/uploadImg" method="post"
-								enctype="multipart/form-data">
-								<img src="${id.member_imgpath }" class="mx-auto img-circle"
-									alt="avatar"> <input type=file id="file" name="file"
-									accept=".gif, .jpg, .png, .jpeg" onchange="checkFile(this)">
->>>>>>> 33b4b087ed720e74c8383a635977e9b3c49a79f5
-
-
-
-					<div class="tab-pane active col-lg-12" id="profile">
 						<div id="preview" class="col-lg-4 order-lg-1 text-center float">
 							<form id=mypage_Img action="/member/uploadImg" method="post" enctype="multipart/form-data">
 								<div><img src="${id.member_imgpath }" width="280px" height="200px" class="mx-auto img-circle"alt="avatar"></div><br>
@@ -312,24 +305,15 @@ select {
 									</div>
 								</div>
 								<div class="form-group row">
-<<<<<<< HEAD
 									<label class="col-lg-3 col-form-label form-control-label">우편번호
 <!-- 										                            <button type="button" onclick="sample4_execDaumPostcode()" -->
 <!-- 										                           class="btn btn-success p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
-										<img src="/img/core-img/find_addr.png"onclick="sample4_execDaumPostcode()"class="mx-auto img-circle" data-aria-haspopup="true"
-=======
-									<label class="col-lg-3 col-form-label form-control-label"
-										style="margin-top: 8px">우편번호 <!--                             <button type="button" onclick="sample4_execDaumPostcode()" -->
-										<!--                            class="btn btn-success p-1"data-aria-haspopup="true"aria-expanded="false" id="findAdd">변경</button>       -->
-										<img src="/img/core-img/find_addr.png"
-										onclick="sample4_execDaumPostcode()"
-										class="mx-auto img-circle" data-aria-haspopup="true"
->>>>>>> 33b4b087ed720e74c8383a635977e9b3c49a79f5
-										aria-expanded="false" id="findAdd">
+<!-- 										<img src="/img/core-img/find_addr.png"onclick="sample4_execDaumPostcode()"class="mx-auto img-circle" data-aria-haspopup="true" -->
+<!-- 										aria-expanded="false" id="findAdd"> -->
 									</label>
-									<div class="col-lg-9 mt-3">
+									<div class="col-lg-9">
 										<input class="form-control " id="postcode"
-											name="member_postcode" type="text"
+											name="member_postcode" type="text" onclick="sample4_execDaumPostcode()"
 											value="${id.member_postcode}" readonly>
 									</div>
 								</div>
@@ -337,7 +321,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">도로명
 										주소 </label>
 									<div class="col-lg-9">
-										<input class="form-control " id="add1" name="member_address1"
+										<input class="form-control " id="add1" name="member_address1" onclick="sample4_execDaumPostcode()"
 											type="text" value="${id.member_address1}" readonly>
 									</div>
 								</div>
@@ -346,7 +330,8 @@ select {
 									</label>
 									<div class="col-lg-9">
 										<input class="form-control" id="add2" name="member_address2"
-											type="text" value="${id.member_address2}">
+											 type="text"
+											value="${id.member_address2}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -359,7 +344,7 @@ select {
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-lg-3 col-form-label form-control-label"	style="margin-top: 27px;">자기 소개</label>
+									<label class="col-lg-3 col-form-label form-control-label">자기소개</label>
 									<div class="col-lg-9" id="introdiv">
 										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
 									</div>
@@ -384,9 +369,9 @@ select {
 
 									</div>
 								</div>
-								<div class="form-group row text-right">
+								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label"></label>
-									<div class="col-lg-9"><input type="reset" class="btn btn-secondary" value="초기화">
+									<div class="col-lg-9">
 										<input type="button" id="edit_info" class="btn btn-success" value="정보 수정"> 
 										<input type="button" id="goHome" class="btn btn-success" value="홈으로">
 									</div>
@@ -396,11 +381,9 @@ select {
 					</div>
 					
 					<div class="tab-pane" id="delId">
-						<h1 style="font-family: '나눔고딕OTF';" class="my-5">그동안 저희 사이트를
-							이용해 주셔서 감사합니다.</h1>
+						<h1 style="font-family :'나눔고딕OTF';" class="my-5">그동안 저희 사이트를 이용해 주셔서 감사합니다</h1>
 						<p>
-						<h3 style="font-family: '나눔고딕OTF';" class="my-5">본인확인을 위해 정보를
-							입력해주세요.</h3>
+						<h3 style="font-family :'나눔고딕OTF';" class="my-5">본인확인을 위해 정보를 입력해주세요</h3>
 						<form id="delform" action="/member/delOK">
 							<div class="form-group row">
 								<label class="col-lg-3 col-form-label form-control-label">아이디</label>
@@ -439,7 +422,6 @@ select {
 
 
 	<script>
-<<<<<<< HEAD
 $("#uploadImg").hide();	
 	
 	$("#area").on("input",function(){
@@ -450,14 +432,6 @@ $("#uploadImg").hide();
 	
 	
 	
-=======
-		$("#area").on("input", function() {
-			if ($("#area").val().length > 100) {
-				alert("자기소개 제한 글자를 초과하였습니다");
-			}
-		});
-
->>>>>>> 33b4b087ed720e74c8383a635977e9b3c49a79f5
 		$("#goHome").on("click", function() {
 			location.href = "/home";
 		})
@@ -525,7 +499,7 @@ $("#uploadImg").hide();
 
 		$("#edit_info").on("click", function() {//정보수정 버튼 클릭시
 
-			var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
+			 var regnum = /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
 			var regPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
 			var regPw2 = /(\w)\1\1/g;
 
@@ -543,7 +517,7 @@ $("#uploadImg").hide();
 				alert("자기소개를 입력해주세요");
 				$("#area").focus();
 
-			} else if ($("#pw1").val() == "") {
+			}  else if ($("#pw1").val() == "") {
 
 				alert("비밀번호를 입력해주세요");
 				$("#pw1").focus();
