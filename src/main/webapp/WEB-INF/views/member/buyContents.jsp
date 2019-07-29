@@ -131,8 +131,6 @@ select {
             </div>
             <script>
                $("#ReviewOverlap${i.order_seq }").on("click", function() {
-                  
-               
                   $.ajax({
                      url : "/shopboard/buyReviewOverlap",
                      type : "post",
@@ -170,7 +168,7 @@ select {
 
          <!-- The Modal -->
          <form
-            action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}"
+            action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.member_email}"
             id="modalfo" method="POST">
             <div class="modal modal-xl fade " id="myModal">
                <div class="modal-dialog ">
