@@ -87,11 +87,12 @@ a {
 				<div class="col-5">상품/옵션정보</div>
 
 				<div class="col-1">수량(개)</div>
-				<div class="col-1">브랜드</div>
+				<div class="col-1">금액</div>
 				<div class="col-1">지역</div>
 				<div class="col-2">유통 기한</div>
-				<div class="col-2">금액/판매자</div>
+				<div class="col-2">판매자/브랜드</div>
 			</div>
+			
 			<div class="row border-bottom border-top text-center py-4"
 				style="height: 8em">
 				<div class="col-5 ">
@@ -113,19 +114,20 @@ a {
 				</div>
 
 				<div class="col-1" style="margin-top: 1.4em">${quantity }
-					<input type="hidden" value="${quantity }" name="order_quantity"
-						id=quant1>
+					<input type="hidden" value="${quantity }" name="order_quantity"id=quant1>
 				</div>
 				<div class="col-1" id="price" style="margin-top: 1.4em; padding: 0">
-				${dto.shop_brand }
+					<fmt:formatNumber value="${price }" pattern="#,###" />
+					<input type="hidden" id="price${price }" value="${price }">
+					
+					(원) <input type="hidden" value="${price }" name="order_price">
 				</div>
 				<div class="col-1" style="margin-top: 1.4em">${dto.shop_location }</div>
-				<div class="col-2" style="margin-top: 1.4em; color: red">${dto.shop_expiration }</div>
-				<div class="col-2 mt-3">
-				
-					 <strong><fmt:formatNumber value="${price }" pattern="#,###" />
-					(원) <input type="hidden" value="${price }" name="order_price"></strong> 
-					<br> <small>${dto.shop_id }</small>
+				<div class="col-2" style="margin-top: 1.4em; color: red" >${dto.shop_expiration }</div>
+				<div class="col-2">
+					 <br> <small>${dto.shop_id }
+
+						<br>${dto.shop_brand }</small>
 
 				</div>
 			</div>

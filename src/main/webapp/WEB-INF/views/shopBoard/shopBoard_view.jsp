@@ -628,4 +628,5 @@ document.getElementById(id).innerHTML += seconds + ' 초';
 timer = setInterval(showRemaining, 00);
 }
     </script>
+</body>
 </html>
