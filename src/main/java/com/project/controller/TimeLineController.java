@@ -286,7 +286,6 @@ public class TimeLineController {
 		System.out.println(dto.getMessage_contents());
 		request.setAttribute("result", tls.insertMessage(dto));
 		return "timeLine/messageProc";
-
 	}
 
 	@RequestMapping(value = "/like", produces = "application/text; charset=utf8")
