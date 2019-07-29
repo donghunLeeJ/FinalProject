@@ -170,7 +170,7 @@ $(function(){
 										<h4 style="font-family: '나눔고딕OTF';">[${dto.shop_brand}]</h4>
 									</div>
 									<div class="col-7 ellipsis text-left" style="padding: 0">
-										<h4>
+										<h4 style="font-family: '나눔고딕OTF';">
 											<strong>${dto.shop_title }</strong>
 										</h4>
 									</div>
@@ -415,7 +415,7 @@ $(function(){
 						<div class="row mt-5 border rounded" style="height: 10em">
 							<div class="col-12 h-50 " style="background-color: #D8D8D8">
 								<div class="mt-2 ">
-									<h1 class="font-weight-bold display-5">반송지 정보</h1>
+									<h1 style="font-family: '나눔고딕OTF';" class="font-weight-bold display-5">반송지 정보</h1>
 								</div>
 							</div>
 

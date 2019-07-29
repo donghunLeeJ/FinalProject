@@ -47,7 +47,7 @@
 
 					</div>
 
-					<div class="col-lg-12 py-2 text-center">${id.member_id}님
+					<div class="col-lg-10 py-2 px-0 text-center">${id.member_id}님
 						환영합니다<br> 새로운 글을 등록하여 모두 함께 글을 공유해 보세요 <br>
 						<button id="writebtn" class="btn btn-primary">글쓰기</button>
 						<script>
