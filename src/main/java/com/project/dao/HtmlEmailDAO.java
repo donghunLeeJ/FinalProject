@@ -20,6 +20,7 @@ public class HtmlEmailDAO {
 		String fromName = "develLover";
 
 		String subject = "[AGGABI] 회원가입 확인 ";
+
 		String msg = "<!DOCTYPE html><html lang=\"en\">\r\n" + "    <head>\r\n" + "        <meta charset=\"UTF-8\">\r\n"
 				+ "        <title>Document</title> \r\n" + "    </head> \r\n" + "    <body>\r\n"
 				+ "        <div class=\"wrapper\" style=\"text-align: center;width:800px\" >\r\n"
@@ -43,6 +44,7 @@ public class HtmlEmailDAO {
 				+ "                <p  style=\"margin-top:15px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객센터 info@aggabi.co.kr</p>\r\n"
 				+ "                <p  style=\"margin-top:15px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright © AGGABI Corp. All rights reserved.</p>\r\n"
 				+ "            </div></div></body></html>";
+
 
 		// email 전송
 
@@ -83,6 +85,7 @@ public class HtmlEmailDAO {
 		String fromName = "develLover";
 
 		String subject = "[AGGABI] 비밀번호 찾기 ";
+
 		String msg = "<!DOCTYPE html><html lang=\"en\">\r\n" + "    <head>\r\n"
 				+ "        <meta charset=\"UTF-8\"><title>Document</title>\r\n" + "    </head>\r\n" + "    <body>\r\n"
 				+ "        <div class=\"wrapper\" style=\"text-align: center;width:800px\" >\r\n"
@@ -104,6 +107,7 @@ public class HtmlEmailDAO {
 				+ "                <p  style=\"margin-top:15px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고객센터 info@aggabi.co.kr</p>\r\n"
 				+ "                <p  style=\"margin-top:15px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright © AGGABI Corp. All rights reserved.</p>\r\n"
 				+ "            </div></div></body>\r\n" + "</html>";
+
 
 		// email 전송
 

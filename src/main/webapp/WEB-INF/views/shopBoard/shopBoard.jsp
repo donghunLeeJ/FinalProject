@@ -104,7 +104,6 @@
 														<div class="ellipsis">${i.shop_title }</div>
 														<!-- 0725추가 -->
 
-
 														<p class="pt-3">
 															<fmt:formatNumber value="${ i.shop_price}"
 																pattern="#,###" />
@@ -113,8 +112,9 @@
 													</div>
 												</div>
 
+
 												<!-- Thumbnail Zoom -->
-												<%--                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
+
 											</div>
 											<div class="team-member-info border">
 												<div class="row">
@@ -166,28 +166,27 @@
                      console.log(result);
                      
                      for(var i = 0 ; i < result.length; i ++){
-                     $("#extendList").append(`<a href="/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`">
+                     $("#extendList").append(`<a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`'>
                     		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
                               data-wow-delay='500ms'>
                               <div class='akame-portfolio-single-item' style="height: 250px">
                                  <img id='img1' src=`+ result[i].shop_imagepath1+` >
-
                                  <!-- Overlay Content -->
                                  <div
                                     class='overlay-content d-flex align-items-center justify-content-center'>
                                     <div class='overlay-text text-center'>
-                                       <h4>`+result[i].shop_title+`</h4>
-                                       <p>`+result[i].shop_price+`</p>
-                                    </div>
+                                     
+                                    <div class='ellipsis'>`+result[i].shop_title+`</div> <!-- 0725추가 -->
+                                    <p class='pt-3'>
+                                      `+result[i].shop_price+`원 
+                                    </p>
                                  </div>
-
+                                 </div>
                                  <!-- Thumbnail Zoom -->
                                  <a href=`+ result[i].shop_imagepath1+` class='thumbnail-zoom'><i
                                     class='icon_search'></i></a>
-
                               </div>
                               <div class='team-member-info border'>
-                           
                               </div>
                            </div></a>`);
                      };

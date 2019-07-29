@@ -123,11 +123,25 @@ select {
 				<div class="col-1" style="padding: 0">
 
 					<input type=button class="sell_btn del_list" value="후기 작성"
-						data-toggle="modal" id="ReviewOverlap${i.order_seq }"
-						style="margin-bottom: 0.3em"> <a style="margin-top: 0.3em">
-						<input id="buyConfirmBtn${i.order_seq}" class="sell_btn"
-						type="button" value="구매 확정">
-					</a>
+
+						data-toggle="modal" style="margin-bottom: 0.3em"
+						data-target="#myModal"> <input type=button
+						class="del_list2" value="요청중" style="margin-bottom: 0.3em">
+					<a style="margin-top: 0.3em"> 
+					
+					<c:choose>
+					<c:when test="${i.order_confirm eq 'N'}">
+						<input
+						id="buyConfirmBtn${i.order_seq}" class="sell_btn" type="button" value="구매 확정"></a>
+					</c:when>	
+					<c:otherwise>
+						<input
+						id="buyConfirmBtn${i.order_seq}" class="sell_btn" type="button" style="color:red" disabled="true" value="구매 완료"></a>
+					</c:otherwise>	
+					</c:choose>
+						
+						
+
 				</div>
 				<script>
 					$("#ReviewOverlap${i.order_seq }").on("click", function() {

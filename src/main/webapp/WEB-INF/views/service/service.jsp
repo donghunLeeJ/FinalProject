@@ -316,7 +316,7 @@
 			<div class="col-12 col-sm-6 col-lg-3">
 				<div class="single-team-member mb-80">
 					<div class="team-member-img">
-						<img src="/img/service-img/dahyun.jpg" alt=""
+						<img src="/img/service-img/kapjoongprofile.jpg" alt=""
 							style="height: 243px">
 						<!-- Social Info -->
 						<div
@@ -363,7 +363,7 @@
 			<div class="col-12 col-sm-6 col-lg-3">
 				<div class="single-team-member mb-80">
 					<div class="team-member-img">
-						<img src="/img/bg-img/13.jpg" alt="">
+						<img src="/img/service-img/donghyunprofile.jpg" alt="">
 						<!-- Social Info -->
 						<div
 							class="team-social-info d-flex align-items-center justify-content-center">
@@ -385,7 +385,7 @@
 			<div class="col-12 col-sm-6 col-lg-3">
 				<div class="single-team-member mb-80">
 					<div class="team-member-img">
-						<img src="/img/bg-img/13.jpg" alt="">
+						<img src="/img/service-img/hanuelprofile.jpg" alt="" style="height: 243px">
 						<!-- Social Info -->
 						<div
 							class="team-social-info d-flex align-items-center justify-content-center">

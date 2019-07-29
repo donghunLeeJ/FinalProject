@@ -176,10 +176,13 @@
 					<script>
 						var today = new Date(new Date().getFullYear(),
 								new Date().getMonth(), new Date().getDate());
+						var endDate = new Date(new Date().getFullYear(),
+								new Date().getMonth(), new Date().getDate()+20);
 						$("#datepicker").datepicker({
 							uiLibrary : 'bootstrap4',
 							format : "yyyy-mm-dd",
-							minDate : today
+							minDate : today,
+							maxDate : endDate
 
 						});
 
