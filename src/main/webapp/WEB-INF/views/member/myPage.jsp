@@ -219,7 +219,7 @@ select {
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">자기소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;"  id=areas name="member_intro">${id.member_intro}</textarea>
+										<textarea style="resize: none;"  id=areas name="member_intro" readonly>${id.member_intro}</textarea>
 									</div>
 <%-- 									<input name="member_intro" type="hidden"> <div class=" ">${id.member_intro}</div> --%>
 								</div>
@@ -263,6 +263,10 @@ select {
 								<input type="button" id="change" class="btn btn-success "name="my_images" value="사진 변경">
 								 <input type="submit" id="uploadImg" class="btn btn-success " value="사진 업로드">
 							</form>
+							<div>
+							-사진 변경을 클릭하고 원하는 사진으로 바꿔주세요
+							-사진 업로드를 클릭하면 변경됩니다
+							</div>
 						</div>
 
 						<div class="float col-lg-8">

@@ -212,11 +212,11 @@ select {
 										</select>
 									</div>
 									<div class="col-9" style="padding: 0">
-										<input type="text" name="title" id=title
+										<input type="text" name="title" id=title  maxlength="25"
 											style="width: 22em; height: 2em;">
 									</div>
 									<div class="col-12 py-3"">
-										<textarea id=contents style="resize: none; width: 460px;"
+										<textarea id=contents style="resize: none; width: 460px;" maxlength="120"
 											name="contents" cols="56" rows="10"></textarea>
 									</div>
 								</div>
@@ -269,15 +269,15 @@ select {
 		$(".del_list2").hide();
 
 		$("#title").on("input", function() {
-			if ($("#title").val().length > 20) {
+			if ($(this).val().length > $(this).attr('maxlength')) {
 				alert("제목 길이를 초과하였습니다");
-			} else if ($("#title").val().length <= 10) {
-
-			}
+			            $(this).val($(this).val().substr(0, $(this).attr('maxlength')));
+			} 
 		});
 		$("#contents").on("input", function() {
-			if ($("#contents").val().length > 100) {
+			if ($(this).val().length >  $(this).attr('maxlength')) {
 				alert("내용 길이를 초과하였습니다");
+				$(this).val($(this).val().substr(0, $(this).attr('maxlength')));
 			}
 		});
 
