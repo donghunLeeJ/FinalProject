@@ -81,7 +81,7 @@ a {
 				<div class="col-1">상품금액</div>
 				<div class="col-1">지역</div>
 				<div class="col-2">유통 기한</div>
-				<div class="col-2">배송비/판매자</div>
+				<div class="col-2">판매자</div>
 			</div>
 			
 			<c:forEach var="dto" items="${basketarr}">
@@ -116,9 +116,9 @@ a {
 					(원) <input type="hidden" value="${dto.basket_price }" name="order_price">
 				</div>
 				<div class="col-1" style="margin-top: 1.4em">${dto.basket_location }</div>
-				<div class="col-2" style="margin-top: 1.4em">${dto.basket_expiration }</div>
+				<div class="col-2" style="margin-top: 1.4em; color: red" >${dto.basket_expiration }</div>
 				<div class="col-2">
-					선결제 <br> <strong>(2,500원)</strong> <br> <small>${dto.basket_id }
+					 <br> <small>${dto.basket_id }
 
 						<br>${dto.basket_brand }</small>
 
@@ -127,48 +127,8 @@ a {
 	
 </c:forEach>
 
-	
-
-	<div class="row border-bottom border-top bg-gray text-center py-2">
-				<div class="col-5"></div>
-
-				<div class="col-1"></div>
-				<div class="col-1"></div>
-				<div class="col-1"></div>
-				<div class="col-2">총 수량</div>
-				<div class="col-2">총 금액</div>
-			</div>
-		
 			
-			<div class="row border-bottom border-top text-center py-4"
-				>
-				<div class="col-5 ">
-					<div class="row">
-						<div class="col-3  pt-2 pb-2 ">
-							
-						</div>
-						<div class="col-9"
-							style="text-overflow: ellipsis; margin-top: 1.4em; width: 25em; white-space: nowrap; overflow: hidden;">
-						
-						</div>
 
-					</div>
-				</div>
-
-				<div class="col-1" >
-				</div>
-				<div class="col-1"  >
-					
-				</div>
-				<div class="col-1" ></div>
-				<div class="col-2" >${amount }</div>
-				
-				<div class="col-2">
-					
-			<fmt:formatNumber value="${price }" pattern="#,###" />(원)
-			
-				</div>
-			</div>
 	
 <form action="/shopboard/shopBasketOrder?basket_seq=${basketseq }" method="post" id="basketCharge">
 
@@ -484,10 +444,10 @@ a {
 									extraAddr = ' (' + extraAddr + ')';
 								}
 								// 조합된 참고항목을 해당 필드에 넣는다.
-								document.getElementById("sample6_extraAddress").value = extraAddr;
+// 								document.getElementById("sample6_extraAddress").value = extraAddr;
 
 							} else {
-								document.getElementById("sample6_extraAddress").value = '';
+//								document.getElementById("sample6_extraAddress").value = '';
 							}
 
 							// 우편번호와 주소 정보를 해당 필드에 넣는다.

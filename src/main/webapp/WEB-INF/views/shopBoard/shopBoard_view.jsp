@@ -461,7 +461,10 @@ $("#countd").hide();
 			var result = quantity * price;
 			$("#resultPrice").text(result + "원");
 			$("#resultPrice1").text(result + "원");
-			if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
+			if($("#quantity_one").val() < 1){
+				alert("최소 구매 수량은 1개입니다");
+				$("#quantity_one").val(1);
+			}else if(${dto.shop_quantity}-$("#quantity_one").val() < 0){
 				alert("수량이 초과되었습니다.");
 				$("#quantity_one").val("${dto.shop_quantity }");
 			

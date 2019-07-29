@@ -47,7 +47,7 @@ display:inline;
    margin: 0px;
 }
 
-#area {
+#area, #areas {
    width: 100%;
    height: 100px;
 }
@@ -194,7 +194,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">도로명
 										주소 </label>
 									<div class="col-lg-9">
-										<input class="form-control " id="add1" name="member_address1"
+										<input class="form-control " name="member_address1"
 											type="text" value="${id.member_address1}" readonly>
 									</div>
 								</div>
@@ -202,7 +202,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">상세주소
 									</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="add2" name="member_address2"
+										<input class="form-control" name="member_address2"
 											 type="text"
 											value="${id.member_address2}">
 									</div>
@@ -211,7 +211,7 @@ select {
 									<label class="col-lg-3 col-form-label form-control-label">핸드폰
 										번호</label>
 									<div class="col-lg-9">
-										<input class="form-control" id="phone" name="member_phone"
+										<input class="form-control" name="member_phone"
 											type="text" value="${id.member_phone}"
 											placeholder=" '-'를 제외하고 입력해주세요">
 									</div>
@@ -219,7 +219,7 @@ select {
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">자기소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;" id=area name="member_intro">${id.member_intro}</textarea>
+										<textarea style="resize: none;"  id=areas name="member_intro">${id.member_intro}</textarea>
 									</div>
 <%-- 									<input name="member_intro" type="hidden"> <div class=" ">${id.member_intro}</div> --%>
 								</div>
