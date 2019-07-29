@@ -43,7 +43,6 @@ public class OrderDTO implements Cloneable {
 	}
 
 	public OrderDTO() {
-		super();
 
 	}
 
