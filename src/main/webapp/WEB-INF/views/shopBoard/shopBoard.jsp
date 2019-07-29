@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 #img1 {
-	/*  width:250px;  */
+    width:250px;  
 	height: 210px;
 }
 
@@ -68,24 +68,28 @@
 							<c:choose>
 								<c:when test="${i.shop_quantity eq 0}">
 									<div
-										class="col-12 col-sm-6 col-lg-3  mb-5 akame-portfolio-item wow fadeInUp "
+										class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
 										data-wow-delay="500ms">
-										<div class="" style="height: 250px">
+										<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
+											<div class="akame-portfolio-single-item"style="height: 250px">
 											<div style="position: absolute;">
 												<div style="position: relative; top: 70px; left: 0px;">
 													<img src="/img/core-img/soldout.png">
 												</div>
 											</div>
 											<img src="${i.shop_imagepath1 }" id="img1" alt="">
-
-											<!-- Thumbnail Zoom -->
-											<a href="#}" class=""><i class=""></i></a>
+									<div class="overlay-content d-flex align-items-center justify-content-center">
+													<div class="overlay-text text-center">
+											<div class="ellipsis">${i.shop_title }</div>
+									</div>
+									</div>
 										</div>
 										<div class="team-member-info border">
 											<div class="row">
 												<div class="col-12"></div>
 											</div>
 										</div>
+										</a>
 									</div>
 								</c:when>
 								<c:otherwise>
@@ -93,12 +97,10 @@
 										class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
 										data-wow-delay="500ms">
 										<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
-											<div class="akame-portfolio-single-item"
-												style="height: 250px">
+											<div class="akame-portfolio-single-item"style="height: 250px">
 												<img src="${i.shop_imagepath1 }" id="img1" alt="">
 												<!-- Overlay Content -->
-												<div
-													class="overlay-content d-flex align-items-center justify-content-center">
+												<div 	class="overlay-content d-flex align-items-center justify-content-center">
 													<div class="overlay-text text-center">
 														<div class="ellipsis">${i.shop_title }</div>
 														<!-- 0725추가 -->
@@ -163,9 +165,9 @@
                      
                      for(var i = 0 ; i < result.length; i ++){
                      if(result[i].shop_quantity!=0){
-                     $("#extendList").append(`<a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`'>
-                    		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
-                              data-wow-delay='500ms'>
+                     $("#extendList").append(`
+                    		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-3 wow fadeInUp'  data-wow-delay='500ms'>
+                    		 <a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`'>
                               <div class='akame-portfolio-single-item' style="height: 250px">
                                  <img id='img1' src=`+ result[i].shop_imagepath1+` >
                                  <!-- Overlay Content -->
@@ -179,31 +181,35 @@
                                     </p>
                                  </div>
                                  </div>
-                                 <!-- Thumbnail Zoom -->
-                                 <a href=`+ result[i].shop_imagepath1+` class='thumbnail-zoom'><i
-                                    class='icon_search'></i></a>
                               </div>
                               <div class='team-member-info border'>
                               </div>
                            </div></a>`);
                      }else{
                          $("#extendList").append(`
-                    	 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp' data-wow-delay='500ms'>
-                             <div class='' style="height: 250px">
-                             <div style="position: absolute;">
-								<div style="position: relative; top: 70px; left: 0px;">
-								<img src='/img/core-img/soldout.png'>
-                         	</div>
-							</div>
-                             <img src=`+ result[i].shop_imagepath1+` id="img1" alt="">
-                             </div>
-                             <div class='team-member-info border'>
-                             </div>
-                             </div>` );
+                        		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-3 wow fadeInUp'data-wow-delay='500ms'>
+                        		 <a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`'>
+                                  <div class='akame-portfolio-single-item' style="height: 250px">
+                                  <div style="position: absolute;">
+      							<div style="position: relative; top: 70px; left: 0px;">
+      								<img src='/img/core-img/soldout.png'>
+                               	</div>
+      							</div>
+                                     <img id='img1' src=`+ result[i].shop_imagepath1+` >
+                                     <!-- Overlay Content -->
+                                     <div class='overlay-content d-flex align-items-center justify-content-center'>
+                                        <div class='overlay-text text-center'>
+                                        <div class='ellipsis'>`+result[i].shop_title+`</div> <!-- 0725추가 -->
+                                     </div>
+                                     </div>
+                                  </div>
+                                  <div class='team-member-info border'>
+                                  </div>
+                               </div></a>`);
                      }
                      };
                      })
-                     
+                  
                      
 //                   console.log('바닥입니다!');
                } else if ($(window).scrollTop() == 0) {

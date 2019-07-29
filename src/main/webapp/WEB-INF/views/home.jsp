@@ -99,26 +99,31 @@ body {
 					<c:forEach var="i" items="${boardList }">
 					  <c:choose>
 					   <c:when test="${i.shop_quantity eq 0}">
-                <div   class="col-12 col-sm-6 col-lg-3  mb-5 mt-3 akame-portfolio-item wow fadeInUp" data-wow-delay="500ms">
-                        <div class="" style="height: 250px">
-                           	 <div style="position: absolute;">
-								   <div style="position: relative; top: 70px; left: 0px;">
-								   <img src="/img/core-img/soldout.png" >
-
-								</div>
-								</div>
-								<img src="${i.shop_imagepath1 }" id="img1" alt="">
-
-								<!-- Thumbnail Zoom -->
-								<a href="#" class=""><i class=""></i></a>
-							</div>
-							<div class="team-member-info border">
-								<div class="row">
-									<div class="col-12"></div>
-								</div>
-							</div>
-						</div>
-					</c:when>
+									<div
+										class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"
+										data-wow-delay="500ms">
+										<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
+											<div class="akame-portfolio-single-item"style="height: 250px">
+											<div style="position: absolute;">
+												<div style="position: relative; top: 70px; left: 0px;">
+													<img src="/img/core-img/soldout.png">
+												</div>
+											</div>
+											<img src="${i.shop_imagepath1 }" id="img1" alt="">
+									<div class="overlay-content d-flex align-items-center justify-content-center">
+													<div class="overlay-text text-center">
+											<div class="ellipsis">${i.shop_title }</div>
+									</div>
+									</div>
+										</div>
+										<div class="team-member-info border">
+											<div class="row">
+												<div class="col-12"></div>
+											</div>
+										</div>
+										</a>
+									</div>
+								</c:when>
 					<c:otherwise>
 						<div
 							class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 mt-3 wow fadeInUp"data-wow-delay="500ms">
