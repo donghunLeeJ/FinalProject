@@ -25,7 +25,6 @@ public class OrderDTO implements Cloneable {
 	private String order_delivery;
 	private String order_confirm;
 
-
 	public int getOrder_seq() {
 		return order_seq;
 	}
