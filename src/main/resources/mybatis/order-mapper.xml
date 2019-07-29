@@ -40,7 +40,8 @@
 		X.order_buyer_phone , X.order_buyer_email , X.order_receipt ,
 		X.order_receipt_postcode , X.order_receipt_address1,
 		X.order_receipt_address2, X.order_receipt_phone,
-		X.order_receipt_demend
+		X.order_receipt_demend,
+		X.order_confirm
 		from(
 		select rownum as rnum,
 		A.order_seq,A.products_seq,A.member_email,
@@ -54,7 +55,8 @@
 		A.order_receipt_address1,
 		A.order_receipt_address2,
 		A.order_receipt_phone,
-		A.order_receipt_demend
+		A.order_receipt_demend,
+		A.order_confirm
 		from(
 		select *
 		from

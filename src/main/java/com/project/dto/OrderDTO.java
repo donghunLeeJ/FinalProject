@@ -55,9 +55,8 @@ public class OrderDTO implements Cloneable {
 				+ ", order_delivery=" + order_delivery + ", order_confirm=" + order_confirm + "]";
 	}
 
-	public OrderDTO(String order_confirm) {
-		super();
-		this.order_confirm = order_confirm;
+	public OrderDTO() {
+		
 	}
 
 	public void setOrder_seq(int order_seq) {
