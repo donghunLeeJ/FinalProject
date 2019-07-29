@@ -134,12 +134,9 @@ public class TimeLineController {
 
 	@RequestMapping("/boardModify")
 	public String boardModify(HttpServletRequest request, String tl_board_seq) {
-
 		Tl_BoardDTO dto =  tls.showOne(tl_board_seq);
 		String id = ((MemberDTO) session.getAttribute("id")).getMember_id();
-		
 			if (dto.getTl_writer().equals(id)) {
-				
 				request.setAttribute("result", dto);
 						
 				return "/timeLine/modifywrite";

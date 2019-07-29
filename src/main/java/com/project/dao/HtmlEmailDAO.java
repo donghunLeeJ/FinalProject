@@ -31,7 +31,7 @@ public class HtmlEmailDAO {
 				+ "            <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>AGGABI</strong> 회원가입을 감사드립니다.</p>\r\n"
 				+ "            <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;안전한 서비스를 위하여 이메일 인증을 완료하여 주시기 바랍니다.</p>\r\n"
 				+ "            <br>\r\n"
-				+ "            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=\"192.168.60.33/member/verifiedId?id="
+				+ "            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href=\"http://192.168.60.33/member/verifiedId?id="
 				+ id + "\" style=\"text-decoration: none\">이메일 인증을 하시려면 여기를 클릭하세요.</a></div>\r\n" + "        <br>\r\n"
 				+ "        <br>\r\n"
 				+ "        <p style=\"font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Value Exchange. <strong>AGGABI</strong></p>\r\n"
@@ -101,7 +101,7 @@ public class HtmlEmailDAO {
 				+ "            <div>이메일 인증 안녕하세요," + id + "  님. 아래 버튼을 클릭해 등록된 이메일 주소를 인증해 주세요.</div>\r\n" + "\r\n"
 				+ "         </div>\r\n" + "         <div style=\"text-align: center\">\r\n"
 				+ "            <div style=\"padding-bottom: 30px; margin-top: 40px\">\r\n"
-				+ "               <a href=\"localhost/member/yourPW?id=" + id
+				+ "               <a href=\"http://192.168.60.33/member/yourPW?id=" + id
 				+ "\"><input class=\"btn akame-btn btn-3 mt-15 active\" type=\"button\" id=\"btn\" value=\"비밀번호 찾기\"\r\n"
 				+ "                  style=\"width: 100px; height: 60px; border-radius: 3px;\"></a>\r\n"
 				+ "            </div>\r\n" + "         </div>\r\n" + "         <div>\r\n" + "            \r\n"
