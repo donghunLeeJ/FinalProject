@@ -147,7 +147,7 @@
                // 최하단일 경우를 체크하기 위해 최하단 위치값을 지정
                // 화면 문서전체의 길이에서, 현재 창 높이를 뺀 것이 최하단 값
             
-            console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
+//             console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
 
                  if($(document).height() <= $(window).scrollTop() + $(window).height()+100 ){
                   // 최하단으로 도달했을 경우
@@ -166,6 +166,7 @@
                      console.log(result);
                      
                      for(var i = 0 ; i < result.length; i ++){
+                     if(result[i].shop_quantity!=0){
                      $("#extendList").append(`<a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`'>
                     		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
                               data-wow-delay='500ms'>
@@ -189,10 +190,26 @@
                               <div class='team-member-info border'>
                               </div>
                            </div></a>`);
+                     }else{
+                         $("#extendList").append(`
+                    	 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp' data-wow-delay='500ms'>
+                             <div class='' style="height: 250px">
+                             <div style="position: absolute;">
+								<div style="position: relative; top: 70px; left: 0px;">
+								<img src='/img/core-img/soldout.png'>
+                         	</div>
+							</div>
+                             <img src=`+ result[i].shop_imagepath1+` id="img1" alt="">
+                             </div>
+                             <div class='team-member-info border'>
+                             </div>
+                             </div>` );
+                     }
                      };
                      })
-                  
-                  console.log('바닥입니다!');
+                     
+                     
+//                   console.log('바닥입니다!');
                } else if ($(window).scrollTop() == 0) {
                   // 최상단으로 도달했을 경우
                   console.log('꼭대기입니다!');

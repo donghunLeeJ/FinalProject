@@ -27,6 +27,7 @@ body {
 }
 
 #img1 {
+
 	height: 220px;
 }
 
@@ -93,24 +94,21 @@ div {
 	</section>
 	<section class="why-choose-us-area bg-gray section-padding-80-0">
 
-	<div class="container">
-		<div class="row mb-5">
-			<div class="col-12 border-bottom p-2">
-				<h2 style="font-family: '나눔고딕OTF';">
-					□ 최근 등록 상품 <a href="/shopboard/shopBoardGo?page=1"><span
-						style="font-size: small;">더보기</span></a>
-				</h2>
-			</div>
-			<c:forEach var="i" items="${boardList }">
-				<c:choose>
-					<c:when test="${i.shop_quantity eq 0}">
-						<div
-							class="col-12 col-sm-6 col-lg-3  mb-5 mt-3 akame-portfolio-item wow fadeInUp"
-							data-wow-delay="500ms">
-							<div class="" style="height: 250px">
-								<div style="position: absolute;">
-									<div style="position: relative; top: 70px; left: 0px;">
-										<img src="/img/core-img/soldout.png">
+
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-12 border-bottom p-2">
+					<h2 style="font-family :'나눔고딕OTF';">□ 최근 등록 상품 <a href="/shopboard/shopBoardGo?page=1"><span style="font-size: small;">더보기</span></a></h2>
+				</div>	
+					<c:forEach var="i" items="${boardList }">
+					  <c:choose>
+					   <c:when test="${i.shop_quantity eq 0}">
+                <div   class="col-12 col-sm-6 col-lg-3  mb-5 mt-3 akame-portfolio-item wow fadeInUp" data-wow-delay="500ms">
+                        <div class="" style="height: 250px">
+                           	 <div style="position: absolute;">
+								   <div style="position: relative; top: 70px; left: 0px;">
+								   <img src="/img/core-img/soldout.png" >
+
 
 									</div>
 								</div>
