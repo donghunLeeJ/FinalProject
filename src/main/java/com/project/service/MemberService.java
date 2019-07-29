@@ -38,8 +38,10 @@ public class MemberService {
 	public int shopCount(String id) {
 		return mdao.shopCount(id);
 	}
-
-	public List<String> paging(int page, int shopcount) {
+	public int buyCount(String id) {
+		return mdao.buyCount(id);
+	}
+	public List<String> paging(int page, int shopcount){
 		return sellP.myPaging(page, shopcount);
 	}
 
@@ -57,6 +59,10 @@ public class MemberService {
 
 	public MemberDTO select_member(String id) {
 		return mdao.selectById(id);
+	}
+	
+	public int update_member(MemberDTO dto) {
+		return mdao.updateById(dto);
 	}
 
 	public int confirmId(String id) {
@@ -87,6 +93,11 @@ public class MemberService {
 
 	public int delRequest(String seq) {
 		return mdao.sellContentsDelete(seq);
+	}
+	
+	public int overlap(String id) {
+		System.out.println("서비스 "+id);
+		return mdao.overlap(id);
 	}
 
 }

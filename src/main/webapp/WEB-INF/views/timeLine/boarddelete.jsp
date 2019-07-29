@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="/img/core-img/logo4.png">
 <title>삭제완료</title>
 </head>
 <body>

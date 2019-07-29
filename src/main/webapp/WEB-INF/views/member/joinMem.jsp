@@ -21,7 +21,7 @@
 	type="text/javascript"></script>
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
 	rel="stylesheet" type="text/css" />
-<link rel="icon" href="/img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 
 <style>
@@ -70,12 +70,12 @@
 }
 
 .h2 {
-	font-family: 'Nanum Pen Script', cursive;
+	font-family: 'Josefin Sans', sans-serif;
+}
+.title{
+	font-family: 'Josefin Sans', sans-serif;
 }
 
-.title {
-	font-family: 'Nanum Pen Script', cursive;
-}
 </style>
 
 <script type="text/javascript" src="/js/cross.js"></script>
@@ -166,7 +166,7 @@
 							<div class=title>핸드폰 번호</div>
 							<input type="text" name=member_phone id=phone
 								style="width: 48%; margin: auto;" class="form-control mb-30"
-								placeholder=" '-'를 제외하고 입력해주세요">
+								placeholder=" '-'를 제외하고 입력해주세요" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 						</div>
 
 						<div class="col-lg-12 ">

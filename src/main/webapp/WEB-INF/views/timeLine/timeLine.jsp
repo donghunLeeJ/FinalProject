@@ -18,7 +18,7 @@
 	height: 2em;
 }
 </style>
-<link rel="icon" href="/img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <style>
 </style>
@@ -47,7 +47,7 @@
 
 					</div>
 
-					<div class="col-lg-12 py-2 text-center">${id.member_id}님
+					<div class="col-lg-10 py-2 px-0 text-center">${id.member_id}님
 						환영합니다<br> 새로운 글을 등록하여 모두 함께 글을 공유해 보세요 <br>
 						<button id="writebtn" class="btn btn-primary">글쓰기</button>
 						<script>
@@ -110,7 +110,7 @@
 								<button type="button" id="replyBTN${i.tl_board_seq }"
 									class="commentbtn btn btn-outline-success btn-sm ml-2 mb-2">댓글
 									입력</button>
-
+								
 							</div>
 
 
@@ -203,6 +203,7 @@
 	                		  var writerList = writer.split('@');
 	                		  $("#forReply${i.tl_board_seq }").append("<div><strong>"+writerList[0]+"&nbsp;&nbsp;</strong>"+result[i].tl_repl_contents+"<img onclick=repleDelete("+result[i].tl_repl_seq+") id=reple"+result[i].tl_repl_seq+" style='width:10px' src='/img/delte.png'><div>");
 	                	  }
+	                	 
 	                  })
 				}else if($("#reply_view${i.tl_board_seq }").css("display") == "block"){
 					 $("#reply_view${i.tl_board_seq }").css("display","none");	
@@ -211,9 +212,13 @@
 				 }
 			})
 			$("#replyBTN${i.tl_board_seq }").on("click",function(){
+				
+				var emp = /^\s*$/g;
 				var reply = $("#replyInput${i.tl_board_seq }").val();
 				var seq = $("#hiddenSeq${i.tl_board_seq }").val();
-		
+				if($("#replyInput${i.tl_board_seq }").val()=="" || emp.test($("#replyInput${i.tl_board_seq }").val())){
+					alert("댓글을 입력해주세요");
+					}else{
 				$.ajax({
                      url : "/timeline/replyAjaxProc",
                      type : "post",
@@ -226,9 +231,10 @@
                 	  var result2 = result.split(':');
                 	  $("#forReply${i.tl_board_seq }").append("<div><strong>"+result2[0]+"&nbsp;&nbsp;</strong>"+result2[1]+"<div>");
                 	  console.log(resp);
+                	  $("#replyInput${i.tl_board_seq }").val("");
                   })
-				
-			})
+					}
+			});
 			
 		</script>
 		</c:forEach>
@@ -239,6 +245,7 @@
 
 
 	<script>
+
      
 	var repleDelete = function(seq){
 		location.href = "/timeline/replyDelete?seq="+seq;
@@ -408,8 +415,12 @@
 				 }
 			})
 			$('#replyBTN`+result[i].tl_board_seq+`').on('click',function(){
+				var emp = /^\s*$/g;
 				var reply = $('#replyInput`+result[i].tl_board_seq+`').val();
 				var seq = $('#hiddenSeq`+result[i].tl_board_seq+`').val();
+				if(reply=="" || emp.test(reply)){
+					alert("댓글을 입력해주세요");
+					}else{
 				$.ajax({
                      url : '/timeline/replyAjaxProc',
                      type : 'post',
@@ -422,7 +433,9 @@
                 	  var result1List = resp.split(":");
                 	  $('#forReply`+result[i].tl_board_seq+`').append('<div><strong>'+result1List[0]+'&nbsp;&nbsp;</strong>'+result1List[1]+'</div>');
                 	  console.log(resp);
+                	  $('#replyInput`+result[i].tl_board_seq+`').val('');
                   })
+			}
 			})`)
                      }
                   

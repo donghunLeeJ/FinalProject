@@ -9,7 +9,7 @@
 <title>구매</title>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="../css/style2.css">
-
+<link rel="icon" href="/img/core-img/logo4.png">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript"
@@ -190,10 +190,10 @@ a {
 				<div class="col-3 py-2 font-weight-bold">휴대전화</div>
 				<div class="col-9 py-2">
 					<input type="text" name="phone1" id="order_phone1" class="empty"
-						style="width: 8em"> - <input type="text" name="phone2"
-						class="empty" id="order_phone2" style="width: 8em"> - <input
+						style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"> - <input type="text" name="phone2"
+						class="empty" id="order_phone2" style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"> - <input
 						type="text" name="phone3" id="order_phone3" class="empty"
-						style="width: 8em">
+						style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 				</div>
 				<div class="col-3 py-2 font-weight-bold">이메일</div>
 				<div class="col-9 py-2">

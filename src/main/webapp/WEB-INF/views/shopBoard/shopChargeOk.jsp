@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>결제완료</title>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="../css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
@@ -98,8 +98,8 @@
 							style="width: 100px; height: 100px">
 					</div>
 					<div class="col-8 text-left" style="margin-top: 1.5em">
-						<br> ${ldto.order_title }<br> <br> <small>주문번호
-							: ${ldto.order_number }</small>
+						<br> <strong>${ldto.order_title }</strong><br> <br>
+						<small>주문번호 : ${ldto.order_number }</small>
 					</div>
 				</div>
 			</div>
@@ -181,10 +181,10 @@
 		$("#homeGo_btn").on("click", function() {
 			$(location).attr("href", "/home/")
 		})
-	$("#chargeInfo_btn").on("click",function(){
-		$(location).attr("href","/member/buyContentsGo")
-	})
-		</script>
+		$("#chargeInfo_btn").on("click", function() {
+			$(location).attr("href", "/member/buyContentsGo")
+		})
+	</script>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 </body>

@@ -9,9 +9,12 @@
 		,#{order_quantity},#{order_price},#{order_image},#{order_seller},#{order_buyer}
 		,#{order_buyer_phone},#{order_buyer_email},#{order_receipt},#{order_receipt_postcode}
 		,#{order_receipt_address1},#{order_receipt_address2},#{order_receipt_phone}
-		,#{order_receipt_demend})
+		,#{order_receipt_demend},default,default)
 
 	</insert>
+	<select id="orderSelect" resultType="com.project.dto.OrderDTO">
+	select * from products_order where member_email=#{value}
+	</select>
 	<select id="myOrderList" resultType="com.project.dto.OrderDTO">
 		select * from
 		products_order
@@ -27,8 +30,8 @@
 		select * from
 		products_order where products_seq = #{value}
 	</select>
-	
-	
+
+
 	<!--구매내역 페이징 겸 출력 -->
 	<select id="PageSelect" resultType="com.project.dto.OrderDTO">
 		select X.rnum, X.order_seq,X.products_seq,X.member_email,
@@ -56,8 +59,9 @@
 		select *
 		from
 		products_order
-		 where member_email=#{member_email}
-		order by order_seq desc) A
+		where member_email=#{member_email}
+		order by order_seq
+		desc) A
 		where rownum <![CDATA[<]]>=
 		#{endCount}) X
 		where X.rnum >= #{startCount}
@@ -68,6 +72,14 @@
 		select count(*) as orderCount
 		from products_order
 	</select>
-
+	<update id="deliveryOk">
+		update products_order set order_delivery =
+		#{order_delivery}
+		where order_seq = #{order_seq}
+	</update>
+	
+	<update id="buyConfirm">
+		update products_order set order_confirm = 'Y' where order_seq = #{order_seq}
+	</update>
 
 </mapper>

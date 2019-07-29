@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>구매</title>
 <link rel="stylesheet" href="../css/style2.css">
-
+<link rel="icon" href="/img/core-img/logo4.png">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript"
@@ -145,10 +145,11 @@ a {
 				<div class="col-3 py-2 font-weight-bold">휴대전화</div>
 				<div class="col-9 py-2">
 					<input type="text" name="phone1" id="order_phone1" class="empty"
-						style="width: 8em"> - <input type="text" name="phone2"
-						class="empty" id="order_phone2" style="width: 8em"> - <input
+						style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+						> - <input type="text" name="phone2"
+						class="empty" id="order_phone2" style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" > - <input
 						type="text" name="phone3" id="order_phone3" class="empty"
-						style="width: 8em">
+						style="width: 8em" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 				</div>
 				<div class="col-3 py-2 font-weight-bold">이메일</div>
 				<div class="col-9 py-2">
@@ -190,9 +191,8 @@ a {
 			<div class="row border rounded">
 				<div class="col-3 font-weight-bold py-2" style="line-height: 2em">배송지선택</div>
 				<div class="col-9 py-2">
-					<span>기본 배송지 <input type="radio" name="origin_radio"
-						id="origin" checked="checked"></span> <span>신규 배송지 <input
-						type="radio" name="origin_radio" id="new">
+					<span>기본 배송지 <input type="radio" name="origin_radio"id="origin" checked="checked"></span> 
+					<span>신규 배송지 <input type="radio" name="origin_radio" id="new">
 					</span>
 				</div>
 				<div class="col-3 font-weight-bold py-2">받으시는 분</div>
@@ -214,7 +214,7 @@ a {
 					<input type="text" id="sample6_detailAddress" class="empty"
 						name="order_receipt_address2" placeholder="상세주소"
 						style="width: 25em">
-					<!-- 							<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
+<!-- 												<input type="text"	id="sample6_extraAddress" class="empty" placeholder="지번" readonly> -->
 
 
 				</div>
@@ -263,18 +263,21 @@ a {
 				</div>
 
 
-				<div class="row py-5 border-bottom">
-					<div class="col-12 text-center">
-						<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
-							href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a> <input
-							type="hidden" value="" id=quant3 name=quant> <input
-							type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
+
+			</div>
+			<div class="row py-5 border-bottom">
+				<div class="col-12 text-center">
+					<a class="btn akame-btn mr-3" id="buy_aTag">결 제 하 기 </a> <a
+						href="#" class="btn akame-btn ml-3" id="back_aTag">결 제 취 소</a> <input
+						type="hidden" value="" id=quant3 name=quant> <input
+						type="hidden" value="${dto.shop_quantity}" id=quant2 name=quant>
 
 
-					</div>
 				</div>
 			</div>
+
 		</div>
+
 	</form>
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
@@ -358,7 +361,7 @@ a {
 										"#sample6_address").attr("id"));
 								removeXSS($("#sample6_detailAddress").val(), $(
 										"#sample6_detailAddress").attr("id"));
-								// 				removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
+// 								removeXSS($("#sample6_extraAddress").val(), $("#sample6_extraAddress").attr("id"));
 								removeXSS($("#phone1").val(), $("#phone1")
 										.attr("id"));
 								removeXSS($("#phone2").val(), $("#phone2")
@@ -370,7 +373,7 @@ a {
 								var qua = Number($("#quant1").val());
 								var quant = shop_q - qua;
 								$("input[name=quant]").val(shop_q - qua);
-									IMP.request_pay({
+								IMP.request_pay({
 									pg : 'inicis', // version 1.1.0부터 지원.
 									pay_method : 'card',
 									merchant_uid : 'merchant_'
@@ -452,7 +455,7 @@ a {
 									extraAddr = ' (' + extraAddr + ')';
 								}
 								// 조합된 참고항목을 해당 필드에 넣는다.
-								document.getElementById("sample6_extraAddress").value = extraAddr;
+// 								document.getElementById("sample6_extraAddress").value = extraAddr;
 
 							} else {
 								document.getElementById("sample6_extraAddress").value = '';

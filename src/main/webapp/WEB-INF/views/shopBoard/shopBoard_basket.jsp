@@ -12,6 +12,7 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<link rel="icon" href="/img/core-img/logo4.png">
 <style>
 input[type="text"] {
 	box-shadow: 4px 4px 5px #gray inset;
@@ -86,7 +87,7 @@ input[type="text"] {
 <!-- 			</div> -->
 
 		</div>
-		<form action="/Basket/asd" id="chargeForm">
+		<form action="/Basket/shopBoard_buy2Proc" id="chargeForm">
 			<div class="row border-bottom border-top bg-gray text-center py-2">
 				<div class="col-1 py-2"><input type="checkbox" onclick="checkAll();" /></div>
 				<div class="col-3">상품/옵션정보</div>
@@ -199,7 +200,7 @@ input[type="text"] {
 
 							//alert($('#hiddenValue').val());  아래 체크박스가 모두 체크되어 있다면 1,2,3,4 가 출력 된다.
 
-							location.href = "/Basket/asd?basket_seq="
+							location.href = "/Basket/shopBoard_buy2Proc?basket_seq="
 									+ $("#hiddenValue").val();
 						}
 					}

@@ -32,6 +32,9 @@ public class MemberDAO {
 	public int shopCount(String id) {
 		return sst.selectOne("member.shopCount",id);
 	}
+	public int buyCount(String id) {
+		return sst.selectOne("member.buyCount",id);
+	}
 	
 	public String findID(MemberDTO dto) {
 		return sst.selectOne("member.findID",dto);
@@ -92,6 +95,11 @@ public class MemberDAO {
 	public MemberDTO selectById(String id){
 		return sst.selectOne("member.selectById",id);
 	}
+	
+	public int updateById(MemberDTO dto){
+		System.out.println(dto.toString());
+		return sst.update("member.updateById",dto);
+	}
 
 	public int confirmId(String id) {//멤버 컨펌을 n에서 y로 바꿔주는 메서드
 		return sst.update("member.confirmId",id);
@@ -127,7 +135,10 @@ public class MemberDAO {
 	public int sellContentsDelete(String seq) {
 		return sst.update("member.updateQuantity",seq);
 	}
-
+	public int overlap(String id) {
+		System.out.println("디에이오 "+id);
+		return sst.selectOne("member.overlap",id);
+	}
 	
 
 }

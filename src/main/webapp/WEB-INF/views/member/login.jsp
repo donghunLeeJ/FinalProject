@@ -12,7 +12,7 @@
 	rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <!-- 눈모양 -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link rel="icon" href="/img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <title>로그인</title>
 <style>
@@ -27,6 +27,9 @@
 
 .h {
 	font-family: naBrush;
+}
+.h3{
+ display: inline;
 }
 </style>
 </head>
@@ -62,9 +65,9 @@
 								name="member_id" class="form-control mb-30" placeholder="id">
 						</div>
 						<div class="col-lg-12 text-center">
-							<h3 class=h>Password</h3>
-							<i class="fa fa-eye-slash fa-lg" id=flash></i> <input
-								type="password" style="width: 50%; margin: auto;"
+							<h3 class=h3>Password</h3>
+							<i class="fa fa-eye-slash fa-lg" id=flash></i> 
+							<input type="password" style="width: 50%; margin: auto;"
 								name="member_pw" class="form-control mb-30 flash"
 								placeholder="password">
 						</div>
@@ -80,7 +83,7 @@
 						<div class="col-12 text-center" style="margin-top: 90px;">
 
 							<h5>
-								<small>Copyright © AKKABI Corp. All rights reserved.</small>
+								<small>Copyright © AGGABI Corp. All rights reserved.</small>
 							</h5>
 
 						</div>

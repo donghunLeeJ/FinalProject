@@ -7,6 +7,7 @@
 <title>신고하기</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link rel="icon" href="/img/core-img/logo4.png">
 <style type="text/css">
 
 </style>
@@ -30,9 +31,7 @@
 			- 신고 사유
 		</div>
 		<div class="col-12">
-			<textarea id="textWrite" style="width:413px;height:300px;resize: none;" name="tl_reason">
-			
-			</textarea>
+			<textarea id="textWrite" style="width:413px;height:300px;resize: none;" name="tl_reason"></textarea>
 		</div>
 		<div class="col-12 p-2">
 			<input class="btn btn-secondary" type="button" id="rpt" value="신고하기">

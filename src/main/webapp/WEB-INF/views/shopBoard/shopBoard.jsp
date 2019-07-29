@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>결제</title>
-<link rel="icon" href="/img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="/css/style2.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
@@ -67,17 +67,16 @@
 						<c:forEach var="i" items="${boardList }">
 							<c:choose>
 								<c:when test="${i.shop_quantity eq 0}">
-									<div class="col-12 col-sm-6 col-lg-3  mb-5 "
+									<div
+										class="col-12 col-sm-6 col-lg-3  mb-5 akame-portfolio-item wow fadeInUp "
 										data-wow-delay="500ms">
 										<div class="" style="height: 250px">
-
 											<div style="position: absolute;">
 												<div style="position: relative; top: 70px; left: 0px;">
 													<img src="/img/core-img/soldout.png">
 												</div>
 											</div>
-											<img src="${i.shop_imagepath1 }" id="img1" alt=""
-												style="width: 250px">
+											<img src="${i.shop_imagepath1 }" id="img1" alt="">
 
 											<!-- Thumbnail Zoom -->
 											<a href="#}" class=""><i class=""></i></a>
@@ -96,16 +95,13 @@
 										<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
 											<div class="akame-portfolio-single-item"
 												style="height: 250px">
-												<img src="${i.shop_imagepath1 }" id="img1" alt=""
-													style="width: 250px;">
+												<img src="${i.shop_imagepath1 }" id="img1" alt="">
 												<!-- Overlay Content -->
 												<div
 													class="overlay-content d-flex align-items-center justify-content-center">
 													<div class="overlay-text text-center">
 														<div class="ellipsis">${i.shop_title }</div>
 														<!-- 0725추가 -->
-
-
 														<p class="pt-3">
 															<fmt:formatNumber value="${ i.shop_price}"
 																pattern="#,###" />
@@ -113,9 +109,8 @@
 														</p>
 													</div>
 												</div>
-
 												<!-- Thumbnail Zoom -->
-												<%--                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
+												<%--  <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
 											</div>
 											<div class="team-member-info border">
 												<div class="row">
@@ -167,28 +162,27 @@
                      console.log(result);
                      
                      for(var i = 0 ; i < result.length; i ++){
-                     $("#extendList").append(`<a href="/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`">
+                     $("#extendList").append(`<a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`'>
                     		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
                               data-wow-delay='500ms'>
                               <div class='akame-portfolio-single-item' style="height: 250px">
                                  <img id='img1' src=`+ result[i].shop_imagepath1+` >
-
                                  <!-- Overlay Content -->
                                  <div
                                     class='overlay-content d-flex align-items-center justify-content-center'>
                                     <div class='overlay-text text-center'>
-                                       <h4>`+result[i].shop_title+`</h4>
-                                       <p>`+result[i].shop_price+`</p>
-                                    </div>
+                                     
+                                    <div class='ellipsis'>`+result[i].shop_title+`</div> <!-- 0725추가 -->
+                                    <p class='pt-3'>
+                                      `+result[i].shop_price+`원 
+                                    </p>
                                  </div>
-
+                                 </div>
                                  <!-- Thumbnail Zoom -->
                                  <a href=`+ result[i].shop_imagepath1+` class='thumbnail-zoom'><i
                                     class='icon_search'></i></a>
-
                               </div>
                               <div class='team-member-info border'>
-                           
                               </div>
                            </div></a>`);
                      };

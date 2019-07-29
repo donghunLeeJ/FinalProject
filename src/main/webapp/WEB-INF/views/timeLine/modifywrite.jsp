@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>수정 페이지</title>
 
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-<link rel="icon" href="./img/core-img/favicon.ico">
+<link rel="icon" href="/img/core-img/logo4.png">
 <link rel="stylesheet" href="../css/style2.css">
 <!-- <link rel="stylesheet" href="style.css"> -->
 <script type="text/javascript" src="/js/cross.js"></script>
 <!-- 지우지 말 것 -->
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
@@ -25,7 +27,9 @@
 					<!-- Section Heading -->
 					<div class="col-12">
 						<div class="section-heading text-center">
-							<h2 style="font-family: '나눔고딕OTF'">글 수정</h2>
+
+							<h2 style="font-family: 'Sunflower', sans-serif;">글 수정</h2>
+
 						</div>
 					</div>
 				</div>
@@ -34,11 +38,14 @@
 					<div class="col-12">
 						<!-- Form -->
 						<form action="/timeline/boardModified" method="post"
-							enctype="multipart/form-data" id="delform"
-							class="akame-contact-form border-0 p-0">
+
+
+							enctype="multipart/form-data"
+							class="akame-contact-form border-0 p-0" id="delform">
+
 							<div class="row">
 								<div class="col-lg-12">
-									<h3>- title -</h3>
+									<h3 style="font-family: 'Sunflower', sans-serif;">- 제목 -</h3>
 								</div>
 								<div class="col-lg-12">
 									<input type="text" name="tl_title" class="form-control mb-30" id=line_title
@@ -46,7 +53,7 @@
 								</div>
 								<input type="hidden" name="tl_board_seq" value="${result.tl_board_seq }">
 								<div class="col-lg-12 ">
-									<h3>- contents -</h3>
+									<h3 style="font-family: 'Sunflower', sans-serif;">- 내용 -</h3>
 									<div id="img_field" class="border" style="height: 23em; text-align: center">
 										<img class="border" id="image_section" src="${result.tl_imgaddr}" alt=""
 											style="height: 100%;margin: auto">
@@ -56,8 +63,7 @@
 										<input type="file" name="tl_image"
 											class="custom-file-input form-control" id="imgInput"
 											aria-describedby="inputGroupFileAddon01" onchange="checkFile(this)"> <label
-											class="custom-file-label" for="inputGroupFile01">Choose
-											file</label>
+											class="custom-file-label" for="inputGroupFile01">파일을 선택하세요</label>
 									</div>
 								</div>
 								<div class="col-lg-12 ">

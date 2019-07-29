@@ -61,11 +61,12 @@ public class MemberController {
 	@RequestMapping("loginProc")
 	public String login(MemberDTO mdto) {
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
+		System.out.println("로그인프록");
 		int result = mservice.login(mdto);
 		if (result == 1) {
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
 			if (confirm.equals("y")) {
-	
+
 				int BlackCount = 0;
 				List<String> BlackListResult = aservice.AdminBlackCheckList();
 				for (String BlackList : BlackListResult) {
@@ -86,7 +87,7 @@ public class MemberController {
 				}
 
 			} else if (confirm.equals("n")) {
-				return "member/confirm";
+				return "member/notConfirm";
 			}
 		} else {
 			return "member/notLogin";
@@ -148,14 +149,22 @@ public class MemberController {
 	@RequestMapping("/joinProc")
 	public String joinInsert(MemberDTO mdto) {
 		String id = mdto.getMember_id();
-		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
-		try {
-			edao.sendMail(id);
-			int result = mservice.joinInsert(mdto);
-		} catch (Exception e) {
-			e.printStackTrace();
+		System.out.println("아이디 " + id);
+		int overlapid = mdao.overlap(id);
+		System.out.println("중복검사 " + overlapid);
+		if (overlapid >= 1) {
+			return "member/overlap";
+		} else {
+			mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
+			try {
+				edao.sendMail(id);
+				int result = mservice.joinInsert(mdto);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "member/emailsend";
 		}
-		return "member/emailsend";
 	}
 
 	@RequestMapping("logOutProc")
@@ -172,7 +181,10 @@ public class MemberController {
 
 	@RequestMapping("edit_mypage")
 	public String log_edit_mypage(MemberDTO mdto) {// 마이페이지에서 글 정보수정 버튼 누르기
+
+		mservice.update_member(mdto);		
 		session.setAttribute("id", mservice.select_member(mdto.getMember_id()));
+
 		return "member/edit_OK";
 
 	}
@@ -227,10 +239,19 @@ public class MemberController {
 		return "redirect:buyContentsGoProc?page=1";
 	}
 
-	
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
 		int resultPage = Integer.parseInt(page);
+
+		// MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		// int buycount = mservice.buyCount(mdto.getMember_id());
+		// List<String> pageList = os.Page(resultPage, buycount);
+		// int count = os.orderCount();
+
+		// List<OrderDTO> buyList = os.orderTenList(resultPage);
+		// request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
+		// request.setAttribute("page", resultPage);// 현재 페이지임
+
 		int count = os.orderCount();
 		List<String> pageList = os.Page(resultPage, count);
 
@@ -241,17 +262,21 @@ public class MemberController {
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		List<OrderDTO> buyList = os.orderTenList(resultPage , mdto.getMember_id());
+		List<OrderDTO> buyList = os.orderTenList(resultPage, mdto.getMember_id());
+
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}
+
+	// System.out.println(buyList.get(0).getOrder_title());
+	// System.out.println(buyList.get(0).getOrder_buyer_email());
 
 	// 판매게시물의 판매목록
 	@RequestMapping("/sellStatus")
 	public String log_sellStatus(int seq) {
 		int total_quantity = 0;
 		int total_price = 0;
-		List<OrderDTO> dto = os.sellOrderList(seq);
+		List<OrderDTO> dto = os.sellOrderList(seq);// 판매글의 판매목록
 		for (int i = 0; i < dto.size(); i++) {
 			total_price += dto.get(i).getOrder_price();
 			total_quantity += dto.get(i).getOrder_quantity();
@@ -260,6 +285,13 @@ public class MemberController {
 		request.setAttribute("total_quantity", total_quantity);
 		request.setAttribute("dto", dto);
 		return "/member/sellStatusPopUp";
+	}
+	
+	@RequestMapping("/buyConfirm")
+	public String buyConfirm(String seq) {
+		System.out.println("구매확정 :" + seq);
+		os.buyConfirm(seq);
+		return "redirect:buyContentsGoProc?page=1";
 	}
 
 	@RequestMapping("myMsg")
@@ -292,4 +324,16 @@ public class MemberController {
 		return resultString;
 	}
 
+	@RequestMapping("/deliveryOk")
+	@ResponseBody
+	public String deliveryOk(OrderDTO dto) {
+		String updateOk;
+		int result = os.deliveryOk(dto);
+		if (result == 1) {
+			updateOk = "O";
+		} else {
+			updateOk = "X";
+		}
+		return updateOk;
+	}
 }

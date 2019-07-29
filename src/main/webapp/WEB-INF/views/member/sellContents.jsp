@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="/img/core-img/logo4.png">
 <title>판매</title>
 
 <link rel="icon" href="./img/core-img/favicon.ico">
@@ -38,20 +39,18 @@
 	box-shadow: 5px 5px 5px #eee;
 }
 
-
 .center{
 text-align:center;
 }
+
 .form-control[readonly] {
 	background-color: white;
 }
+
 .list_sub{
-         
-            margin-right:1px;
-            text-align:center;
-        }
-
-
+ margin-right:1px;
+text-align:center;
+ }
 .list_menu button{
             border: 1px solid skyblue;
             background-color: rgba(0,0,0,0);
@@ -65,8 +64,6 @@ text-align:center;
             background-color: skyblue;
         }
 
-
-
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
@@ -75,16 +72,16 @@ text-align:center;
 
 	<section class="why-choose-us-area bg-gray pt-3">
 	<div class="container">
-		<div class="row border-bottom  mt-5 pb-1 ">
-			<div class="col-12">
-				<h4 class="mb-3" style="font-family: '나눔고딕OTF';">판매 내역 확인</h4>
+		<div class="row border-bottom  mt-5 mb-3 pb-1 ">
+			<div class="col-12 ">
+				<h4 class="mb-2" style="font-family: '나눔고딕OTF';">판매 내역 확인</h4>
 			</div>
 		</div>
 		<div class="row border-top border-bottom  text-center py-1"
 			style="background: #dde1e5">
 			<div class="col-2 border">이미지</div>
 			<div class="col-4 border">제목</div>
-			<div class="col-1 border">구매 수량</div><!-- 0725수정 -->
+			<div class="col-1 border">총 수량</div><!-- 0728수정 -->
 			<div class="col-2 border">개당 금액</div>
 			<div class="col-2 border">유통기한</div>
 			<div class="col-1 border">요청</div>
@@ -116,16 +113,18 @@ text-align:center;
 				<div class="col-1" style="padding: 0">
 
 
+
 					<c:choose>
 						<c:when test="${i.shop_quantity == 0}">
 
 							<input type=button class="sell_btn del_list"
 								id="del_list${i.shop_seq }" value="매진 완료"
-								style="color:red; margin-bottom: 0.3em">
-								
-								<script>
-									$('#del_list${i.shop_seq }').attr('disabled',true);//버튼 비활성화
-								</script>
+								style="color: red; margin-bottom: 0.3em">
+
+							<script>
+								$('#del_list${i.shop_seq }').attr('disabled',
+										true);//버튼 비활성화
+							</script>
 						</c:when>
 
 						<c:otherwise>
@@ -146,16 +145,19 @@ text-align:center;
 						style="margin-top: 0.3em">
 										
 						 -->
-																
-						<a href="/member/sellStatus?seq=${i.shop_seq }" id="sell_statusBtn?"style="margin-top: 0.3em"><input class="sell_btn"
-                  type="button" value="판매 현황"></a>
+
+					<a href="/member/sellStatus?seq=${i.shop_seq }"
+						id="sell_statusBtn?" style="margin-top: 0.3em"><input
+						class="sell_btn" type="button" value="판매 현황"></a>
 				</div>
 
 			</div>
 			<script>
 				$("#del_list2${i.shop_seq}").hide();
 
+
 				$("#del_list${i.shop_seq}").on("click", function() {
+
 					if (confirm("삭제 요청을 하나요?") == true) {
 									
 						location.href ="/shopboard/deleteRequest?seq=${i.shop_seq}";
@@ -169,27 +171,31 @@ text-align:center;
 		</c:forEach>
 
 		<br>
-		
-<!-- <button type="button" class="btn btn-outline-info"> </button> -->
-			<div class="list_menu">
+
+		<!-- <button type="button" class="btn btn-outline-info"> </button> -->
+		<div class="list_menu">
 			<c:forEach var="i" items="${pageList}">
 				<c:choose>
 					<c:when test="${i eq '<<'}">
-					<a href="sellContentsGoProc?page=${page-1}" class="center"><button class="list_sub ">${i}</button></a>
+						<a href="sellContentsGoProc?page=${page-1}" class="center"><button
+								class="list_sub ">${i}</button></a>
 					</c:when>
 
 					<c:when test="${i eq '>>'}">
-					<a href="sellContentsGoProc?page=${page+1}" class="center"><button class="list_sub ">${i}</button></a>
+						<a href="sellContentsGoProc?page=${page+1}" class="center"><button
+								class="list_sub ">${i}</button></a>
 					</c:when>
 
 					<c:otherwise>
-					<a href="sellContentsGoProc?page=${i}" class="center"><button class="list_sub " id=sellNavi>${i}</button></a>
+						<a href="sellContentsGoProc?page=${i}" class="center"><button
+								class="list_sub " id=sellNavi>${i}</button></a>
 
 					</c:otherwise>
 
 				</c:choose>
 			</c:forEach>
 		</div>
+		<br>
 
 
 	</div>

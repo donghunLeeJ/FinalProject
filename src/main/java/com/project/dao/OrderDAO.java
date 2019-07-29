@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.project.dto.MemberDTO;
 import com.project.dto.OrderDTO;
 
 @Component
@@ -15,8 +16,12 @@ public class OrderDAO {
 	private SqlSessionTemplate sst;
 
 	public int orderInsert(OrderDTO dto) {
-		System.out.println(dto.toString());
+//		System.out.println(dto.toString());
 		return sst.insert("OrderDAO.orderInsert", dto);
+	}
+	public List<OrderDTO> orderSelect(OrderDTO dto) {
+		System.out.println("2");
+		return sst.selectList("OrderDAO.orderSelect");
 	}
 
 	public List<OrderDTO> myOrderList(String id) {
@@ -27,11 +32,20 @@ public class OrderDAO {
 	public List<OrderDTO> sellOrderList(int seq) {
 		return sst.selectList("OrderDAO.sellOrderList", seq);
 	}
-	
-	public List<OrderDTO> popup(int seqq){
-		return sst.selectList("OrderDAO.popup",seqq);
+
+	public List<OrderDTO> popup(int seqq) {
+		return sst.selectList("OrderDAO.popup", seqq);
 	}
+
 	public int orderCount() {
 		return sst.selectOne("OrderDAO.orderCount");
+	}
+
+	public int deliveryOk(OrderDTO dto) {
+		return sst.update("OrderDAO.deliveryOk", dto);
+	}
+	
+	public int buyConfirm(String seq) {
+		return sst.update("OrderDAO.buyConfirm", seq);
 	}
 }

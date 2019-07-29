@@ -25,9 +25,14 @@
 		select count(*) as shopcount from shopboard where shop_id = #{value}
 	</select>
 
-	<update id="changePW">
-		update member set member_pw=#{pw} where member_id=#{id}
-	</update>
+
+<select id="buyCount" resultType="Integer">
+select count(*) as products_order from products_order where member_email = #{value}
+</select>
+
+<update id="changePW">
+update member set member_pw=#{pw} where member_id=#{id} 
+</update>
 
 	<select id="login" resultType="Integer">
 		select count(*) from member where
@@ -38,6 +43,11 @@
 		select * from member where
 		member_id=#{member_id}
 	</select>
+	
+	<update id="updateById">
+	update member set member_phone=#{member_phone}, member_postcode=#{member_postcode}, member_address1=#{member_address1},
+    member_address2=#{member_address2}, member_intro=#{member_intro} where member_id=#{member_id}
+	</update>
 
 	<update id="confirmId">
 		update member set member_confirm='y' where
@@ -82,6 +92,9 @@
 
 	<update id="updateQuantity">
 		update shopboard set shop_quantity = 0 , shop_deleterequest ='y' where shop_seq = #{seq}	
-	</update>
+	</update> 
 	
+	<select id="overlap" resultType="Integer">
+		select count(*) from member where member_id=#{member_id}
+	</select>
 </mapper>
