@@ -25,6 +25,7 @@ public class OrderDTO implements Cloneable {
 	private String order_delivery;
 	private String order_confirm;
 
+	public OrderDTO() {}
 //	@Override
 //	public String toString() {
 //		return "OrderDTO [order_seq=" + order_seq + ", products_seq=" + products_seq + ", member_email=" + member_email

@@ -386,28 +386,28 @@ select {
 								<label class="col-lg-3 col-form-label form-control-label">아이디</label>
 								<div class="col-lg-6">
 									<input class="form-control" id="del_id" name="del_id"
-										type="text">
+										type="text" onkeyup="enterkey();">
 								</div>
 							</div>
 							<P>
 							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
+								<label class="col-lg-3 col-form-label form-control-label" >비밀번호</label>
 								<div class="col-lg-6">
 									<input class="form-control" id="del_pw" name="del_pw"
-										type="password">
+										type="password" onkeyup="enterkey();">
 								</div>
 								<p>
 							</div>
 							<div class="form-group row">
-								<label class="col-lg-3 col-form-label form-control-label">비밀번호
+								<label class="col-lg-3 col-form-label form-control-label" onkeyup="enterkey();">비밀번호
 									확인</label>
 								<div class="col-lg-6">
-									<input class="form-control" id="del_pw2" type="password">
+									<input class="form-control" id="del_pw2" type="password" onkeyup="enterkey();">
 								</div>
 							</div>
 						</form>
 						<p>
-							<input type="button" id="delOK" class="btn btn-success"
+							<input type="button" id="delOK"  class="btn btn-success"
 								value="회원탈퇴">
 					</div>
 
@@ -434,6 +434,32 @@ $("#uploadImg").hide();
 		})
 
 		//-----------------------------회원탈퇴
+		
+		function enterkey() {
+        if (window.event.keyCode == 13) {
+        	if ($("#del_id").val() == "") {
+				alert("아이디를 입력해주세요");
+			} else if ($("#del_pw").val() == "") {
+				alert("비밀번호를 입력해주세요");
+			} else if ($("#del_pw2").val() == "") {
+				alert("비밀번호 확인을 입력해주세요");
+			} else if ($("#del_pw").val() != $("#del_pw2").val()) {
+				alert("비밀번호가 일치하지 않습니다");
+			} else {
+				var result = confirm("정말 탈퇴하시겠습니까?");
+				if (result) {
+					removeXSS($("#del_id").val(), $("#del_id").attr("id"));
+					removeXSS($("#del_pw").val(), $("#del_pw").attr("id"));
+					removeXSS($("#del_pw2").val(), $("#del_pw2").attr("id"));
+					$("#delform").submit();
+				} else
+					return;
+			}
+        }
+}
+
+	
+		
 		$("#delOK").on("click", function() {
 			if ($("#del_id").val() == "") {
 				alert("아이디를 입력해주세요");

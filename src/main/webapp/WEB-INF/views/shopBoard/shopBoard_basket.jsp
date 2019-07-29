@@ -89,7 +89,7 @@ input[type="text"] {
 		</div>
 		<form action="/Basket/shopBoard_buy2Proc" id="chargeForm">
 			<div class="row border-bottom border-top bg-gray text-center py-2">
-				<div class="col-1 py-2"><input type="checkbox" onclick="checkAll();" /></div>
+				<div class="col-1 py-2"><input type="checkbox" id="checkdall" onclick="checkAll();" /></div>
 				<div class="col-3">상품/옵션정보</div>
 				<div class="col-2">유통기한</div>
 				<div class="col-1">수량(개)</div>
@@ -221,8 +221,11 @@ input[type="text"] {
 
 	<script>
 		var checkAll = function() {
-
-			$(".check").click();
+			   if ($("#checkdall").is(':checked')) {
+	                $("input[type=checkbox]").prop("checked", true);
+	            } else {
+	                $("input[type=checkbox]").prop("checked", false);
+	            }
 		}
 
 		
