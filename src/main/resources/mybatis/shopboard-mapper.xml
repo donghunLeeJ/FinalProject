@@ -107,5 +107,9 @@
 		select shop_quantity from
 		shopboard where shop_seq = #{value}
 	</select>
-
+	<select id="reviewOverlap" resultType="Integer">
+		select count(*) from
+		shopreview where products_seq = #{products_seq} and user_id =
+		#{user_id}
+	</select>
 </mapper>

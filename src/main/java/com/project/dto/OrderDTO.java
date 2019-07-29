@@ -60,6 +60,10 @@ public class OrderDTO implements Cloneable {
 		this.order_confirm = order_confirm;
 	}
 
+	public OrderDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setOrder_seq(int order_seq) {
 		this.order_seq = order_seq;
 	}

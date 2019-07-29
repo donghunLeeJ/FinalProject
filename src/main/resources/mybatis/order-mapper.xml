@@ -13,7 +13,7 @@
 
 	</insert>
 	<select id="orderSelect" resultType="com.project.dto.OrderDTO">
-	select * from products_order where member_email=#{value}
+		select * from products_order where member_email=#{value}
 	</select>
 	<select id="myOrderList" resultType="com.project.dto.OrderDTO">
 		select * from
@@ -77,9 +77,10 @@
 		#{order_delivery}
 		where order_seq = #{order_seq}
 	</update>
-	
+
 	<update id="buyConfirm">
-		update products_order set order_confirm = 'Y' where order_seq = #{order_seq}
+		update products_order set order_confirm = 'Y' where
+		order_seq = #{order_seq}
 	</update>
 
 </mapper>
