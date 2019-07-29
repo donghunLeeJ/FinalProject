@@ -231,7 +231,7 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="ReportSandMessage", produces = "application/text; charset=utf8")
 	public String ReportSandMessage(MessageDTO dto){
-		dto.setMessage_sender("관리자");
+		dto.setMessage_sender("admin");
 		int result = aservice.AdminReportSandInsert(dto);
 		if(result > 0) {
 			return "정상적으로 메시지를 보냈습니다.";

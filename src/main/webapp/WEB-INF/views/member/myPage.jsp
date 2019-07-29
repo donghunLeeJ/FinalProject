@@ -219,7 +219,7 @@ select {
 								<div class="form-group row">
 									<label class="col-lg-3 col-form-label form-control-label">자기소개</label>
 									<div class="col-lg-9" id="introdiv">
-										<textarea style="resize: none;"  id=areas name="member_intro">${id.member_intro}</textarea>
+										<textarea style="resize: none;"  id=areas name="member_intro" readonly>${id.member_intro}</textarea>
 									</div>
 <%-- 									<input name="member_intro" type="hidden"> <div class=" ">${id.member_intro}</div> --%>
 								</div>

@@ -303,7 +303,7 @@
 								<a  class='post-date'><i class='icon_clock_alt'>작성일</i>
 								`+result[i].tl_writedate+`</a> 
 							</div>
-							<p>${i.tl_contents }</p>
+							<p>`+result[i].tl_contents+` </p>
 							<hr>
 							<div class='post-meta'>
 								<a id='replyShow`+result[i].tl_board_seq+`' class='post-date'>댓글보기</a>
@@ -359,7 +359,7 @@
 												</div>
 												<div>
 													<a
-														href='/timeline/boardModify?seq=`+result[i].tl_board_seq+`'><b>글
+														href='/timeline/boardModify?tl_board_seq=`+result[i].tl_board_seq+`'><b>글
 															수정 </b></a>
 												</div>
 												<div>
