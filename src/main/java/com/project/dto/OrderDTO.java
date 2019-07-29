@@ -46,9 +46,6 @@ public class OrderDTO implements Cloneable {
 
 	}
 
-	public OrderDTO() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public void setOrder_seq(int order_seq) {
 		this.order_seq = order_seq;

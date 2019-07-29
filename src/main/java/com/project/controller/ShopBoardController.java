@@ -281,6 +281,9 @@ public class ShopBoardController {
 	@RequestMapping("/buyReview")
 	public String log_shopReview(ShopReviewDTO dto, String products_seq) {
 		int products_seq1 = Integer.parseInt(products_seq);
+		
+		System.out.println(dto.getUser_id());
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
 		System.out.println(products_seq1);
 		dto.setGet_star("1");
@@ -293,21 +296,22 @@ public class ShopBoardController {
 
 	@RequestMapping("/buyReviewOverlap")
 	@ResponseBody
-	public String log_shopReviewOverlap(OrderDTO dto) {
+	public String log_shopReviewOverlap(String products_seq) {
+		System.out.println(products_seq);
 		ShopReviewDTO reviewDTO = new ShopReviewDTO();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
-		reviewDTO.setProducts_seq(dto.getProducts_seq());
+		int seqInt = Integer.parseInt(products_seq);
+		reviewDTO.setProducts_seq(seqInt);
 		reviewDTO.setUser_id(mdto.getMember_id());
 		int result = sService.shopReviewOverlap(reviewDTO);
+		System.out.println("결과"+result);
 		String result2;
-		if(result == 1) {
-		System.out.println("1");
-			result2 ="X";//댓글 달면안됨.
+		if (result == 1) {
+			result2 = "X";// 댓글 달면안됨.
 		}else {
 			System.out.println("몰라");
-			result2 ="O"; //댓글 달수있음.
+			result2 = "O"; // 댓글 달수있음.
 		}
-		
 		return result2;
 	}
 
