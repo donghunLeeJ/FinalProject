@@ -12,6 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 #img1 {
+
     width:250px;  
 	height: 210px;
 }
@@ -104,6 +105,7 @@
 													<div class="overlay-text text-center">
 														<div class="ellipsis">${i.shop_title }</div>
 														<!-- 0725추가 -->
+
 														<p class="pt-3">
 															<fmt:formatNumber value="${ i.shop_price}"
 																pattern="#,###" />
@@ -111,8 +113,10 @@
 														</p>
 													</div>
 												</div>
+
+
 												<!-- Thumbnail Zoom -->
-												<%--  <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
+
 											</div>
 											<div class="team-member-info border">
 												<div class="row">
