@@ -124,6 +124,7 @@
 								비밀번호
 								<!--                      <img src="/img/button-img/flash.png" id="flash"> -->
 								<i class="fa fa-eye-slash fa-lg" id=flash></i>
+								<span id=returnPW></span>
 							</div>
 
 							<input type="password" style="width: 48%; margin: auto;" id=pw
@@ -231,7 +232,34 @@
 				$(".flash").attr('type', 'password');
 			}
 		});
-		//여기서 부터 가입버튼 눌렀을때 실행
+		
+		$("#pw").on("input",function(){
+			var regH=/[A-Z]{4,}/g;
+			var regM=/[A-Z]{2,3}/g;
+			
+			if(regH.test($("#pw").val())&& $("#pw").val().length>10){
+				$("#returnPW").css('color','red');
+				$("#returnPW").text('매우 어려움');
+			}	
+			else if(regM.test($("#pw").val())){
+				$("#returnPW").css('color','blue');
+				$("#returnPW").text('어려움');
+			}else if($("#pw").val()==""){
+				$("#returnPW").text('');
+			}else{
+				$("#returnPW").css('color','black');
+				$("#returnPW").text('쉬움');
+			}
+			
+		})
+		
+		$("#pwCheck").bind('paste',function(e){
+        setTimeout(function(){
+        alert("붙여넣기 할 수 없습니다");
+        },100);
+        $("#pwCheck").val("");
+});
+		//여기서 부터 가입버튼 눌렀을때 실행  && $("#pw").val().length>10
 		$("#send")
 				.on(
 						"click",
