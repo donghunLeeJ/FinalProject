@@ -63,11 +63,11 @@ public class ShopBoardController {
 		int resultPage = Integer.parseInt(page);
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 
-//		int shopcount = mservice.shopCount(mdto.getMember_id());//테이블에서 전체 레코드 갯수 불러옴
-//		List<String> pageList = mservice.paging(resultPage, shopcount );
-//		List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage);
-//		request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
-//		request.setAttribute("page", page);//현재 페이지
+		// int shopcount = mservice.shopCount(mdto.getMember_id());//테이블에서 전체 레코드 갯수 불러옴
+		// List<String> pageList = mservice.paging(resultPage, shopcount );
+		// List<ShopBoardDTO> sellList = sService.ShopBoardPageList(resultPage);
+		// request.setAttribute("pageList",pageList);// 게시판 아래에 숫자 출력
+		// request.setAttribute("page", page);//현재 페이지
 
 		int shopcount = mservice.shopCount(mdto.getMember_id());// 테이블에서 전체 레코드 갯수 불러옴
 		List<String> pageList = mservice.paging(resultPage, shopcount);
@@ -263,11 +263,10 @@ public class ShopBoardController {
 		return "/shopBoard/shopChargeOk";
 	}
 
-	
 	@RequestMapping("/shopOrderA")
 
 	public String order(OrderDTO odto) {
-	
+
 		MemberDTO id = (MemberDTO) session.getAttribute("id");
 		String login_email = id.getMember_id();
 		odto.setMember_email(login_email);
@@ -278,10 +277,13 @@ public class ShopBoardController {
 		request.setAttribute("ldto", odto);
 		return "/shopBoard/shopChargeOk";
 	}
-	
+
 	@RequestMapping("/buyReview")
 	public String log_shopReview(ShopReviewDTO dto, String products_seq) {
 		int products_seq1 = Integer.parseInt(products_seq);
+		
+		System.out.println(dto.getUser_id());
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
 		System.out.println(products_seq1);
 		dto.setGet_star("1");
@@ -290,6 +292,27 @@ public class ShopBoardController {
 		sService.shopReviewInsert(dto);
 
 		return "redirect:/home/";
+	}
+
+	@RequestMapping("/buyReviewOverlap")
+	@ResponseBody
+	public String log_shopReviewOverlap(String products_seq) {
+		System.out.println(products_seq);
+		ShopReviewDTO reviewDTO = new ShopReviewDTO();
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		int seqInt = Integer.parseInt(products_seq);
+		reviewDTO.setProducts_seq(seqInt);
+		reviewDTO.setUser_id(mdto.getMember_id());
+		int result = sService.shopReviewOverlap(reviewDTO);
+		System.out.println("결과"+result);
+		String result2;
+		if (result == 1) {
+			result2 = "X";// 댓글 달면안됨.
+		}else {
+			System.out.println("몰라");
+			result2 = "O"; // 댓글 달수있음.
+		}
+		return result2;
 	}
 
 	@RequestMapping("/shopBasketOrder")

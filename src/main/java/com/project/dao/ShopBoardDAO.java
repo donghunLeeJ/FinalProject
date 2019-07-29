@@ -72,6 +72,11 @@ public class ShopBoardDAO {
 		return sst.delete("ShopBoardDAO.shopReviewDelete", del_id);
 	}
 
+	public int shopReviewOverlap(ShopReviewDTO dto) {
+		return sst.selectOne("ShopBoardDAO.reviewOverlap", dto);
+
+	}
+
 	public int updateQ(int quant, int seq) {
 		Map<String, Integer> map = new HashMap();
 		map.put("m1", quant);

@@ -123,44 +123,64 @@ select {
 				<div class="col-1" style="padding: 0">
 
 					<input type=button class="sell_btn del_list" value="후기 작성"
-						data-toggle="modal" style="margin-bottom: 0.3em"
-						data-target="#myModal"> <input type=button
-						class="del_list2" value="요청중" style="margin-bottom: 0.3em">
-					<a style="margin-top: 0.3em"> 
-					
-					
-					
-					
-					
-					<c:choose>
-					<c:when test="${i.order_confirm eq 'N'}">
-						<input
-						id="buyConfirmBtn${i.order_seq}" class="sell_btn" type="button" value="구매 확정"></a>
-					</c:when>	
+						data-toggle="modal" style="margin-bottom: 0.3em"" id="ReviewOverlap${i.order_seq }">
+					<input type=button class="del_list2" value="요청중"
+						style="margin-bottom: 0.3em"> <a style="margin-top: 0.3em">
+						<c:choose>
+							<c:when test="${i.order_confirm eq 'N'}">
+								<input id="buyConfirmBtn${i.order_seq}" class="sell_btn"
+									type="button" value="구매 확정">
+					</a>
+					</c:when>
 					<c:otherwise>
-						<input
-						id="buyConfirmBtn${i.order_seq}" class="sell_btn" type="button" style="color:red" disabled="true" value="구매 완료"></a>
-					</c:otherwise>	
+						<input id="buyConfirmBtn${i.order_seq}" class="sell_btn"
+							type="button" style="color: red" disabled="true" value="구매 완료">
+						</a>
+					</c:otherwise>
 					</c:choose>
-						
-						
+
+
+
 				</div>
 				<script>
-				$("#buyConfirmBtn${i.order_seq}").on("click", function() {
-					var result = confirm("구매를 확정하시겠습니까?");
-					if(result){
-						$(location).attr("href", "/member/buyConfirm?seq=${i.order_seq}")
-					}else{
-						return;
-					}
-					
-				})
+					$("#ReviewOverlap${i.order_seq }").on("click", function() {
+						$.ajax({
+							url : "/shopboard/buyReviewOverlap",
+							type : "post",
+							data : {
+								products_seq : ${i.products_seq}
+							}
+						}).done(function(resp){
+							console.log(resp);
+							if(resp == "X"){
+								alert("이미 작성된 댓글입니다. (중복 댓글 입력 불가)");
+							}else{
+								$("#myModal").modal("show");
+							}
+							
+						})
+					})
+
+					$("#buyConfirmBtn${i.order_seq}")
+							.on(
+									"click",
+									function() {
+										var result = confirm("구매를 확정하시겠습니까?");
+										if (result) {
+											$(location)
+													.attr("href",
+															"/member/buyConfirm?seq=${i.order_seq}")
+										} else {
+											return;
+										}
+
+									})
 				</script>
 			</div>
 
 			<!-- The Modal -->
 			<form
-				action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.order_buyer_email}"
+				action="/shopboard/buyReview?products_seq=${i.products_seq }&user_id=${i.member_email}"
 				id="modalfo" method="POST">
 				<div class="modal modal-xl fade " id="myModal">
 					<div class="modal-dialog ">
@@ -177,7 +197,7 @@ select {
 								<div class="row border-bottom">
 									<div class="col-12">
 										<p>
-											작성 된 댓글은 삭제할 수 없습니다.&nbsp;<strong>(수정 가능)</strong>
+											작성 된 댓글은 삭제할 수 없습니다.&nbsp;<strong>(수정 불가)</strong>
 										</p>
 									</div>
 								</div>
@@ -251,6 +271,8 @@ select {
 		$("#title").on("input", function() {
 			if ($("#title").val().length > 20) {
 				alert("제목 길이를 초과하였습니다");
+			} else if ($("#title").val().length <= 10) {
+
 			}
 		});
 		$("#contents").on("input", function() {
@@ -269,7 +291,6 @@ select {
 		$("#sell_statusBtn").on("click", function() {
 			$(location).attr("href", "/member/sellStatus")
 		})
-
 	</script>
 </body>
 </html>
