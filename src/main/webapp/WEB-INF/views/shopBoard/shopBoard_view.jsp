@@ -80,9 +80,15 @@ $(function(){
 		var nowdate = new Date();
 	    if(expidate <= nowdate  ){
 	    	$("#exHide").hide();
-	    	$("#exShow").show();
+	    	
 			}
 			
+	  if($(".basket_quantity").val()==0){
+		  $("#btnSet").hide();
+		  $("#exShow").show();
+		  $("#countdown").hide();	
+		  
+	  } 
 		
 	
 })
@@ -170,7 +176,7 @@ $(function(){
 										<h4 style="font-family: '나눔고딕OTF';">[${dto.shop_brand}]</h4>
 									</div>
 									<div class="col-7 ellipsis text-left" style="padding: 0">
-										<h4>
+										<h4 style="font-family: '나눔고딕OTF';">
 											<strong>${dto.shop_title }</strong>
 										</h4>
 									</div>
@@ -198,7 +204,7 @@ $(function(){
 										<p style="color: red">
 											<strong><fmt:formatNumber
 													value="${dto.shop_quantity }" pattern="#,###" />(개)</strong> <input
-												type="hidden" name=basket_quantity
+												type="hidden" name=basket_quantity class="basket_quantity"
 												value="${dto.shop_quantity }">
 										</p>
 
@@ -294,7 +300,7 @@ $(function(){
 												*수량 확인 후 장바구니에 담아주세요
 									</div>
 								</div>
-								<div class="row pb-3 mt-4 border-bottom-0">
+								<div class="row pb-3 mt-4 border-bottom-0" id=btnSet>
 									<div class="col-12" style="text-align: center"
 										style="font-wight:600" id=exHide>
 
@@ -307,7 +313,7 @@ $(function(){
 									</div>
 									<div class="col-12 reds" style="text-align: center"
 										style="font-wight:600" id=exShow>
-										당일 유통기간 상품은 구매하실 수 없습니다
+										매진되었습니다
 								</div>
 								</div>
 							</div>
@@ -415,7 +421,7 @@ $(function(){
 						<div class="row mt-5 border rounded" style="height: 10em">
 							<div class="col-12 h-50 " style="background-color: #D8D8D8">
 								<div class="mt-2 ">
-									<h1 class="font-weight-bold display-5">반송지 정보</h1>
+									<h1 style="font-family: '나눔고딕OTF';" class="font-weight-bold display-5">반송지 정보</h1>
 								</div>
 							</div>
 

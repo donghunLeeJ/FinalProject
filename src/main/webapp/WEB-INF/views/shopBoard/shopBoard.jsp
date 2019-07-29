@@ -28,110 +28,113 @@
 </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false"
-
-   onselectstart="return false">
-   <!-- header -->
-   <jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
-   <section class="breadcrumb-area section-padding-80 border">
-   <div class="container">
-      <div class="row">
-         <div class="col-12">
-            <div class="breadcrumb-content">
-               <h2 style="font-family :'나눔고딕OTF';">구매하기</h2>
-               <nav aria-label="breadcrumb">
-               <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/home"><i
-                        class="icon_house_alt"></i>Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">구매하기</li>
-               </ol>
-               </nav>
-            </div>
-         </div>
-      </div>
-   </div>
-   </section>
-
+	onselectstart="return false">
+	<!-- header -->
+	<jsp:include page="/WEB-INF/views/module/headerAndNavi.jsp"></jsp:include>
+	<section class="breadcrumb-area section-padding-80 border">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="breadcrumb-content">
+					<h2 style="font-family: '나눔고딕OTF';">구매하기</h2>
+					<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/home"><i
+								class="icon_house_alt"></i>Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">구매하기</li>
+					</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
 
 
-   <!-- /header -->
-   <section class="akame-about-area bg-gray section-padding-80-0">
+
+	<!-- /header -->
+	<section class="akame-about-area bg-gray section-padding-80-0">
 
 
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-lg-2"></div>
-         <div class="col-lg-8">
-            <div class="container">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				<div class="container">
 
-               <div class="row">
+					<div class="row">
 
-                  <c:forEach var="i" items="${boardList }">
-                  <c:choose>
-                  <c:when test="${i.shop_quantity eq 0}">
-                <div   class="col-12 col-sm-6 col-lg-3  mb-5 akame-portfolio-item wow fadeInUp " data-wow-delay="500ms">
-                        <div class="" style="height: 250px">
-                           
-                           	 <div style="position: absolute;">
-								   <div style="position: relative; top: 70px; left: 0px;">
-								   <img src="/img/core-img/soldout.png" >
-								</div>
-								</div>
-								<img src="${i.shop_imagepath1 }" id="img1"  alt="" >
+						<c:forEach var="i" items="${boardList }">
+							<c:choose>
+								<c:when test="${i.shop_quantity eq 0}">
+									<div
+										class="col-12 col-sm-6 col-lg-3  mb-5 akame-portfolio-item wow fadeInUp "
+										data-wow-delay="500ms">
+										<div class="" style="height: 250px">
+											<div style="position: absolute;">
+												<div style="position: relative; top: 70px; left: 0px;">
+													<img src="/img/core-img/soldout.png">
+												</div>
+											</div>
+											<img src="${i.shop_imagepath1 }" id="img1" alt="">
 
-                           <!-- Thumbnail Zoom -->
-                           <a href="#}" class=""><i class=""></i></a>
-                        </div>
-                        <div class="team-member-info border">
-                           <div class="row">
-                              <div class="col-12"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </c:when>
-                  <c:otherwise>
-                     <div   class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp" data-wow-delay="500ms">
-                                 <a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
-                        <div class="akame-portfolio-single-item" style="height: 250px">
-                           <img src="${i.shop_imagepath1 }" id="img1" alt="">
-                           <!-- Overlay Content -->
-                           <div class="overlay-content d-flex align-items-center justify-content-center">
-                              <div class="overlay-text text-center">
-                                <div class="ellipsis">${i.shop_title }</div> <!-- 0725추가 -->
+											<!-- Thumbnail Zoom -->
+											<a href="#}" class=""><i class=""></i></a>
+										</div>
+										<div class="team-member-info border">
+											<div class="row">
+												<div class="col-12"></div>
+											</div>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div
+										class="col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-5 wow fadeInUp"
+										data-wow-delay="500ms">
+										<a href="/shopboard/ShopBoardViewProc?seq=${i.shop_seq }">
+											<div class="akame-portfolio-single-item"
+												style="height: 250px">
+												<img src="${i.shop_imagepath1 }" id="img1" alt="">
+												<!-- Overlay Content -->
+												<div
+													class="overlay-content d-flex align-items-center justify-content-center">
+													<div class="overlay-text text-center">
+														<div class="ellipsis">${i.shop_title }</div>
+														<!-- 0725추가 -->
+														<p class="pt-3">
+															<fmt:formatNumber value="${ i.shop_price}"
+																pattern="#,###" />
+															원
+														</p>
+													</div>
+												</div>
+												<!-- Thumbnail Zoom -->
+												<%--  <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
+											</div>
+											<div class="team-member-info border">
+												<div class="row">
+													<div class="col-12"></div>
+												</div>
+											</div>
+										</a>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 
 
-                                 <p class="pt-3">
-                                    <fmt:formatNumber value="${ i.shop_price}" pattern="#,###" />
-                                    원
-                                 </p>
-                              </div>
-                           </div>
+					</div>
+					<div class="row" id="extendList"></div>
+				</div>
+			</div>
+			<div class="col-lg-2"></div>
+		</div>
+	</div>
 
-                           <!-- Thumbnail Zoom -->
-<%--                            <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
-                        </div>
-                        <div class="team-member-info border">
-                           <div class="row">
-                              <div class="col-12"></div>
-                           </div>
-                        </div>
-                     </a>
-                     </div>
-                        </c:otherwise>
-									</c:choose>
-                  </c:forEach>
+	</section>
 
-
-               </div>
-               <div class="row" id="extendList"></div>
-            </div>
-         </div>
-         <div class="col-lg-2"></div>
-      </div>
-   </div>
-
-   </section>
-
-   <script>
+	<script>
 
    
       var count = 2;
@@ -140,7 +143,7 @@
                // 최하단일 경우를 체크하기 위해 최하단 위치값을 지정
                // 화면 문서전체의 길이에서, 현재 창 높이를 뺀 것이 최하단 값
             
-            console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
+//             console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
 
                  if($(document).height() <= $(window).scrollTop() + $(window).height()+100 ){
                   // 최하단으로 도달했을 경우
@@ -159,34 +162,50 @@
                      console.log(result);
                      
                      for(var i = 0 ; i < result.length; i ++){
-                     $("#extendList").append(`<a href="/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`">
+                     if(result[i].shop_quantity!=0){
+                     $("#extendList").append(`<a href='/shopboard/ShopBoardViewProc?seq=`+result[i].shop_seq+`'>
                     		 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp'
                               data-wow-delay='500ms'>
                               <div class='akame-portfolio-single-item' style="height: 250px">
                                  <img id='img1' src=`+ result[i].shop_imagepath1+` >
-
                                  <!-- Overlay Content -->
                                  <div
                                     class='overlay-content d-flex align-items-center justify-content-center'>
                                     <div class='overlay-text text-center'>
-                                       <h4>`+result[i].shop_title+`</h4>
-                                       <p>`+result[i].shop_price+`</p>
-                                    </div>
+                                     
+                                    <div class='ellipsis'>`+result[i].shop_title+`</div> <!-- 0725추가 -->
+                                    <p class='pt-3'>
+                                      `+result[i].shop_price+`원 
+                                    </p>
                                  </div>
-
+                                 </div>
                                  <!-- Thumbnail Zoom -->
                                  <a href=`+ result[i].shop_imagepath1+` class='thumbnail-zoom'><i
                                     class='icon_search'></i></a>
-
                               </div>
                               <div class='team-member-info border'>
-                           
                               </div>
                            </div></a>`);
+                     }else{
+                         $("#extendList").append(`
+                    	 <div class='col-12 col-sm-6 col-lg-3 akame-portfolio-item haircuts mb-30 wow fadeInUp' data-wow-delay='500ms'>
+                             <div class='' style="height: 250px">
+                             <div style="position: absolute;">
+								<div style="position: relative; top: 70px; left: 0px;">
+								<img src='/img/core-img/soldout.png'>
+                         	</div>
+							</div>
+                             <img src=`+ result[i].shop_imagepath1+` id="img1" alt="">
+                             </div>
+                             <div class='team-member-info border'>
+                             </div>
+                             </div>` );
+                     }
                      };
                      })
-                  
-                  console.log('바닥입니다!');
+                     
+                     
+//                   console.log('바닥입니다!');
                } else if ($(window).scrollTop() == 0) {
                   // 최상단으로 도달했을 경우
                   console.log('꼭대기입니다!');

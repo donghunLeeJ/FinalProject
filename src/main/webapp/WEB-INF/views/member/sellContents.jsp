@@ -158,7 +158,7 @@ text-align:center;
 
 				$("#del_list${i.shop_seq}").on("click", function() {
 
-					if (confirm("삭제 요청을 하나요?") == true) {
+					if (confirm("매진 완료 하시겠습니까?") == true) {
 									
 						location.href ="/shopboard/deleteRequest?seq=${i.shop_seq}";
 					}

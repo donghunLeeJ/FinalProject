@@ -27,6 +27,7 @@ body {
 }
 
 #img1 {
+
 	height: 220px;
 }
  div{ 
@@ -99,7 +100,7 @@ body {
 					  <c:choose>
 					   <c:when test="${i.shop_quantity eq 0}">
                 <div   class="col-12 col-sm-6 col-lg-3  mb-5 mt-3 akame-portfolio-item wow fadeInUp" data-wow-delay="500ms">
-                        <div class="" style=" height: 250px">
+                        <div class="" style="height: 250px">
                            	 <div style="position: absolute;">
 								   <div style="position: relative; top: 70px; left: 0px;">
 								   <img src="/img/core-img/soldout.png" >
