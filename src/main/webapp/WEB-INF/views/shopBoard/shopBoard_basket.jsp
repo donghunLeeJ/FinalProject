@@ -95,7 +95,7 @@ input[type="text"] {
 				<div class="col-1">수량(개)</div>
 				<div class="col-1">금액</div>
 				<div class="col-1">지역</div>
-				<div class="col-2">배송비/판매자</div>
+				<div class="col-2">판매자</div>
 				<div class="col-1">삭제</div>
 			</div>
 
@@ -120,13 +120,12 @@ input[type="text"] {
 					</div>
 					<div class="col-2" style="line-height: 4em;">${list.basket_expiration}</div>
 					<div class="col-1" style="line-height: 4em;">${list.basket_quantity}</div>
-					<div class="col-1" style="line-height: 4em;">${list.basket_price}</div>
+					<div class="col-1" style="line-height: 4em;">${list.basket_price}원</div>
 					<input type="hidden" id="toPrice${list.basket_seq }"
 						value="${list.basket_price}">
 					<div class="col-1" style="line-height: 4em;">${list.basket_location}</div>
 					<div class="col-2" style="line-height: 1.4em;">
-						선결제 <br> <strong>(2,500원)</strong> <br> <small>${list.basket_id}/
-							${list.basket_brand}</small>
+						<br>${list.basket_id} <br> 
 					</div>
 					<div class="col-1 text-center p-2" >
 						<button type="button" id="delete${list.basket_seq }"

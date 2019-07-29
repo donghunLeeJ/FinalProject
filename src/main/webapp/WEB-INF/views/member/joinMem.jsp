@@ -155,11 +155,16 @@
 								class="form-control mb-30" readonly />
 						</div>
 						<script>
+						var today = new Date(new Date().getFullYear(),
+								new Date().getMonth(), new Date().getDate());
+// 						var endDate = new Date(new Date().getFullYear()-10,
+// 								new Date().getMonth(), new Date().getDate());
 							$('#datepicker').datepicker({
 								uiLibrary : 'bootstrap4',
 								format : "yyyy-mm-dd",
-								maxDate : new Date(),
+								maxDate : today
 							});
+		
 						</script>
 
 						<div class="col-lg-12 text-center">

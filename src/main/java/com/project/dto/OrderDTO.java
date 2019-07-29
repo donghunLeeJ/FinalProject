@@ -45,7 +45,7 @@ public class OrderDTO implements Cloneable {
 
 	public OrderDTO() {
 		super();
-	
+
 	}
 
 	public void setOrder_seq(int order_seq) {
