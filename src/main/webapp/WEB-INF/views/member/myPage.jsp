@@ -263,10 +263,6 @@ select {
 								<input type="button" id="change" class="btn btn-success "name="my_images" value="사진 변경">
 								 <input type="submit" id="uploadImg" class="btn btn-success " value="사진 업로드">
 							</form>
-							<div>
-							-사진 변경을 클릭하고 원하는 사진으로 바꿔주세요
-							-사진 업로드를 클릭하면 변경됩니다
-							</div>
 						</div>
 
 						<div class="float col-lg-8">

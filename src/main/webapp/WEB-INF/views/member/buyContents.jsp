@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,61 +13,61 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 select {
-	color: red;
+   color: red;
 }
 
 .skip {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	word-wrap: normal;
-	width: 100%;
-	overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   word-wrap: normal;
+   width: 100%;
+   overflow: hidden;
 }
 
 .sell_btn {
-	background: #FFF8E7;
-	color: black;
-	border: 1px solid black;
-	border-radius: 5px;
-	box-shadow: 5px 5px 5px #eee;
-	width: 5em;
-	height: 3em;
-	cursor: pointer;
+   background: #FFF8E7;
+   color: black;
+   border: 1px solid black;
+   border-radius: 5px;
+   box-shadow: 5px 5px 5px #eee;
+   width: 5em;
+   height: 3em;
+   cursor: pointer;
 }
 
 .sell_btn:hover {
-	color: black;
-	border: black;
-	border-radius: 5px;
-	box-shadow: 5px 5px 5px #eee;
+   color: black;
+   border: black;
+   border-radius: 5px;
+   box-shadow: 5px 5px 5px #eee;
 }
 
 .listimg {
-	width: 110px;
-	height: 110px;
+   width: 110px;
+   height: 110px;
 }
 
 .form-control[readonly] {
-	background-color: white;
+   background-color: white;
 }
 
 .list_sub {
-	margin-right: 1px;
-	text-align: center;
+   margin-right: 1px;
+   text-align: center;
 }
 
 .list_menu button {
-	border: 1px solid skyblue;
-	background-color: rgba(0, 0, 0, 0);
-	color: skyblue;
-	padding: 3px;
-	text-align: center;
-	width: 30px;
+   border: 1px solid skyblue;
+   background-color: rgba(0, 0, 0, 0);
+   color: skyblue;
+   padding: 3px;
+   text-align: center;
+   width: 30px;
 }
 
 .list_menu button:hover {
-	color: white;
-	background-color: skyblue;
+   color: white;
+   background-color: skyblue;
 }
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
@@ -292,5 +292,6 @@ select {
 			$(location).attr("href", "/member/sellStatus")
 		})
 	</script>
+
 </body>
 </html>

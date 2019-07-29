@@ -164,7 +164,7 @@
 				<div class="col-lg-2 border text-center align-middle"
 					style="background: #FFF8E7; padding-top: 8px;">유통기한</div>
 				<div class="col-lg-4 border p-0">
-					<input id="datepicker" name="shop_expiration" class="form-control"
+					<input id="datepicker" name="shop_expiration" class="form-control input"
 						readonly>
 
 

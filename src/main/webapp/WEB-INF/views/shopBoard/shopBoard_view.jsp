@@ -74,6 +74,7 @@ display: -webkit-box;
 <script>
 $(function(){
 	$("#exShow").hide();
+
 	
 		var date = $("#expi").val();
 		var expidate = parse(date);
@@ -89,7 +90,7 @@ $(function(){
 		  $("#countdown").hide();	
 		  
 	  } 
-		
+	 
 	
 })
 </script>
@@ -172,13 +173,11 @@ $(function(){
 							<div class="col-6">
 								<div class="row  border-bottom">
 
-									<div class="col-5 ">
+									<div class="col-4 ">
 										<h4 style="font-family: '나눔고딕OTF';">[${dto.shop_brand}]</h4>
 									</div>
-									<div class="col-7 ellipsis text-left" style="padding: 0">
-										<h4 style="font-family: '나눔고딕OTF';">
-											<strong>${dto.shop_title }</strong>
-										</h4>
+									<div class="col-8 ellipsis text-left" style="padding: 0">
+										<h4 style="font-family: '나눔고딕OTF';"><strong>${dto.shop_title }</strong></h4>
 									</div>
 									&nbsp;&nbsp;
 									<!-- 											<strong class="ellipsis"> -->
@@ -416,6 +415,12 @@ $(function(){
 									&nbsp;${mdto.member_address2  } &nbsp; (${mdto.member_postcode })</p>
 							</div>
 						</div>
+							<div class="row border p-2 HideIntro">
+							<div class="col-2 font-weight-bold seller-info">판매자 소개</div>
+							<div class="col-10 seller-info" >
+								<p id=introSeller>	${mdto.member_intro }&nbsp;</p>
+							</div>
+						</div>
 
 
 						<div class="row mt-5 border rounded" style="height: 10em">
@@ -447,6 +452,8 @@ $(function(){
 	</section>
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
+	
+	
 $("#countd").hide();
 	var popupX = (window.screen.width / 2) - (500 / 2);
 	// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
@@ -626,9 +633,9 @@ var minutes = Math.floor((distance % _hour) / _minute);
 var seconds = Math.floor((distance % _minute) / _second);
 
 document.getElementById(id).innerHTML = days + '일 ';
-document.getElementById(id).innerHTML += hours + ' 시 ';
-document.getElementById(id).innerHTML += minutes + ' 분 ';
-document.getElementById(id).innerHTML += seconds + ' 초';
+document.getElementById(id).innerHTML += hours + '시 ';
+document.getElementById(id).innerHTML += minutes + '분 ';
+document.getElementById(id).innerHTML += seconds + '초';
 }
 
 timer = setInterval(showRemaining, 00);
