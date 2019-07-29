@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 #img1 {
-	/*  width:250px;  */
+	width: 250px;
 	height: 210px;
 }
 
@@ -71,6 +71,7 @@
 										class="col-12 col-sm-6 col-lg-3  mb-5 akame-portfolio-item wow fadeInUp "
 										data-wow-delay="500ms">
 										<div class="" style="height: 250px">
+
 											<div style="position: absolute;">
 												<div style="position: relative; top: 70px; left: 0px;">
 													<img src="/img/core-img/soldout.png">
@@ -102,6 +103,7 @@
 													<div class="overlay-text text-center">
 														<div class="ellipsis">${i.shop_title }</div>
 														<!-- 0725추가 -->
+
 														<p class="pt-3">
 															<fmt:formatNumber value="${ i.shop_price}"
 																pattern="#,###" />
@@ -109,8 +111,10 @@
 														</p>
 													</div>
 												</div>
+
+
 												<!-- Thumbnail Zoom -->
-												<%--  <a href="${i.shop_imagepath1 }" class="thumbnail-zoom"><i class="icon_search"></i></a> --%>
+
 											</div>
 											<div class="team-member-info border">
 												<div class="row">

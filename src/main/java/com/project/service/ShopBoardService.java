@@ -22,8 +22,8 @@ public class ShopBoardService {
 		return sdao.shopBoardList(currentPage);
 	}
 
-	public List<ShopBoardDTO> ShopBoardPageList(int page , String shop_id) {
-		return sellP.selectShop(page , shop_id);
+	public List<ShopBoardDTO> ShopBoardPageList(int page, String shop_id) {
+		return sellP.selectShop(page, shop_id);
 	}
 
 	// 판매글 관련 데이터를 삽입시킴
@@ -65,6 +65,10 @@ public class ShopBoardService {
 
 	public int shopReviewCount(int shop_seq) {
 		return sdao.shopReviewCount(shop_seq);
+	}
+
+	public int shopReviewOverlap(ShopReviewDTO dto) {
+		return sdao.shopReviewOverlap(dto);
 	}
 
 	public int updateQ(int quant, int sseq) {
