@@ -27,7 +27,9 @@
 					<!-- Section Heading -->
 					<div class="col-12">
 						<div class="section-heading text-center">
+
 							<h2 style="font-family: 'Sunflower', sans-serif;">글 수정</h2>
+
 						</div>
 					</div>
 				</div>
@@ -36,8 +38,11 @@
 					<div class="col-12">
 						<!-- Form -->
 						<form action="/timeline/boardModified" method="post"
+
+
 							enctype="multipart/form-data"
 							class="akame-contact-form border-0 p-0" id="delform">
+
 							<div class="row">
 								<div class="col-lg-12">
 									<h3 style="font-family: 'Sunflower', sans-serif;">- 제목 -</h3>
