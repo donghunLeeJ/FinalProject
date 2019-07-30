@@ -61,7 +61,6 @@ public class MemberController {
 	@RequestMapping("loginProc")
 	public String login(MemberDTO mdto) {
 		mdto.setMember_pw(mdao.SHA256(mdto.getMember_pw()));
-		System.out.println("로그인프록");
 		int result = mservice.login(mdto);
 		if (result == 1) {
 			String confirm = mservice.checkConfirm(mdto.getMember_id());
@@ -118,7 +117,6 @@ public class MemberController {
 
 	@RequestMapping("findPW")
 	public String findPW(String member_id) {
-		System.out.println(member_id);
 		int result = mservice.findPW(member_id);
 		if (result == 1) {
 			try {
@@ -149,9 +147,7 @@ public class MemberController {
 	@RequestMapping("/joinProc")
 	public String joinInsert(MemberDTO mdto) {
 		String id = mdto.getMember_id();
-		System.out.println("아이디 " + id);
 		int overlapid = mdao.overlap(id);
-		System.out.println("중복검사 " + overlapid);
 		if (overlapid >= 1) {
 			return "member/overlap";
 		} else {
@@ -242,34 +238,23 @@ public class MemberController {
 	@RequestMapping("buyContentsGoProc")
 	public String buyContetns(String page) {
 		int resultPage = Integer.parseInt(page);
-
 		// MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		// int buycount = mservice.buyCount(mdto.getMember_id());
 		// List<String> pageList = os.Page(resultPage, buycount);
 		// int count = os.orderCount();
-
 		// List<OrderDTO> buyList = os.orderTenList(resultPage);
 		// request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		// request.setAttribute("page", resultPage);// 현재 페이지임
-
-		int count = os.orderCount();
+		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
+		int count = os.orderCount(mdto.getMember_id());
 		List<String> pageList = os.Page(resultPage, count);
-
-		for (int i = 0; i < pageList.size(); i++) {
-			System.out.println(pageList.get(i));
-		}
-
 		request.setAttribute("pageList", pageList);// 게시판 아래에 숫자를 출력
 		request.setAttribute("page", resultPage);// 현재 페이지임
-		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		List<OrderDTO> buyList = os.orderTenList(resultPage, mdto.getMember_id());
-
 		request.setAttribute("buyList", buyList);
 		return "/member/buyContents";
 	}
 
-	// System.out.println(buyList.get(0).getOrder_title());
-	// System.out.println(buyList.get(0).getOrder_buyer_email());
 
 	// 판매게시물의 판매목록
 	@RequestMapping("/sellStatus")
@@ -289,7 +274,6 @@ public class MemberController {
 	
 	@RequestMapping("/buyConfirm")
 	public String buyConfirm(String seq) {
-		System.out.println("구매확정 :" + seq);
 		os.buyConfirm(seq);
 		return "redirect:buyContentsGoProc?page=1";
 	}

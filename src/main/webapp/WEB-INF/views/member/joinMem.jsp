@@ -256,8 +256,8 @@
 		$("#pwCheck").bind('paste',function(e){
         setTimeout(function(){
         alert("붙여넣기 할 수 없습니다");
-        },100);
         $("#pwCheck").val("");
+        },100);
 });
 		//여기서 부터 가입버튼 눌렀을때 실행  && $("#pw").val().length>10
 		$("#send")

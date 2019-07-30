@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,61 +13,61 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <style>
 select {
-   color: red;
+	color: red;
 }
 
 .skip {
-   text-overflow: ellipsis;
-   white-space: nowrap;
-   word-wrap: normal;
-   width: 100%;
-   overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	width: 100%;
+	overflow: hidden;
 }
 
 .sell_btn {
-   background: #FFF8E7;
-   color: black;
-   border: 1px solid black;
-   border-radius: 5px;
-   box-shadow: 5px 5px 5px #eee;
-   width: 5em;
-   height: 3em;
-   cursor: pointer;
+	background: #FFF8E7;
+	color: black;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px #eee;
+	width: 5em;
+	height: 3em;
+	cursor: pointer;
 }
 
 .sell_btn:hover {
-   color: black;
-   border: black;
-   border-radius: 5px;
-   box-shadow: 5px 5px 5px #eee;
+	color: black;
+	border: black;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px #eee;
 }
 
 .listimg {
-   width: 110px;
-   height: 110px;
+	width: 110px;
+	height: 110px;
 }
 
 .form-control[readonly] {
-   background-color: white;
+	background-color: white;
 }
 
 .list_sub {
-   margin-right: 1px;
-   text-align: center;
+	margin-right: 1px;
+	text-align: center;
 }
 
 .list_menu button {
-   border: 1px solid skyblue;
-   background-color: rgba(0, 0, 0, 0);
-   color: skyblue;
-   padding: 3px;
-   text-align: center;
-   width: 30px;
+	border: 1px solid skyblue;
+	background-color: rgba(0, 0, 0, 0);
+	color: skyblue;
+	padding: 3px;
+	text-align: center;
+	width: 30px;
 }
 
 .list_menu button:hover {
-   color: white;
-   background-color: skyblue;
+	color: white;
+	background-color: skyblue;
 }
 </style>
 <script type="text/javascript" src="/js/cross.js"></script>
@@ -123,14 +123,13 @@ select {
 				<div class="col-1" style="padding: 0">
 
 					<input type=button class="sell_btn del_list" value="후기 작성"
-						data-toggle="modal" style="margin-bottom: 0.3em"" id="ReviewOverlap${i.order_seq }">
-					<input type=button class="del_list2" value="요청중"
-						style="margin-bottom: 0.3em"> <a style="margin-top: 0.3em">
-						<c:choose>
+						data-toggle="modal" style="margin-bottom: 0.3em"
+						" id="ReviewOverlap${i.order_seq }"> <input type=button
+						class="del_list2" value="요청중" style="margin-bottom: 0.3em">
+					<a style="margin-top: 0.3em"> <c:choose>
 							<c:when test="${i.order_confirm eq 'N'}">
 								<input id="buyConfirmBtn${i.order_seq}" class="sell_btn"
-									type="button" value="구매 확정">
-					</a>
+									type="button" value="구매 확정"></a>
 					</c:when>
 					<c:otherwise>
 						<input id="buyConfirmBtn${i.order_seq}" class="sell_btn"
@@ -143,39 +142,39 @@ select {
 
 				</div>
 				<script>
-					$("#ReviewOverlap${i.order_seq }").on("click", function() {
-						$.ajax({
-							url : "/shopboard/buyReviewOverlap",
-							type : "post",
-							data : {
-								products_seq : ${i.products_seq}
-							}
-						}).done(function(resp){
-							console.log(resp);
-							if(resp == "X"){
-								alert("이미 작성된 댓글입니다. (중복 댓글 입력 불가)");
-							}else{
-								$("#myModal").modal("show");
-							}
-							
-						})
-					})
+               $("#ReviewOverlap${i.order_seq }").on("click", function() {
+                  $.ajax({
+                     url : "/shopboard/buyReviewOverlap",
+                     type : "post",
+                     data : {
+                        products_seq : ${i.products_seq}
+                     }
+                  }).done(function(resp){
+                     console.log(resp);
+                     if(resp == "X"){
+                        alert("이미 작성된 댓글입니다. (중복 댓글 입력 불가)");
+                     }else{
+                        $("#myModal").modal("show");
+                     }
+                     
+                  })
+               })
 
-					$("#buyConfirmBtn${i.order_seq}")
-							.on(
-									"click",
-									function() {
-										var result = confirm("구매를 확정하시겠습니까?");
-										if (result) {
-											$(location)
-													.attr("href",
-															"/member/buyConfirm?seq=${i.order_seq}")
-										} else {
-											return;
-										}
+               $("#buyConfirmBtn${i.order_seq}")
+                     .on(
+                           "click",
+                           function() {
+                              var result = confirm("구매를 확정하시겠습니까?");
+                              if (result) {
+                                 $(location)
+                                       .attr("href",
+                                             "/member/buyConfirm?seq=${i.order_seq}")
+                              } else {
+                                 return;
+                              }
 
-									})
-				</script>
+                           })
+            </script>
 			</div>
 
 			<!-- The Modal -->
@@ -212,12 +211,12 @@ select {
 										</select>
 									</div>
 									<div class="col-9" style="padding: 0">
-										<input type="text" name="title" id=title  maxlength="25"
+										<input type="text" name="title" id=title maxlength="25"
 											style="width: 22em; height: 2em;">
 									</div>
 									<div class="col-12 py-3"">
-										<textarea id=contents style="resize: none; width: 460px;" maxlength="120"
-											name="contents" cols="56" rows="10"></textarea>
+										<textarea id=contents style="resize: none; width: 460px;"
+											maxlength="120" name="contents" cols="56" rows="10"></textarea>
 									</div>
 								</div>
 
@@ -266,32 +265,41 @@ select {
 
 	<jsp:include page="/WEB-INF/views/module/footer.jsp"></jsp:include>
 	<script>
-		$(".del_list2").hide();
+      $(".del_list2").hide();
+      $("#title").keydown(function() {
+          if (event.keyCode === 13) {
+              event.preventDefault();
+          }
+      });
 
-		$("#title").on("input", function() {
-			if ($(this).val().length > $(this).attr('maxlength')) {
-				alert("제목 길이를 초과하였습니다");
-			            $(this).val($(this).val().substr(0, $(this).attr('maxlength')));
-			} 
-		});
-		$("#contents").on("input", function() {
-			if ($(this).val().length >  $(this).attr('maxlength')) {
-				alert("내용 길이를 초과하였습니다");
-				$(this).val($(this).val().substr(0, $(this).attr('maxlength')));
-			}
-		});
+      $("#title").on("input", function() {
+     if($(this).val().length > $(this).attr('maxlength')) {
+            alert("제목 길이를 초과하였습니다");
+                     $(this).val($(this).val().substr(0, $(this).attr('maxlength')));
+         } 
+      });
+      $("#contents").on("input", function() {
+         if($(this).val().length >  $(this).attr('maxlength')) {
+            alert("내용 길이를 초과하였습니다");
+            $(this).val($(this).val().substr(0, $(this).attr('maxlength')));
+         }
+      });
 
-		$("#confirm").on("click", function() {
-			removeXSS($("#title").val(), $("#title").attr("id"));
-			removeXSS($("#contents").val(), $("#contents").attr("id"));
-			$("#modalfo").submit();
+      $("#confirm").on("click", function() {
+         var emp = /^\s*$/g;
+          if($("#title").val() == "" || $("#contents").val() == "" || emp.test($("#contents").val()) || emp.test($("#title").val())){
+             alert("공백은 입력할 수 없습니다.");
+          }
+          else{
+          removeXSS($("#title").val(), $("#title").attr("id"));
+          removeXSS($("#contents").val(), $("#contents").attr("id"));
+          $("#modalfo").submit();
+          }
+       });
 
-		});
-
-		$("#sell_statusBtn").on("click", function() {
-			$(location).attr("href", "/member/sellStatus")
-		})
-	</script>
-
+      $("#sell_statusBtn").on("click", function() {
+         $(location).attr("href", "/member/sellStatus")
+      })
+   </script>
 </body>
 </html>

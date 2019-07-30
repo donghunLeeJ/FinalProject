@@ -35,8 +35,8 @@ public class OrderService {
 
 	}
 
-	public int orderCount() {
-		return dao.orderCount();
+	public int orderCount(String id) {
+		return dao.orderCount(id);
 	}
 
 	public List<String> Page(int page, int count) {

@@ -21,11 +21,8 @@ public class ViewController {
 	public String VisitViewCondition(String access){
 
 		if(access.equals("1")){
-			System.out.println("이미 접속중인 세션이므로 세션이 만료될 때까지 방문자수 증가 없음");
-
+	
 		}else{
-
-			System.out.println("처음 접속한 세션이므로 카운트 증가");
 			session.setAttribute("access", 1);		
 			ViewDTO.setVisitViewCount(ViewDTO.getVisitViewCount() + 1);				
 		}

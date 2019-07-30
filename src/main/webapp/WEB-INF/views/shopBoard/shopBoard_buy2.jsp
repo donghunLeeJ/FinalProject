@@ -306,7 +306,7 @@ a {
 							} else if (!regname.test($("#geter_name").val())) {
 								alert("받으시는 분을 정확히 입력해주세요");
 							} else if ($("#sample6_detailAddress").val().length > 25) {
-								alert("상세주소 길이를 초과하였습니다")
+								alert("상세주소 길이를 초과하였습니다");
 							} else if (!regnum1.test($("#phone1").val())) {
 								alert("배송지 번호를 정확히 입력해주세요");
 							} else if (!regnum2.test($("#phone2").val())) {
@@ -358,7 +358,8 @@ a {
 									removeXSS($("#req").val(), $("#req").attr(
 											"id"));
 									var price = Number($("#priceTotal").val());
-									IMP.request_pay({
+									
+							  		IMP.request_pay({
 										pg : 'inicis', // version 1.1.0부터 지원.
 										pay_method : 'card',
 										merchant_uid : 'merchant_' + new Date().getTime(),

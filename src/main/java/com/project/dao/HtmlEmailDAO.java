@@ -96,7 +96,7 @@ public class HtmlEmailDAO {
 				+ "                   " + id + " </strong> &nbsp;님</p>\r\n"
 				+ "                <p  style=\"margin-top:15px;font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>AGGABI</strong> 비밀번호 찾기 페이지 입니다. </p>\r\n"
 				+ "                <br>     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n"
-				+ "                <a href=\"http://localhost/member/yourPW?id=" + id + "\"\r\n"
+				+ "                <a href=\"http://192.168.60.33/member/yourPW?id=" + id + "\"\r\n"
 				+ "                   style=\"text-decoration: none\">비밀번호 찾기를 하시려면 여기를 클릭하세요.</a>\r\n"
 				+ "                </div> <br><br>\r\n"
 				+ "                <p style=\"font-size:20px;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Value Exchange. <strong>AGGABI</strong></p>\r\n"

@@ -72,7 +72,7 @@
 	<!--게시글의 총 갯수를 뽑아오는 쿼리(샵보드) -->
 	<select id="orderCount" resultType="Integer">
 		select count(*) as orderCount
-		from products_order
+		from products_order where member_email = #{value}
 	</select>
 	<update id="deliveryOk">
 		update products_order set order_delivery =

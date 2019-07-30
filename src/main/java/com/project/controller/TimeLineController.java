@@ -59,9 +59,7 @@ public class TimeLineController {
 
 	@RequestMapping("/writedProc")
 	public String writedProc(Tl_BoardDTO dto) {
-
 		String resourcePath = session.getServletContext().getRealPath("/resources/img/tl-img/");
-		System.out.println(resourcePath);
 		try {
 
 			String fileName = System.currentTimeMillis() + dto.getTl_image().getOriginalFilename();
@@ -86,7 +84,6 @@ public class TimeLineController {
 	@ResponseBody
 	public String ajaxProc(String page) {
 		int seq = Integer.parseInt(page);
-		System.out.println(seq);
 		Gson g = new Gson();
 		return g.toJson(tls.showAll(seq));
 	}
@@ -94,7 +91,6 @@ public class TimeLineController {
 	@RequestMapping(value = "/ajaxProcReple", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String ajaxProcReplShow(String seq) {
-		System.out.println(seq);
 		int resultSeq = Integer.parseInt(seq);
 		Gson g = new Gson();
 		return g.toJson(tls.show(resultSeq));
@@ -158,7 +154,6 @@ public class TimeLineController {
 			tls.update(dto);
 		} else {
 			String resourcePath = session.getServletContext().getRealPath("/resources/img/tl-img/");
-			System.out.println(resourcePath);
 			try {
 
 				String fileName = System.currentTimeMillis() + dto.getTl_image().getOriginalFilename();
@@ -281,9 +276,6 @@ public class TimeLineController {
 
 	@RequestMapping("/messageProc")
 	public String messageProc(MessageDTO dto) {
-		System.out.println(dto.getMessage_getter());
-		System.out.println(dto.getMessage_sender());
-		System.out.println(dto.getMessage_contents());
 		request.setAttribute("result", tls.insertMessage(dto));
 		return "timeLine/messageProc";
 	}
@@ -293,7 +285,6 @@ public class TimeLineController {
 	public String likeProc(String seq) {
 		tls.likeCount(seq);
 		String seqs = tls.selectlikeCount(seq) + " ";
-		System.out.println(seqs);
 		return seqs;
 
 	}

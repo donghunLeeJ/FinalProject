@@ -145,7 +145,7 @@
 			</div>
 			<div class="col-10 border bg-gray">
 
-				<span><fmt:formatNumber value="1" pattern="#,###" />${priceTotal }
+				<span><fmt:formatNumber value="" pattern="#,###" />${price }
 					원</span>
 
 			</div>
@@ -185,6 +185,11 @@
 	</div>
 	<div class="row pb-5"></div>
 	<script>
+		$("#chargeInfo_btn").on("click",function(){
+			location.href = "/member/buyContentsGo"
+		})
+	
+	
 		$("#homeGo_btn").on("click", function() {
 			$(location).attr("href", "/home/")
 		})

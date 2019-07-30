@@ -111,7 +111,6 @@ public class ShopBoardController {
 		ShopBoardDTO dto = sService.ShopBoardIdSelect(shop_seq);// 상품판매 정보
 		int memberSell_seq = dto.getMemberSell_seq();
 		MemberDTO mdto = sService.shopSellerSelect(memberSell_seq);// 판매자 정보
-		System.out.println(shop_seq);
 		List<ShopReviewDTO> review = sService.shopReviewList(shop_seq);// 댓글 리스트
 		int reviewRowCount = sService.shopReviewCount(shop_seq);// 댓글 총 row
 		Float reviewAvg = sService.shopReviewAvg(shop_seq);
@@ -271,9 +270,7 @@ public class ShopBoardController {
 		String login_email = id.getMember_id();
 		odto.setMember_email(login_email);
 		oService.orderSelect(odto);
-		System.out.println("AA");
 		ViewDTO.setTradeCount(ViewDTO.getVisitViewCount() + 1);
-		System.out.println(odto);
 		request.setAttribute("ldto", odto);
 		return "/shopBoard/shopChargeOk";
 	}
@@ -281,11 +278,7 @@ public class ShopBoardController {
 	@RequestMapping("/buyReview")
 	public String log_shopReview(ShopReviewDTO dto, String products_seq) {
 		int products_seq1 = Integer.parseInt(products_seq);
-		
-		System.out.println(dto.getUser_id());
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
-		System.out.println(products_seq1);
 		dto.setGet_star("1");
 		dto.setWriteDate(sdf.format(System.currentTimeMillis()));
 		dto.setProducts_seq(products_seq1);
@@ -297,19 +290,16 @@ public class ShopBoardController {
 	@RequestMapping("/buyReviewOverlap")
 	@ResponseBody
 	public String log_shopReviewOverlap(String products_seq) {
-		System.out.println(products_seq);
 		ShopReviewDTO reviewDTO = new ShopReviewDTO();
 		MemberDTO mdto = (MemberDTO) session.getAttribute("id");
 		int seqInt = Integer.parseInt(products_seq);
 		reviewDTO.setProducts_seq(seqInt);
 		reviewDTO.setUser_id(mdto.getMember_id());
 		int result = sService.shopReviewOverlap(reviewDTO);
-		System.out.println("결과"+result);
 		String result2;
 		if (result == 1) {
 			result2 = "X";// 댓글 달면안됨.
 		}else {
-			System.out.println("몰라");
 			result2 = "O"; // 댓글 달수있음.
 		}
 		return result2;
@@ -319,7 +309,6 @@ public class ShopBoardController {
 	public String log_basketOrder(OrderDTO odto, String phone1, String phone2, String phone3, String email1,
 			String email2, String getter_phone1, String getter_phone2, String getter_phone3, String basket_seq,
 			String priceTotal) {
-		System.out.println(basket_seq);
 		String phone = phone1 + phone2 + phone3;
 		String email = email1 + "@" + email2;
 		String getter_phone = getter_phone1 + getter_phone2 + getter_phone3;
@@ -337,7 +326,6 @@ public class ShopBoardController {
 
 				e.printStackTrace();
 			}
-			System.out.println(seqList[i]);
 			BasketDTO bdto = bservice.basketListBuy(seqList[i]);
 			try {
 				sService.getQuan(bdto.getProduct_seq());
@@ -374,7 +362,6 @@ public class ShopBoardController {
 
 	@RequestMapping("deleteRequest")
 	public String sellContentsDeleteRequest(String seq) {
-		System.out.println("deleteRequest" + seq);
 		mservice.delRequest(seq);
 		return "redirect:sellContentsGo";
 

@@ -144,18 +144,18 @@
 
    
       var count = 2;
+   
       $(window).scroll(
-            function() {
+            
+    		  
+    		  function() {
                // 최하단일 경우를 체크하기 위해 최하단 위치값을 지정
                // 화면 문서전체의 길이에서, 현재 창 높이를 뺀 것이 최하단 값
             
 //             console.log($(document).height() + " : " + Number($(window).scrollTop())  + " : " + Number($(window).height()));
 
-                 if($(document).height() <= $(window).scrollTop() + $(window).height()+100 ){
+                 if($(document).height() < $(window).scrollTop() + $(window).height()+120 ){
                   // 최하단으로 도달했을 경우
-                  
-               
-                  
                   $.ajax({
                      url : "/shopboard/shopBoardScroll",
                      type : "post",

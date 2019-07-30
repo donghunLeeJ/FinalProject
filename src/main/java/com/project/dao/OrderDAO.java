@@ -37,8 +37,8 @@ public class OrderDAO {
 		return sst.selectList("OrderDAO.popup", seqq);
 	}
 
-	public int orderCount() {
-		return sst.selectOne("OrderDAO.orderCount");
+	public int orderCount(String id) {
+		return sst.selectOne("OrderDAO.orderCount",id);
 	}
 
 	public int deliveryOk(OrderDTO dto) {
