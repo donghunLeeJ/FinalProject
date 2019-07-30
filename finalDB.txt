@@ -1,0 +1,231 @@
+drop table member;
+create table member(
+    membersell_seq number(30) unique,
+    member_id varchar(30) PRIMARY key,
+    member_pw varchar(200) not null,
+    member_name varchar(15) not null,
+    member_birth varchar(30) not null,
+    member_gender varchar(10) not null,
+    member_phone varchar(30) ,
+    member_postcode varchar(20),
+    member_address1 varchar(100) ,
+    member_address2 varchar(60) ,
+    member_imgpath varchar(100) default('/img/core-img/user.png'),
+    member_intro varchar(300),
+    member_confirm varchar(100) DEFAULT 'n',
+    member_blackcheck varchar(100) DEFAULT 'n'
+);
+
+
+create table tl_board_reply(
+tl_repl_seq number primary key,
+tl_board_seq number REFERENCES tl_board(tl_board_seq) on delete cascade not null,
+tl_repl_writer varchar(20) not null,
+tl_repl_contents varchar(1000) not null,
+tl_repl_time timestamp default sysdate not null
+);
+select * from TL_BOARD_REPLY;
+commit;
+select * from shopboard;
+
+create table tl_board(
+tl_board_seq number primary key, --게시판 번호
+tl_title VARCHAR(300) NOT NULL, --글 제목
+tl_contents VARCHAR(4000) not null, --글 내용
+tl_writer varchar(20) REFERENCES member(member_id) on delete cascade not null, --작성자
+tl_writer_profile varchar(200) not null,
+tl_writedate timestamp default sysdate not null, --작성일자
+tl_viewcount number default 0 not null, --조회수
+tl_likecount number default 0 not null, --좋아요 수
+tl_likestatus number default 0 not null, --좋아요(1 = 좋아요, 0 = 좋아요X)
+tl_imgaddr varchar(100) not null, --이미지 저장 주소값
+tl_status varchar(30) default('노말') not null,
+tl_reason varchar(500), --신고사유
+tl_reporter varchar(20) --신고자
+);
+
+create table basket(
+    basket_seq number primary key,--장바 구니 정보
+    product_seq number not null, --판매글 번호 
+    basket_seller varchar(100) not null,
+    basket_id varchar(200) REFERENCES member(member_id) on delete cascade not null,
+    basket_imagepath varchar(300) not null,--상품판매이미지
+    basket_title varchar(200) not null,--글 제목
+    basket_expiration  varchar2(30) not null,--유통기한
+    basket_quantity number not null, --판매수량
+    basket_price number not null,--가격
+    basket_location varchar(30) not null,--상품판매지역
+    bakset_brand varchar(100) not null
+);
+select * from member;
+create table products_order( 
+order_seq number primary key, --주문정보 seq
+products_seq number not null,
+member_email varchar(60) default('알수없음') REFERENCES member(member_id) on delete set NULL ,
+order_number varchar(60) not null,
+order_time date default(sysdate),
+order_title varchar(200) not null,
+order_quantity number not null,
+order_price number not null,
+order_image varchar(50) not null,
+order_seller varchar(30) not null,
+order_buyer varchar(30) not null,
+order_buyer_phone varchar(30) not null,
+order_buyer_email varchar(30) not null,
+order_receipt varchar(30) not null,
+order_receipt_postcode varchar(30) not null,
+order_receipt_address1 varchar(100) not null,
+order_receipt_address2 varchar(30) not null,
+order_receipt_phone varchar(30) not null,
+order_receipt_demend varchar(200),
+order_delivery varchar(10) default('n') not null,
+order_confirm char(1) default('N') check(order_confirm in('Y','N')) not null
+);
+commit;
+drop table products_order;
+select * from member;
+select * from products_order;
+
+create table shopReview(
+review_seq number primary key,
+products_seq number REFERENCES shopboard(shop_seq) on delete cascade,
+user_id varchar(40) not null,
+star_review number not null,
+get_star varchar(20) ,
+title varchar(80) not null,
+contents varchar(400) not null,
+writedate varchar(80) not null
+);
+
+create table message(
+message_seq number primary key,
+message_sender varchar(100) default('알수 없음') references member(member_id) on delete set NULL,
+message_getter varchar(100) default('알수 없음') references member(member_id) on delete set NULL,
+message_contents varchar(2000) not null,
+message_time date default(sysdate) not null
+
+);
+
+commit;
+drop table message;
+select * from tl_board;
+
+create table shopboard(
+memberSell_seq number,              
+shop_seq number primary key,              --글번호
+shop_id varchar2(30) not null REFERENCES member(member_id) on delete cascade ,            --판매자의 로그인 id    
+shop_brand varchar(30) not null,          --판매자 브랜드
+shop_material varchar(1000) not null,
+shop_title varchar2(200) not null,        --판매글 제목
+shop_contents varchar2(3000) not null,    --판매글 내용     
+shop_writedate timestamp default sysdate not null, --판매글 작성 시간
+shop_location varchar2(30) not null,      --지역
+shop_expiration  varchar2(30) not null,   --유통기한
+shop_price number not null,               --가격(1개당)
+shop_quantity number not null,            --수량
+shop_imagepath1 varchar2(300), 
+shop_imagepath2 varchar2(300), 
+shop_imagepath3 varchar2(300),
+shop_deleterequest varchar(30) default('n') not null
+);
+commit;
+--이거 10000001 회원가입할떄 주어지는 사업자번호라서 누구껄로 만드냐에따라 번호다르게지정해야함 seq임 그래야 판매자정보 검색할수있음 안그러면 null
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','메추리알(국내산)76%,꽈리고추(국내산)3%,물엿,진간장','메추리알조림','메추리 알조림400g당 5,200원 입니다.',default,'서울','2019-08-15',5200,99,'/img/shopfoodimg/메추리알조림.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','감자(국내산)91.5%,양파(국내산)8%,진간장,설탕,한주소금','감자조림','감자조림 300g당 4,400원 입니다.',default,'서울','2019-08-12',4000,99,'/img/shopfoodimg/감자조림.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','두부(대두-수입산)95%,고춧가루(국내산70%.중국산30%)2%,다진마늘(국내산)0.5%,통깨,간장,참기름,식용유,다진파','두부조림','400g당 4,300원 입니다.',default,'서울','2019-08-10',4300,99,'/img/shopfoodimg/두부조림.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','마늘쫑90%(국내산),고추장5%,고추가루(국내산70%,중국산30%)2%,물엿3%,통깨,한주소금','마늘쫑무침','350g당 2,700원 입니다.',default,'서울','2019-09-01',2700,99,'/img/shopfoodimg/마늘쫑무침.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','돈육(갈비/국내산) 39.5%,마늘(국내산)1.8%,간장(대두/수입산),생강(국내산)0.5%,청주,대파,후추,참기름(참깨/수입산),물엿,청양고추(국내산),당근,무,월계수,설탕','돈갈비찜','1kg당 12,500원 입니다.',default,'서울','2019-08-21',6000,99,'/img/shopfoodimg/돈갈비찜.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','건새우70%(중국산),고추가루(국내산70%.중국산30%)1.5%,고추장(고추가루-중국산),물엿,식용유','건새우고추장볶음','500g당 4,800원 입니다.',default,'서울','2019-08-10',4800,99,'/img/shopfoodimg/건새우고추장볶음.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','염장깻잎45%(깻잎75%,정제수,정제소금),간장17.9%(정제수,탈지대두,밀,정제소금,안식향산(보존료),누룩),정제수,설탕,사과,매실청,정제소금,빙초산,생강,마늘,고추,L-글루탐산나트륨(향미증진제),소브산칼륨(보존료),이산화황(산화방지제) (대두.밀.이산화황함유)','매실간장깻잎','200g당 2,500원 입니다.',default,'서울','2019-09-01',4800,99,'/img/shopfoodimg/매실간장깻잎.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','오징어(중국산)70.5%,정제소금8%,이온물엿,고춧가루,마늘,설탕,조미분(정제포도당95%,파프리카추출색소5%),L-글루탐산나트륨(향미증진제),생강,참깨,정제포도당,마늘분말,양파분말,마늘농축액,글리신.','양념오징어젓갈','200g당 4,700원 입니다',default,'서울','2019-08-28',4900,99,'/img/shopfoodimg/양념오징어젓갈.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','가지(국내산)88%,양파(국내산)1.5%,대파,마늘(국내산),후추가루,들기름(들깨수입산),참기름(참깨수입산),한주소금','가지나물볶음','300g당 3,000원 입니다.',default,'서울','2019-08-10',4800,99,'/img/shopfoodimg/가지나물볶음.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','꽃게(중국산)76.8%,고추가루(국내산70%.중국산30%)3.8%,물엿(옥수수-수입산)3.4%,진간장(대두-수입산),다진마늘(국내산),양파,참깨(수입산),참기름(깨-수입산)','양념꽃게무침','500g당 4,800원 입니다.',default,'서울','2019-08-10',9900,99,'/img/shopfoodimg/양념꽃게무침.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','콩나물95%(대두-수입산),다진마늘(국내산)0.8%부추,파,참깨,한주소금,참기름','하얀콩나물무침','500g당 4,800원 입니다.',default,'서울','2019-08-10',2500,99,'/img/shopfoodimg/하얀콩나물무침.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','맛김치(배추-국내산,고춧가루-국내산70%.중국산30%)75%(국내산),참치12%(원양산),마늘(국내산),식용유,파,양파,설탕','참치김치볶음',' 300g당 3,500원 입니다.',default,'서울','2019-08-05',3600,10,'/img/shopfoodimg/참치김치볶음.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','알마늘(중국산)90%,고추장5%,고춧가루(국내산70%,중국산30%)2%,물엿3%,통깨','알마늘무침',' 300g당 3,600원 입니다.',default,'서울','2019-08-27',3600,10,'/img/shopfoodimg/알마늘.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','알마늘63%(중국산),정제수,식초,정제소금(중국산),빙초산,멸치액젓,아스파탐(감미료,페닐알라닌함유),설탕,사카린나트륨(감미료),구연산,L-글루탐산나트륨(향미증진제),소브산칼륨(보존료),스테비올배당체,이산화황(산화방지제). 이산화항함유','알마늘무침','300g당 3,600원 입니다.',default,'서울','2019-09-01',3600,10,'/img/shopfoodimg/알마늘무침.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','꽈리고추(국내산)13.5%어묵(어육-수입산)82.5%,고춧가루(국내산70%.중국산30%),마늘(국내산)양파,식용유,진간장,깨','꽈리어묵볶음','400g당 4,500원 입니다.',default,'서울','2019-08-26',4500,10,'/img/shopfoodimg/꽈리어묵볶음.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','야채어묵(국내산)94.5%,마늘(국내산),양파(국내산),식용유,진간장,참깨','야채어묵볶음','300g당 3,600원 입니다.',default,'서울','2019-08-18',3600,10,'/img/shopfoodimg/야채어묵볶음.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','고추장(고춧가루중국산)78.6%,갈은쇠고기11.5%(호주산),간마늘(국내산),물엿(옥수수-수입산),설탕,참깨,후추','쇠고기볶음고추장','1kg당 6,000원 입니다.',default,'서울','2019-11-01',6000,10,'/img/shopfoodimg/쇠고기볶음고추장.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','파래(국내산)68%,간장(정제수,탈지대두(외국산:인도산,미국산,중국산),액상과당,천열염(호주산),소맥,효소처리스테비아,L-글루탐산나트륨제제(L-글루탄산나트륨(향미증진제),이노신산이나트륨,구아닐산이나트륨,파라옥시안식향산에틸(보존료)),물엿,홍고추(중국산),고추씨기름,당근,마늘,설탕,참깨,L-글루탐산나트륨(향미증진제)','파래무침','400g당 3,300원 입니다.',default,'서울','2019-10-01',3300,10,'/img/shopfoodimg/파래무침.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','다시마65%(국내산),미역줄기20%(국내산),톳,세모,양조식초,설탕,구연산,당근채,참깨','해초무침','300g당 2,400원 입니다.',default,'서울','2019-08-29',2400,10,'/img/shopfoodimg/해초무침.jpg','/img/default.jpg','/img/default.jpg',default);
+insert into shopboard values(10000013,shop_seq.nextval,'sidong91@gmail.com','참살이반찬','돼지고기(미국산)49%,양파(국내산)7%,대파(국내산),마늘(국내산),고춧가루(국내산70%.중국산30%),고추장(고춧가루-중국산),물엿,설탕,진간장,대파,간생강,후추','고추장돼지불고기','600g당 9,800원 입니다.',default,'서울','2019-08-27',9800,10,'/img/shopfoodimg/고추장돼지불고기.jpg','/img/default.jpg','/img/default.jpg',default);
+commit;
+select * from member;
+select * from shopboard;
+create sequence tl_board_seq
+start with 1001
+increment by 1
+nomaxvalue
+NOCYCLE;
+
+create sequence basket_seq
+increment by 1
+start with 1
+nomaxvalue
+nocache;
+
+create sequence order_seq
+increment by 1
+start with 1
+nomaxvalue
+nocache;
+drop sequence order_seq;
+select * from member;
+create sequence shop_seq
+increment by 1
+start with 1
+nomaxvalue
+nocache;
+
+create sequence memberSell_seq
+increment by 1
+start with 10000001
+nomaxvalue
+nocache;
+
+create sequence memberSell_seq;
+increment by 1
+start with 1
+nomaxvalue
+nocache;
+
+create sequence shop_review
+increment by 1
+start with 1
+nomaxvalue
+nocache;
+
+drop table message;
+commit;
+create sequence tl_board_seq
+increment by 1
+start with 1
+nomaxvalue
+nocache;
+create sequence tl_repl_seq
+increment by 1
+start with 1
+nomaxvalue
+nocache;
+commit;
+
+select * from shopReview;
+select * from shop
+select * from basket;
+SELECT 'DROP TABLE "' || table_name || '" CASCADE CONSTRAINTS;' FROM user_tables;
+DROP TABLE "MEMBER" CASCADE CONSTRAINTS;
+DROP TABLE "TL_BOARD" CASCADE CONSTRAINTS;
+DROP TABLE "TL_BOARD_REPLY" CASCADE CONSTRAINTS;
+DROP TABLE "BASKET" CASCADE CONSTRAINTS;
+DROP TABLE "PRODUCTS_ORDER" CASCADE CONSTRAINTS;
+DROP TABLE "SHOPREVIEW" CASCADE CONSTRAINTS;
+DROP TABLE "SHOPBOARD" CASCADE CONSTRAINTS;
+DROP TABLE "MESSAGE" CASCADE CONSTRAINTS;
+
+select * from member;
+update member set member_id = 'admin' , member_confirm = 'y' where member_id = 'admin@gmail.com';
+commit;
+select * from message;
+select * from member;
+select * from shopboard;
